@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "wouter";
+import CategoryNav from "@/components/CategoryNav";
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -59,107 +59,117 @@ export default function Products() {
         </div>
       </div>
 
-      {/* Main Content */}
+      {/* Main Content with Sidebar */}
       <main className="container py-8">
-        {/* Search and Filter */}
-        <div className="mb-8 space-y-4">
-          <div className="flex gap-4">
-            <Input
-              type="text"
-              placeholder="Search by product ID, part number, or brand..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-1"
-            />
-            {selectedBrand && (
-              <Button variant="outline" onClick={() => setSelectedBrand(null)}>
-                Clear Filter
-              </Button>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Left Sidebar - Category Navigation */}
+          <div className="lg:col-span-1">
+            <CategoryNav />
+          </div>
+
+          {/* Right Content - Products */}
+          <div className="lg:col-span-3">
+            {/* Search and Filter */}
+            <div className="mb-8 space-y-4">
+              <div className="flex gap-4">
+                <Input
+                  type="text"
+                  placeholder="Search by product ID, part number, or brand..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="flex-1"
+                />
+                {selectedBrand && (
+                  <Button variant="outline" onClick={() => setSelectedBrand(null)}>
+                    Clear Filter
+                  </Button>
+                )}
+              </div>
+
+              {/* Brand Filter */}
+              <div className="flex flex-wrap gap-2">
+                {brands.map((brand) => (
+                  <Button
+                    key={brand}
+                    variant={selectedBrand === brand ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => setSelectedBrand(brand === selectedBrand ? null : brand)}
+                  >
+                    {brand} ({brandStats?.[brand] || 0})
+                  </Button>
+                ))}
+              </div>
+            </div>
+
+            {/* Results Count */}
+            <div className="mb-4 text-sm text-muted-foreground">
+              Showing {filteredProducts?.length || 0} of {products?.length || 0} products
+            </div>
+
+            {/* Products Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {filteredProducts?.map((product) => (
+                <Card key={product.id} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-start justify-between">
+                      <CardTitle className="text-lg">{product.productId}</CardTitle>
+                      <Badge variant={product.status === "new" ? "default" : "secondary"}>
+                        {product.status}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div>
+                        <span className="text-sm font-medium text-muted-foreground">Brand:</span>
+                        <p className="text-sm">{product.brand}</p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-muted-foreground">Part Number:</span>
+                        <p className="text-sm font-mono">{product.partNumber}</p>
+                      </div>
+                      <div>
+                        <span className="text-sm font-medium text-muted-foreground">Prefix:</span>
+                        <p className="text-sm">
+                          <Badge variant="outline">{product.prefix}</Badge>
+                        </p>
+                      </div>
+                      {product.name && (
+                        <div>
+                          <span className="text-sm font-medium text-muted-foreground">Name:</span>
+                          <p className="text-sm">{product.name}</p>
+                        </div>
+                      )}
+                      {product.description && (
+                        <div>
+                          <span className="text-sm font-medium text-muted-foreground">
+                            Description:
+                          </span>
+                          <p className="text-sm text-muted-foreground line-clamp-2">
+                            {product.description}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* Empty State */}
+            {filteredProducts?.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No products found matching your criteria.</p>
+                <Button variant="outline" className="mt-4" onClick={() => {
+                  setSearchTerm("");
+                  setSelectedBrand(null);
+                }}>
+                  Clear All Filters
+                </Button>
+              </div>
             )}
           </div>
-
-          {/* Brand Filter */}
-          <div className="flex flex-wrap gap-2">
-            {brands.map((brand) => (
-              <Button
-                key={brand}
-                variant={selectedBrand === brand ? "default" : "outline"}
-                size="sm"
-                onClick={() => setSelectedBrand(brand === selectedBrand ? null : brand)}
-              >
-                {brand} ({brandStats?.[brand] || 0})
-              </Button>
-            ))}
-          </div>
         </div>
-
-        {/* Results Count */}
-        <div className="mb-4 text-sm text-muted-foreground">
-          Showing {filteredProducts?.length || 0} of {products?.length || 0} products
-        </div>
-
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts?.map((product) => (
-            <Card key={product.id} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <CardTitle className="text-lg">{product.productId}</CardTitle>
-                  <Badge variant={product.status === "new" ? "default" : "secondary"}>
-                    {product.status}
-                  </Badge>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <div>
-                    <span className="text-sm font-medium text-muted-foreground">Brand:</span>
-                    <p className="text-sm">{product.brand}</p>
-                  </div>
-                  <div>
-                    <span className="text-sm font-medium text-muted-foreground">Part Number:</span>
-                    <p className="text-sm font-mono">{product.partNumber}</p>
-                  </div>
-                  <div>
-                    <span className="text-sm font-medium text-muted-foreground">Prefix:</span>
-                    <p className="text-sm">
-                      <Badge variant="outline">{product.prefix}</Badge>
-                    </p>
-                  </div>
-                  {product.name && (
-                    <div>
-                      <span className="text-sm font-medium text-muted-foreground">Name:</span>
-                      <p className="text-sm">{product.name}</p>
-                    </div>
-                  )}
-                  {product.description && (
-                    <div>
-                      <span className="text-sm font-medium text-muted-foreground">
-                        Description:
-                      </span>
-                      <p className="text-sm text-muted-foreground line-clamp-2">
-                        {product.description}
-                      </p>
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Empty State */}
-        {filteredProducts?.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-muted-foreground">No products found matching your criteria.</p>
-            <Button variant="outline" className="mt-4" onClick={() => {
-              setSearchTerm("");
-              setSelectedBrand(null);
-            }}>
-              Clear All Filters
-            </Button>
-          </div>
-        )}
       </main>
     </div>
   );
