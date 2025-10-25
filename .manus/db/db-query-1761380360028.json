@@ -1,0 +1,34 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "cart"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "categories"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "inquiries"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "inquiry_items"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "product_categories"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "products"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG\n__drizzle_migrations\ncart\ncategories\ninquiries\ninquiry_items\nproduct_categories\nproducts\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 1597
+}

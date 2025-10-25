@@ -1,0 +1,13 @@
+{
+  "query": "SELECT COUNT(*) as total FROM products;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT COUNT(*) as total FROM products;",
+  "rows": [
+    {
+      "total": "88"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\n88\n",
+  "stderr": "",
+  "execution_time_ms": 1512
+}
