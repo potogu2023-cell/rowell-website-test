@@ -127,3 +127,59 @@ export async function getProductsByBrand(brand: string) {
   const result = await db.select().from(products).where(eq(products.brand, brand));
   return result;
 }
+
+
+// Category queries
+export async function getAllCategories() {
+  const db = await getDb();
+  if (!db) return [];
+  const { categories } = await import("../drizzle/schema");
+  return await db.select().from(categories);
+}
+
+export async function getVisibleCategories() {
+  const db = await getDb();
+  if (!db) return [];
+  const { categories } = await import("../drizzle/schema");
+  return await db.select().from(categories).where(eq(categories.isVisible, 1));
+}
+
+export async function getCategoriesByLevel(level: number) {
+  const db = await getDb();
+  if (!db) return [];
+  const { categories } = await import("../drizzle/schema");
+  return await db.select().from(categories).where(eq(categories.level, level));
+}
+
+export async function getCategoryById(id: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const { categories } = await import("../drizzle/schema");
+  const result = await db.select().from(categories).where(eq(categories.id, id)).limit(1);
+  return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getChildCategories(parentId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  const { categories } = await import("../drizzle/schema");
+  return await db.select().from(categories).where(eq(categories.parentId, parentId));
+}
+
+export async function getTopLevelCategories(visibleOnly: boolean = true) {
+  const db = await getDb();
+  if (!db) return [];
+  const { categories } = await import("../drizzle/schema");
+  const { and, isNull } = await import("drizzle-orm");
+  
+  if (visibleOnly) {
+    return await db.select().from(categories)
+      .where(and(isNull(categories.parentId), eq(categories.isVisible, 1)))
+      .orderBy(categories.displayOrder);
+  } else {
+    return await db.select().from(categories)
+      .where(isNull(categories.parentId))
+      .orderBy(categories.displayOrder);
+  }
+}
+

@@ -50,3 +50,40 @@ export const products = mysqlTable("products", {
 
 export type Product = typeof products.$inferSelect;
 export type InsertProduct = typeof products.$inferInsert;
+
+/**
+ * Categories table for product classification
+ * Supports hierarchical structure with unlimited levels
+ */
+export const categories = mysqlTable("categories", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 100 }).notNull(),
+  nameEn: varchar("nameEn", { length: 100 }),
+  slug: varchar("slug", { length: 100 }).notNull().unique(),
+  parentId: int("parentId"),
+  level: int("level").notNull().default(1),
+  displayOrder: int("displayOrder").default(0),
+  isVisible: int("isVisible").default(1).notNull(),
+  description: text("description"),
+  icon: varchar("icon", { length: 255 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Category = typeof categories.$inferSelect;
+export type InsertCategory = typeof categories.$inferInsert;
+
+/**
+ * Product-Category relationship table
+ * Allows products to belong to multiple categories
+ */
+export const productCategories = mysqlTable("product_categories", {
+  id: int("id").autoincrement().primaryKey(),
+  productId: int("productId").notNull(),
+  categoryId: int("categoryId").notNull(),
+  isPrimary: int("isPrimary").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ProductCategory = typeof productCategories.$inferSelect;
+export type InsertProductCategory = typeof productCategories.$inferInsert;

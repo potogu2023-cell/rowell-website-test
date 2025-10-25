@@ -32,6 +32,39 @@ export const appRouter = router({
         return getProductsByBrand(input);
       }),
   }),
+
+  category: router({
+    getAll: publicProcedure.query(async () => {
+      const { getAllCategories } = await import("./db");
+      return await getAllCategories();
+    }),
+    
+    getVisible: publicProcedure.query(async () => {
+      const { getVisibleCategories } = await import("./db");
+      return await getVisibleCategories();
+    }),
+    
+    getTopLevel: publicProcedure.query(async () => {
+      const { getTopLevelCategories } = await import("./db");
+      return await getTopLevelCategories(true);
+    }),
+    
+    getChildren: publicProcedure
+      .input((val: unknown) => {
+        if (typeof val !== 'object' || val === null || !('parentId' in val)) {
+          throw new Error('Invalid input');
+        }
+        const { parentId } = val as { parentId: unknown };
+        if (typeof parentId !== 'number') {
+          throw new Error('parentId must be a number');
+        }
+        return { parentId };
+      })
+      .query(async ({ input }) => {
+        const { getChildCategories } = await import("./db");
+        return await getChildCategories(input.parentId);
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
