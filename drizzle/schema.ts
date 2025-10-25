@@ -25,4 +25,28 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+/**
+ * Products table for HPLC columns and consumables
+ */
+export const products = mysqlTable("products", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Product ID with brand prefix (e.g., WATS-186009298) */
+  productId: varchar("productId", { length: 128 }).notNull().unique(),
+  /** Original part number without prefix */
+  partNumber: varchar("partNumber", { length: 128 }).notNull(),
+  /** Brand name */
+  brand: varchar("brand", { length: 64 }).notNull(),
+  /** Brand prefix (e.g., WATS, AGIL) */
+  prefix: varchar("prefix", { length: 16 }).notNull(),
+  /** Product name/title */
+  name: text("name"),
+  /** Product description */
+  description: text("description"),
+  /** Product status: new, active, discontinued */
+  status: varchar("status", { length: 32 }).default("new").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Product = typeof products.$inferSelect;
+export type InsertProduct = typeof products.$inferInsert;

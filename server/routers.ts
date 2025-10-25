@@ -17,12 +17,21 @@ export const appRouter = router({
     }),
   }),
 
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
+  products: router({
+    list: publicProcedure.query(async () => {
+      const { getAllProducts } = await import("./db");
+      return getAllProducts();
+    }),
+    byBrand: publicProcedure
+      .input((val: unknown) => {
+        if (typeof val === "string") return val;
+        throw new Error("Brand must be a string");
+      })
+      .query(async ({ input }) => {
+        const { getProductsByBrand } = await import("./db");
+        return getProductsByBrand(input);
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;

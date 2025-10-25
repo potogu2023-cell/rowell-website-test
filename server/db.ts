@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertProduct, InsertUser, products, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,41 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// Product queries
+export async function insertProducts(productsData: InsertProduct[]) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot insert products: database not available");
+    return [];
+  }
+
+  try {
+    const result = await db.insert(products).values(productsData);
+    return result;
+  } catch (error) {
+    console.error("[Database] Failed to insert products:", error);
+    throw error;
+  }
+}
+
+export async function getAllProducts() {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get products: database not available");
+    return [];
+  }
+
+  const result = await db.select().from(products);
+  return result;
+}
+
+export async function getProductsByBrand(brand: string) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get products: database not available");
+    return [];
+  }
+
+  const result = await db.select().from(products).where(eq(products.brand, brand));
+  return result;
+}
