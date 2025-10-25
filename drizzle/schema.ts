@@ -17,6 +17,14 @@ export const users = mysqlTable("users", {
   email: varchar("email", { length: 320 }),
   loginMethod: varchar("loginMethod", { length: 64 }),
   role: mysqlEnum("role", ["user", "admin"]).default("user").notNull(),
+  // Additional user profile fields
+  company: varchar("company", { length: 255 }),
+  phone: varchar("phone", { length: 50 }),
+  country: varchar("country", { length: 100 }),
+  industry: varchar("industry", { length: 100 }),
+  purchasingRole: varchar("purchasingRole", { length: 100 }),
+  annualPurchaseVolume: varchar("annualPurchaseVolume", { length: 100 }),
+  emailVerified: int("emailVerified").default(0).notNull(), // 0 = not verified, 1 = verified
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
