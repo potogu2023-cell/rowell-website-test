@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -52,6 +52,34 @@ export const products = mysqlTable("products", {
   name: text("name"),
   /** Product description */
   description: text("description"),
+  /** Detailed product description */
+  detailedDescription: text("detailedDescription"),
+  /** Technical specifications in JSON format */
+  specifications: json("specifications"),
+  /** Particle size (e.g., 5 µm, 3 µm) */
+  particleSize: varchar("particleSize", { length: 50 }),
+  /** Pore size (e.g., 100 Å, 120 Å) */
+  poreSize: varchar("poreSize", { length: 50 }),
+  /** Column length (e.g., 250 mm, 150 mm) */
+  columnLength: varchar("columnLength", { length: 50 }),
+  /** Inner diameter (e.g., 4.6 mm, 2.1 mm) */
+  innerDiameter: varchar("innerDiameter", { length: 50 }),
+  /** pH range (e.g., 2-8, 1-14) */
+  phRange: varchar("phRange", { length: 50 }),
+  /** Maximum pressure (e.g., 400 bar, 600 bar) */
+  maxPressure: varchar("maxPressure", { length: 50 }),
+  /** Maximum temperature (e.g., 60°C, 80°C) */
+  maxTemperature: varchar("maxTemperature", { length: 50 }),
+  /** USP classification (e.g., L1, L7, L11) */
+  usp: varchar("usp", { length: 50 }),
+  /** Application areas */
+  applications: text("applications"),
+  /** Product image URL */
+  imageUrl: varchar("imageUrl", { length: 500 }),
+  /** Catalog/brochure URL */
+  catalogUrl: varchar("catalogUrl", { length: 500 }),
+  /** Technical documents URLs (JSON array) */
+  technicalDocsUrl: text("technicalDocsUrl"),
   /** Product status: new, active, discontinued */
   status: varchar("status", { length: 32 }).default("new").notNull(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),

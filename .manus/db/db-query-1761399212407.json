@@ -1,0 +1,18 @@
+{
+  "query": "SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN detailedDescription IS NOT NULL THEN 1 ELSE 0 END) as with_desc,\n  SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) as with_particle,\n  SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) as with_pore,\n  SUM(CASE WHEN columnLength IS NOT NULL THEN 1 ELSE 0 END) as with_length,\n  SUM(CASE WHEN phRange IS NOT NULL THEN 1 ELSE 0 END) as with_ph\nFROM products",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  COUNT(*) as total,\n  SUM(CASE WHEN detailedDescription IS NOT NULL THEN 1 ELSE 0 END) as with_desc,\n  SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) as with_particle,\n  SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) as with_pore,\n  SUM(CASE WHEN columnLength IS NOT NULL THEN 1 ELSE 0 END) as with_length,\n  SUM(CASE WHEN phRange IS NOT NULL THEN 1 ELSE 0 END) as with_ph\nFROM products",
+  "rows": [
+    {
+      "total": "1319",
+      "with_desc": "1219",
+      "with_particle": "952",
+      "with_pore": "564",
+      "with_length": "75",
+      "with_ph": "600"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\twith_desc\twith_particle\twith_pore\twith_length\twith_ph\n1319\t1219\t952\t564\t75\t600\n",
+  "stderr": "",
+  "execution_time_ms": 1635
+}

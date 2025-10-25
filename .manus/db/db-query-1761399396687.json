@@ -1,0 +1,118 @@
+{
+  "query": "SELECT \n  brand,\n  COUNT(*) as total_products,\n  SUM(CASE WHEN detailedDescription IS NOT NULL AND detailedDescription != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) as with_particle_size,\n  SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) as with_pore_size,\n  SUM(CASE WHEN columnLength IS NOT NULL AND innerDiameter IS NOT NULL THEN 1 ELSE 0 END) as with_dimensions,\n  SUM(CASE WHEN phRange IS NOT NULL THEN 1 ELSE 0 END) as with_ph_range\nFROM products\nGROUP BY brand\nORDER BY brand",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  brand,\n  COUNT(*) as total_products,\n  SUM(CASE WHEN detailedDescription IS NOT NULL AND detailedDescription != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) as with_particle_size,\n  SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) as with_pore_size,\n  SUM(CASE WHEN columnLength IS NOT NULL AND innerDiameter IS NOT NULL THEN 1 ELSE 0 END) as with_dimensions,\n  SUM(CASE WHEN phRange IS NOT NULL THEN 1 ELSE 0 END) as with_ph_range\nFROM products\nGROUP BY brand\nORDER BY brand",
+  "rows": [
+    {
+      "brand": "ACE",
+      "total_products": "55",
+      "with_description": "55",
+      "with_particle_size": "55",
+      "with_pore_size": "55",
+      "with_dimensions": "0",
+      "with_ph_range": "55"
+    },
+    {
+      "brand": "Agilent",
+      "total_products": "54",
+      "with_description": "54",
+      "with_particle_size": "54",
+      "with_pore_size": "6",
+      "with_dimensions": "0",
+      "with_ph_range": "18"
+    },
+    {
+      "brand": "Develosil",
+      "total_products": "50",
+      "with_description": "0",
+      "with_particle_size": "0",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "total_products": "8",
+      "with_description": "8",
+      "with_particle_size": "0",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Dikma",
+      "total_products": "128",
+      "with_description": "128",
+      "with_particle_size": "128",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Merck",
+      "total_products": "93",
+      "with_description": "93",
+      "with_particle_size": "0",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Phenomenex",
+      "total_products": "79",
+      "with_description": "79",
+      "with_particle_size": "74",
+      "with_pore_size": "74",
+      "with_dimensions": "74",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Shimadzu",
+      "total_products": "152",
+      "with_description": "152",
+      "with_particle_size": "0",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "TSKgel",
+      "total_products": "96",
+      "with_description": "46",
+      "with_particle_size": "45",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "total_products": "51",
+      "with_description": "51",
+      "with_particle_size": "50",
+      "with_pore_size": "50",
+      "with_dimensions": "1",
+      "with_ph_range": "0"
+    },
+    {
+      "brand": "Waters",
+      "total_products": "50",
+      "with_description": "50",
+      "with_particle_size": "50",
+      "with_pore_size": "0",
+      "with_dimensions": "0",
+      "with_ph_range": "26"
+    },
+    {
+      "brand": "YMC",
+      "total_products": "503",
+      "with_description": "503",
+      "with_particle_size": "496",
+      "with_pore_size": "379",
+      "with_dimensions": "0",
+      "with_ph_range": "501"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\ttotal_products\twith_description\twith_particle_size\twith_pore_size\twith_dimensions\twith_ph_range\nACE\t55\t55\t55\t55\t0\t55\nAgilent\t54\t54\t54\t6\t0\t18\nDevelosil\t50\t0\t0\t0\t0\t0\nDevelosil (Nomura Chemical)\t8\t8\t0\t0\t0\t0\nDikma\t128\t128\t128\t0\t0\t0\nMerck\t93\t93\t0\t0\t0\t0\nPhenomenex\t79\t79\t74\t74\t74\t0\nShimadzu\t152\t152\t0\t0\t0\t0\nTSKgel\t96\t46\t45\t0\t0\t0\nThermo Fisher Scientific\t51\t51\t50\t50\t1\t0\nWaters\t50\t50\t50\t0\t0\t26\nYMC\t503\t503\t496\t379\t0\t501\n",
+  "stderr": "",
+  "execution_time_ms": 1572
+}

@@ -1,0 +1,111 @@
+{
+  "query": "SELECT productId, partNumber, brand, name, description FROM products ORDER BY brand, partNumber LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, brand, name, description FROM products ORDER BY brand, partNumber LIMIT 10",
+  "rows": [
+    {
+      "productId": "ACE-76380-012",
+      "partNumber": "76380-012",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 5 µm, 2.1 mm x 50 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76380-014",
+      "partNumber": "76380-014",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 5 µm, 2.1 mm x 100 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76380-016",
+      "partNumber": "76380-016",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 5 µm, 2.1 mm x 150 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76380-022",
+      "partNumber": "76380-022",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 5 µm, 3.0 mm x 50 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76380-024",
+      "partNumber": "76380-024",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 5 µm, 3.0 mm x 100 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76380-026",
+      "partNumber": "76380-026",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 5 µm, 3.0 mm x 150 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76382-532",
+      "partNumber": "76382-532",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 3 µm, 2.1 mm x 50 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76382-534",
+      "partNumber": "76382-534",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 3 µm, 2.1 mm x 100 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76382-536",
+      "partNumber": "76382-536",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 3 µm, 2.1 mm x 150 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    },
+    {
+      "productId": "ACE-76382-538",
+      "partNumber": "76382-538",
+      "brand": "ACE",
+      "name": "Avantor® ACE® C18 C18, 3 µm, 3.0 mm x 50 mm",
+      "description": "Avantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative."
+    }
+  ],
+  "messages": [
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76380-012, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76380-014, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 100 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76380-016, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 150 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76380-022, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76380-024, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 100 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76380-026, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 150 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76382-532, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76382-534, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 100 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76382-536, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 150 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱",
+    "Series: C18",
+    "Specifications: ---: :---, Cat. No.: 76382-538, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each",
+    "Category: HPLC 色谱柱"
+  ],
+  "stdout": "productId\tpartNumber\tbrand\tname\tdescription\nACE-76380-012\t76380-012\tACE\tAvantor® ACE® C18 C18, 5 µm, 2.1 mm x 50 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76380-012, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76380-014\t76380-014\tACE\tAvantor® ACE® C18 C18, 5 µm, 2.1 mm x 100 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76380-014, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 100 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76380-016\t76380-016\tACE\tAvantor® ACE® C18 C18, 5 µm, 2.1 mm x 150 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76380-016, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 150 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76380-022\t76380-022\tACE\tAvantor® ACE® C18 C18, 5 µm, 3.0 mm x 50 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76380-022, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76380-024\t76380-024\tACE\tAvantor® ACE® C18 C18, 5 µm, 3.0 mm x 100 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76380-024, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 100 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76380-026\t76380-026\tACE\tAvantor® ACE® C18 C18, 5 µm, 3.0 mm x 150 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76380-026, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 17.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 5 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 150 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76382-532\t76382-532\tACE\tAvantor® ACE® C18 C18, 3 µm, 2.1 mm x 50 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76382-532, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76382-534\t76382-534\tACE\tAvantor® ACE® C18 C18, 3 µm, 2.1 mm x 100 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76382-534, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 100 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76382-536\t76382-536\tACE\tAvantor® ACE® C18 C18, 3 µm, 2.1 mm x 150 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76382-536, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 2.1 mm, Length: 150 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\nACE-76382-538\t76382-538\tACE\tAvantor® ACE® C18 C18, 3 µm, 3.0 mm x 50 mm\tAvantor® ACE® C18 columns provide great reproducibility and column lifetime. These stainless steel columns are available in a wide range of particle sizes and dimensions from capillary to preparative.\n\nSeries: C18\n\nSpecifications: ---: :---, Cat. No.: 76382-538, Environmentally Preferable: Low Manufacturing Impact, Carbon Load: 15.5%, Endcapped: Yes, Max. Pressure: 275 bar, pH Range: 2 - 10, Particle Size: 3 µm, Pore Size: 100 Å, Phase: C18, Column Format: Analytical, Column Hardware: Stainless Steel, ID: 3.0 mm, Length: 50 mm, Temp. Range: 5 - 80 °C, Unit: Each\n\nCategory: HPLC 色谱柱\n",
+  "stderr": "",
+  "execution_time_ms": 2340
+}

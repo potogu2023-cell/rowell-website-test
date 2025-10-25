@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE products SET detailedDescription = 'Phenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。', particleSize = '3', poreSize = '100', columnLength = '30', innerDiameter = '1', specifications = '{\"particle_size\": \"3 µm\", \"pore_size\": \"100 Å\"}' WHERE productId = 'PHEN-00A-4251-A0'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute UPDATE products SET detailedDescription = 'Phenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。', particleSize = '3', poreSize = '100', columnLength = '30', innerDiameter = '1', specifications = '{\"particle_size\": \"3 µm\", \"pore_size\": \"100 Å\"}' WHERE productId = 'PHEN-00A-4251-A0'",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1543
+}

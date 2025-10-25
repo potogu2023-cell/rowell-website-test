@@ -135,34 +135,50 @@ export default function Products() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <div className="space-y-2">
-                      <div>
-                        <span className="text-sm font-medium text-muted-foreground">Brand:</span>
-                        <p className="text-sm">{product.brand}</p>
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <Badge variant="outline" className="text-xs">{product.brand}</Badge>
+                        <span className="text-xs text-muted-foreground font-mono">{product.partNumber}</span>
                       </div>
-                      <div>
-                        <span className="text-sm font-medium text-muted-foreground">Part Number:</span>
-                        <p className="text-sm font-mono">{product.partNumber}</p>
-                      </div>
-                      <div>
-                        <span className="text-sm font-medium text-muted-foreground">Prefix:</span>
-                        <p className="text-sm">
-                          <Badge variant="outline">{product.prefix}</Badge>
-                        </p>
-                      </div>
+                      
                       {product.name && (
                         <div>
-                          <span className="text-sm font-medium text-muted-foreground">Name:</span>
-                          <p className="text-sm">{product.name}</p>
+                          <h3 className="font-semibold text-sm">{product.name}</h3>
                         </div>
                       )}
-                      {product.description && (
-                        <div>
-                          <span className="text-sm font-medium text-muted-foreground">
-                            Description:
-                          </span>
-                          <p className="text-sm text-muted-foreground line-clamp-2">
-                            {product.description}
+
+                      {/* Technical Specifications */}
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        {product.particleSize && (
+                          <div className="flex items-center gap-1">
+                            <span className="text-muted-foreground">粒径:</span>
+                            <span className="font-medium">{product.particleSize} µm</span>
+                          </div>
+                        )}
+                        {product.poreSize && (
+                          <div className="flex items-center gap-1">
+                            <span className="text-muted-foreground">孔径:</span>
+                            <span className="font-medium">{product.poreSize} Å</span>
+                          </div>
+                        )}
+                        {product.columnLength && product.innerDiameter && (
+                          <div className="flex items-center gap-1 col-span-2">
+                            <span className="text-muted-foreground">尺寸:</span>
+                            <span className="font-medium">{product.columnLength} × {product.innerDiameter} mm</span>
+                          </div>
+                        )}
+                        {product.phRange && (
+                          <div className="flex items-center gap-1 col-span-2">
+                            <span className="text-muted-foreground">pH范围:</span>
+                            <span className="font-medium">{product.phRange}</span>
+                          </div>
+                        )}
+                      </div>
+
+                      {product.detailedDescription && (
+                        <div className="pt-2 border-t">
+                          <p className="text-xs text-muted-foreground line-clamp-3">
+                            {product.detailedDescription}
                           </p>
                         </div>
                       )}

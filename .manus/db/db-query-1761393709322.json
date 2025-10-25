@@ -1,0 +1,20 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_products,\n  COUNT(detailedDescription) as has_detailed_desc,\n  COUNT(specifications) as has_specifications,\n  COUNT(particleSize) as has_particle_size,\n  COUNT(poreSize) as has_pore_size,\n  COUNT(columnLength) as has_column_length,\n  COUNT(innerDiameter) as has_inner_diameter,\n  COUNT(imageUrl) as has_image\nFROM products",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  COUNT(*) as total_products,\n  COUNT(detailedDescription) as has_detailed_desc,\n  COUNT(specifications) as has_specifications,\n  COUNT(particleSize) as has_particle_size,\n  COUNT(poreSize) as has_pore_size,\n  COUNT(columnLength) as has_column_length,\n  COUNT(innerDiameter) as has_inner_diameter,\n  COUNT(imageUrl) as has_image\nFROM products",
+  "rows": [
+    {
+      "total_products": "1319",
+      "has_detailed_desc": "0",
+      "has_specifications": "0",
+      "has_particle_size": "0",
+      "has_pore_size": "0",
+      "has_column_length": "0",
+      "has_inner_diameter": "0",
+      "has_image": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\thas_detailed_desc\thas_specifications\thas_particle_size\thas_pore_size\thas_column_length\thas_inner_diameter\thas_image\n1319\t0\t0\t0\t0\t0\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1559
+}

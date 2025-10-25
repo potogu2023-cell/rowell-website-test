@@ -1,0 +1,30 @@
+{
+  "query": "SELECT productId, partNumber, brand, name, description, detailedDescription, specifications, particleSize, poreSize, columnLength, innerDiameter FROM products LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, brand, name, description, detailedDescription, specifications, particleSize, poreSize, columnLength, innerDiameter FROM products LIMIT 5",
+  "rows": [],
+  "messages": [
+    "PHEN-00A-4251-A0\t00A-4251-A0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\tLuna 3 µm C18(2) 100 Å, LC Column 30 x 1 mm",
+    "Series: Luna C18(2) 3 µm",
+    "Specifications: Particle Size: 3 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 1 mm",
+    "Category: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL",
+    "PHEN-00A-4251-B0\t00A-4251-B0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\tLuna 3 µm C18(2) 100 Å, LC Column 30 x 2 mm",
+    "Series: Luna C18(2) 3 µm",
+    "Specifications: Particle Size: 3 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 2 mm",
+    "Category: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL",
+    "PHEN-00A-4251-Y0\t00A-4251-Y0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\tLuna 3 µm C18(2) 100 Å, LC Column 30 x 3 mm",
+    "Series: Luna C18(2) 3 µm",
+    "Specifications: Particle Size: 3 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 3 mm",
+    "Category: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL",
+    "PHEN-00A-4252-B0\t00A-4252-B0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\tLuna 5 µm C18(2) 100 Å, LC Column 30 x 2 mm",
+    "Series: Luna C18(2) 5 µm",
+    "Specifications: Particle Size: 5 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 2 mm",
+    "Category: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL",
+    "PHEN-00A-4252-E0\t00A-4252-E0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\tLuna 5 µm C18(2) 100 Å, LC Column 30 x 4.6 mm",
+    "Series: Luna C18(2) 5 µm",
+    "Specifications: Particle Size: 5 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 4.6 mm",
+    "Category: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL"
+  ],
+  "stdout": "productId\tpartNumber\tbrand\tname\tdescription\tdetailedDescription\tspecifications\tparticleSize\tporeSize\tcolumnLength\tinnerDiameter\nPHEN-00A-4251-A0\t00A-4251-A0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\tLuna 3 µm C18(2) 100 Å, LC Column 30 x 1 mm\n\nSeries: Luna C18(2) 3 µm\n\nSpecifications: Particle Size: 3 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 1 mm\n\nCategory: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL\nPHEN-00A-4251-B0\t00A-4251-B0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\tLuna 3 µm C18(2) 100 Å, LC Column 30 x 2 mm\n\nSeries: Luna C18(2) 3 µm\n\nSpecifications: Particle Size: 3 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 2 mm\n\nCategory: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL\nPHEN-00A-4251-Y0\t00A-4251-Y0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\tLuna 3 µm C18(2) 100 Å, LC Column 30 x 3 mm\n\nSeries: Luna C18(2) 3 µm\n\nSpecifications: Particle Size: 3 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 3 mm\n\nCategory: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL\nPHEN-00A-4252-B0\t00A-4252-B0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\tLuna 5 µm C18(2) 100 Å, LC Column 30 x 2 mm\n\nSeries: Luna C18(2) 5 µm\n\nSpecifications: Particle Size: 5 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 2 mm\n\nCategory: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL\nPHEN-00A-4252-E0\t00A-4252-E0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\tLuna 5 µm C18(2) 100 Å, LC Column 30 x 4.6 mm\n\nSeries: Luna C18(2) 5 µm\n\nSpecifications: Particle Size: 5 µm, Phase Type: C18(2), Pore Size: 100Å, Dimensions: 30 x 4.6 mm\n\nCategory: HPLC Column\tNULL\tNULL\tNULL\tNULL\tNULL\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1584
+}

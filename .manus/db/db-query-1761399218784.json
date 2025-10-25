@@ -1,0 +1,65 @@
+{
+  "query": "SELECT productId, brand, name, particleSize, poreSize, columnLength, innerDiameter, phRange, LEFT(detailedDescription, 100) as desc_preview FROM products WHERE detailedDescription IS NOT NULL LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, brand, name, particleSize, poreSize, columnLength, innerDiameter, phRange, LEFT(detailedDescription, 100) as desc_preview FROM products WHERE detailedDescription IS NOT NULL LIMIT 5",
+  "rows": [
+    {
+      "productId": "PHEN-00A-4251-A0",
+      "brand": "Phenomenex",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "particleSize": "3",
+      "poreSize": "100",
+      "columnLength": "30",
+      "innerDiameter": "1",
+      "phRange": "NULL",
+      "desc_preview": "Phenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。"
+    },
+    {
+      "productId": "PHEN-00A-4251-B0",
+      "brand": "Phenomenex",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "particleSize": "3",
+      "poreSize": "100",
+      "columnLength": "30",
+      "innerDiameter": "2",
+      "phRange": "NULL",
+      "desc_preview": "Phenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。"
+    },
+    {
+      "productId": "PHEN-00A-4251-Y0",
+      "brand": "Phenomenex",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "particleSize": "3",
+      "poreSize": "100",
+      "columnLength": "30",
+      "innerDiameter": "3",
+      "phRange": "NULL",
+      "desc_preview": "Phenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。"
+    },
+    {
+      "productId": "PHEN-00A-4252-B0",
+      "brand": "Phenomenex",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "particleSize": "5",
+      "poreSize": "100",
+      "columnLength": "30",
+      "innerDiameter": "2",
+      "phRange": "NULL",
+      "desc_preview": "Phenomenex Luna 5 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 5 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。"
+    },
+    {
+      "productId": "PHEN-00A-4252-E0",
+      "brand": "Phenomenex",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "particleSize": "5",
+      "poreSize": "100",
+      "columnLength": "30",
+      "innerDiameter": "4.6",
+      "phRange": "NULL",
+      "desc_preview": "Phenomenex Luna 5 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 5 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tbrand\tname\tparticleSize\tporeSize\tcolumnLength\tinnerDiameter\tphRange\tdesc_preview\nPHEN-00A-4251-A0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\t3\t100\t30\t1\tNULL\tPhenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。\nPHEN-00A-4251-B0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\t3\t100\t30\t2\tNULL\tPhenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。\nPHEN-00A-4251-Y0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\t3\t100\t30\t3\tNULL\tPhenomenex Luna 3 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 3 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。\nPHEN-00A-4252-B0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\t5\t100\t30\t2\tNULL\tPhenomenex Luna 5 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 5 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。\nPHEN-00A-4252-E0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\t5\t100\t30\t4.6\tNULL\tPhenomenex Luna 5 µm C18(2) 100 Å 是一款高性能液相色谱柱，采用 5 µm 粒径填料，C18(2) 固定相，孔径为 100 Å，适用于多种分析应用场景。\n",
+  "stderr": "",
+  "execution_time_ms": 1651
+}
