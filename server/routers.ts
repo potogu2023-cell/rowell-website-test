@@ -669,6 +669,56 @@ export const appRouter = router({
           return { success: true };
         }),
 
+      // Generate PDF quotation
+      generatePDF: adminProcedure
+        .input(z.object({ inquiryId: z.number() }))
+        .mutation(async ({ input }) => {
+          const { inquiries, inquiryItems, products, users } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          // Get inquiry with details
+          const inquiry = await db
+            .select({
+              inquiry: inquiries,
+              user: users,
+            })
+            .from(inquiries)
+            .leftJoin(users, eq(inquiries.userId, users.id))
+            .where(eq(inquiries.id, input.inquiryId))
+            .limit(1);
+
+          if (inquiry.length === 0) {
+            throw new TRPCError({ code: "NOT_FOUND", message: "Inquiry not found" });
+          }
+
+          const items = await db
+            .select({
+              product: products,
+              quantity: inquiryItems.quantity,
+              notes: inquiryItems.notes,
+              quotedPrice: inquiryItems.quotedPrice,
+
+            })
+            .from(inquiryItems)
+            .leftJoin(products, eq(inquiryItems.productId, products.id))
+            .where(eq(inquiryItems.inquiryId, input.inquiryId));
+
+          // Generate PDF
+          const { generateInquiryPDF } = await import("./pdf-utils");
+          const pdfBuffer = await generateInquiryPDF({
+            inquiry: inquiry[0].inquiry,
+            customer: inquiry[0].user!,
+            items: items as any,
+          });
+
+          // Return PDF as base64
+          return {
+            pdf: pdfBuffer.toString('base64'),
+            filename: `quotation-${inquiry[0].inquiry.inquiryNumber}.pdf`,
+          };
+        }),
+
       // Add quote to inquiry item
       addQuote: adminProcedure
         .input(

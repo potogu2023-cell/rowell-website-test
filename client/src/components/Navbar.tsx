@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { User, ShoppingCart, LogOut, Shield } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -45,7 +46,8 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="hidden md:flex items-center space-x-4">
+          <LanguageSwitcher />
           <Link href="/">
             <a className="text-sm font-medium text-foreground hover:text-primary transition-colors">
               Home

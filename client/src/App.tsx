@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import './i18n/config'; // Initialize i18n
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
@@ -21,6 +22,7 @@ import Admin from "./pages/Admin";
 import AdminInquiries from "./pages/AdminInquiries";
 import AdminCustomers from "./pages/AdminCustomers";
 import AdminAnalytics from "./pages/AdminAnalytics";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 function Router() {
   return (
@@ -48,6 +50,7 @@ function Router() {
         </Switch>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 }

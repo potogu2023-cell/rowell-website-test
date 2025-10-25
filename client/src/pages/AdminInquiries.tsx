@@ -23,7 +23,7 @@ import { trpc } from "@/lib/trpc";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
-import { ArrowLeft, Eye } from "lucide-react";
+import { ArrowLeft, Eye, FileDown } from "lucide-react";
 
 export default function AdminInquiries() {
   const { user, isAuthenticated, loading } = useAuth();
@@ -81,6 +81,31 @@ export default function AdminInquiries() {
     },
     onError: (error) => {
       toast.error(error.message || "Failed to add quote");
+    },
+  });
+
+  const generatePDFMutation = trpc.admin.inquiries.generatePDF.useMutation({
+    onSuccess: (data) => {
+      // Convert base64 to blob and download
+      const byteCharacters = atob(data.pdf);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = data.filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      toast.success("PDF downloaded successfully");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to generate PDF");
     },
   });
 
@@ -352,6 +377,22 @@ export default function AdminInquiries() {
                       <SelectItem value="cancelled">Cancelled</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+
+                {/* Download PDF */}
+                <div>
+                  <Button
+                    onClick={() => {
+                      if (selectedInquiry) {
+                        generatePDFMutation.mutate({ inquiryId: selectedInquiry });
+                      }
+                    }}
+                    disabled={generatePDFMutation.isPending}
+                    className="w-full"
+                  >
+                    <FileDown className="mr-2 h-4 w-4" />
+                    {generatePDFMutation.isPending ? "Generating..." : "Download PDF Quotation"}
+                  </Button>
                 </div>
 
                 {/* Admin Notes */}
