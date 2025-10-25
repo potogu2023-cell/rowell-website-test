@@ -50,33 +50,17 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <a className="text-2xl font-bold text-primary">ROWELL HPLC</a>
-            </Link>
-            <nav className="flex gap-6">
-              <Link href="/">
-                <a className="text-muted-foreground hover:text-foreground">Home</a>
-              </Link>
-              <Link href="/products">
-                <a className="text-foreground font-medium">Products</a>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">HPLC Products</h1>
-          <p className="text-muted-foreground">
-            Browse our collection of {products?.length || 0} HPLC columns and consumables
+      <div className="bg-gradient-to-b from-blue-50 to-white py-12">
+        <div className="container">
+          <h1 className="text-4xl font-bold mb-4">HPLC Products</h1>
+          <p className="text-lg text-muted-foreground">
+            Browse our comprehensive collection of high-quality HPLC columns from leading manufacturers
           </p>
         </div>
+      </div>
 
+      {/* Main Content */}
+      <main className="container py-8">
         {/* Search and Filter */}
         <div className="mb-8 space-y-4">
           <div className="flex gap-4">
