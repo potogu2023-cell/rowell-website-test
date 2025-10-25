@@ -155,8 +155,7 @@ export async function generateInquiryExcel(
 }
 
 /**
- * Send inquiry email notification
- * Note: This is a placeholder. In production, you would use a real email service.
+ * Send inquiry email notification using SendGrid
  */
 export async function sendInquiryEmail(
   inquiry: Inquiry,
@@ -164,34 +163,108 @@ export async function sendInquiryEmail(
   excelBuffer: Buffer
 ): Promise<boolean> {
   try {
-    // TODO: Implement actual email sending using a service like SendGrid, AWS SES, etc.
-    // For now, we'll just log the email details
-    console.log('[Email] Inquiry email notification:');
-    console.log(`  To: info@rowellhplc.com`);
-    console.log(`  Subject: New Inquiry ${inquiry.inquiryNumber} from ${user.name || user.email}`);
-    console.log(`  Inquiry Number: ${inquiry.inquiryNumber}`);
-    console.log(`  Customer: ${user.name} (${user.email})`);
-    console.log(`  Company: ${user.company}`);
-    console.log(`  Total Items: ${inquiry.totalItems}`);
-    console.log(`  Excel attachment size: ${excelBuffer.length} bytes`);
-    
-    // In production, you would send the email here
-    // Example with nodemailer:
-    // const transporter = nodemailer.createTransport({...});
-    // await transporter.sendMail({
-    //   from: 'noreply@rowellhplc.com',
-    //   to: 'info@rowellhplc.com',
-    //   subject: `New Inquiry ${inquiry.inquiryNumber} from ${user.name || user.email}`,
-    //   html: generateEmailHTML(inquiry, user),
-    //   attachments: [{
-    //     filename: `Inquiry_${inquiry.inquiryNumber}.xlsx`,
-    //     content: excelBuffer
-    //   }]
-    // });
+    const sgMail = await import('@sendgrid/mail');
+    sgMail.default.setApiKey(process.env.SENDGRID_API_KEY || '');
 
+    const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'info@rowellhplc.com';
+    const toEmail = 'info@rowellhplc.com';
+
+    // Create HTML email content
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; }
+          .header { background-color: #2c7da0; color: white; padding: 30px; text-align: center; }
+          .header img { max-width: 200px; height: auto; }
+          .header h1 { margin: 15px 0 0 0; font-size: 24px; }
+          .content { padding: 30px; background-color: #f9f9f9; }
+          .info-section { margin: 20px 0; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+          .info-label { font-weight: bold; color: #2c7da0; display: inline-block; min-width: 150px; }
+          .info-value { color: #333; }
+          .section-title { color: #2c7da0; font-size: 18px; font-weight: bold; margin: 20px 0 10px 0; border-bottom: 2px solid #2c7da0; padding-bottom: 5px; }
+          .products-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+          .products-table th { background-color: #2c7da0; color: white; padding: 12px; text-align: left; }
+          .products-table td { padding: 10px; border-bottom: 1px solid #ddd; }
+          .products-table tr:hover { background-color: #f5f5f5; }
+          .footer { margin-top: 30px; padding: 20px; background-color: #f5f5f5; text-align: center; font-size: 12px; color: #666; }
+          .whatsapp-section { margin-top: 20px; padding: 15px; background-color: #25D366; color: white; border-radius: 8px; text-align: center; }
+          .whatsapp-section a { color: white; text-decoration: none; font-weight: bold; }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>🔔 New Inquiry Received</h1>
+        </div>
+        <div class="content">
+          <div class="info-section">
+            <h2 class="section-title">Inquiry Information</h2>
+            <p><span class="info-label">Inquiry Number:</span> <span class="info-value">${inquiry.inquiryNumber}</span></p>
+            <p><span class="info-label">Date:</span> <span class="info-value">${new Date(inquiry.createdAt).toLocaleString()}</span></p>
+            <p><span class="info-label">Status:</span> <span class="info-value">${inquiry.status.toUpperCase()}</span></p>
+            <p><span class="info-label">Urgency:</span> <span class="info-value" style="color: ${inquiry.urgency === 'very_urgent' ? '#dc2626' : inquiry.urgency === 'urgent' ? '#ea580c' : '#059669'}; font-weight: bold;">${inquiry.urgency.replace('_', ' ').toUpperCase()}</span></p>
+          </div>
+          
+          <div class="info-section">
+            <h2 class="section-title">Customer Information</h2>
+            <p><span class="info-label">Name:</span> <span class="info-value">${user.name || 'N/A'}</span></p>
+            <p><span class="info-label">Email:</span> <span class="info-value">${user.email || 'N/A'}</span></p>
+            <p><span class="info-label">Company:</span> <span class="info-value">${user.company || 'N/A'}</span></p>
+            <p><span class="info-label">Phone:</span> <span class="info-value">${user.phone || 'N/A'}</span></p>
+            <p><span class="info-label">Country:</span> <span class="info-value">${user.country || 'N/A'}</span></p>
+            <p><span class="info-label">Industry:</span> <span class="info-value">${user.industry || 'N/A'}</span></p>
+          </div>
+
+          ${inquiry.budgetRange || inquiry.applicationNotes || inquiry.deliveryAddress ? `
+          <div class="info-section">
+            <h2 class="section-title">Inquiry Details</h2>
+            ${inquiry.budgetRange ? `<p><span class="info-label">Budget Range:</span> <span class="info-value">${inquiry.budgetRange}</span></p>` : ''}
+            ${inquiry.applicationNotes ? `<p><span class="info-label">Application Notes:</span> <span class="info-value">${inquiry.applicationNotes}</span></p>` : ''}
+            ${inquiry.deliveryAddress ? `<p><span class="info-label">Delivery Address:</span> <span class="info-value">${inquiry.deliveryAddress}</span></p>` : ''}
+          </div>
+          ` : ''}
+
+          <div class="info-section">
+            <h2 class="section-title">Products (${inquiry.totalItems} items)</h2>
+            <p>Please find the detailed product list in the attached Excel file.</p>
+          </div>
+
+          <div class="whatsapp-section">
+            <p style="margin: 0;">📱 Contact customer via WhatsApp</p>
+            <p style="margin: 5px 0 0 0; font-size: 14px;">Scan the QR code or click to start a conversation</p>
+          </div>
+        </div>
+        <div class="footer">
+          <p><strong>ROWELL HPLC Solutions</strong></p>
+          <p>This is an automated notification from your inquiry management system.</p>
+          <p style="margin-top: 10px; font-size: 11px;">Please do not reply to this email. For support, contact your system administrator.</p>
+        </div>
+      </body>
+      </html>
+    `;
+
+    const msg = {
+      to: toEmail,
+      from: fromEmail,
+      subject: `🔔 New Inquiry: ${inquiry.inquiryNumber} - ${user.name || user.email}`,
+      text: `New inquiry received from ${user.name} (${user.email})\n\nInquiry Number: ${inquiry.inquiryNumber}\nUrgency: ${inquiry.urgency}\nTotal Items: ${inquiry.totalItems}\n\nPlease check the attached Excel file for details.`,
+      html: htmlContent,
+      attachments: [
+        {
+          content: excelBuffer.toString('base64'),
+          filename: `Inquiry_${inquiry.inquiryNumber}.xlsx`,
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          disposition: 'attachment',
+        },
+      ],
+    };
+
+    await sgMail.default.send(msg);
+    console.log('[Email] ✅ Inquiry notification sent successfully to', toEmail);
     return true;
   } catch (error) {
-    console.error('[Email] Failed to send inquiry email:', error);
+    console.error('[Email] ❌ Failed to send inquiry email:', error);
     return false;
   }
 }

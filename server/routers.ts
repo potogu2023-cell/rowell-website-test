@@ -1,7 +1,7 @@
 import { COOKIE_NAME } from "@shared/const";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { eq, desc, and } from "drizzle-orm";
+import { eq, desc, and, sql } from "drizzle-orm";
 import { getDb } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
@@ -766,6 +766,233 @@ export const appRouter = router({
             .from(inquiries)
             .where(eq(inquiries.userId, input.userId))
             .orderBy(desc(inquiries.createdAt));
+        }),
+    }),
+
+    // Analytics
+    analytics: router({
+      // Get inquiry statistics
+      getInquiryStats: adminProcedure
+        .input(
+          z.object({
+            startDate: z.string().optional(),
+            endDate: z.string().optional(),
+          })
+        )
+        .query(async ({ input }) => {
+          const { inquiries } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          const conditions = [];
+          if (input.startDate) {
+            conditions.push(sql`${inquiries.createdAt} >= ${input.startDate}`);
+          }
+          if (input.endDate) {
+            conditions.push(sql`${inquiries.createdAt} <= ${input.endDate}`);
+          }
+
+          const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+
+          // Total inquiries
+          const totalResult = await db
+            .select({ count: sql<number>`count(*)` })
+            .from(inquiries)
+            .where(whereClause);
+          const total = Number(totalResult[0]?.count || 0);
+
+          // By status
+          const byStatus = await db
+            .select({
+              status: inquiries.status,
+              count: sql<number>`count(*)`,
+            })
+            .from(inquiries)
+            .where(whereClause)
+            .groupBy(inquiries.status);
+
+          // By urgency
+          const byUrgency = await db
+            .select({
+              urgency: inquiries.urgency,
+              count: sql<number>`count(*)`,
+            })
+            .from(inquiries)
+            .where(whereClause)
+            .groupBy(inquiries.urgency);
+
+          // Daily stats (last 30 days)
+          const dailyStats = await db
+            .select({
+              date: sql<string>`DATE(${inquiries.createdAt})`,
+              count: sql<number>`count(*)`,
+            })
+            .from(inquiries)
+            .where(whereClause)
+            .groupBy(sql`DATE(${inquiries.createdAt})`)
+            .orderBy(sql`DATE(${inquiries.createdAt})`);
+
+          return {
+            total,
+            byStatus: byStatus.map(s => ({ status: s.status, count: Number(s.count) })),
+            byUrgency: byUrgency.map(u => ({ urgency: u.urgency, count: Number(u.count) })),
+            dailyStats: dailyStats.map(d => ({ date: d.date, count: Number(d.count) })),
+          };
+        }),
+
+      // Get top products
+      getTopProducts: adminProcedure
+        .input(
+          z.object({
+            limit: z.number().min(1).max(50).default(10),
+          })
+        )
+        .query(async ({ input }) => {
+          const { inquiryItems, products } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          const topProducts = await db
+            .select({
+              productId: products.id,
+              productName: products.name,
+              brand: products.brand,
+              partNumber: products.partNumber,
+              count: sql<number>`count(*)`,
+              totalQuantity: sql<number>`sum(${inquiryItems.quantity})`,
+            })
+            .from(inquiryItems)
+            .leftJoin(products, eq(inquiryItems.productId, products.id))
+            .groupBy(products.id, products.name, products.brand, products.partNumber)
+            .orderBy(desc(sql`count(*)`)) 
+            .limit(input.limit);
+
+          return topProducts.map(p => ({
+            productId: p.productId,
+            productName: p.productName,
+            brand: p.brand,
+            partNumber: p.partNumber,
+            inquiryCount: Number(p.count),
+            totalQuantity: Number(p.totalQuantity),
+          }));
+        }),
+
+      // Get customer analytics
+      getCustomerAnalytics: adminProcedure.query(async () => {
+        const { users, inquiries } = await import("../drizzle/schema");
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+        // Total customers
+        const totalCustomersResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(users)
+          .where(eq(users.role, "user"));
+        const totalCustomers = Number(totalCustomersResult[0]?.count || 0);
+
+        // By tier
+        const byTier = await db
+          .select({
+            tier: users.customerTier,
+            count: sql<number>`count(*)`,
+          })
+          .from(users)
+          .where(eq(users.role, "user"))
+          .groupBy(users.customerTier);
+
+        // By country
+        const byCountry = await db
+          .select({
+            country: users.country,
+            count: sql<number>`count(*)`,
+          })
+          .from(users)
+          .where(and(eq(users.role, "user"), sql`${users.country} IS NOT NULL`))
+          .groupBy(users.country)
+          .orderBy(desc(sql`count(*)`)) 
+          .limit(10);
+
+        // By industry
+        const byIndustry = await db
+          .select({
+            industry: users.industry,
+            count: sql<number>`count(*)`,
+          })
+          .from(users)
+          .where(and(eq(users.role, "user"), sql`${users.industry} IS NOT NULL`))
+          .groupBy(users.industry)
+          .orderBy(desc(sql`count(*)`)) 
+          .limit(10);
+
+        // Active customers (with inquiries)
+        const activeCustomersResult = await db
+          .select({ count: sql<number>`count(DISTINCT ${inquiries.userId})` })
+          .from(inquiries);
+        const activeCustomers = Number(activeCustomersResult[0]?.count || 0);
+
+        return {
+          totalCustomers,
+          activeCustomers,
+          byTier: byTier.map(t => ({ tier: t.tier, count: Number(t.count) })),
+          byCountry: byCountry.map(c => ({ country: c.country || "Unknown", count: Number(c.count) })),
+          byIndustry: byIndustry.map(i => ({ industry: i.industry || "Unknown", count: Number(i.count) })),
+        };
+      }),
+
+      // Get conversion rate
+      getConversionRate: adminProcedure.query(async () => {
+        const { inquiries } = await import("../drizzle/schema");
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+        const totalResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(inquiries);
+        const total = Number(totalResult[0]?.count || 0);
+
+        const quotedResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(inquiries)
+          .where(eq(inquiries.status, "quoted"));
+        const quoted = Number(quotedResult[0]?.count || 0);
+
+        const completedResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(inquiries)
+          .where(eq(inquiries.status, "completed"));
+        const completed = Number(completedResult[0]?.count || 0);
+
+        return {
+          total,
+          quoted,
+          completed,
+          quoteRate: total > 0 ? (quoted / total) * 100 : 0,
+          conversionRate: total > 0 ? (completed / total) * 100 : 0,
+        };
+      }),
+
+      // Send monthly report
+      sendMonthlyReport: adminProcedure
+        .input(
+          z.object({
+            year: z.number().optional(),
+            month: z.number().min(1).max(12).optional(),
+          })
+        )
+        .mutation(async ({ input }) => {
+          const { sendMonthlyReport } = await import("./monthly-report");
+          
+          const now = new Date();
+          const year = input.year || now.getFullYear();
+          const month = input.month || now.getMonth() + 1;
+
+          const success = await sendMonthlyReport(year, month);
+          
+          if (!success) {
+            throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Failed to send monthly report" });
+          }
+
+          return { success: true, message: `Monthly report for ${year}-${month} sent successfully` };
         }),
     }),
   }),

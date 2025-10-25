@@ -81,25 +81,27 @@ export default function Admin() {
             </Card>
           </Link>
 
-          {/* Analytics (Placeholder) */}
-          <Card className="opacity-50 cursor-not-allowed">
-            <CardHeader>
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-purple-100 rounded-lg">
-                  <BarChart3 className="h-6 w-6 text-purple-600" />
+          {/* Analytics */}
+          <Link href="/admin/analytics">
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center space-x-4">
+                  <div className="p-3 bg-purple-100 rounded-lg">
+                    <BarChart3 className="h-6 w-6 text-purple-600" />
+                  </div>
+                  <div>
+                    <CardTitle>Analytics</CardTitle>
+                    <CardDescription>View statistics and reports</CardDescription>
+                  </div>
                 </div>
-                <div>
-                  <CardTitle>Analytics</CardTitle>
-                  <CardDescription>View statistics and reports</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <Button variant="outline" className="w-full" disabled>
-                Coming Soon
-              </Button>
-            </CardContent>
-          </Card>
+              </CardHeader>
+              <CardContent>
+                <Button variant="outline" className="w-full">
+                  Go to Analytics
+                </Button>
+              </CardContent>
+            </Card>
+          </Link>
 
           {/* Settings (Placeholder) */}
           <Card className="opacity-50 cursor-not-allowed">

@@ -20,6 +20,7 @@ import InquiryHistory from "./pages/InquiryHistory";
 import Admin from "./pages/Admin";
 import AdminInquiries from "./pages/AdminInquiries";
 import AdminCustomers from "./pages/AdminCustomers";
+import AdminAnalytics from "./pages/AdminAnalytics";
 
 function Router() {
   return (
@@ -41,6 +42,7 @@ function Router() {
           <Route path={"/admin"} component={Admin} />
           <Route path={"/admin/inquiries"} component={AdminInquiries} />
           <Route path={"/admin/customers"} component={AdminCustomers} />
+          <Route path={"/admin/analytics"} component={AdminAnalytics} />
           <Route path={"/404"} component={NotFound} />
           <Route component={NotFound} />
         </Switch>
