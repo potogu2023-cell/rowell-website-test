@@ -12,6 +12,11 @@ import About from "./pages/About";
 import USPStandards from "./pages/USPStandards";
 import Applications from "./pages/Applications";
 import Contact from "./pages/Contact";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import InquiryCart from "./pages/InquiryCart";
+import InquiryHistory from "./pages/InquiryHistory";
 
 function Router() {
   return (
@@ -25,6 +30,11 @@ function Router() {
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/applications"} component={Applications} />
           <Route path={"/contact"} component={Contact} />
+          <Route path={"/register"} component={Register} />
+          <Route path={"/login"} component={Login} />
+          <Route path={"/profile"} component={Profile} />
+          <Route path={"/inquiry-cart"} component={InquiryCart} />
+          <Route path={"/inquiry-history"} component={InquiryHistory} />
           <Route path={"/404"} component={NotFound} />
           <Route component={NotFound} />
         </Switch>

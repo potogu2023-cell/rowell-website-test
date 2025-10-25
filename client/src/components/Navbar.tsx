@@ -1,10 +1,33 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { getLoginUrl } from "@/const";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { User, ShoppingCart, LogOut } from "lucide-react";
+import { trpc } from "@/lib/trpc";
 
 export default function Navbar() {
   const { user, isAuthenticated, logout } = useAuth();
+  const [, setLocation] = useLocation();
+  
+  // Get cart count
+  const { data: cartItems } = trpc.cart.get.useQuery(undefined, {
+    enabled: isAuthenticated,
+  });
+  
+  const cartCount = cartItems?.length || 0;
+
+  const handleLogout = () => {
+    logout();
+    setLocation("/");
+    window.location.reload();
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -59,21 +82,61 @@ export default function Navbar() {
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
             <>
-              <span className="text-sm text-muted-foreground hidden sm:inline">
-                {user?.name || user?.email}
-              </span>
-              <Button variant="outline" size="sm" onClick={logout}>
-                Logout
-              </Button>
+              <Link href="/inquiry-cart">
+                <Button variant="ghost" size="sm" className="relative">
+                  <ShoppingCart className="h-4 w-4" />
+                  <span className="ml-2 hidden sm:inline">Inquiry Cart</span>
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
+                      {cartCount}
+                    </span>
+                  )}
+                </Button>
+              </Link>
+              
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="sm">
+                    <User className="h-4 w-4 mr-2" />
+                    <span className="hidden sm:inline">{user?.name || "Account"}</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <DropdownMenuLabel>
+                    <div className="flex flex-col space-y-1">
+                      <p className="text-sm font-medium">{user?.name}</p>
+                      <p className="text-xs text-muted-foreground">{user?.email}</p>
+                    </div>
+                  </DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={() => setLocation("/profile")}>
+                    <User className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLocation("/inquiry-history")}>
+                    <ShoppingCart className="mr-2 h-4 w-4" />
+                    <span>Inquiry History</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Logout</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </>
           ) : (
             <>
-              <Button variant="ghost" size="sm" asChild>
-                <a href={getLoginUrl()}>Login</a>
-              </Button>
-              <Button size="sm" asChild>
-                <a href={getLoginUrl()}>Register</a>
-              </Button>
+              <Link href="/login">
+                <Button variant="ghost" size="sm">
+                  Login
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button size="sm">
+                  Register
+                </Button>
+              </Link>
             </>
           )}
           

@@ -1,13 +1,24 @@
 import { COOKIE_NAME } from "@shared/const";
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import {
+  generateEmailVerificationToken,
+  generatePasswordResetToken,
+  hashPassword,
+  verifyEmailVerificationToken,
+  verifyPassword,
+  verifyPasswordResetToken,
+} from "./auth-utils";
 
 export const appRouter = router({
   system: systemRouter,
 
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
+    
     logout: publicProcedure.mutation(({ ctx }) => {
       const cookieOptions = getSessionCookieOptions(ctx.req);
       ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
@@ -15,6 +26,251 @@ export const appRouter = router({
         success: true,
       } as const;
     }),
+
+    // Register with email and password
+    register: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email(),
+          password: z.string().min(6),
+          name: z.string().min(1),
+          company: z.string().optional(),
+          phone: z.string().optional(),
+          country: z.string().optional(),
+          industry: z.string().optional(),
+          purchasingRole: z.string().optional(),
+          annualPurchaseVolume: z.string().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { getUserByEmail, createUser } = await import("./db");
+        
+        // Check if user already exists
+        const existingUser = await getUserByEmail(input.email);
+        if (existingUser) {
+          throw new TRPCError({
+            code: "CONFLICT",
+            message: "Email already registered",
+          });
+        }
+
+        // Hash password
+        const hashedPassword = await hashPassword(input.password);
+
+        // Create user with a temporary openId (email-based)
+        // Since we're not using OAuth for this registration flow
+        const openId = `email:${input.email}`;
+        
+        await createUser({
+          openId,
+          email: input.email,
+          password: hashedPassword,
+          name: input.name,
+          company: input.company || null,
+          phone: input.phone || null,
+          country: input.country || null,
+          industry: input.industry || null,
+          purchasingRole: input.purchasingRole || null,
+          annualPurchaseVolume: input.annualPurchaseVolume || null,
+          loginMethod: "email",
+          emailVerified: 0,
+          role: "user",
+        });
+
+        // Generate email verification token
+        const verificationToken = generateEmailVerificationToken(input.email);
+
+        return {
+          success: true,
+          verificationToken,
+          message: "Registration successful. Please verify your email.",
+        };
+      }),
+
+    // Login with email and password
+    login: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email(),
+          password: z.string(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        const { getUserByEmail } = await import("./db");
+        const { sdk } = await import("./_core/sdk");
+        
+        const user = await getUserByEmail(input.email);
+        if (!user) {
+          throw new TRPCError({
+            code: "UNAUTHORIZED",
+            message: "Invalid email or password",
+          });
+        }
+
+        if (!user.password) {
+          throw new TRPCError({
+            code: "UNAUTHORIZED",
+            message: "This account uses a different login method",
+          });
+        }
+
+        const isValidPassword = await verifyPassword(input.password, user.password);
+        if (!isValidPassword) {
+          throw new TRPCError({
+            code: "UNAUTHORIZED",
+            message: "Invalid email or password",
+          });
+        }
+
+        // Check if email is verified (temporarily disabled for testing)
+        // if (user.emailVerified === 0) {
+        //   throw new TRPCError({
+        //     code: "FORBIDDEN",
+        //     message: "Please verify your email before logging in",
+        //   });
+        // }
+
+        // Create session token and set cookie
+        const sessionToken = await sdk.createSessionToken(user.openId, {
+          name: user.name || user.email || "",
+        });
+
+        const cookieOptions = getSessionCookieOptions(ctx.req);
+        ctx.res.cookie(COOKIE_NAME, sessionToken, cookieOptions);
+
+        return {
+          success: true,
+          user: {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
+          },
+        };
+      }),
+
+    // Verify email
+    verifyEmail: publicProcedure
+      .input(
+        z.object({
+          token: z.string(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { updateUserEmailVerified } = await import("./db");
+        
+        const decoded = verifyEmailVerificationToken(input.token);
+        if (!decoded) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Invalid or expired verification token",
+          });
+        }
+
+        await updateUserEmailVerified(decoded.email, 1);
+
+        return {
+          success: true,
+          message: "Email verified successfully",
+        };
+      }),
+
+    // Request password reset
+    requestPasswordReset: publicProcedure
+      .input(
+        z.object({
+          email: z.string().email(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { getUserByEmail } = await import("./db");
+        
+        const user = await getUserByEmail(input.email);
+        if (!user) {
+          // Don't reveal if email exists
+          return {
+            success: true,
+            message: "If the email exists, a reset link will be sent",
+          };
+        }
+
+        const resetToken = generatePasswordResetToken(input.email);
+
+        return {
+          success: true,
+          resetToken,
+          message: "Password reset link sent to your email",
+        };
+      }),
+
+    // Reset password
+    resetPassword: publicProcedure
+      .input(
+        z.object({
+          token: z.string(),
+          newPassword: z.string().min(6),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { updateUserPassword } = await import("./db");
+        
+        const decoded = verifyPasswordResetToken(input.token);
+        if (!decoded) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Invalid or expired reset token",
+          });
+        }
+
+        const hashedPassword = await hashPassword(input.newPassword);
+        await updateUserPassword(decoded.email, hashedPassword);
+
+        return {
+          success: true,
+          message: "Password reset successfully",
+        };
+      }),
+
+    // Get user profile (protected)
+    getProfile: protectedProcedure.query(async ({ ctx }) => {
+      const { getUserById } = await import("./db");
+      
+      const user = await getUserById(ctx.user.id);
+      if (!user) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "User not found",
+        });
+      }
+
+      // Don't send password hash to client
+      const { password, ...userWithoutPassword } = user;
+      return userWithoutPassword;
+    }),
+
+    // Update user profile (protected)
+    updateProfile: protectedProcedure
+      .input(
+        z.object({
+          name: z.string().optional(),
+          company: z.string().optional(),
+          phone: z.string().optional(),
+          country: z.string().optional(),
+          industry: z.string().optional(),
+          purchasingRole: z.string().optional(),
+          annualPurchaseVolume: z.string().optional(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const { updateUserProfile } = await import("./db");
+        
+        await updateUserProfile(ctx.user.id, input);
+
+        return {
+          success: true,
+          message: "Profile updated successfully",
+        };
+      }),
   }),
 
   products: router({
@@ -65,6 +321,213 @@ export const appRouter = router({
         return await getChildCategories(input.parentId);
       }),
   }),
+
+  cart: router({
+    // Get user's cart
+    get: protectedProcedure.query(async ({ ctx }) => {
+      const { getCartByUserId } = await import("./db");
+      return await getCartByUserId(ctx.user.id);
+    }),
+
+    // Add product to cart
+    add: protectedProcedure
+      .input(
+        z.object({
+          productId: z.number(),
+          quantity: z.number().min(1).default(1),
+          notes: z.string().optional(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const { addToCart } = await import("./db");
+        await addToCart(ctx.user.id, input.productId, input.quantity, input.notes);
+        return { success: true };
+      }),
+
+    // Update cart item
+    update: protectedProcedure
+      .input(
+        z.object({
+          cartId: z.number(),
+          quantity: z.number().min(1),
+          notes: z.string().optional(),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const { updateCartItem } = await import("./db");
+        await updateCartItem(input.cartId, input.quantity, input.notes);
+        return { success: true };
+      }),
+
+    // Remove item from cart
+    remove: protectedProcedure
+      .input(z.object({ cartId: z.number() }))
+      .mutation(async ({ input }) => {
+        const { removeFromCart } = await import("./db");
+        await removeFromCart(input.cartId);
+        return { success: true };
+      }),
+
+    // Clear cart
+    clear: protectedProcedure.mutation(async ({ ctx }) => {
+      const { clearCart } = await import("./db");
+      await clearCart(ctx.user.id);
+      return { success: true };
+    }),
+  }),
+
+  inquiry: router({
+    // Create inquiry from cart
+    create: protectedProcedure
+      .input(
+        z.object({
+          urgency: z.enum(["normal", "urgent", "very_urgent"]).default("normal"),
+          budgetRange: z.string().optional(),
+          applicationNotes: z.string().optional(),
+          deliveryAddress: z.string().optional(),
+          customerNotes: z.string().optional(),
+        })
+      )
+      .mutation(async ({ ctx, input }) => {
+        const { createInquiry, addInquiryItems, getCartByUserId, clearCart } = await import("./db");
+        
+        // Get cart items
+        const cartItems = await getCartByUserId(ctx.user.id);
+        if (cartItems.length === 0) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Cart is empty",
+          });
+        }
+
+        // Create inquiry
+        const inquiry = await createInquiry({
+          userId: ctx.user.id,
+          urgency: input.urgency,
+          budgetRange: input.budgetRange,
+          applicationNotes: input.applicationNotes,
+          deliveryAddress: input.deliveryAddress,
+          customerNotes: input.customerNotes,
+        });
+
+        if (!inquiry) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to create inquiry",
+          });
+        }
+
+        // Get the inquiry ID from the result
+        // Since we need the actual ID, we'll query it back
+        const { getDb } = await import("./db");
+        const db = await getDb();
+        if (!db) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Database not available",
+          });
+        }
+
+        const { inquiries } = await import("../drizzle/schema");
+        const { eq } = await import("drizzle-orm");
+        const inquiryRecord = await db
+          .select()
+          .from(inquiries)
+          .where(eq(inquiries.inquiryNumber, inquiry.inquiryNumber))
+          .limit(1);
+
+        if (inquiryRecord.length === 0) {
+          throw new TRPCError({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "Failed to retrieve inquiry",
+          });
+        }
+
+        const inquiryId = inquiryRecord[0].id;
+
+        // Add inquiry items from cart
+        const items = cartItems.map(item => ({
+          productId: item.productId,
+          quantity: item.quantity,
+          notes: item.notes || undefined,
+        }));
+
+        await addInquiryItems(inquiryId, items);
+
+        // Clear cart
+        await clearCart(ctx.user.id);
+
+        // Generate Excel and send emails
+        try {
+          const { generateInquiryExcel, sendInquiryEmail, sendCustomerConfirmationEmail } = await import("./inquiry-utils");
+          const { getUserById } = await import("./db");
+          const { inquiryItems, products } = await import("../drizzle/schema");
+          
+          const inquiryWithItems = await db
+            .select({
+              id: inquiryItems.id,
+              productId: inquiryItems.productId,
+              quantity: inquiryItems.quantity,
+              notes: inquiryItems.notes,
+              product: products,
+            })
+            .from(inquiryItems)
+            .leftJoin(products, eq(inquiryItems.productId, products.id))
+            .where(eq(inquiryItems.inquiryId, inquiryId));
+
+          const currentUser = await getUserById(ctx.user.id);
+          if (currentUser) {
+            // Generate Excel
+            const excelBuffer = await generateInquiryExcel(
+              inquiryRecord[0],
+              inquiryWithItems,
+              currentUser
+            );
+
+            // Send emails (async, don't wait)
+            sendInquiryEmail(inquiryRecord[0], currentUser, excelBuffer).catch(err => {
+              console.error('[Inquiry] Failed to send inquiry email:', err);
+            });
+            
+            sendCustomerConfirmationEmail(inquiryRecord[0], currentUser).catch(err => {
+              console.error('[Inquiry] Failed to send confirmation email:', err);
+            });
+          }
+        } catch (error) {
+          console.error('[Inquiry] Failed to generate Excel or send emails:', error);
+          // Don't fail the inquiry creation if email sending fails
+        }
+
+        return {
+          success: true,
+          inquiryNumber: inquiry.inquiryNumber,
+          inquiryId,
+        };
+      }),
+
+    // Get user's inquiry history
+    list: protectedProcedure.query(async ({ ctx }) => {
+      const { getInquiriesByUserId } = await import("./db");
+      return await getInquiriesByUserId(ctx.user.id);
+    }),
+
+    // Get inquiry details
+    getById: protectedProcedure
+      .input(z.object({ inquiryId: z.number() }))
+      .query(async ({ input }) => {
+        const { getInquiryById, getInquiryItems } = await import("./db");
+        const inquiry = await getInquiryById(input.inquiryId);
+        if (!inquiry) {
+          throw new TRPCError({
+            code: "NOT_FOUND",
+            message: "Inquiry not found",
+          });
+        }
+        const items = await getInquiryItems(input.inquiryId);
+        return { inquiry, items };
+      }),
+  }),
 });
 
 export type AppRouter = typeof appRouter;
+

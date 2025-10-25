@@ -5,12 +5,28 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CategoryNav from "@/components/CategoryNav";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { ShoppingCart } from "lucide-react";
+import { toast } from "sonner";
 
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const { isAuthenticated } = useAuth();
 
   const { data: products, isLoading } = trpc.products.list.useQuery();
+  const addToCartMutation = trpc.cart.add.useMutation({
+    onSuccess: () => {
+      toast.success("Product added to inquiry cart!");
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to add to cart");
+    },
+  });
+
+  const handleAddToInquiry = (productId: number) => {
+    addToCartMutation.mutate({ productId, quantity: 1 });
+  };
 
   if (isLoading) {
     return (
@@ -151,6 +167,21 @@ export default function Products() {
                         </div>
                       )}
                     </div>
+                    
+                    {/* Add to Inquiry Button - Only visible to logged-in users */}
+                    {isAuthenticated && (
+                      <div className="mt-4 pt-4 border-t">
+                        <Button
+                          className="w-full"
+                          variant="default"
+                          onClick={() => handleAddToInquiry(product.id)}
+                          disabled={addToCartMutation.isPending}
+                        >
+                          <ShoppingCart className="h-4 w-4 mr-2" />
+                          Add to Inquiry
+                        </Button>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               ))}
