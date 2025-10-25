@@ -9,7 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, ShoppingCart, LogOut } from "lucide-react";
+import { User, ShoppingCart, LogOut, Shield } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 
 export default function Navbar() {
@@ -117,6 +117,15 @@ export default function Navbar() {
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     <span>Inquiry History</span>
                   </DropdownMenuItem>
+                  {user?.role === "admin" && (
+                    <>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem onClick={() => setLocation("/admin")}>
+                        <Shield className="mr-2 h-4 w-4" />
+                        <span>Admin Dashboard</span>
+                      </DropdownMenuItem>
+                    </>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />

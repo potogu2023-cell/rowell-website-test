@@ -24,6 +24,7 @@ export const users = mysqlTable("users", {
   industry: varchar("industry", { length: 100 }),
   purchasingRole: varchar("purchasingRole", { length: 100 }),
   annualPurchaseVolume: varchar("annualPurchaseVolume", { length: 100 }),
+  customerTier: mysqlEnum("customerTier", ["regular", "vip"]).default("regular"), // Customer tier for admin management
   emailVerified: int("emailVerified").default(0).notNull(), // 0 = not verified, 1 = verified
   password: varchar("password", { length: 255 }), // Hashed password for email/password login
   createdAt: timestamp("createdAt").defaultNow().notNull(),

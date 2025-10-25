@@ -1,0 +1,1 @@
+ALTER TABLE `users` ADD `customerTier` enum('regular','vip') DEFAULT 'regular';

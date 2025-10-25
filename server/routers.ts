@@ -1,9 +1,11 @@
 import { COOKIE_NAME } from "@shared/const";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
+import { eq, desc, and } from "drizzle-orm";
+import { getDb } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
-import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import {
   generateEmailVerificationToken,
   generatePasswordResetToken,
@@ -526,6 +528,246 @@ export const appRouter = router({
         const items = await getInquiryItems(input.inquiryId);
         return { inquiry, items };
       }),
+  }),
+
+  // Admin routes - only accessible by admin users
+  admin: router({
+    // Inquiry management
+    inquiries: router({
+      // Get all inquiries with filters
+      list: adminProcedure
+        .input(
+          z.object({
+            status: z.enum(["pending", "quoted", "completed", "cancelled"]).optional(),
+            urgency: z.enum(["normal", "urgent", "very_urgent"]).optional(),
+            limit: z.number().min(1).max(100).default(50),
+            offset: z.number().min(0).default(0),
+          })
+        )
+        .query(async ({ input }) => {
+          const { inquiries, users } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          let query = db
+            .select({
+              id: inquiries.id,
+              inquiryNumber: inquiries.inquiryNumber,
+              userId: inquiries.userId,
+              status: inquiries.status,
+              urgency: inquiries.urgency,
+              totalItems: inquiries.totalItems,
+              createdAt: inquiries.createdAt,
+              userName: users.name,
+              userEmail: users.email,
+              userCompany: users.company,
+            })
+            .from(inquiries)
+            .leftJoin(users, eq(inquiries.userId, users.id))
+            .orderBy(desc(inquiries.createdAt))
+            .limit(input.limit)
+            .offset(input.offset);
+
+          if (input.status) {
+            query = query.where(eq(inquiries.status, input.status)) as any;
+          }
+          if (input.urgency) {
+            query = query.where(eq(inquiries.urgency, input.urgency)) as any;
+          }
+
+          return await query;
+        }),
+
+      // Get inquiry details with items
+      getById: adminProcedure
+        .input(z.object({ inquiryId: z.number() }))
+        .query(async ({ input }) => {
+          const { inquiries, inquiryItems, products, users } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          const inquiry = await db
+            .select({
+              inquiry: inquiries,
+              user: users,
+            })
+            .from(inquiries)
+            .leftJoin(users, eq(inquiries.userId, users.id))
+            .where(eq(inquiries.id, input.inquiryId))
+            .limit(1);
+
+          if (inquiry.length === 0) {
+            throw new TRPCError({ code: "NOT_FOUND", message: "Inquiry not found" });
+          }
+
+          const items = await db
+            .select({
+              id: inquiryItems.id,
+              productId: inquiryItems.productId,
+              quantity: inquiryItems.quantity,
+              notes: inquiryItems.notes,
+              quotedPrice: inquiryItems.quotedPrice,
+              product: products,
+            })
+            .from(inquiryItems)
+            .leftJoin(products, eq(inquiryItems.productId, products.id))
+            .where(eq(inquiryItems.inquiryId, input.inquiryId));
+
+          return {
+            inquiry: inquiry[0].inquiry,
+            user: inquiry[0].user,
+            items,
+          };
+        }),
+
+      // Update inquiry status
+      updateStatus: adminProcedure
+        .input(
+          z.object({
+            inquiryId: z.number(),
+            status: z.enum(["pending", "quoted", "completed", "cancelled"]),
+          })
+        )
+        .mutation(async ({ input }) => {
+          const { inquiries } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          const updateData: any = { status: input.status };
+          if (input.status === "quoted") {
+            updateData.quotedAt = new Date();
+          } else if (input.status === "completed") {
+            updateData.completedAt = new Date();
+          }
+
+          await db
+            .update(inquiries)
+            .set(updateData)
+            .where(eq(inquiries.id, input.inquiryId));
+
+          return { success: true };
+        }),
+
+      // Add admin notes
+      addNotes: adminProcedure
+        .input(
+          z.object({
+            inquiryId: z.number(),
+            notes: z.string(),
+          })
+        )
+        .mutation(async ({ input }) => {
+          const { inquiries } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          await db
+            .update(inquiries)
+            .set({ adminNotes: input.notes })
+            .where(eq(inquiries.id, input.inquiryId));
+
+          return { success: true };
+        }),
+
+      // Add quote to inquiry item
+      addQuote: adminProcedure
+        .input(
+          z.object({
+            inquiryItemId: z.number(),
+            quotedPrice: z.string(),
+          })
+        )
+        .mutation(async ({ input }) => {
+          const { inquiryItems } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          await db
+            .update(inquiryItems)
+            .set({ quotedPrice: input.quotedPrice })
+            .where(eq(inquiryItems.id, input.inquiryItemId));
+
+          return { success: true };
+        }),
+    }),
+
+    // Customer management
+    customers: router({
+      // Get all customers
+      list: adminProcedure
+        .input(
+          z.object({
+            tier: z.enum(["regular", "vip"]).optional(),
+            limit: z.number().min(1).max(100).default(50),
+            offset: z.number().min(0).default(0),
+          })
+        )
+        .query(async ({ input }) => {
+          const { users } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          const conditions = [eq(users.role, "user")];
+          if (input.tier) {
+            conditions.push(eq(users.customerTier, input.tier));
+          }
+
+          return await db
+            .select({
+              id: users.id,
+              name: users.name,
+              email: users.email,
+              company: users.company,
+              phone: users.phone,
+              country: users.country,
+              industry: users.industry,
+              customerTier: users.customerTier,
+              createdAt: users.createdAt,
+              lastSignedIn: users.lastSignedIn,
+            })
+            .from(users)
+            .where(and(...conditions))
+            .orderBy(desc(users.createdAt))
+            .limit(input.limit)
+            .offset(input.offset);
+        }),
+
+      // Update customer tier
+      updateTier: adminProcedure
+        .input(
+          z.object({
+            userId: z.number(),
+            tier: z.enum(["regular", "vip"]),
+          })
+        )
+        .mutation(async ({ input }) => {
+          const { users } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          await db
+            .update(users)
+            .set({ customerTier: input.tier })
+            .where(eq(users.id, input.userId));
+
+          return { success: true };
+        }),
+
+      // Get customer inquiry history
+      getInquiries: adminProcedure
+        .input(z.object({ userId: z.number() }))
+        .query(async ({ input }) => {
+          const { inquiries } = await import("../drizzle/schema");
+          const db = await getDb();
+          if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+          return await db
+            .select()
+            .from(inquiries)
+            .where(eq(inquiries.userId, input.userId))
+            .orderBy(desc(inquiries.createdAt));
+        }),
+    }),
   }),
 });
 
