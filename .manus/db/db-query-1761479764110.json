@@ -1,0 +1,70 @@
+{
+  "query": "SELECT p.productId, p.name, p.brand, c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE c.id = 12\nLIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT p.productId, p.name, p.brand, c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE c.id = 12\nLIMIT 10",
+  "rows": [
+    {
+      "productId": "PHEN-ZB-1MS-30-0.25",
+      "name": "Zebron ZB-1MS GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-5MS-30-0.25",
+      "name": "Zebron ZB-5MS GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-WAX-30-0.25",
+      "name": "Zebron ZB-WAX GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-624-30-0.25",
+      "name": "Zebron ZB-624 GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-FFAP-30-0.25",
+      "name": "Zebron ZB-FFAP GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-1701-30-0.25",
+      "name": "Zebron ZB-1701 GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-5MSplus-30-0.25",
+      "name": "Zebron ZB-5MSplus GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-WAXplus-30-0.25",
+      "name": "Zebron ZB-WAXplus GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-1HT-30-0.25",
+      "name": "Zebron ZB-1HT Inferno GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-35-30-0.25",
+      "name": "Zebron ZB-35 GC Column 30m x 0.25mm",
+      "brand": "Phenomenex",
+      "category_name": "GC Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\tbrand\tcategory_name\nPHEN-ZB-1MS-30-0.25\tZebron ZB-1MS GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-5MS-30-0.25\tZebron ZB-5MS GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-WAX-30-0.25\tZebron ZB-WAX GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-624-30-0.25\tZebron ZB-624 GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-FFAP-30-0.25\tZebron ZB-FFAP GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-1701-30-0.25\tZebron ZB-1701 GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-5MSplus-30-0.25\tZebron ZB-5MSplus GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-WAXplus-30-0.25\tZebron ZB-WAXplus GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-1HT-30-0.25\tZebron ZB-1HT Inferno GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\nPHEN-ZB-35-30-0.25\tZebron ZB-35 GC Column 30m x 0.25mm\tPhenomenex\tGC Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1603
+}

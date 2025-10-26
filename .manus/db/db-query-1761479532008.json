@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, name, slug FROM categories WHERE slug IN ('gc-columns', 'guard-columns') OR name LIKE '%GC Columns%' OR name LIKE '%Guard Columns%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug FROM categories WHERE slug IN ('gc-columns', 'guard-columns') OR name LIKE '%GC Columns%' OR name LIKE '%Guard Columns%'",
+  "rows": [
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n12\tGC Columns\tgc-columns\n13\tGuard Columns\tguard-columns\n",
+  "stderr": "",
+  "execution_time_ms": 1579
+}

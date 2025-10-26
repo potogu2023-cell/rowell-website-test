@@ -1,0 +1,22 @@
+{
+  "query": "SELECT c.name as category_name, COUNT(*) as product_count \nFROM product_categories pc \nJOIN categories c ON pc.categoryId = c.id \nWHERE c.id IN (11, 12, 13)\nGROUP BY pc.categoryId, c.name \nORDER BY c.id",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.name as category_name, COUNT(*) as product_count \nFROM product_categories pc \nJOIN categories c ON pc.categoryId = c.id \nWHERE c.id IN (11, 12, 13)\nGROUP BY pc.categoryId, c.name \nORDER BY c.id",
+  "rows": [
+    {
+      "category_name": "HPLC Columns",
+      "product_count": "1319"
+    },
+    {
+      "category_name": "GC Columns",
+      "product_count": "46"
+    },
+    {
+      "category_name": "Guard Columns",
+      "product_count": "15"
+    }
+  ],
+  "messages": [],
+  "stdout": "category_name\tproduct_count\nHPLC Columns\t1319\nGC Columns\t46\nGuard Columns\t15\n",
+  "stderr": "",
+  "execution_time_ms": 1578
+}

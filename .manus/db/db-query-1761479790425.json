@@ -1,0 +1,35 @@
+{
+  "query": "SELECT p.productId, p.name, GROUP_CONCAT(c.name SEPARATOR ', ') as categories\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.productId LIKE 'PHEN-ZB-%'\nGROUP BY p.id, p.productId, p.name\nLIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT p.productId, p.name, GROUP_CONCAT(c.name SEPARATOR ', ') as categories\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.productId LIKE 'PHEN-ZB-%'\nGROUP BY p.id, p.productId, p.name\nLIMIT 5",
+  "rows": [
+    {
+      "productId": "PHEN-ZB-WAXplus-30-0.25",
+      "name": "Zebron ZB-WAXplus GC Column 30m x 0.25mm",
+      "categories": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-Bioethanol-30-0.25",
+      "name": "Zebron ZB-Bioethanol GC Column 30m x 0.25mm",
+      "categories": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-CLPesticides-1-30-0.25",
+      "name": "Zebron ZB-CLPesticides-1 GC Column 30m x 0.25mm",
+      "categories": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-1MS-30-0.25",
+      "name": "Zebron ZB-1MS GC Column 30m x 0.25mm",
+      "categories": "GC Columns"
+    },
+    {
+      "productId": "PHEN-ZB-624-30-0.25",
+      "name": "Zebron ZB-624 GC Column 30m x 0.25mm",
+      "categories": "GC Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\tcategories\nPHEN-ZB-WAXplus-30-0.25\tZebron ZB-WAXplus GC Column 30m x 0.25mm\tGC Columns\nPHEN-ZB-Bioethanol-30-0.25\tZebron ZB-Bioethanol GC Column 30m x 0.25mm\tGC Columns\nPHEN-ZB-CLPesticides-1-30-0.25\tZebron ZB-CLPesticides-1 GC Column 30m x 0.25mm\tGC Columns\nPHEN-ZB-1MS-30-0.25\tZebron ZB-1MS GC Column 30m x 0.25mm\tGC Columns\nPHEN-ZB-624-30-0.25\tZebron ZB-624 GC Column 30m x 0.25mm\tGC Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1566
+}

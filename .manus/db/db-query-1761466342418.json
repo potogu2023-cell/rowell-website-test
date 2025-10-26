@@ -1,0 +1,58 @@
+{
+  "query": "\nSELECT DISTINCT brand, COUNT(*) as product_count\nFROM products\nWHERE status = 'active'\nGROUP BY brand\nORDER BY product_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT DISTINCT brand, COUNT(*) as product_count\nFROM products\nWHERE status = 'active'\nGROUP BY brand\nORDER BY product_count DESC;\n",
+  "rows": [
+    {
+      "brand": "YMC",
+      "product_count": "503"
+    },
+    {
+      "brand": "Shimadzu",
+      "product_count": "152"
+    },
+    {
+      "brand": "Dikma",
+      "product_count": "128"
+    },
+    {
+      "brand": "TSKgel",
+      "product_count": "96"
+    },
+    {
+      "brand": "Merck",
+      "product_count": "93"
+    },
+    {
+      "brand": "Phenomenex",
+      "product_count": "79"
+    },
+    {
+      "brand": "ACE",
+      "product_count": "55"
+    },
+    {
+      "brand": "Agilent",
+      "product_count": "54"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "product_count": "51"
+    },
+    {
+      "brand": "Waters",
+      "product_count": "50"
+    },
+    {
+      "brand": "Develosil",
+      "product_count": "50"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "product_count": "8"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tproduct_count\nYMC\t503\nShimadzu\t152\nDikma\t128\nTSKgel\t96\nMerck\t93\nPhenomenex\t79\nACE\t55\nAgilent\t54\nThermo Fisher Scientific\t51\nWaters\t50\nDevelosil\t50\nDevelosil (Nomura Chemical)\t8\n",
+  "stderr": "",
+  "execution_time_ms": 1540
+}

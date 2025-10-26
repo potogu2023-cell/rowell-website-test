@@ -1,0 +1,8 @@
+{
+  "query": "\nSELECT \n  productId, partNumber, brand, name, description, category, series,\n  particleSize, poreSize, columnLength, innerDiameter, phaseType,\n  phMin, phMax, status, imageUrl\nFROM products\nWHERE status = 'active'\nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  productId, partNumber, brand, name, description, category, series,\n  particleSize, poreSize, columnLength, innerDiameter, phaseType,\n  phMin, phMax, status, imageUrl\nFROM products\nWHERE status = 'active'\nLIMIT 10;\n",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 2: Unknown column 'category' in 'field list'"
+  ]
+}
