@@ -12,6 +12,8 @@ import { toast } from "sonner";
 export default function Products() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+  const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null);
   const { isAuthenticated } = useAuth();
 
   const { data: products, isLoading } = trpc.products.list.useQuery();
@@ -39,7 +41,7 @@ export default function Products() {
     );
   }
 
-  // Filter products based on search term and selected brand
+  // Filter products based on search term, selected brand, and category
   const filteredProducts = products?.filter((product) => {
     const matchesSearch =
       product.productId.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -48,7 +50,11 @@ export default function Products() {
 
     const matchesBrand = !selectedBrand || product.brand === selectedBrand;
 
-    return matchesSearch && matchesBrand;
+    // 暂时简化处理：所有产品都属于HPLC Columns分类
+    // TODO: 后续需要在数据库中建立产品与分类的关联
+    const matchesCategory = !selectedCategoryId; // 目前所有产品都显示
+
+    return matchesSearch && matchesBrand && matchesCategory;
   });
 
   // Get unique brands
@@ -80,7 +86,13 @@ export default function Products() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           {/* Left Sidebar - Category Navigation */}
           <div className="lg:col-span-1">
-            <CategoryNav />
+            <CategoryNav 
+              onCategorySelect={(categoryId, categoryName) => {
+                setSelectedCategoryId(categoryId);
+                setSelectedCategoryName(categoryName);
+              }}
+              selectedCategoryId={selectedCategoryId}
+            />
           </div>
 
           {/* Right Content - Products */}
@@ -95,8 +107,12 @@ export default function Products() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="flex-1"
                 />
-                {selectedBrand && (
-                  <Button variant="outline" onClick={() => setSelectedBrand(null)}>
+                {(selectedBrand || selectedCategoryId) && (
+                  <Button variant="outline" onClick={() => {
+                    setSelectedBrand(null);
+                    setSelectedCategoryId(null);
+                    setSelectedCategoryName(null);
+                  }}>
                     Clear Filter
                   </Button>
                 )}

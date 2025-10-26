@@ -17,8 +17,13 @@ interface Category {
   updatedAt: Date;
 }
 
-export default function CategoryNav() {
-  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开"色谱柱"
+interface CategoryNavProps {
+  onCategorySelect?: (categoryId: number | null, categoryName: string | null) => void;
+  selectedCategoryId?: number | null;
+}
+
+export default function CategoryNav({ onCategorySelect, selectedCategoryId }: CategoryNavProps) {
+  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开“色谱柱”
   
   const { data: topCategories, isLoading } = trpc.category.getTopLevel.useQuery();
   const { data: allCategories } = trpc.category.getVisible.useQuery();
@@ -59,13 +64,24 @@ export default function CategoryNav() {
       <div key={category.id} className={`${level > 0 ? 'ml-4' : ''}`}>
         <div
           className={`flex items-center py-2 px-3 rounded-md cursor-pointer transition-colors ${
-            level === 0
+            selectedCategoryId === category.id
+              ? 'bg-blue-100 text-blue-900 font-medium'
+              : level === 0
               ? 'hover:bg-blue-50 font-medium text-gray-900'
               : level === 1
               ? 'hover:bg-gray-50 text-gray-700'
               : 'hover:bg-gray-50 text-gray-600 text-sm'
           }`}
-          onClick={() => hasChildren && toggleCategory(category.id)}
+          onClick={(e) => {
+            if (hasChildren) {
+              toggleCategory(category.id);
+            }
+            // 如果是叶子节点，触发选择事件
+            if (!hasChildren && onCategorySelect) {
+              onCategorySelect(category.id, category.name);
+            }
+            e.stopPropagation();
+          }}
         >
           {hasChildren && (
             <span className="mr-2">
