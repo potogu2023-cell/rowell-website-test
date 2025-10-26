@@ -1,0 +1,21 @@
+{
+  "query": "\nSELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) as has_particle_size,\n  SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) as has_pore_size,\n  SUM(CASE WHEN columnLength IS NOT NULL AND innerDiameter IS NOT NULL THEN 1 ELSE 0 END) as has_dimensions,\n  SUM(CASE WHEN phMin IS NOT NULL AND phMax IS NOT NULL THEN 1 ELSE 0 END) as has_ph_range,\n  ROUND(SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as particle_size_pct,\n  ROUND(SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as pore_size_pct,\n  ROUND(SUM(CASE WHEN columnLength IS NOT NULL AND innerDiameter IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as dimensions_pct,\n  ROUND(SUM(CASE WHEN phMin IS NOT NULL AND phMax IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as ph_range_pct\nFROM products\nWHERE status = 'active';\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) as has_particle_size,\n  SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) as has_pore_size,\n  SUM(CASE WHEN columnLength IS NOT NULL AND innerDiameter IS NOT NULL THEN 1 ELSE 0 END) as has_dimensions,\n  SUM(CASE WHEN phMin IS NOT NULL AND phMax IS NOT NULL THEN 1 ELSE 0 END) as has_ph_range,\n  ROUND(SUM(CASE WHEN particleSize IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as particle_size_pct,\n  ROUND(SUM(CASE WHEN poreSize IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as pore_size_pct,\n  ROUND(SUM(CASE WHEN columnLength IS NOT NULL AND innerDiameter IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as dimensions_pct,\n  ROUND(SUM(CASE WHEN phMin IS NOT NULL AND phMax IS NOT NULL THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as ph_range_pct\nFROM products\nWHERE status = 'active';\n",
+  "rows": [
+    {
+      "total_products": "1319",
+      "has_particle_size": "996",
+      "has_pore_size": "564",
+      "has_dimensions": "163",
+      "has_ph_range": "0",
+      "particle_size_pct": "75.5",
+      "pore_size_pct": "42.8",
+      "dimensions_pct": "12.4",
+      "ph_range_pct": "0.0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\thas_particle_size\thas_pore_size\thas_dimensions\thas_ph_range\tparticle_size_pct\tpore_size_pct\tdimensions_pct\tph_range_pct\n1319\t996\t564\t163\t0\t75.5\t42.8\t12.4\t0.0\n",
+  "stderr": "",
+  "execution_time_ms": 2004
+}
