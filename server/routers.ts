@@ -276,10 +276,75 @@ export const appRouter = router({
   }),
 
   products: router({
-    list: publicProcedure.query(async () => {
-      const { getAllProducts } = await import("./db");
-      return getAllProducts();
-    }),
+    list: publicProcedure
+      .input(z.object({
+        categoryId: z.number().optional(),
+        page: z.number().min(1).default(1),
+        pageSize: z.number().min(1).max(100).default(24),
+      }).optional())
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return { products: [], total: 0, page: 1, pageSize: 24, totalPages: 0 };
+        
+        const { products, productCategories } = await import("../drizzle/schema");
+        const page = input?.page || 1;
+        const pageSize = input?.pageSize || 24;
+        const offset = (page - 1) * pageSize;
+        
+        // Build query based on category filter
+        let query;
+        let countQuery;
+        
+        if (input?.categoryId) {
+          // Query with category filter
+          query = db
+            .select({ product: products })
+            .from(products)
+            .innerJoin(productCategories, eq(products.id, productCategories.productId))
+            .where(eq(productCategories.categoryId, input.categoryId))
+            .limit(pageSize)
+            .offset(offset);
+          
+          // Count total with category filter
+          countQuery = db
+            .select({ count: sql<number>`count(*)` })
+            .from(products)
+            .innerJoin(productCategories, eq(products.id, productCategories.productId))
+            .where(eq(productCategories.categoryId, input.categoryId));
+        } else {
+          // Query all products
+          query = db
+            .select()
+            .from(products)
+            .limit(pageSize)
+            .offset(offset);
+          
+          // Count all products
+          countQuery = db
+            .select({ count: sql<number>`count(*)` })
+            .from(products);
+        }
+        
+        const [productResults, countResults] = await Promise.all([
+          query,
+          countQuery,
+        ]);
+        
+        const productList = input?.categoryId 
+          ? productResults.map((r: any) => r.product)
+          : productResults;
+        
+        const total = countResults[0]?.count || 0;
+        const totalPages = Math.ceil(total / pageSize);
+        
+        return {
+          products: productList,
+          total,
+          page,
+          pageSize,
+          totalPages,
+        };
+      }),
     byBrand: publicProcedure
       .input((val: unknown) => {
         if (typeof val === "string") return val;

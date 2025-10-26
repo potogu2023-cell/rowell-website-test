@@ -1,4 +1,4 @@
-import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -112,16 +112,17 @@ export type Category = typeof categories.$inferSelect;
 export type InsertCategory = typeof categories.$inferInsert;
 
 /**
- * Product-Category relationship table
- * Allows products to belong to multiple categories
+ * Product-Category junction table for many-to-many relationship
  */
 export const productCategories = mysqlTable("product_categories", {
   id: int("id").autoincrement().primaryKey(),
-  productId: int("productId").notNull(),
-  categoryId: int("categoryId").notNull(),
-  isPrimary: int("isPrimary").default(0).notNull(),
+  productId: int("productId").notNull().references(() => products.id, { onDelete: "cascade" }),
+  categoryId: int("categoryId").notNull().references(() => categories.id, { onDelete: "cascade" }),
+  isPrimary: int("isPrimary").default(0).notNull(), // 1 = primary category, 0 = secondary
   createdAt: timestamp("createdAt").defaultNow().notNull(),
-});
+}, (table) => ({
+  uniqueProductCategory: uniqueIndex("unique_product_category").on(table.productId, table.categoryId),
+}));
 
 export type ProductCategory = typeof productCategories.$inferSelect;
 export type InsertProductCategory = typeof productCategories.$inferInsert;

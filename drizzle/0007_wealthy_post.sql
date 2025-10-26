@@ -1,0 +1,3 @@
+ALTER TABLE `product_categories` ADD CONSTRAINT `unique_product_category` UNIQUE(`productId`,`categoryId`);--> statement-breakpoint
+ALTER TABLE `product_categories` ADD CONSTRAINT `product_categories_productId_products_id_fk` FOREIGN KEY (`productId`) REFERENCES `products`(`id`) ON DELETE cascade ON UPDATE no action;--> statement-breakpoint
+ALTER TABLE `product_categories` ADD CONSTRAINT `product_categories_categoryId_categories_id_fk` FOREIGN KEY (`categoryId`) REFERENCES `categories`(`id`) ON DELETE cascade ON UPDATE no action;

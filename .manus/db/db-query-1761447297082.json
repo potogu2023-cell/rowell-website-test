@@ -1,0 +1,16 @@
+{
+  "query": "SELECT id, name, nameEn, slug FROM categories WHERE slug = 'hplc-columns' OR nameEn = 'HPLC Columns' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, nameEn, slug FROM categories WHERE slug = 'hplc-columns' OR nameEn = 'HPLC Columns' LIMIT 1;",
+  "rows": [
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "nameEn": "NULL",
+      "slug": "hplc-columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tnameEn\tslug\n11\tHPLC Columns\tNULL\thplc-columns\n",
+  "stderr": "",
+  "execution_time_ms": 1538
+}
