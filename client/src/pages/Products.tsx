@@ -44,6 +44,11 @@ export default function Products() {
   };
   
   const { data, isLoading } = trpc.products.list.useQuery(queryParams);
+  
+  // Get all brands for the current category (or all brands if no category selected)
+  const { data: brandStats } = trpc.products.getBrandStats.useQuery({
+    categoryId: selectedCategoryId || undefined,
+  }) as { data: Record<string, number> | undefined };
 
   const addToCartMutation = trpc.cart.add.useMutation({
     onSuccess: () => {
@@ -106,17 +111,8 @@ export default function Products() {
     return matchesSearch && matchesBrand;
   });
 
-  // Get unique brands from current page
-  const brands = Array.from(new Set(products.map((p) => p.brand))).sort();
-
-  // Group products by brand for statistics
-  const brandStats = products.reduce(
-    (acc, product) => {
-      acc[product.brand] = (acc[product.brand] || 0) + 1;
-      return acc;
-    },
-    {} as Record<string, number>
-  );
+  // Get unique brands from brand stats API (all brands, not just current page)
+  const brands = brandStats ? Object.keys(brandStats).sort() : [];
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -230,7 +226,7 @@ export default function Products() {
                     size="sm"
                     onClick={() => setSelectedBrand(selectedBrand === brand ? null : brand)}
                   >
-                    {brand} ({brandStats[brand] || 0})
+                    {brand} ({brandStats?.[brand] || 0})
                   </Button>
                 ))}
               </div>

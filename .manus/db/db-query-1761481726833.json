@@ -1,0 +1,205 @@
+{
+  "query": "SELECT \n  p.brand,\n  c.name as category,\n  COUNT(DISTINCT p.id) as product_count\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE c.name IN ('HPLC Columns', 'GC Columns', 'Guard Columns', 'SPE Cartridges', 'Filtration', 'Chromatography Supplies')\nGROUP BY p.brand, c.name\nORDER BY p.brand, c.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.brand,\n  c.name as category,\n  COUNT(DISTINCT p.id) as product_count\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE c.name IN ('HPLC Columns', 'GC Columns', 'Guard Columns', 'SPE Cartridges', 'Filtration', 'Chromatography Supplies')\nGROUP BY p.brand, c.name\nORDER BY p.brand, c.name",
+  "rows": [
+    {
+      "brand": "ACE",
+      "category": "HPLC Columns",
+      "product_count": "55"
+    },
+    {
+      "brand": "Agilent",
+      "category": "Chromatography Supplies",
+      "product_count": "25"
+    },
+    {
+      "brand": "Agilent",
+      "category": "Filtration",
+      "product_count": "12"
+    },
+    {
+      "brand": "Agilent",
+      "category": "GC Columns",
+      "product_count": "9"
+    },
+    {
+      "brand": "Agilent",
+      "category": "Guard Columns",
+      "product_count": "3"
+    },
+    {
+      "brand": "Agilent",
+      "category": "HPLC Columns",
+      "product_count": "264"
+    },
+    {
+      "brand": "Agilent",
+      "category": "SPE Cartridges",
+      "product_count": "40"
+    },
+    {
+      "brand": "Avantor",
+      "category": "GC Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "Daicel",
+      "category": "GC Columns",
+      "product_count": "3"
+    },
+    {
+      "brand": "Daicel",
+      "category": "Guard Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "Develosil",
+      "category": "HPLC Columns",
+      "product_count": "50"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "HPLC Columns",
+      "product_count": "8"
+    },
+    {
+      "brand": "Dikma",
+      "category": "HPLC Columns",
+      "product_count": "128"
+    },
+    {
+      "brand": "Merck",
+      "category": "GC Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "Merck",
+      "category": "HPLC Columns",
+      "product_count": "93"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "Chromatography Supplies",
+      "product_count": "132"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "Filtration",
+      "product_count": "99"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "GC Columns",
+      "product_count": "15"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "Guard Columns",
+      "product_count": "5"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "HPLC Columns",
+      "product_count": "418"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "SPE Cartridges",
+      "product_count": "107"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "GC Columns",
+      "product_count": "5"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "Guard Columns",
+      "product_count": "2"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "HPLC Columns",
+      "product_count": "152"
+    },
+    {
+      "brand": "TCI",
+      "category": "GC Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "HPLC Columns",
+      "product_count": "96"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "GC Columns",
+      "product_count": "4"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "Guard Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "HPLC Columns",
+      "product_count": "51"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "GC Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "Waters",
+      "category": "Chromatography Supplies",
+      "product_count": "122"
+    },
+    {
+      "brand": "Waters",
+      "category": "Filtration",
+      "product_count": "72"
+    },
+    {
+      "brand": "Waters",
+      "category": "GC Columns",
+      "product_count": "3"
+    },
+    {
+      "brand": "Waters",
+      "category": "Guard Columns",
+      "product_count": "2"
+    },
+    {
+      "brand": "Waters",
+      "category": "HPLC Columns",
+      "product_count": "284"
+    },
+    {
+      "brand": "Waters",
+      "category": "SPE Cartridges",
+      "product_count": "78"
+    },
+    {
+      "brand": "YMC",
+      "category": "GC Columns",
+      "product_count": "3"
+    },
+    {
+      "brand": "YMC",
+      "category": "Guard Columns",
+      "product_count": "1"
+    },
+    {
+      "brand": "YMC",
+      "category": "HPLC Columns",
+      "product_count": "503"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcategory\tproduct_count\nACE\tHPLC Columns\t55\nAgilent\tChromatography Supplies\t25\nAgilent\tFiltration\t12\nAgilent\tGC Columns\t9\nAgilent\tGuard Columns\t3\nAgilent\tHPLC Columns\t264\nAgilent\tSPE Cartridges\t40\nAvantor\tGC Columns\t1\nDaicel\tGC Columns\t3\nDaicel\tGuard Columns\t1\nDevelosil\tHPLC Columns\t50\nDevelosil (Nomura Chemical)\tHPLC Columns\t8\nDikma\tHPLC Columns\t128\nMerck\tGC Columns\t1\nMerck\tHPLC Columns\t93\nPhenomenex\tChromatography Supplies\t132\nPhenomenex\tFiltration\t99\nPhenomenex\tGC Columns\t15\nPhenomenex\tGuard Columns\t5\nPhenomenex\tHPLC Columns\t418\nPhenomenex\tSPE Cartridges\t107\nShimadzu\tGC Columns\t5\nShimadzu\tGuard Columns\t2\nShimadzu\tHPLC Columns\t152\nTCI\tGC Columns\t1\nTSKgel\tHPLC Columns\t96\nThermo Fisher Scientific\tGC Columns\t4\nThermo Fisher Scientific\tGuard Columns\t1\nThermo Fisher Scientific\tHPLC Columns\t51\nTosoh\tGC Columns\t1\nWaters\tChromatography Supplies\t122\nWaters\tFiltration\t72\nWaters\tGC Columns\t3\nWaters\tGuard Columns\t2\nWaters\tHPLC Columns\t284\nWaters\tSPE Cartridges\t78\nYMC\tGC Columns\t3\nYMC\tGuard Columns\t1\nYMC\tHPLC Columns\t503\n",
+  "stderr": "",
+  "execution_time_ms": 1642
+}

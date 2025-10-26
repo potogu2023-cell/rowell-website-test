@@ -448,7 +448,80 @@ export const appRouter = router({
       })
       .query(async ({ input }) => {
         const { getProductsByBrand } = await import("./db");
-        return getProductsByBrand(input);
+        return await getProductsByBrand(input);
+      }),
+    
+    getBrands: publicProcedure
+      .input(z.object({
+        categoryId: z.number().optional(),
+      }).optional())
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+        
+        const { products, productCategories } = await import("../drizzle/schema");
+        
+        let query;
+        if (input?.categoryId) {
+          // Get brands for specific category
+          query = db
+            .selectDistinct({ brand: products.brand })
+            .from(products)
+            .innerJoin(productCategories, eq(products.id, productCategories.productId))
+            .where(eq(productCategories.categoryId, input.categoryId))
+            .orderBy(products.brand);
+        } else {
+          // Get all brands
+          query = db
+            .selectDistinct({ brand: products.brand })
+            .from(products)
+            .orderBy(products.brand);
+        }
+        
+        const results = await query;
+        return results.map(r => r.brand);
+      }),
+    
+    getBrandStats: publicProcedure
+      .input(z.object({
+        categoryId: z.number().optional(),
+      }).optional())
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return [];
+        
+        const { products, productCategories } = await import("../drizzle/schema");
+        
+        let query;
+        if (input?.categoryId) {
+          // Get brand stats for specific category
+          query = db
+            .select({
+              brand: products.brand,
+              count: sql<number>`count(distinct ${products.id})`
+            })
+            .from(products)
+            .innerJoin(productCategories, eq(products.id, productCategories.productId))
+            .where(eq(productCategories.categoryId, input.categoryId))
+            .groupBy(products.brand)
+            .orderBy(products.brand);
+        } else {
+          // Get all brand stats
+          query = db
+            .select({
+              brand: products.brand,
+              count: sql<number>`count(*)`
+            })
+            .from(products)
+            .groupBy(products.brand)
+            .orderBy(products.brand);
+        }
+        
+        const results = await query;
+        return results.reduce((acc, r) => {
+          acc[r.brand] = r.count;
+          return acc;
+        }, {} as Record<string, number>);
       }),
   }),
 

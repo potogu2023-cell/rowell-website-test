@@ -1,0 +1,651 @@
+{
+  "coverageMatrix": [
+    {
+      "brand": "ACE",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Agilent",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Avantor",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Daicel",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Develosil",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Dikma",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Merck",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Phenomenex",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Shimadzu",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "TCI",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "TSKgel",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Tosoh",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "Waters",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    },
+    {
+      "brand": "YMC",
+      "HPLC Columns": 0,
+      "GC Columns": 0,
+      "Guard Columns": 0,
+      "SPE Cartridges": 0,
+      "Filtration": 0,
+      "Chromatography Supplies": 0
+    }
+  ],
+  "gaps": [
+    {
+      "brand": "ACE",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "ACE",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "ACE",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "ACE",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "ACE",
+      "category": "Filtration"
+    },
+    {
+      "brand": "ACE",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Agilent",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Agilent",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Agilent",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Agilent",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Agilent",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Agilent",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Avantor",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Avantor",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Avantor",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Avantor",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Avantor",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Avantor",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Daicel",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Daicel",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Daicel",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Daicel",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Daicel",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Daicel",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Develosil",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Develosil",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Develosil",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Develosil",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Develosil",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Develosil",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Dikma",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Dikma",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Dikma",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Dikma",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Dikma",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Dikma",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Merck",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Merck",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Merck",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Merck",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Merck",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Merck",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Phenomenex",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Shimadzu",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "TCI",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "TCI",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "TCI",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "TCI",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "TCI",
+      "category": "Filtration"
+    },
+    {
+      "brand": "TCI",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "Filtration"
+    },
+    {
+      "brand": "TSKgel",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Tosoh",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "Waters",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "Waters",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "Waters",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "Waters",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "Waters",
+      "category": "Filtration"
+    },
+    {
+      "brand": "Waters",
+      "category": "Chromatography Supplies"
+    },
+    {
+      "brand": "YMC",
+      "category": "HPLC Columns"
+    },
+    {
+      "brand": "YMC",
+      "category": "GC Columns"
+    },
+    {
+      "brand": "YMC",
+      "category": "Guard Columns"
+    },
+    {
+      "brand": "YMC",
+      "category": "SPE Cartridges"
+    },
+    {
+      "brand": "YMC",
+      "category": "Filtration"
+    },
+    {
+      "brand": "YMC",
+      "category": "Chromatography Supplies"
+    }
+  ],
+  "gapsByCategory": {
+    "HPLC Columns": [
+      "ACE",
+      "Agilent",
+      "Avantor",
+      "Daicel",
+      "Develosil",
+      "Develosil (Nomura Chemical)",
+      "Dikma",
+      "Merck",
+      "Phenomenex",
+      "Shimadzu",
+      "TCI",
+      "TSKgel",
+      "Thermo Fisher Scientific",
+      "Tosoh",
+      "Waters",
+      "YMC"
+    ],
+    "GC Columns": [
+      "ACE",
+      "Agilent",
+      "Avantor",
+      "Daicel",
+      "Develosil",
+      "Develosil (Nomura Chemical)",
+      "Dikma",
+      "Merck",
+      "Phenomenex",
+      "Shimadzu",
+      "TCI",
+      "TSKgel",
+      "Thermo Fisher Scientific",
+      "Tosoh",
+      "Waters",
+      "YMC"
+    ],
+    "Guard Columns": [
+      "ACE",
+      "Agilent",
+      "Avantor",
+      "Daicel",
+      "Develosil",
+      "Develosil (Nomura Chemical)",
+      "Dikma",
+      "Merck",
+      "Phenomenex",
+      "Shimadzu",
+      "TCI",
+      "TSKgel",
+      "Thermo Fisher Scientific",
+      "Tosoh",
+      "Waters",
+      "YMC"
+    ],
+    "SPE Cartridges": [
+      "ACE",
+      "Agilent",
+      "Avantor",
+      "Daicel",
+      "Develosil",
+      "Develosil (Nomura Chemical)",
+      "Dikma",
+      "Merck",
+      "Phenomenex",
+      "Shimadzu",
+      "TCI",
+      "TSKgel",
+      "Thermo Fisher Scientific",
+      "Tosoh",
+      "Waters",
+      "YMC"
+    ],
+    "Filtration": [
+      "ACE",
+      "Agilent",
+      "Avantor",
+      "Daicel",
+      "Develosil",
+      "Develosil (Nomura Chemical)",
+      "Dikma",
+      "Merck",
+      "Phenomenex",
+      "Shimadzu",
+      "TCI",
+      "TSKgel",
+      "Thermo Fisher Scientific",
+      "Tosoh",
+      "Waters",
+      "YMC"
+    ],
+    "Chromatography Supplies": [
+      "ACE",
+      "Agilent",
+      "Avantor",
+      "Daicel",
+      "Develosil",
+      "Develosil (Nomura Chemical)",
+      "Dikma",
+      "Merck",
+      "Phenomenex",
+      "Shimadzu",
+      "TCI",
+      "TSKgel",
+      "Thermo Fisher Scientific",
+      "Tosoh",
+      "Waters",
+      "YMC"
+    ]
+  },
+  "summary": {
+    "totalBrands": 16,
+    "totalCategories": 6,
+    "totalPossibleCombinations": 96,
+    "totalGaps": 96,
+    "coverageRate": "0.0%"
+  }
+}
