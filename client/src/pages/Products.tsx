@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,6 +12,7 @@ import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilt
 import { toast } from "sonner";
 
 export default function Products() {
+  const [, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -231,7 +233,11 @@ export default function Products() {
             {/* Product Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
               {filteredProducts.map((product) => (
-                <Card key={product.id} className="hover:shadow-lg transition-shadow">
+                <Card 
+                  key={product.id} 
+                  className="hover:shadow-lg transition-shadow cursor-pointer"
+                  onClick={() => setLocation(`/products/${product.id}`)}
+                >
                   <CardHeader>
                     <div className="flex justify-between items-start mb-2">
                       <Badge variant="outline">{product.status}</Badge>
@@ -274,7 +280,10 @@ export default function Products() {
 
                     <Button 
                       className="w-full"
-                      onClick={() => handleAddToInquiry(product.id)}
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent card click
+                        handleAddToInquiry(product.id);
+                      }}
                       disabled={!isAuthenticated || addToCartMutation.isPending}
                     >
                       <ShoppingCart className="mr-2 h-4 w-4" />

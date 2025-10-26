@@ -424,6 +424,23 @@ export const appRouter = router({
           totalPages,
         };
       }),
+    
+    getById: publicProcedure
+      .input(z.number())
+      .query(async ({ input }) => {
+        const db = await getDb();
+        if (!db) return null;
+        
+        const { products } = await import("../drizzle/schema");
+        const result = await db
+          .select()
+          .from(products)
+          .where(eq(products.id, input))
+          .limit(1);
+        
+        return result[0] || null;
+      }),
+    
     byBrand: publicProcedure
       .input((val: unknown) => {
         if (typeof val === "string") return val;

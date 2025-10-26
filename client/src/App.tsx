@@ -23,6 +23,7 @@ import AdminInquiries from "./pages/AdminInquiries";
 import AdminCustomers from "./pages/AdminCustomers";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import TestFilters from "./pages/TestFilters";
+import ProductDetail from "./pages/ProductDetail";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 function Router() {
@@ -33,6 +34,7 @@ function Router() {
         <Switch>
           <Route path={"/"} component={Home} />
           <Route path={"/products"} component={Products} />
+          <Route path={"/products/:id"} component={ProductDetail} />
           <Route path={"/about"} component={About} />
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/applications"} component={Applications} />
