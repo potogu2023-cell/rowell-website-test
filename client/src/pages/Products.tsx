@@ -143,14 +143,15 @@ export default function Products() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="flex-1"
                 />
-                <Button
+                {/* 高级筛选功能暂时禁用 - 等产品数据更丰富后再启用 */}
+                {/* <Button
                   onClick={() => setShowAdvancedFilters(true)}
                   variant="outline"
                   className="flex items-center gap-2"
                 >
                   <Filter className="w-4 h-4" />
                   高级筛选
-                </Button>
+                </Button> */}
                 {hasActiveFilters && (
                   <Button
                     onClick={handleClearFilters}

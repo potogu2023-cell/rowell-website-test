@@ -305,6 +305,8 @@ export const appRouter = router({
         const pageSize = input?.pageSize || 24;
         const offset = (page - 1) * pageSize;
         
+        console.log('[products.list] Input params:', JSON.stringify(input, null, 2));
+        
         // Build WHERE conditions
         const conditions: any[] = [];
         
@@ -363,6 +365,9 @@ export const appRouter = router({
         let countQuery;
         
         const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+        
+        console.log('[products.list] Conditions count:', conditions.length);
+        console.log('[products.list] Where clause:', whereClause);
         
         if (input?.categoryId) {
           // Query with category filter

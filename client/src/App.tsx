@@ -22,6 +22,7 @@ import Admin from "./pages/Admin";
 import AdminInquiries from "./pages/AdminInquiries";
 import AdminCustomers from "./pages/AdminCustomers";
 import AdminAnalytics from "./pages/AdminAnalytics";
+import TestFilters from "./pages/TestFilters";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 function Router() {
@@ -45,6 +46,7 @@ function Router() {
           <Route path={"/admin/inquiries"} component={AdminInquiries} />
           <Route path={"/admin/customers"} component={AdminCustomers} />
           <Route path={"/admin/analytics"} component={AdminAnalytics} />
+          <Route path={"/test-filters"} component={TestFilters} />
           <Route path={"/404"} component={NotFound} />
           <Route component={NotFound} />
         </Switch>

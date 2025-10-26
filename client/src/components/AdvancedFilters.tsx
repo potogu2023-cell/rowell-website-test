@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export interface AdvancedFiltersState {
   particleSizeMin?: number;
@@ -15,6 +15,7 @@ export interface AdvancedFiltersState {
 }
 
 interface AdvancedFiltersProps {
+  initialFilters?: AdvancedFiltersState;
   onFiltersChange: (filters: AdvancedFiltersState) => void;
   onClose: () => void;
 }
@@ -25,29 +26,60 @@ const COMMON_PHASE_TYPES = ['C18', 'C8', 'C4', 'Phenyl', 'CN', 'NH2', 'Silica', 
 const COMMON_COLUMN_LENGTHS = [30, 50, 75, 100, 150, 250];
 const COMMON_INNER_DIAMETERS = [1.0, 2.1, 3.0, 4.6];
 
-export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersProps) {
-  const [filters, setFilters] = useState<AdvancedFiltersState>({});
-  const [selectedPhaseTypes, setSelectedPhaseTypes] = useState<string[]>([]);
+export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose }: AdvancedFiltersProps) {
+  // 使用单独的状态变量而不是一个大对象
+  const [particleSizeMin, setParticleSizeMin] = useState<string>(initialFilters.particleSizeMin?.toString() || '');
+  const [particleSizeMax, setParticleSizeMax] = useState<string>(initialFilters.particleSizeMax?.toString() || '');
+  const [poreSizeMin, setPoreSizeMin] = useState<string>(initialFilters.poreSizeMin?.toString() || '');
+  const [poreSizeMax, setPoreSizeMax] = useState<string>(initialFilters.poreSizeMax?.toString() || '');
+  const [columnLengthMin, setColumnLengthMin] = useState<string>(initialFilters.columnLengthMin?.toString() || '');
+  const [columnLengthMax, setColumnLengthMax] = useState<string>(initialFilters.columnLengthMax?.toString() || '');
+  const [innerDiameterMin, setInnerDiameterMin] = useState<string>(initialFilters.innerDiameterMin?.toString() || '');
+  const [innerDiameterMax, setInnerDiameterMax] = useState<string>(initialFilters.innerDiameterMax?.toString() || '');
+  const [selectedPhaseTypes, setSelectedPhaseTypes] = useState<string[]>(initialFilters.phaseTypes || []);
+  const [phMin, setPhMin] = useState<string>(initialFilters.phMin?.toString() || '');
+  const [phMax, setPhMax] = useState<string>(initialFilters.phMax?.toString() || '');
+  
+  const applyButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleApply = () => {
-    onFiltersChange({
-      ...filters,
-      phaseTypes: selectedPhaseTypes.length > 0 ? selectedPhaseTypes : undefined,
-    });
+    console.log('[AdvancedFilters] handleApply called!');
+    console.log('[AdvancedFilters] particleSizeMin:', particleSizeMin);
+    const filters: AdvancedFiltersState = {};
+    
+    if (particleSizeMin) filters.particleSizeMin = Number(particleSizeMin);
+    if (particleSizeMax) filters.particleSizeMax = Number(particleSizeMax);
+    if (poreSizeMin) filters.poreSizeMin = Number(poreSizeMin);
+    if (poreSizeMax) filters.poreSizeMax = Number(poreSizeMax);
+    if (columnLengthMin) filters.columnLengthMin = Number(columnLengthMin);
+    if (columnLengthMax) filters.columnLengthMax = Number(columnLengthMax);
+    if (innerDiameterMin) filters.innerDiameterMin = Number(innerDiameterMin);
+    if (innerDiameterMax) filters.innerDiameterMax = Number(innerDiameterMax);
+    if (selectedPhaseTypes.length > 0) filters.phaseTypes = selectedPhaseTypes;
+    if (phMin) filters.phMin = Number(phMin);
+    if (phMax) filters.phMax = Number(phMax);
+
+    onFiltersChange(filters);
     onClose();
   };
 
   const handleReset = () => {
-    setFilters({});
+    setParticleSizeMin('');
+    setParticleSizeMax('');
+    setPoreSizeMin('');
+    setPoreSizeMax('');
+    setColumnLengthMin('');
+    setColumnLengthMax('');
+    setInnerDiameterMin('');
+    setInnerDiameterMax('');
     setSelectedPhaseTypes([]);
-    onFiltersChange({});
+    setPhMin('');
+    setPhMax('');
   };
 
-  const togglePhaseType = (phaseType: string) => {
+  const togglePhaseType = (type: string) => {
     setSelectedPhaseTypes(prev =>
-      prev.includes(phaseType)
-        ? prev.filter(t => t !== phaseType)
-        : [...prev, phaseType]
+      prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
     );
   };
 
@@ -74,8 +106,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最小值</label>
                 <select
-                  value={filters.particleSizeMin || ''}
-                  onChange={(e) => setFilters({ ...filters, particleSizeMin: e.target.value ? Number(e.target.value) : undefined })}
+                  value={particleSizeMin}
+                  onChange={(e) => setParticleSizeMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -87,8 +119,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最大值</label>
                 <select
-                  value={filters.particleSizeMax || ''}
-                  onChange={(e) => setFilters({ ...filters, particleSizeMax: e.target.value ? Number(e.target.value) : undefined })}
+                  value={particleSizeMax}
+                  onChange={(e) => setParticleSizeMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -109,8 +141,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最小值</label>
                 <select
-                  value={filters.poreSizeMin || ''}
-                  onChange={(e) => setFilters({ ...filters, poreSizeMin: e.target.value ? Number(e.target.value) : undefined })}
+                  value={poreSizeMin}
+                  onChange={(e) => setPoreSizeMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -122,8 +154,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最大值</label>
                 <select
-                  value={filters.poreSizeMax || ''}
-                  onChange={(e) => setFilters({ ...filters, poreSizeMax: e.target.value ? Number(e.target.value) : undefined })}
+                  value={poreSizeMax}
+                  onChange={(e) => setPoreSizeMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -144,8 +176,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最小值</label>
                 <select
-                  value={filters.columnLengthMin || ''}
-                  onChange={(e) => setFilters({ ...filters, columnLengthMin: e.target.value ? Number(e.target.value) : undefined })}
+                  value={columnLengthMin}
+                  onChange={(e) => setColumnLengthMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -157,8 +189,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最大值</label>
                 <select
-                  value={filters.columnLengthMax || ''}
-                  onChange={(e) => setFilters({ ...filters, columnLengthMax: e.target.value ? Number(e.target.value) : undefined })}
+                  value={columnLengthMax}
+                  onChange={(e) => setColumnLengthMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -179,8 +211,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最小值</label>
                 <select
-                  value={filters.innerDiameterMin || ''}
-                  onChange={(e) => setFilters({ ...filters, innerDiameterMin: e.target.value ? Number(e.target.value) : undefined })}
+                  value={innerDiameterMin}
+                  onChange={(e) => setInnerDiameterMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -192,8 +224,8 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               <div>
                 <label className="block text-xs text-gray-500 mb-1">最大值</label>
                 <select
-                  value={filters.innerDiameterMax || ''}
-                  onChange={(e) => setFilters({ ...filters, innerDiameterMax: e.target.value ? Number(e.target.value) : undefined })}
+                  value={innerDiameterMax}
+                  onChange={(e) => setInnerDiameterMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
                   <option value="">不限</option>
@@ -211,17 +243,17 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
               填料类型 (Phase Type)
             </label>
             <div className="flex flex-wrap gap-2">
-              {COMMON_PHASE_TYPES.map(phaseType => (
+              {COMMON_PHASE_TYPES.map(type => (
                 <button
-                  key={phaseType}
-                  onClick={() => togglePhaseType(phaseType)}
+                  key={type}
+                  onClick={() => togglePhaseType(type)}
                   className={`px-4 py-2 rounded-md border transition-colors ${
-                    selectedPhaseTypes.includes(phaseType)
-                      ? 'bg-blue-600 text-white border-blue-600'
-                      : 'bg-white text-gray-700 border-gray-300 hover:border-blue-600'
+                    selectedPhaseTypes.includes(type)
+                      ? 'bg-blue-500 text-white border-blue-500'
+                      : 'bg-white text-gray-700 border-gray-300 hover:border-blue-500'
                   }`}
                 >
-                  {phaseType}
+                  {type}
                 </button>
               ))}
             </div>
@@ -240,10 +272,10 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
                   min="0"
                   max="14"
                   step="0.1"
-                  value={filters.phMin || ''}
-                  onChange={(e) => setFilters({ ...filters, phMin: e.target.value ? Number(e.target.value) : undefined })}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2"
+                  value={phMin}
+                  onChange={(e) => setPhMin(e.target.value)}
                   placeholder="0-14"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2"
                 />
               </div>
               <div>
@@ -253,26 +285,28 @@ export function AdvancedFilters({ onFiltersChange, onClose }: AdvancedFiltersPro
                   min="0"
                   max="14"
                   step="0.1"
-                  value={filters.phMax || ''}
-                  onChange={(e) => setFilters({ ...filters, phMax: e.target.value ? Number(e.target.value) : undefined })}
-                  className="w-full border border-gray-300 rounded-md px-3 py-2"
+                  value={phMax}
+                  onChange={(e) => setPhMax(e.target.value)}
                   placeholder="0-14"
+                  className="w-full border border-gray-300 rounded-md px-3 py-2"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="sticky bottom-0 bg-gray-50 px-6 py-4 flex justify-end gap-3 border-t">
+        {/* Footer */}
+        <div className="sticky bottom-0 bg-white border-t px-6 py-4 flex justify-end gap-4">
           <button
             onClick={handleReset}
-            className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100"
+            className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
           >
             重置
           </button>
           <button
+            ref={applyButtonRef}
             onClick={handleApply}
-            className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+            className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
           >
             应用筛选
           </button>
