@@ -239,3 +239,8 @@ ROWELL HPLC测试网站是一个专业的色谱产品展示和询价平台，目
 - [产品线扩充策略](PRODUCT_LINE_EXPANSION_STRATEGY.md)
 - [数据质量报告](FINAL_DATA_QUALITY_REPORT.md)
 
+
+
+### 用户报告的Bug（2025-10-25 23:06）
+- [ ] 分类筛选功能无效 - 点击任何分类都显示0个产品
+

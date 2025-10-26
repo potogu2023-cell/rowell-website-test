@@ -23,7 +23,7 @@ interface CategoryNavProps {
 }
 
 export default function CategoryNav({ onCategorySelect, selectedCategoryId }: CategoryNavProps) {
-  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开“色谱柱”
+  const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开"色谱柱"
   
   const { data: topCategories, isLoading } = trpc.category.getTopLevel.useQuery();
   const { data: allCategories } = trpc.category.getVisible.useQuery();

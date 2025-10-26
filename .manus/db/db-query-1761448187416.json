@@ -1,0 +1,14 @@
+{
+  "query": "SELECT categoryId, COUNT(*) as productCount FROM product_categories GROUP BY categoryId ORDER BY categoryId;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT categoryId, COUNT(*) as productCount FROM product_categories GROUP BY categoryId ORDER BY categoryId;",
+  "rows": [
+    {
+      "categoryId": "11",
+      "productCount": "1319"
+    }
+  ],
+  "messages": [],
+  "stdout": "categoryId\tproductCount\n11\t1319\n",
+  "stderr": "",
+  "execution_time_ms": 1545
+}

@@ -18,11 +18,13 @@ export default function Products() {
   const pageSize = 24;
   const { isAuthenticated } = useAuth();
 
-  const { data, isLoading } = trpc.products.list.useQuery({
+  const queryParams = {
     categoryId: selectedCategoryId || undefined,
     page: currentPage,
     pageSize,
-  });
+  };
+  
+  const { data, isLoading } = trpc.products.list.useQuery(queryParams);
 
   const addToCartMutation = trpc.cart.add.useMutation({
     onSuccess: () => {
