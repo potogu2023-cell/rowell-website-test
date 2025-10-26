@@ -238,6 +238,17 @@ export default function Products() {
                   className="hover:shadow-lg transition-shadow cursor-pointer"
                   onClick={() => setLocation(`/products/${product.id}`)}
                 >
+                  {/* Product Image */}
+                  <div className="aspect-square w-full overflow-hidden bg-gray-50">
+                    <img 
+                      src={product.imageUrl || "/images/hplc-column-placeholder.png"}
+                      alt={product.name || product.productId}
+                      className="w-full h-full object-contain p-4"
+                      onError={(e) => {
+                        e.currentTarget.src = "/images/hplc-column-placeholder.png";
+                      }}
+                    />
+                  </div>
                   <CardHeader>
                     <div className="flex justify-between items-start mb-2">
                       <Badge variant="outline">{product.status}</Badge>

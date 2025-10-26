@@ -75,6 +75,17 @@ export default function ProductDetail() {
           {/* Main Product Info */}
           <div className="lg:col-span-2">
             <Card>
+              {/* Product Image */}
+              <div className="w-full aspect-video bg-gray-50 flex items-center justify-center overflow-hidden">
+                <img 
+                  src={product.imageUrl || "/images/hplc-column-placeholder.png"}
+                  alt={product.name || product.productId}
+                  className="max-w-full max-h-full object-contain p-8"
+                  onError={(e) => {
+                    e.currentTarget.src = "/images/hplc-column-placeholder.png";
+                  }}
+                />
+              </div>
               <CardHeader>
                 <div className="flex justify-between items-start mb-4">
                   <div>
