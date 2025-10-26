@@ -1,0 +1,178 @@
+{
+  "query": "SELECT id, name, slug, description FROM categories ORDER BY id",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug, description FROM categories ORDER BY id",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns",
+      "description": "HPLC, GC, and specialty chromatography columns"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "description": "Consumables and supplies for chromatography"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "slug": "sample-preparation",
+      "description": "Sample preparation products and equipment"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration",
+      "description": "Filtration products and membrane filters"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "slug": "lab-supplies",
+      "description": "General laboratory supplies and consumables"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy",
+      "slug": "spectroscopy",
+      "description": "Spectroscopy products and accessories (Reserved for future)"
+    },
+    {
+      "id": "7",
+      "name": "Standards",
+      "slug": "standards",
+      "description": "Chemical standards and reference materials (Reserved for future)"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "slug": "hplc-columns",
+      "description": "High Performance Liquid Chromatography columns"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "description": "Gas Chromatography columns"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "description": "Guard columns and holders"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps",
+      "description": "Sample vials, caps, and septa"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "slug": "syringes-needles",
+      "description": "Syringes and needles for chromatography"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "slug": "fittings-tubing",
+      "description": "Connectors, fittings, and tubing"
+    },
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "slug": "mobile-phase",
+      "description": "Solvents and mobile phase additives"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges",
+      "description": "Solid Phase Extraction cartridges"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "slug": "extraction-accessories",
+      "description": "Accessories for sample extraction"
+    },
+    {
+      "id": "33",
+      "name": "Derivatization",
+      "slug": "derivatization",
+      "description": "Derivatization reagents and kits"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "slug": "syringe-filters",
+      "description": "Disposable syringe filters"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "slug": "membrane-filters",
+      "description": "Membrane filters and discs"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "slug": "filter-holders",
+      "description": "Filter holders and apparatus"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "slug": "glassware",
+      "description": "Laboratory glassware"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "slug": "plasticware",
+      "description": "Laboratory plasticware"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "slug": "storage",
+      "description": "Storage containers and solutions"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "description": "Analytical HPLC columns"
+    },
+    {
+      "id": "112",
+      "name": "Preparative Columns",
+      "slug": "preparative-columns",
+      "description": "Preparative HPLC columns"
+    },
+    {
+      "id": "113",
+      "name": "UHPLC Columns",
+      "slug": "uhplc-columns",
+      "description": "Ultra High Performance LC columns"
+    },
+    {
+      "id": "114",
+      "name": "Chiral Columns",
+      "slug": "chiral-columns",
+      "description": "Chiral separation columns"
+    },
+    {
+      "id": "115",
+      "name": "Bio Columns",
+      "slug": "bio-columns",
+      "description": "Biological sample analysis columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tdescription\n1\tChromatography Columns\tchromatography-columns\tHPLC, GC, and specialty chromatography columns\n2\tChromatography Supplies\tchromatography-supplies\tConsumables and supplies for chromatography\n3\tSample Preparation\tsample-preparation\tSample preparation products and equipment\n4\tFiltration\tfiltration\tFiltration products and membrane filters\n5\tLab Supplies\tlab-supplies\tGeneral laboratory supplies and consumables\n6\tSpectroscopy\tspectroscopy\tSpectroscopy products and accessories (Reserved for future)\n7\tStandards\tstandards\tChemical standards and reference materials (Reserved for future)\n11\tHPLC Columns\thplc-columns\tHigh Performance Liquid Chromatography columns\n12\tGC Columns\tgc-columns\tGas Chromatography columns\n13\tGuard Columns\tguard-columns\tGuard columns and holders\n21\tVials & Caps\tvials-caps\tSample vials, caps, and septa\n22\tSyringes & Needles\tsyringes-needles\tSyringes and needles for chromatography\n23\tFittings & Tubing\tfittings-tubing\tConnectors, fittings, and tubing\n24\tMobile Phase\tmobile-phase\tSolvents and mobile phase additives\n31\tSPE Cartridges\tspe-cartridges\tSolid Phase Extraction cartridges\n32\tExtraction Accessories\textraction-accessories\tAccessories for sample extraction\n33\tDerivatization\tderivatization\tDerivatization reagents and kits\n41\tSyringe Filters\tsyringe-filters\tDisposable syringe filters\n42\tMembrane Filters\tmembrane-filters\tMembrane filters and discs\n43\tFilter Holders\tfilter-holders\tFilter holders and apparatus\n51\tGlassware\tglassware\tLaboratory glassware\n52\tPlasticware\tplasticware\tLaboratory plasticware\n53\tStorage\tstorage\tStorage containers and solutions\n111\tAnalytical Columns\tanalytical-columns\tAnalytical HPLC columns\n112\tPreparative Columns\tpreparative-columns\tPreparative HPLC columns\n113\tUHPLC Columns\tuhplc-columns\tUltra High Performance LC columns\n114\tChiral Columns\tchiral-columns\tChiral separation columns\n115\tBio Columns\tbio-columns\tBiological sample analysis columns\n",
+  "stderr": "",
+  "execution_time_ms": 1943
+}

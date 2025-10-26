@@ -1,0 +1,22 @@
+{
+  "query": "SELECT id, name FROM categories WHERE name LIKE '%Vial%' OR name LIKE '%Cap%' OR name LIKE '%Autosampler%' OR name LIKE '%Supplies%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name FROM categories WHERE name LIKE '%Vial%' OR name LIKE '%Cap%' OR name LIKE '%Autosampler%' OR name LIKE '%Supplies%'",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Chromatography Supplies"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n2\tChromatography Supplies\n5\tLab Supplies\n21\tVials & Caps\n",
+  "stderr": "",
+  "execution_time_ms": 1567
+}

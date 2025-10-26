@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, slug FROM categories WHERE name LIKE '%SPE%' OR name LIKE '%Vial%' OR name LIKE '%Filter%' OR name LIKE '%Cartridge%' OR name LIKE '%Sample%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug FROM categories WHERE name LIKE '%SPE%' OR name LIKE '%Vial%' OR name LIKE '%Filter%' OR name LIKE '%Cartridge%' OR name LIKE '%Sample%'",
+  "rows": [
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "slug": "sample-preparation"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "slug": "syringe-filters"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "slug": "membrane-filters"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "slug": "filter-holders"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n3\tSample Preparation\tsample-preparation\n21\tVials & Caps\tvials-caps\n31\tSPE Cartridges\tspe-cartridges\n41\tSyringe Filters\tsyringe-filters\n42\tMembrane Filters\tmembrane-filters\n43\tFilter Holders\tfilter-holders\n",
+  "stderr": "",
+  "execution_time_ms": 1540
+}
