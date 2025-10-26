@@ -72,6 +72,20 @@ export const products = mysqlTable("products", {
   maxTemperature: varchar("maxTemperature", { length: 50 }),
   /** USP classification (e.g., L1, L7, L11) */
   usp: varchar("usp", { length: 50 }),
+  /** Phase type/填料类型 (e.g., C18, C8, Phenyl) */
+  phaseType: varchar("phaseType", { length: 100 }),
+  /** Numeric particle size in µm for filtering */
+  particleSizeNum: int("particleSizeNum"),
+  /** Numeric pore size in Å for filtering */
+  poreSizeNum: int("poreSizeNum"),
+  /** Numeric column length in mm for filtering */
+  columnLengthNum: int("columnLengthNum"),
+  /** Numeric inner diameter in mm for filtering */
+  innerDiameterNum: int("innerDiameterNum"),
+  /** Minimum pH value */
+  phMin: int("phMin"),
+  /** Maximum pH value */
+  phMax: int("phMax"),
   /** Application areas */
   applications: text("applications"),
   /** Product image URL */

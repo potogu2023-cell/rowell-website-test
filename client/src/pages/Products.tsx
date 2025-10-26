@@ -6,7 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CategoryNav from "@/components/CategoryNav";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { ShoppingCart, ChevronLeft, ChevronRight } from "lucide-react";
+import { ShoppingCart, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilters";
 import { toast } from "sonner";
 
 export default function Products() {
@@ -15,11 +16,15 @@ export default function Products() {
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
   const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
+  const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersState>({});
   const pageSize = 24;
   const { isAuthenticated } = useAuth();
 
   const queryParams = {
     categoryId: selectedCategoryId || undefined,
+    brand: selectedBrand || undefined,
+    ...advancedFilters,
     page: currentPage,
     pageSize,
   };
@@ -45,6 +50,20 @@ export default function Products() {
     setSelectedCategoryName(categoryName);
     setCurrentPage(1);
   };
+
+  const handleAdvancedFiltersChange = (filters: AdvancedFiltersState) => {
+    setAdvancedFilters(filters);
+    setCurrentPage(1);
+  };
+
+  const handleClearFilters = () => {
+    setAdvancedFilters({});
+    setSelectedBrand(null);
+    setSearchTerm("");
+    setCurrentPage(1);
+  };
+
+  const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || searchTerm;
 
   if (isLoading) {
     return (
@@ -116,13 +135,76 @@ export default function Products() {
           <div className="lg:col-span-3">
             {/* Search and Filters */}
             <div className="mb-6">
-              <Input
-                type="text"
-                placeholder="Search by product ID, part number, or brand..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="mb-4"
-              />
+              <div className="flex gap-2 mb-4">
+                <Input
+                  type="text"
+                  placeholder="Search by product ID, part number, or brand..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="flex-1"
+                />
+                <Button
+                  onClick={() => setShowAdvancedFilters(true)}
+                  variant="outline"
+                  className="flex items-center gap-2"
+                >
+                  <Filter className="w-4 h-4" />
+                  高级筛选
+                </Button>
+                {hasActiveFilters && (
+                  <Button
+                    onClick={handleClearFilters}
+                    variant="ghost"
+                  >
+                    清除筛选
+                  </Button>
+                )}
+              </div>
+
+              {/* Active Filters Display */}
+              {hasActiveFilters && (
+                <div className="mb-4 p-3 bg-blue-50 rounded-md">
+                  <p className="text-sm font-medium text-blue-900 mb-2">当前筛选条件：</p>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedBrand && (
+                      <Badge variant="secondary">品牌: {selectedBrand}</Badge>
+                    )}
+                    {advancedFilters.particleSizeMin && (
+                      <Badge variant="secondary">粒径 ≥ {advancedFilters.particleSizeMin} µm</Badge>
+                    )}
+                    {advancedFilters.particleSizeMax && (
+                      <Badge variant="secondary">粒径 ≤ {advancedFilters.particleSizeMax} µm</Badge>
+                    )}
+                    {advancedFilters.poreSizeMin && (
+                      <Badge variant="secondary">孔径 ≥ {advancedFilters.poreSizeMin} Å</Badge>
+                    )}
+                    {advancedFilters.poreSizeMax && (
+                      <Badge variant="secondary">孔径 ≤ {advancedFilters.poreSizeMax} Å</Badge>
+                    )}
+                    {advancedFilters.columnLengthMin && (
+                      <Badge variant="secondary">柱长 ≥ {advancedFilters.columnLengthMin} mm</Badge>
+                    )}
+                    {advancedFilters.columnLengthMax && (
+                      <Badge variant="secondary">柱长 ≤ {advancedFilters.columnLengthMax} mm</Badge>
+                    )}
+                    {advancedFilters.innerDiameterMin && (
+                      <Badge variant="secondary">内径 ≥ {advancedFilters.innerDiameterMin} mm</Badge>
+                    )}
+                    {advancedFilters.innerDiameterMax && (
+                      <Badge variant="secondary">内径 ≤ {advancedFilters.innerDiameterMax} mm</Badge>
+                    )}
+                    {advancedFilters.phaseTypes && advancedFilters.phaseTypes.length > 0 && (
+                      <Badge variant="secondary">填料: {advancedFilters.phaseTypes.join(', ')}</Badge>
+                    )}
+                    {advancedFilters.phMin && (
+                      <Badge variant="secondary">pH ≥ {advancedFilters.phMin}</Badge>
+                    )}
+                    {advancedFilters.phMax && (
+                      <Badge variant="secondary">pH ≤ {advancedFilters.phMax}</Badge>
+                    )}
+                  </div>
+                </div>
+              )}
 
               {/* Brand Filter Buttons */}
               <div className="flex flex-wrap gap-2">
@@ -255,6 +337,14 @@ export default function Products() {
           </div>
         </div>
       </div>
+
+      {/* Advanced Filters Modal */}
+      {showAdvancedFilters && (
+        <AdvancedFilters
+          onFiltersChange={handleAdvancedFiltersChange}
+          onClose={() => setShowAdvancedFilters(false)}
+        />
+      )}
     </div>
   );
 }
