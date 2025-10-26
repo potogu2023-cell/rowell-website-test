@@ -1,0 +1,30 @@
+{
+  "query": "SELECT productId, name, description, particleSize, poreSize, columnLength, innerDiameter, LEFT(detailedDescription, 100) as desc_preview FROM products WHERE brand = 'Merck' LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, name, description, particleSize, poreSize, columnLength, innerDiameter, LEFT(detailedDescription, 100) as desc_preview FROM products WHERE brand = 'Merck' LIMIT 5",
+  "rows": [],
+  "messages": [
+    "MERC-150407\tChromolith® CapRod® RP-18 endcapped HR 150-0.2 capillary column\tShow Pricing & Availability",
+    "Series: Chromolith®",
+    "Specifications: 尺寸: 150-0.2 | 相位: RP-18 | 其他: HR",
+    "Category: Show Pricing & Availability\tNULL\tNULL\tNULL\tNULL\tMerck Chromolith® CapRod® RP-18 endcapped HR 150-0.2 capillary column 是一款高性能液相色谱柱，适用于多种分析应用场景。",
+    "MERC-150799\tPurospher® RP-18 endcapped (5µm) LiChroCART® 125-3\tHPLC cartridge",
+    "Series: Purospher®",
+    "Specifications: 粒径: 5µm | 尺寸: 125-3 | 相位: RP-18",
+    "Category: HPLC Cartridge\tNULL\tNULL\tNULL\tNULL\tMerck Purospher® RP-18 endcapped (5µm) LiChroCART® 125-3 是一款高性能液相色谱柱，采用 5 µm 粒径填料，适用于多种分析应用场景。",
+    "MERC-150627\tPurospher® STAR RP-18 endcapped (5µm) LiChroCART® 100-4.6\tHPLC cartidge",
+    "Series: Purospher®",
+    "Specifications: 粒径: 5µm | 尺寸: 100-4.6 | 相位: RP-18 | 其他: STAR",
+    "Category: HPLC cartidge\tNULL\tNULL\tNULL\tNULL\tMerck Purospher® STAR RP-18 endcapped (5µm) LiChroCART® 100-4.6 是一款高性能液相色谱柱，采用 5 µm 粒径填料，适用于多种分析应用场景",
+    "MERC-151450\tChromolith® SpeedROD RP-18 endcapped 50-4.6 HPLC column\tShow Pricing & Availability",
+    "Series: Chromolith®",
+    "Specifications: 尺寸: 50-4.6 | 相位: RP-18 | 其他: HPLC",
+    "Category: Show Pricing & Availability\tNULL\tNULL\tNULL\tNULL\tMerck Chromolith® SpeedROD RP-18 endcapped 50-4.6 HPLC column 是一款高性能液相色谱柱，适用于多种分析应用场景。",
+    "MERC-116855\tSuperspher® 100 RP-18 endcapped LiChroCART® 125-4\tHPLC cartridge",
+    "Series: Superspher®",
+    "Specifications: 尺寸: 125-4 | 相位: RP-18 | 其他: 100",
+    "Category: HPLC Cartridge\tNULL\tNULL\tNULL\tNULL\tMerck Superspher® 100 RP-18 endcapped LiChroCART® 125-4 是一款高性能液相色谱柱，适用于多种分析应用场景。"
+  ],
+  "stdout": "productId\tname\tdescription\tparticleSize\tporeSize\tcolumnLength\tinnerDiameter\tdesc_preview\nMERC-150407\tChromolith® CapRod® RP-18 endcapped HR 150-0.2 capillary column\tShow Pricing & Availability\n\nSeries: Chromolith®\n\nSpecifications: 尺寸: 150-0.2 | 相位: RP-18 | 其他: HR\n\nCategory: Show Pricing & Availability\tNULL\tNULL\tNULL\tNULL\tMerck Chromolith® CapRod® RP-18 endcapped HR 150-0.2 capillary column 是一款高性能液相色谱柱，适用于多种分析应用场景。\nMERC-150799\tPurospher® RP-18 endcapped (5µm) LiChroCART® 125-3\tHPLC cartridge\n\nSeries: Purospher®\n\nSpecifications: 粒径: 5µm | 尺寸: 125-3 | 相位: RP-18\n\nCategory: HPLC Cartridge\tNULL\tNULL\tNULL\tNULL\tMerck Purospher® RP-18 endcapped (5µm) LiChroCART® 125-3 是一款高性能液相色谱柱，采用 5 µm 粒径填料，适用于多种分析应用场景。\nMERC-150627\tPurospher® STAR RP-18 endcapped (5µm) LiChroCART® 100-4.6\tHPLC cartidge\n\nSeries: Purospher®\n\nSpecifications: 粒径: 5µm | 尺寸: 100-4.6 | 相位: RP-18 | 其他: STAR\n\nCategory: HPLC cartidge\tNULL\tNULL\tNULL\tNULL\tMerck Purospher® STAR RP-18 endcapped (5µm) LiChroCART® 100-4.6 是一款高性能液相色谱柱，采用 5 µm 粒径填料，适用于多种分析应用场景\nMERC-151450\tChromolith® SpeedROD RP-18 endcapped 50-4.6 HPLC column\tShow Pricing & Availability\n\nSeries: Chromolith®\n\nSpecifications: 尺寸: 50-4.6 | 相位: RP-18 | 其他: HPLC\n\nCategory: Show Pricing & Availability\tNULL\tNULL\tNULL\tNULL\tMerck Chromolith® SpeedROD RP-18 endcapped 50-4.6 HPLC column 是一款高性能液相色谱柱，适用于多种分析应用场景。\nMERC-116855\tSuperspher® 100 RP-18 endcapped LiChroCART® 125-4\tHPLC cartridge\n\nSeries: Superspher®\n\nSpecifications: 尺寸: 125-4 | 相位: RP-18 | 其他: 100\n\nCategory: HPLC Cartridge\tNULL\tNULL\tNULL\tNULL\tMerck Superspher® 100 RP-18 endcapped LiChroCART® 125-4 是一款高性能液相色谱柱，适用于多种分析应用场景。\n",
+  "stderr": "",
+  "execution_time_ms": 1984
+}
