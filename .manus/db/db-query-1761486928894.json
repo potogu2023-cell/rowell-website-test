@@ -1,0 +1,70 @@
+{
+  "query": "SELECT productId, brand, name, imageUrl FROM products WHERE imageUrl IS NOT NULL AND imageUrl != '' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, brand, name, imageUrl FROM products WHERE imageUrl IS NOT NULL AND imageUrl != '' LIMIT 10;",
+  "rows": [
+    {
+      "productId": "ACE-Vial-ClearGlass-0.3ml-8mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 0.3mL 8mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-0.3ml-9mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 0.3mL 9mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-0.3ml-11mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 0.3mL 11mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-0.3ml-13mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 0.3mL 13mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-1.0ml-8mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 1.0mL 8mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-1.0ml-9mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 1.0mL 9mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-1.0ml-11mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 1.0mL 11mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-1.0ml-13mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 1.0mL 13mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-1.5ml-8mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 1.5mL 8mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    },
+    {
+      "productId": "ACE-Vial-ClearGlass-1.5ml-9mm",
+      "brand": "ACE",
+      "name": "Clear Glass Vial 1.5mL 9mm",
+      "imageUrl": "https://www.ace-hplc.com/images/products/vial-clear-glass.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tbrand\tname\timageUrl\nACE-Vial-ClearGlass-0.3ml-8mm\tACE\tClear Glass Vial 0.3mL 8mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-0.3ml-9mm\tACE\tClear Glass Vial 0.3mL 9mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-0.3ml-11mm\tACE\tClear Glass Vial 0.3mL 11mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-0.3ml-13mm\tACE\tClear Glass Vial 0.3mL 13mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-1.0ml-8mm\tACE\tClear Glass Vial 1.0mL 8mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-1.0ml-9mm\tACE\tClear Glass Vial 1.0mL 9mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-1.0ml-11mm\tACE\tClear Glass Vial 1.0mL 11mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-1.0ml-13mm\tACE\tClear Glass Vial 1.0mL 13mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-1.5ml-8mm\tACE\tClear Glass Vial 1.5mL 8mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\nACE-Vial-ClearGlass-1.5ml-9mm\tACE\tClear Glass Vial 1.5mL 9mm\thttps://www.ace-hplc.com/images/products/vial-clear-glass.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1642
+}

@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, partNumber, name, imageUrl FROM products LIMIT 5",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, partNumber, name, imageUrl FROM products LIMIT 5",
+  "rows": [
+    {
+      "id": "32551",
+      "partNumber": "00A-4251-A0",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "imageUrl": "https://www.phenomenex.com/lib/product-images/00a-4251-a0.jpg"
+    },
+    {
+      "id": "32552",
+      "partNumber": "00A-4251-B0",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "imageUrl": "https://www.phenomenex.com/lib/product-images/00a-4251-b0.jpg"
+    },
+    {
+      "id": "32553",
+      "partNumber": "00A-4251-Y0",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "imageUrl": "https://www.phenomenex.com/lib/product-images/00a-4251-y0.jpg"
+    },
+    {
+      "id": "32554",
+      "partNumber": "00A-4252-B0",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "imageUrl": "https://www.phenomenex.com/lib/product-images/00a-4252-b0.jpg"
+    },
+    {
+      "id": "32555",
+      "partNumber": "00A-4252-E0",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "imageUrl": "https://www.phenomenex.com/lib/product-images/00a-4252-e0.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tpartNumber\tname\timageUrl\n32551\t00A-4251-A0\tLuna 3 µm C18(2) 100 Å\thttps://www.phenomenex.com/lib/product-images/00a-4251-a0.jpg\n32552\t00A-4251-B0\tLuna 3 µm C18(2) 100 Å\thttps://www.phenomenex.com/lib/product-images/00a-4251-b0.jpg\n32553\t00A-4251-Y0\tLuna 3 µm C18(2) 100 Å\thttps://www.phenomenex.com/lib/product-images/00a-4251-y0.jpg\n32554\t00A-4252-B0\tLuna 5 µm C18(2) 100 Å\thttps://www.phenomenex.com/lib/product-images/00a-4252-b0.jpg\n32555\t00A-4252-E0\tLuna 5 µm C18(2) 100 Å\thttps://www.phenomenex.com/lib/product-images/00a-4252-e0.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1545
+}

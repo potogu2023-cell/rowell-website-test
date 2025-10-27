@@ -1,0 +1,70 @@
+{
+  "query": "SELECT productId, brand, name, imageUrl FROM products WHERE brand = 'ACE' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, brand, name, imageUrl FROM products WHERE brand = 'ACE' LIMIT 10;",
+  "rows": [
+    {
+      "productId": "ACE-76387-850",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Silica Silica, 5 µm, 1.0 mm x 50 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76387-852",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Silica Silica, 5 µm, 1.0 mm x 100 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76387-854",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Silica Silica, 5 µm, 1.0 mm x 150 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76388-012",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Silica Silica, 5 µm, 2.1 mm x 50 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76388-014",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Silica Silica, 5 µm, 2.1 mm x 100 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76388-016",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Silica Silica, 5 µm, 2.1 mm x 150 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76382-560",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Phenyl Phenyl, 3 µm, 2.1 mm x 50 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76382-562",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Phenyl Phenyl, 3 µm, 2.1 mm x 100 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76385-048",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Phenyl Phenyl, 3 µm, 3.0 mm x 50 mm",
+      "imageUrl": "NULL"
+    },
+    {
+      "productId": "ACE-76385-050",
+      "brand": "ACE",
+      "name": "Avantor® ACE® Phenyl Phenyl, 3 µm, 3.0 mm x 100 mm",
+      "imageUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tbrand\tname\timageUrl\nACE-76387-850\tACE\tAvantor® ACE® Silica Silica, 5 µm, 1.0 mm x 50 mm\tNULL\nACE-76387-852\tACE\tAvantor® ACE® Silica Silica, 5 µm, 1.0 mm x 100 mm\tNULL\nACE-76387-854\tACE\tAvantor® ACE® Silica Silica, 5 µm, 1.0 mm x 150 mm\tNULL\nACE-76388-012\tACE\tAvantor® ACE® Silica Silica, 5 µm, 2.1 mm x 50 mm\tNULL\nACE-76388-014\tACE\tAvantor® ACE® Silica Silica, 5 µm, 2.1 mm x 100 mm\tNULL\nACE-76388-016\tACE\tAvantor® ACE® Silica Silica, 5 µm, 2.1 mm x 150 mm\tNULL\nACE-76382-560\tACE\tAvantor® ACE® Phenyl Phenyl, 3 µm, 2.1 mm x 50 mm\tNULL\nACE-76382-562\tACE\tAvantor® ACE® Phenyl Phenyl, 3 µm, 2.1 mm x 100 mm\tNULL\nACE-76385-048\tACE\tAvantor® ACE® Phenyl Phenyl, 3 µm, 3.0 mm x 50 mm\tNULL\nACE-76385-050\tACE\tAvantor® ACE® Phenyl Phenyl, 3 µm, 3.0 mm x 100 mm\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1581
+}

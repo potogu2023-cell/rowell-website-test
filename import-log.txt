@@ -1,0 +1,38 @@
+开始导入修复后的图片URL...
+CSV文件: /home/ubuntu/product_details_update_fixed.csv
+CSV文件读取完成，共 5567 条记录
+
+开始更新数据库...
+进度: 500/5567 (9.0%)
+进度: 1000/5567 (18.0%)
+进度: 1500/5567 (26.9%)
+进度: 2000/5567 (35.9%)
+进度: 2500/5567 (44.9%)
+进度: 3000/5567 (53.9%)
+进度: 3500/5567 (62.9%)
+进度: 4000/5567 (71.9%)
+进度: 4500/5567 (80.8%)
+进度: 5000/5567 (89.8%)
+进度: 5500/5567 (98.8%)
+
+导入完成！
+成功: 5567
+失败: 0
+总计: 5567
+
+验证导入结果...
+数据库中总产品数: 5567
+有图片的产品: 5567 (100.0%)
+无图片的产品: 0 (0.0%)
+
+图片URL分布（前10个）:
+  2429 (43.6%) - https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_...
+  862 (15.5%) - https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_...
+  659 (11.8%) - https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_...
+  631 (11.3%) - https://www.waters.com/webassets/cms/library/images/products/hplc-column-gene...
+  268 (4.8%) - https://www.agilent.com/cs/library/catalog/Public/ZORBAX-Column.jpg
+  165 (3.0%) - https://www.agilent.com/cs/library/catalog/Public/HPLC-Column-Generic.jpg
+  145 (2.6%) - https://www.waters.com/webassets/cms/library/images/products/acquity-uplc-col...
+  96 (1.7%) - https://www.agilent.com/cs/library/catalog/Public/Poroshell-120-Column.jpg
+  89 (1.6%) - https://www.waters.com/webassets/cms/library/images/products/xbridge-column.jpg
+  43 (0.8%) - https://www.waters.com/webassets/cms/library/images/products/symmetry-column.jpg

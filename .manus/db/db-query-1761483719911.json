@@ -1,0 +1,58 @@
+{
+  "query": "SELECT DISTINCT brand FROM products ORDER BY brand;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT DISTINCT brand FROM products ORDER BY brand;",
+  "rows": [
+    {
+      "brand": "ACE"
+    },
+    {
+      "brand": "Agilent"
+    },
+    {
+      "brand": "Avantor"
+    },
+    {
+      "brand": "Daicel"
+    },
+    {
+      "brand": "Develosil"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)"
+    },
+    {
+      "brand": "Dikma"
+    },
+    {
+      "brand": "Merck"
+    },
+    {
+      "brand": "Phenomenex"
+    },
+    {
+      "brand": "Shimadzu"
+    },
+    {
+      "brand": "TCI"
+    },
+    {
+      "brand": "TSKgel"
+    },
+    {
+      "brand": "Thermo Fisher Scientific"
+    },
+    {
+      "brand": "Tosoh"
+    },
+    {
+      "brand": "Waters"
+    },
+    {
+      "brand": "YMC"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\nACE\nAgilent\nAvantor\nDaicel\nDevelosil\nDevelosil (Nomura Chemical)\nDikma\nMerck\nPhenomenex\nShimadzu\nTCI\nTSKgel\nThermo Fisher Scientific\nTosoh\nWaters\nYMC\n",
+  "stderr": "",
+  "execution_time_ms": 1592
+}
