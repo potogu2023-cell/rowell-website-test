@@ -1,0 +1,160 @@
+{
+  "query": "\nSELECT \n  c.name as category,\n  COUNT(DISTINCT p.id) as product_count,\n  p.imageUrl as sample_image_url\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE pc.isPrimary = 1\nGROUP BY c.name, p.imageUrl\nORDER BY c.name, COUNT(p.id) DESC\nLIMIT 30;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.name as category,\n  COUNT(DISTINCT p.id) as product_count,\n  p.imageUrl as sample_image_url\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE pc.isPrimary = 1\nGROUP BY c.name, p.imageUrl\nORDER BY c.name, COUNT(p.id) DESC\nLIMIT 30;\n",
+  "rows": [
+    {
+      "category": "HPLC Columns",
+      "product_count": "826",
+      "sample_image_url": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "188",
+      "sample_image_url": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_100mm.png"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "99",
+      "sample_image_url": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_30mm.png"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "54",
+      "sample_image_url": "https://www.agilent.com/cs/library/catalog/Public/ZORBAX-Column.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "26",
+      "sample_image_url": "https://www.waters.com/webassets/cms/library/images/products/hplc-column-generic.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "17",
+      "sample_image_url": "https://www.waters.com/webassets/cms/library/images/products/xbridge-column.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "7",
+      "sample_image_url": "https://www.waters.com/webassets/cms/library/images/products/symmetry-column.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "2",
+      "sample_image_url": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_50mm.png"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-supersw2000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-sw3000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-sw4000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-octyl80ts.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-swxl3000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-phenylnpr.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-supersw3000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-upsw3000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-swxl4000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-superods.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-ods100v-c18.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-ods100z-c18.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-ods80tm-c18.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-ods120t-c18.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-ods140htp-c18.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-sw2000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-swxl2000.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-phenyl5pw.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-butylnpr.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-superswmab.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-ethernpr.jpg"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1",
+      "sample_image_url": "https://www.tosohbioscience.com/images/products/tsk-deae5pw.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "category\tproduct_count\tsample_image_url\nHPLC Columns\t826\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\nHPLC Columns\t188\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_100mm.png\nHPLC Columns\t99\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_30mm.png\nHPLC Columns\t54\thttps://www.agilent.com/cs/library/catalog/Public/ZORBAX-Column.jpg\nHPLC Columns\t26\thttps://www.waters.com/webassets/cms/library/images/products/hplc-column-generic.jpg\nHPLC Columns\t17\thttps://www.waters.com/webassets/cms/library/images/products/xbridge-column.jpg\nHPLC Columns\t7\thttps://www.waters.com/webassets/cms/library/images/products/symmetry-column.jpg\nHPLC Columns\t2\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_50mm.png\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-supersw2000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-sw3000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-sw4000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-octyl80ts.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-swxl3000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-phenylnpr.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-supersw3000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-upsw3000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-swxl4000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-superods.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-ods100v-c18.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-ods100z-c18.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-ods80tm-c18.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-ods120t-c18.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-ods140htp-c18.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-sw2000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-swxl2000.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-phenyl5pw.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-butylnpr.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-superswmab.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-ethernpr.jpg\nHPLC Columns\t1\thttps://www.tosohbioscience.com/images/products/tsk-deae5pw.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1571
+}

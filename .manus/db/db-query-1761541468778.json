@@ -1,0 +1,20 @@
+{
+  "query": "\nSELECT \n  c.name as category,\n  COUNT(DISTINCT p.id) as product_count,\n  ROUND(COUNT(DISTINCT p.id) * 100.0 / (SELECT COUNT(*) FROM products), 2) as percentage\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId AND pc.isPrimary = 1\nLEFT JOIN categories c ON pc.categoryId = c.id\nGROUP BY c.name\nORDER BY product_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.name as category,\n  COUNT(DISTINCT p.id) as product_count,\n  ROUND(COUNT(DISTINCT p.id) * 100.0 / (SELECT COUNT(*) FROM products), 2) as percentage\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId AND pc.isPrimary = 1\nLEFT JOIN categories c ON pc.categoryId = c.id\nGROUP BY c.name\nORDER BY product_count DESC;\n",
+  "rows": [
+    {
+      "category": "NULL",
+      "product_count": "4248",
+      "percentage": "76.31"
+    },
+    {
+      "category": "HPLC Columns",
+      "product_count": "1319",
+      "percentage": "23.69"
+    }
+  ],
+  "messages": [],
+  "stdout": "category\tproduct_count\tpercentage\nNULL\t4248\t76.31\nHPLC Columns\t1319\t23.69\n",
+  "stderr": "",
+  "execution_time_ms": 1562
+}

@@ -23,17 +23,33 @@ export default function Products() {
   const pageSize = 24;
   const { isAuthenticated } = useAuth();
 
+  // Get all categories
+  const { data: categoriesData } = trpc.category.getAll.useQuery();
+  const categories = categoriesData || [];
+
   // Read category from URL parameters on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const categoryParam = params.get('category');
-    if (categoryParam) {
+    if (categoryParam && categories.length > 0) {
+      // Try to parse as number first (for backward compatibility)
       const categoryId = parseInt(categoryParam, 10);
       if (!isNaN(categoryId)) {
         setSelectedCategoryId(categoryId);
+        const category = categories.find((c: any) => c.id === categoryId);
+        if (category) {
+          setSelectedCategoryName(category.name);
+        }
+      } else {
+        // Try to find by slug
+        const category = categories.find((c: any) => c.slug === categoryParam);
+        if (category) {
+          setSelectedCategoryId(category.id);
+          setSelectedCategoryName(category.name);
+        }
       }
     }
-  }, []);
+  }, [categories]);
 
   const queryParams = {
     categoryId: selectedCategoryId || undefined,

@@ -1,0 +1,15 @@
+{
+  "query": "\nSELECT \n  COUNT(*) as total_products,\n  COUNT(DISTINCT CASE WHEN pc.productId IS NOT NULL THEN p.id END) as products_with_category,\n  COUNT(DISTINCT CASE WHEN pc.productId IS NULL THEN p.id END) as products_without_category\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  COUNT(*) as total_products,\n  COUNT(DISTINCT CASE WHEN pc.productId IS NOT NULL THEN p.id END) as products_with_category,\n  COUNT(DISTINCT CASE WHEN pc.productId IS NULL THEN p.id END) as products_without_category\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId;\n",
+  "rows": [
+    {
+      "total_products": "6888",
+      "products_with_category": "5565",
+      "products_without_category": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\tproducts_with_category\tproducts_without_category\n6888\t5565\t2\n",
+  "stderr": "",
+  "execution_time_ms": 1553
+}
