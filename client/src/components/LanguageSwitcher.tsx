@@ -8,11 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Globe } from "lucide-react";
 
-const languages = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'zh', name: '中文', flag: '🇨🇳' },
-  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-];
+import { languages } from '@/i18n/config';
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();

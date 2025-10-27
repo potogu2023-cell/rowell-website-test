@@ -1,6 +1,9 @@
 import { Toaster } from "@/components/ui/sonner";
 import './i18n/config'; // Initialize i18n
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
+import { getLanguageDir } from './i18n/config';
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -27,6 +30,15 @@ import ProductDetail from "./pages/ProductDetail";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 function Router() {
+  const { i18n } = useTranslation();
+
+  // Update document direction when language changes
+  useEffect(() => {
+    const dir = getLanguageDir(i18n.language);
+    document.documentElement.dir = dir;
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
