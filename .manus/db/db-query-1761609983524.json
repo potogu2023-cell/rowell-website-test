@@ -1,0 +1,70 @@
+{
+  "query": "SELECT id, partNumber, name, brand FROM products WHERE name LIKE '%GC%' OR name LIKE '%Gas Chromatography%' LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, partNumber, name, brand FROM products WHERE name LIKE '%GC%' OR name LIKE '%Gas Chromatography%' LIMIT 10",
+  "rows": [
+    {
+      "id": "90001",
+      "partNumber": "ZB-1MS-30-0.25",
+      "name": "Zebron ZB-1MS GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90002",
+      "partNumber": "ZB-5MS-30-0.25",
+      "name": "Zebron ZB-5MS GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90003",
+      "partNumber": "ZB-WAX-30-0.25",
+      "name": "Zebron ZB-WAX GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90004",
+      "partNumber": "ZB-624-30-0.25",
+      "name": "Zebron ZB-624 GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90005",
+      "partNumber": "ZB-FFAP-30-0.25",
+      "name": "Zebron ZB-FFAP GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90006",
+      "partNumber": "ZB-1701-30-0.25",
+      "name": "Zebron ZB-1701 GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90007",
+      "partNumber": "ZB-5MSplus-30-0.25",
+      "name": "Zebron ZB-5MSplus GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90008",
+      "partNumber": "ZB-WAXplus-30-0.25",
+      "name": "Zebron ZB-WAXplus GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90009",
+      "partNumber": "ZB-1HT-30-0.25",
+      "name": "Zebron ZB-1HT Inferno GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90010",
+      "partNumber": "ZB-35-30-0.25",
+      "name": "Zebron ZB-35 GC Column 30m x 0.25mm",
+      "brand": "Phenomenex"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tpartNumber\tname\tbrand\n90001\tZB-1MS-30-0.25\tZebron ZB-1MS GC Column 30m x 0.25mm\tPhenomenex\n90002\tZB-5MS-30-0.25\tZebron ZB-5MS GC Column 30m x 0.25mm\tPhenomenex\n90003\tZB-WAX-30-0.25\tZebron ZB-WAX GC Column 30m x 0.25mm\tPhenomenex\n90004\tZB-624-30-0.25\tZebron ZB-624 GC Column 30m x 0.25mm\tPhenomenex\n90005\tZB-FFAP-30-0.25\tZebron ZB-FFAP GC Column 30m x 0.25mm\tPhenomenex\n90006\tZB-1701-30-0.25\tZebron ZB-1701 GC Column 30m x 0.25mm\tPhenomenex\n90007\tZB-5MSplus-30-0.25\tZebron ZB-5MSplus GC Column 30m x 0.25mm\tPhenomenex\n90008\tZB-WAXplus-30-0.25\tZebron ZB-WAXplus GC Column 30m x 0.25mm\tPhenomenex\n90009\tZB-1HT-30-0.25\tZebron ZB-1HT Inferno GC Column 30m x 0.25mm\tPhenomenex\n90010\tZB-35-30-0.25\tZebron ZB-35 GC Column 30m x 0.25mm\tPhenomenex\n",
+  "stderr": "",
+  "execution_time_ms": 1875
+}

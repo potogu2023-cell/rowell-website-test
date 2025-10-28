@@ -1,0 +1,94 @@
+{
+  "query": "\nSELECT DISTINCT brand, COUNT(*) as productCount\nFROM products\nGROUP BY brand\nORDER BY productCount DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT DISTINCT brand, COUNT(*) as productCount\nFROM products\nGROUP BY brand\nORDER BY productCount DESC;\n",
+  "rows": [
+    {
+      "brand": "Phenomenex",
+      "productCount": "1166"
+    },
+    {
+      "brand": "Waters",
+      "productCount": "1085"
+    },
+    {
+      "brand": "Agilent",
+      "productCount": "998"
+    },
+    {
+      "brand": "YMC",
+      "productCount": "661"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "productCount": "655"
+    },
+    {
+      "brand": "Shimadzu",
+      "productCount": "513"
+    },
+    {
+      "brand": "Dikma",
+      "productCount": "282"
+    },
+    {
+      "brand": "Merck",
+      "productCount": "248"
+    },
+    {
+      "brand": "TSKgel",
+      "productCount": "238"
+    },
+    {
+      "brand": "ACE",
+      "productCount": "209"
+    },
+    {
+      "brand": "Develosil",
+      "productCount": "192"
+    },
+    {
+      "brand": "Daicel",
+      "productCount": "157"
+    },
+    {
+      "brand": "TCI",
+      "productCount": "155"
+    },
+    {
+      "brand": "Avantor",
+      "productCount": "155"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "productCount": "150"
+    },
+    {
+      "brand": "Tosoh",
+      "productCount": "143"
+    },
+    {
+      "brand": "Restek",
+      "productCount": "100"
+    },
+    {
+      "brand": "Sartorius",
+      "productCount": "40"
+    },
+    {
+      "brand": "Whatman",
+      "productCount": "40"
+    },
+    {
+      "brand": "Pall",
+      "productCount": "40"
+    },
+    {
+      "brand": "Millipore",
+      "productCount": "40"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tproductCount\nPhenomenex\t1166\nWaters\t1085\nAgilent\t998\nYMC\t661\nThermo Fisher Scientific\t655\nShimadzu\t513\nDikma\t282\nMerck\t248\nTSKgel\t238\nACE\t209\nDevelosil\t192\nDaicel\t157\nTCI\t155\nAvantor\t155\nDevelosil (Nomura Chemical)\t150\nTosoh\t143\nRestek\t100\nSartorius\t40\nWhatman\t40\nPall\t40\nMillipore\t40\n",
+  "stderr": "",
+  "execution_time_ms": 1633
+}

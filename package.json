@@ -48,6 +48,7 @@
     "@trpc/server": "^11.6.0",
     "@types/pdfkit": "^0.17.3",
     "axios": "^1.12.0",
+    "better-sqlite3": "^12.4.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -123,7 +124,8 @@
       "tailwindcss>nanoid": "3.3.7"
     },
     "onlyBuiltDependencies": [
-      "bcrypt"
+      "bcrypt",
+      "better-sqlite3"
     ]
   }
 }

@@ -1,0 +1,130 @@
+{
+  "query": "\nSELECT \n  c.name as categoryName,\n  COUNT(DISTINCT p.imageUrl) as uniqueImageUrls,\n  COUNT(p.id) as totalProducts,\n  p.imageUrl as sampleImageUrl\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE c.slug IN ('gc-columns', 'guard-columns', 'spe-cartridges', 'filtration', 'chromatography-supplies')\nGROUP BY c.name, p.imageUrl\nLIMIT 20;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.name as categoryName,\n  COUNT(DISTINCT p.imageUrl) as uniqueImageUrls,\n  COUNT(p.id) as totalProducts,\n  p.imageUrl as sampleImageUrl\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE c.slug IN ('gc-columns', 'guard-columns', 'spe-cartridges', 'filtration', 'chromatography-supplies')\nGROUP BY c.name, p.imageUrl\nLIMIT 20;\n",
+  "rows": [
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "10",
+      "sampleImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_30mm.png"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "5",
+      "sampleImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_100mm.png"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "48",
+      "sampleImageUrl": "https://www.waters.com/webassets/cms/library/images/products/hplc-column-generic.jpg"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "39",
+      "sampleImageUrl": "https://www.agilent.com/cs/library/catalog/Public/HPLC-Column-Generic.jpg"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "174",
+      "sampleImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "5",
+      "sampleImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_100mm.png"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "2",
+      "sampleImageUrl": "https://www.waters.com/webassets/cms/library/images/products/hplc-column-generic.jpg"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "3",
+      "sampleImageUrl": "https://www.agilent.com/cs/library/catalog/Public/HPLC-Column-Generic.jpg"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "140",
+      "sampleImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.phenomenex.com/images/gc-column.jpg"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.restek.com/images/gc-column.jpg"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.thermofisherscientific.com/images/gc-column.jpg"
+    },
+    {
+      "categoryName": "GC Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.shimadzu.com/images/gc-column.jpg"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "75",
+      "sampleImageUrl": "https://www.waters.com/images/guard-column.jpg"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "75",
+      "sampleImageUrl": "https://www.phenomenex.com/images/guard-column.jpg"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "75",
+      "sampleImageUrl": "https://www.agilent.com/images/guard-column.jpg"
+    },
+    {
+      "categoryName": "Guard Columns",
+      "uniqueImageUrls": "1",
+      "totalProducts": "75",
+      "sampleImageUrl": "https://www.thermofisherscientific.com/images/guard-column.jpg"
+    },
+    {
+      "categoryName": "SPE Cartridges",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.waters.com/images/spe-cartridge.jpg"
+    },
+    {
+      "categoryName": "SPE Cartridges",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.phenomenex.com/images/spe-cartridge.jpg"
+    },
+    {
+      "categoryName": "SPE Cartridges",
+      "uniqueImageUrls": "1",
+      "totalProducts": "100",
+      "sampleImageUrl": "https://www.agilent.com/images/spe-cartridge.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "categoryName\tuniqueImageUrls\ttotalProducts\tsampleImageUrl\nGC Columns\t1\t10\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_30mm.png\nGC Columns\t1\t5\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_100mm.png\nGC Columns\t1\t48\thttps://www.waters.com/webassets/cms/library/images/products/hplc-column-generic.jpg\nGC Columns\t1\t39\thttps://www.agilent.com/cs/library/catalog/Public/HPLC-Column-Generic.jpg\nGC Columns\t1\t174\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\nGuard Columns\t1\t5\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_horiz_100mm.png\nGuard Columns\t1\t2\thttps://www.waters.com/webassets/cms/library/images/products/hplc-column-generic.jpg\nGuard Columns\t1\t3\thttps://www.agilent.com/cs/library/catalog/Public/HPLC-Column-Generic.jpg\nGuard Columns\t1\t140\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\nGC Columns\t1\t100\thttps://www.phenomenex.com/images/gc-column.jpg\nGC Columns\t1\t100\thttps://www.restek.com/images/gc-column.jpg\nGC Columns\t1\t100\thttps://www.thermofisherscientific.com/images/gc-column.jpg\nGC Columns\t1\t100\thttps://www.shimadzu.com/images/gc-column.jpg\nGuard Columns\t1\t75\thttps://www.waters.com/images/guard-column.jpg\nGuard Columns\t1\t75\thttps://www.phenomenex.com/images/guard-column.jpg\nGuard Columns\t1\t75\thttps://www.agilent.com/images/guard-column.jpg\nGuard Columns\t1\t75\thttps://www.thermofisherscientific.com/images/guard-column.jpg\nSPE Cartridges\t1\t100\thttps://www.waters.com/images/spe-cartridge.jpg\nSPE Cartridges\t1\t100\thttps://www.phenomenex.com/images/spe-cartridge.jpg\nSPE Cartridges\t1\t100\thttps://www.agilent.com/images/spe-cartridge.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1707
+}

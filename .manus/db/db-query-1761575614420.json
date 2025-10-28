@@ -1,0 +1,130 @@
+{
+  "query": "\nSELECT \n  p.partNumber as productId,\n  p.partNumber,\n  p.brand,\n  COALESCE(p.imageUrl, '') as currentImageUrl\nFROM products p\nORDER BY p.brand, p.partNumber\nLIMIT 20;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  p.partNumber as productId,\n  p.partNumber,\n  p.brand,\n  COALESCE(p.imageUrl, '') as currentImageUrl\nFROM products p\nORDER BY p.brand, p.partNumber\nLIMIT 20;\n",
+  "rows": [
+    {
+      "productId": "76380-012",
+      "partNumber": "76380-012",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76380-014",
+      "partNumber": "76380-014",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76380-016",
+      "partNumber": "76380-016",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76380-022",
+      "partNumber": "76380-022",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76380-024",
+      "partNumber": "76380-024",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76380-026",
+      "partNumber": "76380-026",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-532",
+      "partNumber": "76382-532",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-534",
+      "partNumber": "76382-534",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-536",
+      "partNumber": "76382-536",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-538",
+      "partNumber": "76382-538",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-540",
+      "partNumber": "76382-540",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-542",
+      "partNumber": "76382-542",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-544",
+      "partNumber": "76382-544",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-546",
+      "partNumber": "76382-546",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-548",
+      "partNumber": "76382-548",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-550",
+      "partNumber": "76382-550",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-552",
+      "partNumber": "76382-552",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-554",
+      "partNumber": "76382-554",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-556",
+      "partNumber": "76382-556",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    },
+    {
+      "productId": "76382-558",
+      "partNumber": "76382-558",
+      "brand": "ACE",
+      "currentImageUrl": "https://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tbrand\tcurrentImageUrl\n76380-012\t76380-012\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76380-014\t76380-014\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76380-016\t76380-016\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76380-022\t76380-022\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76380-024\t76380-024\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76380-026\t76380-026\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-532\t76382-532\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-534\t76382-534\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-536\t76382-536\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-538\t76382-538\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-540\t76382-540\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-542\t76382-542\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-544\t76382-544\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-546\t76382-546\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-548\t76382-548\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-550\t76382-550\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-552\t76382-552\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-554\t76382-554\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-556\t76382-556\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n76382-558\t76382-558\tACE\thttps://www.phenomenex.com/-/jssmedia/phxjss/data/media/images/order/Premium_250mm.png\n",
+  "stderr": "",
+  "execution_time_ms": 1553
+}
