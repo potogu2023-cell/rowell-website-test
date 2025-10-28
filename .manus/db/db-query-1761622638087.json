@@ -1,0 +1,16 @@
+{
+  "query": "\nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.slug = 'vials-caps'\nGROUP BY c.id, c.name, c.slug;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.slug = 'vials-caps'\nGROUP BY c.id, c.name, c.slug;\n",
+  "rows": [
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps",
+      "product_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tproduct_count\n21\tVials & Caps\tvials-caps\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1600
+}

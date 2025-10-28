@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { ChevronDown, ChevronRight } from "lucide-react";
 
@@ -23,6 +24,7 @@ interface CategoryNavProps {
 }
 
 export default function CategoryNav({ onCategorySelect, selectedCategoryId }: CategoryNavProps) {
+  const [, setLocation] = useLocation();
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开"色谱柱"
   
   const { data: topCategories, isLoading } = trpc.category.getTopLevel.useQuery();
@@ -76,9 +78,14 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
             if (hasChildren) {
               toggleCategory(category.id);
             }
-            // 如果是叶子节点，触发选择事件
-            if (!hasChildren && onCategorySelect) {
-              onCategorySelect(category.id, category.name);
+            // 如果是叶子节点，更新URL并触发选择事件
+            if (!hasChildren) {
+              // 更新URL参数
+              setLocation(`/products?category=${category.slug}`);
+              // 同时触发回调（如果有）
+              if (onCategorySelect) {
+                onCategorySelect(category.id, category.name);
+              }
             }
             e.stopPropagation();
           }}
