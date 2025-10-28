@@ -1,0 +1,24 @@
+{
+  "query": "SELECT \n  p.id,\n  p.productId,\n  p.partNumber,\n  p.brand,\n  p.name\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nLIMIT 30;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.id,\n  p.productId,\n  p.partNumber,\n  p.brand,\n  p.name\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nLIMIT 30;",
+  "rows": [
+    {
+      "id": "90021",
+      "productId": "AGIL-19095N-123",
+      "partNumber": "19095N-123",
+      "brand": "Agilent",
+      "name": "Agilent HP-INNOWAX GC Column 30m x 0.25mm"
+    },
+    {
+      "id": "90037",
+      "productId": "THER-TraceGOLD-TG-5MS-30",
+      "partNumber": "TraceGOLD-TG-5MS-30",
+      "brand": "Thermo Fisher Scientific",
+      "name": "Thermo TraceGOLD TG-5MS GC Column 30m x 0.25mm"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tproductId\tpartNumber\tbrand\tname\n90021\tAGIL-19095N-123\t19095N-123\tAgilent\tAgilent HP-INNOWAX GC Column 30m x 0.25mm\n90037\tTHER-TraceGOLD-TG-5MS-30\tTraceGOLD-TG-5MS-30\tThermo Fisher Scientific\tThermo TraceGOLD TG-5MS GC Column 30m x 0.25mm\n",
+  "stderr": "",
+  "execution_time_ms": 1581
+}

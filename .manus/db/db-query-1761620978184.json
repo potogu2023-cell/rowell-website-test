@@ -1,0 +1,42 @@
+{
+  "query": "SELECT \n  CASE \n    WHEN name LIKE '%Vial%' OR name LIKE '%vial%' THEN 'Vials'\n    WHEN name LIKE '%Cap%' OR name LIKE '%cap%' THEN 'Caps'\n    WHEN name LIKE '%Filter%' OR name LIKE '%filter%' THEN 'Filters'\n    WHEN name LIKE '%SPE%' OR name LIKE '%Cartridge%' THEN 'SPE'\n    WHEN name LIKE '%GC%' OR name LIKE '%Gas Chromatography%' THEN 'GC'\n    WHEN name LIKE '%Guard%' THEN 'Guard'\n    WHEN name LIKE '%Column%' OR name LIKE '%column%' THEN 'Columns'\n    ELSE 'Other'\n  END as product_category,\n  COUNT(*) as count\nFROM products\nGROUP BY product_category\nORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  CASE \n    WHEN name LIKE '%Vial%' OR name LIKE '%vial%' THEN 'Vials'\n    WHEN name LIKE '%Cap%' OR name LIKE '%cap%' THEN 'Caps'\n    WHEN name LIKE '%Filter%' OR name LIKE '%filter%' THEN 'Filters'\n    WHEN name LIKE '%SPE%' OR name LIKE '%Cartridge%' THEN 'SPE'\n    WHEN name LIKE '%GC%' OR name LIKE '%Gas Chromatography%' THEN 'GC'\n    WHEN name LIKE '%Guard%' THEN 'Guard'\n    WHEN name LIKE '%Column%' OR name LIKE '%column%' THEN 'Columns'\n    ELSE 'Other'\n  END as product_category,\n  COUNT(*) as count\nFROM products\nGROUP BY product_category\nORDER BY count DESC;",
+  "rows": [
+    {
+      "product_category": "Other",
+      "count": "3407"
+    },
+    {
+      "product_category": "SPE",
+      "count": "805"
+    },
+    {
+      "product_category": "GC",
+      "count": "776"
+    },
+    {
+      "product_category": "Filters",
+      "count": "767"
+    },
+    {
+      "product_category": "Caps",
+      "count": "654"
+    },
+    {
+      "product_category": "Vials",
+      "count": "389"
+    },
+    {
+      "product_category": "Guard",
+      "count": "362"
+    },
+    {
+      "product_category": "Columns",
+      "count": "107"
+    }
+  ],
+  "messages": [],
+  "stdout": "product_category\tcount\nOther\t3407\nSPE\t805\nGC\t776\nFilters\t767\nCaps\t654\nVials\t389\nGuard\t362\nColumns\t107\n",
+  "stderr": "",
+  "execution_time_ms": 1528
+}

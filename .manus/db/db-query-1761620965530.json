@@ -1,0 +1,15 @@
+{
+  "query": "SELECT \n  (SELECT COUNT(*) FROM products) as total_products,\n  (SELECT COUNT(DISTINCT productId) FROM product_categories) as mapped_products,\n  (SELECT COUNT(*) FROM product_categories) as total_mappings;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  (SELECT COUNT(*) FROM products) as total_products,\n  (SELECT COUNT(DISTINCT productId) FROM product_categories) as mapped_products,\n  (SELECT COUNT(*) FROM product_categories) as total_mappings;",
+  "rows": [
+    {
+      "total_products": "7267",
+      "mapped_products": "7265",
+      "total_mappings": "8586"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\tmapped_products\ttotal_mappings\n7267\t7265\t8586\n",
+  "stderr": "",
+  "execution_time_ms": 1533
+}
