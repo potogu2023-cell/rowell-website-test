@@ -1,0 +1,150 @@
+{
+  "query": "\nSELECT * FROM product_categories LIMIT 20;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT * FROM product_categories LIMIT 20;\n",
+  "rows": [
+    {
+      "id": "1",
+      "productId": "33623",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:16"
+    },
+    {
+      "id": "2",
+      "productId": "33624",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:17"
+    },
+    {
+      "id": "3",
+      "productId": "33625",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:17"
+    },
+    {
+      "id": "4",
+      "productId": "33626",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:17"
+    },
+    {
+      "id": "5",
+      "productId": "33627",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:17"
+    },
+    {
+      "id": "6",
+      "productId": "33628",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:18"
+    },
+    {
+      "id": "7",
+      "productId": "33635",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:18"
+    },
+    {
+      "id": "8",
+      "productId": "33636",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:18"
+    },
+    {
+      "id": "9",
+      "productId": "33637",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:18"
+    },
+    {
+      "id": "10",
+      "productId": "33638",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:18"
+    },
+    {
+      "id": "11",
+      "productId": "33639",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:19"
+    },
+    {
+      "id": "12",
+      "productId": "33640",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:19"
+    },
+    {
+      "id": "13",
+      "productId": "33653",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:19"
+    },
+    {
+      "id": "14",
+      "productId": "33654",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:19"
+    },
+    {
+      "id": "15",
+      "productId": "33655",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:20"
+    },
+    {
+      "id": "16",
+      "productId": "33656",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:20"
+    },
+    {
+      "id": "17",
+      "productId": "33657",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:20"
+    },
+    {
+      "id": "18",
+      "productId": "33658",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:20"
+    },
+    {
+      "id": "19",
+      "productId": "33659",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:21"
+    },
+    {
+      "id": "20",
+      "productId": "33660",
+      "categoryId": "11",
+      "isPrimary": "1",
+      "createdAt": "2025-10-26 02:55:21"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tproductId\tcategoryId\tisPrimary\tcreatedAt\n1\t33623\t11\t1\t2025-10-26 02:55:16\n2\t33624\t11\t1\t2025-10-26 02:55:17\n3\t33625\t11\t1\t2025-10-26 02:55:17\n4\t33626\t11\t1\t2025-10-26 02:55:17\n5\t33627\t11\t1\t2025-10-26 02:55:17\n6\t33628\t11\t1\t2025-10-26 02:55:18\n7\t33635\t11\t1\t2025-10-26 02:55:18\n8\t33636\t11\t1\t2025-10-26 02:55:18\n9\t33637\t11\t1\t2025-10-26 02:55:18\n10\t33638\t11\t1\t2025-10-26 02:55:18\n11\t33639\t11\t1\t2025-10-26 02:55:19\n12\t33640\t11\t1\t2025-10-26 02:55:19\n13\t33653\t11\t1\t2025-10-26 02:55:19\n14\t33654\t11\t1\t2025-10-26 02:55:19\n15\t33655\t11\t1\t2025-10-26 02:55:20\n16\t33656\t11\t1\t2025-10-26 02:55:20\n17\t33657\t11\t1\t2025-10-26 02:55:20\n18\t33658\t11\t1\t2025-10-26 02:55:20\n19\t33659\t11\t1\t2025-10-26 02:55:21\n20\t33660\t11\t1\t2025-10-26 02:55:21\n",
+  "stderr": "",
+  "execution_time_ms": 1541
+}

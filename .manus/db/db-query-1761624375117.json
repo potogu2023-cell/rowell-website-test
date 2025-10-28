@@ -1,0 +1,9 @@
+{
+  "query": "\nINSERT INTO product_categories (productId, categoryId, isPrimary)\nSELECT DISTINCT p.id, 13, 1\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nAND (\n  p.name LIKE '%Vial%' OR\n  p.name LIKE '%vial%' OR\n  p.name LIKE '%Cap%' OR\n  p.name LIKE '%cap%' OR\n  p.name LIKE '%Septa%' OR\n  p.name LIKE '%septa%'\n);\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nINSERT INTO product_categories (productId, categoryId, isPrimary)\nSELECT DISTINCT p.id, 13, 1\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nAND (\n  p.name LIKE '%Vial%' OR\n  p.name LIKE '%vial%' OR\n  p.name LIKE '%Cap%' OR\n  p.name LIKE '%cap%' OR\n  p.name LIKE '%Septa%' OR\n  p.name LIKE '%septa%'\n);\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1551
+}

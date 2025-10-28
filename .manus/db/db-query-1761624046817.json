@@ -1,0 +1,58 @@
+{
+  "query": "\nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nGROUP BY c.id, c.name, c.slug\nHAVING product_count > 0\nORDER BY product_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nGROUP BY c.id, c.name, c.slug\nHAVING product_count > 0\nORDER BY product_count DESC;\n",
+  "rows": [
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "slug": "hplc-columns",
+      "product_count": "2102"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "product_count": "1319"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges",
+      "product_count": "1110"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "product_count": "1109"
+    },
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns",
+      "product_count": "902"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration",
+      "product_count": "818"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "product_count": "776"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "product_count": "450"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tproduct_count\n11\tHPLC Columns\thplc-columns\t2102\n111\tAnalytical Columns\tanalytical-columns\t1319\n31\tSPE Cartridges\tspe-cartridges\t1110\n2\tChromatography Supplies\tchromatography-supplies\t1109\n1\tChromatography Columns\tchromatography-columns\t902\n4\tFiltration\tfiltration\t818\n12\tGC Columns\tgc-columns\t776\n13\tGuard Columns\tguard-columns\t450\n",
+  "stderr": "",
+  "execution_time_ms": 1575
+}

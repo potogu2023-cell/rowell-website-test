@@ -1,0 +1,45 @@
+{
+  "query": "\nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  c.parentId,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.id IN (2, 3, 4, 5, 13, 14, 15, 16, 17, 18, 20)\nGROUP BY c.id, c.name, c.slug, c.parentId\nORDER BY c.id;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  c.parentId,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.id IN (2, 3, 4, 5, 13, 14, 15, 16, 17, 18, 20)\nGROUP BY c.id, c.name, c.slug, c.parentId\nORDER BY c.id;\n",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "parentId": "NULL",
+      "product_count": "1109"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "slug": "sample-preparation",
+      "parentId": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration",
+      "parentId": "NULL",
+      "product_count": "818"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "slug": "lab-supplies",
+      "parentId": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "parentId": "1",
+      "product_count": "450"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\tproduct_count\n2\tChromatography Supplies\tchromatography-supplies\tNULL\t1109\n3\tSample Preparation\tsample-preparation\tNULL\t0\n4\tFiltration\tfiltration\tNULL\t818\n5\tLab Supplies\tlab-supplies\tNULL\t0\n13\tGuard Columns\tguard-columns\t1\t450\n",
+  "stderr": "",
+  "execution_time_ms": 1718
+}

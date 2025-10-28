@@ -668,3 +668,24 @@ ROWELL HPLC测试网站是一个专业的色谱产品展示和询价平台，目
 - 需要优化产品分类映射，将产品分配到更具体的子分类
 **实际时间**: 30分钟
 
+
+
+
+### 21. 修复子分类产品映射缺失问题 ⭐⭐⭐⭐⭐ 🔥🔥🔥
+- [ ] 问题：所有子分类（Vials & Caps, Syringes & Needles, Fittings & Tubing）都显示"0 products"
+- [ ] 1,109个Chromatography Supplies产品被映射到父分类，而不是子分类
+- [ ] 用户无法通过子分类找到产品，严重影响用户体验
+- [ ] 查询数据库，确认哪些产品应该属于哪个子分类
+- [ ] 创建新的分类映射脚本，将产品映射到具体的子分类：
+  - Vials & Caps: 包含"Vial"、"Cap"、"Septa"的产品
+  - Syringes & Needles: 包含"Syringe"、"Needle"的产品
+  - Fittings & Tubing: 包含"Fitting"、"Tubing"、"Connector"的产品
+  - Mobile Phase: 包含"Solvent"、"Mobile Phase"的产品
+- [ ] 删除父分类的产品映射（或保留但优先级低于子分类）
+- [ ] 批量更新product_categories表
+- [ ] 验证所有子分类都有产品
+- [ ] 测试前端分类筛选功能
+- [ ] 保存checkpoint
+**优先级**: 🔥🔥🔥 最高优先级（严重影响用户体验）
+**预计时间**: 1小时
+

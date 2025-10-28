@@ -1,0 +1,14 @@
+{
+  "query": "\nSELECT categoryId, COUNT(*) as cnt\nFROM product_categories\nWHERE categoryId IN (5, 13, 14, 15)\nGROUP BY categoryId;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT categoryId, COUNT(*) as cnt\nFROM product_categories\nWHERE categoryId IN (5, 13, 14, 15)\nGROUP BY categoryId;\n",
+  "rows": [
+    {
+      "categoryId": "13",
+      "cnt": "450"
+    }
+  ],
+  "messages": [],
+  "stdout": "categoryId\tcnt\n13\t450\n",
+  "stderr": "",
+  "execution_time_ms": 1565
+}

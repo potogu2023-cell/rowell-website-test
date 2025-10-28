@@ -1,0 +1,150 @@
+{
+  "query": "\nSELECT \n  p.id,\n  p.name,\n  p.brand,\n  pc.categoryId,\n  c.name as category_name\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE p.name LIKE '%Vial%'\nLIMIT 20;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  p.id,\n  p.name,\n  p.brand,\n  pc.categoryId,\n  c.name as category_name\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE p.name LIKE '%Vial%'\nLIMIT 20;\n",
+  "rows": [
+    {
+      "id": "121096",
+      "name": "Filter Vial PTFE 0.2µm 1mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121097",
+      "name": "Filter Vial PTFE 0.2µm 2mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121098",
+      "name": "Filter Vial PTFE 0.45µm 1mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121099",
+      "name": "Filter Vial PTFE 0.45µm 2mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121100",
+      "name": "Filter Vial Nylon 0.2µm 1mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121101",
+      "name": "Filter Vial Nylon 0.2µm 2mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121102",
+      "name": "Filter Vial Nylon 0.45µm 1mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121103",
+      "name": "Filter Vial Nylon 0.45µm 2mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121104",
+      "name": "Filter Vial PVDF 0.2µm 1mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121105",
+      "name": "Filter Vial PVDF 0.2µm 2mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121106",
+      "name": "Filter Vial PVDF 0.45µm 1mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121107",
+      "name": "Filter Vial PVDF 0.45µm 2mL",
+      "brand": "Phenomenex",
+      "categoryId": "4",
+      "category_name": "Filtration"
+    },
+    {
+      "id": "121192",
+      "name": "Clear Glass Vial 0.3mL 8mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121193",
+      "name": "Clear Glass Vial 0.3mL 9mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121194",
+      "name": "Clear Glass Vial 1.0mL 9mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121195",
+      "name": "Clear Glass Vial 1.0mL 11mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121196",
+      "name": "Clear Glass Vial 1.5mL 9mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121197",
+      "name": "Clear Glass Vial 1.5mL 11mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121198",
+      "name": "Clear Glass Vial 2.0mL 9mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    },
+    {
+      "id": "121199",
+      "name": "Clear Glass Vial 2.0mL 11mm",
+      "brand": "Phenomenex",
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tbrand\tcategoryId\tcategory_name\n121096\tFilter Vial PTFE 0.2µm 1mL\tPhenomenex\t4\tFiltration\n121097\tFilter Vial PTFE 0.2µm 2mL\tPhenomenex\t4\tFiltration\n121098\tFilter Vial PTFE 0.45µm 1mL\tPhenomenex\t4\tFiltration\n121099\tFilter Vial PTFE 0.45µm 2mL\tPhenomenex\t4\tFiltration\n121100\tFilter Vial Nylon 0.2µm 1mL\tPhenomenex\t4\tFiltration\n121101\tFilter Vial Nylon 0.2µm 2mL\tPhenomenex\t4\tFiltration\n121102\tFilter Vial Nylon 0.45µm 1mL\tPhenomenex\t4\tFiltration\n121103\tFilter Vial Nylon 0.45µm 2mL\tPhenomenex\t4\tFiltration\n121104\tFilter Vial PVDF 0.2µm 1mL\tPhenomenex\t4\tFiltration\n121105\tFilter Vial PVDF 0.2µm 2mL\tPhenomenex\t4\tFiltration\n121106\tFilter Vial PVDF 0.45µm 1mL\tPhenomenex\t4\tFiltration\n121107\tFilter Vial PVDF 0.45µm 2mL\tPhenomenex\t4\tFiltration\n121192\tClear Glass Vial 0.3mL 8mm\tPhenomenex\t2\tChromatography Supplies\n121193\tClear Glass Vial 0.3mL 9mm\tPhenomenex\t2\tChromatography Supplies\n121194\tClear Glass Vial 1.0mL 9mm\tPhenomenex\t2\tChromatography Supplies\n121195\tClear Glass Vial 1.0mL 11mm\tPhenomenex\t2\tChromatography Supplies\n121196\tClear Glass Vial 1.5mL 9mm\tPhenomenex\t2\tChromatography Supplies\n121197\tClear Glass Vial 1.5mL 11mm\tPhenomenex\t2\tChromatography Supplies\n121198\tClear Glass Vial 2.0mL 9mm\tPhenomenex\t2\tChromatography Supplies\n121199\tClear Glass Vial 2.0mL 11mm\tPhenomenex\t2\tChromatography Supplies\n",
+  "stderr": "",
+  "execution_time_ms": 1587
+}

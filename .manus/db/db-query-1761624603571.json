@@ -1,0 +1,60 @@
+{
+  "query": "\nSELECT \n  p.id,\n  p.name,\n  p.brand\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 13\nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  p.id,\n  p.name,\n  p.brand\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 13\nLIMIT 10;\n",
+  "rows": [
+    {
+      "id": "90047",
+      "name": "Zebron Z-Guard 1MS Guard Column 5m",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90048",
+      "name": "Zebron Z-Guard 5MS Guard Column 5m",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90049",
+      "name": "Zebron Z-Guard WAX Guard Column 5m",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90050",
+      "name": "Zebron Z-Guard Hi-Temp Guard Column 5m",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90051",
+      "name": "Zebron Z-Guard 624 Guard Column 5m",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "90052",
+      "name": "Waters Guard Column DB-1 5m",
+      "brand": "Waters"
+    },
+    {
+      "id": "90053",
+      "name": "Waters Guard Column DB-5 5m",
+      "brand": "Waters"
+    },
+    {
+      "id": "90054",
+      "name": "Agilent Retention Gap Guard Column 5m",
+      "brand": "Agilent"
+    },
+    {
+      "id": "90055",
+      "name": "Agilent HP-5 Guard Column 5m",
+      "brand": "Agilent"
+    },
+    {
+      "id": "90056",
+      "name": "Agilent HP-1 Guard Column 5m",
+      "brand": "Agilent"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tbrand\n90047\tZebron Z-Guard 1MS Guard Column 5m\tPhenomenex\n90048\tZebron Z-Guard 5MS Guard Column 5m\tPhenomenex\n90049\tZebron Z-Guard WAX Guard Column 5m\tPhenomenex\n90050\tZebron Z-Guard Hi-Temp Guard Column 5m\tPhenomenex\n90051\tZebron Z-Guard 624 Guard Column 5m\tPhenomenex\n90052\tWaters Guard Column DB-1 5m\tWaters\n90053\tWaters Guard Column DB-5 5m\tWaters\n90054\tAgilent Retention Gap Guard Column 5m\tAgilent\n90055\tAgilent HP-5 Guard Column 5m\tAgilent\n90056\tAgilent HP-1 Guard Column 5m\tAgilent\n",
+  "stderr": "",
+  "execution_time_ms": 1513
+}

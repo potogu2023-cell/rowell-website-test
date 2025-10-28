@@ -1,0 +1,66 @@
+{
+  "query": "\nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  c.parentId,\n  COUNT(pc.productId) as product_count\nFROM categories c\nINNER JOIN product_categories pc ON c.id = pc.categoryId\nGROUP BY c.id, c.name, c.slug, c.parentId\nORDER BY product_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.id,\n  c.name,\n  c.slug,\n  c.parentId,\n  COUNT(pc.productId) as product_count\nFROM categories c\nINNER JOIN product_categories pc ON c.id = pc.categoryId\nGROUP BY c.id, c.name, c.slug, c.parentId\nORDER BY product_count DESC;\n",
+  "rows": [
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "slug": "hplc-columns",
+      "parentId": "1",
+      "product_count": "2102"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "parentId": "11",
+      "product_count": "1319"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges",
+      "parentId": "3",
+      "product_count": "1110"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "parentId": "NULL",
+      "product_count": "1109"
+    },
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns",
+      "parentId": "NULL",
+      "product_count": "902"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration",
+      "parentId": "NULL",
+      "product_count": "818"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "parentId": "1",
+      "product_count": "776"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "parentId": "1",
+      "product_count": "450"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\tproduct_count\n11\tHPLC Columns\thplc-columns\t1\t2102\n111\tAnalytical Columns\tanalytical-columns\t11\t1319\n31\tSPE Cartridges\tspe-cartridges\t3\t1110\n2\tChromatography Supplies\tchromatography-supplies\tNULL\t1109\n1\tChromatography Columns\tchromatography-columns\tNULL\t902\n4\tFiltration\tfiltration\tNULL\t818\n12\tGC Columns\tgc-columns\t1\t776\n13\tGuard Columns\tguard-columns\t1\t450\n",
+  "stderr": "",
+  "execution_time_ms": 1517
+}

@@ -1,0 +1,28 @@
+{
+  "query": "\nSELECT \n  id,\n  name,\n  slug,\n  parentId\nFROM categories\nWHERE parentId = 5\nORDER BY displayOrder, id;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  id,\n  name,\n  slug,\n  parentId\nFROM categories\nWHERE parentId = 5\nORDER BY displayOrder, id;\n",
+  "rows": [
+    {
+      "id": "51",
+      "name": "Glassware",
+      "slug": "glassware",
+      "parentId": "5"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "slug": "plasticware",
+      "parentId": "5"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "slug": "storage",
+      "parentId": "5"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\n51\tGlassware\tglassware\t5\n52\tPlasticware\tplasticware\t5\n53\tStorage\tstorage\t5\n",
+  "stderr": "",
+  "execution_time_ms": 1549
+}

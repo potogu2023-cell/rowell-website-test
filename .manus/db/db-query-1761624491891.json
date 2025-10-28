@@ -1,0 +1,20 @@
+{
+  "query": "\nSELECT \n  c.id,\n  c.name,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.id IN (5, 13, 14, 15)\nGROUP BY c.id, c.name\nORDER BY c.id;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.id,\n  c.name,\n  COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.id IN (5, 13, 14, 15)\nGROUP BY c.id, c.name\nORDER BY c.id;\n",
+  "rows": [
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "product_count": "0"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "product_count": "450"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tproduct_count\n5\tLab Supplies\t0\n13\tGuard Columns\t450\n",
+  "stderr": "",
+  "execution_time_ms": 1536
+}

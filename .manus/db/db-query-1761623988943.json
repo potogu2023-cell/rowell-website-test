@@ -1,0 +1,9 @@
+{
+  "query": "\nSELECT \n  id,\n  name,\n  slug,\n  parentId,\n  level\nFROM categories\nWHERE id = 16;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  id,\n  name,\n  slug,\n  parentId,\n  level\nFROM categories\nWHERE id = 16;\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1497
+}

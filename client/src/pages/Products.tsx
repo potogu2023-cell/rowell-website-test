@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -51,13 +51,16 @@ export default function Products() {
     }
   }, [categories]);
 
-  const queryParams = {
+  // Use useMemo to ensure queryParams is recalculated when dependencies change
+  const queryParams = useMemo(() => ({
     categoryId: selectedCategoryId || undefined,
     brand: selectedBrand || undefined,
     ...advancedFilters,
     page: currentPage,
     pageSize,
-  };
+  }), [selectedCategoryId, selectedBrand, advancedFilters, currentPage, pageSize]);
+  
+  console.log('[Products] Query params:', queryParams);
   
   const { data, isLoading } = trpc.products.list.useQuery(queryParams);
   

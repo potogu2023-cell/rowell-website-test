@@ -1,0 +1,20 @@
+{
+  "query": "\nSELECT \n  pc.categoryId,\n  c.name as category_name,\n  COUNT(*) as product_count\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE (\n  p.name LIKE '%Vial%' OR\n  p.name LIKE '%vial%'\n)\nGROUP BY pc.categoryId, c.name\nORDER BY product_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  pc.categoryId,\n  c.name as category_name,\n  COUNT(*) as product_count\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE (\n  p.name LIKE '%Vial%' OR\n  p.name LIKE '%vial%'\n)\nGROUP BY pc.categoryId, c.name\nORDER BY product_count DESC;\n",
+  "rows": [
+    {
+      "categoryId": "2",
+      "category_name": "Chromatography Supplies",
+      "product_count": "377"
+    },
+    {
+      "categoryId": "4",
+      "category_name": "Filtration",
+      "product_count": "12"
+    }
+  ],
+  "messages": [],
+  "stdout": "categoryId\tcategory_name\tproduct_count\n2\tChromatography Supplies\t377\n4\tFiltration\t12\n",
+  "stderr": "",
+  "execution_time_ms": 1574
+}
