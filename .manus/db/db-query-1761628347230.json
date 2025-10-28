@@ -1,0 +1,35 @@
+{
+  "query": "\nSELECT p.id, p.name, p.imageUrl \nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 21\nLIMIT 5\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT p.id, p.name, p.imageUrl \nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 21\nLIMIT 5\n",
+  "rows": [
+    {
+      "id": "121256",
+      "name": "Screw Cap 13mm Blue PTFE-Red-Rubber",
+      "imageUrl": "/product-images/cap.png"
+    },
+    {
+      "id": "121257",
+      "name": "Screw Cap 13mm Blue Silicone-PTFE",
+      "imageUrl": "/product-images/cap.png"
+    },
+    {
+      "id": "121258",
+      "name": "Screw Cap 13mm Red PTFE-Silicone",
+      "imageUrl": "/product-images/cap.png"
+    },
+    {
+      "id": "121259",
+      "name": "Screw Cap 13mm Red PTFE-Red-Rubber",
+      "imageUrl": "/product-images/cap.png"
+    },
+    {
+      "id": "121260",
+      "name": "Screw Cap 13mm Red Silicone-PTFE",
+      "imageUrl": "/product-images/cap.png"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\timageUrl\n121256\tScrew Cap 13mm Blue PTFE-Red-Rubber\t/product-images/cap.png\n121257\tScrew Cap 13mm Blue Silicone-PTFE\t/product-images/cap.png\n121258\tScrew Cap 13mm Red PTFE-Silicone\t/product-images/cap.png\n121259\tScrew Cap 13mm Red PTFE-Red-Rubber\t/product-images/cap.png\n121260\tScrew Cap 13mm Red Silicone-PTFE\t/product-images/cap.png\n",
+  "stderr": "",
+  "execution_time_ms": 1662
+}
