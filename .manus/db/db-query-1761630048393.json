@@ -1,0 +1,50 @@
+{
+  "query": "SELECT id, productId, partNumber, brand, name, catalogUrl FROM products WHERE catalogUrl IS NOT NULL AND catalogUrl != '' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, productId, partNumber, brand, name, catalogUrl FROM products WHERE catalogUrl IS NOT NULL AND catalogUrl != '' LIMIT 5;",
+  "rows": [
+    {
+      "id": "32551",
+      "productId": "PHEN-00A-4251-A0",
+      "partNumber": "00A-4251-A0",
+      "brand": "Phenomenex",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "catalogUrl": "https://www.phenomenex.com/products/00A-4251-A0"
+    },
+    {
+      "id": "32552",
+      "productId": "PHEN-00A-4251-B0",
+      "partNumber": "00A-4251-B0",
+      "brand": "Phenomenex",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "catalogUrl": "https://www.phenomenex.com/products/00A-4251-B0"
+    },
+    {
+      "id": "32553",
+      "productId": "PHEN-00A-4251-Y0",
+      "partNumber": "00A-4251-Y0",
+      "brand": "Phenomenex",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "catalogUrl": "https://www.phenomenex.com/products/00A-4251-Y0"
+    },
+    {
+      "id": "32554",
+      "productId": "PHEN-00A-4252-B0",
+      "partNumber": "00A-4252-B0",
+      "brand": "Phenomenex",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "catalogUrl": "https://www.phenomenex.com/products/00A-4252-B0"
+    },
+    {
+      "id": "32555",
+      "productId": "PHEN-00A-4252-E0",
+      "partNumber": "00A-4252-E0",
+      "brand": "Phenomenex",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "catalogUrl": "https://www.phenomenex.com/products/00A-4252-E0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tproductId\tpartNumber\tbrand\tname\tcatalogUrl\n32551\tPHEN-00A-4251-A0\t00A-4251-A0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\thttps://www.phenomenex.com/products/00A-4251-A0\n32552\tPHEN-00A-4251-B0\t00A-4251-B0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\thttps://www.phenomenex.com/products/00A-4251-B0\n32553\tPHEN-00A-4251-Y0\t00A-4251-Y0\tPhenomenex\tLuna 3 µm C18(2) 100 Å\thttps://www.phenomenex.com/products/00A-4251-Y0\n32554\tPHEN-00A-4252-B0\t00A-4252-B0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\thttps://www.phenomenex.com/products/00A-4252-B0\n32555\tPHEN-00A-4252-E0\t00A-4252-E0\tPhenomenex\tLuna 5 µm C18(2) 100 Å\thttps://www.phenomenex.com/products/00A-4252-E0\n",
+  "stderr": "",
+  "execution_time_ms": 1519
+}

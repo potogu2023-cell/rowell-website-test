@@ -1,0 +1,90 @@
+{
+  "query": "SELECT partNumber, COUNT(*) as count FROM products GROUP BY partNumber ORDER BY count DESC LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT partNumber, COUNT(*) as count FROM products GROUP BY partNumber ORDER BY count DESC LIMIT 20;",
+  "rows": [
+    {
+      "partNumber": "Filter-PTFE-0.1um-13mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.45um-4mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.22um-4mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.1um-25mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.22um-25mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-1.0um-4mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-1.0um-25mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.22um-13mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.45um-25mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.2um-25mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.1um-33mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.22um-33mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-1.0um-13mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.45um-33mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.2um-4mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.2um-33mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.1um-4mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.2um-13mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-1.0um-33mm",
+      "count": "16"
+    },
+    {
+      "partNumber": "Filter-PTFE-0.45um-13mm",
+      "count": "16"
+    }
+  ],
+  "messages": [],
+  "stdout": "partNumber\tcount\nFilter-PTFE-0.1um-13mm\t16\nFilter-PTFE-0.45um-4mm\t16\nFilter-PTFE-0.22um-4mm\t16\nFilter-PTFE-0.1um-25mm\t16\nFilter-PTFE-0.22um-25mm\t16\nFilter-PTFE-1.0um-4mm\t16\nFilter-PTFE-1.0um-25mm\t16\nFilter-PTFE-0.22um-13mm\t16\nFilter-PTFE-0.45um-25mm\t16\nFilter-PTFE-0.2um-25mm\t16\nFilter-PTFE-0.1um-33mm\t16\nFilter-PTFE-0.22um-33mm\t16\nFilter-PTFE-1.0um-13mm\t16\nFilter-PTFE-0.45um-33mm\t16\nFilter-PTFE-0.2um-4mm\t16\nFilter-PTFE-0.2um-33mm\t16\nFilter-PTFE-0.1um-4mm\t16\nFilter-PTFE-0.2um-13mm\t16\nFilter-PTFE-1.0um-33mm\t16\nFilter-PTFE-0.45um-13mm\t16\n",
+  "stderr": "",
+  "execution_time_ms": 1577
+}

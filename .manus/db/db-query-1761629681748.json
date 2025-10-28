@@ -1,0 +1,130 @@
+{
+  "query": "SELECT id, name, partNumber, brand FROM products LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, partNumber, brand FROM products LIMIT 20;",
+  "rows": [
+    {
+      "id": "32551",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00A-4251-A0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32552",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00A-4251-B0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32553",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00A-4251-Y0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32554",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00A-4252-B0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32555",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00A-4252-E0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32556",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00A-4252-Y0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32557",
+      "name": "Luna 10 µm C18(2) 100 Å",
+      "partNumber": "00A-4253-E0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32558",
+      "name": "Luna 2.5 µm C18(2)-HST 100 Å, LC Column 30 x 2 mm, Ea",
+      "partNumber": "00A-4446-B0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32559",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00B-4251-A0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32560",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00B-4251-AC",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32561",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00B-4251-AF",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32562",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00B-4251-B0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32563",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00B-4251-E0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32564",
+      "name": "Luna 3 µm C18(2) 100 Å",
+      "partNumber": "00B-4251-Y0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32565",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00B-4252-B0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32566",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00B-4252-E0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32567",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00B-4252-N0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32568",
+      "name": "Luna 5 µm C18(2) 100 Å",
+      "partNumber": "00B-4252-Y0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32569",
+      "name": "Luna 10 µm C18(2) 100 Å",
+      "partNumber": "00B-4253-E0",
+      "brand": "Phenomenex"
+    },
+    {
+      "id": "32570",
+      "name": "Luna 2.5 µm C18(2)-HST 100 Å, LC Column 50 x 2 mm, Ea",
+      "partNumber": "00B-4446-B0",
+      "brand": "Phenomenex"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tpartNumber\tbrand\n32551\tLuna 3 µm C18(2) 100 Å\t00A-4251-A0\tPhenomenex\n32552\tLuna 3 µm C18(2) 100 Å\t00A-4251-B0\tPhenomenex\n32553\tLuna 3 µm C18(2) 100 Å\t00A-4251-Y0\tPhenomenex\n32554\tLuna 5 µm C18(2) 100 Å\t00A-4252-B0\tPhenomenex\n32555\tLuna 5 µm C18(2) 100 Å\t00A-4252-E0\tPhenomenex\n32556\tLuna 5 µm C18(2) 100 Å\t00A-4252-Y0\tPhenomenex\n32557\tLuna 10 µm C18(2) 100 Å\t00A-4253-E0\tPhenomenex\n32558\tLuna 2.5 µm C18(2)-HST 100 Å, LC Column 30 x 2 mm, Ea\t00A-4446-B0\tPhenomenex\n32559\tLuna 3 µm C18(2) 100 Å\t00B-4251-A0\tPhenomenex\n32560\tLuna 3 µm C18(2) 100 Å\t00B-4251-AC\tPhenomenex\n32561\tLuna 3 µm C18(2) 100 Å\t00B-4251-AF\tPhenomenex\n32562\tLuna 3 µm C18(2) 100 Å\t00B-4251-B0\tPhenomenex\n32563\tLuna 3 µm C18(2) 100 Å\t00B-4251-E0\tPhenomenex\n32564\tLuna 3 µm C18(2) 100 Å\t00B-4251-Y0\tPhenomenex\n32565\tLuna 5 µm C18(2) 100 Å\t00B-4252-B0\tPhenomenex\n32566\tLuna 5 µm C18(2) 100 Å\t00B-4252-E0\tPhenomenex\n32567\tLuna 5 µm C18(2) 100 Å\t00B-4252-N0\tPhenomenex\n32568\tLuna 5 µm C18(2) 100 Å\t00B-4252-Y0\tPhenomenex\n32569\tLuna 10 µm C18(2) 100 Å\t00B-4253-E0\tPhenomenex\n32570\tLuna 2.5 µm C18(2)-HST 100 Å, LC Column 50 x 2 mm, Ea\t00B-4446-B0\tPhenomenex\n",
+  "stderr": "",
+  "execution_time_ms": 2521
+}

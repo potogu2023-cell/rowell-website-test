@@ -359,3 +359,48 @@ ROWELL HPLC测试网站是一个专业的色谱产品展示和询价平台，目
 - [ ] 保存checkpoint
 **预计时间**: 30分钟
 
+
+
+
+---
+
+## 🐛 严重问题：产品Part Number不是原厂Part Number（2025-10-28）
+
+### 问题描述
+用户报告：网站内所有产品的Part Number都不是原厂的Part Number
+
+### 问题确认
+查看产品详情页面（产品ID: 121256），发现：
+- **当前Part Number**: "Cap-Screw-13mm-Blue-PTFE-Red-Rubber"
+- **问题**: 这是产品描述性名称，不是Phenomenex的原厂Part Number
+- **正确格式**: 应该是"B0-2013-01"、"AH0-8493"等原厂编号
+
+### 影响范围
+- **所有8,588个产品**的Part Number可能都是错误的
+- 用户无法通过原厂Part Number搜索产品
+- 影响用户体验和业务流程
+
+### 24. 修复产品Part Number问题 ⭐⭐⭐⭐⭐ 🔥🔥🔥
+- [x] 问题分析：确认所有产品的Part Number是否都是描述性名称
+- [x] 数据来源调查：检查原始数据源（CSV文件、爬虫数据等）
+- [x] 确认是否有原厂Part Number数据可用（没有，需要重新爬取）
+- [x] 准备爬虫任务信息包（crawler-task-package.tar.gz）
+- [x] 创建数据规格说明文档（CRAWLER_DATA_SPECIFICATION.md）
+- [x] 创建品牌前缀映射文件（brand-prefix-mapping.json）
+- [x] 创建产品分类定义文件（product-categories.json）
+- [x] 创建快速开始指南（README.md）
+- [x] 创建任务交接文档（CRAWLER_TASK_HANDOFF.md）
+- [x] 导出当前产品数据（current-products.csv）
+- [x] 创建数据导入脚本（import-corrected-part-numbers.ts）
+- [x] 创建批量导入脚本（import-all-crawler-data.ts）
+- [ ] 等待爬虫团队完成数据收集
+- [ ] 验证爬虫数据质量（Part Number格式、URL可访问性等）
+- [ ] 批量导入爬虫数据到数据库
+- [ ] 验证所有品牌的Part Number格式
+- [ ] 更新前端显示逻辑，确保Part Number正确显示
+- [ ] 更新搜索功能，支持原厂Part Number搜索
+- [ ] 保存checkpoint
+**优先级**: 🔥🔥🔥 最高优先级（影响业务核心功能）
+**实际时间**: 2小时（准备阶段）
+**预计时间**: 8-10天（等待爬虫团队 + 数据导入验证）
+
