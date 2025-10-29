@@ -1,0 +1,52 @@
+{
+  "query": "\nSELECT productId, partNumber, name, brand\nFROM products \nWHERE name LIKE '%Vial%'\nORDER BY brand, productId;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT productId, partNumber, name, brand\nFROM products \nWHERE name LIKE '%Vial%'\nORDER BY brand, productId;\n",
+  "rows": [
+    {
+      "productId": "AGIL-001048",
+      "partNumber": "AGIL-CON-00004",
+      "name": "Certified Clear Glass Vial, 2000 µL, Glass",
+      "brand": "Agilent"
+    },
+    {
+      "productId": "AGIL-001049",
+      "partNumber": "AGIL-CON-00005",
+      "name": "Amber Glass Vial, 2000 µL, Glass",
+      "brand": "Agilent"
+    },
+    {
+      "productId": "PHEN-001050",
+      "partNumber": "PHEN-CON-00006",
+      "name": "Certified Vial, 2000 µL, Glass",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "THER-001051",
+      "partNumber": "THER-CON-00007",
+      "name": "Autosampler Vial, 2000 µL, Glass",
+      "brand": "Thermo Fisher"
+    },
+    {
+      "productId": "WATS-001045",
+      "partNumber": "WATE-CON-00001",
+      "name": "Total Recovery Vial, 300 µL, Glass",
+      "brand": "Waters"
+    },
+    {
+      "productId": "WATS-001046",
+      "partNumber": "WATE-CON-00002",
+      "name": "Certified Vial, 2000 µL, Glass",
+      "brand": "Waters"
+    },
+    {
+      "productId": "WATS-001047",
+      "partNumber": "WATE-CON-00003",
+      "name": "Polypropylene Vial, 1500 µL, PP",
+      "brand": "Waters"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tbrand\nAGIL-001048\tAGIL-CON-00004\tCertified Clear Glass Vial, 2000 µL, Glass\tAgilent\nAGIL-001049\tAGIL-CON-00005\tAmber Glass Vial, 2000 µL, Glass\tAgilent\nPHEN-001050\tPHEN-CON-00006\tCertified Vial, 2000 µL, Glass\tPhenomenex\nTHER-001051\tTHER-CON-00007\tAutosampler Vial, 2000 µL, Glass\tThermo Fisher\nWATS-001045\tWATE-CON-00001\tTotal Recovery Vial, 300 µL, Glass\tWaters\nWATS-001046\tWATE-CON-00002\tCertified Vial, 2000 µL, Glass\tWaters\nWATS-001047\tWATE-CON-00003\tPolypropylene Vial, 1500 µL, PP\tWaters\n",
+  "stderr": "",
+  "execution_time_ms": 1594
+}

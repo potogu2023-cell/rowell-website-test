@@ -1,0 +1,90 @@
+{
+  "query": "\nSELECT \n  COUNT(*) as total_vials,\n  brand,\n  COUNT(CASE WHEN partNumber LIKE '%Vial%' OR partNumber LIKE '%vial%' THEN 1 END) as wrong_part_numbers\nFROM products \nWHERE name LIKE '%vial%' OR name LIKE '%Vial%' OR productId LIKE '%Vial%'\nGROUP BY brand\nORDER BY total_vials DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  COUNT(*) as total_vials,\n  brand,\n  COUNT(CASE WHEN partNumber LIKE '%Vial%' OR partNumber LIKE '%vial%' THEN 1 END) as wrong_part_numbers\nFROM products \nWHERE name LIKE '%vial%' OR name LIKE '%Vial%' OR productId LIKE '%Vial%'\nGROUP BY brand\nORDER BY total_vials DESC;\n",
+  "rows": [
+    {
+      "total_vials": "78",
+      "brand": "Waters",
+      "wrong_part_numbers": "46"
+    },
+    {
+      "total_vials": "43",
+      "brand": "Agilent",
+      "wrong_part_numbers": "33"
+    },
+    {
+      "total_vials": "41",
+      "brand": "Phenomenex",
+      "wrong_part_numbers": "30"
+    },
+    {
+      "total_vials": "37",
+      "brand": "Thermo Fisher Scientific",
+      "wrong_part_numbers": "25"
+    },
+    {
+      "total_vials": "25",
+      "brand": "Shimadzu",
+      "wrong_part_numbers": "25"
+    },
+    {
+      "total_vials": "15",
+      "brand": "TSKgel",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "YMC",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "TCI",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Merck",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Tosoh",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Develosil (Nomura Chemical)",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Dikma",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Develosil",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Daicel",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "Avantor",
+      "wrong_part_numbers": "15"
+    },
+    {
+      "total_vials": "15",
+      "brand": "ACE",
+      "wrong_part_numbers": "15"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_vials\tbrand\twrong_part_numbers\n78\tWaters\t46\n43\tAgilent\t33\n41\tPhenomenex\t30\n37\tThermo Fisher Scientific\t25\n25\tShimadzu\t25\n15\tTSKgel\t15\n15\tYMC\t15\n15\tTCI\t15\n15\tMerck\t15\n15\tTosoh\t15\n15\tDevelosil (Nomura Chemical)\t15\n15\tDikma\t15\n15\tDevelosil\t15\n15\tDaicel\t15\n15\tAvantor\t15\n15\tACE\t15\n",
+  "stderr": "",
+  "execution_time_ms": 1531
+}

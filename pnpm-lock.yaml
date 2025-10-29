@@ -272,6 +272,9 @@ importers:
       bcrypt:
         specifier: ^6.0.0
         version: 6.0.0
+      csv-stringify:
+        specifier: ^6.6.0
+        version: 6.6.0
       drizzle-kit:
         specifier: ^0.31.4
         version: 0.31.5
@@ -2525,6 +2528,9 @@ packages:
     resolution: {integrity: sha512-fgKbp+AJbn1h2dcAHKIdKNSSjfp43BZZykXsCjzALjKy80VXQNHPFJ6T9Afwdzoj24aMkq8GwDS7KGcDPpejrA==}
     engines: {node: '>= 10'}
     hasBin: true
+
+  csv-stringify@6.6.0:
+    resolution: {integrity: sha512-YW32lKOmIBgbxtu3g5SaiqWNwa/9ISQt2EcgOq0+RAIFufFp9is6tqNnKahqE5kuKvrnYAzs28r+s6pXJR8Vcw==}
 
   d3-array@3.2.4:
     resolution: {integrity: sha512-tdQAmyA18i4J7wprpYq8ClcxZy3SC31QMeByyCFyRt7BVHdREQZ5lpzoe5mFEYZUWe+oq8HBvk9JjpibyEV4Jg==}
@@ -6600,6 +6606,8 @@ snapshots:
   csv-parse@6.1.0: {}
 
   csv-parser@3.2.0: {}
+
+  csv-stringify@6.6.0: {}
 
   d3-array@3.2.4:
     dependencies:

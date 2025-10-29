@@ -1,0 +1,130 @@
+{
+  "query": "\nSELECT productId, partNumber, name, brand \nFROM products \nWHERE name LIKE '%vial%' OR name LIKE '%Vial%' OR partNumber LIKE '%vial%'\nLIMIT 20;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT productId, partNumber, name, brand \nFROM products \nWHERE name LIKE '%vial%' OR name LIKE '%Vial%' OR partNumber LIKE '%vial%'\nLIMIT 20;\n",
+  "rows": [
+    {
+      "productId": "PHEN-FilterVial-PTFE-0.2um-1ml",
+      "partNumber": "FilterVial-PTFE-0.2um-1ml",
+      "name": "Filter Vial PTFE 0.2µm 1mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PTFE-0.2um-2ml",
+      "partNumber": "FilterVial-PTFE-0.2um-2ml",
+      "name": "Filter Vial PTFE 0.2µm 2mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PTFE-0.45um-1ml",
+      "partNumber": "FilterVial-PTFE-0.45um-1ml",
+      "name": "Filter Vial PTFE 0.45µm 1mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PTFE-0.45um-2ml",
+      "partNumber": "FilterVial-PTFE-0.45um-2ml",
+      "name": "Filter Vial PTFE 0.45µm 2mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-Nylon-0.2um-1ml",
+      "partNumber": "FilterVial-Nylon-0.2um-1ml",
+      "name": "Filter Vial Nylon 0.2µm 1mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-Nylon-0.2um-2ml",
+      "partNumber": "FilterVial-Nylon-0.2um-2ml",
+      "name": "Filter Vial Nylon 0.2µm 2mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-Nylon-0.45um-1ml",
+      "partNumber": "FilterVial-Nylon-0.45um-1ml",
+      "name": "Filter Vial Nylon 0.45µm 1mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-Nylon-0.45um-2ml",
+      "partNumber": "FilterVial-Nylon-0.45um-2ml",
+      "name": "Filter Vial Nylon 0.45µm 2mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PVDF-0.2um-1ml",
+      "partNumber": "FilterVial-PVDF-0.2um-1ml",
+      "name": "Filter Vial PVDF 0.2µm 1mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PVDF-0.2um-2ml",
+      "partNumber": "FilterVial-PVDF-0.2um-2ml",
+      "name": "Filter Vial PVDF 0.2µm 2mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PVDF-0.45um-1ml",
+      "partNumber": "FilterVial-PVDF-0.45um-1ml",
+      "name": "Filter Vial PVDF 0.45µm 1mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-FilterVial-PVDF-0.45um-2ml",
+      "partNumber": "FilterVial-PVDF-0.45um-2ml",
+      "name": "Filter Vial PVDF 0.45µm 2mL",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-0.3ml-8mm",
+      "partNumber": "Vial-Clear-0.3ml-8mm",
+      "name": "Clear Glass Vial 0.3mL 8mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-0.3ml-9mm",
+      "partNumber": "Vial-Clear-0.3ml-9mm",
+      "name": "Clear Glass Vial 0.3mL 9mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-1.0ml-9mm",
+      "partNumber": "Vial-Clear-1.0ml-9mm",
+      "name": "Clear Glass Vial 1.0mL 9mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-1.0ml-11mm",
+      "partNumber": "Vial-Clear-1.0ml-11mm",
+      "name": "Clear Glass Vial 1.0mL 11mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-1.5ml-9mm",
+      "partNumber": "Vial-Clear-1.5ml-9mm",
+      "name": "Clear Glass Vial 1.5mL 9mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-1.5ml-11mm",
+      "partNumber": "Vial-Clear-1.5ml-11mm",
+      "name": "Clear Glass Vial 1.5mL 11mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-2.0ml-9mm",
+      "partNumber": "Vial-Clear-2.0ml-9mm",
+      "name": "Clear Glass Vial 2.0mL 9mm",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-Vial-Clear-2.0ml-11mm",
+      "partNumber": "Vial-Clear-2.0ml-11mm",
+      "name": "Clear Glass Vial 2.0mL 11mm",
+      "brand": "Phenomenex"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tbrand\nPHEN-FilterVial-PTFE-0.2um-1ml\tFilterVial-PTFE-0.2um-1ml\tFilter Vial PTFE 0.2µm 1mL\tPhenomenex\nPHEN-FilterVial-PTFE-0.2um-2ml\tFilterVial-PTFE-0.2um-2ml\tFilter Vial PTFE 0.2µm 2mL\tPhenomenex\nPHEN-FilterVial-PTFE-0.45um-1ml\tFilterVial-PTFE-0.45um-1ml\tFilter Vial PTFE 0.45µm 1mL\tPhenomenex\nPHEN-FilterVial-PTFE-0.45um-2ml\tFilterVial-PTFE-0.45um-2ml\tFilter Vial PTFE 0.45µm 2mL\tPhenomenex\nPHEN-FilterVial-Nylon-0.2um-1ml\tFilterVial-Nylon-0.2um-1ml\tFilter Vial Nylon 0.2µm 1mL\tPhenomenex\nPHEN-FilterVial-Nylon-0.2um-2ml\tFilterVial-Nylon-0.2um-2ml\tFilter Vial Nylon 0.2µm 2mL\tPhenomenex\nPHEN-FilterVial-Nylon-0.45um-1ml\tFilterVial-Nylon-0.45um-1ml\tFilter Vial Nylon 0.45µm 1mL\tPhenomenex\nPHEN-FilterVial-Nylon-0.45um-2ml\tFilterVial-Nylon-0.45um-2ml\tFilter Vial Nylon 0.45µm 2mL\tPhenomenex\nPHEN-FilterVial-PVDF-0.2um-1ml\tFilterVial-PVDF-0.2um-1ml\tFilter Vial PVDF 0.2µm 1mL\tPhenomenex\nPHEN-FilterVial-PVDF-0.2um-2ml\tFilterVial-PVDF-0.2um-2ml\tFilter Vial PVDF 0.2µm 2mL\tPhenomenex\nPHEN-FilterVial-PVDF-0.45um-1ml\tFilterVial-PVDF-0.45um-1ml\tFilter Vial PVDF 0.45µm 1mL\tPhenomenex\nPHEN-FilterVial-PVDF-0.45um-2ml\tFilterVial-PVDF-0.45um-2ml\tFilter Vial PVDF 0.45µm 2mL\tPhenomenex\nPHEN-Vial-Clear-0.3ml-8mm\tVial-Clear-0.3ml-8mm\tClear Glass Vial 0.3mL 8mm\tPhenomenex\nPHEN-Vial-Clear-0.3ml-9mm\tVial-Clear-0.3ml-9mm\tClear Glass Vial 0.3mL 9mm\tPhenomenex\nPHEN-Vial-Clear-1.0ml-9mm\tVial-Clear-1.0ml-9mm\tClear Glass Vial 1.0mL 9mm\tPhenomenex\nPHEN-Vial-Clear-1.0ml-11mm\tVial-Clear-1.0ml-11mm\tClear Glass Vial 1.0mL 11mm\tPhenomenex\nPHEN-Vial-Clear-1.5ml-9mm\tVial-Clear-1.5ml-9mm\tClear Glass Vial 1.5mL 9mm\tPhenomenex\nPHEN-Vial-Clear-1.5ml-11mm\tVial-Clear-1.5ml-11mm\tClear Glass Vial 1.5mL 11mm\tPhenomenex\nPHEN-Vial-Clear-2.0ml-9mm\tVial-Clear-2.0ml-9mm\tClear Glass Vial 2.0mL 9mm\tPhenomenex\nPHEN-Vial-Clear-2.0ml-11mm\tVial-Clear-2.0ml-11mm\tClear Glass Vial 2.0mL 11mm\tPhenomenex\n",
+  "stderr": "",
+  "execution_time_ms": 1630
+}

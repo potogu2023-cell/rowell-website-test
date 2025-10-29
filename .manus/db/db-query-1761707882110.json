@@ -1,0 +1,80 @@
+{
+  "query": "\nSELECT productId, partNumber, name, brand, updatedAt\nFROM products \nWHERE productId LIKE '%Vial%'\nORDER BY updatedAt DESC\nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT productId, partNumber, name, brand, updatedAt\nFROM products \nWHERE productId LIKE '%Vial%'\nORDER BY updatedAt DESC\nLIMIT 10;\n",
+  "rows": [
+    {
+      "productId": "WATS-Vial-Clear-2.0ml-11mm-Waters",
+      "partNumber": "Vial-Clear-2.0ml-11mm-Waters",
+      "name": "Waters Clear Glass Vial 2.0mL 11mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-1.0ml-11mm-Waters",
+      "partNumber": "Vial-Clear-1.0ml-11mm-Waters",
+      "name": "Waters Clear Glass Vial 1.0mL 11mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-2.0ml-9mm-Waters",
+      "partNumber": "Vial-Clear-2.0ml-9mm-Waters",
+      "name": "Waters Clear Glass Vial 2.0mL 9mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-1.5ml-9mm-Waters",
+      "partNumber": "Vial-Clear-1.5ml-9mm-Waters",
+      "name": "Waters Clear Glass Vial 1.5mL 9mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-1.0ml-9mm-Waters",
+      "partNumber": "Vial-Clear-1.0ml-9mm-Waters",
+      "name": "Waters Clear Glass Vial 1.0mL 9mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-0.3ml-9mm-Waters",
+      "partNumber": "Vial-Clear-0.3ml-9mm-Waters",
+      "name": "Waters Clear Glass Vial 0.3mL 9mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-1.5ml-12mm-Waters",
+      "partNumber": "Vial-Clear-1.5ml-12mm-Waters",
+      "name": "Waters Clear Glass Vial 1.5mL 12mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-1.5ml-11mm-Waters",
+      "partNumber": "Vial-Clear-1.5ml-11mm-Waters",
+      "name": "Waters Clear Glass Vial 1.5mL 11mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-1.0ml-12mm-Waters",
+      "partNumber": "Vial-Clear-1.0ml-12mm-Waters",
+      "name": "Waters Clear Glass Vial 1.0mL 12mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    },
+    {
+      "productId": "WATS-Vial-Clear-2.0ml-12mm-Waters",
+      "partNumber": "Vial-Clear-2.0ml-12mm-Waters",
+      "name": "Waters Clear Glass Vial 2.0mL 12mm",
+      "brand": "Waters",
+      "updatedAt": "2025-10-28 05:06:39"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tbrand\tupdatedAt\nWATS-Vial-Clear-2.0ml-11mm-Waters\tVial-Clear-2.0ml-11mm-Waters\tWaters Clear Glass Vial 2.0mL 11mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-1.0ml-11mm-Waters\tVial-Clear-1.0ml-11mm-Waters\tWaters Clear Glass Vial 1.0mL 11mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-2.0ml-9mm-Waters\tVial-Clear-2.0ml-9mm-Waters\tWaters Clear Glass Vial 2.0mL 9mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-1.5ml-9mm-Waters\tVial-Clear-1.5ml-9mm-Waters\tWaters Clear Glass Vial 1.5mL 9mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-1.0ml-9mm-Waters\tVial-Clear-1.0ml-9mm-Waters\tWaters Clear Glass Vial 1.0mL 9mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-0.3ml-9mm-Waters\tVial-Clear-0.3ml-9mm-Waters\tWaters Clear Glass Vial 0.3mL 9mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-1.5ml-12mm-Waters\tVial-Clear-1.5ml-12mm-Waters\tWaters Clear Glass Vial 1.5mL 12mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-1.5ml-11mm-Waters\tVial-Clear-1.5ml-11mm-Waters\tWaters Clear Glass Vial 1.5mL 11mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-1.0ml-12mm-Waters\tVial-Clear-1.0ml-12mm-Waters\tWaters Clear Glass Vial 1.0mL 12mm\tWaters\t2025-10-28 05:06:39\nWATS-Vial-Clear-2.0ml-12mm-Waters\tVial-Clear-2.0ml-12mm-Waters\tWaters Clear Glass Vial 2.0mL 12mm\tWaters\t2025-10-28 05:06:39\n",
+  "stderr": "",
+  "execution_time_ms": 1494
+}

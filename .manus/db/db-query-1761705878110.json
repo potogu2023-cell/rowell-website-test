@@ -1,0 +1,94 @@
+{
+  "query": "\nSELECT brand, COUNT(*) as count \nFROM products \nGROUP BY brand \nORDER BY count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT brand, COUNT(*) as count \nFROM products \nGROUP BY brand \nORDER BY count DESC;\n",
+  "rows": [
+    {
+      "brand": "Phenomenex",
+      "count": "1338"
+    },
+    {
+      "brand": "Waters",
+      "count": "1265"
+    },
+    {
+      "brand": "Agilent",
+      "count": "1247"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "count": "894"
+    },
+    {
+      "brand": "YMC",
+      "count": "661"
+    },
+    {
+      "brand": "Shimadzu",
+      "count": "611"
+    },
+    {
+      "brand": "Daicel",
+      "count": "434"
+    },
+    {
+      "brand": "Merck",
+      "count": "413"
+    },
+    {
+      "brand": "ACE",
+      "count": "356"
+    },
+    {
+      "brand": "Develosil",
+      "count": "310"
+    },
+    {
+      "brand": "Dikma",
+      "count": "282"
+    },
+    {
+      "brand": "Restek",
+      "count": "250"
+    },
+    {
+      "brand": "TSKgel",
+      "count": "238"
+    },
+    {
+      "brand": "Avantor",
+      "count": "238"
+    },
+    {
+      "brand": "TCI",
+      "count": "155"
+    },
+    {
+      "brand": "Develosil (Nomura Chemical)",
+      "count": "150"
+    },
+    {
+      "brand": "Tosoh",
+      "count": "143"
+    },
+    {
+      "brand": "Millipore",
+      "count": "40"
+    },
+    {
+      "brand": "Pall",
+      "count": "40"
+    },
+    {
+      "brand": "Sartorius",
+      "count": "40"
+    },
+    {
+      "brand": "Whatman",
+      "count": "40"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcount\nPhenomenex\t1338\nWaters\t1265\nAgilent\t1247\nThermo Fisher Scientific\t894\nYMC\t661\nShimadzu\t611\nDaicel\t434\nMerck\t413\nACE\t356\nDevelosil\t310\nDikma\t282\nRestek\t250\nTSKgel\t238\nAvantor\t238\nTCI\t155\nDevelosil (Nomura Chemical)\t150\nTosoh\t143\nMillipore\t40\nPall\t40\nSartorius\t40\nWhatman\t40\n",
+  "stderr": "",
+  "execution_time_ms": 1520
+}
