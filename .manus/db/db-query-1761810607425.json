@@ -1,0 +1,122 @@
+{
+  "query": "\nSELECT \n  c.name as category_name,\n  COUNT(DISTINCT p.id) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nLEFT JOIN products p ON pc.productId = p.id\nGROUP BY c.id, c.name\nORDER BY product_count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT \n  c.name as category_name,\n  COUNT(DISTINCT p.id) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nLEFT JOIN products p ON pc.productId = p.id\nGROUP BY c.id, c.name\nORDER BY product_count DESC;\n",
+  "rows": [
+    {
+      "category_name": "HPLC Columns",
+      "product_count": "895"
+    },
+    {
+      "category_name": "SPE Cartridges",
+      "product_count": "60"
+    },
+    {
+      "category_name": "GC Columns",
+      "product_count": "54"
+    },
+    {
+      "category_name": "Guard Columns",
+      "product_count": "19"
+    },
+    {
+      "category_name": "Vials & Caps",
+      "product_count": "19"
+    },
+    {
+      "category_name": "Syringe Filters",
+      "product_count": "16"
+    },
+    {
+      "category_name": "Fittings & Tubing",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Derivatization",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Sample Preparation",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Filtration",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Lab Supplies",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Spectroscopy",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Standards",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Syringes & Needles",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Chromatography Columns",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Mobile Phase",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Extraction Accessories",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Chromatography Supplies",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Membrane Filters",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Filter Holders",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Glassware",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Plasticware",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Storage",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Analytical Columns",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Preparative Columns",
+      "product_count": "0"
+    },
+    {
+      "category_name": "UHPLC Columns",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Chiral Columns",
+      "product_count": "0"
+    },
+    {
+      "category_name": "Bio Columns",
+      "product_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "category_name\tproduct_count\nHPLC Columns\t895\nSPE Cartridges\t60\nGC Columns\t54\nGuard Columns\t19\nVials & Caps\t19\nSyringe Filters\t16\nFittings & Tubing\t0\nDerivatization\t0\nSample Preparation\t0\nFiltration\t0\nLab Supplies\t0\nSpectroscopy\t0\nStandards\t0\nSyringes & Needles\t0\nChromatography Columns\t0\nMobile Phase\t0\nExtraction Accessories\t0\nChromatography Supplies\t0\nMembrane Filters\t0\nFilter Holders\t0\nGlassware\t0\nPlasticware\t0\nStorage\t0\nAnalytical Columns\t0\nPreparative Columns\t0\nUHPLC Columns\t0\nChiral Columns\t0\nBio Columns\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1632
+}

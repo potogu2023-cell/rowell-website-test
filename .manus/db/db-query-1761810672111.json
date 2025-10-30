@@ -1,0 +1,70 @@
+{
+  "query": "\nSELECT p.productId, p.name, c.name as category_name\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Thermo Fisher' AND p.name LIKE '%TG-%'\nLIMIT 15;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT p.productId, p.name, c.name as category_name\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nLEFT JOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Thermo Fisher' AND p.name LIKE '%TG-%'\nLIMIT 15;\n",
+  "rows": [
+    {
+      "productId": "THER-000875",
+      "name": "TraceGOLD TG-5MS, 15 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000876",
+      "name": "TraceGOLD TG-5MS, 30 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000877",
+      "name": "TraceGOLD TG-5MS, 30 m x 0.32 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000878",
+      "name": "TraceGOLD TG-5MS, 60 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000879",
+      "name": "TraceGOLD TG-1MS, 15 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000880",
+      "name": "TraceGOLD TG-1MS, 30 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000881",
+      "name": "TraceGOLD TG-1MS, 30 m x 0.32 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000882",
+      "name": "TraceGOLD TG-1MS, 60 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000883",
+      "name": "TraceGOLD TG-Wax MS, 15 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000884",
+      "name": "TraceGOLD TG-Wax MS, 30 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000885",
+      "name": "TraceGOLD TG-Wax MS, 30 m x 0.32 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "THER-000886",
+      "name": "TraceGOLD TG-Wax MS, 60 m x 0.25 mm ID, 0.25 µm",
+      "category_name": "HPLC Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\tcategory_name\nTHER-000875\tTraceGOLD TG-5MS, 15 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000876\tTraceGOLD TG-5MS, 30 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000877\tTraceGOLD TG-5MS, 30 m x 0.32 mm ID, 0.25 µm\tHPLC Columns\nTHER-000878\tTraceGOLD TG-5MS, 60 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000879\tTraceGOLD TG-1MS, 15 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000880\tTraceGOLD TG-1MS, 30 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000881\tTraceGOLD TG-1MS, 30 m x 0.32 mm ID, 0.25 µm\tHPLC Columns\nTHER-000882\tTraceGOLD TG-1MS, 60 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000883\tTraceGOLD TG-Wax MS, 15 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000884\tTraceGOLD TG-Wax MS, 30 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\nTHER-000885\tTraceGOLD TG-Wax MS, 30 m x 0.32 mm ID, 0.25 µm\tHPLC Columns\nTHER-000886\tTraceGOLD TG-Wax MS, 60 m x 0.25 mm ID, 0.25 µm\tHPLC Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1528
+}

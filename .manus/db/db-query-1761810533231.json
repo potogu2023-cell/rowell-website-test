@@ -1,0 +1,60 @@
+{
+  "query": "\nSELECT p.productId, p.brand, p.name\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 12\nORDER BY p.name\nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT p.productId, p.brand, p.name\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 12\nORDER BY p.name\nLIMIT 10;\n",
+  "rows": [
+    {
+      "productId": "REST-000317",
+      "brand": "Restek",
+      "name": "Rtx-1, 15 m x 0.25 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000318",
+      "brand": "Restek",
+      "name": "Rtx-1, 30 m x 0.25 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000319",
+      "brand": "Restek",
+      "name": "Rtx-1, 30 m x 0.32 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000320",
+      "brand": "Restek",
+      "name": "Rtx-1, 30 m x 0.32 mm ID, 1.0 µm"
+    },
+    {
+      "productId": "REST-000321",
+      "brand": "Restek",
+      "name": "Rtx-1, 60 m x 0.25 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000322",
+      "brand": "Restek",
+      "name": "Rtx-1, 60 m x 0.32 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000359",
+      "brand": "Restek",
+      "name": "Rtx-1301, 15 m x 0.25 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000360",
+      "brand": "Restek",
+      "name": "Rtx-1301, 30 m x 0.25 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000361",
+      "brand": "Restek",
+      "name": "Rtx-1301, 30 m x 0.32 mm ID, 0.25 µm"
+    },
+    {
+      "productId": "REST-000362",
+      "brand": "Restek",
+      "name": "Rtx-1301, 30 m x 0.32 mm ID, 1.0 µm"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tbrand\tname\nREST-000317\tRestek\tRtx-1, 15 m x 0.25 mm ID, 0.25 µm\nREST-000318\tRestek\tRtx-1, 30 m x 0.25 mm ID, 0.25 µm\nREST-000319\tRestek\tRtx-1, 30 m x 0.32 mm ID, 0.25 µm\nREST-000320\tRestek\tRtx-1, 30 m x 0.32 mm ID, 1.0 µm\nREST-000321\tRestek\tRtx-1, 60 m x 0.25 mm ID, 0.25 µm\nREST-000322\tRestek\tRtx-1, 60 m x 0.32 mm ID, 0.25 µm\nREST-000359\tRestek\tRtx-1301, 15 m x 0.25 mm ID, 0.25 µm\nREST-000360\tRestek\tRtx-1301, 30 m x 0.25 mm ID, 0.25 µm\nREST-000361\tRestek\tRtx-1301, 30 m x 0.32 mm ID, 0.25 µm\nREST-000362\tRestek\tRtx-1301, 30 m x 0.32 mm ID, 1.0 µm\n",
+  "stderr": "",
+  "execution_time_ms": 1540
+}

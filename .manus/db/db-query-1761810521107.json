@@ -1,0 +1,9 @@
+{
+  "query": "\nSELECT brand, COUNT(*) as count\nFROM products\nWHERE name LIKE '%GC%' OR productId LIKE '%GC%'\nGROUP BY brand\nORDER BY count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT brand, COUNT(*) as count\nFROM products\nWHERE name LIKE '%GC%' OR productId LIKE '%GC%'\nGROUP BY brand\nORDER BY count DESC;\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1531
+}

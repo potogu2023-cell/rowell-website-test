@@ -553,3 +553,35 @@ ROWELL HPLC测试网站是一个专业的色谱产品展示和询价平台，目
 **优先级**: 🔥🔥🔥 最高优先级（严重影响用户体验）
 **实际时间**: 1小时
 
+
+
+
+---
+
+## ✅ 修复GC Columns分类缺失Thermo Fisher产品（2025-10-30）
+
+### 问题
+用户报告GC Columns页面只显示Restek品牌，但CSV文件中有Thermo Fisher的GC产品。
+
+### 根本原因
+- CSV文件中有66个GC产品：Restek 54个 + Thermo Fisher 12个
+- 数据库中只有54个产品被分类到GC Columns（ID 12）
+- Thermo Fisher的12个GC产品（TraceGOLD TG-系列）没有分类关联
+- 原因：分类关联脚本（create-product-category-links.ts）没有正确识别Thermo Fisher的GC产品
+
+### 解决方案
+手动为Thermo Fisher的GC产品添加分类关联：
+```sql
+INSERT INTO product_categories (productId, categoryId)
+SELECT p.id, 12
+FROM products p
+WHERE p.brand = 'Thermo Fisher' AND p.name LIKE '%TG-%'
+```
+
+### 修复结果
+- ✅ GC Columns现在有66个产品（Restek 54 + Thermo Fisher 12）
+- ✅ 品牌筛选器显示两个品牌
+- ✅ 与CSV文件数据一致
+
+**实际时间**: 30分钟
+

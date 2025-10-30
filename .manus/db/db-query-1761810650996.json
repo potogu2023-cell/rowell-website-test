@@ -1,0 +1,90 @@
+{
+  "query": "\nSELECT productId, name\nFROM products\nWHERE brand = 'Thermo Fisher'\nLIMIT 20;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT productId, name\nFROM products\nWHERE brand = 'Thermo Fisher'\nLIMIT 20;\n",
+  "rows": [
+    {
+      "productId": "THER-000833",
+      "name": "Acclaim C18, 3 µm, 2.1 x 50 mm"
+    },
+    {
+      "productId": "THER-000834",
+      "name": "Acclaim C18, 3 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "THER-000835",
+      "name": "Acclaim C18, 3 µm, 2.1 x 100 mm"
+    },
+    {
+      "productId": "THER-000836",
+      "name": "Acclaim C18, 3 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "THER-000837",
+      "name": "Acclaim C18, 3 µm, 2.1 x 150 mm"
+    },
+    {
+      "productId": "THER-000838",
+      "name": "Acclaim C18, 3 µm, 4.6 x 150 mm"
+    },
+    {
+      "productId": "THER-000839",
+      "name": "Acclaim C18, 3 µm, 4.6 x 250 mm"
+    },
+    {
+      "productId": "THER-000840",
+      "name": "Acclaim C18, 5 µm, 2.1 x 50 mm"
+    },
+    {
+      "productId": "THER-000841",
+      "name": "Acclaim C18, 5 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "THER-000842",
+      "name": "Acclaim C18, 5 µm, 2.1 x 100 mm"
+    },
+    {
+      "productId": "THER-000843",
+      "name": "Acclaim C18, 5 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "THER-000844",
+      "name": "Acclaim C18, 5 µm, 2.1 x 150 mm"
+    },
+    {
+      "productId": "THER-000845",
+      "name": "Acclaim C18, 5 µm, 4.6 x 150 mm"
+    },
+    {
+      "productId": "THER-000846",
+      "name": "Acclaim C18, 5 µm, 4.6 x 250 mm"
+    },
+    {
+      "productId": "THER-000847",
+      "name": "Acclaim Polar Advantage II, 3 µm, 2.1 x 50 mm"
+    },
+    {
+      "productId": "THER-000848",
+      "name": "Acclaim Polar Advantage II, 3 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "THER-000849",
+      "name": "Acclaim Polar Advantage II, 3 µm, 2.1 x 100 mm"
+    },
+    {
+      "productId": "THER-000850",
+      "name": "Acclaim Polar Advantage II, 3 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "THER-000851",
+      "name": "Acclaim Polar Advantage II, 3 µm, 2.1 x 150 mm"
+    },
+    {
+      "productId": "THER-000852",
+      "name": "Acclaim Polar Advantage II, 3 µm, 4.6 x 150 mm"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\nTHER-000833\tAcclaim C18, 3 µm, 2.1 x 50 mm\nTHER-000834\tAcclaim C18, 3 µm, 4.6 x 50 mm\nTHER-000835\tAcclaim C18, 3 µm, 2.1 x 100 mm\nTHER-000836\tAcclaim C18, 3 µm, 4.6 x 100 mm\nTHER-000837\tAcclaim C18, 3 µm, 2.1 x 150 mm\nTHER-000838\tAcclaim C18, 3 µm, 4.6 x 150 mm\nTHER-000839\tAcclaim C18, 3 µm, 4.6 x 250 mm\nTHER-000840\tAcclaim C18, 5 µm, 2.1 x 50 mm\nTHER-000841\tAcclaim C18, 5 µm, 4.6 x 50 mm\nTHER-000842\tAcclaim C18, 5 µm, 2.1 x 100 mm\nTHER-000843\tAcclaim C18, 5 µm, 4.6 x 100 mm\nTHER-000844\tAcclaim C18, 5 µm, 2.1 x 150 mm\nTHER-000845\tAcclaim C18, 5 µm, 4.6 x 150 mm\nTHER-000846\tAcclaim C18, 5 µm, 4.6 x 250 mm\nTHER-000847\tAcclaim Polar Advantage II, 3 µm, 2.1 x 50 mm\nTHER-000848\tAcclaim Polar Advantage II, 3 µm, 4.6 x 50 mm\nTHER-000849\tAcclaim Polar Advantage II, 3 µm, 2.1 x 100 mm\nTHER-000850\tAcclaim Polar Advantage II, 3 µm, 4.6 x 100 mm\nTHER-000851\tAcclaim Polar Advantage II, 3 µm, 2.1 x 150 mm\nTHER-000852\tAcclaim Polar Advantage II, 3 µm, 4.6 x 150 mm\n",
+  "stderr": "",
+  "execution_time_ms": 1569
+}

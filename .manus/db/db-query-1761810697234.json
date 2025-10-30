@@ -1,0 +1,9 @@
+{
+  "query": "\nINSERT INTO product_categories (productId, categoryId)\nSELECT p.id, 12\nFROM products p\nWHERE p.brand = 'Thermo Fisher' AND p.name LIKE '%TG-%'\nAND NOT EXISTS (\n  SELECT 1 FROM product_categories pc WHERE pc.productId = p.id AND pc.categoryId = 12\n);\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nINSERT INTO product_categories (productId, categoryId)\nSELECT p.id, 12\nFROM products p\nWHERE p.brand = 'Thermo Fisher' AND p.name LIKE '%TG-%'\nAND NOT EXISTS (\n  SELECT 1 FROM product_categories pc WHERE pc.productId = p.id AND pc.categoryId = 12\n);\n",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1523
+}
