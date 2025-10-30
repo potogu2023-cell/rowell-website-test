@@ -1,0 +1,46 @@
+{
+  "query": "\nSELECT p.brand, COUNT(*) as count\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 11\nGROUP BY p.brand\nORDER BY count DESC;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT p.brand, COUNT(*) as count\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 11\nGROUP BY p.brand\nORDER BY count DESC;\n",
+  "rows": [
+    {
+      "brand": "Daicel",
+      "count": "172"
+    },
+    {
+      "brand": "Develosil",
+      "count": "144"
+    },
+    {
+      "brand": "Phenomenex",
+      "count": "104"
+    },
+    {
+      "brand": "Waters",
+      "count": "100"
+    },
+    {
+      "brand": "ACE",
+      "count": "98"
+    },
+    {
+      "brand": "Agilent",
+      "count": "88"
+    },
+    {
+      "brand": "Shimadzu",
+      "count": "72"
+    },
+    {
+      "brand": "Merck",
+      "count": "63"
+    },
+    {
+      "brand": "Thermo Fisher",
+      "count": "54"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcount\nDaicel\t172\nDevelosil\t144\nPhenomenex\t104\nWaters\t100\nACE\t98\nAgilent\t88\nShimadzu\t72\nMerck\t63\nThermo Fisher\t54\n",
+  "stderr": "",
+  "execution_time_ms": 3758
+}

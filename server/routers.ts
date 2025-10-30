@@ -381,6 +381,7 @@ export const appRouter = router({
             .from(products)
             .innerJoin(productCategories, eq(products.id, productCategories.productId))
             .where(finalCondition)
+            .orderBy(products.name)
             .limit(pageSize)
             .offset(offset);
           
@@ -395,6 +396,7 @@ export const appRouter = router({
             .select()
             .from(products)
             .where(whereClause)
+            .orderBy(products.name)
             .limit(pageSize)
             .offset(offset);
           

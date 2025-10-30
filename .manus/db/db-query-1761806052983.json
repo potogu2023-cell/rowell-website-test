@@ -1,0 +1,130 @@
+{
+  "query": "\nSELECT p.productId, p.brand, p.name\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 11\nLIMIT 24 OFFSET 0;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute \nSELECT p.productId, p.brand, p.name\nFROM products p\nINNER JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.categoryId = 11\nLIMIT 24 OFFSET 0;\n",
+  "rows": [
+    {
+      "productId": "DEVE-000065",
+      "brand": "Develosil",
+      "name": "Develosil C8-UG, 5 µm, 2.0 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000066",
+      "brand": "Develosil",
+      "name": "Develosil C8-UG, 5 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000067",
+      "brand": "Develosil",
+      "name": "Develosil C8-UG, 5 µm, 2.0 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000068",
+      "brand": "Develosil",
+      "name": "Develosil C8-UG, 5 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000069",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 3 µm, 2.0 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000070",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 3 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000071",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 3 µm, 2.0 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000072",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 3 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000073",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 5 µm, 2.0 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000074",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 5 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000075",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 5 µm, 2.0 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000076",
+      "brand": "Develosil",
+      "name": "Develosil C4-UG, 5 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000077",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 3 µm, 2.0 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000078",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 3 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000079",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 3 µm, 2.0 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000080",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 3 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000081",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 5 µm, 2.0 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000082",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 5 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000083",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 5 µm, 2.0 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000084",
+      "brand": "Develosil",
+      "name": "Develosil TMS-UG, 5 µm, 4.6 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000085",
+      "brand": "Develosil",
+      "name": "Develosil Ph-UG, 3 µm, 2.0 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000086",
+      "brand": "Develosil",
+      "name": "Develosil Ph-UG, 3 µm, 4.6 x 50 mm"
+    },
+    {
+      "productId": "DEVE-000087",
+      "brand": "Develosil",
+      "name": "Develosil Ph-UG, 3 µm, 2.0 x 100 mm"
+    },
+    {
+      "productId": "DEVE-000088",
+      "brand": "Develosil",
+      "name": "Develosil Ph-UG, 3 µm, 4.6 x 100 mm"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tbrand\tname\nDEVE-000065\tDevelosil\tDevelosil C8-UG, 5 µm, 2.0 x 50 mm\nDEVE-000066\tDevelosil\tDevelosil C8-UG, 5 µm, 4.6 x 50 mm\nDEVE-000067\tDevelosil\tDevelosil C8-UG, 5 µm, 2.0 x 100 mm\nDEVE-000068\tDevelosil\tDevelosil C8-UG, 5 µm, 4.6 x 100 mm\nDEVE-000069\tDevelosil\tDevelosil C4-UG, 3 µm, 2.0 x 50 mm\nDEVE-000070\tDevelosil\tDevelosil C4-UG, 3 µm, 4.6 x 50 mm\nDEVE-000071\tDevelosil\tDevelosil C4-UG, 3 µm, 2.0 x 100 mm\nDEVE-000072\tDevelosil\tDevelosil C4-UG, 3 µm, 4.6 x 100 mm\nDEVE-000073\tDevelosil\tDevelosil C4-UG, 5 µm, 2.0 x 50 mm\nDEVE-000074\tDevelosil\tDevelosil C4-UG, 5 µm, 4.6 x 50 mm\nDEVE-000075\tDevelosil\tDevelosil C4-UG, 5 µm, 2.0 x 100 mm\nDEVE-000076\tDevelosil\tDevelosil C4-UG, 5 µm, 4.6 x 100 mm\nDEVE-000077\tDevelosil\tDevelosil TMS-UG, 3 µm, 2.0 x 50 mm\nDEVE-000078\tDevelosil\tDevelosil TMS-UG, 3 µm, 4.6 x 50 mm\nDEVE-000079\tDevelosil\tDevelosil TMS-UG, 3 µm, 2.0 x 100 mm\nDEVE-000080\tDevelosil\tDevelosil TMS-UG, 3 µm, 4.6 x 100 mm\nDEVE-000081\tDevelosil\tDevelosil TMS-UG, 5 µm, 2.0 x 50 mm\nDEVE-000082\tDevelosil\tDevelosil TMS-UG, 5 µm, 4.6 x 50 mm\nDEVE-000083\tDevelosil\tDevelosil TMS-UG, 5 µm, 2.0 x 100 mm\nDEVE-000084\tDevelosil\tDevelosil TMS-UG, 5 µm, 4.6 x 100 mm\nDEVE-000085\tDevelosil\tDevelosil Ph-UG, 3 µm, 2.0 x 50 mm\nDEVE-000086\tDevelosil\tDevelosil Ph-UG, 3 µm, 4.6 x 50 mm\nDEVE-000087\tDevelosil\tDevelosil Ph-UG, 3 µm, 2.0 x 100 mm\nDEVE-000088\tDevelosil\tDevelosil Ph-UG, 3 µm, 4.6 x 100 mm\n",
+  "stderr": "",
+  "execution_time_ms": 1616
+}
