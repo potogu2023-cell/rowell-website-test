@@ -18,4 +18,15 @@
 - [x] 测试品牌筛选功能
 - [x] 测试分类筛选功能
 - [x] 测试分页功能
-- [ ] 创建checkpoint
+- [x] 创建checkpoint
+
+## 品牌合并任务（2025-10-31）
+
+- [x] 创建品牌合并脚本
+- [x] 合并Merck + Merck/Sigma-Aldrich → Merck
+- [x] 合并Thermo Fisher + Thermo Fisher Scientific → Thermo Fisher Scientific
+- [x] 更新产品的brand和prefix字段
+- [x] 验证合并后的品牌数量（应该从11个减少到9个）
+- [x] 验证产品数量不变（2,484个）
+- [x] 测试前端品牌筛选功能
+- [ ] 保存checkpoint
