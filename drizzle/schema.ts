@@ -48,6 +48,8 @@ export const products = mysqlTable("products", {
   brand: varchar("brand", { length: 64 }).notNull(),
   /** Brand prefix (e.g., WATS, AGIL) */
   prefix: varchar("prefix", { length: 16 }).notNull(),
+  /** Product type (e.g., HPLC Column, GC Column, SPE Cartridge) */
+  productType: varchar("productType", { length: 100 }),
   /** Product name/title */
   name: text("name"),
   /** Product description */

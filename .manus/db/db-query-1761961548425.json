@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, slug, parentId FROM categories WHERE parentId = 2 OR id = 2",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug, parentId FROM categories WHERE parentId = 2 OR id = 2",
+  "rows": [
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "parentId": "NULL"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps",
+      "parentId": "2"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "slug": "syringes-needles",
+      "parentId": "2"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "slug": "fittings-tubing",
+      "parentId": "2"
+    },
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "slug": "mobile-phase",
+      "parentId": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\n2\tChromatography Supplies\tchromatography-supplies\tNULL\n21\tVials & Caps\tvials-caps\t2\n22\tSyringes & Needles\tsyringes-needles\t2\n23\tFittings & Tubing\tfittings-tubing\t2\n24\tMobile Phase\tmobile-phase\t2\n",
+  "stderr": "",
+  "execution_time_ms": 1531
+}

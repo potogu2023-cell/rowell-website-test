@@ -1,0 +1,150 @@
+{
+  "query": "SELECT id, name, slug FROM categories ORDER BY id",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug FROM categories ORDER BY id",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "slug": "sample-preparation"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "slug": "lab-supplies"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy",
+      "slug": "spectroscopy"
+    },
+    {
+      "id": "7",
+      "name": "Standards",
+      "slug": "standards"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "slug": "hplc-columns"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "slug": "syringes-needles"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "slug": "fittings-tubing"
+    },
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "slug": "mobile-phase"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "slug": "extraction-accessories"
+    },
+    {
+      "id": "33",
+      "name": "Derivatization",
+      "slug": "derivatization"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "slug": "syringe-filters"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "slug": "membrane-filters"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "slug": "filter-holders"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "slug": "glassware"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "slug": "plasticware"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "slug": "storage"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "slug": "analytical-columns"
+    },
+    {
+      "id": "112",
+      "name": "Preparative Columns",
+      "slug": "preparative-columns"
+    },
+    {
+      "id": "113",
+      "name": "UHPLC Columns",
+      "slug": "uhplc-columns"
+    },
+    {
+      "id": "114",
+      "name": "Chiral Columns",
+      "slug": "chiral-columns"
+    },
+    {
+      "id": "115",
+      "name": "Bio Columns",
+      "slug": "bio-columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n1\tChromatography Columns\tchromatography-columns\n2\tChromatography Supplies\tchromatography-supplies\n3\tSample Preparation\tsample-preparation\n4\tFiltration\tfiltration\n5\tLab Supplies\tlab-supplies\n6\tSpectroscopy\tspectroscopy\n7\tStandards\tstandards\n11\tHPLC Columns\thplc-columns\n12\tGC Columns\tgc-columns\n13\tGuard Columns\tguard-columns\n21\tVials & Caps\tvials-caps\n22\tSyringes & Needles\tsyringes-needles\n23\tFittings & Tubing\tfittings-tubing\n24\tMobile Phase\tmobile-phase\n31\tSPE Cartridges\tspe-cartridges\n32\tExtraction Accessories\textraction-accessories\n33\tDerivatization\tderivatization\n41\tSyringe Filters\tsyringe-filters\n42\tMembrane Filters\tmembrane-filters\n43\tFilter Holders\tfilter-holders\n51\tGlassware\tglassware\n52\tPlasticware\tplasticware\n53\tStorage\tstorage\n111\tAnalytical Columns\tanalytical-columns\n112\tPreparative Columns\tpreparative-columns\n113\tUHPLC Columns\tuhplc-columns\n114\tChiral Columns\tchiral-columns\n115\tBio Columns\tbio-columns\n",
+  "stderr": "",
+  "execution_time_ms": 1531
+}
