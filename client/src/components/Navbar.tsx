@@ -35,10 +35,12 @@ export default function Navbar() {
       <nav className="container flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href="/">
-          <a className="flex items-center space-x-2">
-            <div className="flex items-center">
-              <span className="text-2xl font-bold text-primary">ROWELL</span>
-            </div>
+          <a className="flex items-center space-x-3">
+            <img 
+              src="/rowell-logo.png" 
+              alt="ROWELL" 
+              className="h-10 w-auto"
+            />
             <span className="text-sm text-muted-foreground hidden sm:inline">
               HPLC Solutions
             </span>
