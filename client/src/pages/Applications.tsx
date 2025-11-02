@@ -1,35 +1,38 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from 'react-i18next';
 
 export default function Applications() {
+  const { t } = useTranslation();
+  
   const applications = [
     {
-      title: "Pharmaceutical Analysis",
-      description: "Drug purity testing, impurity profiling, and stability studies",
+      title: t('applications.pharmaceutical.title'),
+      description: t('applications.pharmaceutical.description'),
       icon: "💊"
     },
     {
-      title: "Environmental Testing",
-      description: "Water quality analysis, pesticide residue detection",
+      title: t('applications.environmental.title'),
+      description: t('applications.environmental.description'),
       icon: "🌍"
     },
     {
-      title: "Food & Beverage",
-      description: "Additive analysis, contaminant detection, quality control",
+      title: t('applications.food.title'),
+      description: t('applications.food.description'),
       icon: "🍎"
     },
     {
-      title: "Biochemistry",
-      description: "Protein analysis, peptide mapping, amino acid analysis",
+      title: t('applications.biochemistry.title'),
+      description: t('applications.biochemistry.description'),
       icon: "🧬"
     },
     {
-      title: "Clinical Research",
-      description: "Biomarker discovery, metabolomics, drug metabolism studies",
+      title: t('applications.clinical.title'),
+      description: t('applications.clinical.description'),
       icon: "🔬"
     },
     {
-      title: "Chemical Industry",
-      description: "Polymer analysis, petrochemical testing, quality assurance",
+      title: t('applications.chemical.title'),
+      description: t('applications.chemical.description'),
       icon: "⚗️"
     }
   ];
@@ -38,9 +41,9 @@ export default function Applications() {
     <div className="min-h-screen bg-background">
       <div className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container">
-          <h1 className="text-4xl font-bold mb-4">Applications</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('applications.title')}</h1>
           <p className="text-lg text-muted-foreground">
-            HPLC solutions for diverse analytical needs across industries
+            {t('applications.subtitle')}
           </p>
         </div>
       </div>
@@ -48,9 +51,7 @@ export default function Applications() {
       <div className="container py-12">
         <div className="mb-8">
           <p className="text-muted-foreground">
-            Our HPLC columns serve a wide range of applications across pharmaceutical, environmental, 
-            food, and research sectors. With over 10 years of experience, we provide technical support 
-            to help you select the right column for your specific analytical needs.
+            {t('applications.intro')}
           </p>
         </div>
 

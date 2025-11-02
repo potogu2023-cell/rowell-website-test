@@ -73,19 +73,44 @@
     "contact_whatsapp_desc": "Scan QR code for WhatsApp instant messaging",
     "contact_address_title": "Company Address",
     "contact_address_desc": "Welcome to visit and discuss cooperation",
-    "contact_address": "Shanghai, China"
+    "contact_address": "Shanghai, China",
+    "usp_l1_desc": "Most common reversed-phase packing",
+    "usp_l7_desc": "Intermediate hydrophobicity",
+    "usp_l11_desc": "Aromatic selectivity",
+    "usp_l60_desc": "Polar compound separation"
   },
   "products": {
-    "title": "Products",
-    "search_placeholder": "Search products...",
-    "filter_by_brand": "Filter by Brand",
-    "filter_by_category": "Filter by Category",
-    "all_brands": "All Brands",
-    "all_categories": "All Categories",
-    "no_products": "No products found",
+    "title": "HPLC Products",
+    "subtitle": "Browse our comprehensive collection of high-quality HPLC columns from leading manufacturers",
+    "search_placeholder": "Search by product ID, part number, or brand...",
+    "advanced_filters": "Advanced Filters",
+    "clear_filters": "Clear Filters",
+    "current_filters": "Current Filters:",
+    "brand": "Brand",
+    "particle_size_min": "Particle Size ≥",
+    "particle_size_max": "Particle Size ≤",
+    "pore_size_min": "Pore Size ≥",
+    "pore_size_max": "Pore Size ≤",
+    "column_length_min": "Column Length ≥",
+    "column_length_max": "Column Length ≤",
+    "inner_diameter_min": "Inner Diameter ≥",
+    "inner_diameter_max": "Inner Diameter ≤",
+    "phase_types": "Phase Types",
+    "ph_min": "pH ≥",
+    "ph_max": "pH ≤",
+    "showing_results": "Showing",
+    "of": "of",
+    "products_count": "products",
+    "in_category": "in",
+    "loading": "Loading products...",
+    "particle_size": "Particle Size",
+    "pore_size": "Pore Size",
+    "dimensions": "Dimensions",
     "add_to_inquiry": "Add to Inquiry",
-    "added_to_cart": "Added to inquiry cart!",
-    "login_required": "Please login to add products to inquiry cart"
+    "previous": "Previous",
+    "next": "Next",
+    "product_added": "Product added to inquiry cart!",
+    "add_failed": "Failed to add to cart"
   },
   "auth": {
     "register_title": "Create Account",
@@ -153,6 +178,18 @@
     "go_to_customers": "Go to Customers",
     "go_to_analytics": "Go to Analytics"
   },
+  "footer": {
+    "company_description": "ROWELL is dedicated to providing high-quality HPLC columns and consumables to customers worldwide, with competitive pricing and professional technical support.",
+    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. All rights reserved.",
+    "quick_links": "Quick Links",
+    "contact_us": "Contact Us",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "legal_disclaimer_title": "Important Legal Disclaimer",
+    "legal_disclaimer_cn": "本网站及上海洛维美电子商务有限公司（ROWELL）并非任何品牌的授权经销商或官方代理商。本网站所列产品均为独立采购的正品，仅供参考和教育用途。所有品牌名称、产品名称和商标均为其各自所有者的财产。我们与原始制造商之间不存在任何隶属、认可或赞助关系。产品的真实性、质量和售后服务由我们独立负责。购买前请确认您了解并接受此声明。",
+    "legal_disclaimer_en": "This website and Shanghai Luweimei E-commerce Co., Ltd. (ROWELL) are NOT authorized distributors or official agents of any brands mentioned herein. All products listed are independently sourced genuine items provided for reference and educational purposes only. All brand names, product names, and trademarks are the property of their respective owners. We are not affiliated with, endorsed by, or sponsored by any original manufacturers. We independently guarantee product authenticity, quality, and after-sales service. Please confirm that you understand and accept this disclaimer before making any purchase."
+  },
   "common": {
     "loading": "Loading...",
     "error": "Error",
@@ -166,7 +203,102 @@
     "search": "Search",
     "filter": "Filter",
     "sort": "Sort",
-    "actions": "Actions"
+    "actions": "Actions",
+    "products": "Products"
+  },
+  "productDetail": {
+    "loading": "Loading product details...",
+    "not_found": "Product Not Found",
+    "not_found_message": "The product you're looking for doesn't exist.",
+    "back_to_products": "Back to Products",
+    "product_description": "Product Description",
+    "no_description": "No description available.",
+    "technical_specs": "Technical Specifications",
+    "particle_size": "Particle Size",
+    "pore_size": "Pore Size",
+    "column_length": "Column Length",
+    "inner_diameter": "Inner Diameter",
+    "phase_type": "Phase Type",
+    "ph_range": "pH Range",
+    "max_pressure": "Max Pressure",
+    "max_temperature": "Max Temperature",
+    "usp_classification": "USP Classification",
+    "product_actions": "Product Actions",
+    "adding": "Adding...",
+    "add_to_inquiry_cart": "Add to Inquiry Cart",
+    "product_information": "Product Information",
+    "product_id": "Product ID",
+    "part_number": "Part Number",
+    "brand": "Brand",
+    "status": "Status",
+    "need_help": "Need Help?",
+    "need_help_message": "Contact our technical support team for product recommendations and technical assistance.",
+    "contact_us": "Contact Us"
+  },
+  "usp": {
+    "title": "USP Standards Reference",
+    "subtitle": "Professional USP standard matching for your analytical needs",
+    "intro": "The United States Pharmacopeia (USP) provides standardized column classifications to ensure consistency in analytical methods. Our products are categorized according to USP standards.",
+    "standards": {
+      "L1": {
+        "name": "Octadecylsilane (C18)",
+        "description": "Most common reversed-phase packing",
+        "details": "The most widely used HPLC stationary phase for reversed-phase separations."
+      },
+      "L7": {
+        "name": "Octylsilane (C8)",
+        "description": "Intermediate hydrophobicity",
+        "details": "Shorter alkyl chain than C18, providing different selectivity."
+      },
+      "L11": {
+        "name": "Phenylsilane",
+        "description": "Aromatic selectivity",
+        "details": "Provides π-π interactions for aromatic compounds."
+      },
+      "L60": {
+        "name": "HILIC",
+        "description": "Polar compound separation",
+        "details": "Hydrophilic interaction chromatography for polar analytes."
+      },
+      "L10": {
+        "name": "Nitrile",
+        "description": "Polar interactions",
+        "details": "Cyano-bonded phase for unique selectivity."
+      },
+      "L3": {
+        "name": "Porous silica",
+        "description": "Normal phase",
+        "details": "Unmodified silica for normal-phase separations."
+      }
+    }
+  },
+  "applications": {
+    "title": "Applications",
+    "subtitle": "HPLC solutions for diverse analytical needs across industries",
+    "intro": "Our HPLC columns serve a wide range of applications across pharmaceutical, environmental, food, and research sectors. With over 10 years of experience, we provide technical support to help you select the right column for your specific analytical needs.",
+    "pharmaceutical": {
+      "title": "Pharmaceutical Analysis",
+      "description": "Drug purity testing, impurity profiling, and stability studies"
+    },
+    "environmental": {
+      "title": "Environmental Testing",
+      "description": "Water quality analysis, pesticide residue detection"
+    },
+    "food": {
+      "title": "Food & Beverage",
+      "description": "Additive analysis, contaminant detection, quality control"
+    },
+    "biochemistry": {
+      "title": "Biochemistry",
+      "description": "Protein analysis, peptide mapping, amino acid analysis"
+    },
+    "clinical": {
+      "title": "Clinical Research",
+      "description": "Biomarker discovery, metabolomics, drug metabolism studies"
+    },
+    "chemical": {
+      "title": "Chemical Industry",
+      "description": "Polymer analysis, petrochemical testing, quality assurance"
+    }
   }
 }
-

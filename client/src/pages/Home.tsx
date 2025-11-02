@@ -2,8 +2,11 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Globe, DollarSign, Wrench, Star } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 export default function Home() {
+  const { t } = useTranslation();
+  
   const brands = [
     {
       name: "Waters",
@@ -96,33 +99,33 @@ export default function Home() {
   ];
 
   const uspStandards = [
-    { code: "L1", name: "Octadecylsilane (C18)", description: "Most common reversed-phase packing", count: "200+" },
-    { code: "L7", name: "Octylsilane (C8)", description: "Intermediate hydrophobicity", count: "150+" },
-    { code: "L11", name: "Phenylsilane", description: "Aromatic selectivity", count: "100+" },
-    { code: "L60", name: "HILIC", description: "Polar compound separation", count: "50+" }
+    { code: "L1", name: "Octadecylsilane (C18)", description: t('home.usp_l1_desc') || "Most common reversed-phase packing", count: "200+" },
+    { code: "L7", name: "Octylsilane (C8)", description: t('home.usp_l7_desc') || "Intermediate hydrophobicity", count: "150+" },
+    { code: "L11", name: "Phenylsilane", description: t('home.usp_l11_desc') || "Aromatic selectivity", count: "100+" },
+    { code: "L60", name: "HILIC", description: t('home.usp_l60_desc') || "Polar compound separation", count: "50+" }
   ];
 
   const testimonials = [
     {
-      name: "Dr. Jennifer Liu",
-      role: "Senior Analytical Chemist, BioPharm Research",
+      name: t('home.testimonial_1_name'),
+      role: t('home.testimonial_1_role'),
       initials: "JL",
       rating: 5,
-      text: "ROWELL has been our go-to supplier for HPLC columns for over 3 years. Their competitive pricing and reliable delivery have helped us maintain our research budget while ensuring consistent analytical results. The technical support team is knowledgeable and responsive."
+      text: t('home.testimonial_1_text')
     },
     {
-      name: "Michael Schmidt",
-      role: "QC Manager, Pharmaceutical Manufacturing",
+      name: t('home.testimonial_2_name'),
+      role: t('home.testimonial_2_role'),
       initials: "MS",
       rating: 5,
-      text: "The quality of columns from ROWELL matches that of original manufacturers at a fraction of the cost. We have successfully validated multiple methods using their columns, and the reproducibility has been excellent. Highly recommend for any analytical laboratory."
+      text: t('home.testimonial_2_text')
     },
     {
-      name: "Dr. Sarah Ahmed",
-      role: "Research Director, Environmental Testing Lab",
+      name: t('home.testimonial_3_name'),
+      role: t('home.testimonial_3_role'),
       initials: "SA",
       rating: 5,
-      text: "Working with ROWELL has streamlined our procurement process significantly. Their wide selection of brands and fast quotation turnaround allows us to focus on our analytical work rather than sourcing challenges. Professional service from start to finish."
+      text: t('home.testimonial_3_text')
     }
   ];
 
@@ -131,23 +134,22 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-blue-50 to-white py-20">
         <div className="container text-center">
-          <h1 className="text-5xl font-bold mb-4">Global HPLC Solutions</h1>
+          <h1 className="text-5xl font-bold mb-4">{t('home.hero_title')}</h1>
           <p className="text-xl text-primary mb-6">
-            Professional · Reliable · Efficient
+            {t('home.hero_subtitle')}
           </p>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-            ROWELL is dedicated to providing high-quality HPLC columns and consumables to customers worldwide, 
-            with competitive pricing and professional technical support, connecting brands with users globally.
+            {t('home.hero_description')}
           </p>
           <div className="flex gap-4 justify-center">
             <Button size="lg" asChild>
               <Link href="/products">
-                <a>Browse Products</a>
+                <a>{t('home.browse_products')}</a>
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="/contact">
-                <a>Contact Us</a>
+                <a>{t('home.contact_us')}</a>
               </Link>
             </Button>
           </div>
@@ -158,8 +160,8 @@ export default function Home() {
       <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Why Choose ROWELL</h2>
-            <p className="text-muted-foreground">Our core advantages make your research more efficient</p>
+            <h2 className="text-3xl font-bold mb-4">{t('home.why_choose_title')}</h2>
+            <p className="text-muted-foreground">{t('home.why_choose_subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card>
@@ -167,11 +169,11 @@ export default function Home() {
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <Globe className="w-6 h-6 text-blue-600" />
                 </div>
-                <CardTitle>Global Service Capability</CardTitle>
+                <CardTitle>{t('home.advantage_1_title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Serving major markets worldwide, with professional services in Asia, Americas, Middle East, and CIS regions
+                  {t('home.advantage_1_desc')}
                 </p>
               </CardContent>
             </Card>
@@ -180,11 +182,11 @@ export default function Home() {
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                   <DollarSign className="w-6 h-6 text-green-600" />
                 </div>
-                <CardTitle>Competitive Pricing</CardTitle>
+                <CardTitle>{t('home.advantage_2_title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Through optimized procurement channels, we offer more competitive pricing advantages than brand manufacturers
+                  {t('home.advantage_2_desc')}
                 </p>
               </CardContent>
             </Card>
@@ -193,11 +195,11 @@ export default function Home() {
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                   <Wrench className="w-6 h-6 text-purple-600" />
                 </div>
-                <CardTitle>Expert Technical Support</CardTitle>
+                <CardTitle>{t('home.advantage_3_title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Over 10 years of HPLC industry experience, providing professional technical support and USP standard references
+                  {t('home.advantage_3_desc')}
                 </p>
               </CardContent>
             </Card>
@@ -209,8 +211,8 @@ export default function Home() {
       <section className="py-16 bg-muted/50">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Product Portfolio</h2>
-            <p className="text-muted-foreground">High-quality HPLC columns from 11 globally renowned brands</p>
+            <h2 className="text-3xl font-bold mb-4">{t('home.product_portfolio')}</h2>
+            <p className="text-muted-foreground">{t('home.product_portfolio_subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {brands.map((brand) => (
@@ -229,10 +231,10 @@ export default function Home() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">{brand.series}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">{brand.count} Products</span>
+                    <span className="text-sm font-medium">{brand.count} {t('common.products') || 'Products'}</span>
                     <Button variant="link" size="sm" asChild>
                       <Link href={`/products?brand=${brand.name}`}>
-                        <a>View Products →</a>
+                        <a>{t('home.view_products')} →</a>
                       </Link>
                     </Button>
                   </div>
@@ -243,7 +245,7 @@ export default function Home() {
           <div className="text-center mt-8">
             <Button size="lg" asChild>
               <Link href="/products">
-                <a>Browse All Products (600+)</a>
+                <a>{t('home.browse_all')}</a>
               </Link>
             </Button>
           </div>
@@ -254,31 +256,24 @@ export default function Home() {
       <section className="py-16">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 text-center">About ROWELL</h2>
+            <h2 className="text-3xl font-bold mb-6 text-center">{t('home.about_title')}</h2>
             <div className="prose prose-lg max-w-none mb-8">
               <p className="text-muted-foreground text-center mb-6">
-                ROWELL's brand design concept originates from the pronunciation of "roadwell", symbolizing the connection 
-                between brand manufacturers and users, establishing a communication bridge for products, and serving as a 
-                pathway builder in global trade.
-              </p>
-              <p className="text-muted-foreground text-center">
-                Shanghai Luweimei E-commerce Co., Ltd. was established in 2020. Over the past 5 years, our team has been 
-                preparing and accumulating expertise. Our personnel have over 10 years of experience in the HPLC field. 
-                We specialize in the global sales of HPLC columns and related consumables.
+                {t('home.about_description')}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">2020</div>
-                <p className="text-muted-foreground">Established in 2020, with rich professional experience</p>
+                <div className="text-4xl font-bold text-primary mb-2">{t('home.about_milestone_1_year')}</div>
+                <p className="text-muted-foreground">{t('home.about_milestone_1_title')}</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">11</div>
-                <p className="text-muted-foreground">Globally renowned brand product lines</p>
+                <div className="text-4xl font-bold text-primary mb-2">{t('home.about_milestone_2_year')}</div>
+                <p className="text-muted-foreground">{t('home.about_milestone_2_title')}</p>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">4</div>
-                <p className="text-muted-foreground">Serving Asia, Americas, Middle East, and CIS regions</p>
+                <div className="text-4xl font-bold text-primary mb-2">{t('home.about_milestone_3_year')}</div>
+                <p className="text-muted-foreground">{t('home.about_milestone_3_title')}</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -286,12 +281,12 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <span className="text-2xl">1</span>
-                    Quality Assurance
+                    {t('home.about_value_1_title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Providing high-quality HPLC columns from trusted manufacturers
+                    {t('home.about_value_1_desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -299,12 +294,12 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <span className="text-2xl">2</span>
-                    Global Service
+                    {t('home.about_value_2_title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Connecting customers worldwide with reliable chromatography solutions
+                    {t('home.about_value_2_desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -312,12 +307,12 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <span className="text-2xl">3</span>
-                    Technical Excellence
+                    {t('home.about_value_3_title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Leveraging 10+ years of HPLC expertise for customer success
+                    {t('home.about_value_3_desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -330,54 +325,54 @@ export default function Home() {
       <section className="py-16 bg-muted/50">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">USP Standards Reference</h2>
-            <p className="text-muted-foreground">Professional USP standard matching for your analytical needs</p>
+            <h2 className="text-3xl font-bold mb-4">{t('home.usp_title')}</h2>
+            <p className="text-muted-foreground">{t('home.usp_subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {uspStandards.map((usp) => (
-              <Card key={usp.code}>
+            {uspStandards.map((standard) => (
+              <Card key={standard.code} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-primary">{usp.code}</CardTitle>
-                  <CardDescription className="font-semibold">{usp.name}</CardDescription>
+                  <CardTitle className="text-2xl font-bold text-primary">{standard.code}</CardTitle>
+                  <CardDescription className="text-base">{standard.name}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">{usp.description}</p>
-                  <p className="text-sm font-medium">{usp.count} Products</p>
+                  <p className="text-sm text-muted-foreground mb-4">{standard.description}</p>
+                  <p className="text-sm font-medium">{standard.count} {t('common.products') || 'Products'}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
           <div className="text-center mt-8">
-            <Button variant="outline" asChild>
+            <Button size="lg" variant="outline" asChild>
               <Link href="/usp-standards">
-                <a>View All USP Standards</a>
+                <a>{t('home.view_all_standards')}</a>
               </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Customer Testimonials */}
+      {/* What Our Customers Say */}
       <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">What Our Customers Say</h2>
-            <p className="text-muted-foreground">Trusted by researchers and laboratories worldwide</p>
+            <h2 className="text-3xl font-bold mb-4">{t('home.testimonials_title')}</h2>
+            <p className="text-muted-foreground">{t('home.testimonials_subtitle')}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {testimonials.map((testimonial) => (
-              <Card key={testimonial.name}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardHeader>
-                  <div className="flex items-center gap-4 mb-4">
+                  <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="font-bold text-primary">{testimonial.initials}</span>
+                      <span className="text-lg font-bold text-primary">{testimonial.initials}</span>
                     </div>
                     <div>
                       <CardTitle className="text-base">{testimonial.name}</CardTitle>
-                      <CardDescription className="text-xs">{testimonial.role}</CardDescription>
+                      <CardDescription className="text-sm">{testimonial.role}</CardDescription>
                     </div>
                   </div>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 mt-2">
                     {Array.from({ length: testimonial.rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
@@ -389,67 +384,71 @@ export default function Home() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Stats */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <p className="text-muted-foreground">Satisfied Customers</p>
+              <div className="text-5xl font-bold mb-2">500+</div>
+              <p className="text-lg">{t('home.stats_customers')}</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">98%</div>
-              <p className="text-muted-foreground">Customer Satisfaction</p>
+              <div className="text-5xl font-bold mb-2">98%</div>
+              <p className="text-lg">{t('home.stats_satisfaction')}</p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-primary mb-2">50+</div>
-              <p className="text-muted-foreground">Countries Served</p>
+              <div className="text-5xl font-bold mb-2">50+</div>
+              <p className="text-lg">{t('home.stats_countries')}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Us */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
-            <p className="text-muted-foreground">Ready to provide professional chromatography solutions</p>
+            <h2 className="text-3xl font-bold mb-4">{t('home.contact_title')}</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">{t('home.contact_subtitle')}</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Email Contact</CardTitle>
-                <CardDescription>Send us an email for product information and quotations</CardDescription>
+                <CardTitle>{t('home.contact_email_title')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm font-medium text-primary">info@rowellhplc.com</p>
+                <p className="text-sm text-muted-foreground mb-4">{t('home.contact_email_desc')}</p>
+                <p className="text-sm font-medium">info@rowellhplc.com</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Phone Consultation</CardTitle>
-                <CardDescription>Professional team providing technical support</CardDescription>
+                <CardTitle>{t('home.contact_phone_title')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm font-medium text-primary">+86 021 57852663</p>
+                <p className="text-sm text-muted-foreground mb-4">{t('home.contact_phone_desc')}</p>
+                <p className="text-sm font-medium">+86 021 57852663</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">WhatsApp Contact</CardTitle>
-                <CardDescription>Scan QR code for WhatsApp contact</CardDescription>
+                <CardTitle>{t('home.contact_whatsapp_title')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="w-20 h-20 bg-muted rounded flex items-center justify-center">
-                  <span className="text-xs text-muted-foreground">QR Code</span>
-                </div>
+                <p className="text-sm text-muted-foreground mb-4">{t('home.contact_whatsapp_desc')}</p>
+                <p className="text-sm font-medium">QR Code</p>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Company Address</CardTitle>
-                <CardDescription>Welcome to visit and communicate</CardDescription>
+                <CardTitle>{t('home.contact_address_title')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm font-medium text-primary">Shanghai, China</p>
+                <p className="text-sm text-muted-foreground mb-4">{t('home.contact_address_desc')}</p>
+                <p className="text-sm font-medium">{t('home.contact_address')}</p>
               </CardContent>
             </Card>
           </div>
@@ -458,4 +457,3 @@ export default function Home() {
     </div>
   );
 }
-

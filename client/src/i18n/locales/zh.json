@@ -73,19 +73,44 @@
     "contact_whatsapp_desc": "扫描二维码进行 WhatsApp 即时通讯",
     "contact_address_title": "公司地址",
     "contact_address_desc": "欢迎访问和讨论合作",
-    "contact_address": "中国上海"
+    "contact_address": "中国上海",
+    "usp_l1_desc": "最常见的反相填料",
+    "usp_l7_desc": "中等疏水性",
+    "usp_l11_desc": "芳香选择性",
+    "usp_l60_desc": "极性化合物分离"
   },
   "products": {
-    "title": "产品",
-    "search_placeholder": "搜索产品...",
-    "filter_by_brand": "按品牌筛选",
-    "filter_by_category": "按类别筛选",
-    "all_brands": "所有品牌",
-    "all_categories": "所有类别",
-    "no_products": "未找到产品",
+    "title": "HPLC 产品",
+    "subtitle": "浏览我们来自领先制造商的高质量 HPLC 色谱柱综合系列",
+    "search_placeholder": "按产品ID、零件号或品牌搜索...",
+    "advanced_filters": "高级筛选",
+    "clear_filters": "清除筛选",
+    "current_filters": "当前筛选条件：",
+    "brand": "品牌",
+    "particle_size_min": "粒径 ≥",
+    "particle_size_max": "粒径 ≤",
+    "pore_size_min": "孔径 ≥",
+    "pore_size_max": "孔径 ≤",
+    "column_length_min": "柱长 ≥",
+    "column_length_max": "柱长 ≤",
+    "inner_diameter_min": "内径 ≥",
+    "inner_diameter_max": "内径 ≤",
+    "phase_types": "填料",
+    "ph_min": "pH ≥",
+    "ph_max": "pH ≤",
+    "showing_results": "显示",
+    "of": "共",
+    "products_count": "个产品",
+    "in_category": "在",
+    "loading": "加载产品中...",
+    "particle_size": "粒径",
+    "pore_size": "孔径",
+    "dimensions": "尺寸",
     "add_to_inquiry": "添加到询价",
-    "added_to_cart": "已添加到询价清单！",
-    "login_required": "请登录后添加产品到询价清单"
+    "previous": "上一页",
+    "next": "下一页",
+    "product_added": "产品已添加到询价购物车！",
+    "add_failed": "添加失败"
   },
   "auth": {
     "register_title": "创建账户",
@@ -166,7 +191,114 @@
     "search": "搜索",
     "filter": "筛选",
     "sort": "排序",
-    "actions": "操作"
+    "actions": "操作",
+    "products": "产品"
+  },
+  "footer": {
+    "company_description": "ROWELL致力于为全球客户提供高品质HPLC色谱柱和耗材，以具有竞争力的价格和专业的技术支持。",
+    "copyright": "上海洛维美电子商务有限公司 版权所有",
+    "quick_links": "快速链接",
+    "contact_us": "联系我们",
+    "email": "邮箱",
+    "phone": "电话",
+    "location": "地址",
+    "legal_disclaimer_title": "重要法律声明",
+    "legal_disclaimer_cn": "本网站及上海洛维美电子商务有限公司（ROWELL）并非任何品牌的授权经销商或官方代理商。本网站所列产品均为独立采购的正品，仅供参考和教育用途。所有品牌名称、产品名称和商标均为其各自所有者的财产。我们与原始制造商之间不存在任何隶属、认可或赞助关系。产品的真实性、质量和售后服务由我们独立负责。购买前请确认您了解并接受此声明。",
+    "legal_disclaimer_en": "This website and Shanghai Luweimei E-commerce Co., Ltd. (ROWELL) are NOT authorized distributors or official agents of any brands mentioned herein. All products listed are independently sourced genuine items provided for reference and educational purposes only. All brand names, product names, and trademarks are the property of their respective owners. We are not affiliated with, endorsed by, or sponsored by any original manufacturers. We independently guarantee product authenticity, quality, and after-sales service. Please confirm that you understand and accept this disclaimer before making any purchase."
+  },
+  "productDetail": {
+    "loading": "加载产品详情中...",
+    "not_found": "产品未找到",
+    "not_found_message": "您查找的产品不存在。",
+    "back_to_products": "返回产品列表",
+    "product_description": "产品描述",
+    "no_description": "暂无描述。",
+    "technical_specs": "技术规格",
+    "particle_size": "粒径",
+    "pore_size": "孔径",
+    "column_length": "柱长",
+    "inner_diameter": "内径",
+    "phase_type": "填料类型",
+    "ph_range": "pH范围",
+    "max_pressure": "最大压力",
+    "max_temperature": "最高温度",
+    "usp_classification": "USP分类",
+    "product_actions": "产品操作",
+    "adding": "添加中...",
+    "add_to_inquiry_cart": "添加到询价购物车",
+    "product_information": "产品信息",
+    "product_id": "产品ID",
+    "part_number": "零件号",
+    "brand": "品牌",
+    "status": "状态",
+    "need_help": "需要帮助？",
+    "need_help_message": "联系我们的技术支持团队获取产品推荐和技术协助。",
+    "contact_us": "联系我们"
+  },
+  "usp": {
+    "title": "USP 标准参考",
+    "subtitle": "为您的分析需求提供专业的 USP 标准匹配",
+    "intro": "美国药典（USP）提供标准化的色谱柱分类，以确保分析方法的一致性。我们的产品按照 USP 标准进行分类。",
+    "standards": {
+      "L1": {
+        "name": "Octadecylsilane (C18)",
+        "description": "最常见的反相填料",
+        "details": "最广泛使用的 HPLC 固定相，用于反相分离。"
+      },
+      "L7": {
+        "name": "Octylsilane (C8)",
+        "description": "中等疏水性",
+        "details": "比 C18 烷基链更短，提供不同的选择性。"
+      },
+      "L11": {
+        "name": "Phenylsilane",
+        "description": "芳香选择性",
+        "details": "为芳香化合物提供 π-π 相互作用。"
+      },
+      "L60": {
+        "name": "HILIC",
+        "description": "极性化合物分离",
+        "details": "亲水相互作用色谱法，用于极性分析物。"
+      },
+      "L10": {
+        "name": "Nitrile",
+        "description": "极性相互作用",
+        "details": "氰基键合相，具有独特的选择性。"
+      },
+      "L3": {
+        "name": "Porous silica",
+        "description": "正相",
+        "details": "未改性硅胶，用于正相分离。"
+      }
+    }
+  },
+  "applications": {
+    "title": "应用领域",
+    "subtitle": "为各行业提供多样化分析需求的 HPLC 解决方案",
+    "intro": "我们的 HPLC 色谱柱服务于制药、环境、食品和研究等广泛应用领域。凭借超过10年的经验，我们提供技术支持，帮助您为特定的分析需求选择合适的色谱柱。",
+    "pharmaceutical": {
+      "title": "制药分析",
+      "description": "药物纯度测试、杂质分析和稳定性研究"
+    },
+    "environmental": {
+      "title": "环境检测",
+      "description": "水质分析、农药残留检测"
+    },
+    "food": {
+      "title": "食品饮料",
+      "description": "添加剂分析、污染物检测、质量控制"
+    },
+    "biochemistry": {
+      "title": "生物化学",
+      "description": "蛋白质分析、肽图谱、氨基酸分析"
+    },
+    "clinical": {
+      "title": "临床研究",
+      "description": "生物标志物发现、代谢组学、药物代谢研究"
+    },
+    "chemical": {
+      "title": "化工行业",
+      "description": "聚合物分析、石油化工测试、质量保证"
+    }
   }
 }
-

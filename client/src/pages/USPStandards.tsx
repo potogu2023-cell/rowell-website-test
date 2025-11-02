@@ -1,22 +1,25 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from 'react-i18next';
 
 export default function USPStandards() {
+  const { t } = useTranslation();
+  
   const uspStandards = [
-    { code: "L1", name: "Octadecylsilane (C18)", description: "Most common reversed-phase packing", details: "The most widely used HPLC stationary phase for reversed-phase separations." },
-    { code: "L7", name: "Octylsilane (C8)", description: "Intermediate hydrophobicity", details: "Shorter alkyl chain than C18, providing different selectivity." },
-    { code: "L11", name: "Phenylsilane", description: "Aromatic selectivity", details: "Provides π-π interactions for aromatic compounds." },
-    { code: "L60", name: "HILIC", description: "Polar compound separation", details: "Hydrophilic interaction chromatography for polar analytes." },
-    { code: "L10", name: "Nitrile", description: "Polar interactions", details: "Cyano-bonded phase for unique selectivity." },
-    { code: "L3", name: "Porous silica", description: "Normal phase", details: "Unmodified silica for normal-phase separations." },
+    { code: "L1", name: "Octadecylsilane (C18)", description: t('usp.standards.L1.description'), details: t('usp.standards.L1.details') },
+    { code: "L7", name: "Octylsilane (C8)", description: t('usp.standards.L7.description'), details: t('usp.standards.L7.details') },
+    { code: "L11", name: "Phenylsilane", description: t('usp.standards.L11.description'), details: t('usp.standards.L11.details') },
+    { code: "L60", name: "HILIC", description: t('usp.standards.L60.description'), details: t('usp.standards.L60.details') },
+    { code: "L10", name: "Nitrile", description: t('usp.standards.L10.description'), details: t('usp.standards.L10.details') },
+    { code: "L3", name: "Porous silica", description: t('usp.standards.L3.description'), details: t('usp.standards.L3.details') },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container">
-          <h1 className="text-4xl font-bold mb-4">USP Standards Reference</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('usp.title')}</h1>
           <p className="text-lg text-muted-foreground">
-            Professional USP standard matching for your analytical needs
+            {t('usp.subtitle')}
           </p>
         </div>
       </div>
@@ -24,8 +27,7 @@ export default function USPStandards() {
       <div className="container py-12">
         <div className="mb-8">
           <p className="text-muted-foreground">
-            The United States Pharmacopeia (USP) provides standardized column classifications to ensure 
-            consistency in analytical methods. Our products are categorized according to USP standards.
+            {t('usp.intro')}
           </p>
         </div>
 

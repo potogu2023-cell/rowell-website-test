@@ -6,8 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
+import { useTranslation } from 'react-i18next';
 
 export default function ProductDetail() {
+  const { t } = useTranslation();
   const params = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
   const id = params.id;
@@ -19,10 +21,10 @@ export default function ProductDetail() {
 
   const addToCartMutation = trpc.cart.add.useMutation({
     onSuccess: () => {
-      toast.success("Product added to inquiry cart!");
+      toast.success(t('products.product_added'));
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to add to cart");
+      toast.error(error.message || t('products.add_failed'));
     },
   });
 
@@ -37,7 +39,7 @@ export default function ProductDetail() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading product details...</p>
+          <p className="text-muted-foreground">{t('productDetail.loading')}</p>
         </div>
       </div>
     );
@@ -47,11 +49,11 @@ export default function ProductDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Product Not Found</h2>
-          <p className="text-muted-foreground mb-6">The product you're looking for doesn't exist.</p>
+          <h2 className="text-2xl font-bold mb-4">{t('productDetail.not_found')}</h2>
+          <p className="text-muted-foreground mb-6">{t('productDetail.not_found_message')}</p>
           <Button onClick={() => setLocation("/products")}>
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Products
+            {t('productDetail.back_to_products')}
           </Button>
         </div>
       </div>
@@ -68,7 +70,7 @@ export default function ProductDetail() {
           className="mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Products
+          {t('productDetail.back_to_products')}
         </Button>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -101,73 +103,73 @@ export default function ProductDetail() {
                 
                 {/* Product Description */}
                 <div className="mb-6">
-                  <h3 className="text-lg font-semibold mb-2">Product Description</h3>
+                  <h3 className="text-lg font-semibold mb-2">{t('productDetail.product_description')}</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    {product.description || "No description available."}
+                    {product.description || t('productDetail.no_description')}
                   </p>
                 </div>
 
                 {/* Technical Specifications */}
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Technical Specifications</h3>
+                  <h3 className="text-lg font-semibold mb-4">{t('productDetail.technical_specs')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {product.particleSize && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Particle Size (粒径):</span>
+                        <span className="text-muted-foreground">{t('productDetail.particle_size')}:</span>
                         <span className="font-medium">{product.particleSize} µm</span>
                       </div>
                     )}
                     {product.poreSize && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Pore Size (孔径):</span>
+                        <span className="text-muted-foreground">{t('productDetail.pore_size')}:</span>
                         <span className="font-medium">{product.poreSize} Å</span>
                       </div>
                     )}
                     {product.columnLength && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Column Length (柱长):</span>
+                        <span className="text-muted-foreground">{t('productDetail.column_length')}:</span>
                         <span className="font-medium">{product.columnLength} mm</span>
                       </div>
                     )}
                     {product.innerDiameter && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Inner Diameter (内径):</span>
+                        <span className="text-muted-foreground">{t('productDetail.inner_diameter')}:</span>
                         <span className="font-medium">{product.innerDiameter} mm</span>
                       </div>
                     )}
                     {product.phaseType && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Phase Type (填料类型):</span>
+                        <span className="text-muted-foreground">{t('productDetail.phase_type')}:</span>
                         <span className="font-medium">{product.phaseType}</span>
                       </div>
                     )}
                     {product.phMin && product.phMax && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">pH Range (pH范围):</span>
+                        <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
                         <span className="font-medium">{product.phMin} - {product.phMax}</span>
                       </div>
                     )}
                     {product.phRange && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">pH Range (pH范围):</span>
+                        <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
                         <span className="font-medium">{product.phRange}</span>
                       </div>
                     )}
                     {product.maxPressure && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Max Pressure (最大压力):</span>
+                        <span className="text-muted-foreground">{t('productDetail.max_pressure')}:</span>
                         <span className="font-medium">{product.maxPressure}</span>
                       </div>
                     )}
                     {product.maxTemperature && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">Max Temperature (最高温度):</span>
+                        <span className="text-muted-foreground">{t('productDetail.max_temperature')}:</span>
                         <span className="font-medium">{product.maxTemperature}</span>
                       </div>
                     )}
                     {product.usp && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">USP Classification:</span>
+                        <span className="text-muted-foreground">{t('productDetail.usp_classification')}:</span>
                         <span className="font-medium">{product.usp}</span>
                       </div>
                     )}
@@ -181,7 +183,7 @@ export default function ProductDetail() {
           <div className="lg:col-span-1">
             <Card className="sticky top-8">
               <CardHeader>
-                <CardTitle>Product Actions</CardTitle>
+                <CardTitle>{t('productDetail.product_actions')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Button
@@ -191,38 +193,38 @@ export default function ProductDetail() {
                   disabled={addToCartMutation.isPending}
                 >
                   <ShoppingCart className="w-5 h-5 mr-2" />
-                  {addToCartMutation.isPending ? "Adding..." : "Add to Inquiry Cart"}
+                  {addToCartMutation.isPending ? t('productDetail.adding') : t('productDetail.add_to_inquiry_cart')}
                 </Button>
 
                 <div className="pt-4 border-t">
-                  <h4 className="font-semibold mb-2">Product Information</h4>
+                  <h4 className="font-semibold mb-2">{t('productDetail.product_information')}</h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Product ID:</span>
+                      <span className="text-muted-foreground">{t('productDetail.product_id')}:</span>
                       <span className="font-medium">{product.productId}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Part Number:</span>
+                      <span className="text-muted-foreground">{t('productDetail.part_number')}:</span>
                       <span className="font-medium">{product.partNumber}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Brand:</span>
+                      <span className="text-muted-foreground">{t('productDetail.brand')}:</span>
                       <span className="font-medium">{product.brand}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Status:</span>
+                      <span className="text-muted-foreground">{t('productDetail.status')}:</span>
                       <Badge variant="outline">{product.status}</Badge>
                     </div>
                   </div>
                 </div>
 
                 <div className="pt-4 border-t">
-                  <h4 className="font-semibold mb-2">Need Help?</h4>
+                  <h4 className="font-semibold mb-2">{t('productDetail.need_help')}</h4>
                   <p className="text-sm text-muted-foreground mb-3">
-                    Contact our technical support team for product recommendations and technical assistance.
+                    {t('productDetail.need_help_message')}
                   </p>
                   <Button variant="outline" className="w-full" onClick={() => setLocation("/contact")}>
-                    Contact Us
+                    {t('productDetail.contact_us')}
                   </Button>
                 </div>
               </CardContent>

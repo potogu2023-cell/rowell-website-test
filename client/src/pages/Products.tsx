@@ -10,8 +10,10 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { ShoppingCart, ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilters";
 import { toast } from "sonner";
+import { useTranslation } from 'react-i18next';
 
 export default function Products() {
+  const { t } = useTranslation();
   const [, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
@@ -71,10 +73,10 @@ export default function Products() {
 
   const addToCartMutation = trpc.cart.add.useMutation({
     onSuccess: () => {
-      toast.success("Product added to inquiry cart!");
+      toast.success(t('products.product_added'));
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to add to cart");
+      toast.error(error.message || t('products.add_failed'));
     },
   });
 
@@ -108,7 +110,7 @@ export default function Products() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading products...</p>
+          <p className="text-muted-foreground">{t('products.loading')}</p>
         </div>
       </div>
     );
@@ -143,9 +145,9 @@ export default function Products() {
       {/* Header */}
       <div className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container">
-          <h1 className="text-4xl font-bold mb-4">HPLC Products</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('products.title')}</h1>
           <p className="text-lg text-muted-foreground">
-            Browse our comprehensive collection of high-quality HPLC columns from leading manufacturers
+            {t('products.subtitle')}
           </p>
         </div>
       </div>
@@ -167,7 +169,7 @@ export default function Products() {
               <div className="flex gap-2 mb-4">
                 <Input
                   type="text"
-                  placeholder="Search by product ID, part number, or brand..."
+                  placeholder={t('products.search_placeholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="flex-1"
@@ -178,14 +180,14 @@ export default function Products() {
                   className="flex items-center gap-2"
                 >
                   <Filter className="w-4 h-4" />
-                  高级筛选
+                  {t('products.advanced_filters')}
                 </Button>
                 {hasActiveFilters && (
                   <Button
                     onClick={handleClearFilters}
                     variant="ghost"
                   >
-                    清除筛选
+                    {t('products.clear_filters')}
                   </Button>
                 )}
               </div>
@@ -193,37 +195,37 @@ export default function Products() {
               {/* Active Filters Display */}
               {hasActiveFilters && (
                 <div className="mb-4 p-3 bg-blue-50 rounded-md">
-                  <p className="text-sm font-medium text-blue-900 mb-2">当前筛选条件：</p>
+                  <p className="text-sm font-medium text-blue-900 mb-2">{t('products.current_filters')}</p>
                   <div className="flex flex-wrap gap-2">
                     {selectedBrand && (
-                      <Badge variant="secondary">品牌: {selectedBrand}</Badge>
+                      <Badge variant="secondary">{t('products.brand')}: {selectedBrand}</Badge>
                     )}
                     {advancedFilters.particleSizeMin && (
-                      <Badge variant="secondary">粒径 ≥ {advancedFilters.particleSizeMin} µm</Badge>
+                      <Badge variant="secondary">{t('products.particle_size_min')} {advancedFilters.particleSizeMin} µm</Badge>
                     )}
                     {advancedFilters.particleSizeMax && (
-                      <Badge variant="secondary">粒径 ≤ {advancedFilters.particleSizeMax} µm</Badge>
+                      <Badge variant="secondary">{t('products.particle_size_max')} {advancedFilters.particleSizeMax} µm</Badge>
                     )}
                     {advancedFilters.poreSizeMin && (
-                      <Badge variant="secondary">孔径 ≥ {advancedFilters.poreSizeMin} Å</Badge>
+                      <Badge variant="secondary">{t('products.pore_size_min')} {advancedFilters.poreSizeMin} Å</Badge>
                     )}
                     {advancedFilters.poreSizeMax && (
-                      <Badge variant="secondary">孔径 ≤ {advancedFilters.poreSizeMax} Å</Badge>
+                      <Badge variant="secondary">{t('products.pore_size_max')} {advancedFilters.poreSizeMax} Å</Badge>
                     )}
                     {advancedFilters.columnLengthMin && (
-                      <Badge variant="secondary">柱长 ≥ {advancedFilters.columnLengthMin} mm</Badge>
+                      <Badge variant="secondary">{t('products.column_length_min')} {advancedFilters.columnLengthMin} mm</Badge>
                     )}
                     {advancedFilters.columnLengthMax && (
-                      <Badge variant="secondary">柱长 ≤ {advancedFilters.columnLengthMax} mm</Badge>
+                      <Badge variant="secondary">{t('products.column_length_max')} {advancedFilters.columnLengthMax} mm</Badge>
                     )}
                     {advancedFilters.innerDiameterMin && (
-                      <Badge variant="secondary">内径 ≥ {advancedFilters.innerDiameterMin} mm</Badge>
+                      <Badge variant="secondary">{t('products.inner_diameter_min')} {advancedFilters.innerDiameterMin} mm</Badge>
                     )}
                     {advancedFilters.innerDiameterMax && (
-                      <Badge variant="secondary">内径 ≤ {advancedFilters.innerDiameterMax} mm</Badge>
+                      <Badge variant="secondary">{t('products.inner_diameter_max')} {advancedFilters.innerDiameterMax} mm</Badge>
                     )}
                     {advancedFilters.phaseTypes && advancedFilters.phaseTypes.length > 0 && (
-                      <Badge variant="secondary">填料: {advancedFilters.phaseTypes.join(', ')}</Badge>
+                      <Badge variant="secondary">{t('products.phase_types')}: {advancedFilters.phaseTypes.join(', ')}</Badge>
                     )}
                     {advancedFilters.phMin && (
                       <Badge variant="secondary">pH ≥ {advancedFilters.phMin}</Badge>
@@ -252,8 +254,8 @@ export default function Products() {
 
             {/* Results Count */}
             <div className="mb-4 text-sm text-muted-foreground">
-              Showing {filteredProducts.length} of {total} products
-              {selectedCategoryName && ` in ${selectedCategoryName}`}
+              {t('products.showing_results')} {filteredProducts.length} {t('products.of')} {total} {t('products.products_count')}
+              {selectedCategoryName && ` ${t('products.in_category')} ${selectedCategoryName}`}
             </div>
 
             {/* Product Grid */}
@@ -290,19 +292,19 @@ export default function Products() {
                     <div className="space-y-2 mb-4 text-sm">
                       {product.particleSize && (
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">粒径:</span>
+                          <span className="text-muted-foreground">{t('products.particle_size')}:</span>
                           <span className="font-medium">{product.particleSize}</span>
                         </div>
                       )}
                       {product.poreSize && (
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">孔径:</span>
+                          <span className="text-muted-foreground">{t('products.pore_size')}:</span>
                           <span className="font-medium">{product.poreSize}</span>
                         </div>
                       )}
                       {(product.columnLength && product.innerDiameter) && (
                         <div className="flex justify-between">
-                          <span className="text-muted-foreground">尺寸:</span>
+                          <span className="text-muted-foreground">{t('products.dimensions')}:</span>
                           <span className="font-medium">{product.columnLength} × {product.innerDiameter}</span>
                         </div>
                       )}
@@ -324,7 +326,7 @@ export default function Products() {
                       disabled={!isAuthenticated || addToCartMutation.isPending}
                     >
                       <ShoppingCart className="mr-2 h-4 w-4" />
-                      Add to Inquiry
+                      {t('products.add_to_inquiry')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -341,7 +343,7 @@ export default function Products() {
                   disabled={currentPage === 1}
                 >
                   <ChevronLeft className="h-4 w-4" />
-                  Previous
+                  {t('products.previous')}
                 </Button>
                 
                 <div className="flex gap-1">
@@ -376,7 +378,7 @@ export default function Products() {
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={currentPage === totalPages}
                 >
-                  Next
+                  {t('products.next')}
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>

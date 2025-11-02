@@ -12,8 +12,10 @@ import {
 import { User, ShoppingCart, LogOut, Shield } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { useTranslation } from 'react-i18next';
 
 export default function Navbar() {
+  const { t } = useTranslation();
   const { user, isAuthenticated, logout } = useAuth();
   const [, setLocation] = useLocation();
   
@@ -52,32 +54,32 @@ export default function Navbar() {
           <LanguageSwitcher />
           <Link href="/">
             <a className="text-sm font-medium text-foreground hover:text-primary transition-colors">
-              Home
+              {t('nav.home')}
             </a>
           </Link>
           <Link href="/about">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              About Us
+              {t('nav.about')}
             </a>
           </Link>
           <Link href="/products">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              Products
+              {t('nav.products')}
             </a>
           </Link>
           <Link href="/usp-standards">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              USP Standards
+              {t('nav.usp_standards')}
             </a>
           </Link>
           <Link href="/applications">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              Applications
+              {t('nav.applications')}
             </a>
           </Link>
           <Link href="/contact">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              Contact
+              {t('nav.contact')}
             </a>
           </Link>
         </div>
@@ -89,7 +91,7 @@ export default function Navbar() {
               <Link href="/inquiry-cart">
                 <Button variant="ghost" size="sm" className="relative">
                   <ShoppingCart className="h-4 w-4" />
-                  <span className="ml-2 hidden sm:inline">Inquiry Cart</span>
+                  <span className="ml-2 hidden sm:inline">{t('nav.inquiry_cart')}</span>
                   {cartCount > 0 && (
                     <span className="absolute -top-1 -right-1 h-5 w-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
                       {cartCount}
@@ -102,7 +104,7 @@ export default function Navbar() {
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" size="sm">
                     <User className="h-4 w-4 mr-2" />
-                    <span className="hidden sm:inline">{user?.name || "Account"}</span>
+                    <span className="hidden sm:inline">{user?.name || t('nav.profile')}</span>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-56">
@@ -115,25 +117,25 @@ export default function Navbar() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={() => setLocation("/profile")}>
                     <User className="mr-2 h-4 w-4" />
-                    <span>Profile</span>
+                    <span>{t('nav.profile')}</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setLocation("/inquiry-history")}>
                     <ShoppingCart className="mr-2 h-4 w-4" />
-                    <span>Inquiry History</span>
+                    <span>{t('nav.inquiry_history')}</span>
                   </DropdownMenuItem>
                   {user?.role === "admin" && (
                     <>
                       <DropdownMenuSeparator />
                       <DropdownMenuItem onClick={() => setLocation("/admin")}>
                         <Shield className="mr-2 h-4 w-4" />
-                        <span>Admin Dashboard</span>
+                        <span>{t('nav.admin_panel')}</span>
                       </DropdownMenuItem>
                     </>
                   )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={handleLogout}>
                     <LogOut className="mr-2 h-4 w-4" />
-                    <span>Logout</span>
+                    <span>{t('nav.logout')}</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -142,24 +144,18 @@ export default function Navbar() {
             <>
               <Link href="/login">
                 <Button variant="ghost" size="sm">
-                  Login
+                  {t('nav.login')}
                 </Button>
               </Link>
               <Link href="/register">
                 <Button size="sm">
-                  Register
+                  {t('nav.register')}
                 </Button>
               </Link>
             </>
           )}
-          
-          {/* Language Selector (placeholder) */}
-          <Button variant="ghost" size="sm" className="hidden lg:flex">
-            🇺🇸 EN
-          </Button>
         </div>
       </nav>
     </header>
   );
 }
-

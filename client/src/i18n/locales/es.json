@@ -73,19 +73,44 @@
     "contact_whatsapp_desc": "Escanee el código QR para mensajería instantánea de WhatsApp",
     "contact_address_title": "Dirección de la empresa",
     "contact_address_desc": "Bienvenido a visitar y discutir la cooperación",
-    "contact_address": "Shanghai, China"
+    "contact_address": "Shanghai, China",
+    "usp_l1_desc": "Empaque de fase inversa más común",
+    "usp_l7_desc": "Hidrofobicidad intermedia",
+    "usp_l11_desc": "Selectividad aromática",
+    "usp_l60_desc": "Separación de compuestos polares"
   },
   "products": {
-    "title": "Productos",
-    "search_placeholder": "Buscar productos...",
-    "filter_by_brand": "Filtrar por marca",
-    "filter_by_category": "Filtrar por categoría",
-    "all_brands": "Todas las marcas",
-    "all_categories": "Todas las categorías",
-    "no_products": "No se encontraron productos",
-    "add_to_inquiry": "Agregar a cotización",
-    "added_to_cart": "¡Agregado al carrito de cotización!",
-    "login_required": "Por favor, inicie sesión para agregar productos al carrito de cotización"
+    "title": "Productos HPLC",
+    "subtitle": "Explore nuestra completa colección de columnas HPLC de alta calidad de fabricantes líderes",
+    "search_placeholder": "Buscar por ID de producto, número de pieza o marca...",
+    "advanced_filters": "Filtros Avanzados",
+    "clear_filters": "Limpiar Filtros",
+    "current_filters": "Filtros Actuales:",
+    "brand": "Marca",
+    "particle_size_min": "Tamaño de Partícula ≥",
+    "particle_size_max": "Tamaño de Partícula ≤",
+    "pore_size_min": "Tamaño de Poro ≥",
+    "pore_size_max": "Tamaño de Poro ≤",
+    "column_length_min": "Longitud de Columna ≥",
+    "column_length_max": "Longitud de Columna ≤",
+    "inner_diameter_min": "Diámetro Interno ≥",
+    "inner_diameter_max": "Diámetro Interno ≤",
+    "phase_types": "Tipos de Fase",
+    "ph_min": "pH ≥",
+    "ph_max": "pH ≤",
+    "showing_results": "Mostrando",
+    "of": "de",
+    "products_count": "productos",
+    "in_category": "en",
+    "loading": "Cargando productos...",
+    "particle_size": "Tamaño de Partícula",
+    "pore_size": "Tamaño de Poro",
+    "dimensions": "Dimensiones",
+    "add_to_inquiry": "Agregar a Consulta",
+    "previous": "Anterior",
+    "next": "Siguiente",
+    "product_added": "¡Producto agregado al carrito de consultas!",
+    "add_failed": "Error al agregar al carrito"
   },
   "auth": {
     "register_title": "Crear cuenta",
@@ -166,7 +191,82 @@
     "search": "Buscar",
     "filter": "Filtrar",
     "sort": "Ordenar",
-    "actions": "Acciones"
+    "actions": "Acciones",
+    "products": "Productos"
+  },
+  "footer": {
+    "company_description": "ROWELL se dedica a proporcionar columnas HPLC y consumibles de alta calidad a clientes de todo el mundo, con precios competitivos y soporte técnico profesional.",
+    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. Todos los derechos reservados.",
+    "quick_links": "Enlaces rápidos",
+    "contact_us": "Contáctenos",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "location": "Ubicación",
+    "legal_disclaimer_title": "Descargo de responsabilidad legal importante",
+    "legal_disclaimer_cn": "本网站及上海洛维美电子商务有限公司（ROWELL）并非任何品牌的授权经销商或官方代理商。本网站所列产品均为独立采购的正品，仅供参考和教育用途。所有品牌名称、产品名称和商标均为其各自所有者的财产。我们与原始制造商之间不存在任何隶属、认可或赞助关系。产品的真实性、质量和售后服务由我们独立负责。购买前请确认您了解并接受此声明。",
+    "legal_disclaimer_en": "Este sitio web y Shanghai Luweimei E-commerce Co., Ltd. (ROWELL) NO son distribuidores autorizados ni agentes oficiales de ninguna de las marcas mencionadas aquí. Todos los productos listados son artículos genuinos obtenidos de forma independiente y se proporcionan únicamente con fines de referencia y educativos. Todos los nombres de marcas, nombres de productos y marcas comerciales son propiedad de sus respectivos propietarios. No estamos afiliados, respaldados ni patrocinados por ningún fabricante original. Garantizamos de forma independiente la autenticidad, calidad y servicio postventa de los productos. Por favor, confirme que comprende y acepta este descargo de responsabilidad antes de realizar cualquier compra."
+  },
+  "productDetail": {
+    "loading": "Cargando detalles del producto...",
+    "not_found": "Producto no encontrado",
+    "not_found_message": "El producto que buscas no existe.",
+    "back_to_products": "Volver a Productos",
+    "product_description": "Descripción del Producto",
+    "no_description": "No hay descripción disponible.",
+    "technical_specs": "Especificaciones Técnicas",
+    "particle_size": "Tamaño de Partícula",
+    "pore_size": "Tamaño de Poro",
+    "column_length": "Longitud de Columna",
+    "inner_diameter": "Diámetro Interno",
+    "phase_type": "Tipo de Fase",
+    "ph_range": "Rango de pH",
+    "max_pressure": "Presión Máxima",
+    "max_temperature": "Temperatura Máxima",
+    "usp_classification": "Clasificación USP",
+    "product_actions": "Acciones del Producto",
+    "adding": "Agregando...",
+    "add_to_inquiry_cart": "Agregar al Carrito de Consultas",
+    "product_information": "Información del Producto",
+    "product_id": "ID del Producto",
+    "part_number": "Número de Pieza",
+    "brand": "Marca",
+    "status": "Estado",
+    "need_help": "¿Necesitas Ayuda?",
+    "need_help_message": "Contacta a nuestro equipo de soporte técnico para recomendaciones de productos y asistencia técnica.",
+    "contact_us": "Contáctanos"
+  },
+  "usp": {
+    "title": "Referencia de Estándares USP",
+    "subtitle": "Coincidencia profesional de estándares USP para sus necesidades analíticas",
+    "intro": "La Farmacopea de los Estados Unidos (USP) proporciona clasificaciones estandarizadas de columnas para garantizar la consistencia en los métodos analíticos. Nuestros productos están categorizados según los estándares USP."
+  },
+  "applications": {
+    "title": "Aplicaciones",
+    "subtitle": "Soluciones HPLC para diversas necesidades analíticas en todas las industrias",
+    "intro": "Nuestras columnas HPLC sirven para una amplia gama de aplicaciones en los sectores farmacéutico, ambiental, alimentario y de investigación. Con más de 10 años de experiencia, brindamos soporte técnico para ayudarlo a seleccionar la columna adecuada para sus necesidades analíticas específicas.",
+    "pharmaceutical": {
+      "title": "Análisis Farmacéutico",
+      "description": "Pruebas de pureza de medicamentos, perfiles de impurezas y estudios de estabilidad"
+    },
+    "environmental": {
+      "title": "Pruebas Ambientales",
+      "description": "Análisis de calidad del agua, detección de residuos de pesticidas"
+    },
+    "food": {
+      "title": "Alimentos y Bebidas",
+      "description": "Análisis de aditivos, detección de contaminantes, control de calidad"
+    },
+    "biochemistry": {
+      "title": "Bioquímica",
+      "description": "Análisis de proteínas, mapeo de péptidos, análisis de aminoácidos"
+    },
+    "clinical": {
+      "title": "Investigación Clínica",
+      "description": "Descubrimiento de biomarcadores, metabolómica, estudios de metabolismo de fármacos"
+    },
+    "chemical": {
+      "title": "Industria Química",
+      "description": "Análisis de polímeros, pruebas petroquímicas, aseguramiento de calidad"
+    }
   }
 }
-

@@ -10,6 +10,7 @@ import jaTranslation from './locales/ja.json';
 import esTranslation from './locales/es.json';
 import ptTranslation from './locales/pt.json';
 import arTranslation from './locales/ar.json';
+import koTranslation from './locales/ko.json';
 
 const resources = {
   en: {
@@ -32,6 +33,9 @@ const resources = {
   },
   ar: {
     translation: arTranslation,
+  },
+  ko: {
+    translation: koTranslation,
   },
 };
 
@@ -66,6 +70,7 @@ export const languages = [
   { code: 'es', name: 'Español', flag: '🇪🇸', dir: 'ltr' },
   { code: 'pt', name: 'Português', flag: '🇧🇷', dir: 'ltr' },
   { code: 'ar', name: 'العربية', flag: '🇸🇦', dir: 'rtl' },
+  { code: 'ko', name: '한국어', flag: '🇰🇷', dir: 'ltr' },
 ];
 
 // Get language name by code

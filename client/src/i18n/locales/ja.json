@@ -73,19 +73,44 @@
     "contact_whatsapp_desc": "QR コードをスキャンして WhatsApp でインスタントメッセージ",
     "contact_address_title": "会社住所",
     "contact_address_desc": "訪問と協力の議論を歓迎します",
-    "contact_address": "中国上海"
+    "contact_address": "中国上海",
+    "usp_l1_desc": "最も一般的な逆相充填剤",
+    "usp_l7_desc": "中程度の疎水性",
+    "usp_l11_desc": "芳香族選択性",
+    "usp_l60_desc": "極性化合物の分離"
   },
   "products": {
-    "title": "製品",
-    "search_placeholder": "製品を検索...",
-    "filter_by_brand": "ブランドで絞り込む",
-    "filter_by_category": "カテゴリで絞り込む",
-    "all_brands": "すべてのブランド",
-    "all_categories": "すべてのカテゴリ",
-    "no_products": "製品が見つかりません",
-    "add_to_inquiry": "見積に追加",
-    "added_to_cart": "見積カートに追加されました！",
-    "login_required": "ログインして製品を見積カートに追加してください"
+    "title": "HPLC 製品",
+    "subtitle": "主要メーカーの高品質HPLCカラムの包括的なコレクションをご覧ください",
+    "search_placeholder": "製品ID、部品番号、またはブランドで検索...",
+    "advanced_filters": "詳細フィルター",
+    "clear_filters": "フィルターをクリア",
+    "current_filters": "現在のフィルター：",
+    "brand": "ブランド",
+    "particle_size_min": "粒子サイズ ≥",
+    "particle_size_max": "粒子サイズ ≤",
+    "pore_size_min": "細孔サイズ ≥",
+    "pore_size_max": "細孔サイズ ≤",
+    "column_length_min": "カラム長 ≥",
+    "column_length_max": "カラム長 ≤",
+    "inner_diameter_min": "内径 ≥",
+    "inner_diameter_max": "内径 ≤",
+    "phase_types": "相タイプ",
+    "ph_min": "pH ≥",
+    "ph_max": "pH ≤",
+    "showing_results": "表示中",
+    "of": "件中",
+    "products_count": "製品",
+    "in_category": "カテゴリ",
+    "loading": "製品を読み込み中...",
+    "particle_size": "粒子サイズ",
+    "pore_size": "細孔サイズ",
+    "dimensions": "寸法",
+    "add_to_inquiry": "お問い合わせに追加",
+    "previous": "前へ",
+    "next": "次へ",
+    "product_added": "製品がお問い合わせカートに追加されました！",
+    "add_failed": "カートへの追加に失敗しました"
   },
   "auth": {
     "register_title": "アカウントを作成",
@@ -166,7 +191,82 @@
     "search": "検索",
     "filter": "絞り込み",
     "sort": "並び替え",
-    "actions": "操作"
+    "actions": "操作",
+    "products": "製品"
+  },
+  "footer": {
+    "company_description": "ROWELLは、競争力のある価格と専門的な技術サポートにより、世界中のお客様に高品質なHPLCカラムと消耗品を提供することに専念しています。",
+    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. 全著作権所有。",
+    "quick_links": "クイックリンク",
+    "contact_us": "お問い合わせ",
+    "email": "メール",
+    "phone": "電話",
+    "location": "所在地",
+    "legal_disclaimer_title": "重要な法的免責事項",
+    "legal_disclaimer_cn": "本网站及上海洛维美电子商务有限公司（ROWELL）并非任何品牌的授权经销商或官方代理商。本网站所列产品均为独立采购的正品，仅供参考和教育用途。所有品牌名称、产品名称和商标均为其各自所有者的财产。我们与原始制造商之间不存在任何隶属、认可或赞助关系。产品的真实性、质量和售后服务由我们独立负责。购买前请确认您了解并接受此声明。",
+    "legal_disclaimer_en": "このウェブサイトおよびShanghai Luweimei E-commerce Co., Ltd.（ROWELL）は、ここに記載されているいかなるブランドの正規販売代理店または公式代理店でもありません。掲載されているすべての製品は、参考および教育目的のためにのみ提供される、独立して調達された正規品です。すべてのブランド名、製品名、商標は、それぞれの所有者の財産です。当社は、いかなる元の製造業者とも提携、承認、またはスポンサーシップの関係にありません。当社は、製品の真正性、品質、およびアフターサービスを独立して保証します。ご購入前に、この免責事項を理解し、受け入れることを確認してください。"
+  },
+  "productDetail": {
+    "loading": "製品詳細を読み込み中...",
+    "not_found": "製品が見つかりません",
+    "not_found_message": "お探しの製品は存在しません。",
+    "back_to_products": "製品一覧に戻る",
+    "product_description": "製品説明",
+    "no_description": "説明はありません。",
+    "technical_specs": "技術仕様",
+    "particle_size": "粒子サイズ",
+    "pore_size": "細孔サイズ",
+    "column_length": "カラム長",
+    "inner_diameter": "内径",
+    "phase_type": "相タイプ",
+    "ph_range": "pH範囲",
+    "max_pressure": "最大圧力",
+    "max_temperature": "最高温度",
+    "usp_classification": "USP分類",
+    "product_actions": "製品アクション",
+    "adding": "追加中...",
+    "add_to_inquiry_cart": "お問い合わせカートに追加",
+    "product_information": "製品情報",
+    "product_id": "製品ID",
+    "part_number": "部品番号",
+    "brand": "ブランド",
+    "status": "ステータス",
+    "need_help": "お困りですか？",
+    "need_help_message": "製品の推奨事項や技術サポートについては、技術サポートチームにお問い合わせください。",
+    "contact_us": "お問い合わせ"
+  },
+  "usp": {
+    "title": "USP 規格リファレンス",
+    "subtitle": "分析ニーズに対応するプロフェッショナルな USP 規格マッチング",
+    "intro": "米国薬局方（USP）は、分析方法の一貫性を確保するために標準化されたカラム分類を提供しています。当社の製品は USP 規格に従って分類されています。"
+  },
+  "applications": {
+    "title": "アプリケーション",
+    "subtitle": "業界全体の多様な分析ニーズに対応する HPLC ソリューション",
+    "intro": "当社の HPLC カラムは、製薬、環境、食品、研究分野における幅広いアプリケーションに対応しています。10年以上の経験を持ち、お客様の特定の分析ニーズに適したカラムを選択するための技術サポートを提供しています。",
+    "pharmaceutical": {
+      "title": "医薬品分析",
+      "description": "薬物純度試験、不純物プロファイリング、安定性試験"
+    },
+    "environmental": {
+      "title": "環境試験",
+      "description": "水質分析、農薬残留物検出"
+    },
+    "food": {
+      "title": "食品・飲料",
+      "description": "添加物分析、汚染物質検出、品質管理"
+    },
+    "biochemistry": {
+      "title": "生化学",
+      "description": "タンパク質分析、ペプチドマッピング、アミノ酸分析"
+    },
+    "clinical": {
+      "title": "臨床研究",
+      "description": "バイオマーカー発見、メタボロミクス、薬物代謝研究"
+    },
+    "chemical": {
+      "title": "化学工業",
+      "description": "ポリマー分析、石油化学試験、品質保証"
+    }
   }
 }
-

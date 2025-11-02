@@ -1,13 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useTranslation } from 'react-i18next';
 
 export default function About() {
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen bg-background">
       <div className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container">
-          <h1 className="text-4xl font-bold mb-4">About ROWELL</h1>
+          <h1 className="text-4xl font-bold mb-4">{t('about.title')}</h1>
           <p className="text-lg text-muted-foreground">
-            Connecting brands with users, building pathways in global trade
+            {t('about.subtitle')}
           </p>
         </div>
       </div>
@@ -15,12 +18,10 @@ export default function About() {
       <div className="container py-12">
         <div className="max-w-4xl mx-auto space-y-12">
           <section>
-            <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('about.our_story')}</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground mb-4">
-                ROWELL's brand design concept originates from the pronunciation of "roadwell", symbolizing the connection 
-                between brand manufacturers and users, establishing a communication bridge for products, and serving as a 
-                pathway builder in global trade.
+                {t('home.about_description')}
               </p>
               <p className="text-muted-foreground mb-4">
                 Shanghai Luweimei E-commerce Co., Ltd. was established in 2020. Over the past 5 years, our team has been 
@@ -31,35 +32,35 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('about.our_mission')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle>Quality Assurance</CardTitle>
+                  <CardTitle>{t('home.about_value_1_title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Providing high-quality HPLC columns from trusted manufacturers
+                    {t('home.about_value_1_desc')}
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Global Service</CardTitle>
+                  <CardTitle>{t('home.about_value_2_title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Connecting customers worldwide with reliable chromatography solutions
+                    {t('home.about_value_2_desc')}
                   </p>
                 </CardContent>
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Technical Excellence</CardTitle>
+                  <CardTitle>{t('home.about_value_3_title')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    Leveraging 10+ years of HPLC expertise for customer success
+                    {t('home.about_value_3_desc')}
                   </p>
                 </CardContent>
               </Card>
@@ -70,16 +71,16 @@ export default function About() {
             <h2 className="text-3xl font-bold mb-6">Company Highlights</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
-                <div className="text-5xl font-bold text-primary mb-2">2020</div>
-                <p className="text-muted-foreground">Established with rich professional experience</p>
+                <div className="text-5xl font-bold text-primary mb-2">{t('home.about_milestone_1_year')}</div>
+                <p className="text-muted-foreground">{t('home.about_milestone_1_title')}</p>
               </div>
               <div>
-                <div className="text-5xl font-bold text-primary mb-2">11</div>
-                <p className="text-muted-foreground">Globally renowned brand product lines</p>
+                <div className="text-5xl font-bold text-primary mb-2">{t('home.about_milestone_2_year')}</div>
+                <p className="text-muted-foreground">{t('home.about_milestone_2_title')}</p>
               </div>
               <div>
-                <div className="text-5xl font-bold text-primary mb-2">4</div>
-                <p className="text-muted-foreground">Major regions served worldwide</p>
+                <div className="text-5xl font-bold text-primary mb-2">{t('home.about_milestone_3_year')}</div>
+                <p className="text-muted-foreground">{t('home.about_milestone_3_title')}</p>
               </div>
             </div>
           </section>
