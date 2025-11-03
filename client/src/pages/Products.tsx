@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CategoryNav from "@/components/CategoryNav";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { ShoppingCart, ChevronLeft, ChevronRight, Filter } from "lucide-react";
+import { ShoppingCart, ChevronLeft, ChevronRight, Filter, Bot, MessageCircle, Lightbulb } from "lucide-react";
 import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilters";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
@@ -190,6 +190,27 @@ export default function Products() {
                     {t('products.clear_filters')}
                   </Button>
                 )}
+              </div>
+
+              {/* AI Recommendation Prompt */}
+              <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-lg p-4 mb-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Bot className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-base mb-1">
+                      Can't find what you need?
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Describe your application and let our AI advisor recommend the best products for you.
+                    </p>
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Ask AI Advisor
+                    </Button>
+                  </div>
+                </div>
               </div>
 
               {/* Active Filters Display */}

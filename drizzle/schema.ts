@@ -1,4 +1,4 @@
-import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex } from "drizzle-orm/mysql-core";
+import { int, json, mysqlEnum, mysqlTable, text, timestamp, varchar, uniqueIndex, index, decimal } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -27,6 +27,9 @@ export const users = mysqlTable("users", {
   customerTier: mysqlEnum("customerTier", ["regular", "vip"]).default("regular"), // Customer tier for admin management
   emailVerified: int("emailVerified").default(0).notNull(), // 0 = not verified, 1 = verified
   password: varchar("password", { length: 255 }), // Hashed password for email/password login
+  // AI advisor consent settings
+  consentMode: mysqlEnum("consentMode", ["standard", "privacy"]).default("standard"),
+  consentTimestamp: timestamp("consentTimestamp"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   lastSignedIn: timestamp("lastSignedIn").defaultNow().notNull(),
@@ -176,6 +179,7 @@ export const inquiries = mysqlTable("inquiries", {
   totalItems: int("totalItems").default(0).notNull(),
   customerNotes: text("customerNotes"),
   adminNotes: text("adminNotes"), // Internal notes from admin
+  conversationId: int("conversationId"), // Link to AI conversation if inquiry came from AI advisor
   quotedAt: timestamp("quotedAt"),
   completedAt: timestamp("completedAt"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
@@ -201,3 +205,158 @@ export const inquiryItems = mysqlTable("inquiry_items", {
 
 export type InquiryItem = typeof inquiryItems.$inferSelect;
 export type InsertInquiryItem = typeof inquiryItems.$inferInsert;
+
+// ============================================================================
+// AI ADVISOR TABLES
+// ============================================================================
+
+/**
+ * AI Conversations table
+ * Stores conversation sessions between users and AI advisor
+ */
+export const aiConversations = mysqlTable("ai_conversations", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").references(() => users.id, { onDelete: "cascade" }), // NULL for anonymous users
+  sessionId: varchar("sessionId", { length: 64 }).notNull().unique(), // Unique session identifier
+  consentMode: mysqlEnum("consentMode", ["standard", "privacy", "anonymous"]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  expiresAt: timestamp("expiresAt"), // Auto-calculated: createdAt + 120 days for standard mode
+  isDeleted: int("isDeleted").default(0).notNull(), // Soft delete flag
+}, (table) => ({
+  idxUserId: uniqueIndex("idx_ai_conversations_userId").on(table.userId),
+  idxSessionId: uniqueIndex("idx_ai_conversations_sessionId").on(table.sessionId),
+  idxExpiresAt: uniqueIndex("idx_ai_conversations_expiresAt").on(table.expiresAt),
+}));
+
+export type AIConversation = typeof aiConversations.$inferSelect;
+export type InsertAIConversation = typeof aiConversations.$inferInsert;
+
+/**
+ * AI Messages table
+ * Stores individual messages in conversations
+ */
+export const aiMessages = mysqlTable("ai_messages", {
+  id: int("id").autoincrement().primaryKey(),
+  conversationId: int("conversationId").notNull().references(() => aiConversations.id, { onDelete: "cascade" }),
+  role: mysqlEnum("role", ["user", "assistant", "system"]).notNull(),
+  content: text("content"), // Plain text for privacy mode and anonymous users
+  contentEncrypted: text("contentEncrypted"), // Encrypted content for standard mode (base64 encoded)
+  feedback: mysqlEnum("feedback", ["like", "dislike", "none"]).default("none"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({
+  idxConversationId: index("idx_ai_messages_conversationId").on(table.conversationId),
+  idxFeedback: index("idx_ai_messages_feedback").on(table.feedback),
+  idxCreatedAt: index("idx_ai_messages_createdAt").on(table.createdAt),
+}));
+
+export type AIMessage = typeof aiMessages.$inferSelect;
+export type InsertAIMessage = typeof aiMessages.$inferInsert;
+
+/**
+ * AI Cache table
+ * Stores frequently asked questions and their answers for performance optimization
+ */
+export const aiCache = mysqlTable("ai_cache", {
+  id: int("id").autoincrement().primaryKey(),
+  questionHash: varchar("questionHash", { length: 64 }).notNull().unique(), // SHA-256 hash of normalized question
+  questionKeywords: text("questionKeywords"), // Space-separated keywords for matching
+  questionSample: text("questionSample"), // Sample question text for reference
+  answer: text("answer").notNull(), // Cached answer
+  hitCount: int("hitCount").default(0).notNull(), // Number of times this cache was used
+  likeCount: int("likeCount").default(0).notNull(), // Number of likes
+  dislikeCount: int("dislikeCount").default(0).notNull(), // Number of dislikes
+  satisfactionRate: decimal("satisfactionRate", { precision: 5, scale: 2 }), // Calculated: likes / (likes + dislikes)
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  expiresAt: timestamp("expiresAt").notNull(), // Cache expiration (30 days default)
+}, (table) => ({
+  idxQuestionHash: uniqueIndex("idx_ai_cache_questionHash").on(table.questionHash),
+  idxExpiresAt: index("idx_ai_cache_expiresAt").on(table.expiresAt),
+  idxHitCount: index("idx_ai_cache_hitCount").on(table.hitCount),
+}));
+
+export type AICache = typeof aiCache.$inferSelect;
+export type InsertAICache = typeof aiCache.$inferInsert;
+
+/**
+ * AI Conversation Statistics table
+ * Daily aggregated statistics for monitoring and optimization
+ */
+export const aiConversationStats = mysqlTable("ai_conversation_stats", {
+  id: int("id").autoincrement().primaryKey(),
+  statDate: timestamp("statDate").notNull().unique(), // Date for this statistics record
+  totalConversations: int("totalConversations").default(0).notNull(),
+  totalMessages: int("totalMessages").default(0).notNull(),
+  avgMessagesPerConversation: decimal("avgMessagesPerConversation", { precision: 5, scale: 2 }),
+  likes: int("likes").default(0).notNull(),
+  dislikes: int("dislikes").default(0).notNull(),
+  satisfactionRate: decimal("satisfactionRate", { precision: 5, scale: 2 }), // likes / (likes + dislikes)
+  transferToHuman: int("transferToHuman").default(0).notNull(), // Count of conversations transferred to human
+  cacheHits: int("cacheHits").default(0).notNull(),
+  cacheHitRate: decimal("cacheHitRate", { precision: 5, scale: 2 }), // cacheHits / totalMessages
+  llmCost: decimal("llmCost", { precision: 10, scale: 2 }), // Daily LLM API cost in USD
+}, (table) => ({
+  idxStatDate: uniqueIndex("idx_ai_conversation_stats_statDate").on(table.statDate),
+}));
+
+export type AIConversationStats = typeof aiConversationStats.$inferSelect;
+export type InsertAIConversationStats = typeof aiConversationStats.$inferInsert;
+
+/**
+ * Conversion Funnel table
+ * Tracks user journey from website visit to inquiry submission
+ */
+export const conversionFunnel = mysqlTable("conversion_funnel", {
+  id: int("id").autoincrement().primaryKey(),
+  statDate: timestamp("statDate").notNull().unique(),
+  websiteVisits: int("websiteVisits").default(0).notNull(), // Total unique visitors
+  aiConversations: int("aiConversations").default(0).notNull(), // Users who started AI chat
+  productClicks: int("productClicks").default(0).notNull(), // Users who clicked product links
+  cartAdditions: int("cartAdditions").default(0).notNull(), // Users who added items to cart
+  inquiriesSubmitted: int("inquiriesSubmitted").default(0).notNull(), // Users who submitted inquiries
+}, (table) => ({
+  idxStatDate: uniqueIndex("idx_conversion_funnel_statDate").on(table.statDate),
+}));
+
+export type ConversionFunnel = typeof conversionFunnel.$inferSelect;
+export type InsertConversionFunnel = typeof conversionFunnel.$inferInsert;
+
+/**
+ * AI Question Analysis table
+ * Tracks frequently asked questions and their performance
+ */
+export const aiQuestionAnalysis = mysqlTable("ai_question_analysis", {
+  id: int("id").autoincrement().primaryKey(),
+  questionHash: varchar("questionHash", { length: 64 }).notNull().unique(),
+  questionSample: text("questionSample"), // Sample question text
+  askCount: int("askCount").default(0).notNull(), // How many times this question was asked
+  likeCount: int("likeCount").default(0).notNull(),
+  dislikeCount: int("dislikeCount").default(0).notNull(),
+  satisfactionRate: decimal("satisfactionRate", { precision: 5, scale: 2 }),
+  lastAskedAt: timestamp("lastAskedAt"),
+}, (table) => ({
+  idxQuestionHash: uniqueIndex("idx_ai_question_analysis_questionHash").on(table.questionHash),
+  idxAskCount: uniqueIndex("idx_ai_question_analysis_askCount").on(table.askCount),
+  idxSatisfactionRate: uniqueIndex("idx_ai_question_analysis_satisfactionRate").on(table.satisfactionRate),
+}));
+
+export type AIQuestionAnalysis = typeof aiQuestionAnalysis.$inferSelect;
+export type InsertAIQuestionAnalysis = typeof aiQuestionAnalysis.$inferInsert;
+
+/**
+ * LLM Cost Tracking table
+ * Detailed tracking of LLM API costs for budget monitoring
+ */
+export const llmCostTracking = mysqlTable("llm_cost_tracking", {
+  id: int("id").autoincrement().primaryKey(),
+  conversationId: int("conversationId").references(() => aiConversations.id, { onDelete: "set null" }),
+  tokenCount: int("tokenCount").notNull(), // Total tokens used (prompt + completion)
+  cost: decimal("cost", { precision: 10, scale: 6 }).notNull(), // Cost in USD
+  model: varchar("model", { length: 50 }).default("gpt-3.5-turbo").notNull(),
+  timestamp: timestamp("timestamp").defaultNow().notNull(),
+}, (table) => ({
+  idxConversationId: uniqueIndex("idx_llm_cost_tracking_conversationId").on(table.conversationId),
+  idxTimestamp: uniqueIndex("idx_llm_cost_tracking_timestamp").on(table.timestamp),
+}));
+
+export type LLMCostTracking = typeof llmCostTracking.$inferSelect;
+export type InsertLLMCostTracking = typeof llmCostTracking.$inferInsert;

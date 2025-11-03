@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, DollarSign, Wrench, Star } from "lucide-react";
+import { Globe, DollarSign, Wrench, Star, Bot, MessageCircle, Lightbulb, Target, Zap, Rocket } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
 export default function Home() {
@@ -131,76 +131,151 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-20">
+      {/* Hero Section - AI-Powered */}
+      <section className="bg-gradient-to-b from-blue-50 via-purple-50 to-white py-20">
         <div className="container text-center">
-          <h1 className="text-5xl font-bold mb-4">{t('home.hero_title')}</h1>
-          <p className="text-xl text-primary mb-6">
-            {t('home.hero_subtitle')}
+          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Bot className="w-4 h-4" />
+            AI-Powered Solution Provider
+          </div>
+          <h1 className="text-5xl font-bold mb-4">
+            {t('home.hero_title') || 'Smart Chromatography Solutions'}
+          </h1>
+          <p className="text-xl text-primary mb-6 font-semibold">
+            24/7 AI Product Advisor • 11 Premium Brands • 2400+ Products
           </p>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-            {t('home.hero_description')}
+            Don't know which column to choose? Our AI advisor provides instant technical recommendations 
+            based on your application. Backed by 10 years of expertise and 11 world-class brands.
           </p>
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Ask AI Advisor
+            </Button>
             <Button size="lg" asChild>
               <Link href="/products">
-                <a>{t('home.browse_products')}</a>
+                <a>{t('home.browse_products') || 'Browse Products'}</a>
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild>
               <Link href="/contact">
-                <a>{t('home.contact_us')}</a>
+                <a>{t('home.contact_us') || 'Contact Us'}</a>
               </Link>
             </Button>
+          </div>
+          <div className="mt-8 flex items-center justify-center gap-8 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <Zap className="w-4 h-4 text-blue-600" />
+              <span>&lt;5s Response Time</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Target className="w-4 h-4 text-green-600" />
+              <span>95% Accuracy Rate</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Star className="w-4 h-4 text-yellow-600" />
+              <span>500+ Labs Served</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose ROWELL */}
+      {/* Why Choose ROWELL - AI-Powered Advantages */}
       <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">{t('home.why_choose_title')}</h2>
-            <p className="text-muted-foreground">{t('home.why_choose_subtitle')}</p>
+            <h2 className="text-3xl font-bold mb-4">Why Choose ROWELL</h2>
+            <p className="text-muted-foreground">Not just a supplier - Your chromatography problem-solving partner</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card>
+            {/* Advantage 1: AI-Powered Technical Support */}
+            <Card className="border-2 border-blue-100 hover:border-blue-300 transition-colors">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="w-6 h-6 text-blue-600" />
+                  <Bot className="w-6 h-6 text-blue-600" />
                 </div>
-                <CardTitle>{t('home.advantage_1_title')}</CardTitle>
+                <CardTitle className="text-xl">24/7 AI Product Advisor + Expert Consultation</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  {t('home.advantage_1_desc')}
+                <p className="text-muted-foreground mb-4">
+                  Get instant technical recommendations from our AI advisor, trained on 10+ years of 
+                  chromatography expertise. Can't find the answer? Our expert Oscar is here to help.
                 </p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-blue-600" />
+                    <span className="font-medium">&lt;5 seconds response time</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Target className="w-4 h-4 text-blue-600" />
+                    <span className="font-medium">95% question accuracy rate</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Lightbulb className="w-4 h-4 text-blue-600" />
+                    <span className="font-medium">Smart product matching</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
-            <Card>
+
+            {/* Advantage 2: Multi-Brand Solution */}
+            <Card className="border-2 border-green-100 hover:border-green-300 transition-colors">
               <CardHeader>
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                  <DollarSign className="w-6 h-6 text-green-600" />
+                  <Globe className="w-6 h-6 text-green-600" />
                 </div>
-                <CardTitle>{t('home.advantage_2_title')}</CardTitle>
+                <CardTitle className="text-xl">11 Premium Brands, 2400+ Products, One Supplier</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  {t('home.advantage_2_desc')}
+                <p className="text-muted-foreground mb-4">
+                  Compare and choose from Waters, Agilent, Phenomenex, Thermo Fisher, Merck, and 6 more 
+                  leading brands. HPLC/GC columns, SPE cartridges, consumables - everything in one place.
                 </p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-green-600" />
+                    <span className="font-medium">11 world-class brands</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-green-600" />
+                    <span className="font-medium">2400+ products in stock</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-green-600" />
+                    <span className="font-medium">Volume discounts available</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
-            <Card>
+
+            {/* Advantage 3: Professional Service */}
+            <Card className="border-2 border-purple-100 hover:border-purple-300 transition-colors">
               <CardHeader>
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Wrench className="w-6 h-6 text-purple-600" />
+                  <Rocket className="w-6 h-6 text-purple-600" />
                 </div>
-                <CardTitle>{t('home.advantage_3_title')}</CardTitle>
+                <CardTitle className="text-xl">From Inquiry to Delivery - We Handle Everything</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  {t('home.advantage_3_desc')}
+                <p className="text-muted-foreground mb-4">
+                  Expert customs clearance, fast worldwide shipping, professional packaging for fragile 
+                  items, and post-sale technical support. We make international purchasing hassle-free.
                 </p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-purple-600" />
+                    <span className="font-medium">Shipping to 50+ countries</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Rocket className="w-4 h-4 text-purple-600" />
+                    <span className="font-medium">98% on-time delivery rate</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Wrench className="w-4 h-4 text-purple-600" />
+                    <span className="font-medium">Professional customs docs</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>

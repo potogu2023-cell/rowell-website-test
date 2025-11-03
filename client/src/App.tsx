@@ -28,6 +28,7 @@ import AdminAnalytics from "./pages/AdminAnalytics";
 import TestFilters from "./pages/TestFilters";
 import ProductDetail from "./pages/ProductDetail";
 import WhatsAppButton from "./components/WhatsAppButton";
+import AIChatWidget from "./components/ai/AIChatWidget";
 
 function Router() {
   const { i18n } = useTranslation();
@@ -67,6 +68,7 @@ function Router() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <AIChatWidget />
     </div>
   );
 }

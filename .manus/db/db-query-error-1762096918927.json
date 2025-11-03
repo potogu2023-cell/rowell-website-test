@@ -1,0 +1,8 @@
+{
+  "query": "-- Drop the incorrectly created unique indexes (except the one needed for FK)\nDROP INDEX idx_ai_messages_feedback ON ai_messages;\nDROP INDEX idx_ai_messages_createdAt ON ai_messages;\n\n-- For ai_cache\nDROP INDEX idx_ai_cache_expiresAt ON ai_cache;\nDROP INDEX idx_ai_cache_hitCount ON ai_cache;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute -- Drop the incorrectly created unique indexes (except the one needed for FK)\nDROP INDEX idx_ai_messages_feedback ON ai_messages;\nDROP INDEX idx_ai_messages_createdAt ON ai_messages;\n\n-- For ai_cache\nDROP INDEX idx_ai_cache_expiresAt ON ai_cache;\nDROP INDEX idx_ai_cache_hitCount ON ai_cache;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1091 (42000) at line 6: index idx_ai_cache_expiresAt doesn't exist"
+  ]
+}

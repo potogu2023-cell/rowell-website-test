@@ -4,7 +4,7 @@ import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Bot, MessageCircle, RefreshCw, Lightbulb } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
 
@@ -101,6 +101,22 @@ export default function ProductDetail() {
               <CardContent>
                 <h2 className="text-2xl font-semibold mb-4">{product.name}</h2>
                 
+                {/* AI Recommendation Buttons */}
+                <div className="flex items-center gap-2 mb-6 flex-wrap">
+                  <Button variant="outline" size="sm" className="border-blue-200 hover:bg-blue-50">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Ask AI about this product
+                  </Button>
+                  <Button variant="outline" size="sm" className="border-purple-200 hover:bg-purple-50">
+                    <RefreshCw className="w-4 h-4 mr-2" />
+                    Find alternatives
+                  </Button>
+                  <Button variant="outline" size="sm" className="border-green-200 hover:bg-green-50">
+                    <Lightbulb className="w-4 h-4 mr-2" />
+                    Optimal conditions?
+                  </Button>
+                </div>
+                
                 {/* Product Description */}
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold mb-2">{t('productDetail.product_description')}</h3>
@@ -175,6 +191,38 @@ export default function ProductDetail() {
                     )}
                   </div>
                 </div>
+
+                {/* AI Help Card */}
+                <Card className="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-lg mb-2">Need Help Choosing?</h4>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          Our AI advisor can help you determine if this product is right for your application,
+                          suggest optimal conditions, or recommend alternatives.
+                        </p>
+                        <div className="flex gap-2 flex-wrap">
+                          <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                            <MessageCircle className="w-4 h-4 mr-2" />
+                            Is this right for me?
+                          </Button>
+                          <Button size="sm" variant="outline" className="border-blue-300">
+                            <Lightbulb className="w-4 h-4 mr-2" />
+                            Optimal conditions?
+                          </Button>
+                          <Button size="sm" variant="outline" className="border-blue-300">
+                            <RefreshCw className="w-4 h-4 mr-2" />
+                            Show alternatives
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </CardContent>
             </Card>
           </div>

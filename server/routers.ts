@@ -14,9 +14,136 @@ import {
   verifyPassword,
   verifyPasswordResetToken,
 } from "./auth-utils";
+import { handleAIChat, generateSessionId, getQueueStatus } from "./ai/chat-handler";
+import { GREETING_MESSAGE } from "./ai/prompts";
+import { aiMessages, aiConversations } from "../drizzle/schema";
 
 export const appRouter = router({
   system: systemRouter,
+
+  // AI Advisor Router
+  ai: router({
+    // Get greeting message
+    greeting: publicProcedure.query(() => {
+      return { message: GREETING_MESSAGE };
+    }),
+
+    // Chat with AI
+    chat: publicProcedure
+      .input(
+        z.object({
+          message: z.string().min(1).max(2000),
+          sessionId: z.string().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        const response = await handleAIChat(ctx.user, input.message, input.sessionId);
+        return response;
+      }),
+
+    // Provide feedback on AI response
+    feedback: publicProcedure
+      .input(
+        z.object({
+          messageId: z.number(),
+          feedback: z.enum(["like", "dislike"]),
+        })
+      )
+      .mutation(async ({ input }) => {
+        const db = await getDb();
+        if (!db) {
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+        }
+
+        await db
+          .update(aiMessages)
+          .set({ feedback: input.feedback })
+          .where(eq(aiMessages.id, input.messageId));
+
+        return { success: true };
+      }),
+
+    // Get conversation history (for authenticated users)
+    history: protectedProcedure
+      .input(
+        z.object({
+          sessionId: z.string().optional(),
+          limit: z.number().min(1).max(50).optional(),
+        })
+      )
+      .query(async ({ input, ctx }) => {
+        const db = await getDb();
+        if (!db) {
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+        }
+
+        // Get user's conversations
+        const conversations = await db
+          .select()
+          .from(aiConversations)
+          .where(eq(aiConversations.userId, ctx.user.id))
+          .orderBy(desc(aiConversations.createdAt))
+          .limit(input.limit || 10);
+
+        return conversations;
+      }),
+
+    // Delete conversation (self-service deletion)
+    deleteConversation: protectedProcedure
+      .input(
+        z.object({
+          conversationId: z.number(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        const db = await getDb();
+        if (!db) {
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+        }
+
+        // Verify ownership
+        const conversation = await db
+          .select()
+          .from(aiConversations)
+          .where(
+            and(
+              eq(aiConversations.id, input.conversationId),
+              eq(aiConversations.userId, ctx.user.id)
+            )
+          )
+          .limit(1);
+
+        if (conversation.length === 0) {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Conversation not found" });
+        }
+
+        // Soft delete
+        await db
+          .update(aiConversations)
+          .set({ isDeleted: 1 })
+          .where(eq(aiConversations.id, input.conversationId));
+
+        return { success: true };
+      }),
+
+    // Update consent mode
+    updateConsent: protectedProcedure
+      .input(
+        z.object({
+          consentMode: z.enum(["standard", "privacy"]),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        const { updateUserConsent } = await import("./db");
+        await updateUserConsent(ctx.user.id, input.consentMode);
+        return { success: true };
+      }),
+
+    // Get queue status (for monitoring)
+    queueStatus: publicProcedure.query(() => {
+      return getQueueStatus();
+    }),
+  }),
 
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),

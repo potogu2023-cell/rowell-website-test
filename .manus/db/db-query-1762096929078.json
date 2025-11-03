@@ -1,0 +1,9 @@
+{
+  "query": "-- Create regular indexes (not unique) for ai_messages\nCREATE INDEX idx_ai_messages_feedback_new ON ai_messages(feedback);\nCREATE INDEX idx_ai_messages_createdAt_new ON ai_messages(createdAt);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute -- Create regular indexes (not unique) for ai_messages\nCREATE INDEX idx_ai_messages_feedback_new ON ai_messages(feedback);\nCREATE INDEX idx_ai_messages_createdAt_new ON ai_messages(createdAt);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 2569
+}

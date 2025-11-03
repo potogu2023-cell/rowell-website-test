@@ -531,3 +531,30 @@ export async function getInquiryItems(inquiryId: number) {
   return result;
 }
 
+
+/**
+ * Update user's AI advisor consent mode
+ */
+export async function updateUserConsent(
+  userId: number,
+  consentMode: "standard" | "privacy"
+): Promise<void> {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot update consent: database not available");
+    return;
+  }
+
+  try {
+    await db
+      .update(users)
+      .set({
+        consentMode,
+        consentTimestamp: new Date(),
+      })
+      .where(eq(users.id, userId));
+  } catch (error) {
+    console.error("[Database] Failed to update user consent:", error);
+    throw error;
+  }
+}
