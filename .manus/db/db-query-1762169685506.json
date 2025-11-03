@@ -1,0 +1,150 @@
+{
+  "query": "SELECT c.name, c.slug, COUNT(pc.productId) as product_count \nFROM categories c \nLEFT JOIN product_categories pc ON c.id = pc.categoryId \nGROUP BY c.id, c.name, c.slug \nORDER BY c.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.name, c.slug, COUNT(pc.productId) as product_count \nFROM categories c \nLEFT JOIN product_categories pc ON c.id = pc.categoryId \nGROUP BY c.id, c.name, c.slug \nORDER BY c.name",
+  "rows": [
+    {
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "Bio Columns",
+      "slug": "bio-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "Chiral Columns",
+      "slug": "chiral-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "product_count": "87"
+    },
+    {
+      "name": "Derivatization",
+      "slug": "derivatization",
+      "product_count": "0"
+    },
+    {
+      "name": "Extraction Accessories",
+      "slug": "extraction-accessories",
+      "product_count": "0"
+    },
+    {
+      "name": "Filter Holders",
+      "slug": "filter-holders",
+      "product_count": "0"
+    },
+    {
+      "name": "Filtration",
+      "slug": "filtration",
+      "product_count": "0"
+    },
+    {
+      "name": "Fittings & Tubing",
+      "slug": "fittings-tubing",
+      "product_count": "100"
+    },
+    {
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "product_count": "423"
+    },
+    {
+      "name": "Glassware",
+      "slug": "glassware",
+      "product_count": "0"
+    },
+    {
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "product_count": "409"
+    },
+    {
+      "name": "HPLC Columns",
+      "slug": "hplc-columns",
+      "product_count": "512"
+    },
+    {
+      "name": "Lab Supplies",
+      "slug": "lab-supplies",
+      "product_count": "0"
+    },
+    {
+      "name": "Membrane Filters",
+      "slug": "membrane-filters",
+      "product_count": "0"
+    },
+    {
+      "name": "Mobile Phase",
+      "slug": "mobile-phase",
+      "product_count": "0"
+    },
+    {
+      "name": "Plasticware",
+      "slug": "plasticware",
+      "product_count": "0"
+    },
+    {
+      "name": "Preparative Columns",
+      "slug": "preparative-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges",
+      "product_count": "374"
+    },
+    {
+      "name": "Sample Preparation",
+      "slug": "sample-preparation",
+      "product_count": "0"
+    },
+    {
+      "name": "Spectroscopy",
+      "slug": "spectroscopy",
+      "product_count": "0"
+    },
+    {
+      "name": "Standards",
+      "slug": "standards",
+      "product_count": "0"
+    },
+    {
+      "name": "Storage",
+      "slug": "storage",
+      "product_count": "0"
+    },
+    {
+      "name": "Syringe Filters",
+      "slug": "syringe-filters",
+      "product_count": "125"
+    },
+    {
+      "name": "Syringes & Needles",
+      "slug": "syringes-needles",
+      "product_count": "60"
+    },
+    {
+      "name": "UHPLC Columns",
+      "slug": "uhplc-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "Vials & Caps",
+      "slug": "vials-caps",
+      "product_count": "391"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tproduct_count\nAnalytical Columns\tanalytical-columns\t0\nBio Columns\tbio-columns\t0\nChiral Columns\tchiral-columns\t0\nChromatography Columns\tchromatography-columns\t0\nChromatography Supplies\tchromatography-supplies\t87\nDerivatization\tderivatization\t0\nExtraction Accessories\textraction-accessories\t0\nFilter Holders\tfilter-holders\t0\nFiltration\tfiltration\t0\nFittings & Tubing\tfittings-tubing\t100\nGC Columns\tgc-columns\t423\nGlassware\tglassware\t0\nGuard Columns\tguard-columns\t409\nHPLC Columns\thplc-columns\t512\nLab Supplies\tlab-supplies\t0\nMembrane Filters\tmembrane-filters\t0\nMobile Phase\tmobile-phase\t0\nPlasticware\tplasticware\t0\nPreparative Columns\tpreparative-columns\t0\nSPE Cartridges\tspe-cartridges\t374\nSample Preparation\tsample-preparation\t0\nSpectroscopy\tspectroscopy\t0\nStandards\tstandards\t0\nStorage\tstorage\t0\nSyringe Filters\tsyringe-filters\t125\nSyringes & Needles\tsyringes-needles\t60\nUHPLC Columns\tuhplc-columns\t0\nVials & Caps\tvials-caps\t391\n",
+  "stderr": "",
+  "execution_time_ms": 1520
+}

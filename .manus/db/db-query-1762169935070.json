@@ -1,0 +1,40 @@
+{
+  "query": "SELECT c.name, c.slug, c.parentId, \n  (SELECT COUNT(*) FROM product_categories pc WHERE pc.categoryId = c.id) as direct_count\nFROM categories c \nWHERE c.slug IN ('analytical-columns', 'preparative-columns', 'uhplc-columns', 'chiral-columns', 'bio-columns')\nORDER BY c.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.name, c.slug, c.parentId, \n  (SELECT COUNT(*) FROM product_categories pc WHERE pc.categoryId = c.id) as direct_count\nFROM categories c \nWHERE c.slug IN ('analytical-columns', 'preparative-columns', 'uhplc-columns', 'chiral-columns', 'bio-columns')\nORDER BY c.name",
+  "rows": [
+    {
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "parentId": "11",
+      "direct_count": "0"
+    },
+    {
+      "name": "Bio Columns",
+      "slug": "bio-columns",
+      "parentId": "11",
+      "direct_count": "0"
+    },
+    {
+      "name": "Chiral Columns",
+      "slug": "chiral-columns",
+      "parentId": "11",
+      "direct_count": "0"
+    },
+    {
+      "name": "Preparative Columns",
+      "slug": "preparative-columns",
+      "parentId": "11",
+      "direct_count": "0"
+    },
+    {
+      "name": "UHPLC Columns",
+      "slug": "uhplc-columns",
+      "parentId": "11",
+      "direct_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tparentId\tdirect_count\nAnalytical Columns\tanalytical-columns\t11\t0\nBio Columns\tbio-columns\t11\t0\nChiral Columns\tchiral-columns\t11\t0\nPreparative Columns\tpreparative-columns\t11\t0\nUHPLC Columns\tuhplc-columns\t11\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1546
+}

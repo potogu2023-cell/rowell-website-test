@@ -1,0 +1,54 @@
+{
+  "query": "SELECT productType, COUNT(*) as cnt FROM products GROUP BY productType ORDER BY cnt DESC LIMIT 15",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productType, COUNT(*) as cnt FROM products GROUP BY productType ORDER BY cnt DESC LIMIT 15",
+  "rows": [
+    {
+      "productType": "HPLC Column",
+      "cnt": "512"
+    },
+    {
+      "productType": "GC Column",
+      "cnt": "423"
+    },
+    {
+      "productType": "Guard Column",
+      "cnt": "409"
+    },
+    {
+      "productType": "SPE Cartridge",
+      "cnt": "374"
+    },
+    {
+      "productType": "Sample Vials",
+      "cnt": "248"
+    },
+    {
+      "productType": "Septa & Closures",
+      "cnt": "143"
+    },
+    {
+      "productType": "Filtration",
+      "cnt": "125"
+    },
+    {
+      "productType": "Tubing & Fittings",
+      "cnt": "100"
+    },
+    {
+      "productType": "Chromatography Consumables",
+      "cnt": "87"
+    },
+    {
+      "productType": "Syringes & Needles",
+      "cnt": "60"
+    },
+    {
+      "productType": "Centrifuge Tubes",
+      "cnt": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "productType\tcnt\nHPLC Column\t512\nGC Column\t423\nGuard Column\t409\nSPE Cartridge\t374\nSample Vials\t248\nSepta & Closures\t143\nFiltration\t125\nTubing & Fittings\t100\nChromatography Consumables\t87\nSyringes & Needles\t60\nCentrifuge Tubes\t3\n",
+  "stderr": "",
+  "execution_time_ms": 1514
+}

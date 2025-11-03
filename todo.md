@@ -392,3 +392,34 @@
 - [x] 修改网站标题,去掉"测试网站"
 - [ ] 更换favicon为ROWELL logo
 - [ ] 确保所有页面都使用正确的标题
+
+
+---
+
+## 🐛 紧急Bug修复 - 产品分类筛选问题（2025-01-02）
+
+### 问题描述
+- [ ] HPLC Columns的所有子分类显示0个产品
+- [ ] 但数据库中有2484个产品
+- [ ] 产品和子分类的关联关系缺失
+
+### 调查任务
+- [ ] 检查products表的category字段
+- [ ] 检查product_categories关联表
+- [ ] 检查Products.tsx的筛选逻辑
+- [ ] 确定产品分类的数据结构
+
+### 修复任务
+- [ ] 修复产品和子分类的关联关系
+- [ ] 更新产品筛选逻辑
+- [ ] 测试所有子分类筛选
+- [ ] 验证产品数量正确显示
+
+### 测试验证
+- [ ] Analytical Columns - 应显示产品
+- [ ] Preparative Columns - 应显示产品
+- [ ] UHPLC Columns - 应显示产品
+- [ ] Chiral Columns - 应显示产品
+- [ ] Bio Columns - 应显示产品
+- [ ] GC Columns - 应显示产品
+- [ ] Guard Columns - 应显示产品

@@ -1,0 +1,150 @@
+{
+  "query": "SELECT * FROM product_categories LIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT * FROM product_categories LIMIT 20",
+  "rows": [
+    {
+      "id": "241991",
+      "productId": "244969",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241992",
+      "productId": "244970",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241993",
+      "productId": "244971",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241994",
+      "productId": "244972",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241995",
+      "productId": "244973",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241996",
+      "productId": "244974",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241997",
+      "productId": "244975",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241998",
+      "productId": "244976",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "241999",
+      "productId": "244977",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242000",
+      "productId": "244978",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242001",
+      "productId": "244979",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242002",
+      "productId": "244980",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242003",
+      "productId": "244981",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242004",
+      "productId": "244982",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242005",
+      "productId": "244983",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242006",
+      "productId": "244984",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242007",
+      "productId": "244985",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242008",
+      "productId": "244986",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242009",
+      "productId": "244987",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    },
+    {
+      "id": "242010",
+      "productId": "244988",
+      "categoryId": "11",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tproductId\tcategoryId\tisPrimary\tcreatedAt\n241991\t244969\t11\t0\t2025-11-01 01:46:14\n241992\t244970\t11\t0\t2025-11-01 01:46:14\n241993\t244971\t11\t0\t2025-11-01 01:46:14\n241994\t244972\t11\t0\t2025-11-01 01:46:14\n241995\t244973\t11\t0\t2025-11-01 01:46:14\n241996\t244974\t11\t0\t2025-11-01 01:46:14\n241997\t244975\t11\t0\t2025-11-01 01:46:14\n241998\t244976\t11\t0\t2025-11-01 01:46:14\n241999\t244977\t11\t0\t2025-11-01 01:46:14\n242000\t244978\t11\t0\t2025-11-01 01:46:14\n242001\t244979\t11\t0\t2025-11-01 01:46:14\n242002\t244980\t11\t0\t2025-11-01 01:46:14\n242003\t244981\t11\t0\t2025-11-01 01:46:14\n242004\t244982\t11\t0\t2025-11-01 01:46:14\n242005\t244983\t11\t0\t2025-11-01 01:46:14\n242006\t244984\t11\t0\t2025-11-01 01:46:14\n242007\t244985\t11\t0\t2025-11-01 01:46:14\n242008\t244986\t11\t0\t2025-11-01 01:46:14\n242009\t244987\t11\t0\t2025-11-01 01:46:14\n242010\t244988\t11\t0\t2025-11-01 01:46:14\n",
+  "stderr": "",
+  "execution_time_ms": 1544
+}

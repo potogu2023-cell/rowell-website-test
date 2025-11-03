@@ -1,0 +1,45 @@
+{
+  "query": "SELECT c.name, c.slug, COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.slug IN ('analytical-columns', 'preparative-columns', 'uhplc-columns', 'chiral-columns', 'bio-columns', 'gc-columns', 'guard-columns')\nGROUP BY c.id, c.name, c.slug\nORDER BY c.name",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.name, c.slug, COUNT(pc.productId) as product_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nWHERE c.slug IN ('analytical-columns', 'preparative-columns', 'uhplc-columns', 'chiral-columns', 'bio-columns', 'gc-columns', 'guard-columns')\nGROUP BY c.id, c.name, c.slug\nORDER BY c.name",
+  "rows": [
+    {
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "product_count": "512"
+    },
+    {
+      "name": "Bio Columns",
+      "slug": "bio-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "Chiral Columns",
+      "slug": "chiral-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "product_count": "423"
+    },
+    {
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "product_count": "409"
+    },
+    {
+      "name": "Preparative Columns",
+      "slug": "preparative-columns",
+      "product_count": "0"
+    },
+    {
+      "name": "UHPLC Columns",
+      "slug": "uhplc-columns",
+      "product_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "name\tslug\tproduct_count\nAnalytical Columns\tanalytical-columns\t512\nBio Columns\tbio-columns\t0\nChiral Columns\tchiral-columns\t0\nGC Columns\tgc-columns\t423\nGuard Columns\tguard-columns\t409\nPreparative Columns\tpreparative-columns\t0\nUHPLC Columns\tuhplc-columns\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1679
+}
