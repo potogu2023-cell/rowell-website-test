@@ -190,25 +190,75 @@ export async function generateMonthlyReport(year: number, month: number): Promis
 }
 
 /**
- * Send monthly report email (REMOVED - moved to separate email marketing task)
- * 
- * This function has been removed to maintain task purity.
- * Email notifications should be handled by a dedicated email marketing system.
- * 
- * @deprecated Use dedicated email marketing task instead
+ * Send monthly report email to admin
+ * This is a business notification email (not marketing)
  */
 export async function sendMonthlyReport(year: number, month: number): Promise<boolean> {
-  // Email functionality removed - use dedicated email marketing task
-  console.log('[Email] Monthly report email disabled (moved to email marketing task)');
-  console.log(`[Email] Report period: ${year}-${month}`);
-  
-  // Still generate the report for local use
   try {
+    const sgMail = (await import('@sendgrid/mail')).default;
+    const apiKey = process.env.SENDGRID_API_KEY;
+    const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@rowellhplc.com';
+    const toEmail = 'info@rowellhplc.com';
+
+    if (!apiKey) {
+      console.warn('[Email] SENDGRID_API_KEY not configured, skipping monthly report email');
+      return false;
+    }
+
+    // Generate report
     const reportBuffer = await generateMonthlyReport(year, month);
-    console.log(`[Report] Monthly report generated successfully (${reportBuffer.length} bytes)`);
+    console.log(`[Report] Monthly report generated (${reportBuffer.length} bytes)`);
+
+    sgMail.setApiKey(apiKey);
+
+    const monthName = new Date(year, month - 1).toLocaleString('en-US', { month: 'long' });
+
+    const msg = {
+      to: toEmail,
+      from: fromEmail,
+      subject: `ROWELL HPLC - Monthly Report (${monthName} ${year})`,
+      text: `
+Monthly Report for ${monthName} ${year}
+
+Please find attached the monthly statistics report for ROWELL HPLC.
+
+This report includes:
+- Total inquiries and new customers
+- Inquiry status breakdown
+- Top 10 most inquired products
+
+Best regards,
+ROWELL HPLC Analytics System
+      `,
+      html: `
+<h2>Monthly Report - ${monthName} ${year}</h2>
+<p>Please find attached the monthly statistics report for ROWELL HPLC.</p>
+
+<h3>Report Contents</h3>
+<ul>
+  <li>Total inquiries and new customers</li>
+  <li>Inquiry status breakdown</li>
+  <li>Top 10 most inquired products</li>
+</ul>
+
+<p>Best regards,<br>
+<strong>ROWELL HPLC Analytics System</strong></p>
+      `,
+      attachments: [
+        {
+          content: reportBuffer.toString('base64'),
+          filename: `monthly-report-${year}-${String(month).padStart(2, '0')}.xlsx`,
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          disposition: 'attachment',
+        },
+      ],
+    };
+
+    await sgMail.send(msg);
+    console.log(`[Email] Monthly report sent to ${toEmail}`);
     return true;
   } catch (error) {
-    console.error('[Report] Failed to generate monthly report:', error);
+    console.error('[Email] Failed to send monthly report:', error);
     return false;
   }
 }

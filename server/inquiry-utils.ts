@@ -155,40 +155,157 @@ export async function generateInquiryExcel(
 }
 
 /**
- * Send inquiry email notification (REMOVED - moved to separate email marketing task)
- * 
- * This function has been removed to maintain task purity.
- * Email notifications should be handled by a dedicated email marketing system.
- * 
- * @deprecated Use dedicated email marketing task instead
+ * Send inquiry email notification to admin
+ * This is a business notification email (not marketing)
  */
 export async function sendInquiryEmail(
   inquiry: Inquiry,
   user: User,
   excelBuffer: Buffer
 ): Promise<boolean> {
-  // Email functionality removed - use dedicated email marketing task
-  console.log('[Email] Inquiry email notification disabled (moved to email marketing task)');
-  console.log(`[Email] Inquiry: ${inquiry.inquiryNumber}, Customer: ${user.email}`);
-  return true; // Return true to avoid breaking existing code
+  try {
+    const sgMail = (await import('@sendgrid/mail')).default;
+    const apiKey = process.env.SENDGRID_API_KEY;
+    const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@rowellhplc.com';
+    const toEmail = 'info@rowellhplc.com';
+
+    if (!apiKey) {
+      console.warn('[Email] SENDGRID_API_KEY not configured, skipping email');
+      return false;
+    }
+
+    sgMail.setApiKey(apiKey);
+
+    const msg = {
+      to: toEmail,
+      from: fromEmail,
+      subject: `New Inquiry: ${inquiry.inquiryNumber} from ${user.name || user.email}`,
+      text: `
+New inquiry received from ROWELL HPLC website.
+
+Inquiry Number: ${inquiry.inquiryNumber}
+Customer: ${user.name || 'N/A'}
+Email: ${user.email}
+Company: ${user.company || 'N/A'}
+Phone: ${user.phone || 'N/A'}
+Country: ${user.country || 'N/A'}
+Urgency: ${inquiry.urgency.replace('_', ' ').toUpperCase()}
+Budget Range: ${inquiry.budgetRange || 'N/A'}
+
+Please check the attached Excel file for detailed product list.
+      `,
+      html: `
+<h2>New Inquiry Received</h2>
+<p>A new inquiry has been submitted from the ROWELL HPLC website.</p>
+
+<h3>Inquiry Information</h3>
+<ul>
+  <li><strong>Inquiry Number:</strong> ${inquiry.inquiryNumber}</li>
+  <li><strong>Date:</strong> ${new Date(inquiry.createdAt).toLocaleString()}</li>
+  <li><strong>Status:</strong> ${inquiry.status.toUpperCase()}</li>
+  <li><strong>Urgency:</strong> ${inquiry.urgency.replace('_', ' ').toUpperCase()}</li>
+  <li><strong>Budget Range:</strong> ${inquiry.budgetRange || 'N/A'}</li>
+</ul>
+
+<h3>Customer Information</h3>
+<ul>
+  <li><strong>Name:</strong> ${user.name || 'N/A'}</li>
+  <li><strong>Email:</strong> ${user.email}</li>
+  <li><strong>Company:</strong> ${user.company || 'N/A'}</li>
+  <li><strong>Phone:</strong> ${user.phone || 'N/A'}</li>
+  <li><strong>Country:</strong> ${user.country || 'N/A'}</li>
+</ul>
+
+<p>Please check the attached Excel file for the detailed product list.</p>
+      `,
+      attachments: [
+        {
+          content: excelBuffer.toString('base64'),
+          filename: `inquiry-${inquiry.inquiryNumber}.xlsx`,
+          type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          disposition: 'attachment',
+        },
+      ],
+    };
+
+    await sgMail.send(msg);
+    console.log(`[Email] Inquiry notification sent to ${toEmail}`);
+    return true;
+  } catch (error) {
+    console.error('[Email] Failed to send inquiry email:', error);
+    return false;
+  }
 }
 
 /**
  * Send confirmation email to customer
+ * This is a business notification email (not marketing)
  */
 export async function sendCustomerConfirmationEmail(
   inquiry: Inquiry,
   user: User
 ): Promise<boolean> {
   try {
-    console.log('[Email] Customer confirmation email:');
-    console.log(`  To: ${user.email}`);
-    console.log(`  Subject: Inquiry ${inquiry.inquiryNumber} Received`);
-    console.log(`  Customer: ${user.name}`);
-    console.log(`  Inquiry Number: ${inquiry.inquiryNumber}`);
-    
-    // In production, send actual confirmation email to customer
-    
+    const sgMail = (await import('@sendgrid/mail')).default;
+    const apiKey = process.env.SENDGRID_API_KEY;
+    const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@rowellhplc.com';
+
+    if (!apiKey) {
+      console.warn('[Email] SENDGRID_API_KEY not configured, skipping email');
+      return false;
+    }
+
+    if (!user.email) {
+      console.warn('[Email] Customer email not available, skipping confirmation');
+      return false;
+    }
+
+    sgMail.setApiKey(apiKey);
+
+    const msg = {
+      to: user.email,
+      from: fromEmail,
+      subject: `Inquiry ${inquiry.inquiryNumber} Received - ROWELL HPLC`,
+      text: `
+Dear ${user.name || 'Customer'},
+
+Thank you for your inquiry! We have received your product inquiry and our team will review it shortly.
+
+Inquiry Number: ${inquiry.inquiryNumber}
+Date: ${new Date(inquiry.createdAt).toLocaleString()}
+Urgency: ${inquiry.urgency.replace('_', ' ').toUpperCase()}
+
+Our sales team will contact you within 24-48 hours with a detailed quotation.
+
+If you have any questions, please don't hesitate to contact us at info@rowellhplc.com.
+
+Best regards,
+ROWELL HPLC Team
+      `,
+      html: `
+<h2>Thank You for Your Inquiry!</h2>
+<p>Dear ${user.name || 'Customer'},</p>
+
+<p>We have received your product inquiry and our team will review it shortly.</p>
+
+<h3>Inquiry Details</h3>
+<ul>
+  <li><strong>Inquiry Number:</strong> ${inquiry.inquiryNumber}</li>
+  <li><strong>Date:</strong> ${new Date(inquiry.createdAt).toLocaleString()}</li>
+  <li><strong>Urgency:</strong> ${inquiry.urgency.replace('_', ' ').toUpperCase()}</li>
+</ul>
+
+<p>Our sales team will contact you within <strong>24-48 hours</strong> with a detailed quotation.</p>
+
+<p>If you have any questions, please don't hesitate to contact us at <a href="mailto:info@rowellhplc.com">info@rowellhplc.com</a>.</p>
+
+<p>Best regards,<br>
+<strong>ROWELL HPLC Team</strong></p>
+      `,
+    };
+
+    await sgMail.send(msg);
+    console.log(`[Email] Confirmation email sent to ${user.email}`);
     return true;
   } catch (error) {
     console.error('[Email] Failed to send confirmation email:', error);
