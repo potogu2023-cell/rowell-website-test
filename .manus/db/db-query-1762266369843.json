@@ -1,0 +1,60 @@
+{
+  "query": "SELECT \n  productId,\n  partNumber,\n  name,\n  particleSize,\n  columnLength,\n  innerDiameter,\n  phaseType,\n  updatedAt\nFROM products\nWHERE brand = 'Agilent' AND prefix = 'AGIL'\nORDER BY updatedAt DESC\nLIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  productId,\n  partNumber,\n  name,\n  particleSize,\n  columnLength,\n  innerDiameter,\n  phaseType,\n  updatedAt\nFROM products\nWHERE brand = 'Agilent' AND prefix = 'AGIL'\nORDER BY updatedAt DESC\nLIMIT 5;",
+  "rows": [
+    {
+      "productId": "AGIL-990967-902",
+      "partNumber": "990967-902",
+      "name": "ZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 150 mm, 5 µm, 600 bar",
+      "particleSize": "5 µm",
+      "columnLength": "150 mm",
+      "innerDiameter": "2.1 mm",
+      "phaseType": "Phenyl-Hexyl",
+      "updatedAt": "2025-11-04 14:25:23"
+    },
+    {
+      "productId": "AGIL-990967-202",
+      "partNumber": "990967-202",
+      "name": "ZORBAX Eclipse Plus C18 HPLC Column, 4.6 mm x 150 mm, 1.8 µm, 600 bar",
+      "particleSize": "1.8 µm",
+      "columnLength": "150 mm",
+      "innerDiameter": "4.6 mm",
+      "phaseType": "C18",
+      "updatedAt": "2025-11-04 14:25:22"
+    },
+    {
+      "productId": "AGIL-695975-702",
+      "partNumber": "695975-702",
+      "name": "InfinityLab Poroshell 120 EC-C18 HPLC Column, 3.0 mm x 100 mm, 4 µm, 600 bar",
+      "particleSize": "4 µm",
+      "columnLength": "100 mm",
+      "innerDiameter": "3.0 mm",
+      "phaseType": "EC-C18",
+      "updatedAt": "2025-11-04 14:25:22"
+    },
+    {
+      "productId": "AGIL-693975-502",
+      "partNumber": "693975-502",
+      "name": "InfinityLab Poroshell 120 SB-C18 HPLC Column, 3.0 mm x 150 mm, 4 µm, 600 bar",
+      "particleSize": "4 µm",
+      "columnLength": "150 mm",
+      "innerDiameter": "3.0 mm",
+      "phaseType": "SB-C18",
+      "updatedAt": "2025-11-04 14:25:22"
+    },
+    {
+      "productId": "AGIL-693970-702",
+      "partNumber": "693970-702",
+      "name": "InfinityLab Poroshell 120 Phenyl-Hexyl HPLC Column, 2.1 mm x 50 mm, 4 µm, 600 bar",
+      "particleSize": "4 µm",
+      "columnLength": "50 mm",
+      "innerDiameter": "2.1 mm",
+      "phaseType": "Phenyl-Hexyl",
+      "updatedAt": "2025-11-04 14:25:22"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tparticleSize\tcolumnLength\tinnerDiameter\tphaseType\tupdatedAt\nAGIL-990967-902\t990967-902\tZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 150 mm, 5 µm, 600 bar\t5 µm\t150 mm\t2.1 mm\tPhenyl-Hexyl\t2025-11-04 14:25:23\nAGIL-990967-202\t990967-202\tZORBAX Eclipse Plus C18 HPLC Column, 4.6 mm x 150 mm, 1.8 µm, 600 bar\t1.8 µm\t150 mm\t4.6 mm\tC18\t2025-11-04 14:25:22\nAGIL-695975-702\t695975-702\tInfinityLab Poroshell 120 EC-C18 HPLC Column, 3.0 mm x 100 mm, 4 µm, 600 bar\t4 µm\t100 mm\t3.0 mm\tEC-C18\t2025-11-04 14:25:22\nAGIL-693975-502\t693975-502\tInfinityLab Poroshell 120 SB-C18 HPLC Column, 3.0 mm x 150 mm, 4 µm, 600 bar\t4 µm\t150 mm\t3.0 mm\tSB-C18\t2025-11-04 14:25:22\nAGIL-693970-702\t693970-702\tInfinityLab Poroshell 120 Phenyl-Hexyl HPLC Column, 2.1 mm x 50 mm, 4 µm, 600 bar\t4 µm\t50 mm\t2.1 mm\tPhenyl-Hexyl\t2025-11-04 14:25:22\n",
+  "stderr": "",
+  "execution_time_ms": 1544
+}

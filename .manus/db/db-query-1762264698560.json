@@ -1,0 +1,60 @@
+{
+  "query": "SELECT \n  partNumber,\n  COUNT(*) as count,\n  GROUP_CONCAT(DISTINCT brand) as brands\nFROM products\nGROUP BY partNumber\nHAVING count > 1\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  partNumber,\n  COUNT(*) as count,\n  GROUP_CONCAT(DISTINCT brand) as brands\nFROM products\nGROUP BY partNumber\nHAVING count > 1\nLIMIT 10;",
+  "rows": [
+    {
+      "partNumber": "ACE-111-0103GD",
+      "count": "2",
+      "brands": "ACE,Avantor"
+    },
+    {
+      "partNumber": "ACE-121-0103GD",
+      "count": "2",
+      "brands": "ACE,Avantor"
+    },
+    {
+      "partNumber": "ACE-122-0103GD",
+      "count": "2",
+      "brands": "ACE,Avantor"
+    },
+    {
+      "partNumber": "420-546010W",
+      "count": "2",
+      "brands": "Develosil,Phenomenex"
+    },
+    {
+      "partNumber": "186000118",
+      "count": "2",
+      "brands": "Waters"
+    },
+    {
+      "partNumber": "0100-2637",
+      "count": "2",
+      "brands": "Agilent"
+    },
+    {
+      "partNumber": "01018-67305",
+      "count": "2",
+      "brands": "Agilent"
+    },
+    {
+      "partNumber": "01080-83202",
+      "count": "2",
+      "brands": "Agilent"
+    },
+    {
+      "partNumber": "0890-1762",
+      "count": "2",
+      "brands": "Agilent"
+    },
+    {
+      "partNumber": "5005-0064",
+      "count": "2",
+      "brands": "Agilent"
+    }
+  ],
+  "messages": [],
+  "stdout": "partNumber\tcount\tbrands\nACE-111-0103GD\t2\tACE,Avantor\nACE-121-0103GD\t2\tACE,Avantor\nACE-122-0103GD\t2\tACE,Avantor\n420-546010W\t2\tDevelosil,Phenomenex\n186000118\t2\tWaters\n0100-2637\t2\tAgilent\n01018-67305\t2\tAgilent\n01080-83202\t2\tAgilent\n0890-1762\t2\tAgilent\n5005-0064\t2\tAgilent\n",
+  "stderr": "",
+  "execution_time_ms": 1534
+}

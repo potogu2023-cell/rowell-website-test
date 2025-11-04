@@ -1,0 +1,16 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_products,\n  COUNT(DISTINCT brand) as total_brands,\n  COUNT(DISTINCT partNumber) as unique_part_numbers,\n  COUNT(DISTINCT productId) as unique_product_ids\nFROM products;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  COUNT(*) as total_products,\n  COUNT(DISTINCT brand) as total_brands,\n  COUNT(DISTINCT partNumber) as unique_part_numbers,\n  COUNT(DISTINCT productId) as unique_product_ids\nFROM products;",
+  "rows": [
+    {
+      "total_products": "2623",
+      "total_brands": "11",
+      "unique_part_numbers": "2611",
+      "unique_product_ids": "2623"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\ttotal_brands\tunique_part_numbers\tunique_product_ids\n2623\t11\t2611\t2623\n",
+  "stderr": "",
+  "execution_time_ms": 1801
+}
