@@ -1,0 +1,70 @@
+{
+  "query": "SELECT \n  brand,\n  prefix,\n  COUNT(*) as product_count\nFROM products\nGROUP BY brand, prefix\nORDER BY product_count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  brand,\n  prefix,\n  COUNT(*) as product_count\nFROM products\nGROUP BY brand, prefix\nORDER BY product_count DESC;",
+  "rows": [
+    {
+      "brand": "Agilent",
+      "prefix": "AGIL",
+      "product_count": "630"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "prefix": "THER",
+      "product_count": "366"
+    },
+    {
+      "brand": "Daicel",
+      "prefix": "DAIC",
+      "product_count": "277"
+    },
+    {
+      "brand": "Phenomenex",
+      "prefix": "PHEN",
+      "product_count": "247"
+    },
+    {
+      "brand": "Waters",
+      "prefix": "WATS",
+      "product_count": "232"
+    },
+    {
+      "brand": "Restek",
+      "prefix": "REST",
+      "product_count": "215"
+    },
+    {
+      "brand": "Merck",
+      "prefix": "MERC",
+      "product_count": "199"
+    },
+    {
+      "brand": "ACE",
+      "prefix": "ACE",
+      "product_count": "151"
+    },
+    {
+      "brand": "Shimadzu",
+      "prefix": "SHIM",
+      "product_count": "130"
+    },
+    {
+      "brand": "Develosil",
+      "prefix": "DEVE",
+      "product_count": "118"
+    },
+    {
+      "brand": "Avantor",
+      "prefix": "AVAN",
+      "product_count": "83"
+    },
+    {
+      "brand": "Waters",
+      "prefix": "WATE",
+      "product_count": "23"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tprefix\tproduct_count\nAgilent\tAGIL\t630\nThermo Fisher Scientific\tTHER\t366\nDaicel\tDAIC\t277\nPhenomenex\tPHEN\t247\nWaters\tWATS\t232\nRestek\tREST\t215\nMerck\tMERC\t199\nACE\tACE\t151\nShimadzu\tSHIM\t130\nDevelosil\tDEVE\t118\nAvantor\tAVAN\t83\nWaters\tWATE\t23\n",
+  "stderr": "",
+  "execution_time_ms": 1659
+}
