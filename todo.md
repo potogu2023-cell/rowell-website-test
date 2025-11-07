@@ -858,3 +858,38 @@
 1. 验证网站展示效果
 2. 启动其他品牌的爬取工作
 3. 建立数据更新机制
+
+
+---
+
+## 🚀 其他品牌批量爬取任务（2025-11-07）
+
+**任务编号**: ROWELL-CRAWLER-MULTI-BRAND-001  
+**目标**: 继续完成其他品牌产品的数据采集和导入
+
+### Phase 1: 统计各品牌产品数量并选择下一个目标
+- [x] 查询数据库中所有品牌的产品数量（12个品牌，2,689个产品）
+- [x] 分析各品牌的优先级（按产品数量、知名度、技术难度排序）
+- [x] 选择下一个目标品牌（Thermo Fisher Scientific, 366个产品）
+- [x] 生成品牌统计报告和总体规划（BRAND_CRAWLING_MASTER_PLAN.md）
+
+### Phase 2: 制定Thermo Fisher Scientific爬取计划和指令
+- [x] 复用Agilent的执行计划模板
+- [x] 调整Thermo Fisher特定的参数和要求
+- [x] 生成Thermo Fisher任务指令文档（THERMO_FISHER_CRAWLING_INSTRUCTIONS.md）
+- [x] 准备产品清单CSV（thermo_fisher_product_list_for_crawler.csv, 366个产品）
+
+### Phase 3: 交付任务指令给爬虫团队
+- [x] 向爬虫团队交付任务指令
+- [x] 确认爬虫团队收到文件
+- [x] 等待爬虫团队开始执行
+
+### Phase 4: 等待爬取结果并导入
+- [x] 接收爬取结果CSV（thermo_366_final_unique.csv, 365个产品）
+- [x] 验证数据质量（优秀：86% A/B级描述，14个平均规格字段）
+- [x] 运行数据导入脚本（269个产品成功更新，96个跳过）
+- [x] 生成质量报告（THERMO_FISHER_QUALITY_REPORT.md）
+
+### Phase 5: 保存checkpoint并继续下一个品牌
+- [ ] 保存Thermo Fisher的checkpoint
+- [ ] 准备下一个品牌（Daicel, 277个产品）的任务指令
