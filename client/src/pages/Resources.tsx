@@ -8,16 +8,22 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search, Calendar, Eye } from "lucide-react";
 import { APP_TITLE } from "@/const";
+import { useTranslation } from "react-i18next";
 
 export default function Resources() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const { i18n } = useTranslation();
+
+  // Get current language code (e.g., 'en', 'zh', 'ru')
+  const currentLanguage = i18n.language || 'en';
 
   const { data, isLoading } = trpc.resources.list.useQuery({
     page,
     pageSize: 12,
     search: search || undefined,
+    language: currentLanguage, // Filter by current language
   });
 
   const { data: categories } = trpc.resources.listCategories.useQuery();

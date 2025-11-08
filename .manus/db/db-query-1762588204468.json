@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total, \n       COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) as with_description,\n       COUNT(CASE WHEN specifications IS NOT NULL AND specifications != '{}' THEN 1 END) as with_specs\nFROM products \nWHERE brand = 'Restek';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT COUNT(*) as total, \n       COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) as with_description,\n       COUNT(CASE WHEN specifications IS NOT NULL AND specifications != '{}' THEN 1 END) as with_specs\nFROM products \nWHERE brand = 'Restek';",
+  "rows": [
+    {
+      "total": "215",
+      "with_description": "62",
+      "with_specs": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\twith_description\twith_specs\n215\t62\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1533
+}

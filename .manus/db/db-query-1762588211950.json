@@ -1,0 +1,80 @@
+{
+  "query": "SELECT productId, partNumber, name, brand, catalogUrl\nFROM products \nWHERE brand = 'Restek'\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name, brand, catalogUrl\nFROM products \nWHERE brand = 'Restek'\nLIMIT 10;",
+  "rows": [
+    {
+      "productId": "REST-9314262",
+      "partNumber": "9314262",
+      "name": "Raptor ARC-18, 1.8 µm, 150 x 2.1 mm HPLC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9314A12-T",
+      "partNumber": "9314A12-T",
+      "name": "Raptor Inert ARC-18, 2.7 µm, 100 x 2.1 mm HPLC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9309A5E",
+      "partNumber": "9309A5E",
+      "name": "Raptor Biphenyl, 2.7 µm, 50 x 3.0 mm HPLC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9634312",
+      "partNumber": "9634312",
+      "name": "Force C18, 3 µm, 100 x 2.1 mm LC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9311A32",
+      "partNumber": "9311A32",
+      "name": "Raptor Polar X, 2.7 µm, 30 x 2.1 mm LC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9319A1E",
+      "partNumber": "9319A1E",
+      "name": "Raptor FluoroPhenyl, 2.7 µm, 100 x 3.0 mm HPLC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9629332",
+      "partNumber": "9629332",
+      "name": "Force Biphenyl, 3 µm, 30 x 2.1 mm LC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9178312",
+      "partNumber": "9178312",
+      "name": "Ultra Aqueous C18, 3 µm, 100 x 2.1 mm HPLC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9175312-T",
+      "partNumber": "9175312-T",
+      "name": "Ultra Inert IBD, 3 µm, 100 x 2.1 mm HPLC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "REST-9629352",
+      "partNumber": "9629352",
+      "name": "Force Biphenyl, 3 µm, 50 x 2.1 mm LC Column",
+      "brand": "Restek",
+      "catalogUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tbrand\tcatalogUrl\nREST-9314262\t9314262\tRaptor ARC-18, 1.8 µm, 150 x 2.1 mm HPLC Column\tRestek\tNULL\nREST-9314A12-T\t9314A12-T\tRaptor Inert ARC-18, 2.7 µm, 100 x 2.1 mm HPLC Column\tRestek\tNULL\nREST-9309A5E\t9309A5E\tRaptor Biphenyl, 2.7 µm, 50 x 3.0 mm HPLC Column\tRestek\tNULL\nREST-9634312\t9634312\tForce C18, 3 µm, 100 x 2.1 mm LC Column\tRestek\tNULL\nREST-9311A32\t9311A32\tRaptor Polar X, 2.7 µm, 30 x 2.1 mm LC Column\tRestek\tNULL\nREST-9319A1E\t9319A1E\tRaptor FluoroPhenyl, 2.7 µm, 100 x 3.0 mm HPLC Column\tRestek\tNULL\nREST-9629332\t9629332\tForce Biphenyl, 3 µm, 30 x 2.1 mm LC Column\tRestek\tNULL\nREST-9178312\t9178312\tUltra Aqueous C18, 3 µm, 100 x 2.1 mm HPLC Column\tRestek\tNULL\nREST-9175312-T\t9175312-T\tUltra Inert IBD, 3 µm, 100 x 2.1 mm HPLC Column\tRestek\tNULL\nREST-9629352\t9629352\tForce Biphenyl, 3 µm, 50 x 2.1 mm LC Column\tRestek\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1548
+}

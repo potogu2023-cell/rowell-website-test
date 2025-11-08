@@ -147,6 +147,7 @@ export async function updateResource(
     categoryId: number;
     featured: boolean;
     tags: string[];
+    publishedAt: Date;
   }>
 ) {
   const db = await getDb();
@@ -178,6 +179,7 @@ export async function updateResource(
   if (data.language !== undefined) updateData.language = data.language;
   if (data.categoryId !== undefined) updateData.categoryId = data.categoryId;
   if (data.featured !== undefined) updateData.featured = data.featured ? 1 : 0;
+  if (data.publishedAt !== undefined) updateData.publishedAt = data.publishedAt;
 
   // Update resource
   await db.update(resources).set(updateData).where(eq(resources.id, id));

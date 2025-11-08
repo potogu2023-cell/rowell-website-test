@@ -1494,7 +1494,8 @@ export const appRouter = router({
       }),
 
     // Update an existing resource article
-    update: protectedProcedure
+    // Supports both session auth (admin users) and API Key auth
+    update: publicProcedure
       .input(
         z.object({
           id: z.number(),
@@ -1508,17 +1509,42 @@ export const appRouter = router({
           categoryName: z.string().optional(),
           tags: z.array(z.string()).optional(),
           featured: z.boolean().optional(),
+          publishedAt: z.string().optional(), // ISO 8601 date string
         })
       )
       .mutation(async ({ input, ctx }) => {
-        if (ctx.user.role !== "admin") {
-          throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can update resources" });
+        // Check authentication: either session (admin user) or API Key
+        const authHeader = ctx.req.headers.authorization;
+        const apiKeyAuth = await verifyAPIKey(authHeader);
+        
+        if (apiKeyAuth) {
+          // API Key authentication
+          if (!hasPermission(apiKeyAuth.permissions, "resources:update")) {
+            throw new TRPCError({ code: "FORBIDDEN", message: "API key does not have resources:update permission" });
+          }
+        } else if (ctx.user) {
+          // Session authentication
+          if (ctx.user.role !== "admin") {
+            throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can update resources" });
+          }
+        } else {
+          // No authentication
+          throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required" });
         }
 
         let categoryId: number | undefined;
         if (input.categoryName) {
           const category = await getOrCreateCategory(input.categoryName);
           categoryId = category.id;
+        }
+
+        // Parse publishedAt if provided
+        let publishedAt: Date | undefined;
+        if (input.publishedAt) {
+          publishedAt = new Date(input.publishedAt);
+          if (isNaN(publishedAt.getTime())) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: "Invalid publishedAt date format" });
+          }
         }
 
         await updateResource(input.id, {
@@ -1532,6 +1558,43 @@ export const appRouter = router({
           categoryId,
           tags: input.tags,
           featured: input.featured,
+          publishedAt,
+        });
+
+        return { success: true, id: input.id };
+      }),
+
+    // Delete a resource article (soft delete: set status to 'archived')
+    // Supports both session auth (admin users) and API Key auth
+    delete: publicProcedure
+      .input(
+        z.object({
+          id: z.number(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        // Check authentication: either session (admin user) or API Key
+        const authHeader = ctx.req.headers.authorization;
+        const apiKeyAuth = await verifyAPIKey(authHeader);
+        
+        if (apiKeyAuth) {
+          // API Key authentication
+          if (!hasPermission(apiKeyAuth.permissions, "resources:delete")) {
+            throw new TRPCError({ code: "FORBIDDEN", message: "API key does not have resources:delete permission" });
+          }
+        } else if (ctx.user) {
+          // Session authentication
+          if (ctx.user.role !== "admin") {
+            throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can delete resources" });
+          }
+        } else {
+          // No authentication
+          throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required" });
+        }
+
+        // Soft delete: set status to 'archived'
+        await updateResource(input.id, {
+          status: "archived",
         });
 
         return { success: true, id: input.id };
@@ -1561,23 +1624,39 @@ export const appRouter = router({
         return resource;
       }),
 
-    // List resources with pagination and filters (public)
+    // List resources with pagination and filters
+    // Public: only shows published resources
+    // With API Key: can show all resources including drafts
     list: publicProcedure
       .input(
         z.object({
           page: z.number().min(1).default(1),
-          pageSize: z.number().min(1).max(50).default(12),
+          pageSize: z.number().min(1).max(100).default(12),
           categoryId: z.number().optional(),
           featured: z.boolean().optional(),
           language: z.string().optional(),
           search: z.string().optional(),
+          status: z.enum(["draft", "published", "archived"]).optional(),
         })
       )
-      .query(async ({ input }) => {
+      .query(async ({ input, ctx }) => {
+        // Check if API Key is provided
+        const authHeader = ctx.req.headers.authorization;
+        const apiKeyAuth = await verifyAPIKey(authHeader);
+        
+        let status: "published" | "draft" | "archived" | undefined;
+        if (apiKeyAuth && hasPermission(apiKeyAuth.permissions, "resources:list")) {
+          // API Key with list permission can specify status
+          status = input.status;
+        } else {
+          // Public access: only show published resources
+          status = "published";
+        }
+
         return await listResources({
           page: input.page,
           pageSize: input.pageSize,
-          status: "published", // Only show published resources
+          status,
           categoryId: input.categoryId,
           featured: input.featured,
           language: input.language,

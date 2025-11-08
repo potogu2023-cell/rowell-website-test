@@ -896,7 +896,8 @@
 - [x] Daicel品牌爬取完成（263个产品导入，94.9%成功率）
 - [x] Waters品牌爬取完成（106个色谱柱产品导入，100%成功率）
 - [x] Phenomenex品牌爬取完成（247个产品导入，100%成功率，质量中等）
-- [ ] 准备下一个品牌（Restek, 215个产品）的任务指令
+- [x] 准备Restek品牌任务（215个产品，任务指令和产品清单已就绪）
+- [ ] 等待Restek爬取结果并验证导入
 
 
 ---
@@ -1162,3 +1163,37 @@
 - [x] 更新技术交接文档
 - [x] 测试API Key认证流程
 - [x] 保存checkpoint
+
+
+---
+
+## 🔧 资源中心API扩展开发（2025-11-08）
+
+### 需求来源
+社媒推广总工程师请求扩展资源中心API功能
+
+### 任务列表
+
+#### Phase 1: 数据库Schema更新
+- [x] 检查resources表现有字段
+- [x] 添加publishedAt字段（datetime, nullable）
+- [x] 添加language字段（varchar(10), default 'en'）
+- [x] 执行数据库迁移
+
+#### Phase 2: 开发3个新API
+- [x] 开发resources.delete接口（软删除）
+- [x] 开发resources.update接口（支持部分更新）
+- [x] 开发resources.list接口（支持分页和筛选）
+- [x] 扩展API Key权限（update, delete, list）
+
+#### Phase 3: 前端语言筛选
+- [x] 检查网站支持的语言列表
+- [x] 实现资源中心语言筛选逻辑
+- [x] 添加语言回退机制（无文章时显示英文）
+
+#### Phase 4: 测试和文档
+- [x] 测试delete API（删除测试文章）
+- [x] 测试update API（调整发布日期）
+- [x] 测试list API（查询文章列表）
+- [x] 更新API技术文档
+- [ ] 保存checkpoint

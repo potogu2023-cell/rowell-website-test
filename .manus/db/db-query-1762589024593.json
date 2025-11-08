@@ -1,0 +1,106 @@
+{
+  "query": "DESCRIBE api_keys;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute DESCRIBE api_keys;",
+  "rows": [
+    {
+      "Field": "id",
+      "Type": "int(11)",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": "NULL",
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "keyHash",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "UNI",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "keyPrefix",
+      "Type": "varchar(20)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "name",
+      "Type": "varchar(100)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "description",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "createdBy",
+      "Type": "int(11)",
+      "Null": "NO",
+      "Key": "MUL",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "permissions",
+      "Type": "varchar(255)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "resources:create",
+      "Extra": ""
+    },
+    {
+      "Field": "isActive",
+      "Type": "int(11)",
+      "Null": "NO",
+      "Key": "MUL",
+      "Default": "1",
+      "Extra": ""
+    },
+    {
+      "Field": "lastUsedAt",
+      "Type": "timestamp",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "expiresAt",
+      "Type": "timestamp",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "createdAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": ""
+    },
+    {
+      "Field": "updatedAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "messages": [],
+  "stdout": "Field\tType\tNull\tKey\tDefault\tExtra\nid\tint(11)\tNO\tPRI\tNULL\tauto_increment\nkeyHash\tvarchar(255)\tNO\tUNI\tNULL\t\nkeyPrefix\tvarchar(20)\tNO\t\tNULL\t\nname\tvarchar(100)\tNO\t\tNULL\t\ndescription\ttext\tYES\t\tNULL\t\ncreatedBy\tint(11)\tNO\tMUL\tNULL\t\npermissions\tvarchar(255)\tNO\t\tresources:create\t\nisActive\tint(11)\tNO\tMUL\t1\t\nlastUsedAt\ttimestamp\tYES\t\tNULL\t\nexpiresAt\ttimestamp\tYES\t\tNULL\t\ncreatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\t\nupdatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\tDEFAULT_GENERATED on update CURRENT_TIMESTAMP\n",
+  "stderr": "",
+  "execution_time_ms": 1557
+}

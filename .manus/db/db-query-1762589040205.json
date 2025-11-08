@@ -1,0 +1,24 @@
+{
+  "query": "SELECT * FROM api_keys LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT * FROM api_keys LIMIT 1;",
+  "rows": [
+    {
+      "id": "1",
+      "keyHash": "0f0a9ee7c74381b425fc69d101b27d4b54ca6ebc7f9867e44e38438eaa2ae6e0",
+      "keyPrefix": "rowell_fff6d961...",
+      "name": "Social Media Automation",
+      "description": "API key for automated content publishing from social media team",
+      "createdBy": "1",
+      "permissions": "resources:create",
+      "isActive": "1",
+      "lastUsedAt": "2025-11-08 07:34:14",
+      "expiresAt": "NULL",
+      "createdAt": "2025-11-08 07:22:31",
+      "updatedAt": "2025-11-08 07:34:13"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tkeyHash\tkeyPrefix\tname\tdescription\tcreatedBy\tpermissions\tisActive\tlastUsedAt\texpiresAt\tcreatedAt\tupdatedAt\n1\t0f0a9ee7c74381b425fc69d101b27d4b54ca6ebc7f9867e44e38438eaa2ae6e0\trowell_fff6d961...\tSocial Media Automation\tAPI key for automated content publishing from social media team\t1\tresources:create\t1\t2025-11-08 07:34:14\tNULL\t2025-11-08 07:22:31\t2025-11-08 07:34:13\n",
+  "stderr": "",
+  "execution_time_ms": 1526
+}
