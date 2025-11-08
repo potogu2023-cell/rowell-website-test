@@ -77,6 +77,11 @@ export default function Navbar() {
               {t('nav.applications')}
             </a>
           </Link>
+          <Link href="/resources">
+            <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              {t('nav.resources')}
+            </a>
+          </Link>
           <Link href="/contact">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
               {t('nav.contact')}
