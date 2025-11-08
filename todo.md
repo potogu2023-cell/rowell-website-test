@@ -1234,3 +1234,26 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - [ ] 导入数据库
 - [ ] 生成质量报告
 - [ ] 保存checkpoint
+
+
+---
+
+## 🌐 首页中文翻译修复（2025-11-08）
+
+### 问题
+用户反馈：中文语言环境下，首页部分内容显示英文
+
+### 需要修复的内容
+- [x] Hero section描述文本（"Don't know which column to choose..."）
+- [x] 统计数据文本（"<5s Response Time", "95% Accuracy Rate", "500+ Labs Served"）
+- [x] "Why Choose ROWELL"标题
+- [x] "Why Choose ROWELL"副标题（"Not just a supplier..."）
+- [x] 三大优势卡片的标题和描述
+
+### 任务
+- [x] 检查翻译文件中缺失的中文翻译
+- [x] 添加所有缺失的中文翻译（zh.json + en.json）
+- [x] 更新Home.tsx使用翻译键
+- [x] 修复i18n检测顺序（优先querystring）
+- [x] 测试中文语言显示
+- [x] 保存checkpoint

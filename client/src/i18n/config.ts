@@ -50,9 +50,10 @@ i18n
       escapeValue: false, // React already escapes values
     },
     detection: {
-      // Order of language detection
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      // Order of language detection - prioritize querystring for testing
+      order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
+      lookupQuerystring: 'lng',
     },
   });
 

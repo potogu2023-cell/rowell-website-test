@@ -136,22 +136,21 @@ export default function Home() {
         <div className="container text-center">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Bot className="w-4 h-4" />
-            AI-Powered Solution Provider
+            {t('home.ai_powered_badge')}
           </div>
           <h1 className="text-5xl font-bold mb-4">
             {t('home.hero_title') || 'Smart Chromatography Solutions'}
           </h1>
           <p className="text-xl text-primary mb-6 font-semibold">
-            24/7 AI Product Advisor • 11 Premium Brands • 2400+ Products
+            {t('home.hero_subtitle')}
           </p>
           <p className="text-lg text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Don't know which column to choose? Our AI advisor provides instant technical recommendations 
-            based on your application. Backed by 10 years of expertise and 11 world-class brands.
+            {t('home.hero_description')}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
               <MessageCircle className="w-5 h-5 mr-2" />
-              Ask AI Advisor
+              {t('home.ask_ai_advisor')}
             </Button>
             <Button size="lg" asChild>
               <Link href="/products">
@@ -167,15 +166,15 @@ export default function Home() {
           <div className="mt-8 flex items-center justify-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <Zap className="w-4 h-4 text-blue-600" />
-              <span>&lt;5s Response Time</span>
+              <span>{t('home.response_time')}</span>
             </div>
             <div className="flex items-center gap-2">
               <Target className="w-4 h-4 text-green-600" />
-              <span>95% Accuracy Rate</span>
+              <span>{t('home.accuracy_rate')}</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="w-4 h-4 text-yellow-600" />
-              <span>500+ Labs Served</span>
+              <span>{t('home.labs_served')}</span>
             </div>
           </div>
         </div>
@@ -185,8 +184,8 @@ export default function Home() {
       <section className="py-16">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Why Choose ROWELL</h2>
-            <p className="text-muted-foreground">Not just a supplier - Your chromatography problem-solving partner</p>
+            <h2 className="text-3xl font-bold mb-4">{t('home.why_choose_title')}</h2>
+            <p className="text-muted-foreground">{t('home.why_choose_subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Advantage 1: AI-Powered Technical Support */}
@@ -195,25 +194,24 @@ export default function Home() {
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <Bot className="w-6 h-6 text-blue-600" />
                 </div>
-                <CardTitle className="text-xl">24/7 AI Product Advisor + Expert Consultation</CardTitle>
+                <CardTitle className="text-xl">{t('home.advantage_1_title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Get instant technical recommendations from our AI advisor, trained on 10+ years of 
-                  chromatography expertise. Can't find the answer? Our expert Oscar is here to help.
+                  {t('home.advantage_1_desc')}
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
                     <Zap className="w-4 h-4 text-blue-600" />
-                    <span className="font-medium">&lt;5 seconds response time</span>
+                    <span className="font-medium">{t('home.advantage_1_feature_1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Target className="w-4 h-4 text-blue-600" />
-                    <span className="font-medium">95% question accuracy rate</span>
+                    <span className="font-medium">{t('home.advantage_1_feature_2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Lightbulb className="w-4 h-4 text-blue-600" />
-                    <span className="font-medium">Smart product matching</span>
+                    <span className="font-medium">{t('home.advantage_1_feature_3')}</span>
                   </div>
                 </div>
               </CardContent>
@@ -225,25 +223,24 @@ export default function Home() {
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                   <Globe className="w-6 h-6 text-green-600" />
                 </div>
-                <CardTitle className="text-xl">11 Premium Brands, 2400+ Products, One Supplier</CardTitle>
+                <CardTitle className="text-xl">{t('home.advantage_2_title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Compare and choose from Waters, Agilent, Phenomenex, Thermo Fisher, Merck, and 6 more 
-                  leading brands. HPLC/GC columns, SPE cartridges, consumables - everything in one place.
+                  {t('home.advantage_2_desc')}
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
                     <Star className="w-4 h-4 text-green-600" />
-                    <span className="font-medium">11 world-class brands</span>
+                    <span className="font-medium">{t('home.advantage_2_feature_1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Star className="w-4 h-4 text-green-600" />
-                    <span className="font-medium">2400+ products in stock</span>
+                    <span className="font-medium">{t('home.advantage_2_feature_2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <DollarSign className="w-4 h-4 text-green-600" />
-                    <span className="font-medium">Volume discounts available</span>
+                    <span className="font-medium">{t('home.advantage_2_feature_3')}</span>
                   </div>
                 </div>
               </CardContent>
@@ -255,25 +252,24 @@ export default function Home() {
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                   <Rocket className="w-6 h-6 text-purple-600" />
                 </div>
-                <CardTitle className="text-xl">From Inquiry to Delivery - We Handle Everything</CardTitle>
+                <CardTitle className="text-xl">{t('home.advantage_3_title')}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
-                  Expert customs clearance, fast worldwide shipping, professional packaging for fragile 
-                  items, and post-sale technical support. We make international purchasing hassle-free.
+                  {t('home.advantage_3_desc')}
                 </p>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center gap-2">
                     <Globe className="w-4 h-4 text-purple-600" />
-                    <span className="font-medium">Shipping to 50+ countries</span>
+                    <span className="font-medium">{t('home.advantage_3_feature_1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Rocket className="w-4 h-4 text-purple-600" />
-                    <span className="font-medium">98% on-time delivery rate</span>
+                    <span className="font-medium">{t('home.advantage_3_feature_2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Wrench className="w-4 h-4 text-purple-600" />
-                    <span className="font-medium">Professional customs docs</span>
+                    <span className="font-medium">{t('home.advantage_3_feature_3')}</span>
                   </div>
                 </div>
               </CardContent>
