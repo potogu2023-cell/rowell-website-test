@@ -1325,3 +1325,23 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - client/src/i18n/locales/en.json
 - client/src/pages/About.tsx
 - client/src/pages/InquiryCart.tsx
+
+
+---
+
+## 📦 ACE品牌爬取任务准备（2025-11-08）
+
+### 背景
+优先完成技术难度低的品牌，ACE品牌151个产品
+
+### 任务
+- [x] 查询ACE产品清单（151个产品）
+- [x] 生成爬虫任务指令文档（ACE_CRAWLING_INSTRUCTIONS.md）
+- [x] 准备产品清单CSV文件（ace_product_list_for_crawler.csv）
+- [x] 创建任务交付包README（ACE_TASK_README.md）
+- [ ] 交付任务指令给爬虫团队
+- [ ] 等待爬取完成
+- [ ] 验证数据质量
+- [ ] 导入数据库
+- [ ] 生成质量报告
+- [ ] 保存checkpoint
