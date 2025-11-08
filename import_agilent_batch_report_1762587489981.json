@@ -1,0 +1,2828 @@
+{
+  "timestamp": "2025-11-08T07:38:09.981Z",
+  "csvFile": "/home/ubuntu/rowell-website-test/phenomenex_247_all_results.csv",
+  "summary": {
+    "total": 247,
+    "valid": 247,
+    "invalid": 0,
+    "updated": 247,
+    "skipped": 0,
+    "errors": 0
+  },
+  "qualityStats": {
+    "description": {
+      "high": 0,
+      "medium": 33,
+      "low": 61,
+      "extracted": 67,
+      "none": 86
+    },
+    "specifications": {
+      "valid": 153,
+      "invalid": 94,
+      "missing": 0
+    },
+    "successRate": 100,
+    "specsRate": 61.9,
+    "descRate": 65.2,
+    "abRate": 13.4,
+    "grade": "ACCEPTABLE"
+  },
+  "invalidProducts": [],
+  "skippedProducts": [],
+  "errorProducts": [],
+  "updateDetails": [
+    {
+      "productId": "PHEN-7EG-G006-11",
+      "partNumber": "7EG-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EM-G006-11",
+      "partNumber": "7EM-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7GK-G006-32-C",
+      "partNumber": "7GK-G006-32-C",
+      "name": "Zebron ZB-1701, GC Cap. Column 25 m x 0.53 mm x 2.00 µm, EA",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G006-11",
+      "partNumber": "7HG-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G002-02",
+      "partNumber": "7EG-G002-02",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.10 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G002-11",
+      "partNumber": "7EG-G002-11",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G002-17",
+      "partNumber": "7EG-G002-17",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.50 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G002-22",
+      "partNumber": "7EG-G002-22",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 1.00 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EK-G002-17",
+      "partNumber": "7EK-G002-17",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 0.50 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EK-G002-28",
+      "partNumber": "7EK-G002-28",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 1.50 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EK-G002-36",
+      "partNumber": "7EK-G002-36",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 3.00 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EM-G002-11",
+      "partNumber": "7EM-G002-11",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EM-G002-22",
+      "partNumber": "7EM-G002-22",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.32 mm x 1.00 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7CB-G010-02",
+      "partNumber": "7CB-G010-02",
+      "name": "Zebron ZB-5MS, GC Cap. Column 10 m x 0.10 mm x 0.10 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7CD-G010-08",
+      "partNumber": "7CD-G010-08",
+      "name": "Zebron ZB-5MS, GC Cap. Column 10 m x 0.18 mm x 0.18 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7DE-G010-14",
+      "partNumber": "7DE-G010-14",
+      "name": "Zebron ZB-5MS, GC Cap. Column 12 m x 0.20 mm x 0.33 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G010-11",
+      "partNumber": "7EG-G010-11",
+      "name": "Zebron ZB-5MS, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G010-11-GGC",
+      "partNumber": "7EG-G010-11-GGC",
+      "name": "Zebron ZB-5MS w/GUARDIAN, 10 m, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7FD-G010-08",
+      "partNumber": "7FD-G010-08",
+      "name": "Zebron ZB-5MS, GC Cap. Column 20 m x 0.18 mm x 0.18 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7FD-G010-51",
+      "partNumber": "7FD-G010-51",
+      "name": "Zebron ZB-5MS, GC Cap. Column 20 m x 0.18 mm x 0.32 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7GE-G010-14",
+      "partNumber": "7GE-G010-14",
+      "name": "Zebron ZB-5MS, GC Cap. Column 25 m x 0.20 mm x 0.33 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G010-11",
+      "partNumber": "7HG-G010-11",
+      "name": "Zebron ZB-5MS, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7CB-G013-02",
+      "partNumber": "7CB-G013-02",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 10 m x 0.10 mm x 0.10 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G013-11",
+      "partNumber": "7EG-G013-11",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EK-G013-22",
+      "partNumber": "7EK-G013-22",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 15 m x 0.53 mm x 1.00 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7FD-G013-08",
+      "partNumber": "7FD-G013-08",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 20 m x 0.18 mm x 0.18 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G013-11",
+      "partNumber": "7HG-G013-11",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G013-11-B",
+      "partNumber": "7HG-G013-11-B",
+      "name": "Zebron ZB-WAXplus, 5-in Cage, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G013-11-GGA-C",
+      "partNumber": "7HG-G013-11-GGA-C",
+      "name": "Zebron ZB-WAXplus w/GUARDIAN, 5 m, GC Cap. Column 30 m x 0.25 mm x 0.25 µm (CUSTOM), Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G013-17",
+      "partNumber": "7HG-G013-17",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 30 m x 0.25 mm x 0.50 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HK-G013-11",
+      "partNumber": "7HK-G013-11",
+      "name": "Zebron ZB-WAXplus, GC Cap. Column 30 m x 0.53 mm x 0.25 µm, Ea",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EG-G009-11",
+      "partNumber": "7EG-G009-11",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EK-G009-22",
+      "partNumber": "7EK-G009-22",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 15 m x 0.53 mm x 1.00 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7EM-G009-11",
+      "partNumber": "7EM-G009-11",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HG-G009-11",
+      "partNumber": "7HG-G009-11",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HK-G009-22",
+      "partNumber": "7HK-G009-22",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 30 m x 0.53 mm x 1.00 µm, Ea",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-7HK-G009-22-B",
+      "partNumber": "7HK-G009-22-B",
+      "name": "Zebron ZB-FFAP, 5-in Cage, GC Cap. Column 30 m x 0.53 mm x 1.00 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HK-G009-36-C",
+      "partNumber": "7HK-G009-36-C",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 30 m x 0.53 mm x 3.00 µm (CUSTOM), Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HM-G009-11",
+      "partNumber": "7HM-G009-11",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 30 m x 0.32 mm x 0.25 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-7HM-G009-17",
+      "partNumber": "7HM-G009-17",
+      "name": "Zebron ZB-FFAP, GC Cap. Column 30 m x 0.32 mm x 0.50 µm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard ULTRA C18",
+      "partNumber": "SecurityGuard ULTRA C18",
+      "name": "C18",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard ULTRA C8",
+      "partNumber": "SecurityGuard ULTRA C8",
+      "name": "C8",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard ULTRA PFP",
+      "partNumber": "SecurityGuard ULTRA PFP",
+      "name": "PFP",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard ULTRA HILIC",
+      "partNumber": "SecurityGuard ULTRA HILIC",
+      "name": "HILIC",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard ULTRA Phenyl",
+      "partNumber": "SecurityGuard ULTRA Phenyl",
+      "name": "Phenyl",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard C18",
+      "partNumber": "SecurityGuard C18",
+      "name": "C18",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard C12",
+      "partNumber": "SecurityGuard C12",
+      "name": "C12",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard C8",
+      "partNumber": "SecurityGuard C8",
+      "name": "C8",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard C5",
+      "partNumber": "SecurityGuard C5",
+      "name": "C5",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard C1",
+      "partNumber": "SecurityGuard C1",
+      "name": "C1",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Silica",
+      "partNumber": "SecurityGuard Silica",
+      "name": "Silica",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard NH2",
+      "partNumber": "SecurityGuard NH2",
+      "name": "NH2",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard CN",
+      "partNumber": "SecurityGuard CN",
+      "name": "CN",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Phenyl",
+      "partNumber": "SecurityGuard Phenyl",
+      "name": "Phenyl",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard SCX",
+      "partNumber": "SecurityGuard SCX",
+      "name": "SCX",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard SAX",
+      "partNumber": "SecurityGuard SAX",
+      "name": "SAX",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard RP-1",
+      "partNumber": "SecurityGuard RP-1",
+      "name": "RP-1",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Polar-RP",
+      "partNumber": "SecurityGuard Polar-RP",
+      "name": "Polar-RP",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Fusion-RP",
+      "partNumber": "SecurityGuard Fusion-RP",
+      "name": "Fusion-RP",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard AQ C18",
+      "partNumber": "SecurityGuard AQ C18",
+      "name": "AQ C18",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Gemini C18",
+      "partNumber": "SecurityGuard Gemini C18",
+      "name": "Gemini C18",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Oligo-RP",
+      "partNumber": "SecurityGuard Oligo-RP",
+      "name": "Oligo-RP",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Widepore C18",
+      "partNumber": "SecurityGuard Widepore C18",
+      "name": "Widepore C18",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Widepore C5",
+      "partNumber": "SecurityGuard Widepore C5",
+      "name": "Widepore C5",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Widepore C4",
+      "partNumber": "SecurityGuard Widepore C4",
+      "name": "Widepore C4",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard GFC-2000",
+      "partNumber": "SecurityGuard GFC-2000",
+      "name": "GFC-2000",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard GFC-3000",
+      "partNumber": "SecurityGuard GFC-3000",
+      "name": "GFC-3000",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard GFC-4000",
+      "partNumber": "SecurityGuard GFC-4000",
+      "name": "GFC-4000",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Carbo-H+",
+      "partNumber": "SecurityGuard Carbo-H+",
+      "name": "Carbo-H+",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Carbo-Ag+",
+      "partNumber": "SecurityGuard Carbo-Ag+",
+      "name": "Carbo-Ag+",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Carbo-Pb+2",
+      "partNumber": "SecurityGuard Carbo-Pb+2",
+      "name": "Carbo-Pb+2",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SecurityGuard Carbo-Ca+2",
+      "partNumber": "SecurityGuard Carbo-Ca+2",
+      "name": "Carbo-Ca+2",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-00M-S039-B0-CB",
+      "partNumber": "00M-S039-B0-CB",
+      "name": "Strata C18-E 20 µm On-Line Extraction, Cartridge 20 x 2.0 mm, Ea",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-DAK",
+      "partNumber": "8B-S001-DAK",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-DAK-A",
+      "partNumber": "8B-S001-DAK-A",
+      "name": "Strata C18-E (55um, 70A), 50mg/1mL with ASPEC Cap, 100/PK",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-DAK-S",
+      "partNumber": "8B-S001-DAK-S",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes (SAMPLE), 5/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-DAM",
+      "partNumber": "8B-S001-DAM",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes, 500/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-EAK",
+      "partNumber": "8B-S001-EAK",
+      "name": "Strata C18-E (55 µm, 70 Å), 100 mg / 1 mL, Tubes, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-EAK-A",
+      "partNumber": "8B-S001-EAK-A",
+      "name": "Strata C18-E (55um, 70A), 100mg/1mL with ASPEC Cap, 100/PK",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-EAK-S",
+      "partNumber": "8B-S001-EAK-S",
+      "name": "Strata C18-E (55 µm, 70 Å), 100 mg / 1 mL, Tubes (SAMPLE), 5/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-EAM",
+      "partNumber": "8B-S001-EAM",
+      "name": "Strata C18-E (55 µm, 70 Å), 100 mg / 1 mL, Tubes, 500/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-FBJ",
+      "partNumber": "8B-S001-FBJ",
+      "name": "Strata C18-E (55 µm, 70 Å), 200 mg / 3 mL, Tubes, 50/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-FBJ-S",
+      "partNumber": "8B-S001-FBJ-S",
+      "name": "Strata C18-E (55 µm, 70 Å), 200 mg / 3 mL, Tubes (SAMPLE), 5/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-FBL",
+      "partNumber": "8B-S001-FBL",
+      "name": "Strata C18-E (55 µm, 70 Å), 200 mg / 3 mL, Tubes, 200/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-FCH",
+      "partNumber": "8B-S001-FCH",
+      "name": "Strata C18-E (55 µm, 70 Å), 200 mg / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-FCH-S",
+      "partNumber": "8B-S001-FCH-S",
+      "name": "Strata C18-E (55 µm, 70 Å), 200 mg / 6 mL, Tubes (SAMPLE), 5/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-FBJ-T",
+      "partNumber": "8B-S001-FBJ-T",
+      "name": "Strata C18-E (55 µm, 70 Å), 200 mg / 3 mL, Tubes Teflon, 50/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HBJ",
+      "partNumber": "8B-S001-HBJ",
+      "name": "Strata C18-E (55 µm, 70 Å), 500 mg / 3 mL, Tubes, 50/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HBJ-T",
+      "partNumber": "8B-S001-HBJ-T",
+      "name": "Strata C18-E (55 µm, 70 Å), 500 mg / 3 mL, Tubes Teflon, 50/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HBL",
+      "partNumber": "8B-S001-HBL",
+      "name": "Strata C18-E (55 µm, 70 Å), 500 mg / 3 mL, Tubes, 200/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HCH",
+      "partNumber": "8B-S001-HCH",
+      "name": "Strata C18-E (55 µm, 70 Å), 500 mg / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HCH-T",
+      "partNumber": "8B-S001-HCH-T",
+      "name": "Strata C18-E (55 µm, 70 Å), 500mg/6mL, Teflon Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HCL",
+      "partNumber": "8B-S001-HCL",
+      "name": "Strata C18-E (55 µm, 70 Å), 500 mg / 6 mL, Tubes, 200/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-HDG",
+      "partNumber": "8B-S001-HDG",
+      "name": "Strata C18-E (55 µm, 70 Å), 500 mg / 12 mL, Giga Tubes, 20/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-JCH",
+      "partNumber": "8B-S001-JCH",
+      "name": "Strata C18-E (55 µm, 70 Å), 1 g / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-JEG",
+      "partNumber": "8B-S001-JEG",
+      "name": "Strata C18-E (55 µm, 70 Å), 1 g / 20 mL, Giga Tubes, 20/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-KDG",
+      "partNumber": "8B-S001-KDG",
+      "name": "Strata C18-E (55 µm, 70 Å), 2 g / 12 mL, Giga Tubes, 20/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-LEG",
+      "partNumber": "8B-S001-LEG",
+      "name": "Strata C18-E (55 µm, 70 Å), 5 g / 20 mL, Giga Tubes, 20/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-MFF",
+      "partNumber": "8B-S001-MFF",
+      "name": "Strata C18-E (55 µm, 70 Å), 10 g / 60 mL, Giga Tubes, 16/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-VFF",
+      "partNumber": "8B-S001-VFF",
+      "name": "Strata C18-E (55 µm, 70 Å), 20 g / 60 mL, Giga Tubes, 16/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-VSN",
+      "partNumber": "8B-S001-VSN",
+      "name": "Strata C18-E (55 µm, 70 Å), 20 g / 150 mL, Giga Tubes, 8/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-YSN",
+      "partNumber": "8B-S001-YSN",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 g / 150 mL, Giga Tubes, 8/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S001-ZSN",
+      "partNumber": "8B-S001-ZSN",
+      "name": "Strata C18-E (55 µm, 70 Å), 70 g / 150 mL, Giga Tubes, 8/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8E-S001-BGB",
+      "partNumber": "8E-S001-BGB",
+      "name": "Strata C18-E (55 µm, 70 Å), 15 mg / well, 96-Well Plates, 2/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8E-S001-CGB",
+      "partNumber": "8E-S001-CGB",
+      "name": "Strata C18-E (55 µm, 70 Å), 25 mg / well, 96-Well Plates, 2/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8E-S001-DGB",
+      "partNumber": "8E-S001-DGB",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / well, 96-Well Plates, 2/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8E-S001-EGB",
+      "partNumber": "8E-S001-EGB",
+      "name": "Strata C18-E (55 µm, 70 Å), 100 mg / well, 96-Well Plates, 2/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8L-S001-EAK",
+      "partNumber": "8L-S001-EAK",
+      "name": "Strata C18-E (55 µm, 70 Å), Tab-Less SPE Tubes 100mg/1mL, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8L-S001-EBJ",
+      "partNumber": "8L-S001-EBJ",
+      "name": "Strata C18-E (55 µm, 70 Å), 100mg/3mL, Tab-less Tubes, 50/pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-EAK",
+      "partNumber": "8B-S004-EAK",
+      "name": "Strata C18-T (55 µm, 140 Å), 100 mg / 1 mL, Tubes, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-FBJ",
+      "partNumber": "8B-S004-FBJ",
+      "name": "Strata C18-T (55 µm, 140 Å), 200 mg / 3 mL, Tubes, 50/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-HBJ",
+      "partNumber": "8B-S004-HBJ",
+      "name": "Strata C18-T (55 µm, 140 Å), 500 mg / 3 mL, Tubes, 50/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-HCH",
+      "partNumber": "8B-S004-HCH",
+      "name": "Strata C18-T (55 µm, 140 Å), 500 mg / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-JCH",
+      "partNumber": "8B-S004-JCH",
+      "name": "Strata C18-T (55 µm, 140 Å), 1 g / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-JDG-T",
+      "partNumber": "8B-S004-JDG-T",
+      "name": "Strata C18-T (55 µm, 140 Å), 1 g / 12 mL, Giga Tubes Teflon, 20/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S004-MFF",
+      "partNumber": "8B-S004-MFF",
+      "name": "Strata C18-T (55 µm, 140 Å), 10 g / 60 mL, Giga Tubes, 16/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8E-S004-DGB",
+      "partNumber": "8E-S004-DGB",
+      "name": "Strata C18-T (55 µm, 140 Å), 50 mg / well, 96-Well Plates, 2/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-CAK",
+      "partNumber": "8B-S014-CAK",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 25 mg / 1 mL, Tubes, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-DAK",
+      "partNumber": "8B-S014-DAK",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 50 mg / 1 mL, Tubes, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-EAK",
+      "partNumber": "8B-S014-EAK",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 100 mg / 1 mL, Tubes, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-FBJ",
+      "partNumber": "8B-S014-FBJ",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 200 mg / 3 mL, Tubes, 50/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-FCH",
+      "partNumber": "8B-S014-FCH",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 200 mg / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-HBJ",
+      "partNumber": "8B-S014-HBJ",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 500 mg / 3 mL, Tubes, 50/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-HCH",
+      "partNumber": "8B-S014-HCH",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 500 mg / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-JCH",
+      "partNumber": "8B-S014-JCH",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 1 g / 6 mL, Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8B-S014-MFF",
+      "partNumber": "8B-S014-MFF",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 10 g / 60 mL, Giga Tubes, 16/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8E-S014-DGB",
+      "partNumber": "8E-S014-DGB",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 50 mg / well, 96-Well Plates, 2/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-8L-S014-FCH",
+      "partNumber": "8L-S014-FCH",
+      "name": "Strata SDBL 100 µm Styrene-divinylbenzene, 200 mg / 6 mL, Tab-less Tubes, 30/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-03A-4802-E0",
+      "partNumber": "03A-4802-E0",
+      "name": "Biozen 3.0 µm dSEC-1, Guard Column, 30x4.6",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-03Q-4788-K0",
+      "partNumber": "03Q-4788-K0",
+      "name": "bioZen dSEC-2 guard column, (40*7.8) 3um",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-420-546010W",
+      "partNumber": "420-546010W",
+      "name": "Guard Column Fusion C8, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-401-546010W",
+      "partNumber": "401-546010W",
+      "name": "Guard Column Fusion C18, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-470-546010W",
+      "partNumber": "470-546010W",
+      "name": "Guard Column Fusion C30, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-302-546010W",
+      "partNumber": "302-546010W",
+      "name": "Guard Column FlexFire C30, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-320-546010W",
+      "partNumber": "320-546010W",
+      "name": "Guard Column FlexFire mAb-RP, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-301-546010W",
+      "partNumber": "301-546010W",
+      "name": "Guard Column FlexFire mAb-RP, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-431-546010W",
+      "partNumber": "431-546010W",
+      "name": "Guard Column Fusion BIO C4, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-DN3503-B",
+      "partNumber": "DN3503-B",
+      "name": "DNPH-Silica, 350mg/3mL, with Guard Column, 50/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-SI-90G",
+      "partNumber": "SI-90G",
+      "name": "Guard Column, 5µm, 4.6x10",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AS060-B",
+      "partNumber": "AS060-B",
+      "name": "SPE Cartridge Frit, 60mL, 1/8in 20µm, 50/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AS006-B",
+      "partNumber": "AS006-B",
+      "name": "SPE Cartridge Frit, 6mL, 1/8in, 20µm, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AS001-A-2",
+      "partNumber": "AS001-A-2",
+      "name": "SPE Cartridge Frit, 1mL, 1/16in, 20µm",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AS003-A-2",
+      "partNumber": "AS003-A-2",
+      "name": "SPE Cartridge Frit, 3mL, 1/16in, 20µm, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AS012-B",
+      "partNumber": "AS012-B",
+      "name": "SPE Cartridge Frit, 12mL, 1/8 inch, 20µm, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AS001-A-2HM",
+      "partNumber": "AS001-A-2HM",
+      "name": "SPE cartridge Frit, 1ml, 1/16’, 20um, 100/Pk, 100/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AS012-A-2",
+      "partNumber": "AS012-A-2",
+      "name": "SPE Cartridge Frit, PE Frit for 12mL SPE Tube 1/16in 20µm, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-4466058",
+      "partNumber": "4466058",
+      "name": "Amplifex PREP Cartridge Adapters for SI5006-S, SPE Columns, 50mg/2mL/well, 24/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-FC003",
+      "partNumber": "FC003",
+      "name": "Filtration Column 3mL, 3mL, 1/16in Plate, 100/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2107-12",
+      "partNumber": "AF0-2107-12",
+      "name": "Phenex-NY 15mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-8104-12",
+      "partNumber": "AF0-8104-12",
+      "name": "Phenex-CA 28mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-1107-12",
+      "partNumber": "AF0-1107-12",
+      "name": "Phenex-NY 25mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-3202-12",
+      "partNumber": "AF0-3202-12",
+      "name": "Phenex-PTFE 4mm Syringe Filters 0.2u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-8203-12",
+      "partNumber": "AF0-8203-12",
+      "name": "Phenex-RC 26mm Syringe Filters 0.2u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2103-12",
+      "partNumber": "AF0-2103-12",
+      "name": "Phenex-RC 15mm Syringe Filters 0.45u, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-1207-12",
+      "partNumber": "AF0-1207-12",
+      "name": "Phenex-NY 25mm Syringe Filters 0.2u,, Non-Sterile, Luer/Slip - (AF0-1207-12)",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-1102-12",
+      "partNumber": "AF0-1102-12",
+      "name": "Phenex-PTFE 25mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-3103-12",
+      "partNumber": "AF0-3103-12",
+      "name": "Phenex-RC 4mm Syringe Filters, 0.45 µm, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2203-52",
+      "partNumber": "AF0-2203-52",
+      "name": "Phenex-RC Syringe Filters, 15 mm dia., 0.2 µm, Non-Sterile, Luer/Slip, 500/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2202-52",
+      "partNumber": "AF0-2202-52",
+      "name": "Phenex-PTFE Syringe Filters, 15 mm dia., 0.2 µm, Non-Sterile, Luer/Slip, 500/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-8208-12",
+      "partNumber": "AF0-8208-12",
+      "name": "Phenex-PES 28mm Syringe Filters 0.2u,, Non-Sterile, Luer/Luer, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2102-52",
+      "partNumber": "AF0-2102-52",
+      "name": "Phenex-PTFE Syringe Filters, 15 mm dia., 0.45 µm, Non-Sterile, Luer/Slip, 500/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-3102-52",
+      "partNumber": "AF0-3102-52",
+      "name": "Phenex-PTFE Syringe Filters, 4 mm dia., 0.45 µm, Non-Sterile, Luer/Slip - (AF0-3102-52)",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-8B09-52",
+      "partNumber": "AF0-8B09-52",
+      "name": "Phenex-GF/CA Syringe Filters, 28 mm dia., 0.45 µm, Non-Sterile, Luer/Luer, 500/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-1A47-52",
+      "partNumber": "AF0-1A47-52",
+      "name": "Phenex-GF/NY Syringe Filters, 25 mm dia., 0.2 µm, Non-Sterile, Luer/Slip, 500/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2203-12",
+      "partNumber": "AF0-2203-12",
+      "name": "Phenex-RC Syringe Filters, 15mm dia., 0.2?m Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2202-12",
+      "partNumber": "AF0-2202-12",
+      "name": "Phenex-PTFE 15mm Syringe Filters 0.2u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-8208-52",
+      "partNumber": "AF0-8208-52",
+      "name": "Phenex-PES Syringe Filters, 28 mm dia., 0.2 µm, Non-Sterile, Luer/Luer, 500/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2102-12",
+      "partNumber": "AF0-2102-12",
+      "name": "Phenex-PTFE 15mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip - (AF0-2102-12)",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-3102-12",
+      "partNumber": "AF0-3102-12",
+      "name": "Phenex-PTFE 4mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-8B09-12",
+      "partNumber": "AF0-8B09-12",
+      "name": "Phenex-GF/CA 28mm Syringe Filters 0.45u,, Non-Sterile, Luer/Luer, 100/Pk",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-1A47-12",
+      "partNumber": "AF0-1A47-12",
+      "name": "Phenex-GF/NY Syringe Filters, 25 mm dia., 0.2 µm, Non-Sterile, Luer/Slip",
+      "descriptionQuality": "medium",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AF0-2201-52",
+      "partNumber": "AF0-2201-52",
+      "name": "Phenex-PTFE Syringe Filters, 15 mm dia., 0.45 µm, Non-Sterile, Luer/Slip, 500/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00200",
+      "partNumber": "AF0-0200",
+      "name": "Blue Screw Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00201",
+      "partNumber": "AF0-0201",
+      "name": "Red Screw Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00202",
+      "partNumber": "AF0-0202",
+      "name": "Green Screw Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00203",
+      "partNumber": "AF0-0203",
+      "name": "Black Screw Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00210",
+      "partNumber": "AF0-0210",
+      "name": "Blue Screw Cap with Pre-Slit PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00250",
+      "partNumber": "AF0-0250",
+      "name": "Blue Screw Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00300",
+      "partNumber": "AF0-0300",
+      "name": "Silver Crimp Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00301",
+      "partNumber": "AF0-0301",
+      "name": "Blue Crimp Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00302",
+      "partNumber": "AF0-0302",
+      "name": "Red Crimp Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00303",
+      "partNumber": "AF0-0303",
+      "name": "Green Crimp Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00350",
+      "partNumber": "AF0-0350",
+      "name": "Silver Crimp Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF00400",
+      "partNumber": "AF0-0400",
+      "name": "Silver Crimp Cap with PTFE/Silicone Septa",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09400",
+      "partNumber": "AF0-9400",
+      "name": "Autosampler Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09401",
+      "partNumber": "AF0-9401",
+      "name": "Autosampler Vial, Amber Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09450",
+      "partNumber": "AF0-9450",
+      "name": "Autosampler Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09500",
+      "partNumber": "AF0-9500",
+      "name": "Autosampler Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09501",
+      "partNumber": "AF0-9501",
+      "name": "Autosampler Vial, Amber Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09502",
+      "partNumber": "AF0-9502",
+      "name": "Autosampler Vial, Clear Glass with Writing Spot",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09503",
+      "partNumber": "AF0-9503",
+      "name": "Autosampler Vial, Amber Glass with Writing Spot",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09550",
+      "partNumber": "AF0-9550",
+      "name": "Autosampler Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09551",
+      "partNumber": "AF0-9551",
+      "name": "Autosampler Vial, Amber Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09600",
+      "partNumber": "AF0-9600",
+      "name": "Screw Thread Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09601",
+      "partNumber": "AF0-9601",
+      "name": "Screw Thread Vial, Amber Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09650",
+      "partNumber": "AF0-9650",
+      "name": "Screw Thread Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09700",
+      "partNumber": "AF0-9700",
+      "name": "Crimp Top Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09701",
+      "partNumber": "AF0-9701",
+      "name": "Crimp Top Vial, Amber Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09750",
+      "partNumber": "AF0-9750",
+      "name": "Crimp Top Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09800",
+      "partNumber": "AF0-9800",
+      "name": "Headspace Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09801",
+      "partNumber": "AF0-9801",
+      "name": "Headspace Vial, Amber Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AF09850",
+      "partNumber": "AF0-9850",
+      "name": "Headspace Vial, Clear Glass",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-00F-4252-E0",
+      "partNumber": "00F-4252-E0",
+      "name": "Luna 5 µm C18(2) 100 Å, LC Column 150 x 4.6 mm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-00F-4252-D0",
+      "partNumber": "00F-4252-D0",
+      "name": "Luna 5 µm C18(2) 100 Å, LC Column 150 x 4.6 mm",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-00A-4252-E0",
+      "partNumber": "00A-4252-E0",
+      "name": "Luna 5 µm C18(2) 100 Å, LC Column 100 x 4.6 mm",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-00D-4252-E0",
+      "partNumber": "00D-4252-E0",
+      "name": "Luna 5 µm C18(2) 100 Å, LC Column 100 x 4.6 mm, Ea",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-9551-13",
+      "partNumber": "AR0-9551-13",
+      "name": "Verex Vial Kit, Storage 20mL screw, Amber 51, w/Caps 24-400 wht, PTFE/Urethane, closed, 1000/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-3910-12",
+      "partNumber": "AR0-3910-12",
+      "name": "Verex Vial, 9mm Screw, 2mL, Clear 33, w/ Patch, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-3900-12",
+      "partNumber": "AR0-3900-12",
+      "name": "Verex Vial, 9mm Screw, 2mL, Clear 33, No Patch, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-3700-13",
+      "partNumber": "AR0-3700-13",
+      "name": "Verex Vial, Crimp, 2mL, Clear 33, No Patch, 1000/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-37K1-13",
+      "partNumber": "AR0-37K1-13",
+      "name": "Verex Vial, Crimp, 2mL, Wide Mouth, Amber 51, No Patch, 1000/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-3700-12",
+      "partNumber": "AR0-3700-12",
+      "name": "Verex Vial, Crimp, 2mL, Clear 33, No Patch, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AV8500-0",
+      "partNumber": "AV8500-0",
+      "name": "10mL Precision Thread Headspace-Vial, 46 x 22.5mm, Clear Glass, 100/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-32H1-13",
+      "partNumber": "AR0-32H1-13",
+      "name": "Verex Headspace Vial, 23x46mm, 10mL, 18 mm Screw, Round Bottom, Amber 51, No Patch, 1000/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AR0-3220-12",
+      "partNumber": "AR0-3220-12",
+      "name": "Verex Headspace Vial, 23x46mm, 10mL, Beveled Edge, Flat Bottom, Clear 33, No Patch, 100/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-7511",
+      "partNumber": "AJ0-7511",
+      "name": "SecurityGuard Cartridges, AQ C18 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4299",
+      "partNumber": "AJ0-4299",
+      "name": "SecurityGuard Cartridges, C1 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-6074",
+      "partNumber": "AJ0-6074",
+      "name": "SecurityGuard Cartridges, C12 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4286",
+      "partNumber": "AJ0-4286",
+      "name": "SecurityGuard Cartridges, C18 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4293",
+      "partNumber": "AJ0-4293",
+      "name": "SecurityGuard Cartridges, C5 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4289",
+      "partNumber": "AJ0-4289",
+      "name": "SecurityGuard Cartridges, C8 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4304",
+      "partNumber": "AJ0-4304",
+      "name": "SecurityGuard Cartridges, CN 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4491",
+      "partNumber": "AJ0-4491",
+      "name": "SecurityGuard Cartridges, Carbo-Ag 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4493",
+      "partNumber": "AJ0-4493",
+      "name": "SecurityGuard Cartridges, Carbo-Ca 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4490",
+      "partNumber": "AJ0-4490",
+      "name": "SecurityGuard Cartridges, Carbo-H 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "none",
+      "updatedFields": 1,
+      "fields": [
+        "specifications"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4492",
+      "partNumber": "AJ0-4492",
+      "name": "SecurityGuard Cartridges, Carbo-Pb 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-7556",
+      "partNumber": "AJ0-7556",
+      "name": "SecurityGuard Cartridges, Fusion-RP 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4487",
+      "partNumber": "AJ0-4487",
+      "name": "SecurityGuard Cartridges, GFC-2000 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4488",
+      "partNumber": "AJ0-4488",
+      "name": "SecurityGuard Cartridges, GFC 3000 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8590",
+      "partNumber": "AJ0-8590",
+      "name": "SecurityGuard PREP Cartridge, GFC-4000, 15 x 21.2mm ID, Ea",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-7597",
+      "partNumber": "AJ0-7597",
+      "name": "SecurityGuard Cartridges, Gemini C18 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4301",
+      "partNumber": "AJ0-4301",
+      "name": "SecurityGuard Cartridges, NH2 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8135",
+      "partNumber": "AJ0-8135",
+      "name": "SecurityGuard Cartridges, Clarity Oligo-RP 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4350",
+      "partNumber": "AJ0-4350",
+      "name": "SecurityGuard Cartridges, Phenyl 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-6076",
+      "partNumber": "AJ0-6076",
+      "name": "SecurityGuard Cartridges, Polar-RP 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-5809",
+      "partNumber": "AJ0-5809",
+      "name": "SecurityGuard Cartridges, RP-1 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4311",
+      "partNumber": "AJ0-4311",
+      "name": "SecurityGuard Cartridges, SAX 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4307",
+      "partNumber": "AJ0-4307",
+      "name": "SecurityGuard Cartridges, SCX 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4348",
+      "partNumber": "AJ0-4348",
+      "name": "SecurityGuard Cartridges, Silica 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8768",
+      "partNumber": "AJ0-8768",
+      "name": "SecurityGuard ULTRA Cartridges, UHPLC C18 4.6mm ID Columns, 3/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8770",
+      "partNumber": "AJ0-8770",
+      "name": "SecurityGuard ULTRA Cartridges, UHPLC C8 4.6mm ID Columns, 3/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8786",
+      "partNumber": "AJ0-8786",
+      "name": "SecurityGuard ULTRA Cartridges, UHPLC HILIC 2.1mm ID Columns, 3/Pk",
+      "descriptionQuality": "extracted",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8787",
+      "partNumber": "AJ0-8787",
+      "name": "SecurityGuard ULTRA Cartridges, UHPLC PFP 2.1mm ID Columns, 3/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-8788",
+      "partNumber": "AJ0-8788",
+      "name": "SecurityGuard ULTRA Cartridges, UHPLC Phenyl 2.1mm ID Columns, 3/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4320",
+      "partNumber": "AJ0-4320",
+      "name": "SecurityGuard Cartridges, Widepore C18 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4329",
+      "partNumber": "AJ0-4329",
+      "name": "SecurityGuard Cartridges, Widepore C4 4 x 2.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    },
+    {
+      "productId": "PHEN-AJ0-4327",
+      "partNumber": "AJ0-4327",
+      "name": "SecurityGuard Cartridges, Widepore C5 4 x 3.0mm ID, 10/Pk",
+      "descriptionQuality": "low",
+      "updatedFields": 3,
+      "fields": [
+        "description",
+        "specifications",
+        "descriptionQuality"
+      ]
+    }
+  ]
+}
