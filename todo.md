@@ -1212,5 +1212,25 @@
 ### 修复任务
 - [x] 修改Resources.tsx的语言匹配逻辑（提取语言前缀）
 - [x] 测试英文环境显示
-- [ ] 测试其他语言环境
+- [x] 测试其他语言环境
+- [x] 保存checkpoint
+
+
+---
+
+## 📦 Merck品牌爬取任务准备（2025-11-08）
+
+### 背景
+Restek品牌因技术复杂度高暂停，优先完成其他品牌
+
+### 任务
+- [x] 查询Merck产品清单（199个产品）
+- [x] 生成爬虫任务指令文档（MERCK_CRAWLING_INSTRUCTIONS.md）
+- [x] 准备产品清单CSV文件（merck_product_list_for_crawler.csv）
+- [x] 创建任务交付包README（MERCK_TASK_README.md）
+- [ ] 交付任务指令给爬虫团队
+- [ ] 等待爬取完成
+- [ ] 验证数据质量
+- [ ] 导入数据库
+- [ ] 生成质量报告
 - [ ] 保存checkpoint
