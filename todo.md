@@ -1401,3 +1401,43 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - [x] 准备产品清单CSV文件（develosil_product_list_for_crawler.csv）
 - [x] 与Develosil/Avantor合并交付
 - [x] 交付任务指令给爬虫团队
+
+
+---
+
+## 🔍 SEO优化任务（2025-11-08）
+
+### 背景
+社媒总工程师提供了完整的SEO优化方案，包括Sitemap生成、Meta描述、搜索引擎提交等
+
+### 任务清单
+
+#### 第1阶段：Sitemap生成
+- [ ] 创建动态sitemap.xml生成路由
+- [ ] 包含所有静态页面（首页、产品、关于等）
+- [ ] 包含所有30篇资源中心文章
+- [ ] 测试sitemap.xml访问
+
+#### 第2阶段：Meta描述
+- [ ] 在resources表中添加metaDescription字段
+- [ ] 为30篇文章添加Meta描述（英语10篇、俄语10篇、西班牙语10篇）
+- [ ] 在前端<head>中渲染Meta描述
+- [ ] 测试Meta标签显示
+
+#### 第3阶段：其他SEO优化
+- [ ] 优化页面标题标签（包含关键词）
+- [ ] 添加内部链接（相关文章推荐）
+- [ ] 为图片添加Alt文本
+- [ ] 添加Schema.org结构化数据标记
+
+#### 第4阶段：搜索引擎提交
+- [ ] 创建robots.txt文件
+- [ ] 准备Google Search Console提交文档
+- [ ] 准备Yandex Webmaster提交文档
+- [ ] 准备Bing Webmaster Tools提交文档
+
+#### 第5阶段：测试和部署
+- [ ] 测试sitemap.xml
+- [ ] 测试Meta描述显示
+- [ ] 测试结构化数据
+- [ ] 保存checkpoint

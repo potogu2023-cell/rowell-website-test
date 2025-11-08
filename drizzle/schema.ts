@@ -381,6 +381,8 @@ export const resources = mysqlTable("resources", {
   content: text("content").notNull(),
   /** Short excerpt/summary for listing pages */
   excerpt: varchar("excerpt", { length: 500 }),
+  /** SEO meta description (150-160 characters) */
+  metaDescription: varchar("metaDescription", { length: 200 }),
   /** Cover image URL */
   coverImage: varchar("coverImage", { length: 500 }),
   /** Author name (default: ROWELL Team) */

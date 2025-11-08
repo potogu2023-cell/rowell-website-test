@@ -1,4 +1,4 @@
-import { Link, useParams } from "wouter";
+import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
+import { Helmet } from "react-helmet-async";
 
 export default function ResourceDetail() {
   const params = useParams();
@@ -60,7 +61,25 @@ export default function ResourceDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Helmet>
+        <title>{article?.title ? `${article.title} | ${APP_TITLE}` : APP_TITLE}</title>
+        {article?.metaDescription && (
+          <meta name="description" content={article.metaDescription} />
+        )}
+        {article?.excerpt && !article?.metaDescription && (
+          <meta name="description" content={article.excerpt} />
+        )}
+        <meta property="og:title" content={article?.title || APP_TITLE} />
+        {article?.metaDescription && (
+          <meta property="og:description" content={article.metaDescription} />
+        )}
+        {article?.coverImage && (
+          <meta property="og:image" content={article.coverImage} />
+        )}
+        <meta property="og:type" content="article" />
+      </Helmet>
+      <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b">
         <div className="container mx-auto px-4 py-6">
@@ -257,5 +276,6 @@ export default function ResourceDetail() {
         </div>
       </footer>
     </div>
+    </>
   );
 }
