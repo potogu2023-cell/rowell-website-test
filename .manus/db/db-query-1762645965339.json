@@ -1,0 +1,40 @@
+{
+  "query": "SELECT productId, partNumber, name, brand FROM products WHERE brand = 'Phenomenex' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name, brand FROM products WHERE brand = 'Phenomenex' LIMIT 5;",
+  "rows": [
+    {
+      "productId": "PHEN-7EG-G006-11",
+      "partNumber": "7EG-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-7EM-G006-11",
+      "partNumber": "7EM-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-7GK-G006-32-C",
+      "partNumber": "7GK-G006-32-C",
+      "name": "Zebron ZB-1701, GC Cap. Column 25 m x 0.53 mm x 2.00 µm, EA",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-7HG-G006-11",
+      "partNumber": "7HG-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "brand": "Phenomenex"
+    },
+    {
+      "productId": "PHEN-7EG-G002-02",
+      "partNumber": "7EG-G002-02",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.10 µm, Ea",
+      "brand": "Phenomenex"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tbrand\nPHEN-7EG-G006-11\t7EG-G006-11\tZebron ZB-1701, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea\tPhenomenex\nPHEN-7EM-G006-11\t7EM-G006-11\tZebron ZB-1701, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea\tPhenomenex\nPHEN-7GK-G006-32-C\t7GK-G006-32-C\tZebron ZB-1701, GC Cap. Column 25 m x 0.53 mm x 2.00 µm, EA\tPhenomenex\nPHEN-7HG-G006-11\t7HG-G006-11\tZebron ZB-1701, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea\tPhenomenex\nPHEN-7EG-G002-02\t7EG-G002-02\tZebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.10 µm, Ea\tPhenomenex\n",
+  "stderr": "",
+  "execution_time_ms": 1604
+}

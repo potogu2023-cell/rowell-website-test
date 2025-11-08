@@ -1,0 +1,40 @@
+{
+  "query": "SELECT productId, partNumber, name, brand FROM products WHERE brand = 'Waters' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name, brand FROM products WHERE brand = 'Waters' LIMIT 5;",
+  "rows": [
+    {
+      "productId": "WATS-186010613",
+      "partNumber": "186010613",
+      "name": "CORTECS Premier T3, 2.7 µm, 4.6 x 250 mm Column, 1/pk",
+      "brand": "Waters"
+    },
+    {
+      "productId": "WATS-186010484",
+      "partNumber": "186010484",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk",
+      "brand": "Waters"
+    },
+    {
+      "productId": "WATS-186010482",
+      "partNumber": "186010482",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk",
+      "brand": "Waters"
+    },
+    {
+      "productId": "WATS-186010477",
+      "partNumber": "186010477",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk",
+      "brand": "Waters"
+    },
+    {
+      "productId": "WATS-186010476",
+      "partNumber": "186010476",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk",
+      "brand": "Waters"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tbrand\nWATS-186010613\t186010613\tCORTECS Premier T3, 2.7 µm, 4.6 x 250 mm Column, 1/pk\tWaters\nWATS-186010484\t186010484\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk\tWaters\nWATS-186010482\t186010482\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk\tWaters\nWATS-186010477\t186010477\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk\tWaters\nWATS-186010476\t186010476\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk\tWaters\n",
+  "stderr": "",
+  "execution_time_ms": 2391
+}
