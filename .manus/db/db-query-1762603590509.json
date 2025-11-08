@@ -1,0 +1,17 @@
+{
+  "query": "SELECT slug, title, excerpt, metaDescription, coverImage FROM resources WHERE slug = 'industry-outlook-how-artificial-intelligence-ai-will-reshape-the-future-of-the-analytical-laboratory' LIMIT 1",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT slug, title, excerpt, metaDescription, coverImage FROM resources WHERE slug = 'industry-outlook-how-artificial-intelligence-ai-will-reshape-the-future-of-the-analytical-laboratory' LIMIT 1",
+  "rows": [
+    {
+      "slug": "industry-outlook-how-artificial-intelligence-ai-will-reshape-the-future-of-the-analytical-laboratory",
+      "title": "Industry Outlook: How Artificial Intelligence (AI) Will Reshape the Future of the Analytical Laboratory",
+      "excerpt": "Industry Outlook: How Artificial Intelligence (AI) Will Reshape the Future of the Analytical Laboratory Over the past few decades, the analytical laboratory...",
+      "metaDescription": "Explore how AI will reshape analytical laboratories. Discover AI applications in HPLC, method development, and quality control. Future insights from ROWELL.",
+      "coverImage": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\ttitle\texcerpt\tmetaDescription\tcoverImage\nindustry-outlook-how-artificial-intelligence-ai-will-reshape-the-future-of-the-analytical-laboratory\tIndustry Outlook: How Artificial Intelligence (AI) Will Reshape the Future of the Analytical Laboratory\tIndustry Outlook: How Artificial Intelligence (AI) Will Reshape the Future of the Analytical Laboratory Over the past few decades, the analytical laboratory...\tExplore how AI will reshape analytical laboratories. Discover AI applications in HPLC, method development, and quality control. Future insights from ROWELL.\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1636
+}

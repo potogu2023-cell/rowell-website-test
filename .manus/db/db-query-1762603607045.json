@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total, SUM(CASE WHEN metaDescription IS NULL OR metaDescription = '' THEN 1 ELSE 0 END) as missing_meta, SUM(CASE WHEN excerpt IS NULL OR excerpt = '' THEN 1 ELSE 0 END) as missing_excerpt FROM resources WHERE status = 'published'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT COUNT(*) as total, SUM(CASE WHEN metaDescription IS NULL OR metaDescription = '' THEN 1 ELSE 0 END) as missing_meta, SUM(CASE WHEN excerpt IS NULL OR excerpt = '' THEN 1 ELSE 0 END) as missing_excerpt FROM resources WHERE status = 'published'",
+  "rows": [
+    {
+      "total": "31",
+      "missing_meta": "0",
+      "missing_excerpt": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tmissing_meta\tmissing_excerpt\n31\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1547
+}

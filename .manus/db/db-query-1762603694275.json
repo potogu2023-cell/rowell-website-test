@@ -1,0 +1,90 @@
+{
+  "query": "SELECT id, slug, title, LENGTH(metaDescription) as meta_len, LENGTH(excerpt) as excerpt_len, status FROM resources WHERE status = 'published' LIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, slug, title, LENGTH(metaDescription) as meta_len, LENGTH(excerpt) as excerpt_len, status FROM resources WHERE status = 'published' LIMIT 10",
+  "rows": [
+    {
+      "id": "30001",
+      "slug": "peak-splitting-in-hplc-diagnosis-and-ultimate-solutions",
+      "title": "Peak Splitting in HPLC: Diagnosis and Ultimate Solutions",
+      "meta_len": "159",
+      "excerpt_len": "161",
+      "status": "published"
+    },
+    {
+      "id": "30002",
+      "slug": "saying-goodbye-to-tailing-peaks-advanced-peak-shape-optimization-strategies-for-basic-compounds",
+      "title": "Saying Goodbye to Tailing Peaks: Advanced Peak Shape Optimization Strategies for Basic Compounds",
+      "meta_len": "150",
+      "excerpt_len": "162",
+      "status": "published"
+    },
+    {
+      "id": "30003",
+      "slug": "the-battle-for-peak-shape-beware-of-the-extra-column-effects-that-steal-your-resolution",
+      "title": "The Battle for Peak Shape: Beware of the \"Extra-Column Effects\" That Steal Your Resolution",
+      "meta_len": "148",
+      "excerpt_len": "162",
+      "status": "published"
+    },
+    {
+      "id": "30004",
+      "slug": "application-case-study-a-complete-analytical-method-for-related-substances-in-atorvastatin",
+      "title": "Application Case Study: A Complete Analytical Method for Related Substances in Atorvastatin",
+      "meta_len": "139",
+      "excerpt_len": "162",
+      "status": "published"
+    },
+    {
+      "id": "30005",
+      "slug": "ghost-peaks-in-hplc-identification-source-tracking-and-elimination-methods",
+      "title": "Ghost Peaks in HPLC: Identification, Source Tracking, and Elimination Methods",
+      "meta_len": "144",
+      "excerpt_len": "161",
+      "status": "published"
+    },
+    {
+      "id": "30006",
+      "slug": "is-your-baseline-unstable-a-systematic-troubleshooting-guide-for-hplc-baseline-noise-and-drift",
+      "title": "Is Your Baseline Unstable? A Systematic Troubleshooting Guide for HPLC Baseline Noise and Drift",
+      "meta_len": "142",
+      "excerpt_len": "159",
+      "status": "published"
+    },
+    {
+      "id": "30007",
+      "slug": "the-signal-to-noise-battle-5-tips-to-increase-hplc-detection-sensitivity-without-sacrificing-resolution",
+      "title": "The Signal-to-Noise Battle: 5 Tips to Increase HPLC Detection Sensitivity Without Sacrificing Resolution",
+      "meta_len": "138",
+      "excerpt_len": "157",
+      "status": "published"
+    },
+    {
+      "id": "30008",
+      "slug": "speed-and-performance-the-ultimate-showdown-between-fully-porous-particle-fpp-and-superficially-porous-particle-spp-columns",
+      "title": "Speed and Performance: The Ultimate Showdown Between Fully Porous Particle (FPP) and Superficially Porous Particle (SPP) Columns",
+      "meta_len": "140",
+      "excerpt_len": "154",
+      "status": "published"
+    },
+    {
+      "id": "30009",
+      "slug": "beyond-the-initial-cost-how-to-calculate-the-roi-of-upgrading-to-high-efficiency-hplc-columns",
+      "title": "Beyond the Initial Cost: How to Calculate the ROI of Upgrading to High-Efficiency HPLC Columns",
+      "meta_len": "139",
+      "excerpt_len": "160",
+      "status": "published"
+    },
+    {
+      "id": "30010",
+      "slug": "industry-outlook-how-artificial-intelligence-ai-will-reshape-the-future-of-the-analytical-laboratory",
+      "title": "Industry Outlook: How Artificial Intelligence (AI) Will Reshape the Future of the Analytical Laboratory",
+      "meta_len": "156",
+      "excerpt_len": "159",
+      "status": "published"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\tmeta_len\texcerpt_len\tstatus\n30001\tpeak-splitting-in-hplc-diagnosis-and-ultimate-solutions\tPeak Splitting in HPLC: Diagnosis and Ultimate Solutions\t159\t161\tpublished\n30002\tsaying-goodbye-to-tailing-peaks-advanced-peak-shape-optimization-strategies-for-basic-compounds\tSaying Goodbye to Tailing Peaks: Advanced Peak Shape Optimization Strategies for Basic Compounds\t150\t162\tpublished\n30003\tthe-battle-for-peak-shape-beware-of-the-extra-column-effects-that-steal-your-resolution\tThe Battle for Peak Shape: Beware of the \"Extra-Column Effects\" That Steal Your Resolution\t148\t162\tpublished\n30004\tapplication-case-study-a-complete-analytical-method-for-related-substances-in-atorvastatin\tApplication Case Study: A Complete Analytical Method for Related Substances in Atorvastatin\t139\t162\tpublished\n30005\tghost-peaks-in-hplc-identification-source-tracking-and-elimination-methods\tGhost Peaks in HPLC: Identification, Source Tracking, and Elimination Methods\t144\t161\tpublished\n30006\tis-your-baseline-unstable-a-systematic-troubleshooting-guide-for-hplc-baseline-noise-and-drift\tIs Your Baseline Unstable? A Systematic Troubleshooting Guide for HPLC Baseline Noise and Drift\t142\t159\tpublished\n30007\tthe-signal-to-noise-battle-5-tips-to-increase-hplc-detection-sensitivity-without-sacrificing-resolution\tThe Signal-to-Noise Battle: 5 Tips to Increase HPLC Detection Sensitivity Without Sacrificing Resolution\t138\t157\tpublished\n30008\tspeed-and-performance-the-ultimate-showdown-between-fully-porous-particle-fpp-and-superficially-porous-particle-spp-columns\tSpeed and Performance: The Ultimate Showdown Between Fully Porous Particle (FPP) and Superficially Porous Particle (SPP) Columns\t140\t154\tpublished\n30009\tbeyond-the-initial-cost-how-to-calculate-the-roi-of-upgrading-to-high-efficiency-hplc-columns\tBeyond the Initial Cost: How to Calculate the ROI of Upgrading to High-Efficiency HPLC Columns\t139\t160\tpublished\n30010\tindustry-outlook-how-artificial-intelligence-ai-will-reshape-the-future-of-the-analytical-laboratory\tIndustry Outlook: How Artificial Intelligence (AI) Will Reshape the Future of the Analytical Laboratory\t156\t159\tpublished\n",
+  "stderr": "",
+  "execution_time_ms": 1509
+}
