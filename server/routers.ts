@@ -681,6 +681,11 @@ export const appRouter = router({
       return await getTopLevelCategories(true);
     }),
     
+    getWithProductCount: publicProcedure.query(async () => {
+      const { getCategoriesWithProductCount } = await import("./db");
+      return await getCategoriesWithProductCount();
+    }),
+    
     getChildren: publicProcedure
       .input((val: unknown) => {
         if (typeof val !== 'object' || val === null || !('parentId' in val)) {

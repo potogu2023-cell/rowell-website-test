@@ -183,6 +183,38 @@ export async function getTopLevelCategories(visibleOnly: boolean = true) {
   }
 }
 
+export async function getCategoriesWithProductCount() {
+  const db = await getDb();
+  if (!db) return [];
+  const { categories, productCategories } = await import("../drizzle/schema");
+  const { count } = await import("drizzle-orm");
+  
+  // Get all visible categories with product count
+  const result = await db
+    .select({
+      id: categories.id,
+      name: categories.name,
+      nameEn: categories.nameEn,
+      slug: categories.slug,
+      parentId: categories.parentId,
+      level: categories.level,
+      displayOrder: categories.displayOrder,
+      isVisible: categories.isVisible,
+      description: categories.description,
+      icon: categories.icon,
+      createdAt: categories.createdAt,
+      updatedAt: categories.updatedAt,
+      productCount: count(productCategories.productId),
+    })
+    .from(categories)
+    .leftJoin(productCategories, eq(categories.id, productCategories.categoryId))
+    .where(eq(categories.isVisible, 1))
+    .groupBy(categories.id)
+    .orderBy(categories.displayOrder);
+  
+  return result;
+}
+
 
 
 // Authentication queries

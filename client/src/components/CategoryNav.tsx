@@ -16,6 +16,7 @@ interface Category {
   icon: string | null;
   createdAt: Date;
   updatedAt: Date;
+  productCount?: number;
 }
 
 interface CategoryNavProps {
@@ -27,8 +28,10 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
   const [, setLocation] = useLocation();
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开"色谱柱"
   
-  const { data: topCategories, isLoading } = trpc.category.getTopLevel.useQuery();
-  const { data: allCategories } = trpc.category.getVisible.useQuery();
+  const { data: allCategories, isLoading } = trpc.category.getWithProductCount.useQuery();
+  
+  // Get top level categories from all categories
+  const topCategories = allCategories?.filter((cat: Category) => cat.parentId === null);
 
   if (isLoading) {
     return (
@@ -100,10 +103,15 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
             </span>
           )}
           {!hasChildren && <span className="w-6"></span>}
-          <span>{category.name}</span>
+          <span className="flex-1">{category.name}</span>
           {category.nameEn && (
             <span className="ml-2 text-xs text-gray-400">
               {category.nameEn}
+            </span>
+          )}
+          {category.productCount !== undefined && category.productCount > 0 && (
+            <span className="ml-2 text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
+              {category.productCount}
             </span>
           )}
         </div>
