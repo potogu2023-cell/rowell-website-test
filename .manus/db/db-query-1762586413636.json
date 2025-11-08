@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `api_keys` ADD CONSTRAINT `api_keys_createdBy_users_id_fk` FOREIGN KEY (`createdBy`) REFERENCES `users`(`id`) ON DELETE CASCADE;\nCREATE INDEX `idx_api_keys_createdBy` ON `api_keys` (`createdBy`);\nCREATE INDEX `idx_api_keys_isActive` ON `api_keys` (`isActive`);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute ALTER TABLE `api_keys` ADD CONSTRAINT `api_keys_createdBy_users_id_fk` FOREIGN KEY (`createdBy`) REFERENCES `users`(`id`) ON DELETE CASCADE;\nCREATE INDEX `idx_api_keys_createdBy` ON `api_keys` (`createdBy`);\nCREATE INDEX `idx_api_keys_isActive` ON `api_keys` (`isActive`);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 3534
+}

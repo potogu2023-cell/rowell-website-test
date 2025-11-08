@@ -6,6 +6,8 @@ import { getDb } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { verifyAPIKey, hasPermission } from "./_core/apiKeyAuth";
+import { getUserByOpenId } from "./db";
 import {
   generateEmailVerificationToken,
   generatePasswordResetToken,
@@ -1422,7 +1424,8 @@ export const appRouter = router({
   // Resources Center Router
   resources: router({
     // Create a new resource article (for automated publishing)
-    create: protectedProcedure
+    // Supports both session auth (admin users) and API Key auth
+    create: publicProcedure
       .input(
         z.object({
           title: z.string().min(1).max(255),
@@ -1438,9 +1441,28 @@ export const appRouter = router({
         })
       )
       .mutation(async ({ input, ctx }) => {
-        // Only admin can create resources
-        if (ctx.user.role !== "admin") {
-          throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can create resources" });
+        // Check authentication: either session (admin user) or API Key
+        let authorUserId: number;
+        
+        // Try API Key authentication first
+        const authHeader = ctx.req.headers.authorization;
+        const apiKeyAuth = await verifyAPIKey(authHeader);
+        
+        if (apiKeyAuth) {
+          // API Key authentication
+          if (!hasPermission(apiKeyAuth.permissions, "resources:create")) {
+            throw new TRPCError({ code: "FORBIDDEN", message: "API key does not have resources:create permission" });
+          }
+          authorUserId = apiKeyAuth.createdBy;
+        } else if (ctx.user) {
+          // Session authentication
+          if (ctx.user.role !== "admin") {
+            throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can create resources" });
+          }
+          authorUserId = ctx.user.id;
+        } else {
+          // No authentication
+          throw new TRPCError({ code: "UNAUTHORIZED", message: "Authentication required" });
         }
 
         // Get or create category if provided

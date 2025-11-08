@@ -1143,4 +1143,21 @@
 - [x] 在导航栏中添加"Resources"链接
 - [x] 确保多语言支持（中文显示"资源中心"）
 - [x] 验证导航显示和功能
+- [x] 保存checkpoint
+
+
+---
+
+## 🔑 API Key认证系统开发（2025-11-08）
+
+### 背景
+社媒推广团队需要API认证Token来自动发布文章，采用API Key方案替代Session Token，更安全、更专业。
+
+### 任务
+- [x] 设计并创建api_keys数据库表
+- [x] 开发API Key验证中间件
+- [x] 修改resources router支持API Key认证
+- [x] 生成首个API Key给社媒团队
+- [x] 更新技术交接文档
+- [x] 测试API Key认证流程
 - [ ] 保存checkpoint

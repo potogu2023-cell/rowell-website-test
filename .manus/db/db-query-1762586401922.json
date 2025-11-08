@@ -1,0 +1,9 @@
+{
+  "query": "CREATE TABLE `api_keys` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`keyHash` varchar(255) NOT NULL,\n\t`keyPrefix` varchar(20) NOT NULL,\n\t`name` varchar(100) NOT NULL,\n\t`description` text,\n\t`createdBy` int NOT NULL,\n\t`permissions` varchar(255) NOT NULL DEFAULT 'resources:create',\n\t`isActive` int NOT NULL DEFAULT 1,\n\t`lastUsedAt` timestamp NULL,\n\t`expiresAt` timestamp NULL,\n\t`createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\t`updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n\tCONSTRAINT `api_keys_id` PRIMARY KEY(`id`),\n\tCONSTRAINT `api_keys_keyHash_unique` UNIQUE(`keyHash`)\n)",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute CREATE TABLE `api_keys` (\n\t`id` int AUTO_INCREMENT NOT NULL,\n\t`keyHash` varchar(255) NOT NULL,\n\t`keyPrefix` varchar(20) NOT NULL,\n\t`name` varchar(100) NOT NULL,\n\t`description` text,\n\t`createdBy` int NOT NULL,\n\t`permissions` varchar(255) NOT NULL DEFAULT 'resources:create',\n\t`isActive` int NOT NULL DEFAULT 1,\n\t`lastUsedAt` timestamp NULL,\n\t`expiresAt` timestamp NULL,\n\t`createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n\t`updatedAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n\tCONSTRAINT `api_keys_id` PRIMARY KEY(`id`),\n\tCONSTRAINT `api_keys_keyHash_unique` UNIQUE(`keyHash`)\n)",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1688
+}

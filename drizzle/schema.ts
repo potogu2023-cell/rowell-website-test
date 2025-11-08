@@ -462,3 +462,43 @@ export const resourcePostTags = mysqlTable("resource_post_tags", {
 
 export type ResourcePostTag = typeof resourcePostTags.$inferSelect;
 export type InsertResourcePostTag = typeof resourcePostTags.$inferInsert;
+
+
+// ============================================================================
+// API KEYS TABLE
+// ============================================================================
+
+/**
+ * API Keys table
+ * Stores API keys for external integrations (e.g., social media automation)
+ */
+export const apiKeys = mysqlTable("api_keys", {
+  id: int("id").autoincrement().primaryKey(),
+  /** API key value (hashed) */
+  keyHash: varchar("keyHash", { length: 255 }).notNull().unique(),
+  /** First 8 characters of key for display (e.g., "rowell_a...") */
+  keyPrefix: varchar("keyPrefix", { length: 20 }).notNull(),
+  /** Human-readable name for this key */
+  name: varchar("name", { length: 100 }).notNull(),
+  /** Description of what this key is used for */
+  description: text("description"),
+  /** User who created this key */
+  createdBy: int("createdBy").notNull().references(() => users.id, { onDelete: "cascade" }),
+  /** Permissions granted to this key (comma-separated) */
+  permissions: varchar("permissions", { length: 255 }).notNull().default("resources:create"),
+  /** Whether this key is active */
+  isActive: int("isActive").default(1).notNull(),
+  /** Last time this key was used */
+  lastUsedAt: timestamp("lastUsedAt"),
+  /** Expiration date (NULL = never expires) */
+  expiresAt: timestamp("expiresAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  idxKeyHash: uniqueIndex("idx_api_keys_keyHash").on(table.keyHash),
+  idxCreatedBy: index("idx_api_keys_createdBy").on(table.createdBy),
+  idxIsActive: index("idx_api_keys_isActive").on(table.isActive),
+}));
+
+export type APIKey = typeof apiKeys.$inferSelect;
+export type InsertAPIKey = typeof apiKeys.$inferInsert;
