@@ -1,0 +1,180 @@
+{
+  "query": "SELECT id, name, parentId FROM categories ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, parentId FROM categories ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "parentId": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "parentId": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "parentId": "NULL"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "parentId": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "parentId": "NULL"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy",
+      "parentId": "NULL"
+    },
+    {
+      "id": "7",
+      "name": "Standards",
+      "parentId": "NULL"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "parentId": "1"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "parentId": "1"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "parentId": "1"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "parentId": "2"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "parentId": "2"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "parentId": "2"
+    },
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "parentId": "2"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "parentId": "3"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "parentId": "3"
+    },
+    {
+      "id": "33",
+      "name": "Derivatization",
+      "parentId": "3"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "parentId": "4"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "parentId": "4"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "parentId": "4"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "parentId": "5"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "parentId": "5"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "parentId": "5"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "parentId": "11"
+    },
+    {
+      "id": "112",
+      "name": "Preparative Columns",
+      "parentId": "11"
+    },
+    {
+      "id": "113",
+      "name": "UHPLC Columns",
+      "parentId": "11"
+    },
+    {
+      "id": "114",
+      "name": "Chiral Columns",
+      "parentId": "11"
+    },
+    {
+      "id": "115",
+      "name": "Bio Columns",
+      "parentId": "11"
+    },
+    {
+      "id": "60002",
+      "name": "Sample Vials",
+      "parentId": "3"
+    },
+    {
+      "id": "60003",
+      "name": "Septa & Closures",
+      "parentId": "3"
+    },
+    {
+      "id": "60004",
+      "name": "Centrifuge Tubes",
+      "parentId": "3"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "parentId": "4"
+    },
+    {
+      "id": "60006",
+      "name": "Tubing & Fittings",
+      "parentId": "2"
+    },
+    {
+      "id": "60007",
+      "name": "Consumables",
+      "parentId": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tparentId\n1\tChromatography Columns\tNULL\n2\tChromatography Supplies\tNULL\n3\tSample Preparation\tNULL\n4\tFiltration\tNULL\n5\tLab Supplies\tNULL\n6\tSpectroscopy\tNULL\n7\tStandards\tNULL\n11\tHPLC Columns\t1\n12\tGC Columns\t1\n13\tGuard Columns\t1\n21\tVials & Caps\t2\n22\tSyringes & Needles\t2\n23\tFittings & Tubing\t2\n24\tMobile Phase\t2\n31\tSPE Cartridges\t3\n32\tExtraction Accessories\t3\n33\tDerivatization\t3\n41\tSyringe Filters\t4\n42\tMembrane Filters\t4\n43\tFilter Holders\t4\n51\tGlassware\t5\n52\tPlasticware\t5\n53\tStorage\t5\n111\tAnalytical Columns\t11\n112\tPreparative Columns\t11\n113\tUHPLC Columns\t11\n114\tChiral Columns\t11\n115\tBio Columns\t11\n60002\tSample Vials\t3\n60003\tSepta & Closures\t3\n60004\tCentrifuge Tubes\t3\n60005\tFiltration Products\t4\n60006\tTubing & Fittings\t2\n60007\tConsumables\t2\n",
+  "stderr": "",
+  "execution_time_ms": 1542
+}

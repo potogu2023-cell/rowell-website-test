@@ -1,0 +1,40 @@
+{
+  "query": "SELECT id, name, nameEn, parentId \nFROM categories \nWHERE parentId = 4 OR id = 4\nORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, nameEn, parentId \nFROM categories \nWHERE parentId = 4 OR id = 4\nORDER BY id;",
+  "rows": [
+    {
+      "id": "4",
+      "name": "Filtration",
+      "nameEn": "NULL",
+      "parentId": "NULL"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "nameEn": "NULL",
+      "parentId": "4"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "nameEn": "NULL",
+      "parentId": "4"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "nameEn": "NULL",
+      "parentId": "4"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "nameEn": "NULL",
+      "parentId": "4"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tnameEn\tparentId\n4\tFiltration\tNULL\tNULL\n41\tSyringe Filters\tNULL\t4\n42\tMembrane Filters\tNULL\t4\n43\tFilter Holders\tNULL\t4\n60005\tFiltration Products\tNULL\t4\n",
+  "stderr": "",
+  "execution_time_ms": 1567
+}

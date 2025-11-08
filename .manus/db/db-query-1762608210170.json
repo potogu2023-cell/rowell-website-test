@@ -1,0 +1,42 @@
+{
+  "query": "SELECT \n  p.productType,\n  COUNT(*) as count\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nGROUP BY p.productType\nORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.productType,\n  COUNT(*) as count\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nGROUP BY p.productType\nORDER BY count DESC;",
+  "rows": [
+    {
+      "productType": "GC Columns",
+      "count": "33"
+    },
+    {
+      "productType": "Vials",
+      "count": "28"
+    },
+    {
+      "productType": "Caps",
+      "count": "6"
+    },
+    {
+      "productType": "Accessories",
+      "count": "5"
+    },
+    {
+      "productType": "Sample Preparation",
+      "count": "4"
+    },
+    {
+      "productType": "Syringe Filters",
+      "count": "2"
+    },
+    {
+      "productType": "Septa",
+      "count": "1"
+    },
+    {
+      "productType": "Other",
+      "count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "productType\tcount\nGC Columns\t33\nVials\t28\nCaps\t6\nAccessories\t5\nSample Preparation\t4\nSyringe Filters\t2\nSepta\t1\nOther\t1\n",
+  "stderr": "",
+  "execution_time_ms": 1560
+}

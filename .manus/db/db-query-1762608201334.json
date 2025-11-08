@@ -1,0 +1,570 @@
+{
+  "query": "SELECT \n  p.productId,\n  p.name,\n  p.brand,\n  p.productType,\n  p.phaseType\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nORDER BY p.productType, p.brand\nLIMIT 80;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.productId,\n  p.name,\n  p.brand,\n  p.productType,\n  p.phaseType\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nWHERE pc.productId IS NULL\nORDER BY p.productType, p.brand\nLIMIT 80;",
+  "rows": [
+    {
+      "productId": "AGIL-0890-1762",
+      "name": "Tubing, PEEK, 1.6 mm od, 0.25 mm id, 1.5 m. Blue",
+      "brand": "Agilent",
+      "productType": "Accessories",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "AGIL-01080-83202",
+      "name": "Blanking Nut, Adapter, Hose Connector",
+      "brand": "Agilent",
+      "productType": "Accessories",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "AGIL-0100-2637",
+      "name": "Nut and ferrule, stainless steel, 1/8 inch, for sample loop for switching valve",
+      "brand": "Agilent",
+      "productType": "Accessories",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "AGIL-5062-8541",
+      "name": "Fitting, PEEK, finger-tight, long, 1.6 mm (1/16in) ID, 10/pk. connects into 10-32 coned receiving ports",
+      "brand": "Agilent",
+      "productType": "Accessories",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "AGIL-5005-0064",
+      "name": "Blank Nut, bio-compatible, MP35N, for M4 port. Compatible with InfinityLab Bio Instruments",
+      "brand": "Agilent",
+      "productType": "Accessories",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "AGIL-01018-67305",
+      "name": "Capillary stainless steel 0.25 x 700 mm S/S ps/ns",
+      "brand": "Agilent",
+      "productType": "Caps",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-03-251-833",
+      "name": "Thermo Scientific™ SureSTART™ 11 mm Crimp Caps, Level 1 Everyday Analysis",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Caps",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-CHCC20-2",
+      "name": "SureSTART™ 20 mm Crimp Caps, Level 1 Everyday Analysis",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Caps",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-6ACC11ST1",
+      "name": "SureSTART™ 11 mm Crimp Caps, Level 2 High-throughput Applications Silver",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Caps",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-6PSC9STS1G",
+      "name": "SureSTART™ 9 mm Screw Caps, Level 3 High Performance Applications",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Caps",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-6PSC9ST101X",
+      "name": "SureSTART™ 9 mm Screw Caps, Level 3 High Performance Applications",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Caps",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "ACE-1.HI09-53-100-15",
+      "name": "GC COLUMN HI-WAX 0.53MM 1.00UM 15M",
+      "brand": "ACE",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-2230",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260V331P",
+      "name": "TRACE™ TR-V1 GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26095-0360",
+      "name": "TraceGOLD TG-5HT GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-2970",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26095-1420",
+      "name": "TraceGOLD TG-5HT GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-1440",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-1420",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26098-1420",
+      "name": "TraceGOLD™ TG-5MS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260950350",
+      "name": "Thermo Scientific™ TraceGOLD TG-5HT GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-2980",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260F142J",
+      "name": "TRACE™ TR-5MS GC Columns, 0.25μm, 0.25mm I.D., 30m length",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260V396P",
+      "name": "TRACE™ TR-V1 GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26082-3360",
+      "name": "TraceGOLD TG-POLAR GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260V333P",
+      "name": "TRACE™ TR-V1 GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260V397P",
+      "name": "TRACE™ TR-V1 GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260V470P",
+      "name": "TRACE™ TR-V1 GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-260V339P",
+      "name": "TRACE™ TR-V1 GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26094-2980",
+      "name": "TraceGOLD TG-35MS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26095-0350",
+      "name": "TraceGOLD TG-5HT GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-1430",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-2240",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26082-3370",
+      "name": "TraceGOLD TG-POLAR GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26082-2970",
+      "name": "TraceGOLD TG-POLAR GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26082-5070",
+      "name": "TraceGOLD TG-POLAR GC Columns, 0.5μm film thickness, 0.32mm I.D., 30m length",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26059-3962",
+      "name": "TraceGOLD™ TG-624SilMS GC Columns, 3.0μm film thickness, 0.53mm I.D., 30m length",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26059-3390",
+      "name": "TraceGOLD™ TG-624 and TG-624SilMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26088-3360",
+      "name": "TraceGOLD™ TG-WaxMS GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-26059-3320",
+      "name": "TraceGOLD™ TG-624 and TG-624SilMS GC Columns, 1.4μm, 0.25mm I.D., 30m length",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-TF-26095-1430",
+      "name": "TraceGOLD TG-5HT GC Column, 30m x 0.32mm ID, 0.25µm film, ea.",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186000838C",
+      "name": "LCGC Certified Clear Glass 15 x 45 mm Screw Neck Vial, with Cap and PTFE/Silicone Septum, 4 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186000847C",
+      "name": "LCGC Certified Amber Glass 12 x 32 mm Screw Neck Vial, with Cap and Preslit PTFE/Silicone Septum, 2 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186001133C",
+      "name": "LCGC Certified Amber Glass 15 x 45 mm Screw Neck Vial, with Cap and PTFE/Silicone Septum, 4 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "GC Columns",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "SHIM-380-00857-10",
+      "name": "SHIMSEN Styra SCX 200mg/6mL 30pcs",
+      "brand": "Shimadzu",
+      "productType": "Other",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AJ0-4307",
+      "name": "SecurityGuard Cartridges, SCX 4 x 2.0mm ID, 10/Pk",
+      "brand": "Phenomenex",
+      "productType": "Sample Preparation",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AJ0-4311",
+      "name": "SecurityGuard Cartridges, SAX 4 x 3.0mm ID, 10/Pk",
+      "brand": "Phenomenex",
+      "productType": "Sample Preparation",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-03-150-633",
+      "name": "Thermo Scientific™ HyperSep™ Retain PEP Cartridges, 30 mg, 1 mL, Pack of 100",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Sample Preparation",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186009986",
+      "name": "Atlantis Premier BEH Z-HILIC VanGuard FIT Cartridge, 1.7 µm, 3.0 x 5 mm, 3/pk",
+      "brand": "Waters",
+      "productType": "Sample Preparation",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186006967",
+      "name": "Black, Aluminum Crimp Cap and PTFE/Silicone Septum, 100/pk",
+      "brand": "Waters",
+      "productType": "Septa",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-720-1320",
+      "name": "Nalgene™ Syringe Filters",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Syringe Filters",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-03-391-2C",
+      "name": "Thermo Scientific™ Target2™ PTFE Syringe Filters, 0.45μm, 30mm, with Pre-Filter",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Syringe Filters",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "AGIL-5190-3186",
+      "name": "2 mL Crimp Top Vials & Caps",
+      "brand": "Agilent",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-3900-12",
+      "name": "Verex Vial, 9mm Screw, 2mL, Clear 33, No Patch, 100/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-3700-13",
+      "name": "Verex Vial, Crimp, 2mL, Clear 33, No Patch, 1000/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-3700-12",
+      "name": "Verex Vial, Crimp, 2mL, Clear 33, No Patch, 100/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-3910-12",
+      "name": "Verex Vial, 9mm Screw, 2mL, Clear 33, w/ Patch, 100/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-3220-12",
+      "name": "Verex Headspace Vial, 23x46mm, 10mL, Beveled Edge, Flat Bottom, Clear 33, No Patch, 100/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AV8500-0",
+      "name": "10mL Precision Thread Headspace-Vial, 46 x 22.5mm, Clear Glass, 100/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-9551-13",
+      "name": "Verex Vial Kit, Storage 20mL screw, Amber 51, w/Caps 24-400 wht, PTFE/Urethane, closed, 1000/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-37K1-13",
+      "name": "Verex Vial, Crimp, 2mL, Wide Mouth, Amber 51, No Patch, 1000/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "PHEN-AR0-32H1-13",
+      "name": "Verex Headspace Vial, 23x46mm, 10mL, 18 mm Screw, Round Bottom, Amber 51, No Patch, 1000/Pk",
+      "brand": "Phenomenex",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "REST-21162",
+      "name": "Headspace Crimp-Top Vials, 20 mm, 20 mL, Rounded Bottom, Clear, 100-pk.",
+      "brand": "Restek",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "REST-24654",
+      "name": "WISP 48 Screw-Thread Step Vials with Grad Marking Spot, 4.0 mL, 15 x 45 mm, 13-425 Screw-Thread (Vials Only), Clear, 100-pk.",
+      "brand": "Restek",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-6ACV11-2P",
+      "name": "SureSTART™ 2 mL Glass Crimp Top Vials, Level 2 High-Throughput Applications",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-60180-520",
+      "name": "20 mm Headspace Vials, Septum, and Caps",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-C4000-1W",
+      "name": "9mm Clear Glass Screw Thread Vials",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-0339132B",
+      "name": "Fisherbrand™ 9 mm Autosampler Vial Screw Thread Open Top Caps with Septa, 6 mm Hole",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-03-251-420",
+      "name": "Thermo Scientific™ 9mm Wide Opening Amber Glass Screw Thread Vials",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-60180-S100",
+      "name": "SureSTART™ 1.5 mL Total Recovery Glass Snap Top Microvials for <2 mL Samples, Level 3 High Performance Applications",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-C4000-S1W",
+      "name": "9mm Clear Glass Screw Thread Vials",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-03-376-250",
+      "name": "13mm Autosampler Vial Screw Thread Caps",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "THER-2-RVA",
+      "name": "11mm Amber Glass Crimp/Snap Top Vials",
+      "brand": "Thermo Fisher Scientific",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-600000754CV",
+      "name": "LCMS Certified Amber Glass 12 x 32 mm Screw Neck Max Recovery Vial, with Cap and PTFE/Silicone Septum, 2 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-WAT094219",
+      "name": "Clear Glass 12 x 32 mm Snap Neck Vial, 2 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186000840",
+      "name": "Clear Glass 15 x 45 mm Screw Neck Vial, 4 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186001135",
+      "name": "Amber Glass 15 x 45 mm Screw Neck Vial, 4 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186000848",
+      "name": "Amber Glass 12 x 32 mm Screw Neck Vial, 2 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-186000984",
+      "name": "Clear Glass 12 x 32 mm Snap Neck Max Recovery Vial, 2 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    },
+    {
+      "productId": "WATE-WAT094222",
+      "name": "Clear Glass 12 x 32 mm Crimp Vial, 2 mL Volume, 100/pk",
+      "brand": "Waters",
+      "productType": "Vials",
+      "phaseType": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\tbrand\tproductType\tphaseType\nAGIL-0890-1762\tTubing, PEEK, 1.6 mm od, 0.25 mm id, 1.5 m. Blue\tAgilent\tAccessories\tNULL\nAGIL-01080-83202\tBlanking Nut, Adapter, Hose Connector\tAgilent\tAccessories\tNULL\nAGIL-0100-2637\tNut and ferrule, stainless steel, 1/8 inch, for sample loop for switching valve\tAgilent\tAccessories\tNULL\nAGIL-5062-8541\tFitting, PEEK, finger-tight, long, 1.6 mm (1/16in) ID, 10/pk. connects into 10-32 coned receiving ports\tAgilent\tAccessories\tNULL\nAGIL-5005-0064\tBlank Nut, bio-compatible, MP35N, for M4 port. Compatible with InfinityLab Bio Instruments\tAgilent\tAccessories\tNULL\nAGIL-01018-67305\tCapillary stainless steel 0.25 x 700 mm S/S ps/ns\tAgilent\tCaps\tNULL\nTHER-03-251-833\tThermo Scientific™ SureSTART™ 11 mm Crimp Caps, Level 1 Everyday Analysis\tThermo Fisher Scientific\tCaps\tNULL\nTHER-CHCC20-2\tSureSTART™ 20 mm Crimp Caps, Level 1 Everyday Analysis\tThermo Fisher Scientific\tCaps\tNULL\nTHER-6ACC11ST1\tSureSTART™ 11 mm Crimp Caps, Level 2 High-throughput Applications Silver\tThermo Fisher Scientific\tCaps\tNULL\nTHER-6PSC9STS1G\tSureSTART™ 9 mm Screw Caps, Level 3 High Performance Applications\tThermo Fisher Scientific\tCaps\tNULL\nTHER-6PSC9ST101X\tSureSTART™ 9 mm Screw Caps, Level 3 High Performance Applications\tThermo Fisher Scientific\tCaps\tNULL\nACE-1.HI09-53-100-15\tGC COLUMN HI-WAX 0.53MM 1.00UM 15M\tACE\tGC Columns\tNULL\nTHER-26088-2230\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260V331P\tTRACE™ TR-V1 GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26095-0360\tTraceGOLD TG-5HT GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-2970\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26095-1420\tTraceGOLD TG-5HT GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-1440\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-1420\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26098-1420\tTraceGOLD™ TG-5MS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260950350\tThermo Scientific™ TraceGOLD TG-5HT GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-2980\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260F142J\tTRACE™ TR-5MS GC Columns, 0.25μm, 0.25mm I.D., 30m length\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260V396P\tTRACE™ TR-V1 GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26082-3360\tTraceGOLD TG-POLAR GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260V333P\tTRACE™ TR-V1 GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260V397P\tTRACE™ TR-V1 GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260V470P\tTRACE™ TR-V1 GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-260V339P\tTRACE™ TR-V1 GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26094-2980\tTraceGOLD TG-35MS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26095-0350\tTraceGOLD TG-5HT GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-1430\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-2240\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26082-3370\tTraceGOLD TG-POLAR GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26082-2970\tTraceGOLD TG-POLAR GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26082-5070\tTraceGOLD TG-POLAR GC Columns, 0.5μm film thickness, 0.32mm I.D., 30m length\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26059-3962\tTraceGOLD™ TG-624SilMS GC Columns, 3.0μm film thickness, 0.53mm I.D., 30m length\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26059-3390\tTraceGOLD™ TG-624 and TG-624SilMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26088-3360\tTraceGOLD™ TG-WaxMS GC Columns\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-26059-3320\tTraceGOLD™ TG-624 and TG-624SilMS GC Columns, 1.4μm, 0.25mm I.D., 30m length\tThermo Fisher Scientific\tGC Columns\tNULL\nTHER-TF-26095-1430\tTraceGOLD TG-5HT GC Column, 30m x 0.32mm ID, 0.25µm film, ea.\tThermo Fisher Scientific\tGC Columns\tNULL\nWATE-186000838C\tLCGC Certified Clear Glass 15 x 45 mm Screw Neck Vial, with Cap and PTFE/Silicone Septum, 4 mL Volume, 100/pk\tWaters\tGC Columns\tNULL\nWATE-186000847C\tLCGC Certified Amber Glass 12 x 32 mm Screw Neck Vial, with Cap and Preslit PTFE/Silicone Septum, 2 mL Volume, 100/pk\tWaters\tGC Columns\tNULL\nWATE-186001133C\tLCGC Certified Amber Glass 15 x 45 mm Screw Neck Vial, with Cap and PTFE/Silicone Septum, 4 mL Volume, 100/pk\tWaters\tGC Columns\tNULL\nSHIM-380-00857-10\tSHIMSEN Styra SCX 200mg/6mL 30pcs\tShimadzu\tOther\tNULL\nPHEN-AJ0-4307\tSecurityGuard Cartridges, SCX 4 x 2.0mm ID, 10/Pk\tPhenomenex\tSample Preparation\tNULL\nPHEN-AJ0-4311\tSecurityGuard Cartridges, SAX 4 x 3.0mm ID, 10/Pk\tPhenomenex\tSample Preparation\tNULL\nTHER-03-150-633\tThermo Scientific™ HyperSep™ Retain PEP Cartridges, 30 mg, 1 mL, Pack of 100\tThermo Fisher Scientific\tSample Preparation\tNULL\nWATE-186009986\tAtlantis Premier BEH Z-HILIC VanGuard FIT Cartridge, 1.7 µm, 3.0 x 5 mm, 3/pk\tWaters\tSample Preparation\tNULL\nWATE-186006967\tBlack, Aluminum Crimp Cap and PTFE/Silicone Septum, 100/pk\tWaters\tSepta\tNULL\nTHER-720-1320\tNalgene™ Syringe Filters\tThermo Fisher Scientific\tSyringe Filters\tNULL\nTHER-03-391-2C\tThermo Scientific™ Target2™ PTFE Syringe Filters, 0.45μm, 30mm, with Pre-Filter\tThermo Fisher Scientific\tSyringe Filters\tNULL\nAGIL-5190-3186\t2 mL Crimp Top Vials & Caps\tAgilent\tVials\tNULL\nPHEN-AR0-3900-12\tVerex Vial, 9mm Screw, 2mL, Clear 33, No Patch, 100/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-3700-13\tVerex Vial, Crimp, 2mL, Clear 33, No Patch, 1000/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-3700-12\tVerex Vial, Crimp, 2mL, Clear 33, No Patch, 100/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-3910-12\tVerex Vial, 9mm Screw, 2mL, Clear 33, w/ Patch, 100/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-3220-12\tVerex Headspace Vial, 23x46mm, 10mL, Beveled Edge, Flat Bottom, Clear 33, No Patch, 100/Pk\tPhenomenex\tVials\tNULL\nPHEN-AV8500-0\t10mL Precision Thread Headspace-Vial, 46 x 22.5mm, Clear Glass, 100/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-9551-13\tVerex Vial Kit, Storage 20mL screw, Amber 51, w/Caps 24-400 wht, PTFE/Urethane, closed, 1000/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-37K1-13\tVerex Vial, Crimp, 2mL, Wide Mouth, Amber 51, No Patch, 1000/Pk\tPhenomenex\tVials\tNULL\nPHEN-AR0-32H1-13\tVerex Headspace Vial, 23x46mm, 10mL, 18 mm Screw, Round Bottom, Amber 51, No Patch, 1000/Pk\tPhenomenex\tVials\tNULL\nREST-21162\tHeadspace Crimp-Top Vials, 20 mm, 20 mL, Rounded Bottom, Clear, 100-pk.\tRestek\tVials\tNULL\nREST-24654\tWISP 48 Screw-Thread Step Vials with Grad Marking Spot, 4.0 mL, 15 x 45 mm, 13-425 Screw-Thread (Vials Only), Clear, 100-pk.\tRestek\tVials\tNULL\nTHER-6ACV11-2P\tSureSTART™ 2 mL Glass Crimp Top Vials, Level 2 High-Throughput Applications\tThermo Fisher Scientific\tVials\tNULL\nTHER-60180-520\t20 mm Headspace Vials, Septum, and Caps\tThermo Fisher Scientific\tVials\tNULL\nTHER-C4000-1W\t9mm Clear Glass Screw Thread Vials\tThermo Fisher Scientific\tVials\tNULL\nTHER-0339132B\tFisherbrand™ 9 mm Autosampler Vial Screw Thread Open Top Caps with Septa, 6 mm Hole\tThermo Fisher Scientific\tVials\tNULL\nTHER-03-251-420\tThermo Scientific™ 9mm Wide Opening Amber Glass Screw Thread Vials\tThermo Fisher Scientific\tVials\tNULL\nTHER-60180-S100\tSureSTART™ 1.5 mL Total Recovery Glass Snap Top Microvials for <2 mL Samples, Level 3 High Performance Applications\tThermo Fisher Scientific\tVials\tNULL\nTHER-C4000-S1W\t9mm Clear Glass Screw Thread Vials\tThermo Fisher Scientific\tVials\tNULL\nTHER-03-376-250\t13mm Autosampler Vial Screw Thread Caps\tThermo Fisher Scientific\tVials\tNULL\nTHER-2-RVA\t11mm Amber Glass Crimp/Snap Top Vials\tThermo Fisher Scientific\tVials\tNULL\nWATE-600000754CV\tLCMS Certified Amber Glass 12 x 32 mm Screw Neck Max Recovery Vial, with Cap and PTFE/Silicone Septum, 2 mL Volume, 100/pk\tWaters\tVials\tNULL\nWATE-WAT094219\tClear Glass 12 x 32 mm Snap Neck Vial, 2 mL Volume, 100/pk\tWaters\tVials\tNULL\nWATE-186000840\tClear Glass 15 x 45 mm Screw Neck Vial, 4 mL Volume, 100/pk\tWaters\tVials\tNULL\nWATE-186001135\tAmber Glass 15 x 45 mm Screw Neck Vial, 4 mL Volume, 100/pk\tWaters\tVials\tNULL\nWATE-186000848\tAmber Glass 12 x 32 mm Screw Neck Vial, 2 mL Volume, 100/pk\tWaters\tVials\tNULL\nWATE-186000984\tClear Glass 12 x 32 mm Snap Neck Max Recovery Vial, 2 mL Volume, 100/pk\tWaters\tVials\tNULL\nWATE-WAT094222\tClear Glass 12 x 32 mm Crimp Vial, 2 mL Volume, 100/pk\tWaters\tVials\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 1549
+}
