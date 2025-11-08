@@ -9,8 +9,10 @@ import { Trash2, ShoppingCart } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { toast } from "sonner";
+import { useTranslation } from 'react-i18next';
 
 export default function InquiryCart() {
+  const { t } = useTranslation();
   const { isAuthenticated, loading } = useAuth();
   const [, setLocation] = useLocation();
   const [showSubmitForm, setShowSubmitForm] = useState(false);
@@ -94,9 +96,9 @@ export default function InquiryCart() {
     <div className="min-h-screen bg-gray-50 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Inquiry Cart</h1>
+          <h1 className="text-3xl font-bold mb-2">{t('inquiry.cart_title')}</h1>
           <p className="text-muted-foreground">
-            Review your selected products and submit an inquiry
+            {t('inquiry.cart_subtitle')}
           </p>
         </div>
 
@@ -104,12 +106,12 @@ export default function InquiryCart() {
           <Card>
             <CardContent className="py-12 text-center">
               <ShoppingCart className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-xl font-semibold mb-2">Your inquiry cart is empty</h3>
+              <h3 className="text-xl font-semibold mb-2">{t('inquiry.cart_empty')}</h3>
               <p className="text-muted-foreground mb-6">
-                Browse our products and add items to your inquiry cart
+                {t('inquiry.cart_empty_message')}
               </p>
               <Button onClick={() => setLocation("/products")}>
-                Browse Products
+                {t('inquiry.browse_products')}
               </Button>
             </CardContent>
           </Card>
@@ -197,10 +199,10 @@ export default function InquiryCart() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="budgetRange">Budget Range (Optional)</Label>
+                      <Label htmlFor="budgetRange">{t('inquiry.budget_range')} ({t('common.optional')})</Label>
                       <Input
                         id="budgetRange"
-                        placeholder="e.g., $1,000 - $5,000"
+                        placeholder={t('inquiry.budget_placeholder')}
                         value={formData.budgetRange}
                         onChange={(e) =>
                           setFormData({ ...formData, budgetRange: e.target.value })
@@ -210,11 +212,11 @@ export default function InquiryCart() {
 
                     <div className="space-y-2">
                       <Label htmlFor="applicationNotes">
-                        Application Notes (Optional)
+                        {t('inquiry.application_notes_optional')}
                       </Label>
                       <Textarea
                         id="applicationNotes"
-                        placeholder="Describe your application..."
+                        placeholder={t('inquiry.application_notes_placeholder')}
                         value={formData.applicationNotes}
                         onChange={(e) =>
                           setFormData({
@@ -228,11 +230,11 @@ export default function InquiryCart() {
 
                     <div className="space-y-2">
                       <Label htmlFor="deliveryAddress">
-                        Delivery Address (Optional)
+                        {t('inquiry.delivery_address_optional')}
                       </Label>
                       <Textarea
                         id="deliveryAddress"
-                        placeholder="Enter delivery address..."
+                        placeholder={t('inquiry.delivery_address_placeholder')}
                         value={formData.deliveryAddress}
                         onChange={(e) =>
                           setFormData({
@@ -246,11 +248,11 @@ export default function InquiryCart() {
 
                     <div className="space-y-2">
                       <Label htmlFor="customerNotes">
-                        Additional Notes (Optional)
+                        {t('inquiry.additional_notes_optional')}
                       </Label>
                       <Textarea
                         id="customerNotes"
-                        placeholder="Any other information..."
+                        placeholder={t('inquiry.additional_notes_placeholder')}
                         value={formData.customerNotes}
                         onChange={(e) =>
                           setFormData({

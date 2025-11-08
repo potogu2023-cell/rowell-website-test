@@ -151,7 +151,9 @@
   },
   "inquiry": {
     "cart_title": "Inquiry Cart",
+    "cart_subtitle": "Review your selected products and submit an inquiry",
     "cart_empty": "Your inquiry cart is empty",
+    "cart_empty_message": "Browse our products and add items to your inquiry cart",
     "browse_products": "Browse Products",
     "product": "Product",
     "quantity": "Quantity",
@@ -164,8 +166,16 @@
     "urgency_urgent": "Urgent",
     "urgency_very_urgent": "Very Urgent",
     "budget_range": "Budget Range",
+    "budget_placeholder": "e.g., $1,000 - $5,000",
+    "application_notes": "Application Notes",
+    "application_notes_optional": "Application Notes (Optional)",
+    "application_notes_placeholder": "Describe your application...",
     "delivery_address": "Delivery Address",
+    "delivery_address_optional": "Delivery Address (Optional)",
+    "delivery_address_placeholder": "Enter delivery address...",
     "additional_notes": "Additional Notes",
+    "additional_notes_optional": "Additional Notes (Optional)",
+    "additional_notes_placeholder": "Any other information...",
     "submit": "Submit",
     "submitting": "Submitting...",
     "inquiry_submitted": "Inquiry submitted successfully!",
@@ -219,7 +229,8 @@
     "filter": "Filter",
     "sort": "Sort",
     "actions": "Actions",
-    "products": "Products"
+    "products": "Products",
+    "optional": "Optional"
   },
   "productDetail": {
     "loading": "Loading product details...",
@@ -286,6 +297,13 @@
         "details": "Unmodified silica for normal-phase separations."
       }
     }
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Learn about our story and mission",
+    "our_story": "Our Story",
+    "our_mission": "Our Mission",
+    "company_highlights": "Company Highlights"
   },
   "applications": {
     "title": "Applications",

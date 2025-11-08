@@ -68,7 +68,7 @@ export default function About() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-6">Company Highlights</h2>
+            <h2 className="text-3xl font-bold mb-6">{t('about.company_highlights')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
               <div>
                 <div className="text-5xl font-bold text-primary mb-2">{t('home.about_milestone_1_year')}</div>

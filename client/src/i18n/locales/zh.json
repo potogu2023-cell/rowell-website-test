@@ -151,7 +151,9 @@
   },
   "inquiry": {
     "cart_title": "询价清单",
+    "cart_subtitle": "查看您选择的产品并提交询价",
     "cart_empty": "您的询价清单为空",
+    "cart_empty_message": "浏览我们的产品并添加到询价清单",
     "browse_products": "浏览产品",
     "product": "产品",
     "quantity": "数量",
@@ -164,8 +166,16 @@
     "urgency_urgent": "紧急",
     "urgency_very_urgent": "非常紧急",
     "budget_range": "预算范围",
+    "budget_placeholder": "例如：$1,000 - $5,000",
+    "application_notes": "应用说明",
+    "application_notes_optional": "应用说明（可选）",
+    "application_notes_placeholder": "描述您的应用...",
     "delivery_address": "交货地址",
+    "delivery_address_optional": "交货地址（可选）",
+    "delivery_address_placeholder": "输入交货地址...",
     "additional_notes": "附加备注",
+    "additional_notes_optional": "附加备注（可选）",
+    "additional_notes_placeholder": "其他信息...",
     "submit": "提交",
     "submitting": "提交中...",
     "inquiry_submitted": "询价提交成功！",
@@ -207,7 +217,8 @@
     "filter": "筛选",
     "sort": "排序",
     "actions": "操作",
-    "products": "产品"
+    "products": "产品",
+    "optional": "可选"
   },
   "footer": {
     "company_description": "ROWELL致力于为全球客户提供高品质色谱耗材，以具有竞争力的价格和专业的技术支持。",
@@ -286,6 +297,13 @@
         "details": "未改性硅胶，用于正相分离。"
       }
     }
+  },
+  "about": {
+    "title": "关于我们",
+    "subtitle": "了解我们的故事和使命",
+    "our_story": "我们的故事",
+    "our_mission": "我们的使命",
+    "company_highlights": "公司亮点"
   },
   "applications": {
     "title": "应用领域",

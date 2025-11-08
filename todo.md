@@ -1257,3 +1257,71 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - [x] 修复i18n检测顺序（优先querystring）
 - [x] 测试中文语言显示
 - [x] 保存checkpoint
+
+
+---
+
+## 🌐 全站中文翻译补全（2025-11-08）
+
+### 背景
+用户要求：检查并补全所有页面的结构性UI元素中文翻译
+
+### 翻译范围
+**需要中文**：
+- 导航菜单、按钮、标签
+- 页面标题、章节标题
+- 表单字段、提示信息
+- 状态文本、操作提示
+
+**保持英文**：
+- 产品描述、技术规格
+- 公司介绍段落内容
+- 客户评价内容
+- Resources 版块全部内容
+
+### 需要检查的页面
+- [ ] About（关于我们）
+- [ ] Products（产品页面）
+- [ ] Contact（联系我们）
+- [ ] USP Standards（USP标准）
+- [ ] Applications（应用）
+- [ ] 产品详情页
+- [ ] 导航栏和页脚
+- [ ] 其他组件
+
+### 任务
+- [ ] 扫描所有页面组件，识别缺失的翻译
+- [ ] 更新 zh.json 和 en.json 翻译文件
+- [ ] 更新页面组件使用翻译键
+- [ ] 测试所有页面的中英文切换
+- [ ] 保存 checkpoint
+
+
+### ✅ 完成情况（2025-11-08）
+
+**已修复页面**：
+- [x] About - "Company Highlights" → "公司亮点"
+- [x] InquiryCart - 页面标题、空购物车提示、表单占位符全部中文化
+
+**已确认完整翻译的页面**：
+- [x] Home - 首页
+- [x] Products - 产品页面
+- [x] Contact - 联系我们
+- [x] USP Standards - USP标准
+- [x] Applications - 应用领域
+- [x] ProductDetail - 产品详情
+
+**新增翻译键**：
+- about.company_highlights
+- inquiry.cart_subtitle, cart_empty_message
+- inquiry.budget_placeholder
+- inquiry.application_notes_optional, application_notes_placeholder
+- inquiry.delivery_address_optional, delivery_address_placeholder
+- inquiry.additional_notes_optional, additional_notes_placeholder
+- common.optional
+
+**修改文件**：
+- client/src/i18n/locales/zh.json
+- client/src/i18n/locales/en.json
+- client/src/pages/About.tsx
+- client/src/pages/InquiryCart.tsx
