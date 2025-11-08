@@ -1374,3 +1374,30 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - 资源中心首页显示30篇文章（10篇英文 + 10篇俄语 + 10篇西班牙语）
 - 俄语文章URL：`/resources/razdelenie-pikov-v-vezhkh-...`
 - 西班牙语文章URL：`/resources/division-de-pico-en-hplc-...`
+
+
+---
+
+## 📦 Shimadzu品牌爬取任务准备（2025-11-08）
+
+### 背景
+执行方案C：优先完成简单品牌，跳过技术难题（ACE/Merck/Restek）
+
+### 任务
+- [x] 查询Shimadzu产品清单（130个产品）
+- [x] 生成爬虫任务指令文档（SHIMADZU_CRAWLING_INSTRUCTIONS.md）
+- [x] 准备产品清单CSV文件（shimadzu_product_list_for_crawler.csv）
+- [x] 创建任务交付包README（SHIMADZU_TASK_README.md）
+- [x] 交付任务指令给爬虫团队
+
+
+---
+
+## 📦 Develosil品牌爬取任务准备（2025-11-08）
+
+### 任务
+- [x] 查询Develosil产品清单（118个产品）
+- [x] 生成通用爬虫任务指令文档（REMAINING_BRANDS_CRAWLING_GUIDE.md）
+- [x] 准备产品清单CSV文件（develosil_product_list_for_crawler.csv）
+- [x] 与Develosil/Avantor合并交付
+- [x] 交付任务指令给爬虫团队
