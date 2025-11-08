@@ -1,5 +1,6 @@
 import { eq, desc, and, sql, like } from "drizzle-orm";
 import { getDb } from "./db";
+import slugify from "slugify";
 import {
   resources,
   resourceCategories,
@@ -15,14 +16,15 @@ import {
 
 /**
  * Generate URL-friendly slug from title
+ * Supports multilingual characters (Russian, Spanish, etc.)
  */
 export function generateSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "") // Remove special characters
-    .replace(/[\s_-]+/g, "-") // Replace spaces and underscores with hyphens
-    .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+  return slugify(title, {
+    lower: true,        // Convert to lowercase
+    strict: true,       // Strip special characters except replacement
+    remove: /[*+~.()'\"’!:@]/g, // Remove specific characters
+    trim: true,         // Trim leading/trailing replacement chars
+  });
 }
 
 /**

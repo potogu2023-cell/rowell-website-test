@@ -1345,3 +1345,32 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - [ ] 导入数据库
 - [ ] 生成质量报告
 - [ ] 保存checkpoint
+
+
+---
+
+## 🔧 资源中心前端修复（2025-11-08）
+
+### 背景
+社媒团队已发布20篇多语言文章（10篇俄语 + 10篇西班牙语），但前端存在显示问题
+
+### 问题
+1. **资源中心首页不显示多语言文章** - 只显示10篇英文文章，俄语和西班牙语文章被过滤
+2. **Slug生成不正确** - 俄语和西班牙语文章的slug为"-7"、"-8"等，而不是友好URL
+
+### 修复任务
+- [x] 分析当前Resources Center实现
+- [x] 修改文章查询逻辑，显示所有语言的文章（删除language筛选）
+- [x] 改进slug生成逻辑，支持俄语和西班牙语字符转写
+- [x] 安装slugify依赖包（1.6.6）
+- [x] 创建regenerate-slugs.mjs脚本更新已存在文章的slug
+- [x] 运行脚本更新9篇文章的slug
+- [x] 测试资源中心首页显示30篇文章（英语+俄语+西班牙语）
+- [x] 验证俄语文章slug：razdelenie-pikov-v-vezhh...
+- [x] 验证西班牙语文章slug：divisin-de-pico-en-hplc...
+- [x] 保存checkpoint
+
+### 预期效果
+- 资源中心首页显示30篇文章（10篇英文 + 10篇俄语 + 10篇西班牙语）
+- 俄语文章URL：`/resources/razdelenie-pikov-v-vezhkh-...`
+- 西班牙语文章URL：`/resources/division-de-pico-en-hplc-...`
