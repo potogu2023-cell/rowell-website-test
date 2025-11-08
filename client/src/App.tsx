@@ -27,6 +27,8 @@ import AdminCustomers from "./pages/AdminCustomers";
 import AdminAnalytics from "./pages/AdminAnalytics";
 import TestFilters from "./pages/TestFilters";
 import ProductDetail from "./pages/ProductDetail";
+import Resources from "./pages/Resources";
+import ResourceDetail from "./pages/ResourceDetail";
 import WhatsAppButton from "./components/WhatsAppButton";
 import AIChatWidget from "./components/ai/AIChatWidget";
 
@@ -48,6 +50,8 @@ function Router() {
           <Route path={"/"} component={Home} />
           <Route path={"/products"} component={Products} />
           <Route path={"/products/:id"} component={ProductDetail} />
+          <Route path={"/resources"} component={Resources} />
+          <Route path={"/resources/:slug"} component={ResourceDetail} />
           <Route path={"/about"} component={About} />
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/applications"} component={Applications} />

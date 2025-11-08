@@ -362,3 +362,103 @@ export const llmCostTracking = mysqlTable("llm_cost_tracking", {
 
 export type LLMCostTracking = typeof llmCostTracking.$inferSelect;
 export type InsertLLMCostTracking = typeof llmCostTracking.$inferInsert;
+
+// ============================================================================
+// RESOURCES CENTER TABLES
+// ============================================================================
+
+/**
+ * Resources/Blog Posts table
+ * Stores technical articles, tutorials, and educational content
+ */
+export const resources = mysqlTable("resources", {
+  id: int("id").autoincrement().primaryKey(),
+  /** URL-friendly unique identifier */
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  /** Article title */
+  title: varchar("title", { length: 255 }).notNull(),
+  /** Full content in Markdown format (supports HTML tags like iframe for YouTube) */
+  content: text("content").notNull(),
+  /** Short excerpt/summary for listing pages */
+  excerpt: varchar("excerpt", { length: 500 }),
+  /** Cover image URL */
+  coverImage: varchar("coverImage", { length: 500 }),
+  /** Author name (default: ROWELL Team) */
+  authorName: varchar("authorName", { length: 100 }).default("ROWELL Team"),
+  /** Article status: draft, published, archived */
+  status: mysqlEnum("status", ["draft", "published", "archived"]).default("draft").notNull(),
+  /** Article language (en, zh, es, etc.) */
+  language: varchar("language", { length: 10 }).default("en").notNull(),
+  /** Category ID (foreign key to resource_categories) */
+  categoryId: int("categoryId"),
+  /** View count for analytics */
+  viewCount: int("viewCount").default(0).notNull(),
+  /** Featured article flag */
+  featured: int("featured").default(0).notNull(), // 1 = featured, 0 = normal
+  /** Published date/time */
+  publishedAt: timestamp("publishedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  idxStatusPublished: index("idx_resources_status_published").on(table.status, table.publishedAt),
+  idxCategory: index("idx_resources_category").on(table.categoryId),
+  idxFeatured: index("idx_resources_featured").on(table.featured),
+  idxLanguage: index("idx_resources_language").on(table.language),
+}));
+
+export type Resource = typeof resources.$inferSelect;
+export type InsertResource = typeof resources.$inferInsert;
+
+/**
+ * Resource Categories table
+ * Organizes articles into main topics
+ */
+export const resourceCategories = mysqlTable("resource_categories", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Category name */
+  name: varchar("name", { length: 100 }).notNull(),
+  /** URL-friendly slug */
+  slug: varchar("slug", { length: 100 }).notNull().unique(),
+  /** Category description */
+  description: text("description"),
+  /** Display order */
+  displayOrder: int("displayOrder").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ResourceCategory = typeof resourceCategories.$inferSelect;
+export type InsertResourceCategory = typeof resourceCategories.$inferInsert;
+
+/**
+ * Resource Tags table
+ * Provides fine-grained topic tagging for articles
+ */
+export const resourceTags = mysqlTable("resource_tags", {
+  id: int("id").autoincrement().primaryKey(),
+  /** Tag name */
+  name: varchar("name", { length: 50 }).notNull().unique(),
+  /** URL-friendly slug */
+  slug: varchar("slug", { length: 50 }).notNull().unique(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ResourceTag = typeof resourceTags.$inferSelect;
+export type InsertResourceTag = typeof resourceTags.$inferInsert;
+
+/**
+ * Resource-Tag junction table
+ * Many-to-many relationship between resources and tags
+ */
+export const resourcePostTags = mysqlTable("resource_post_tags", {
+  postId: int("postId").notNull().references(() => resources.id, { onDelete: "cascade" }),
+  tagId: int("tagId").notNull().references(() => resourceTags.id, { onDelete: "cascade" }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({
+  pk: uniqueIndex("pk_resource_post_tags").on(table.postId, table.tagId),
+  idxPostId: index("idx_resource_post_tags_postId").on(table.postId),
+  idxTagId: index("idx_resource_post_tags_tagId").on(table.tagId),
+}));
+
+export type ResourcePostTag = typeof resourcePostTags.$inferSelect;
+export type InsertResourcePostTag = typeof resourcePostTags.$inferInsert;

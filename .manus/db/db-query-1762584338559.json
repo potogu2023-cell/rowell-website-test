@@ -1,0 +1,22 @@
+{
+  "query": "SHOW TABLES LIKE 'resource%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SHOW TABLES LIKE 'resource%'",
+  "rows": [
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG (resource%)": "resource_categories"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG (resource%)": "resource_post_tags"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG (resource%)": "resource_tags"
+    },
+    {
+      "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG (resource%)": "resources"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_7P2s8YLp8Q4WBmq2Lyj4MG (resource%)\nresource_categories\nresource_post_tags\nresource_tags\nresources\n",
+  "stderr": "",
+  "execution_time_ms": 1595
+}

@@ -17,6 +17,15 @@ import {
 import { handleAIChat, generateSessionId, getQueueStatus } from "./ai/chat-handler";
 import { GREETING_MESSAGE } from "./ai/prompts";
 import { aiMessages, aiConversations } from "../drizzle/schema";
+import {
+  createResource,
+  updateResource,
+  getResourceBySlug,
+  listResources,
+  incrementViewCount,
+  getOrCreateCategory,
+  listCategories,
+} from "./db-resources";
 
 export const appRouter = router({
   system: systemRouter,
@@ -1407,6 +1416,156 @@ export const appRouter = router({
 
           return { success: true, message: `Monthly report for ${year}-${month} sent successfully` };
         }),
+    }),
+  }),
+
+  // Resources Center Router
+  resources: router({
+    // Create a new resource article (for automated publishing)
+    create: protectedProcedure
+      .input(
+        z.object({
+          title: z.string().min(1).max(255),
+          content: z.string().min(1),
+          excerpt: z.string().max(500).optional(),
+          coverImage: z.string().max(500).optional(),
+          authorName: z.string().max(100).optional(),
+          status: z.enum(["draft", "published", "archived"]).default("draft"),
+          language: z.string().max(10).default("en"),
+          categoryName: z.string().optional(),
+          tags: z.array(z.string()).optional(),
+          featured: z.boolean().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        // Only admin can create resources
+        if (ctx.user.role !== "admin") {
+          throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can create resources" });
+        }
+
+        // Get or create category if provided
+        let categoryId: number | undefined;
+        if (input.categoryName) {
+          const category = await getOrCreateCategory(input.categoryName);
+          categoryId = category.id;
+        }
+
+        const result = await createResource({
+          title: input.title,
+          content: input.content,
+          excerpt: input.excerpt,
+          coverImage: input.coverImage,
+          authorName: input.authorName,
+          status: input.status,
+          language: input.language,
+          categoryId,
+          tags: input.tags,
+          featured: input.featured,
+        });
+
+        return {
+          success: true,
+          id: result.id,
+          slug: result.slug,
+          url: `/resources/${result.slug}`,
+        };
+      }),
+
+    // Update an existing resource article
+    update: protectedProcedure
+      .input(
+        z.object({
+          id: z.number(),
+          title: z.string().min(1).max(255).optional(),
+          content: z.string().min(1).optional(),
+          excerpt: z.string().max(500).optional(),
+          coverImage: z.string().max(500).optional(),
+          authorName: z.string().max(100).optional(),
+          status: z.enum(["draft", "published", "archived"]).optional(),
+          language: z.string().max(10).optional(),
+          categoryName: z.string().optional(),
+          tags: z.array(z.string()).optional(),
+          featured: z.boolean().optional(),
+        })
+      )
+      .mutation(async ({ input, ctx }) => {
+        if (ctx.user.role !== "admin") {
+          throw new TRPCError({ code: "FORBIDDEN", message: "Only admins can update resources" });
+        }
+
+        let categoryId: number | undefined;
+        if (input.categoryName) {
+          const category = await getOrCreateCategory(input.categoryName);
+          categoryId = category.id;
+        }
+
+        await updateResource(input.id, {
+          title: input.title,
+          content: input.content,
+          excerpt: input.excerpt,
+          coverImage: input.coverImage,
+          authorName: input.authorName,
+          status: input.status,
+          language: input.language,
+          categoryId,
+          tags: input.tags,
+          featured: input.featured,
+        });
+
+        return { success: true, id: input.id };
+      }),
+
+    // Get resource by slug (public)
+    getBySlug: publicProcedure
+      .input(
+        z.object({
+          slug: z.string(),
+        })
+      )
+      .query(async ({ input }) => {
+        const resource = await getResourceBySlug(input.slug);
+        if (!resource) {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Resource not found" });
+        }
+
+        // Only show published resources to non-admin users
+        if (resource.status !== "published") {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Resource not found" });
+        }
+
+        // Increment view count
+        await incrementViewCount(resource.id);
+
+        return resource;
+      }),
+
+    // List resources with pagination and filters (public)
+    list: publicProcedure
+      .input(
+        z.object({
+          page: z.number().min(1).default(1),
+          pageSize: z.number().min(1).max(50).default(12),
+          categoryId: z.number().optional(),
+          featured: z.boolean().optional(),
+          language: z.string().optional(),
+          search: z.string().optional(),
+        })
+      )
+      .query(async ({ input }) => {
+        return await listResources({
+          page: input.page,
+          pageSize: input.pageSize,
+          status: "published", // Only show published resources
+          categoryId: input.categoryId,
+          featured: input.featured,
+          language: input.language,
+          search: input.search,
+        });
+      }),
+
+    // List all categories (public)
+    listCategories: publicProcedure.query(async () => {
+      return await listCategories();
     }),
   }),
 });
