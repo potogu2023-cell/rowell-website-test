@@ -1,0 +1,150 @@
+{
+  "query": "SELECT \n  c.id,\n  c.name,\n  c.parentId,\n  COUNT(DISTINCT pc.productId) as product_count,\n  ROUND(COUNT(DISTINCT pc.productId) * 100.0 / (SELECT COUNT(*) FROM products), 2) as percentage\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nGROUP BY c.id, c.name, c.parentId\nHAVING product_count > 0\nORDER BY product_count DESC\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  c.id,\n  c.name,\n  c.parentId,\n  COUNT(DISTINCT pc.productId) as product_count,\n  ROUND(COUNT(DISTINCT pc.productId) * 100.0 / (SELECT COUNT(*) FROM products), 2) as percentage\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nGROUP BY c.id, c.name, c.parentId\nHAVING product_count > 0\nORDER BY product_count DESC\nLIMIT 20;",
+  "rows": [
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "parentId": "1",
+      "product_count": "523",
+      "percentage": "19.45"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "parentId": "11",
+      "product_count": "512",
+      "percentage": "19.04"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "parentId": "1",
+      "product_count": "425",
+      "percentage": "15.81"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "parentId": "2",
+      "product_count": "391",
+      "percentage": "14.54"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "parentId": "3",
+      "product_count": "370",
+      "percentage": "13.76"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "parentId": "1",
+      "product_count": "364",
+      "percentage": "13.54"
+    },
+    {
+      "id": "60002",
+      "name": "Sample Vials",
+      "parentId": "3",
+      "product_count": "248",
+      "percentage": "9.22"
+    },
+    {
+      "id": "60003",
+      "name": "Septa & Closures",
+      "parentId": "3",
+      "product_count": "143",
+      "percentage": "5.32"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "parentId": "4",
+      "product_count": "125",
+      "percentage": "4.65"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "parentId": "4",
+      "product_count": "125",
+      "percentage": "4.65"
+    },
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "parentId": "NULL",
+      "product_count": "115",
+      "percentage": "4.28"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "parentId": "NULL",
+      "product_count": "112",
+      "percentage": "4.17"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "parentId": "2",
+      "product_count": "104",
+      "percentage": "3.87"
+    },
+    {
+      "id": "60006",
+      "name": "Tubing & Fittings",
+      "parentId": "2",
+      "product_count": "100",
+      "percentage": "3.72"
+    },
+    {
+      "id": "60007",
+      "name": "Consumables",
+      "parentId": "2",
+      "product_count": "87",
+      "percentage": "3.24"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "parentId": "NULL",
+      "product_count": "74",
+      "percentage": "2.75"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "parentId": "2",
+      "product_count": "60",
+      "percentage": "2.23"
+    },
+    {
+      "id": "7",
+      "name": "Standards",
+      "parentId": "NULL",
+      "product_count": "22",
+      "percentage": "0.82"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy",
+      "parentId": "NULL",
+      "product_count": "19",
+      "percentage": "0.71"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "parentId": "NULL",
+      "product_count": "5",
+      "percentage": "0.19"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tparentId\tproduct_count\tpercentage\n11\tHPLC Columns\t1\t523\t19.45\n111\tAnalytical Columns\t11\t512\t19.04\n12\tGC Columns\t1\t425\t15.81\n21\tVials & Caps\t2\t391\t14.54\n31\tSPE Cartridges\t3\t370\t13.76\n13\tGuard Columns\t1\t364\t13.54\n60002\tSample Vials\t3\t248\t9.22\n60003\tSepta & Closures\t3\t143\t5.32\n60005\tFiltration Products\t4\t125\t4.65\n41\tSyringe Filters\t4\t125\t4.65\n1\tChromatography Columns\tNULL\t115\t4.28\n5\tLab Supplies\tNULL\t112\t4.17\n23\tFittings & Tubing\t2\t104\t3.87\n60006\tTubing & Fittings\t2\t100\t3.72\n60007\tConsumables\t2\t87\t3.24\n2\tChromatography Supplies\tNULL\t74\t2.75\n22\tSyringes & Needles\t2\t60\t2.23\n7\tStandards\tNULL\t22\t0.82\n6\tSpectroscopy\tNULL\t19\t0.71\n4\tFiltration\tNULL\t5\t0.19\n",
+  "stderr": "",
+  "execution_time_ms": 1567
+}

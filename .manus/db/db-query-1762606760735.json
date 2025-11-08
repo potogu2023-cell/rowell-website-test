@@ -1,0 +1,150 @@
+{
+  "query": "SELECT \n  p.productType,\n  p.brand,\n  COUNT(*) as total,\n  SUM(CASE WHEN pc.productId IS NULL THEN 1 ELSE 0 END) as uncategorized,\n  SUM(CASE WHEN pc.productId IS NOT NULL THEN 1 ELSE 0 END) as categorized\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nGROUP BY p.productType, p.brand\nHAVING uncategorized > 0\nORDER BY uncategorized DESC\nLIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.productType,\n  p.brand,\n  COUNT(*) as total,\n  SUM(CASE WHEN pc.productId IS NULL THEN 1 ELSE 0 END) as uncategorized,\n  SUM(CASE WHEN pc.productId IS NOT NULL THEN 1 ELSE 0 END) as categorized\nFROM products p\nLEFT JOIN product_categories pc ON p.id = pc.productId\nGROUP BY p.productType, p.brand\nHAVING uncategorized > 0\nORDER BY uncategorized DESC\nLIMIT 20;",
+  "rows": [
+    {
+      "productType": "HPLC Column",
+      "brand": "Agilent",
+      "total": "148",
+      "uncategorized": "48",
+      "categorized": "100"
+    },
+    {
+      "productType": "GC Columns",
+      "brand": "Thermo Fisher Scientific",
+      "total": "29",
+      "uncategorized": "29",
+      "categorized": "0"
+    },
+    {
+      "productType": "Sample Preparation",
+      "brand": "Phenomenex",
+      "total": "39",
+      "uncategorized": "27",
+      "categorized": "12"
+    },
+    {
+      "productType": "HPLC Column",
+      "brand": "Waters",
+      "total": "15",
+      "uncategorized": "15",
+      "categorized": "0"
+    },
+    {
+      "productType": "Sample Preparation",
+      "brand": "Waters",
+      "total": "17",
+      "uncategorized": "11",
+      "categorized": "6"
+    },
+    {
+      "productType": "Vials",
+      "brand": "Thermo Fisher Scientific",
+      "total": "23",
+      "uncategorized": "9",
+      "categorized": "14"
+    },
+    {
+      "productType": "Vials",
+      "brand": "Phenomenex",
+      "total": "9",
+      "uncategorized": "9",
+      "categorized": "0"
+    },
+    {
+      "productType": "Other",
+      "brand": "Shimadzu",
+      "total": "27",
+      "uncategorized": "8",
+      "categorized": "19"
+    },
+    {
+      "productType": "Vials",
+      "brand": "Waters",
+      "total": "25",
+      "uncategorized": "7",
+      "categorized": "18"
+    },
+    {
+      "productType": "Accessories",
+      "brand": "Agilent",
+      "total": "9",
+      "uncategorized": "5",
+      "categorized": "4"
+    },
+    {
+      "productType": "Caps",
+      "brand": "Thermo Fisher Scientific",
+      "total": "5",
+      "uncategorized": "5",
+      "categorized": "0"
+    },
+    {
+      "productType": "Guard Columns",
+      "brand": "Phenomenex",
+      "total": "5",
+      "uncategorized": "5",
+      "categorized": "0"
+    },
+    {
+      "productType": "HPLC Columns",
+      "brand": "Merck",
+      "total": "4",
+      "uncategorized": "4",
+      "categorized": "0"
+    },
+    {
+      "productType": "HPLC Columns",
+      "brand": "Phenomenex",
+      "total": "8",
+      "uncategorized": "4",
+      "categorized": "4"
+    },
+    {
+      "productType": "Vials",
+      "brand": "Restek",
+      "total": "41",
+      "uncategorized": "3",
+      "categorized": "38"
+    },
+    {
+      "productType": "HPLC Column",
+      "brand": "Thermo Fisher",
+      "total": "3",
+      "uncategorized": "3",
+      "categorized": "0"
+    },
+    {
+      "productType": "GC Columns",
+      "brand": "Waters",
+      "total": "3",
+      "uncategorized": "3",
+      "categorized": "0"
+    },
+    {
+      "productType": "Syringe Filters",
+      "brand": "Thermo Fisher Scientific",
+      "total": "82",
+      "uncategorized": "2",
+      "categorized": "80"
+    },
+    {
+      "productType": "Other",
+      "brand": "Waters",
+      "total": "53",
+      "uncategorized": "1",
+      "categorized": "52"
+    },
+    {
+      "productType": "Septa",
+      "brand": "Waters",
+      "total": "5",
+      "uncategorized": "1",
+      "categorized": "4"
+    }
+  ],
+  "messages": [],
+  "stdout": "productType\tbrand\ttotal\tuncategorized\tcategorized\nHPLC Column\tAgilent\t148\t48\t100\nGC Columns\tThermo Fisher Scientific\t29\t29\t0\nSample Preparation\tPhenomenex\t39\t27\t12\nHPLC Column\tWaters\t15\t15\t0\nSample Preparation\tWaters\t17\t11\t6\nVials\tThermo Fisher Scientific\t23\t9\t14\nVials\tPhenomenex\t9\t9\t0\nOther\tShimadzu\t27\t8\t19\nVials\tWaters\t25\t7\t18\nAccessories\tAgilent\t9\t5\t4\nCaps\tThermo Fisher Scientific\t5\t5\t0\nGuard Columns\tPhenomenex\t5\t5\t0\nHPLC Columns\tMerck\t4\t4\t0\nHPLC Columns\tPhenomenex\t8\t4\t4\nVials\tRestek\t41\t3\t38\nHPLC Column\tThermo Fisher\t3\t3\t0\nGC Columns\tWaters\t3\t3\t0\nSyringe Filters\tThermo Fisher Scientific\t82\t2\t80\nOther\tWaters\t53\t1\t52\nSepta\tWaters\t5\t1\t4\n",
+  "stderr": "",
+  "execution_time_ms": 1546
+}

@@ -1,0 +1,90 @@
+{
+  "query": "SELECT \n  productId, \n  brand, \n  name, \n  CASE \n    WHEN description IS NOT NULL AND description != '' THEN 'YES' \n    ELSE 'NO' \n  END as has_desc,\n  CASE \n    WHEN specifications IS NOT NULL AND JSON_LENGTH(specifications) > 0 THEN JSON_LENGTH(specifications)\n    ELSE 0 \n  END as spec_count,\n  (SELECT COUNT(*) FROM product_categories WHERE productId = p.productId) as category_count\nFROM products p\nWHERE brand IN ('Agilent', 'Thermo Fisher Scientific', 'Shiseido')\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  productId, \n  brand, \n  name, \n  CASE \n    WHEN description IS NOT NULL AND description != '' THEN 'YES' \n    ELSE 'NO' \n  END as has_desc,\n  CASE \n    WHEN specifications IS NOT NULL AND JSON_LENGTH(specifications) > 0 THEN JSON_LENGTH(specifications)\n    ELSE 0 \n  END as spec_count,\n  (SELECT COUNT(*) FROM product_categories WHERE productId = p.productId) as category_count\nFROM products p\nWHERE brand IN ('Agilent', 'Thermo Fisher Scientific', 'Shiseido')\nLIMIT 10;",
+  "rows": [
+    {
+      "productId": "AGIL-670150-902",
+      "brand": "Agilent",
+      "name": "ZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 250 mm, 1.8 µm, 400 bar",
+      "has_desc": "YES",
+      "spec_count": "20",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-821725-955",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 mm 2.7 µm, UHPLC Guard, 3/pk",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-695775-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 100 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-693775-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 150 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-691775-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 30 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-699775-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 50 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-823750-953",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 mm 2.7 µm, UHPLC guard, 3/pk",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-695675-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 x 100 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-693675-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 x 150 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    },
+    {
+      "productId": "AGIL-699675-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 x 50 mm, 2.7 µm",
+      "has_desc": "YES",
+      "spec_count": "19",
+      "category_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tbrand\tname\thas_desc\tspec_count\tcategory_count\nAGIL-670150-902\tAgilent\tZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 250 mm, 1.8 µm, 400 bar\tYES\t20\t0\nAGIL-821725-955\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 mm 2.7 µm, UHPLC Guard, 3/pk\tYES\t19\t0\nAGIL-695775-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 x 100 mm, 2.7 µm\tYES\t19\t0\nAGIL-693775-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 x 150 mm, 2.7 µm\tYES\t19\t0\nAGIL-691775-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 x 30 mm, 2.7 µm\tYES\t19\t0\nAGIL-699775-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 x 50 mm, 2.7 µm\tYES\t19\t0\nAGIL-823750-953\tAgilent\tInfinityLab Poroshell 120 Aq-C18 3.0 mm 2.7 µm, UHPLC guard, 3/pk\tYES\t19\t0\nAGIL-695675-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 3.0 x 100 mm, 2.7 µm\tYES\t19\t0\nAGIL-693675-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 3.0 x 150 mm, 2.7 µm\tYES\t19\t0\nAGIL-699675-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 3.0 x 50 mm, 2.7 µm\tYES\t19\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1636
+}

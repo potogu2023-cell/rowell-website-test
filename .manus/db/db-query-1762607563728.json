@@ -1,0 +1,75 @@
+{
+  "query": "SELECT \n  c.id as category_id,\n  c.name as category_name,\n  COUNT(DISTINCT p.id) as product_count\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Waters'\nGROUP BY c.id, c.name\nORDER BY product_count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  c.id as category_id,\n  c.name as category_name,\n  COUNT(DISTINCT p.id) as product_count\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Waters'\nGROUP BY c.id, c.name\nORDER BY product_count DESC;",
+  "rows": [
+    {
+      "category_id": "60007",
+      "category_name": "Consumables",
+      "product_count": "58"
+    },
+    {
+      "category_id": "5",
+      "category_name": "Lab Supplies",
+      "product_count": "53"
+    },
+    {
+      "category_id": "21",
+      "category_name": "Vials & Caps",
+      "product_count": "52"
+    },
+    {
+      "category_id": "2",
+      "category_name": "Chromatography Supplies",
+      "product_count": "45"
+    },
+    {
+      "category_id": "31",
+      "category_name": "SPE Cartridges",
+      "product_count": "39"
+    },
+    {
+      "category_id": "60002",
+      "category_name": "Sample Vials",
+      "product_count": "34"
+    },
+    {
+      "category_id": "60003",
+      "category_name": "Septa & Closures",
+      "product_count": "18"
+    },
+    {
+      "category_id": "41",
+      "category_name": "Syringe Filters",
+      "product_count": "12"
+    },
+    {
+      "category_id": "60005",
+      "category_name": "Filtration Products",
+      "product_count": "12"
+    },
+    {
+      "category_id": "13",
+      "category_name": "Guard Columns",
+      "product_count": "12"
+    },
+    {
+      "category_id": "7",
+      "category_name": "Standards",
+      "product_count": "12"
+    },
+    {
+      "category_id": "111",
+      "category_name": "Analytical Columns",
+      "product_count": "10"
+    },
+    {
+      "category_id": "6",
+      "category_name": "Spectroscopy",
+      "product_count": "7"
+    }
+  ],
+  "messages": [],
+  "stdout": "category_id\tcategory_name\tproduct_count\n60007\tConsumables\t58\n5\tLab Supplies\t53\n21\tVials & Caps\t52\n2\tChromatography Supplies\t45\n31\tSPE Cartridges\t39\n60002\tSample Vials\t34\n60003\tSepta & Closures\t18\n41\tSyringe Filters\t12\n60005\tFiltration Products\t12\n13\tGuard Columns\t12\n7\tStandards\t12\n111\tAnalytical Columns\t10\n6\tSpectroscopy\t7\n",
+  "stderr": "",
+  "execution_time_ms": 1621
+}

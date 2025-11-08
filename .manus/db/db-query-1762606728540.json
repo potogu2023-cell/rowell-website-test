@@ -1,0 +1,142 @@
+{
+  "query": "SELECT \n  productType,\n  COUNT(*) as count,\n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_desc,\n  (SELECT COUNT(*) FROM product_categories pc WHERE pc.productId = p.id) as total_categorized\nFROM products p\nGROUP BY productType\nORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  productType,\n  COUNT(*) as count,\n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_desc,\n  (SELECT COUNT(*) FROM product_categories pc WHERE pc.productId = p.id) as total_categorized\nFROM products p\nGROUP BY productType\nORDER BY count DESC;",
+  "rows": [
+    {
+      "productType": "HPLC Column",
+      "count": "442",
+      "with_desc": "261",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "GC Column",
+      "count": "376",
+      "with_desc": "176",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "Guard Column",
+      "count": "293",
+      "with_desc": "89",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "SPE Cartridge",
+      "count": "272",
+      "with_desc": "152",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "HPLC Columns",
+      "count": "253",
+      "with_desc": "99",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Sample Vials",
+      "count": "203",
+      "with_desc": "185",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Septa & Closures",
+      "count": "125",
+      "with_desc": "113",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Other",
+      "count": "118",
+      "with_desc": "43",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Tubing & Fittings",
+      "count": "94",
+      "with_desc": "94",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Vials",
+      "count": "83",
+      "with_desc": "66",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Syringe Filters",
+      "count": "81",
+      "with_desc": "71",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Accessories",
+      "count": "73",
+      "with_desc": "37",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "Chromatography Consumables",
+      "count": "53",
+      "with_desc": "6",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Filtration",
+      "count": "53",
+      "with_desc": "47",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Syringes & Needles",
+      "count": "53",
+      "with_desc": "53",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "Sample Preparation",
+      "count": "52",
+      "with_desc": "42",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "GC Columns",
+      "count": "33",
+      "with_desc": "20",
+      "total_categorized": "0"
+    },
+    {
+      "productType": "Septa",
+      "count": "9",
+      "with_desc": "7",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Caps",
+      "count": "8",
+      "with_desc": "6",
+      "total_categorized": "2"
+    },
+    {
+      "productType": "Syringes",
+      "count": "7",
+      "with_desc": "7",
+      "total_categorized": "1"
+    },
+    {
+      "productType": "Guard Columns",
+      "count": "5",
+      "with_desc": "5",
+      "total_categorized": "0"
+    },
+    {
+      "productType": "Centrifuge Tubes",
+      "count": "3",
+      "with_desc": "3",
+      "total_categorized": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "productType\tcount\twith_desc\ttotal_categorized\nHPLC Column\t442\t261\t2\nGC Column\t376\t176\t1\nGuard Column\t293\t89\t1\nSPE Cartridge\t272\t152\t1\nHPLC Columns\t253\t99\t2\nSample Vials\t203\t185\t2\nSepta & Closures\t125\t113\t2\nOther\t118\t43\t2\nTubing & Fittings\t94\t94\t2\nVials\t83\t66\t2\nSyringe Filters\t81\t71\t2\nAccessories\t73\t37\t1\nChromatography Consumables\t53\t6\t2\nFiltration\t53\t47\t2\nSyringes & Needles\t53\t53\t1\nSample Preparation\t52\t42\t1\nGC Columns\t33\t20\t0\nSepta\t9\t7\t2\nCaps\t8\t6\t2\nSyringes\t7\t7\t1\nGuard Columns\t5\t5\t0\nCentrifuge Tubes\t3\t3\t1\n",
+  "stderr": "",
+  "execution_time_ms": 1630
+}

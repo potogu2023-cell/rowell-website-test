@@ -1,0 +1,80 @@
+{
+  "query": "SELECT \n  p.productId,\n  p.name,\n  p.phaseType,\n  p.specifications,\n  c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Phenomenex'\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.productId,\n  p.name,\n  p.phaseType,\n  p.specifications,\n  c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Phenomenex'\nLIMIT 10;",
+  "rows": [
+    {
+      "productId": "PHEN-7EG-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "phaseType": "ZB-1701",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"Phenomenex is a technology leader committed to developing novel analytical chemistry solutions that solve the separation and purification challenges of researchers worldwide.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.2500\", \"Length (m) 15.0000\": \"Internal Diameter 0.2500\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EM-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea",
+      "phaseType": "ZB-1701",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"Phenomenex is a technology leader committed to developing novel analytical chemistry solutions that solve the separation and purification challenges of researchers worldwide.\", \"Internal Diameter 0.3200\": \"Film Thickness 0.2500\", \"Length (m) 15.0000\": \"Internal Diameter 0.3200\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7GK-G006-32-C",
+      "name": "Zebron ZB-1701, GC Cap. Column 25 m x 0.53 mm x 2.00 µm, EA",
+      "phaseType": "ZB-1701",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 25.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 2.0000\": \"Phenomenex is a technology leader committed to developing novel analytical chemistry solutions that solve the separation and purification challenges of researchers worldwide.\", \"Internal Diameter 0.5300\": \"Film Thickness 2.0000\", \"Length (m) 25.0000\": \"Internal Diameter 0.5300\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7HG-G006-11",
+      "name": "Zebron ZB-1701, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea",
+      "phaseType": "ZB-1701",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 30.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.2500\", \"Length (m) 30.0000\": \"Max Temperature (°C) 300.0000\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EG-G002-02",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.10 µm, Ea",
+      "phaseType": "ZB-5",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.1000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.1000\", \"Length (m) 15.0000\": \"Max Temperature (°C) 370.0000\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EG-G002-11",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea",
+      "phaseType": "ZB-5",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.2500\", \"Length (m) 15.0000\": \"Internal Diameter 0.2500\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EG-G002-17",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.50 µm, Ea",
+      "phaseType": "ZB-5",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.5000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.5000\", \"Length (m) 15.0000\": \"Internal Diameter 0.2500\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EG-G002-22",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 1.00 µm, Ea",
+      "phaseType": "ZB-5",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 1.0000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 1.0000\", \"Length (m) 15.0000\": \"Max Temperature (°C) 370.0000\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EK-G002-17",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 0.50 µm, Ea",
+      "phaseType": "ZB-5",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.5000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.5300\": \"Film Thickness 0.5000\", \"Length (m) 15.0000\": \"Internal Diameter 0.5300\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    },
+    {
+      "productId": "PHEN-7EK-G002-28",
+      "name": "Zebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 1.50 µm, Ea",
+      "phaseType": "ZB-5",
+      "specifications": "{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 1.5000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.5300\": \"Film Thickness 1.5000\", \"Length (m) 15.0000\": \"Internal Diameter 0.5300\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}",
+      "category_name": "GC Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\tphaseType\tspecifications\tcategory_name\nPHEN-7EG-G006-11\tZebron ZB-1701, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea\tZB-1701\t{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"Phenomenex is a technology leader committed to developing novel analytical chemistry solutions that solve the separation and purification challenges of researchers worldwide.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.2500\", \"Length (m) 15.0000\": \"Internal Diameter 0.2500\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EM-G006-11\tZebron ZB-1701, GC Cap. Column 15 m x 0.32 mm x 0.25 µm, Ea\tZB-1701\t{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"Phenomenex is a technology leader committed to developing novel analytical chemistry solutions that solve the separation and purification challenges of researchers worldwide.\", \"Internal Diameter 0.3200\": \"Film Thickness 0.2500\", \"Length (m) 15.0000\": \"Internal Diameter 0.3200\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7GK-G006-32-C\tZebron ZB-1701, GC Cap. Column 25 m x 0.53 mm x 2.00 µm, EA\tZB-1701\t{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 25.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 2.0000\": \"Phenomenex is a technology leader committed to developing novel analytical chemistry solutions that solve the separation and purification challenges of researchers worldwide.\", \"Internal Diameter 0.5300\": \"Film Thickness 2.0000\", \"Length (m) 25.0000\": \"Internal Diameter 0.5300\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7HG-G006-11\tZebron ZB-1701, GC Cap. Column 30 m x 0.25 mm x 0.25 µm, Ea\tZB-1701\t{\"CoreBrand Zebron\": \"CorePhase ZB-1701\", \"CorePhase ZB-1701\": \"Length (m) 30.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.2500\", \"Length (m) 30.0000\": \"Max Temperature (°C) 300.0000\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EG-G002-02\tZebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.10 µm, Ea\tZB-5\t{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.1000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.1000\", \"Length (m) 15.0000\": \"Max Temperature (°C) 370.0000\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EG-G002-11\tZebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.25 µm, Ea\tZB-5\t{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.2500\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.2500\", \"Length (m) 15.0000\": \"Internal Diameter 0.2500\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EG-G002-17\tZebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 0.50 µm, Ea\tZB-5\t{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.5000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 0.5000\", \"Length (m) 15.0000\": \"Internal Diameter 0.2500\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EG-G002-22\tZebron ZB-5, GC Cap. Column 15 m x 0.25 mm x 1.00 µm, Ea\tZB-5\t{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 1.0000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.2500\": \"Film Thickness 1.0000\", \"Length (m) 15.0000\": \"Max Temperature (°C) 370.0000\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EK-G002-17\tZebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 0.50 µm, Ea\tZB-5\t{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 0.5000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.5300\": \"Film Thickness 0.5000\", \"Length (m) 15.0000\": \"Internal Diameter 0.5300\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\nPHEN-7EK-G002-28\tZebron ZB-5, GC Cap. Column 15 m x 0.53 mm x 1.50 µm, Ea\tZB-5\t{\"CoreBrand Zebron\": \"CorePhase ZB-5\", \"CorePhase ZB-5\": \"Length (m) 15.0000\", \"CoreSeparationMode Standard\": \"CoreBrand Zebron\", \"CoreTechnique GC\": \"CoreSeparationMode Standard\", \"Film Thickness 1.5000\": \"* Polarity scale is based on the McReynolds value, which provides a systematic approach to ranking GC stationary phases by polarity.\", \"Internal Diameter 0.5300\": \"Film Thickness 1.5000\", \"Length (m) 15.0000\": \"Internal Diameter 0.5300\", \"Temperature Limits (°C) 30 to 340/360\": \"CoreTechnique GC\"}\tGC Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1509
+}

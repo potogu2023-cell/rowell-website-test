@@ -1,0 +1,17 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NULL OR description = '' THEN 1 ELSE 0 END) as no_description,\n  SUM(CASE WHEN specifications IS NULL OR JSON_LENGTH(specifications) = 0 THEN 1 ELSE 0 END) as no_specs,\n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN specifications IS NOT NULL AND JSON_LENGTH(specifications) > 0 THEN 1 ELSE 0 END) as with_specs\nFROM products;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NULL OR description = '' THEN 1 ELSE 0 END) as no_description,\n  SUM(CASE WHEN specifications IS NULL OR JSON_LENGTH(specifications) = 0 THEN 1 ELSE 0 END) as no_specs,\n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN specifications IS NOT NULL AND JSON_LENGTH(specifications) > 0 THEN 1 ELSE 0 END) as with_specs\nFROM products;",
+  "rows": [
+    {
+      "total_products": "2689",
+      "no_description": "1107",
+      "no_specs": "1325",
+      "with_description": "1582",
+      "with_specs": "1364"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\tno_description\tno_specs\twith_description\twith_specs\n2689\t1107\t1325\t1582\t1364\n",
+  "stderr": "",
+  "execution_time_ms": 1657
+}

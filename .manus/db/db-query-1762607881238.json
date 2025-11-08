@@ -1,0 +1,34 @@
+{
+  "query": "SELECT id, name FROM categories WHERE id IN (5,6,7,8,9,10,11,12,13,14);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name FROM categories WHERE id IN (5,6,7,8,9,10,11,12,13,14);",
+  "rows": [
+    {
+      "id": "5",
+      "name": "Lab Supplies"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy"
+    },
+    {
+      "id": "7",
+      "name": "Standards"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\n5\tLab Supplies\n6\tSpectroscopy\n7\tStandards\n11\tHPLC Columns\n12\tGC Columns\n13\tGuard Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1527
+}

@@ -1,0 +1,316 @@
+{
+  "query": "SELECT \n  c.id,\n  c.name,\n  c.nameEn,\n  c.parentId,\n  c.level,\n  (SELECT name FROM categories WHERE id = c.parentId) as parent_name,\n  (SELECT COUNT(*) FROM product_categories pc WHERE pc.categoryId = c.id) as product_count\nFROM categories c\nORDER BY c.parentId, c.displayOrder, c.id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  c.id,\n  c.name,\n  c.nameEn,\n  c.parentId,\n  c.level,\n  (SELECT name FROM categories WHERE id = c.parentId) as parent_name,\n  (SELECT COUNT(*) FROM product_categories pc WHERE pc.categoryId = c.id) as product_count\nFROM categories c\nORDER BY c.parentId, c.displayOrder, c.id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "87"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "7",
+      "name": "Standards",
+      "nameEn": "NULL",
+      "parentId": "NULL",
+      "level": "1",
+      "parent_name": "NULL",
+      "product_count": "0"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "nameEn": "NULL",
+      "parentId": "1",
+      "level": "2",
+      "parent_name": "Chromatography Columns",
+      "product_count": "512"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "nameEn": "NULL",
+      "parentId": "1",
+      "level": "2",
+      "parent_name": "Chromatography Columns",
+      "product_count": "423"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "nameEn": "NULL",
+      "parentId": "1",
+      "level": "2",
+      "parent_name": "Chromatography Columns",
+      "product_count": "409"
+    },
+    {
+      "id": "60006",
+      "name": "Tubing & Fittings",
+      "nameEn": "NULL",
+      "parentId": "2",
+      "level": "1",
+      "parent_name": "Chromatography Supplies",
+      "product_count": "100"
+    },
+    {
+      "id": "60007",
+      "name": "Consumables",
+      "nameEn": "NULL",
+      "parentId": "2",
+      "level": "1",
+      "parent_name": "Chromatography Supplies",
+      "product_count": "87"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "nameEn": "NULL",
+      "parentId": "2",
+      "level": "2",
+      "parent_name": "Chromatography Supplies",
+      "product_count": "391"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "nameEn": "NULL",
+      "parentId": "2",
+      "level": "2",
+      "parent_name": "Chromatography Supplies",
+      "product_count": "60"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "nameEn": "NULL",
+      "parentId": "2",
+      "level": "2",
+      "parent_name": "Chromatography Supplies",
+      "product_count": "100"
+    },
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "nameEn": "NULL",
+      "parentId": "2",
+      "level": "2",
+      "parent_name": "Chromatography Supplies",
+      "product_count": "0"
+    },
+    {
+      "id": "60002",
+      "name": "Sample Vials",
+      "nameEn": "NULL",
+      "parentId": "3",
+      "level": "1",
+      "parent_name": "Sample Preparation",
+      "product_count": "248"
+    },
+    {
+      "id": "60003",
+      "name": "Septa & Closures",
+      "nameEn": "NULL",
+      "parentId": "3",
+      "level": "1",
+      "parent_name": "Sample Preparation",
+      "product_count": "143"
+    },
+    {
+      "id": "60004",
+      "name": "Centrifuge Tubes",
+      "nameEn": "NULL",
+      "parentId": "3",
+      "level": "1",
+      "parent_name": "Sample Preparation",
+      "product_count": "3"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "nameEn": "NULL",
+      "parentId": "3",
+      "level": "2",
+      "parent_name": "Sample Preparation",
+      "product_count": "374"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "nameEn": "NULL",
+      "parentId": "3",
+      "level": "2",
+      "parent_name": "Sample Preparation",
+      "product_count": "0"
+    },
+    {
+      "id": "33",
+      "name": "Derivatization",
+      "nameEn": "NULL",
+      "parentId": "3",
+      "level": "2",
+      "parent_name": "Sample Preparation",
+      "product_count": "0"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "nameEn": "NULL",
+      "parentId": "4",
+      "level": "1",
+      "parent_name": "Filtration",
+      "product_count": "125"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "nameEn": "NULL",
+      "parentId": "4",
+      "level": "2",
+      "parent_name": "Filtration",
+      "product_count": "125"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "nameEn": "NULL",
+      "parentId": "4",
+      "level": "2",
+      "parent_name": "Filtration",
+      "product_count": "0"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "nameEn": "NULL",
+      "parentId": "4",
+      "level": "2",
+      "parent_name": "Filtration",
+      "product_count": "0"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "nameEn": "NULL",
+      "parentId": "5",
+      "level": "2",
+      "parent_name": "Lab Supplies",
+      "product_count": "0"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "nameEn": "NULL",
+      "parentId": "5",
+      "level": "2",
+      "parent_name": "Lab Supplies",
+      "product_count": "0"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "nameEn": "NULL",
+      "parentId": "5",
+      "level": "2",
+      "parent_name": "Lab Supplies",
+      "product_count": "0"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "nameEn": "NULL",
+      "parentId": "11",
+      "level": "3",
+      "parent_name": "HPLC Columns",
+      "product_count": "512"
+    },
+    {
+      "id": "112",
+      "name": "Preparative Columns",
+      "nameEn": "NULL",
+      "parentId": "11",
+      "level": "3",
+      "parent_name": "HPLC Columns",
+      "product_count": "0"
+    },
+    {
+      "id": "113",
+      "name": "UHPLC Columns",
+      "nameEn": "NULL",
+      "parentId": "11",
+      "level": "3",
+      "parent_name": "HPLC Columns",
+      "product_count": "0"
+    },
+    {
+      "id": "114",
+      "name": "Chiral Columns",
+      "nameEn": "NULL",
+      "parentId": "11",
+      "level": "3",
+      "parent_name": "HPLC Columns",
+      "product_count": "0"
+    },
+    {
+      "id": "115",
+      "name": "Bio Columns",
+      "nameEn": "NULL",
+      "parentId": "11",
+      "level": "3",
+      "parent_name": "HPLC Columns",
+      "product_count": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tnameEn\tparentId\tlevel\tparent_name\tproduct_count\n1\tChromatography Columns\tNULL\tNULL\t1\tNULL\t0\n2\tChromatography Supplies\tNULL\tNULL\t1\tNULL\t87\n3\tSample Preparation\tNULL\tNULL\t1\tNULL\t0\n4\tFiltration\tNULL\tNULL\t1\tNULL\t0\n5\tLab Supplies\tNULL\tNULL\t1\tNULL\t0\n6\tSpectroscopy\tNULL\tNULL\t1\tNULL\t0\n7\tStandards\tNULL\tNULL\t1\tNULL\t0\n11\tHPLC Columns\tNULL\t1\t2\tChromatography Columns\t512\n12\tGC Columns\tNULL\t1\t2\tChromatography Columns\t423\n13\tGuard Columns\tNULL\t1\t2\tChromatography Columns\t409\n60006\tTubing & Fittings\tNULL\t2\t1\tChromatography Supplies\t100\n60007\tConsumables\tNULL\t2\t1\tChromatography Supplies\t87\n21\tVials & Caps\tNULL\t2\t2\tChromatography Supplies\t391\n22\tSyringes & Needles\tNULL\t2\t2\tChromatography Supplies\t60\n23\tFittings & Tubing\tNULL\t2\t2\tChromatography Supplies\t100\n24\tMobile Phase\tNULL\t2\t2\tChromatography Supplies\t0\n60002\tSample Vials\tNULL\t3\t1\tSample Preparation\t248\n60003\tSepta & Closures\tNULL\t3\t1\tSample Preparation\t143\n60004\tCentrifuge Tubes\tNULL\t3\t1\tSample Preparation\t3\n31\tSPE Cartridges\tNULL\t3\t2\tSample Preparation\t374\n32\tExtraction Accessories\tNULL\t3\t2\tSample Preparation\t0\n33\tDerivatization\tNULL\t3\t2\tSample Preparation\t0\n60005\tFiltration Products\tNULL\t4\t1\tFiltration\t125\n41\tSyringe Filters\tNULL\t4\t2\tFiltration\t125\n42\tMembrane Filters\tNULL\t4\t2\tFiltration\t0\n43\tFilter Holders\tNULL\t4\t2\tFiltration\t0\n51\tGlassware\tNULL\t5\t2\tLab Supplies\t0\n52\tPlasticware\tNULL\t5\t2\tLab Supplies\t0\n53\tStorage\tNULL\t5\t2\tLab Supplies\t0\n111\tAnalytical Columns\tNULL\t11\t3\tHPLC Columns\t512\n112\tPreparative Columns\tNULL\t11\t3\tHPLC Columns\t0\n113\tUHPLC Columns\tNULL\t11\t3\tHPLC Columns\t0\n114\tChiral Columns\tNULL\t11\t3\tHPLC Columns\t0\n115\tBio Columns\tNULL\t11\t3\tHPLC Columns\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1575
+}

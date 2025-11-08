@@ -1,0 +1,8 @@
+{
+  "query": "SELECT \n  p.productId,\n  p.name,\n  p.phaseType,\n  JSON_EXTRACT(p.specifications, '$.Chemistry') as chemistry,\n  JSON_EXTRACT(p.specifications, '$.Phase') as phase,\n  JSON_EXTRACT(p.specifications, '$.[\"Separation Mode\"]') as sep_mode,\n  c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Waters'\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.productId,\n  p.name,\n  p.phaseType,\n  JSON_EXTRACT(p.specifications, '$.Chemistry') as chemistry,\n  JSON_EXTRACT(p.specifications, '$.Phase') as phase,\n  JSON_EXTRACT(p.specifications, '$.[\"Separation Mode\"]') as sep_mode,\n  c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Waters'\nLIMIT 10;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 3143 (42000) at line 1: Invalid JSON path expression. The error is around character position %!d(string=?)."
+  ]
+}

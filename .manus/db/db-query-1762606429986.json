@@ -1,0 +1,80 @@
+{
+  "query": "SELECT * FROM categories LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT * FROM categories LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "nameEn": "NULL",
+      "slug": "chromatography-columns",
+      "parentId": "NULL",
+      "level": "1",
+      "displayOrder": "1",
+      "isVisible": "1",
+      "description": "HPLC, GC, and specialty chromatography columns",
+      "icon": "NULL",
+      "createdAt": "2025-10-25 07:03:36",
+      "updatedAt": "2025-10-25 07:03:36"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "nameEn": "NULL",
+      "slug": "chromatography-supplies",
+      "parentId": "NULL",
+      "level": "1",
+      "displayOrder": "2",
+      "isVisible": "1",
+      "description": "Consumables and supplies for chromatography",
+      "icon": "NULL",
+      "createdAt": "2025-10-25 07:03:36",
+      "updatedAt": "2025-10-25 07:03:36"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "nameEn": "NULL",
+      "slug": "sample-preparation",
+      "parentId": "NULL",
+      "level": "1",
+      "displayOrder": "3",
+      "isVisible": "1",
+      "description": "Sample preparation products and equipment",
+      "icon": "NULL",
+      "createdAt": "2025-10-25 07:03:36",
+      "updatedAt": "2025-10-25 07:03:36"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "nameEn": "NULL",
+      "slug": "filtration",
+      "parentId": "NULL",
+      "level": "1",
+      "displayOrder": "4",
+      "isVisible": "1",
+      "description": "Filtration products and membrane filters",
+      "icon": "NULL",
+      "createdAt": "2025-10-25 07:03:36",
+      "updatedAt": "2025-10-25 07:03:36"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "nameEn": "NULL",
+      "slug": "lab-supplies",
+      "parentId": "NULL",
+      "level": "1",
+      "displayOrder": "5",
+      "isVisible": "1",
+      "description": "General laboratory supplies and consumables",
+      "icon": "NULL",
+      "createdAt": "2025-10-25 07:03:37",
+      "updatedAt": "2025-10-25 07:03:37"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tnameEn\tslug\tparentId\tlevel\tdisplayOrder\tisVisible\tdescription\ticon\tcreatedAt\tupdatedAt\n1\tChromatography Columns\tNULL\tchromatography-columns\tNULL\t1\t1\t1\tHPLC, GC, and specialty chromatography columns\tNULL\t2025-10-25 07:03:36\t2025-10-25 07:03:36\n2\tChromatography Supplies\tNULL\tchromatography-supplies\tNULL\t1\t2\t1\tConsumables and supplies for chromatography\tNULL\t2025-10-25 07:03:36\t2025-10-25 07:03:36\n3\tSample Preparation\tNULL\tsample-preparation\tNULL\t1\t3\t1\tSample preparation products and equipment\tNULL\t2025-10-25 07:03:36\t2025-10-25 07:03:36\n4\tFiltration\tNULL\tfiltration\tNULL\t1\t4\t1\tFiltration products and membrane filters\tNULL\t2025-10-25 07:03:36\t2025-10-25 07:03:36\n5\tLab Supplies\tNULL\tlab-supplies\tNULL\t1\t5\t1\tGeneral laboratory supplies and consumables\tNULL\t2025-10-25 07:03:37\t2025-10-25 07:03:37\n",
+  "stderr": "",
+  "execution_time_ms": 1611
+}

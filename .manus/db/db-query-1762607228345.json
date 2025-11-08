@@ -1,0 +1,100 @@
+{
+  "query": "SELECT \n  p.productId,\n  p.name,\n  p.phaseType,\n  p.description,\n  JSON_EXTRACT(p.specifications, '$.Chemistry') as chemistry,\n  JSON_EXTRACT(p.specifications, '$.Phase') as phase,\n  c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Daicel'\nLIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  p.productId,\n  p.name,\n  p.phaseType,\n  p.description,\n  JSON_EXTRACT(p.specifications, '$.Chemistry') as chemistry,\n  JSON_EXTRACT(p.specifications, '$.Phase') as phase,\n  c.name as category_name\nFROM products p\nJOIN product_categories pc ON p.id = pc.productId\nJOIN categories c ON pc.categoryId = c.id\nWHERE p.brand = 'Daicel'\nLIMIT 10;",
+  "rows": [
+    {
+      "productId": "DAIC-80511",
+      "name": "CHIRALPAK® IA-3 Guard cartridge ( ×3 )",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "DAIC-80511",
+      "name": "CHIRALPAK® IA-3 Guard cartridge ( ×3 )",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "Analytical Columns"
+    },
+    {
+      "productId": "DAIC-80522",
+      "name": "CHIRALPAK® IA-3 Analytical column",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "DAIC-80522",
+      "name": "CHIRALPAK® IA-3 Analytical column",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "Analytical Columns"
+    },
+    {
+      "productId": "DAIC-80523",
+      "name": "CHIRALPAK® IA-3 Analytical column",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "DAIC-80523",
+      "name": "CHIRALPAK® IA-3 Analytical column",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "Analytical Columns"
+    },
+    {
+      "productId": "DAIC-80524",
+      "name": "CHIRALPAK® IA-3 Analytical column",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "DAIC-80524",
+      "name": "CHIRALPAK® IA-3 Analytical column",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "Analytical Columns"
+    },
+    {
+      "productId": "DAIC-80525",
+      "name": "CHIRALPAK® IA",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "HPLC Columns"
+    },
+    {
+      "productId": "DAIC-80525",
+      "name": "CHIRALPAK® IA",
+      "phaseType": "Immobilized Chiral",
+      "description": "NULL",
+      "chemistry": "NULL",
+      "phase": "NULL",
+      "category_name": "Analytical Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tname\tphaseType\tdescription\tchemistry\tphase\tcategory_name\nDAIC-80511\tCHIRALPAK® IA-3 Guard cartridge ( ×3 )\tImmobilized Chiral\tNULL\tNULL\tNULL\tHPLC Columns\nDAIC-80511\tCHIRALPAK® IA-3 Guard cartridge ( ×3 )\tImmobilized Chiral\tNULL\tNULL\tNULL\tAnalytical Columns\nDAIC-80522\tCHIRALPAK® IA-3 Analytical column\tImmobilized Chiral\tNULL\tNULL\tNULL\tHPLC Columns\nDAIC-80522\tCHIRALPAK® IA-3 Analytical column\tImmobilized Chiral\tNULL\tNULL\tNULL\tAnalytical Columns\nDAIC-80523\tCHIRALPAK® IA-3 Analytical column\tImmobilized Chiral\tNULL\tNULL\tNULL\tHPLC Columns\nDAIC-80523\tCHIRALPAK® IA-3 Analytical column\tImmobilized Chiral\tNULL\tNULL\tNULL\tAnalytical Columns\nDAIC-80524\tCHIRALPAK® IA-3 Analytical column\tImmobilized Chiral\tNULL\tNULL\tNULL\tHPLC Columns\nDAIC-80524\tCHIRALPAK® IA-3 Analytical column\tImmobilized Chiral\tNULL\tNULL\tNULL\tAnalytical Columns\nDAIC-80525\tCHIRALPAK® IA\tImmobilized Chiral\tNULL\tNULL\tNULL\tHPLC Columns\nDAIC-80525\tCHIRALPAK® IA\tImmobilized Chiral\tNULL\tNULL\tNULL\tAnalytical Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1663
+}
