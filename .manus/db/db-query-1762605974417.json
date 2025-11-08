@@ -1,0 +1,28 @@
+{
+  "query": "SELECT brand, COUNT(*) as count, \n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN specifications IS NOT NULL THEN 1 ELSE 0 END) as with_specs\nFROM products \nWHERE brand IN ('Daicel', 'Waters', 'Phenomenex')\nGROUP BY brand\nORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT brand, COUNT(*) as count, \n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN specifications IS NOT NULL THEN 1 ELSE 0 END) as with_specs\nFROM products \nWHERE brand IN ('Daicel', 'Waters', 'Phenomenex')\nGROUP BY brand\nORDER BY count DESC;",
+  "rows": [
+    {
+      "brand": "Daicel",
+      "count": "277",
+      "with_description": "236",
+      "with_specs": "277"
+    },
+    {
+      "brand": "Waters",
+      "count": "270",
+      "with_description": "156",
+      "with_specs": "106"
+    },
+    {
+      "brand": "Phenomenex",
+      "count": "247",
+      "with_description": "161",
+      "with_specs": "247"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcount\twith_description\twith_specs\nDaicel\t277\t236\t277\nWaters\t270\t156\t106\nPhenomenex\t247\t161\t247\n",
+  "stderr": "",
+  "execution_time_ms": 1570
+}
