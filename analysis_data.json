@@ -1,0 +1,38 @@
+{
+  "brands": [
+    "Agilent",
+    "Thermo Fisher Scientific"
+  ],
+  "totalProducts": 996,
+  "completionRate": 37,
+  "brandDetails": {
+    "Agilent": {
+      "totalProducts": 630,
+      "descriptionCoverage": "99.0",
+      "specCompleteness": "94.6",
+      "avgSpecFields": "12.9",
+      "qualityDistribution": {
+        "high": 0,
+        "medium": 615,
+        "low": 9,
+        "extracted": 0,
+        "none": 6
+      },
+      "abGradePercentage": "97.6"
+    },
+    "Thermo Fisher Scientific": {
+      "totalProducts": 366,
+      "descriptionCoverage": "78.1",
+      "specCompleteness": "67.5",
+      "avgSpecFields": "14.0",
+      "qualityDistribution": {
+        "high": 12,
+        "medium": 215,
+        "low": 49,
+        "extracted": 10,
+        "none": 80
+      },
+      "abGradePercentage": "62.0"
+    }
+  }
+}

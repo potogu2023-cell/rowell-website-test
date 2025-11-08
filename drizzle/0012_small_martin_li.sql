@@ -1,0 +1,1 @@
+ALTER TABLE `products` ADD `descriptionQuality` enum('high','medium','low','extracted','none') DEFAULT 'none';

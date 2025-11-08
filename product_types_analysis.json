@@ -1,0 +1,95 @@
+{
+  "completedBrands": 2,
+  "totalBrands": 12,
+  "completedProducts": 996,
+  "totalProducts": 2689,
+  "completionRate": 37,
+  "fieldCompleteness": {
+    "description": 910,
+    "specifications": 862,
+    "productType": 996,
+    "phaseType": 241,
+    "particleSize": 158,
+    "columnLength": 258,
+    "innerDiameter": 258,
+    "usp": 50
+  },
+  "brands": {
+    "Agilent": {
+      "totalProducts": 630,
+      "productTypes": {
+        "HPLC Column": 98,
+        "GC Column": 50,
+        "SPE Cartridge": 99,
+        "Filtration": 43,
+        "Syringe Filters": 7,
+        "Other": 3,
+        "Caps": 2,
+        "Tubing & Fittings": 94,
+        "Accessories": 7,
+        "Septa & Closures": 82,
+        "Sample Vials": 91,
+        "Syringes & Needles": 50,
+        "Vials": 2,
+        "Centrifuge Tubes": 2
+      },
+      "phaseTypes": {
+        "Phenyl-Hexyl": 15,
+        "Aq-C18": 13,
+        "Bonus-RP": 30,
+        "CS-C18": 5,
+        "SB-C18": 2,
+        "DB-1": 50,
+        "C18": 10,
+        "C8": 14,
+        "Aq": 3,
+        "HPH-C18": 3,
+        "EC-C18": 3
+      },
+      "particleSizes": {
+        "1.8 µm": 12,
+        "2.7": 48,
+        "2.7 µm": 4,
+        "3.5 µm": 9,
+        "5 µm": 16,
+        "1.9 µm": 3,
+        "4 µm": 6
+      },
+      "uspTypes": {
+        "L1": 50
+      }
+    },
+    "Thermo Fisher Scientific": {
+      "totalProducts": 366,
+      "productTypes": {
+        "HPLC Columns": 78,
+        "HPLC Column": 4,
+        "GC Column": 50,
+        "Guard Column": 59,
+        "SPE Cartridge": 11,
+        "Sample Preparation": 2,
+        "Other": 38,
+        "Accessories": 2,
+        "Syringe Filters": 42,
+        "Filtration": 7,
+        "Septa & Closures": 12,
+        "Vials": 16,
+        "Sample Vials": 11,
+        "Caps": 5,
+        "GC Columns": 29
+      },
+      "phaseTypes": {
+        "Reversed Phase\nEndcapped": 60,
+        "5% Phenyl Polysiloxane": 3,
+        "Polyethylene Glycol (PEG)": 10,
+        "6% Cyanopropylphenyl Polysiloxane": 11,
+        "High Polarity": 9
+      },
+      "particleSizes": {
+        "2.6": 10,
+        "3.0": 50
+      },
+      "uspTypes": {}
+    }
+  }
+}

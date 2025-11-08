@@ -57,6 +57,8 @@ export const products = mysqlTable("products", {
   name: text("name"),
   /** Product description */
   description: text("description"),
+  /** Description quality level: high, medium, low, extracted, none */
+  descriptionQuality: mysqlEnum("descriptionQuality", ["high", "medium", "low", "extracted", "none"]).default("none"),
   /** Detailed product description */
   detailedDescription: text("detailedDescription"),
   /** Technical specifications in JSON format */
