@@ -1,0 +1,87 @@
+{
+  "query": "SELECT \n  brand,\n  COUNT(*) as total_products,\n  COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) as verified,\n  COUNT(CASE WHEN description IS NULL OR description = '' THEN 1 END) as unverified,\n  ROUND(COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) * 100.0 / COUNT(*), 1) as verified_rate\nFROM products\nGROUP BY brand\nHAVING unverified > 0\nORDER BY total_products DESC\nLIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  brand,\n  COUNT(*) as total_products,\n  COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) as verified,\n  COUNT(CASE WHEN description IS NULL OR description = '' THEN 1 END) as unverified,\n  ROUND(COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) * 100.0 / COUNT(*), 1) as verified_rate\nFROM products\nGROUP BY brand\nHAVING unverified > 0\nORDER BY total_products DESC\nLIMIT 15;",
+  "rows": [
+    {
+      "brand": "Agilent",
+      "total_products": "630",
+      "verified": "624",
+      "unverified": "6",
+      "verified_rate": "99.0"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "total_products": "366",
+      "verified": "286",
+      "unverified": "80",
+      "verified_rate": "78.1"
+    },
+    {
+      "brand": "Daicel",
+      "total_products": "277",
+      "verified": "236",
+      "unverified": "41",
+      "verified_rate": "85.2"
+    },
+    {
+      "brand": "Waters",
+      "total_products": "270",
+      "verified": "156",
+      "unverified": "114",
+      "verified_rate": "57.8"
+    },
+    {
+      "brand": "Phenomenex",
+      "total_products": "247",
+      "verified": "161",
+      "unverified": "86",
+      "verified_rate": "65.2"
+    },
+    {
+      "brand": "Restek",
+      "total_products": "215",
+      "verified": "62",
+      "unverified": "153",
+      "verified_rate": "28.8"
+    },
+    {
+      "brand": "Merck",
+      "total_products": "199",
+      "verified": "30",
+      "unverified": "169",
+      "verified_rate": "15.1"
+    },
+    {
+      "brand": "ACE",
+      "total_products": "151",
+      "verified": "0",
+      "unverified": "151",
+      "verified_rate": "0.0"
+    },
+    {
+      "brand": "Shimadzu",
+      "total_products": "130",
+      "verified": "24",
+      "unverified": "106",
+      "verified_rate": "18.5"
+    },
+    {
+      "brand": "Develosil",
+      "total_products": "118",
+      "verified": "0",
+      "unverified": "118",
+      "verified_rate": "0.0"
+    },
+    {
+      "brand": "Avantor",
+      "total_products": "83",
+      "verified": "0",
+      "unverified": "83",
+      "verified_rate": "0.0"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\ttotal_products\tverified\tunverified\tverified_rate\nAgilent\t630\t624\t6\t99.0\nThermo Fisher Scientific\t366\t286\t80\t78.1\nDaicel\t277\t236\t41\t85.2\nWaters\t270\t156\t114\t57.8\nPhenomenex\t247\t161\t86\t65.2\nRestek\t215\t62\t153\t28.8\nMerck\t199\t30\t169\t15.1\nACE\t151\t0\t151\t0.0\nShimadzu\t130\t24\t106\t18.5\nDevelosil\t118\t0\t118\t0.0\nAvantor\t83\t0\t83\t0.0\n",
+  "stderr": "",
+  "execution_time_ms": 1515
+}

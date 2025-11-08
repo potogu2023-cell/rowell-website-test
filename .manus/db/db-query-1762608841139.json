@@ -1,0 +1,226 @@
+{
+  "query": "SELECT \n  c.id,\n  c.name,\n  c.parentId,\n  COUNT(DISTINCT pc.productId) as product_count,\n  COUNT(DISTINCT CASE WHEN p.description IS NOT NULL AND p.description != '' THEN pc.productId END) as verified_count,\n  COUNT(DISTINCT CASE WHEN p.description IS NULL OR p.description = '' THEN pc.productId END) as unverified_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nLEFT JOIN products p ON pc.productId = p.id\nWHERE c.parentId IS NOT NULL\nGROUP BY c.id, c.name, c.parentId\nORDER BY product_count ASC, c.id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  c.id,\n  c.name,\n  c.parentId,\n  COUNT(DISTINCT pc.productId) as product_count,\n  COUNT(DISTINCT CASE WHEN p.description IS NOT NULL AND p.description != '' THEN pc.productId END) as verified_count,\n  COUNT(DISTINCT CASE WHEN p.description IS NULL OR p.description = '' THEN pc.productId END) as unverified_count\nFROM categories c\nLEFT JOIN product_categories pc ON c.id = pc.categoryId\nLEFT JOIN products p ON pc.productId = p.id\nWHERE c.parentId IS NOT NULL\nGROUP BY c.id, c.name, c.parentId\nORDER BY product_count ASC, c.id;",
+  "rows": [
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "parentId": "2",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "parentId": "3",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "parentId": "4",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "parentId": "4",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "parentId": "5",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "parentId": "5",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "parentId": "5",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "112",
+      "name": "Preparative Columns",
+      "parentId": "11",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "113",
+      "name": "UHPLC Columns",
+      "parentId": "11",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "114",
+      "name": "Chiral Columns",
+      "parentId": "11",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "115",
+      "name": "Bio Columns",
+      "parentId": "11",
+      "product_count": "0",
+      "verified_count": "0",
+      "unverified_count": "0"
+    },
+    {
+      "id": "60004",
+      "name": "Centrifuge Tubes",
+      "parentId": "3",
+      "product_count": "3",
+      "verified_count": "3",
+      "unverified_count": "0"
+    },
+    {
+      "id": "33",
+      "name": "Derivatization",
+      "parentId": "3",
+      "product_count": "5",
+      "verified_count": "5",
+      "unverified_count": "0"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "parentId": "2",
+      "product_count": "60",
+      "verified_count": "60",
+      "unverified_count": "0"
+    },
+    {
+      "id": "60007",
+      "name": "Consumables",
+      "parentId": "2",
+      "product_count": "87",
+      "verified_count": "30",
+      "unverified_count": "57"
+    },
+    {
+      "id": "60006",
+      "name": "Tubing & Fittings",
+      "parentId": "2",
+      "product_count": "100",
+      "verified_count": "100",
+      "unverified_count": "0"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "parentId": "2",
+      "product_count": "104",
+      "verified_count": "100",
+      "unverified_count": "4"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "parentId": "4",
+      "product_count": "125",
+      "verified_count": "109",
+      "unverified_count": "16"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "parentId": "4",
+      "product_count": "125",
+      "verified_count": "109",
+      "unverified_count": "16"
+    },
+    {
+      "id": "60003",
+      "name": "Septa & Closures",
+      "parentId": "3",
+      "product_count": "143",
+      "verified_count": "131",
+      "unverified_count": "12"
+    },
+    {
+      "id": "60002",
+      "name": "Sample Vials",
+      "parentId": "3",
+      "product_count": "248",
+      "verified_count": "230",
+      "unverified_count": "18"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "parentId": "1",
+      "product_count": "364",
+      "verified_count": "88",
+      "unverified_count": "276"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "parentId": "3",
+      "product_count": "372",
+      "verified_count": "192",
+      "unverified_count": "180"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "parentId": "2",
+      "product_count": "391",
+      "verified_count": "361",
+      "unverified_count": "30"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "parentId": "1",
+      "product_count": "425",
+      "verified_count": "176",
+      "unverified_count": "249"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "parentId": "11",
+      "product_count": "512",
+      "verified_count": "266",
+      "unverified_count": "246"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "parentId": "1",
+      "product_count": "523",
+      "verified_count": "275",
+      "unverified_count": "248"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tparentId\tproduct_count\tverified_count\tunverified_count\n24\tMobile Phase\t2\t0\t0\t0\n32\tExtraction Accessories\t3\t0\t0\t0\n42\tMembrane Filters\t4\t0\t0\t0\n43\tFilter Holders\t4\t0\t0\t0\n51\tGlassware\t5\t0\t0\t0\n52\tPlasticware\t5\t0\t0\t0\n53\tStorage\t5\t0\t0\t0\n112\tPreparative Columns\t11\t0\t0\t0\n113\tUHPLC Columns\t11\t0\t0\t0\n114\tChiral Columns\t11\t0\t0\t0\n115\tBio Columns\t11\t0\t0\t0\n60004\tCentrifuge Tubes\t3\t3\t3\t0\n33\tDerivatization\t3\t5\t5\t0\n22\tSyringes & Needles\t2\t60\t60\t0\n60007\tConsumables\t2\t87\t30\t57\n60006\tTubing & Fittings\t2\t100\t100\t0\n23\tFittings & Tubing\t2\t104\t100\t4\n41\tSyringe Filters\t4\t125\t109\t16\n60005\tFiltration Products\t4\t125\t109\t16\n60003\tSepta & Closures\t3\t143\t131\t12\n60002\tSample Vials\t3\t248\t230\t18\n13\tGuard Columns\t1\t364\t88\t276\n31\tSPE Cartridges\t3\t372\t192\t180\n21\tVials & Caps\t2\t391\t361\t30\n12\tGC Columns\t1\t425\t176\t249\n111\tAnalytical Columns\t11\t512\t266\t246\n11\tHPLC Columns\t1\t523\t275\t248\n",
+  "stderr": "",
+  "execution_time_ms": 1990
+}

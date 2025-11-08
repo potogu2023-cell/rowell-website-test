@@ -1,0 +1,38 @@
+{
+  "query": "SELECT productId, partNumber, brand, name, catalogUrl \nFROM products \nWHERE brand IN ('Agilent', 'Thermo Fisher Scientific')\nORDER BY brand, id\nLIMIT 4;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, brand, name, catalogUrl \nFROM products \nWHERE brand IN ('Agilent', 'Thermo Fisher Scientific')\nORDER BY brand, id\nLIMIT 4;",
+  "rows": [
+    {
+      "productId": "AGIL-670150-902",
+      "partNumber": "670150-902",
+      "brand": "Agilent",
+      "name": "ZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 250 mm, 1.8 µm, 400 bar",
+      "catalogUrl": "https://www.agilent.com/store/en_US/Prod-670150-902/670150-902"
+    },
+    {
+      "productId": "AGIL-821725-955",
+      "partNumber": "821725-955",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 mm 2.7 µm, UHPLC Guard, 3/pk",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "AGIL-695775-742",
+      "partNumber": "695775-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 100 mm, 2.7 µm",
+      "catalogUrl": "NULL"
+    },
+    {
+      "productId": "AGIL-693775-742",
+      "partNumber": "693775-742",
+      "brand": "Agilent",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 150 mm, 2.7 µm",
+      "catalogUrl": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tbrand\tname\tcatalogUrl\nAGIL-670150-902\t670150-902\tAgilent\tZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 250 mm, 1.8 µm, 400 bar\thttps://www.agilent.com/store/en_US/Prod-670150-902/670150-902\nAGIL-821725-955\t821725-955\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 mm 2.7 µm, UHPLC Guard, 3/pk\tNULL\nAGIL-695775-742\t695775-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 x 100 mm, 2.7 µm\tNULL\nAGIL-693775-742\t693775-742\tAgilent\tInfinityLab Poroshell 120 Aq-C18 2.1 x 150 mm, 2.7 µm\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 2116
+}

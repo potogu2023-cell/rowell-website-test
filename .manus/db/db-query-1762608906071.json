@@ -1,0 +1,31 @@
+{
+  "query": "SELECT \n  brand,\n  COUNT(*) as total_products,\n  COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) as with_description,\n  COUNT(CASE WHEN description IS NULL OR description = '' THEN 1 END) as without_description,\n  COUNT(CASE WHEN specifications IS NOT NULL AND specifications != '{}' THEN 1 END) as with_specs\nFROM products\nWHERE brand IN ('Restek', 'Merck', 'Sigma-Aldrich', 'Supelco', 'Avantor')\nGROUP BY brand\nORDER BY total_products DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  brand,\n  COUNT(*) as total_products,\n  COUNT(CASE WHEN description IS NOT NULL AND description != '' THEN 1 END) as with_description,\n  COUNT(CASE WHEN description IS NULL OR description = '' THEN 1 END) as without_description,\n  COUNT(CASE WHEN specifications IS NOT NULL AND specifications != '{}' THEN 1 END) as with_specs\nFROM products\nWHERE brand IN ('Restek', 'Merck', 'Sigma-Aldrich', 'Supelco', 'Avantor')\nGROUP BY brand\nORDER BY total_products DESC;",
+  "rows": [
+    {
+      "brand": "Restek",
+      "total_products": "215",
+      "with_description": "62",
+      "without_description": "153",
+      "with_specs": "0"
+    },
+    {
+      "brand": "Merck",
+      "total_products": "199",
+      "with_description": "30",
+      "without_description": "169",
+      "with_specs": "0"
+    },
+    {
+      "brand": "Avantor",
+      "total_products": "83",
+      "with_description": "0",
+      "without_description": "83",
+      "with_specs": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\ttotal_products\twith_description\twithout_description\twith_specs\nRestek\t215\t62\t153\t0\nMerck\t199\t30\t169\t0\nAvantor\t83\t0\t83\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1553
+}
