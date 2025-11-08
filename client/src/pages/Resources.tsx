@@ -17,7 +17,8 @@ export default function Resources() {
   const { i18n } = useTranslation();
 
   // Get current language code (e.g., 'en', 'zh', 'ru')
-  const currentLanguage = i18n.language || 'en';
+  // Extract language prefix to match database format (e.g., 'en-US' -> 'en')
+  const currentLanguage = (i18n.language || 'en').split('-')[0];
 
   const { data, isLoading } = trpc.resources.list.useQuery({
     page,

@@ -1196,4 +1196,21 @@
 - [x] 测试update API（调整发布日期）
 - [x] 测试list API（查询文章列表）
 - [x] 更新API技术文档
+- [x] 保存checkpoint
+
+
+---
+
+## 🐛 资源中心语言匹配问题修复（2025-11-08）
+
+### 问题
+社媒总工程师报告：资源中心显示"No articles available yet"，但数据库有10篇已发布文章
+
+### 原因
+前端i18n.language可能返回'en-US'，但数据库文章language字段是'en'，严格匹配失败
+
+### 修复任务
+- [x] 修改Resources.tsx的语言匹配逻辑（提取语言前缀）
+- [x] 测试英文环境显示
+- [ ] 测试其他语言环境
 - [ ] 保存checkpoint
