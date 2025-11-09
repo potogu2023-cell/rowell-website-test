@@ -187,9 +187,9 @@ export async function getCategoriesWithProductCount() {
   const db = await getDb();
   if (!db) return [];
   const { categories, productCategories } = await import("../drizzle/schema");
-  const { count } = await import("drizzle-orm");
+  const { countDistinct } = await import("drizzle-orm");
   
-  // Get all visible categories with product count
+  // Get all visible categories with DISTINCT product count
   const result = await db
     .select({
       id: categories.id,
@@ -204,7 +204,7 @@ export async function getCategoriesWithProductCount() {
       icon: categories.icon,
       createdAt: categories.createdAt,
       updatedAt: categories.updatedAt,
-      productCount: count(productCategories.productId),
+      productCount: countDistinct(productCategories.productId),
     })
     .from(categories)
     .leftJoin(productCategories, eq(categories.id, productCategories.categoryId))

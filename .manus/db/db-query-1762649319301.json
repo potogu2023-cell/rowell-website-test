@@ -1,0 +1,115 @@
+{
+  "query": "SELECT c.id, c.name, c.slug, c.parentId, COUNT(DISTINCT pc.productId) as productCount FROM categories c LEFT JOIN product_categories pc ON c.id = pc.categoryId WHERE c.id IN (1, 11, 12, 13, 2, 3, 4, 41, 42, 43, 60005, 5, 51, 52, 53) GROUP BY c.id, c.name, c.slug, c.parentId ORDER BY c.parentId, c.id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.id, c.name, c.slug, c.parentId, COUNT(DISTINCT pc.productId) as productCount FROM categories c LEFT JOIN product_categories pc ON c.id = pc.categoryId WHERE c.id IN (1, 11, 12, 13, 2, 3, 4, 41, 42, 43, 60005, 5, 51, 52, 53) GROUP BY c.id, c.name, c.slug, c.parentId ORDER BY c.parentId, c.id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns",
+      "parentId": "NULL",
+      "productCount": "115"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "parentId": "NULL",
+      "productCount": "74"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "slug": "sample-preparation",
+      "parentId": "NULL",
+      "productCount": "4"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration",
+      "parentId": "NULL",
+      "productCount": "85"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "slug": "lab-supplies",
+      "parentId": "NULL",
+      "productCount": "112"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "slug": "hplc-columns",
+      "parentId": "1",
+      "productCount": "523"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "parentId": "1",
+      "productCount": "425"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "parentId": "1",
+      "productCount": "364"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "slug": "syringe-filters",
+      "parentId": "4",
+      "productCount": "136"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "slug": "membrane-filters",
+      "parentId": "4",
+      "productCount": "0"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "slug": "filter-holders",
+      "parentId": "4",
+      "productCount": "0"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "slug": "filtration-products",
+      "parentId": "4",
+      "productCount": "125"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "slug": "glassware",
+      "parentId": "5",
+      "productCount": "0"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "slug": "plasticware",
+      "parentId": "5",
+      "productCount": "57"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "slug": "storage",
+      "parentId": "5",
+      "productCount": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\tproductCount\n1\tChromatography Columns\tchromatography-columns\tNULL\t115\n2\tChromatography Supplies\tchromatography-supplies\tNULL\t74\n3\tSample Preparation\tsample-preparation\tNULL\t4\n4\tFiltration\tfiltration\tNULL\t85\n5\tLab Supplies\tlab-supplies\tNULL\t112\n11\tHPLC Columns\thplc-columns\t1\t523\n12\tGC Columns\tgc-columns\t1\t425\n13\tGuard Columns\tguard-columns\t1\t364\n41\tSyringe Filters\tsyringe-filters\t4\t136\n42\tMembrane Filters\tmembrane-filters\t4\t0\n43\tFilter Holders\tfilter-holders\t4\t0\n60005\tFiltration Products\tfiltration-products\t4\t125\n51\tGlassware\tglassware\t5\t0\n52\tPlasticware\tplasticware\t5\t57\n53\tStorage\tstorage\t5\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1536
+}
