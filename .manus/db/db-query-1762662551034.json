@@ -1,0 +1,22 @@
+{
+  "query": "SELECT productId, partNumber, name, description, particleSize, poreSize, columnLength, innerDiameter, phaseType, imageUrl FROM products WHERE partNumber = '121-1013'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name, description, particleSize, poreSize, columnLength, innerDiameter, phaseType, imageUrl FROM products WHERE partNumber = '121-1013'",
+  "rows": [
+    {
+      "productId": "AGIL-121-1013",
+      "partNumber": "121-1013",
+      "name": "J&W DB-1 GC Column, 10 m, 0",
+      "description": "J&W DB-1 GC Column, 10 m, 0.18 mm, 0.40 µm, 7 inch cage. This is the most common GC column format compatible with Agilent 5890, 6890, 7820, 7890, 8860, and 8890 series GC systems and all non-Agilent GC systems with a similarly sized oven.",
+      "particleSize": "NULL",
+      "poreSize": "NULL",
+      "columnLength": "10 m",
+      "innerDiameter": "0.18 mm",
+      "phaseType": "DB-1",
+      "imageUrl": "https://www.agilent.com/cs/publishingimages/image-20250211-121406.jpg"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\tdescription\tparticleSize\tporeSize\tcolumnLength\tinnerDiameter\tphaseType\timageUrl\nAGIL-121-1013\t121-1013\tJ&W DB-1 GC Column, 10 m, 0\tJ&W DB-1 GC Column, 10 m, 0.18 mm, 0.40 µm, 7 inch cage. This is the most common GC column format compatible with Agilent 5890, 6890, 7820, 7890, 8860, and 8890 series GC systems and all non-Agilent GC systems with a similarly sized oven.\tNULL\tNULL\t10 m\t0.18 mm\tDB-1\thttps://www.agilent.com/cs/publishingimages/image-20250211-121406.jpg\n",
+  "stderr": "",
+  "execution_time_ms": 1531
+}
