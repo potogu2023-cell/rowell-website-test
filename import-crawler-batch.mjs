@@ -384,8 +384,13 @@ async function importCrawlerBatch(csvFilePath, updateOnly = false) {
   
   // Filter successful products only
   const successfulRecords = records.filter(row => {
-    // Handle both crawlStatus (Agilent) and matchType (Waters) fields
-    return row.crawlStatus === 'success' || row.matchType === 'exact' || row.matchType === 'partial';
+    // Handle different status field names: status (Thermo/Daicel), crawlStatus (Agilent), matchType (Waters)
+    // If no status field exists, assume all records are successful (for cleaned/final CSVs)
+    const hasStatusField = row.status !== undefined || row.crawlStatus !== undefined || row.matchType !== undefined;
+    if (!hasStatusField) {
+      return true; // Assume all records are successful if no status field
+    }
+    return row.status === 'success' || row.crawlStatus === 'success' || row.matchType === 'exact' || row.matchType === 'partial';
   });
   
   console.log(`✅ Successful products: ${successfulRecords.length}`);
