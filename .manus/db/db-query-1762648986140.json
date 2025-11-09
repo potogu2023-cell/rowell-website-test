@@ -1,0 +1,26 @@
+{
+  "query": "SHOW CREATE TABLE product_categories;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SHOW CREATE TABLE product_categories;",
+  "rows": [
+    {
+      "Table": "product_categories",
+      "Create Table": "CREATE TABLE `product_categories` ("
+    }
+  ],
+  "messages": [
+    "  `id` int(11) NOT NULL AUTO_INCREMENT,",
+    "  `productId` int(11) NOT NULL,",
+    "  `categoryId` int(11) NOT NULL,",
+    "  `isPrimary` int(11) NOT NULL DEFAULT '0',",
+    "  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,",
+    "  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */,",
+    "  UNIQUE KEY `unique_product_category` (`productId`,`categoryId`),",
+    "  KEY `product_categories_categoryId_categories_id_fk` (`categoryId`),",
+    "  CONSTRAINT `product_categories_productId_products_id_fk` FOREIGN KEY (`productId`) REFERENCES `7P2s8YLp8Q4WBmq2Lyj4MG`.`products` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,",
+    "  CONSTRAINT `product_categories_categoryId_categories_id_fk` FOREIGN KEY (`categoryId`) REFERENCES `7P2s8YLp8Q4WBmq2Lyj4MG`.`categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION",
+    ") ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin AUTO_INCREMENT=390001"
+  ],
+  "stdout": "Table\tCreate Table\nproduct_categories\tCREATE TABLE `product_categories` (\n  `id` int(11) NOT NULL AUTO_INCREMENT,\n  `productId` int(11) NOT NULL,\n  `categoryId` int(11) NOT NULL,\n  `isPrimary` int(11) NOT NULL DEFAULT '0',\n  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`) /*T![clustered_index] CLUSTERED */,\n  UNIQUE KEY `unique_product_category` (`productId`,`categoryId`),\n  KEY `product_categories_categoryId_categories_id_fk` (`categoryId`),\n  CONSTRAINT `product_categories_productId_products_id_fk` FOREIGN KEY (`productId`) REFERENCES `7P2s8YLp8Q4WBmq2Lyj4MG`.`products` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,\n  CONSTRAINT `product_categories_categoryId_categories_id_fk` FOREIGN KEY (`categoryId`) REFERENCES `7P2s8YLp8Q4WBmq2Lyj4MG`.`categories` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION\n) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin AUTO_INCREMENT=390001\n",
+  "stderr": "",
+  "execution_time_ms": 1549
+}

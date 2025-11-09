@@ -1,0 +1,46 @@
+{
+  "query": "SELECT brand, COUNT(*) as count FROM products WHERE brand NOT IN ('Daicel', 'Waters', 'Phenomenex') GROUP BY brand ORDER BY count DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT brand, COUNT(*) as count FROM products WHERE brand NOT IN ('Daicel', 'Waters', 'Phenomenex') GROUP BY brand ORDER BY count DESC;",
+  "rows": [
+    {
+      "brand": "Agilent",
+      "count": "630"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "count": "366"
+    },
+    {
+      "brand": "Restek",
+      "count": "215"
+    },
+    {
+      "brand": "Merck",
+      "count": "199"
+    },
+    {
+      "brand": "ACE",
+      "count": "151"
+    },
+    {
+      "brand": "Shimadzu",
+      "count": "130"
+    },
+    {
+      "brand": "Develosil",
+      "count": "118"
+    },
+    {
+      "brand": "Avantor",
+      "count": "83"
+    },
+    {
+      "brand": "Thermo Fisher",
+      "count": "3"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcount\nAgilent\t630\nThermo Fisher Scientific\t366\nRestek\t215\nMerck\t199\nACE\t151\nShimadzu\t130\nDevelosil\t118\nAvantor\t83\nThermo Fisher\t3\n",
+  "stderr": "",
+  "execution_time_ms": 1600
+}

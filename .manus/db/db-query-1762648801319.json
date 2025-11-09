@@ -1,0 +1,214 @@
+{
+  "query": "SELECT id, name, slug, parentId FROM categories ORDER BY id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug, parentId FROM categories ORDER BY id;",
+  "rows": [
+    {
+      "id": "1",
+      "name": "Chromatography Columns",
+      "slug": "chromatography-columns",
+      "parentId": "NULL"
+    },
+    {
+      "id": "2",
+      "name": "Chromatography Supplies",
+      "slug": "chromatography-supplies",
+      "parentId": "NULL"
+    },
+    {
+      "id": "3",
+      "name": "Sample Preparation",
+      "slug": "sample-preparation",
+      "parentId": "NULL"
+    },
+    {
+      "id": "4",
+      "name": "Filtration",
+      "slug": "filtration",
+      "parentId": "NULL"
+    },
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "slug": "lab-supplies",
+      "parentId": "NULL"
+    },
+    {
+      "id": "6",
+      "name": "Spectroscopy",
+      "slug": "spectroscopy",
+      "parentId": "NULL"
+    },
+    {
+      "id": "7",
+      "name": "Standards",
+      "slug": "standards",
+      "parentId": "NULL"
+    },
+    {
+      "id": "11",
+      "name": "HPLC Columns",
+      "slug": "hplc-columns",
+      "parentId": "1"
+    },
+    {
+      "id": "12",
+      "name": "GC Columns",
+      "slug": "gc-columns",
+      "parentId": "1"
+    },
+    {
+      "id": "13",
+      "name": "Guard Columns",
+      "slug": "guard-columns",
+      "parentId": "1"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps",
+      "parentId": "2"
+    },
+    {
+      "id": "22",
+      "name": "Syringes & Needles",
+      "slug": "syringes-needles",
+      "parentId": "2"
+    },
+    {
+      "id": "23",
+      "name": "Fittings & Tubing",
+      "slug": "fittings-tubing",
+      "parentId": "2"
+    },
+    {
+      "id": "24",
+      "name": "Mobile Phase",
+      "slug": "mobile-phase",
+      "parentId": "2"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges",
+      "parentId": "3"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "slug": "extraction-accessories",
+      "parentId": "3"
+    },
+    {
+      "id": "33",
+      "name": "Derivatization",
+      "slug": "derivatization",
+      "parentId": "3"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "slug": "syringe-filters",
+      "parentId": "4"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "slug": "membrane-filters",
+      "parentId": "4"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "slug": "filter-holders",
+      "parentId": "4"
+    },
+    {
+      "id": "51",
+      "name": "Glassware",
+      "slug": "glassware",
+      "parentId": "5"
+    },
+    {
+      "id": "52",
+      "name": "Plasticware",
+      "slug": "plasticware",
+      "parentId": "5"
+    },
+    {
+      "id": "53",
+      "name": "Storage",
+      "slug": "storage",
+      "parentId": "5"
+    },
+    {
+      "id": "111",
+      "name": "Analytical Columns",
+      "slug": "analytical-columns",
+      "parentId": "11"
+    },
+    {
+      "id": "112",
+      "name": "Preparative Columns",
+      "slug": "preparative-columns",
+      "parentId": "11"
+    },
+    {
+      "id": "113",
+      "name": "UHPLC Columns",
+      "slug": "uhplc-columns",
+      "parentId": "11"
+    },
+    {
+      "id": "114",
+      "name": "Chiral Columns",
+      "slug": "chiral-columns",
+      "parentId": "11"
+    },
+    {
+      "id": "115",
+      "name": "Bio Columns",
+      "slug": "bio-columns",
+      "parentId": "11"
+    },
+    {
+      "id": "60002",
+      "name": "Sample Vials",
+      "slug": "sample-vials",
+      "parentId": "3"
+    },
+    {
+      "id": "60003",
+      "name": "Septa & Closures",
+      "slug": "septa-closures",
+      "parentId": "3"
+    },
+    {
+      "id": "60004",
+      "name": "Centrifuge Tubes",
+      "slug": "centrifuge-tubes",
+      "parentId": "3"
+    },
+    {
+      "id": "60005",
+      "name": "Filtration Products",
+      "slug": "filtration-products",
+      "parentId": "4"
+    },
+    {
+      "id": "60006",
+      "name": "Tubing & Fittings",
+      "slug": "tubing-fittings",
+      "parentId": "2"
+    },
+    {
+      "id": "60007",
+      "name": "Consumables",
+      "slug": "consumables",
+      "parentId": "2"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\n1\tChromatography Columns\tchromatography-columns\tNULL\n2\tChromatography Supplies\tchromatography-supplies\tNULL\n3\tSample Preparation\tsample-preparation\tNULL\n4\tFiltration\tfiltration\tNULL\n5\tLab Supplies\tlab-supplies\tNULL\n6\tSpectroscopy\tspectroscopy\tNULL\n7\tStandards\tstandards\tNULL\n11\tHPLC Columns\thplc-columns\t1\n12\tGC Columns\tgc-columns\t1\n13\tGuard Columns\tguard-columns\t1\n21\tVials & Caps\tvials-caps\t2\n22\tSyringes & Needles\tsyringes-needles\t2\n23\tFittings & Tubing\tfittings-tubing\t2\n24\tMobile Phase\tmobile-phase\t2\n31\tSPE Cartridges\tspe-cartridges\t3\n32\tExtraction Accessories\textraction-accessories\t3\n33\tDerivatization\tderivatization\t3\n41\tSyringe Filters\tsyringe-filters\t4\n42\tMembrane Filters\tmembrane-filters\t4\n43\tFilter Holders\tfilter-holders\t4\n51\tGlassware\tglassware\t5\n52\tPlasticware\tplasticware\t5\n53\tStorage\tstorage\t5\n111\tAnalytical Columns\tanalytical-columns\t11\n112\tPreparative Columns\tpreparative-columns\t11\n113\tUHPLC Columns\tuhplc-columns\t11\n114\tChiral Columns\tchiral-columns\t11\n115\tBio Columns\tbio-columns\t11\n60002\tSample Vials\tsample-vials\t3\n60003\tSepta & Closures\tsepta-closures\t3\n60004\tCentrifuge Tubes\tcentrifuge-tubes\t3\n60005\tFiltration Products\tfiltration-products\t4\n60006\tTubing & Fittings\ttubing-fittings\t2\n60007\tConsumables\tconsumables\t2\n",
+  "stderr": "",
+  "execution_time_ms": 1607
+}

@@ -1,0 +1,35 @@
+{
+  "query": "SELECT id, partNumber, name FROM products WHERE LOWER(name) LIKE '%vanguard%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, partNumber, name FROM products WHERE LOWER(name) LIKE '%vanguard%' LIMIT 5;",
+  "rows": [
+    {
+      "id": "244970",
+      "partNumber": "186010484",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk"
+    },
+    {
+      "id": "244971",
+      "partNumber": "186010482",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk"
+    },
+    {
+      "id": "244972",
+      "partNumber": "186010477",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk"
+    },
+    {
+      "id": "244973",
+      "partNumber": "186010476",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk"
+    },
+    {
+      "id": "244974",
+      "partNumber": "186010483",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tpartNumber\tname\n244970\t186010484\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk\n244971\t186010482\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk\n244972\t186010477\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk\n244973\t186010476\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk\n244974\t186010483\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk\n",
+  "stderr": "",
+  "execution_time_ms": 1550
+}

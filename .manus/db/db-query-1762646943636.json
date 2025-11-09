@@ -1,0 +1,58 @@
+{
+  "query": "SELECT brand, COUNT(*) as total, SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 50 THEN 1 ELSE 0 END) as withDesc, SUM(CASE WHEN specifications IS NOT NULL THEN 1 ELSE 0 END) as withSpecs FROM products WHERE brand IN ('YMC', 'ACE', 'Merck', 'Develosil', 'Thermo Fisher Scientific', 'Restek', 'Agilent', 'Avantor', 'Shimadzu') GROUP BY brand ORDER BY total DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT brand, COUNT(*) as total, SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 50 THEN 1 ELSE 0 END) as withDesc, SUM(CASE WHEN specifications IS NOT NULL THEN 1 ELSE 0 END) as withSpecs FROM products WHERE brand IN ('YMC', 'ACE', 'Merck', 'Develosil', 'Thermo Fisher Scientific', 'Restek', 'Agilent', 'Avantor', 'Shimadzu') GROUP BY brand ORDER BY total DESC;",
+  "rows": [
+    {
+      "brand": "Agilent",
+      "total": "630",
+      "withDesc": "617",
+      "withSpecs": "615"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "total": "366",
+      "withDesc": "253",
+      "withSpecs": "247"
+    },
+    {
+      "brand": "Restek",
+      "total": "215",
+      "withDesc": "0",
+      "withSpecs": "0"
+    },
+    {
+      "brand": "Merck",
+      "total": "199",
+      "withDesc": "18",
+      "withSpecs": "0"
+    },
+    {
+      "brand": "ACE",
+      "total": "151",
+      "withDesc": "0",
+      "withSpecs": "0"
+    },
+    {
+      "brand": "Shimadzu",
+      "total": "130",
+      "withDesc": "15",
+      "withSpecs": "0"
+    },
+    {
+      "brand": "Develosil",
+      "total": "118",
+      "withDesc": "0",
+      "withSpecs": "0"
+    },
+    {
+      "brand": "Avantor",
+      "total": "83",
+      "withDesc": "0",
+      "withSpecs": "0"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\ttotal\twithDesc\twithSpecs\nAgilent\t630\t617\t615\nThermo Fisher Scientific\t366\t253\t247\nRestek\t215\t0\t0\nMerck\t199\t18\t0\nACE\t151\t0\t0\nShimadzu\t130\t15\t0\nDevelosil\t118\t0\t0\nAvantor\t83\t0\t0\n",
+  "stderr": "",
+  "execution_time_ms": 1558
+}

@@ -1,0 +1,9 @@
+{
+  "query": "INSERT IGNORE INTO product_categories (productId, categoryId) SELECT DISTINCT p.id, 21 FROM products p WHERE LOWER(p.name) LIKE '%autosampler vial%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute INSERT IGNORE INTO product_categories (productId, categoryId) SELECT DISTINCT p.id, 21 FROM products p WHERE LOWER(p.name) LIKE '%autosampler vial%';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1504
+}

@@ -1,0 +1,80 @@
+{
+  "query": "SELECT p.id, p.partNumber, p.name, pc.categoryId, c.name as categoryName FROM products p LEFT JOIN product_categories pc ON p.id = pc.productId LEFT JOIN categories c ON pc.categoryId = c.id WHERE LOWER(p.name) LIKE '%vanguard%' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT p.id, p.partNumber, p.name, pc.categoryId, c.name as categoryName FROM products p LEFT JOIN product_categories pc ON p.id = pc.productId LEFT JOIN categories c ON pc.categoryId = c.id WHERE LOWER(p.name) LIKE '%vanguard%' LIMIT 10;",
+  "rows": [
+    {
+      "id": "244974",
+      "partNumber": "186010483",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk",
+      "categoryId": "5",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "244973",
+      "partNumber": "186010476",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk",
+      "categoryId": "5",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "244972",
+      "partNumber": "186010477",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk",
+      "categoryId": "5",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "244971",
+      "partNumber": "186010482",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk",
+      "categoryId": "5",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "244970",
+      "partNumber": "186010484",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk",
+      "categoryId": "5",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "244974",
+      "partNumber": "186010483",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk",
+      "categoryId": "111",
+      "categoryName": "Analytical Columns"
+    },
+    {
+      "id": "244973",
+      "partNumber": "186010476",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk",
+      "categoryId": "111",
+      "categoryName": "Analytical Columns"
+    },
+    {
+      "id": "244972",
+      "partNumber": "186010477",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk",
+      "categoryId": "111",
+      "categoryName": "Analytical Columns"
+    },
+    {
+      "id": "244971",
+      "partNumber": "186010482",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk",
+      "categoryId": "111",
+      "categoryName": "Analytical Columns"
+    },
+    {
+      "id": "244970",
+      "partNumber": "186010484",
+      "name": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk",
+      "categoryId": "111",
+      "categoryName": "Analytical Columns"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tpartNumber\tname\tcategoryId\tcategoryName\n244974\t186010483\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk\t5\tLab Supplies\n244973\t186010476\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk\t5\tLab Supplies\n244972\t186010477\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk\t5\tLab Supplies\n244971\t186010482\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk\t5\tLab Supplies\n244970\t186010484\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk\t5\tLab Supplies\n244974\t186010483\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk\t111\tAnalytical Columns\n244973\t186010476\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk\t111\tAnalytical Columns\n244972\t186010477\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk\t111\tAnalytical Columns\n244971\t186010482\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk\t111\tAnalytical Columns\n244970\t186010484\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk\t111\tAnalytical Columns\n",
+  "stderr": "",
+  "execution_time_ms": 1553
+}

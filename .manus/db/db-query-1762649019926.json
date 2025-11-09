@@ -1,0 +1,110 @@
+{
+  "query": "SELECT c.name as categoryName, p.partNumber, p.name as productName FROM product_categories pc JOIN categories c ON pc.categoryId = c.id JOIN products p ON pc.productId = p.id WHERE c.id IN (21, 31, 41, 52, 60003) ORDER BY c.id LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.name as categoryName, p.partNumber, p.name as productName FROM product_categories pc JOIN categories c ON pc.categoryId = c.id JOIN products p ON pc.productId = p.id WHERE c.id IN (21, 31, 41, 52, 60003) ORDER BY c.id LIMIT 20;",
+  "rows": [
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5040-4649",
+      "productName": "9mm Screw Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5040-4681",
+      "productName": "9mm Screw Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5040-4682",
+      "productName": "9mm Screw Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5040-4683",
+      "productName": "9mm Screw Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5061-3370",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5067-0226",
+      "productName": "Headspace Vial Amber Glass 20mL"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5067-0227",
+      "productName": "Headspace Vial Amber Glass 10mL"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5067-0235",
+      "productName": "Headspace Vial Clear Glass 20mL"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-1210",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-1211",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-1212",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-1215",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-1216",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-1217",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-3376",
+      "productName": "2mL Crimp Vial Amber Write-On"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-3400",
+      "productName": "2mL Crimp Vial Clear No Write-On"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5181-8801",
+      "productName": "2mL Crimp Vial Amber No Write-On"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5182-0552",
+      "productName": "11mm Crimp Cap with Septa"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5182-0556",
+      "productName": "2 mL Screw Top Vial - Amber Write-On"
+    },
+    {
+      "categoryName": "Vials & Caps",
+      "partNumber": "5182-0557",
+      "productName": "2 mL Screw Top Vial - Clear"
+    }
+  ],
+  "messages": [],
+  "stdout": "categoryName\tpartNumber\tproductName\nVials & Caps\t5040-4649\t9mm Screw Cap with Septa\nVials & Caps\t5040-4681\t9mm Screw Cap with Septa\nVials & Caps\t5040-4682\t9mm Screw Cap with Septa\nVials & Caps\t5040-4683\t9mm Screw Cap with Septa\nVials & Caps\t5061-3370\t11mm Crimp Cap with Septa\nVials & Caps\t5067-0226\tHeadspace Vial Amber Glass 20mL\nVials & Caps\t5067-0227\tHeadspace Vial Amber Glass 10mL\nVials & Caps\t5067-0235\tHeadspace Vial Clear Glass 20mL\nVials & Caps\t5181-1210\t11mm Crimp Cap with Septa\nVials & Caps\t5181-1211\t11mm Crimp Cap with Septa\nVials & Caps\t5181-1212\t11mm Crimp Cap with Septa\nVials & Caps\t5181-1215\t11mm Crimp Cap with Septa\nVials & Caps\t5181-1216\t11mm Crimp Cap with Septa\nVials & Caps\t5181-1217\t11mm Crimp Cap with Septa\nVials & Caps\t5181-3376\t2mL Crimp Vial Amber Write-On\nVials & Caps\t5181-3400\t2mL Crimp Vial Clear No Write-On\nVials & Caps\t5181-8801\t2mL Crimp Vial Amber No Write-On\nVials & Caps\t5182-0552\t11mm Crimp Cap with Septa\nVials & Caps\t5182-0556\t2 mL Screw Top Vial - Amber Write-On\nVials & Caps\t5182-0557\t2 mL Screw Top Vial - Clear\n",
+  "stderr": "",
+  "execution_time_ms": 1556
+}

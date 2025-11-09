@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO product_categories (productId, categoryId) SELECT DISTINCT p.id, 41 FROM products p WHERE p.brand IN ('Waters', 'Phenomenex') AND (LOWER(p.name) LIKE '%syringe filter%' OR LOWER(p.name) LIKE '%phenex-%') AND NOT EXISTS (SELECT 1 FROM product_categories pc WHERE pc.productId = p.id AND pc.categoryId = 41);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute INSERT INTO product_categories (productId, categoryId) SELECT DISTINCT p.id, 41 FROM products p WHERE p.brand IN ('Waters', 'Phenomenex') AND (LOWER(p.name) LIKE '%syringe filter%' OR LOWER(p.name) LIKE '%phenex-%') AND NOT EXISTS (SELECT 1 FROM product_categories pc WHERE pc.productId = p.id AND pc.categoryId = 41);",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1566
+}

@@ -1,0 +1,85 @@
+{
+  "query": "SELECT partNumber, name, brand FROM products WHERE partNumber IN ('186007768', '186007771', '186009373', 'AF0-9400', 'AF0-9401', 'AF0-9450', 'AF0-2107-12', 'AF0-8104-12', 'AF0-1107-12', 'AF0-0200', 'AF0-0201', 'AF0-0202', '8B-S001-DAK', '8B-S001-DAK-S', '8B-S001-DAM');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT partNumber, name, brand FROM products WHERE partNumber IN ('186007768', '186007771', '186009373', 'AF0-9400', 'AF0-9401', 'AF0-9450', 'AF0-2107-12', 'AF0-8104-12', 'AF0-1107-12', 'AF0-0200', 'AF0-0201', 'AF0-0202', '8B-S001-DAK', '8B-S001-DAK-S', '8B-S001-DAM');",
+  "rows": [
+    {
+      "partNumber": "186007768",
+      "name": "XBridge BEH C18 VanGuard Cartridge, 130Å, 3.5 µm, 3.9 mm X 5 mm, 3/pk",
+      "brand": "Waters"
+    },
+    {
+      "partNumber": "186007771",
+      "name": "XBridge BEH C18 VanGuard Cartridge, 130Å, 5 µm, 3.9 mm X 5 mm, 3/pk",
+      "brand": "Waters"
+    },
+    {
+      "partNumber": "186009373",
+      "name": "Atlantis Premier BEH C18 AX VanGuard FIT Cartridge, 1.7 µm, 2.1 x 5 mm, 3/pk",
+      "brand": "Waters"
+    },
+    {
+      "partNumber": "8B-S001-DAK",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes, 100/Pk",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "8B-S001-DAK-S",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes (SAMPLE), 5/Pk",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "8B-S001-DAM",
+      "name": "Strata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes, 500/Pk",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-2107-12",
+      "name": "Phenex-NY 15mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-8104-12",
+      "name": "Phenex-CA 28mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-1107-12",
+      "name": "Phenex-NY 25mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-0200",
+      "name": "Blue Screw Cap with PTFE/Silicone Septa",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-0201",
+      "name": "Red Screw Cap with PTFE/Silicone Septa",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-0202",
+      "name": "Green Screw Cap with PTFE/Silicone Septa",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-9400",
+      "name": "Autosampler Vial, Clear Glass",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-9401",
+      "name": "Autosampler Vial, Amber Glass",
+      "brand": "Phenomenex"
+    },
+    {
+      "partNumber": "AF0-9450",
+      "name": "Autosampler Vial, Clear Glass",
+      "brand": "Phenomenex"
+    }
+  ],
+  "messages": [],
+  "stdout": "partNumber\tname\tbrand\n186007768\tXBridge BEH C18 VanGuard Cartridge, 130Å, 3.5 µm, 3.9 mm X 5 mm, 3/pk\tWaters\n186007771\tXBridge BEH C18 VanGuard Cartridge, 130Å, 5 µm, 3.9 mm X 5 mm, 3/pk\tWaters\n186009373\tAtlantis Premier BEH C18 AX VanGuard FIT Cartridge, 1.7 µm, 2.1 x 5 mm, 3/pk\tWaters\n8B-S001-DAK\tStrata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes, 100/Pk\tPhenomenex\n8B-S001-DAK-S\tStrata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes (SAMPLE), 5/Pk\tPhenomenex\n8B-S001-DAM\tStrata C18-E (55 µm, 70 Å), 50 mg / 1 mL, Tubes, 500/Pk\tPhenomenex\nAF0-2107-12\tPhenex-NY 15mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk\tPhenomenex\nAF0-8104-12\tPhenex-CA 28mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk\tPhenomenex\nAF0-1107-12\tPhenex-NY 25mm Syringe Filters 0.45u,, Non-Sterile, Luer/Slip, 100/Pk\tPhenomenex\nAF0-0200\tBlue Screw Cap with PTFE/Silicone Septa\tPhenomenex\nAF0-0201\tRed Screw Cap with PTFE/Silicone Septa\tPhenomenex\nAF0-0202\tGreen Screw Cap with PTFE/Silicone Septa\tPhenomenex\nAF0-9400\tAutosampler Vial, Clear Glass\tPhenomenex\nAF0-9401\tAutosampler Vial, Amber Glass\tPhenomenex\nAF0-9450\tAutosampler Vial, Clear Glass\tPhenomenex\n",
+  "stderr": "",
+  "execution_time_ms": 1582
+}

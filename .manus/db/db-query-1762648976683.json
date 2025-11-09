@@ -1,0 +1,100 @@
+{
+  "query": "SELECT pc.*, p.name as productName, c.name as categoryName FROM product_categories pc JOIN products p ON pc.productId = p.id JOIN categories c ON pc.categoryId = c.id WHERE LOWER(p.name) LIKE '%vanguard%' LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT pc.*, p.name as productName, c.name as categoryName FROM product_categories pc JOIN products p ON pc.productId = p.id JOIN categories c ON pc.categoryId = c.id WHERE LOWER(p.name) LIKE '%vanguard%' LIMIT 10;",
+  "rows": [
+    {
+      "id": "241992",
+      "productId": "244970",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241993",
+      "productId": "244971",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241994",
+      "productId": "244972",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241995",
+      "productId": "244973",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241996",
+      "productId": "244974",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241997",
+      "productId": "244975",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 50 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241998",
+      "productId": "244976",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier C18+ VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "241999",
+      "productId": "244977",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier C18+ VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "242000",
+      "productId": "244978",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "CORTECS Premier C18+ VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk",
+      "categoryName": "Lab Supplies"
+    },
+    {
+      "id": "242926",
+      "productId": "245904",
+      "categoryId": "5",
+      "isPrimary": "0",
+      "createdAt": "2025-11-01 01:46:14",
+      "productName": "XBridge BEH C18 VanGuard Cartridge, 130Å, 3.5 µm, 3.9 mm X 5 mm, 3/pk",
+      "categoryName": "Lab Supplies"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tproductId\tcategoryId\tisPrimary\tcreatedAt\tproductName\tcategoryName\n241992\t244970\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk\tLab Supplies\n241993\t244971\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk\tLab Supplies\n241994\t244972\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 150 mm, 1/pk\tLab Supplies\n241995\t244973\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 100 mm, 1/pk\tLab Supplies\n241996\t244974\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk\tLab Supplies\n241997\t244975\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier T3 VanGuard FIT Column, 2.7 µm, 2.1 mm X 50 mm, 1/pk\tLab Supplies\n241998\t244976\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier C18+ VanGuard FIT Column, 2.7 µm, 4.6 mm X 100 mm, 1/pk\tLab Supplies\n241999\t244977\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier C18+ VanGuard FIT Column, 2.7 µm, 4.6 mm X 50 mm, 1/pk\tLab Supplies\n242000\t244978\t5\t0\t2025-11-01 01:46:14\tCORTECS Premier C18+ VanGuard FIT Column, 2.7 µm, 4.6 mm X 150 mm, 1/pk\tLab Supplies\n242926\t245904\t5\t0\t2025-11-01 01:46:14\tXBridge BEH C18 VanGuard Cartridge, 130Å, 3.5 µm, 3.9 mm X 5 mm, 3/pk\tLab Supplies\n",
+  "stderr": "",
+  "execution_time_ms": 1516
+}

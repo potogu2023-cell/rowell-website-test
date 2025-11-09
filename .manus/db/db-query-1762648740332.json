@@ -1,0 +1,55 @@
+{
+  "query": "SELECT id, name, slug FROM categories WHERE name LIKE '%Cartridge%' OR name LIKE '%Vial%' OR name LIKE '%Filter%' OR name LIKE '%Septa%' OR name LIKE '%Cap%' OR name LIKE '%Lab%' OR name LIKE '%Extraction%' OR name LIKE '%Membrane%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, name, slug FROM categories WHERE name LIKE '%Cartridge%' OR name LIKE '%Vial%' OR name LIKE '%Filter%' OR name LIKE '%Septa%' OR name LIKE '%Cap%' OR name LIKE '%Lab%' OR name LIKE '%Extraction%' OR name LIKE '%Membrane%';",
+  "rows": [
+    {
+      "id": "5",
+      "name": "Lab Supplies",
+      "slug": "lab-supplies"
+    },
+    {
+      "id": "21",
+      "name": "Vials & Caps",
+      "slug": "vials-caps"
+    },
+    {
+      "id": "31",
+      "name": "SPE Cartridges",
+      "slug": "spe-cartridges"
+    },
+    {
+      "id": "32",
+      "name": "Extraction Accessories",
+      "slug": "extraction-accessories"
+    },
+    {
+      "id": "41",
+      "name": "Syringe Filters",
+      "slug": "syringe-filters"
+    },
+    {
+      "id": "42",
+      "name": "Membrane Filters",
+      "slug": "membrane-filters"
+    },
+    {
+      "id": "43",
+      "name": "Filter Holders",
+      "slug": "filter-holders"
+    },
+    {
+      "id": "60002",
+      "name": "Sample Vials",
+      "slug": "sample-vials"
+    },
+    {
+      "id": "60003",
+      "name": "Septa & Closures",
+      "slug": "septa-closures"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\n5\tLab Supplies\tlab-supplies\n21\tVials & Caps\tvials-caps\n31\tSPE Cartridges\tspe-cartridges\n32\tExtraction Accessories\textraction-accessories\n41\tSyringe Filters\tsyringe-filters\n42\tMembrane Filters\tmembrane-filters\n43\tFilter Holders\tfilter-holders\n60002\tSample Vials\tsample-vials\n60003\tSepta & Closures\tsepta-closures\n",
+  "stderr": "",
+  "execution_time_ms": 1596
+}
