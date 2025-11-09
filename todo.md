@@ -2041,9 +2041,13 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 ## 🔧 生产环境Sitemap修复（2025-11-09）
 
 ### 问题
-- [ ] 生产环境sitemap.xml返回HTML而非XML
-- [ ] 需要创建vercel.json配置文件
-- [ ] 重新部署到生产环境
+- [x] 生产环境sitemap.xml返回HTML而非XML（原因：Vercel静态文件优先）
+- [x] 创建vercel.json配置文件（重写/sitemap.xml和/robots.txt到API端点）
+- [x] 保存checkpoint (version: 908138e1)
+- [x] 创建静态sitemap.xml和robots.txt文件（作为临时解决方案）
+- [x] 放置到client/public目录（作为静态资源服务）
+- [ ] 部署最新checkpoint到生产环境
+- [ ] 验证生产环境sitemap.xml
 
 ---
 
