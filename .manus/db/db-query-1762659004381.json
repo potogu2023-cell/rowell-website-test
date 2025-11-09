@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, metaDescription FROM resources WHERE slug = 'peak-splitting-in-hplc-diagnosis-and-ultimate-solutions' LIMIT 1;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, title, metaDescription FROM resources WHERE slug = 'peak-splitting-in-hplc-diagnosis-and-ultimate-solutions' LIMIT 1;",
+  "rows": [
+    {
+      "id": "30001",
+      "title": "Peak Splitting in HPLC: Diagnosis and Ultimate Solutions",
+      "metaDescription": "Learn how to diagnose and fix peak splitting in HPLC. Discover physical and chemical causes, troubleshooting steps, and ultimate solutions from ROWELL experts."
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tmetaDescription\n30001\tPeak Splitting in HPLC: Diagnosis and Ultimate Solutions\tLearn how to diagnose and fix peak splitting in HPLC. Discover physical and chemical causes, troubleshooting steps, and ultimate solutions from ROWELL experts.\n",
+  "stderr": "",
+  "execution_time_ms": 2542
+}

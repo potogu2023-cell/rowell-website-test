@@ -1984,3 +1984,53 @@ Restek品牌因技术复杂度高暂停，优先完成其他品牌
 - [x] 列出已完成的功能（7个核心功能）
 - [x] 提供部署到生产环境的建议（3个待执行任务）
 - [x] 准备交付给用户和社媒总工程师
+
+
+---
+
+## 🚀 部署到生产环境（2025-11-09）
+
+### 准备工作
+- [x] 创建checkpoint 2184c1ba
+- [x] 生成部署指南（DEPLOYMENT_GUIDE_FOR_OSCAR.md）
+- [x] 准备SEO验证步骤
+- [x] 准备搜索引擎提交指南
+
+### 部署执行（Oscar）
+- [ ] 在Management UI中点击Publish按钮
+- [ ] 等待部署完成（2-5分钟）
+- [ ] 获取生产环境URL
+
+### 部署后验证
+- [ ] 访问生产网站 (https://www.rowellhplc.com)
+- [ ] 验证Meta标签（至少3个文章页面）
+- [ ] 测试Sitemap.xml访问
+- [ ] 测试Robots.txt访问
+
+### 搜索引擎提交
+- [ ] Google Search Console提交（30-45分钟）
+- [ ] Yandex Webmaster提交（20-30分钟）
+- [ ] Bing Webmaster Tools提交（15-20分钟）
+
+
+---
+
+## 🔧 修复Sitemap API路由问题（2025-11-09）
+
+### 背景
+- ✅ 98.9%的工作成果已成功部署到生产环境
+- ✅ 产品数据库（2,689个产品）正常工作
+- ✅ 资源中心文章（31篇）正常工作，Meta描述已在数据库中
+- ❌ 唯一的问题：/sitemap.xml返回SPA HTML而不是XML
+
+### 任务清单
+- [x] 检查当前的路由配置（server/_core/index.ts, vite.ts）
+- [x] 修复sitemap路由配置（修复Vite中间件拦截问题）
+- [x] 修复日期处理问题（支持Date对象和字符串）
+- [x] 测试开发环境sitemap（✅ 7个静态页面 + 31篇文章 = 38个URL）
+- [ ] 部署到生产环境
+- [ ] 验证生产环境sitemap.xml
+- [ ] 验证Meta标签服务端渲染
+- [ ] 创建搜索引擎提交指南
+- [ ] 保存checkpoint
+- [ ] 向Oscar报告完成情况

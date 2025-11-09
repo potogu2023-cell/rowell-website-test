@@ -28,8 +28,9 @@ const STATIC_PAGES = [
 /**
  * Format date to W3C datetime format (YYYY-MM-DD)
  */
-function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0];
+function formatDate(date: Date | string): string {
+  const dateObj = typeof date === 'string' ? new Date(date) : date;
+  return dateObj.toISOString().split("T")[0];
 }
 
 /**
