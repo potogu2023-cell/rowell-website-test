@@ -141,7 +141,7 @@ async function importProducts(csvFile: string) {
         .update(products)
         .set({
           description: crawlerProduct.description || null,
-          specifications: specificationsObj,
+          specifications: specCount > 0 ? JSON.stringify(specificationsObj) : null,
           imageUrl: crawlerProduct.imageUrl || existing[0].imageUrl,
           catalogUrl: crawlerProduct.catalogUrl || existing[0].catalogUrl,
           updatedAt: new Date(),
