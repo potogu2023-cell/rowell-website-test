@@ -1,0 +1,110 @@
+{
+  "query": "SELECT \n  SUBSTRING(partNumber, 1, 10) as part_prefix,\n  COUNT(*) as count,\n  MIN(name) as sample_name\nFROM products \nWHERE brand = 'Agilent'\nGROUP BY SUBSTRING(partNumber, 1, 10)\nORDER BY count DESC\nLIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  SUBSTRING(partNumber, 1, 10) as part_prefix,\n  COUNT(*) as count,\n  MIN(name) as sample_name\nFROM products \nWHERE brand = 'Agilent'\nGROUP BY SUBSTRING(partNumber, 1, 10)\nORDER BY count DESC\nLIMIT 20",
+  "rows": [
+    {
+      "part_prefix": "G4513-8020",
+      "count": "7",
+      "sample_name": "GC Autosampler Syringe 10 µL"
+    },
+    {
+      "part_prefix": "G4513-8021",
+      "count": "6",
+      "sample_name": "GC Autosampler Syringe 1 µL"
+    },
+    {
+      "part_prefix": "G2258-8731",
+      "count": "5",
+      "sample_name": "HPLC PTFE Tubing 0.25mm ID x 100mm"
+    },
+    {
+      "part_prefix": "G4513-8022",
+      "count": "4",
+      "sample_name": "GC Autosampler Syringe 0.5 µL"
+    },
+    {
+      "part_prefix": "699968-901",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 4.6 x 50 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "699968-301",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 3, 50 mm, 2.7 µm, with column ID"
+    },
+    {
+      "part_prefix": "695768-901",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 2.1 x 100 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "699768-901",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 2.1 x 50 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "693768-901",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 2.1 x 150 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "693968-301",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 3.0 x 150 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "695968-301",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 3.0 x 100 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "695968-901",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 4.6 x 100 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "693968-901",
+      "count": "3",
+      "sample_name": "InfinityLab Poroshell 120 Bonus-RP 4.6 x 150 mm, 2.7 µm"
+    },
+    {
+      "part_prefix": "0890-1762",
+      "count": "2",
+      "sample_name": "Tubing, PEEK, 1.6 mm od, 0.25 mm id, 1.5 m. Blue"
+    },
+    {
+      "part_prefix": "5005-0064",
+      "count": "2",
+      "sample_name": "Blank Nut, bio-compatible, MP35N, for M4 port. Compatible with InfinityLab Bio Instruments"
+    },
+    {
+      "part_prefix": "0100-2637",
+      "count": "2",
+      "sample_name": "Nut and ferrule, stainless steel, 1/8 inch, for sample loop for switching valve"
+    },
+    {
+      "part_prefix": "G2258-8730",
+      "count": "2",
+      "sample_name": "HPLC PTFE Tubing"
+    },
+    {
+      "part_prefix": "01080-8320",
+      "count": "2",
+      "sample_name": "Blanking Nut, Adapter, Hose Connector"
+    },
+    {
+      "part_prefix": "G4513-8023",
+      "count": "2",
+      "sample_name": "GC Autosampler Syringe 1 µL"
+    },
+    {
+      "part_prefix": "01018-6730",
+      "count": "2",
+      "sample_name": "Capillary stainless steel 0.25 x 700 mm S/S ps/ns"
+    }
+  ],
+  "messages": [],
+  "stdout": "part_prefix\tcount\tsample_name\nG4513-8020\t7\tGC Autosampler Syringe 10 µL\nG4513-8021\t6\tGC Autosampler Syringe 1 µL\nG2258-8731\t5\tHPLC PTFE Tubing 0.25mm ID x 100mm\nG4513-8022\t4\tGC Autosampler Syringe 0.5 µL\n699968-901\t3\tInfinityLab Poroshell 120 Bonus-RP 4.6 x 50 mm, 2.7 µm\n699968-301\t3\tInfinityLab Poroshell 120 Bonus-RP 3, 50 mm, 2.7 µm, with column ID\n695768-901\t3\tInfinityLab Poroshell 120 Bonus-RP 2.1 x 100 mm, 2.7 µm\n699768-901\t3\tInfinityLab Poroshell 120 Bonus-RP 2.1 x 50 mm, 2.7 µm\n693768-901\t3\tInfinityLab Poroshell 120 Bonus-RP 2.1 x 150 mm, 2.7 µm\n693968-301\t3\tInfinityLab Poroshell 120 Bonus-RP 3.0 x 150 mm, 2.7 µm\n695968-301\t3\tInfinityLab Poroshell 120 Bonus-RP 3.0 x 100 mm, 2.7 µm\n695968-901\t3\tInfinityLab Poroshell 120 Bonus-RP 4.6 x 100 mm, 2.7 µm\n693968-901\t3\tInfinityLab Poroshell 120 Bonus-RP 4.6 x 150 mm, 2.7 µm\n0890-1762\t2\tTubing, PEEK, 1.6 mm od, 0.25 mm id, 1.5 m. Blue\n5005-0064\t2\tBlank Nut, bio-compatible, MP35N, for M4 port. Compatible with InfinityLab Bio Instruments\n0100-2637\t2\tNut and ferrule, stainless steel, 1/8 inch, for sample loop for switching valve\nG2258-8730\t2\tHPLC PTFE Tubing\n01080-8320\t2\tBlanking Nut, Adapter, Hose Connector\nG4513-8023\t2\tGC Autosampler Syringe 1 µL\n01018-6730\t2\tCapillary stainless steel 0.25 x 700 mm S/S ps/ns\n",
+  "stderr": "",
+  "execution_time_ms": 1638
+}

@@ -1,0 +1,82 @@
+{
+  "query": "SELECT \n  brand,\n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as has_description,\n  ROUND(SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as description_rate\nFROM products\nGROUP BY brand\nORDER BY total_products DESC",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  brand,\n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as has_description,\n  ROUND(SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as description_rate\nFROM products\nGROUP BY brand\nORDER BY total_products DESC",
+  "rows": [
+    {
+      "brand": "Agilent",
+      "total_products": "630",
+      "has_description": "615",
+      "description_rate": "97.6"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "total_products": "366",
+      "has_description": "226",
+      "description_rate": "61.7"
+    },
+    {
+      "brand": "Daicel",
+      "total_products": "277",
+      "has_description": "78",
+      "description_rate": "28.2"
+    },
+    {
+      "brand": "Waters",
+      "total_products": "270",
+      "has_description": "105",
+      "description_rate": "38.9"
+    },
+    {
+      "brand": "Phenomenex",
+      "total_products": "247",
+      "has_description": "33",
+      "description_rate": "13.4"
+    },
+    {
+      "brand": "Restek",
+      "total_products": "215",
+      "has_description": "0",
+      "description_rate": "0.0"
+    },
+    {
+      "brand": "Merck",
+      "total_products": "199",
+      "has_description": "0",
+      "description_rate": "0.0"
+    },
+    {
+      "brand": "ACE",
+      "total_products": "151",
+      "has_description": "0",
+      "description_rate": "0.0"
+    },
+    {
+      "brand": "Shimadzu",
+      "total_products": "130",
+      "has_description": "0",
+      "description_rate": "0.0"
+    },
+    {
+      "brand": "Develosil",
+      "total_products": "118",
+      "has_description": "0",
+      "description_rate": "0.0"
+    },
+    {
+      "brand": "Avantor",
+      "total_products": "83",
+      "has_description": "0",
+      "description_rate": "0.0"
+    },
+    {
+      "brand": "Thermo Fisher",
+      "total_products": "3",
+      "has_description": "3",
+      "description_rate": "100.0"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\ttotal_products\thas_description\tdescription_rate\nAgilent\t630\t615\t97.6\nThermo Fisher Scientific\t366\t226\t61.7\nDaicel\t277\t78\t28.2\nWaters\t270\t105\t38.9\nPhenomenex\t247\t33\t13.4\nRestek\t215\t0\t0.0\nMerck\t199\t0\t0.0\nACE\t151\t0\t0.0\nShimadzu\t130\t0\t0.0\nDevelosil\t118\t0\t0.0\nAvantor\t83\t0\t0.0\nThermo Fisher\t3\t3\t100.0\n",
+  "stderr": "",
+  "execution_time_ms": 1522
+}

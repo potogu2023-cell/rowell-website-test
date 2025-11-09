@@ -1,0 +1,16 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as verified_products,\n  COUNT(*) - SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as unverified_products,\n  ROUND(SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as verification_rate\nFROM products",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as verified_products,\n  COUNT(*) - SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as unverified_products,\n  ROUND(SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 1) as verification_rate\nFROM products",
+  "rows": [
+    {
+      "total_products": "2689",
+      "verified_products": "1060",
+      "unverified_products": "1629",
+      "verification_rate": "39.4"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\tverified_products\tunverified_products\tverification_rate\n2689\t1060\t1629\t39.4\n",
+  "stderr": "",
+  "execution_time_ms": 1548
+}

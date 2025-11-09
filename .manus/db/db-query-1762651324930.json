@@ -1,0 +1,18 @@
+{
+  "query": "SELECT \n  DATE(createdAt) as creation_date,\n  COUNT(*) as product_count\nFROM products \nWHERE brand = 'Agilent'\nGROUP BY DATE(createdAt)\nORDER BY creation_date DESC\nLIMIT 20",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  DATE(createdAt) as creation_date,\n  COUNT(*) as product_count\nFROM products \nWHERE brand = 'Agilent'\nGROUP BY DATE(createdAt)\nORDER BY creation_date DESC\nLIMIT 20",
+  "rows": [
+    {
+      "creation_date": "2025-11-04",
+      "product_count": "55"
+    },
+    {
+      "creation_date": "2025-11-01",
+      "product_count": "575"
+    }
+  ],
+  "messages": [],
+  "stdout": "creation_date\tproduct_count\n2025-11-04\t55\n2025-11-01\t575\n",
+  "stderr": "",
+  "execution_time_ms": 1548
+}

@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, metaDescription FROM resources WHERE id = 2;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, title, metaDescription FROM resources WHERE id = 2;",
+  "rows": [
+    {
+      "id": "2",
+      "title": "Test API Key",
+      "metaDescription": "Test meta description"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tmetaDescription\n2\tTest API Key\tTest meta description\n",
+  "stderr": "",
+  "execution_time_ms": 1562
+}

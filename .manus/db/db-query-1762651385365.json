@@ -1,0 +1,22 @@
+{
+  "query": "SELECT \n  CASE \n    WHEN partNumber IN ('959993-902', '959757-902', '821125-936', '959961-302', '821725-901', '959941-902', '880952-704', '880952-706', '880952-705') THEN 'Crawler Delivery'\n    ELSE 'Existing DB'\n  END as source,\n  COUNT(*) as total,\n  SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as has_description,\n  AVG(LENGTH(description)) as avg_desc_length\nFROM products \nWHERE brand = 'Agilent'\nGROUP BY source",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  CASE \n    WHEN partNumber IN ('959993-902', '959757-902', '821125-936', '959961-302', '821725-901', '959941-902', '880952-704', '880952-706', '880952-705') THEN 'Crawler Delivery'\n    ELSE 'Existing DB'\n  END as source,\n  COUNT(*) as total,\n  SUM(CASE WHEN description IS NOT NULL AND LENGTH(description) > 100 THEN 1 ELSE 0 END) as has_description,\n  AVG(LENGTH(description)) as avg_desc_length\nFROM products \nWHERE brand = 'Agilent'\nGROUP BY source",
+  "rows": [
+    {
+      "source": "Crawler Delivery",
+      "total": "9",
+      "has_description": "9",
+      "avg_desc_length": "283.3333"
+    },
+    {
+      "source": "Existing DB",
+      "total": "621",
+      "has_description": "606",
+      "avg_desc_length": "302.3382"
+    }
+  ],
+  "messages": [],
+  "stdout": "source\ttotal\thas_description\tavg_desc_length\nCrawler Delivery\t9\t9\t283.3333\nExisting DB\t621\t606\t302.3382\n",
+  "stderr": "",
+  "execution_time_ms": 1529
+}

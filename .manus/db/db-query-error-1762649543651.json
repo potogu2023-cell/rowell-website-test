@@ -1,0 +1,8 @@
+{
+  "query": "INSERT INTO products (brand, partNumber, name, category, specifications, createdAt, updatedAt) VALUES ('TestBrand', 'TEST-001', 'Test Syringe Filter for Auto-Update Verification', 'Syringe Filters', '{\"poreSize\": \"0.22um\", \"diameter\": \"25mm\"}', NOW(), NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute INSERT INTO products (brand, partNumber, name, category, specifications, createdAt, updatedAt) VALUES ('TestBrand', 'TEST-001', 'Test Syringe Filter for Auto-Update Verification', 'Syringe Filters', '{\"poreSize\": \"0.22um\", \"diameter\": \"25mm\"}', NOW(), NOW());",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'category' in 'field list'"
+  ]
+}

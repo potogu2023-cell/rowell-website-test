@@ -1,0 +1,15 @@
+{
+  "query": "SELECT c.id, c.name, COUNT(DISTINCT pc.productId) as productCount FROM categories c LEFT JOIN product_categories pc ON c.id = pc.categoryId WHERE c.slug = 'filtration' GROUP BY c.id, c.name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT c.id, c.name, COUNT(DISTINCT pc.productId) as productCount FROM categories c LEFT JOIN product_categories pc ON c.id = pc.categoryId WHERE c.slug = 'filtration' GROUP BY c.id, c.name;",
+  "rows": [
+    {
+      "id": "4",
+      "name": "Filtration",
+      "productCount": "85"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tproductCount\n4\tFiltration\t85\n",
+  "stderr": "",
+  "execution_time_ms": 1543
+}

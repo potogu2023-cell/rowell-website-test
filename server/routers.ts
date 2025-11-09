@@ -1515,6 +1515,7 @@ export const appRouter = router({
           tags: z.array(z.string()).optional(),
           featured: z.boolean().optional(),
           publishedAt: z.string().optional(), // ISO 8601 date string
+          metaDescription: z.string().max(160).optional(), // SEO meta description
         })
       )
       .mutation(async ({ input, ctx }) => {
@@ -1564,6 +1565,7 @@ export const appRouter = router({
           tags: input.tags,
           featured: input.featured,
           publishedAt,
+          metaDescription: input.metaDescription,
         });
 
         return { success: true, id: input.id };

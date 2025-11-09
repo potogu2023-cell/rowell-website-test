@@ -1,0 +1,16 @@
+{
+  "query": "SELECT COUNT(*) as total, \n  COUNT(DISTINCT partNumber) as unique_parts,\n  MIN(createdAt) as earliest,\n  MAX(createdAt) as latest\nFROM products \nWHERE brand = 'Agilent'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT COUNT(*) as total, \n  COUNT(DISTINCT partNumber) as unique_parts,\n  MIN(createdAt) as earliest,\n  MAX(createdAt) as latest\nFROM products \nWHERE brand = 'Agilent'",
+  "rows": [
+    {
+      "total": "630",
+      "unique_parts": "623",
+      "earliest": "2025-11-01 01:45:11",
+      "latest": "2025-11-04 14:25:23"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\tunique_parts\tearliest\tlatest\n630\t623\t2025-11-01 01:45:11\t2025-11-04 14:25:23\n",
+  "stderr": "",
+  "execution_time_ms": 1576
+}

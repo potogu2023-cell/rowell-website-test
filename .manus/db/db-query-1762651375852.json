@@ -1,0 +1,35 @@
+{
+  "query": "SELECT productId, partNumber, name \nFROM products \nWHERE brand = 'Agilent' \nAND partNumber IN ('959993-902', '959757-902', '821125-936', '959961-302', '821725-901')\nLIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name \nFROM products \nWHERE brand = 'Agilent' \nAND partNumber IN ('959993-902', '959757-902', '821125-936', '959961-302', '821725-901')\nLIMIT 10",
+  "rows": [
+    {
+      "productId": "AGIL-959993-902",
+      "partNumber": "959993-902",
+      "name": "ZORBAX Eclipse Plus C18 HPLC Column, 2.1 mm x 250 mm, 3.5 µm, 600 bar"
+    },
+    {
+      "productId": "AGIL-959757-902",
+      "partNumber": "959757-902",
+      "name": "ZORBAX Eclipse Plus C8 HPLC Column, 4.6 mm x 150 mm, 1.8 µm, 1200 bar"
+    },
+    {
+      "productId": "AGIL-821125-936",
+      "partNumber": "821125-936",
+      "name": "ZORBAX Eclipse Plus C8 HPLC Column, 4.6 mm x 50 mm, 3.5 µm, 1200 bar"
+    },
+    {
+      "productId": "AGIL-959961-302",
+      "partNumber": "959961-302",
+      "name": "ZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 4.6 mm x 250 mm, 1.8 µm, 1200 bar"
+    },
+    {
+      "productId": "AGIL-821725-901",
+      "partNumber": "821725-901",
+      "name": "ZORBAX Eclipse Plus C8 HPLC Column, 2.1 mm x 50 mm, 5 µm, 400 bar"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\nAGIL-959993-902\t959993-902\tZORBAX Eclipse Plus C18 HPLC Column, 2.1 mm x 250 mm, 3.5 µm, 600 bar\nAGIL-959757-902\t959757-902\tZORBAX Eclipse Plus C8 HPLC Column, 4.6 mm x 150 mm, 1.8 µm, 1200 bar\nAGIL-821125-936\t821125-936\tZORBAX Eclipse Plus C8 HPLC Column, 4.6 mm x 50 mm, 3.5 µm, 1200 bar\nAGIL-959961-302\t959961-302\tZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 4.6 mm x 250 mm, 1.8 µm, 1200 bar\nAGIL-821725-901\t821725-901\tZORBAX Eclipse Plus C8 HPLC Column, 2.1 mm x 50 mm, 5 µm, 400 bar\n",
+  "stderr": "",
+  "execution_time_ms": 1599
+}

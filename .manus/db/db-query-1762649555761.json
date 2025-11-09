@@ -1,0 +1,9 @@
+{
+  "query": "INSERT INTO products (productId, partNumber, brand, prefix, productType, name, specifications, createdAt, updatedAt) VALUES ('TEST-001', 'TEST-001', 'TestBrand', 'TEST', 'Syringe Filters', 'Test Syringe Filter for Auto-Update Verification', '{\"poreSize\": \"0.22um\"}', NOW(), NOW());",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute INSERT INTO products (productId, partNumber, brand, prefix, productType, name, specifications, createdAt, updatedAt) VALUES ('TEST-001', 'TEST-001', 'TestBrand', 'TEST', 'Syringe Filters', 'Test Syringe Filter for Auto-Update Verification', '{\"poreSize\": \"0.22um\"}', NOW(), NOW());",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1551
+}

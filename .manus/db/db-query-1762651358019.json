@@ -1,0 +1,9 @@
+{
+  "query": "SELECT productId, partNumber, name, description \nFROM products \nWHERE brand = 'Agilent' \nAND (\n  partNumber IN ('820950-902', '821125-902', '821250-902', '820975-902', '821150-902')\n  OR productId IN ('AGIL-820950-902', 'AGIL-821125-902', 'AGIL-821250-902', 'AGIL-820975-902', 'AGIL-821150-902')\n)\nLIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name, description \nFROM products \nWHERE brand = 'Agilent' \nAND (\n  partNumber IN ('820950-902', '821125-902', '821250-902', '820975-902', '821150-902')\n  OR productId IN ('AGIL-820950-902', 'AGIL-821125-902', 'AGIL-821250-902', 'AGIL-820975-902', 'AGIL-821150-902')\n)\nLIMIT 10",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1559
+}

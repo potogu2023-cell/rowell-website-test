@@ -1,0 +1,90 @@
+{
+  "query": "SELECT partNumber, name, description, phaseType, columnLength, innerDiameter\nFROM products \nWHERE brand = 'Agilent'\nLIMIT 10",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT partNumber, name, description, phaseType, columnLength, innerDiameter\nFROM products \nWHERE brand = 'Agilent'\nLIMIT 10",
+  "rows": [
+    {
+      "partNumber": "670150-902",
+      "name": "ZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 250 mm, 1.8 µm, 400 bar",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 670150-902 InfinityLab Reversed Phase Prep Part Number:670150-902 Agilent InfinityLab Poroshell 120 SB-C18 Column, 21.",
+      "phaseType": "Phenyl-Hexyl",
+      "columnLength": "250 mm",
+      "innerDiameter": "2.1 mm"
+    },
+    {
+      "partNumber": "821725-955",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 mm 2.7 µm, UHPLC Guard, 3/pk",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 821725-955 InfinityLab Poroshell 120 Part Number:821725-955 InfinityLab Poroshell 120 Aq-C18 2.",
+      "phaseType": "Aq-C18",
+      "columnLength": "5.0",
+      "innerDiameter": "2.1"
+    },
+    {
+      "partNumber": "695775-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 100 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 695775-742 InfinityLab Poroshell 120 Part Number:695775-742 InfinityLab Poroshell 120 Aq-C18 2.",
+      "phaseType": "Aq-C18",
+      "columnLength": "100.0",
+      "innerDiameter": "2.1"
+    },
+    {
+      "partNumber": "693775-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 150 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 693775-742 InfinityLab Poroshell 120 Part Number:693775-742 InfinityLab Poroshell 120 Aq-C18 2.",
+      "phaseType": "Aq-C18",
+      "columnLength": "150.0",
+      "innerDiameter": "2.1"
+    },
+    {
+      "partNumber": "691775-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 30 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 691775-742 InfinityLab Poroshell 120 Part Number:691775-742 InfinityLab Poroshell 120 Aq-C18 2.",
+      "phaseType": "Aq-C18",
+      "columnLength": "30.0",
+      "innerDiameter": "2.1"
+    },
+    {
+      "partNumber": "699775-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 2.1 x 50 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 699775-742 InfinityLab Poroshell 120 Part Number:699775-742 InfinityLab Poroshell 120 Aq-C18 2.",
+      "phaseType": "Aq-C18",
+      "columnLength": "50.0",
+      "innerDiameter": "2.1"
+    },
+    {
+      "partNumber": "823750-953",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 mm 2.7 µm, UHPLC guard, 3/pk",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 823750-953 InfinityLab Poroshell 120 Part Number:823750-953 InfinityLab Poroshell 120 Aq-C18 3.",
+      "phaseType": "Aq-C18",
+      "columnLength": "5.0",
+      "innerDiameter": "3.0"
+    },
+    {
+      "partNumber": "695675-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 x 100 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 695675-742 InfinityLab Poroshell 120 Part Number:695675-742 InfinityLab Poroshell 120 Aq-C18 3.",
+      "phaseType": "Aq-C18",
+      "columnLength": "100.0",
+      "innerDiameter": "3.0"
+    },
+    {
+      "partNumber": "693675-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 x 150 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 693675-742 InfinityLab Poroshell 120 Part Number:693675-742 InfinityLab Poroshell 120 Aq-C18 3.",
+      "phaseType": "Aq-C18",
+      "columnLength": "150.0",
+      "innerDiameter": "3.0"
+    },
+    {
+      "partNumber": "699675-742",
+      "name": "InfinityLab Poroshell 120 Aq-C18 3.0 x 50 mm, 2.7 µm",
+      "description": "Skip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 699675-742 InfinityLab Poroshell 120 Part Number:699675-742 InfinityLab Poroshell 120 Aq-C18 3.",
+      "phaseType": "Aq-C18",
+      "columnLength": "50.0",
+      "innerDiameter": "3.0"
+    }
+  ],
+  "messages": [],
+  "stdout": "partNumber\tname\tdescription\tphaseType\tcolumnLength\tinnerDiameter\n670150-902\tZORBAX Eclipse Plus Phenyl-Hexyl HPLC Column, 2.1 mm x 250 mm, 1.8 µm, 400 bar\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 670150-902 InfinityLab Reversed Phase Prep Part Number:670150-902 Agilent InfinityLab Poroshell 120 SB-C18 Column, 21.\tPhenyl-Hexyl\t250 mm\t2.1 mm\n821725-955\tInfinityLab Poroshell 120 Aq-C18 2.1 mm 2.7 µm, UHPLC Guard, 3/pk\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 821725-955 InfinityLab Poroshell 120 Part Number:821725-955 InfinityLab Poroshell 120 Aq-C18 2.\tAq-C18\t5.0\t2.1\n695775-742\tInfinityLab Poroshell 120 Aq-C18 2.1 x 100 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 695775-742 InfinityLab Poroshell 120 Part Number:695775-742 InfinityLab Poroshell 120 Aq-C18 2.\tAq-C18\t100.0\t2.1\n693775-742\tInfinityLab Poroshell 120 Aq-C18 2.1 x 150 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 693775-742 InfinityLab Poroshell 120 Part Number:693775-742 InfinityLab Poroshell 120 Aq-C18 2.\tAq-C18\t150.0\t2.1\n691775-742\tInfinityLab Poroshell 120 Aq-C18 2.1 x 30 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 691775-742 InfinityLab Poroshell 120 Part Number:691775-742 InfinityLab Poroshell 120 Aq-C18 2.\tAq-C18\t30.0\t2.1\n699775-742\tInfinityLab Poroshell 120 Aq-C18 2.1 x 50 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 699775-742 InfinityLab Poroshell 120 Part Number:699775-742 InfinityLab Poroshell 120 Aq-C18 2.\tAq-C18\t50.0\t2.1\n823750-953\tInfinityLab Poroshell 120 Aq-C18 3.0 mm 2.7 µm, UHPLC guard, 3/pk\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 823750-953 InfinityLab Poroshell 120 Part Number:823750-953 InfinityLab Poroshell 120 Aq-C18 3.\tAq-C18\t5.0\t3.0\n695675-742\tInfinityLab Poroshell 120 Aq-C18 3.0 x 100 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 695675-742 InfinityLab Poroshell 120 Part Number:695675-742 InfinityLab Poroshell 120 Aq-C18 3.\tAq-C18\t100.0\t3.0\n693675-742\tInfinityLab Poroshell 120 Aq-C18 3.0 x 150 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 693675-742 InfinityLab Poroshell 120 Part Number:693675-742 InfinityLab Poroshell 120 Aq-C18 3.\tAq-C18\t150.0\t3.0\n699675-742\tInfinityLab Poroshell 120 Aq-C18 3.0 x 50 mm, 2.7 µm\tSkip to main content ABOUT AGILENT CONTACT US SINGAPORE ACCOUNT SEARCH ALL All ▾ PRODUCTS APPLICATIONS & INDUSTRIES TRAINING & EVENTS SERVICES SUPPORT & RESOURCES ORDER CENTER | 0 Home Order Center 699675-742 InfinityLab Poroshell 120 Part Number:699675-742 InfinityLab Poroshell 120 Aq-C18 3.\tAq-C18\t50.0\t3.0\n",
+  "stderr": "",
+  "execution_time_ms": 1591
+}

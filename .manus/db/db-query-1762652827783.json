@@ -1,0 +1,425 @@
+{
+  "query": "SELECT productId, partNumber, name\nFROM products\nWHERE brand = 'Avantor'\nAND (description IS NULL OR LENGTH(description) <= 100)\nORDER BY partNumber\nLIMIT 100",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT productId, partNumber, name\nFROM products\nWHERE brand = 'Avantor'\nAND (description IS NULL OR LENGTH(description) <= 100)\nORDER BY partNumber\nLIMIT 100",
+  "rows": [
+    {
+      "productId": "AVAN-76394-738",
+      "partNumber": "76394-738",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-740",
+      "partNumber": "76394-740",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-742",
+      "partNumber": "76394-742",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-744",
+      "partNumber": "76394-744",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-746",
+      "partNumber": "76394-746",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-748",
+      "partNumber": "76394-748",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-750",
+      "partNumber": "76394-750",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-752",
+      "partNumber": "76394-752",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-756",
+      "partNumber": "76394-756",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-758",
+      "partNumber": "76394-758",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-762",
+      "partNumber": "76394-762",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-764",
+      "partNumber": "76394-764",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-768",
+      "partNumber": "76394-768",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-772",
+      "partNumber": "76394-772",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-774",
+      "partNumber": "76394-774",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-776",
+      "partNumber": "76394-776",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-780",
+      "partNumber": "76394-780",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-782",
+      "partNumber": "76394-782",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-784",
+      "partNumber": "76394-784",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-786",
+      "partNumber": "76394-786",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-790",
+      "partNumber": "76394-790",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-792",
+      "partNumber": "76394-792",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-944",
+      "partNumber": "76394-944",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-946",
+      "partNumber": "76394-946",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-948",
+      "partNumber": "76394-948",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-950",
+      "partNumber": "76394-950",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-952",
+      "partNumber": "76394-952",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-956",
+      "partNumber": "76394-956",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-958",
+      "partNumber": "76394-958",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-960",
+      "partNumber": "76394-960",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-964",
+      "partNumber": "76394-964",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-966",
+      "partNumber": "76394-966",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-968",
+      "partNumber": "76394-968",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-972",
+      "partNumber": "76394-972",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-974",
+      "partNumber": "76394-974",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-976",
+      "partNumber": "76394-976",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-980",
+      "partNumber": "76394-980",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-984",
+      "partNumber": "76394-984",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76394-986",
+      "partNumber": "76394-986",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-76395-000",
+      "partNumber": "76395-000",
+      "name": "Avantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns"
+    },
+    {
+      "productId": "AVAN-ACE-111-0101GD",
+      "partNumber": "ACE-111-0101GD",
+      "name": "ACE® Guard Cartridge C18 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-111-0102GD",
+      "partNumber": "ACE-111-0102GD",
+      "name": "ACE® Guard Cartridge C18 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-111-0103GD",
+      "partNumber": "ACE-111-0103GD",
+      "name": "ACE® Guard Cartridge C18 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-112-0101GD",
+      "partNumber": "ACE-112-0101GD",
+      "name": "ACE® Guard Cartridge C8 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-112-0102GD",
+      "partNumber": "ACE-112-0102GD",
+      "name": "ACE® Guard Cartridge C8 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-112-0103GD",
+      "partNumber": "ACE-112-0103GD",
+      "name": "ACE® Guard Cartridge C8 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-113-0101GD",
+      "partNumber": "ACE-113-0101GD",
+      "name": "ACE® Guard Cartridge C4 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-113-0102GD",
+      "partNumber": "ACE-113-0102GD",
+      "name": "ACE® Guard Cartridge C4 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-113-0103GD",
+      "partNumber": "ACE-113-0103GD",
+      "name": "ACE® Guard Cartridge C4 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-114-0101GD",
+      "partNumber": "ACE-114-0101GD",
+      "name": "ACE® Guard Cartridge CN 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-114-0102GD",
+      "partNumber": "ACE-114-0102GD",
+      "name": "ACE® Guard Cartridge CN 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-114-0103GD",
+      "partNumber": "ACE-114-0103GD",
+      "name": "ACE® Guard Cartridge CN 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-115-0101GD",
+      "partNumber": "ACE-115-0101GD",
+      "name": "ACE® Guard Cartridge Phenyl 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-115-0102GD",
+      "partNumber": "ACE-115-0102GD",
+      "name": "ACE® Guard Cartridge Phenyl 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-115-0103GD",
+      "partNumber": "ACE-115-0103GD",
+      "name": "ACE® Guard Cartridge Phenyl 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-116-0101GD",
+      "partNumber": "ACE-116-0101GD",
+      "name": "ACE® Guard Cartridge AQ 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-116-0102GD",
+      "partNumber": "ACE-116-0102GD",
+      "name": "ACE® Guard Cartridge AQ 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-116-0103GD",
+      "partNumber": "ACE-116-0103GD",
+      "name": "ACE® Guard Cartridge AQ 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-117-0101GD",
+      "partNumber": "ACE-117-0101GD",
+      "name": "ACE® Guard Cartridge Sil 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-117-0102GD",
+      "partNumber": "ACE-117-0102GD",
+      "name": "ACE® Guard Cartridge Sil 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-117-0103GD",
+      "partNumber": "ACE-117-0103GD",
+      "name": "ACE® Guard Cartridge Sil 3µm"
+    },
+    {
+      "productId": "AVAN-ACE-121-0101GD",
+      "partNumber": "ACE-121-0101GD",
+      "name": "ACE® Guard Cartridge C18 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-121-0102GD",
+      "partNumber": "ACE-121-0102GD",
+      "name": "ACE® Guard Cartridge C18 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-121-0103GD",
+      "partNumber": "ACE-121-0103GD",
+      "name": "ACE® Guard Cartridge C18 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-122-0101GD",
+      "partNumber": "ACE-122-0101GD",
+      "name": "ACE® Guard Cartridge C8 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-122-0102GD",
+      "partNumber": "ACE-122-0102GD",
+      "name": "ACE® Guard Cartridge C8 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-122-0103GD",
+      "partNumber": "ACE-122-0103GD",
+      "name": "ACE® Guard Cartridge C8 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-123-0101GD",
+      "partNumber": "ACE-123-0101GD",
+      "name": "ACE® Guard Cartridge C4 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-123-0102GD",
+      "partNumber": "ACE-123-0102GD",
+      "name": "ACE® Guard Cartridge C4 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-123-0103GD",
+      "partNumber": "ACE-123-0103GD",
+      "name": "ACE® Guard Cartridge C4 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-124-0101GD",
+      "partNumber": "ACE-124-0101GD",
+      "name": "ACE® Guard Cartridge CN 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-124-0102GD",
+      "partNumber": "ACE-124-0102GD",
+      "name": "ACE® Guard Cartridge CN 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-124-0103GD",
+      "partNumber": "ACE-124-0103GD",
+      "name": "ACE® Guard Cartridge CN 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-125-0101GD",
+      "partNumber": "ACE-125-0101GD",
+      "name": "ACE® Guard Cartridge Phenyl 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-125-0102GD",
+      "partNumber": "ACE-125-0102GD",
+      "name": "ACE® Guard Cartridge Phenyl 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-125-0103GD",
+      "partNumber": "ACE-125-0103GD",
+      "name": "ACE® Guard Cartridge Phenyl 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-126-0101GD",
+      "partNumber": "ACE-126-0101GD",
+      "name": "ACE® Guard Cartridge AQ 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-126-0102GD",
+      "partNumber": "ACE-126-0102GD",
+      "name": "ACE® Guard Cartridge AQ 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-126-0103GD",
+      "partNumber": "ACE-126-0103GD",
+      "name": "ACE® Guard Cartridge AQ 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-127-0101GD",
+      "partNumber": "ACE-127-0101GD",
+      "name": "ACE® Guard Cartridge Sil 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-127-0102GD",
+      "partNumber": "ACE-127-0102GD",
+      "name": "ACE® Guard Cartridge Sil 5µm"
+    },
+    {
+      "productId": "AVAN-ACE-127-0103GD",
+      "partNumber": "ACE-127-0103GD",
+      "name": "ACE® Guard Cartridge Sil 5µm"
+    },
+    {
+      "productId": "AVAN- GC Columns",
+      "partNumber": "GC Columns",
+      "name": "40 m"
+    }
+  ],
+  "messages": [],
+  "stdout": "productId\tpartNumber\tname\nAVAN-76394-738\t76394-738\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-740\t76394-740\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-742\t76394-742\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-744\t76394-744\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-746\t76394-746\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-748\t76394-748\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-750\t76394-750\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-752\t76394-752\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-756\t76394-756\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-758\t76394-758\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-762\t76394-762\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-764\t76394-764\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-768\t76394-768\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-772\t76394-772\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-774\t76394-774\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-776\t76394-776\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-780\t76394-780\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-782\t76394-782\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-784\t76394-784\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-786\t76394-786\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-790\t76394-790\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-792\t76394-792\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-944\t76394-944\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-946\t76394-946\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-948\t76394-948\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-950\t76394-950\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-952\t76394-952\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-956\t76394-956\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-958\t76394-958\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-960\t76394-960\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-964\t76394-964\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-966\t76394-966\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-968\t76394-968\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-972\t76394-972\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-974\t76394-974\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-976\t76394-976\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-980\t76394-980\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-984\t76394-984\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76394-986\t76394-986\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-76395-000\t76395-000\tAvantor® ACE® Generix® C18 & C18(2), Analytical HPLC Columns\nAVAN-ACE-111-0101GD\tACE-111-0101GD\tACE® Guard Cartridge C18 3µm\nAVAN-ACE-111-0102GD\tACE-111-0102GD\tACE® Guard Cartridge C18 3µm\nAVAN-ACE-111-0103GD\tACE-111-0103GD\tACE® Guard Cartridge C18 3µm\nAVAN-ACE-112-0101GD\tACE-112-0101GD\tACE® Guard Cartridge C8 3µm\nAVAN-ACE-112-0102GD\tACE-112-0102GD\tACE® Guard Cartridge C8 3µm\nAVAN-ACE-112-0103GD\tACE-112-0103GD\tACE® Guard Cartridge C8 3µm\nAVAN-ACE-113-0101GD\tACE-113-0101GD\tACE® Guard Cartridge C4 3µm\nAVAN-ACE-113-0102GD\tACE-113-0102GD\tACE® Guard Cartridge C4 3µm\nAVAN-ACE-113-0103GD\tACE-113-0103GD\tACE® Guard Cartridge C4 3µm\nAVAN-ACE-114-0101GD\tACE-114-0101GD\tACE® Guard Cartridge CN 3µm\nAVAN-ACE-114-0102GD\tACE-114-0102GD\tACE® Guard Cartridge CN 3µm\nAVAN-ACE-114-0103GD\tACE-114-0103GD\tACE® Guard Cartridge CN 3µm\nAVAN-ACE-115-0101GD\tACE-115-0101GD\tACE® Guard Cartridge Phenyl 3µm\nAVAN-ACE-115-0102GD\tACE-115-0102GD\tACE® Guard Cartridge Phenyl 3µm\nAVAN-ACE-115-0103GD\tACE-115-0103GD\tACE® Guard Cartridge Phenyl 3µm\nAVAN-ACE-116-0101GD\tACE-116-0101GD\tACE® Guard Cartridge AQ 3µm\nAVAN-ACE-116-0102GD\tACE-116-0102GD\tACE® Guard Cartridge AQ 3µm\nAVAN-ACE-116-0103GD\tACE-116-0103GD\tACE® Guard Cartridge AQ 3µm\nAVAN-ACE-117-0101GD\tACE-117-0101GD\tACE® Guard Cartridge Sil 3µm\nAVAN-ACE-117-0102GD\tACE-117-0102GD\tACE® Guard Cartridge Sil 3µm\nAVAN-ACE-117-0103GD\tACE-117-0103GD\tACE® Guard Cartridge Sil 3µm\nAVAN-ACE-121-0101GD\tACE-121-0101GD\tACE® Guard Cartridge C18 5µm\nAVAN-ACE-121-0102GD\tACE-121-0102GD\tACE® Guard Cartridge C18 5µm\nAVAN-ACE-121-0103GD\tACE-121-0103GD\tACE® Guard Cartridge C18 5µm\nAVAN-ACE-122-0101GD\tACE-122-0101GD\tACE® Guard Cartridge C8 5µm\nAVAN-ACE-122-0102GD\tACE-122-0102GD\tACE® Guard Cartridge C8 5µm\nAVAN-ACE-122-0103GD\tACE-122-0103GD\tACE® Guard Cartridge C8 5µm\nAVAN-ACE-123-0101GD\tACE-123-0101GD\tACE® Guard Cartridge C4 5µm\nAVAN-ACE-123-0102GD\tACE-123-0102GD\tACE® Guard Cartridge C4 5µm\nAVAN-ACE-123-0103GD\tACE-123-0103GD\tACE® Guard Cartridge C4 5µm\nAVAN-ACE-124-0101GD\tACE-124-0101GD\tACE® Guard Cartridge CN 5µm\nAVAN-ACE-124-0102GD\tACE-124-0102GD\tACE® Guard Cartridge CN 5µm\nAVAN-ACE-124-0103GD\tACE-124-0103GD\tACE® Guard Cartridge CN 5µm\nAVAN-ACE-125-0101GD\tACE-125-0101GD\tACE® Guard Cartridge Phenyl 5µm\nAVAN-ACE-125-0102GD\tACE-125-0102GD\tACE® Guard Cartridge Phenyl 5µm\nAVAN-ACE-125-0103GD\tACE-125-0103GD\tACE® Guard Cartridge Phenyl 5µm\nAVAN-ACE-126-0101GD\tACE-126-0101GD\tACE® Guard Cartridge AQ 5µm\nAVAN-ACE-126-0102GD\tACE-126-0102GD\tACE® Guard Cartridge AQ 5µm\nAVAN-ACE-126-0103GD\tACE-126-0103GD\tACE® Guard Cartridge AQ 5µm\nAVAN-ACE-127-0101GD\tACE-127-0101GD\tACE® Guard Cartridge Sil 5µm\nAVAN-ACE-127-0102GD\tACE-127-0102GD\tACE® Guard Cartridge Sil 5µm\nAVAN-ACE-127-0103GD\tACE-127-0103GD\tACE® Guard Cartridge Sil 5µm\nAVAN- GC Columns\tGC Columns\t40 m\n",
+  "stderr": "",
+  "execution_time_ms": 1750
+}

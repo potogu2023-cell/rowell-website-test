@@ -1,0 +1,13 @@
+{
+  "query": "SELECT id FROM products WHERE productId = 'TEST-001';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id FROM products WHERE productId = 'TEST-001';",
+  "rows": [
+    {
+      "id": "360001"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\n360001\n",
+  "stderr": "",
+  "execution_time_ms": 1533
+}
