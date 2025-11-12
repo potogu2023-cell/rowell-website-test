@@ -187,7 +187,7 @@ export async function getCategoriesWithProductCount() {
   const db = await getDb();
   if (!db) return [];
   const { categories, productCategories } = await import("../drizzle/schema");
-  const { countDistinct } = await import("drizzle-orm");
+  const { countDistinct, inArray } = await import("drizzle-orm");
   
   // Get all visible categories with DISTINCT product count
   const result = await db
@@ -212,7 +212,21 @@ export async function getCategoriesWithProductCount() {
     .groupBy(categories.id)
     .orderBy(categories.displayOrder);
   
-  return result;
+  // For parent categories, sum up child category product counts
+  const enrichedResult = result.map(category => {
+    if (category.parentId === null) {
+      // This is a parent category, sum up all child products
+      const childCategories = result.filter(c => c.parentId === category.id);
+      const totalChildProducts = childCategories.reduce((sum, child) => sum + child.productCount, 0);
+      return {
+        ...category,
+        productCount: category.productCount + totalChildProducts,
+      };
+    }
+    return category;
+  });
+  
+  return enrichedResult;
 }
 
 
