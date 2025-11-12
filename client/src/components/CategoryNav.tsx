@@ -102,7 +102,21 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
               )}
             </span>
           )}
-          {!hasChildren && <span className="w-6"></span>}
+          {!hasChildren && category.icon && (
+            <img 
+              src={category.icon} 
+              alt={category.name}
+              className="w-5 h-5 mr-2 object-contain"
+            />
+          )}
+          {!hasChildren && !category.icon && <span className="w-6"></span>}
+          {hasChildren && category.icon && (
+            <img 
+              src={category.icon} 
+              alt={category.name}
+              className="w-5 h-5 object-contain"
+            />
+          )}
           <span className="flex-1">{category.name}</span>
           {category.nameEn && (
             <span className="ml-2 text-xs text-gray-400">
