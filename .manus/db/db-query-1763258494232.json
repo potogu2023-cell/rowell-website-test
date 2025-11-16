@@ -1,0 +1,17 @@
+{
+  "query": "SELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN specifications IS NOT NULL AND JSON_LENGTH(specifications) > 0 THEN 1 ELSE 0 END) as with_specifications,\n  SUM(CASE WHEN catalogUrl IS NOT NULL AND catalogUrl != '' THEN 1 ELSE 0 END) as with_url,\n  SUM(CASE WHEN descriptionQuality IN ('high', 'medium') THEN 1 ELSE 0 END) as quality_descriptions\nFROM products \nWHERE brand = 'Thermo Fisher Scientific';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT \n  COUNT(*) as total_products,\n  SUM(CASE WHEN description IS NOT NULL AND description != '' THEN 1 ELSE 0 END) as with_description,\n  SUM(CASE WHEN specifications IS NOT NULL AND JSON_LENGTH(specifications) > 0 THEN 1 ELSE 0 END) as with_specifications,\n  SUM(CASE WHEN catalogUrl IS NOT NULL AND catalogUrl != '' THEN 1 ELSE 0 END) as with_url,\n  SUM(CASE WHEN descriptionQuality IN ('high', 'medium') THEN 1 ELSE 0 END) as quality_descriptions\nFROM products \nWHERE brand = 'Thermo Fisher Scientific';",
+  "rows": [
+    {
+      "total_products": "366",
+      "with_description": "366",
+      "with_specifications": "366",
+      "with_url": "119",
+      "quality_descriptions": "227"
+    }
+  ],
+  "messages": [],
+  "stdout": "total_products\twith_description\twith_specifications\twith_url\tquality_descriptions\n366\t366\t366\t119\t227\n",
+  "stderr": "",
+  "execution_time_ms": 1584
+}

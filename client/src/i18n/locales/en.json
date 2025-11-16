@@ -311,11 +311,263 @@
     "intro": "Our chromatography consumables serve a wide range of applications across pharmaceutical, environmental, food, and research sectors. With over 10 years of experience, we provide technical support to help you select the right consumables for your specific analytical needs.",
     "pharmaceutical": {
       "title": "Pharmaceutical Analysis",
-      "description": "Drug purity testing, impurity profiling, and stability studies"
+      "description": "Pharmaceutical analysis using HPLC is critical for ensuring drug quality, safety, and efficacy throughout the drug development and manufacturing process. HPLC provides precise quantification of active pharmaceutical ingredients (APIs), impurities, and degradation products. It plays a vital role in quality control, stability testing, and regulatory compliance. Modern pharmaceutical analysis demands high sensitivity, selectivity, and reproducibility to meet stringent regulatory requirements from agencies like FDA, EMA, and ICH.",
+      "analysisItems": [
+        {
+          "name": "API Assay",
+          "description": "Accurate quantification of active pharmaceutical ingredients in drug formulations"
+        },
+        {
+          "name": "Impurity Profiling",
+          "description": "Detection and quantification of process-related and degradation impurities"
+        },
+        {
+          "name": "Stability Testing",
+          "description": "Monitoring drug degradation under various storage conditions"
+        },
+        {
+          "name": "Dissolution Testing",
+          "description": "Measuring drug release rate from solid dosage forms"
+        },
+        {
+          "name": "Cleaning Validation",
+          "description": "Verifying equipment cleaning effectiveness between production batches"
+        },
+        {
+          "name": "Chiral Separation",
+          "description": "Separating and quantifying enantiomers in chiral drugs"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecylsilane)",
+          "usp": "L1",
+          "particleSize": "1.8-5 µm",
+          "dimensions": "150 x 4.6 mm, 100 x 2.1 mm",
+          "applications": "General pharmaceutical analysis, API assay, impurity testing"
+        },
+        {
+          "type": "C8 (Octylsilane)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Hydrophobic compounds, peptides, proteins"
+        },
+        {
+          "type": "Phenyl",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Aromatic compounds, alternative selectivity"
+        },
+        {
+          "type": "Chiral",
+          "usp": "Various",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "Enantiomer separation, chiral purity testing"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Aspirin Purity Analysis",
+          "sample": "Aspirin tablets",
+          "goal": "Quantify aspirin content and detect salicylic acid impurity",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Acetonitrile:Water:Acetic acid (30:69:1)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Antibiotic Residue Testing",
+          "sample": "Pharmaceutical raw materials",
+          "goal": "Detect trace levels of antibiotic residues from manufacturing",
+          "column": "C18, 3 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradient: Water (0.1% TFA) to Acetonitrile",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm / MS",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "Ibuprofen Enantiomer Separation",
+          "sample": "Ibuprofen formulations",
+          "goal": "Separate and quantify S-(+) and R-(-) enantiomers",
+          "column": "Chiral column (Daicel CHIRALPAK), 5 µm, 250 x 4.6 mm",
+          "parameters": {
+            "mobilePhase": "Hexane:Isopropanol:Acetic acid (95:5:0.1)",
+            "flowRate": "0.8 mL/min",
+            "detection": "UV 220 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Low-level impurity detection",
+          "solution": "Use high-sensitivity detectors (UV-DAD, MS), optimize injection volume, use sub-2µm particles for better resolution"
+        },
+        {
+          "challenge": "Complex matrix interference",
+          "solution": "Implement sample cleanup (SPE), use gradient elution, optimize selectivity with different stationary phases"
+        },
+        {
+          "challenge": "Chiral separation difficulty",
+          "solution": "Screen multiple chiral columns, optimize mobile phase composition, adjust temperature and flow rate"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "USP <621>",
+          "description": "Chromatography - General requirements"
+        },
+        {
+          "standard": "ICH Q2(R1)",
+          "description": "Validation of Analytical Procedures"
+        },
+        {
+          "standard": "ICH Q3A/B",
+          "description": "Impurities in New Drug Substances/Products"
+        },
+        {
+          "standard": "FDA 21 CFR Part 211",
+          "description": "Current Good Manufacturing Practice"
+        }
+      ]
     },
     "environmental": {
       "title": "Environmental Testing",
-      "description": "Water quality analysis, pesticide residue detection"
+      "description": "Environmental testing using HPLC is essential for monitoring water quality, soil contamination, and air pollutants to protect public health and ecosystems. HPLC enables accurate detection and quantification of pesticides, herbicides, pharmaceuticals, and industrial chemicals in environmental samples. It plays a crucial role in regulatory compliance, environmental impact assessments, and pollution control. Modern environmental analysis requires high sensitivity and selectivity to detect trace-level contaminants in complex matrices.",
+      "analysisItems": [
+        {
+          "name": "Pesticide Residue Analysis",
+          "description": "Detection of organophosphorus, organochlorine, and carbamate pesticides in water and soil"
+        },
+        {
+          "name": "PAH Analysis",
+          "description": "Quantification of polycyclic aromatic hydrocarbons in environmental samples"
+        },
+        {
+          "name": "Pharmaceutical Residues",
+          "description": "Detection of pharmaceutical compounds in wastewater and surface water"
+        },
+        {
+          "name": "Phenolic Compounds",
+          "description": "Analysis of phenols and chlorophenols in industrial effluents"
+        },
+        {
+          "name": "PFAS Analysis",
+          "description": "Determination of per- and polyfluoroalkyl substances in water and soil"
+        },
+        {
+          "name": "Heavy Metal Complexes",
+          "description": "Analysis of metal-organic complexes using ion-pair chromatography"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecylsilane)",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "General environmental analysis, pesticides, PAHs"
+        },
+        {
+          "type": "C8 (Octylsilane)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Moderately polar compounds, herbicides"
+        },
+        {
+          "type": "Phenyl",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "PAHs, aromatic pollutants, phenolic compounds"
+        },
+        {
+          "type": "HILIC (Hydrophilic Interaction)",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Polar pesticides, PFAS, pharmaceutical residues"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Pesticide Residue in Drinking Water",
+          "sample": "Drinking water samples",
+          "goal": "Detect and quantify multiple pesticide residues at ppb levels",
+          "column": "C18, 3 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradient: Water (0.1% Formic acid) to Methanol",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm / MS",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "PAH Analysis in Soil",
+          "sample": "Soil extracts",
+          "goal": "Quantify 16 EPA priority PAHs in contaminated soil",
+          "column": "Phenyl, 5 µm, 250 x 4.6 mm (USP L11)",
+          "parameters": {
+            "mobilePhase": "Gradient: Water to Acetonitrile",
+            "flowRate": "1.0 mL/min",
+            "detection": "Fluorescence (Ex 254 nm, Em 400 nm)",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "PFAS in Wastewater",
+          "sample": "Wastewater samples",
+          "goal": "Determine PFOA and PFOS concentrations in industrial wastewater",
+          "column": "C18, 2.6 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradient: Water (2 mM Ammonium acetate) to Methanol",
+            "flowRate": "0.4 mL/min",
+            "detection": "MS/MS (ESI negative mode)",
+            "injectionVolume": "10 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Matrix complexity and interference",
+          "solution": "Use solid-phase extraction (SPE) for sample cleanup, employ gradient elution, use MS detection for selectivity"
+        },
+        {
+          "challenge": "Trace-level detection",
+          "solution": "Increase injection volume, use large-volume injection techniques, employ MS/MS for enhanced sensitivity"
+        },
+        {
+          "challenge": "Multi-residue analysis",
+          "solution": "Optimize gradient conditions, use universal columns (C18), employ MS with full-scan and MRM modes"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "EPA Method 8321",
+          "description": "Pesticides by HPLC with UV detection"
+        },
+        {
+          "standard": "EPA Method 537.1",
+          "description": "PFAS in drinking water by LC-MS/MS"
+        },
+        {
+          "standard": "ISO 11369",
+          "description": "Water quality - PAH determination"
+        },
+        {
+          "standard": "GB 5749",
+          "description": "Standards for drinking water quality (China)"
+        }
+      ]
     },
     "food": {
       "title": "Food & Beverage",
@@ -323,15 +575,523 @@
     },
     "biochemistry": {
       "title": "Biochemistry",
-      "description": "Protein analysis, peptide mapping, amino acid analysis"
+      "description": "Biochemical analysis using HPLC is fundamental for studying biomolecules including proteins, peptides, nucleotides, and metabolites. HPLC enables precise separation and characterization of complex biological mixtures, supporting research in proteomics, genomics, and metabolomics. It plays a crucial role in protein purification, peptide mapping, and enzyme kinetics studies. Modern biochemical analysis requires specialized columns and gentle separation conditions to maintain biomolecule integrity while achieving high resolution and reproducibility.",
+      "analysisItems": [
+        {
+          "name": "Protein Analysis",
+          "description": "Separation and characterization of proteins by size, charge, or hydrophobicity"
+        },
+        {
+          "name": "Peptide Mapping",
+          "description": "Analysis of proteolytic digests for protein identification and characterization"
+        },
+        {
+          "name": "Nucleotide Analysis",
+          "description": "Separation and quantification of nucleotides, nucleosides, and oligonucleotides"
+        },
+        {
+          "name": "Enzyme Assays",
+          "description": "Monitoring enzyme reactions and determining kinetic parameters"
+        },
+        {
+          "name": "Metabolite Profiling",
+          "description": "Analysis of cellular metabolites for metabolomics studies"
+        },
+        {
+          "name": "Glycan Analysis",
+          "description": "Characterization of glycoproteins and oligosaccharides"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecylsilane)",
+          "usp": "L1",
+          "particleSize": "1.8-5 µm",
+          "dimensions": "150 x 4.6 mm, 100 x 2.1 mm",
+          "applications": "Peptide separation, small molecule metabolites"
+        },
+        {
+          "type": "C4 (Butylsilane)",
+          "usp": "L26",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Large proteins, hydrophobic proteins"
+        },
+        {
+          "type": "Size Exclusion (SEC)",
+          "usp": "L33/L38",
+          "particleSize": "5-10 µm",
+          "dimensions": "300 x 7.8 mm",
+          "applications": "Protein molecular weight determination, aggregation analysis"
+        },
+        {
+          "type": "Ion Exchange (IEX)",
+          "usp": "Specialized",
+          "particleSize": "5-10 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Protein purification, charge variant analysis"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Monoclonal Antibody Purity",
+          "sample": "mAb samples",
+          "goal": "Assess purity and detect aggregates, fragments, and charge variants",
+          "column": "SEC, 5 µm, 300 x 7.8 mm (USP L33)",
+          "parameters": {
+            "mobilePhase": "100 mM Sodium phosphate, 150 mM NaCl, pH 7.0",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "Peptide Mapping of Insulin",
+          "sample": "Tryptic digest of insulin",
+          "goal": "Identify and quantify peptide fragments for quality control",
+          "column": "C18, 2.6 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradient: Water (0.1% TFA) to Acetonitrile (0.1% TFA)",
+            "flowRate": "0.3 mL/min",
+            "detection": "UV 214 nm / MS",
+            "injectionVolume": "5 µL"
+          }
+        },
+        {
+          "title": "Nucleotide Pool Analysis",
+          "sample": "Cell extracts",
+          "goal": "Quantify ATP, ADP, AMP, and other nucleotides in cellular metabolism",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "100 mM Potassium phosphate pH 6.0:Methanol (95:5)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Protein adsorption and loss",
+          "solution": "Use biocompatible columns with low non-specific binding, optimize mobile phase pH and salt concentration"
+        },
+        {
+          "challenge": "Maintaining biological activity",
+          "solution": "Use mild separation conditions, avoid organic solvents when possible, control temperature, minimize analysis time"
+        },
+        {
+          "challenge": "Complex sample matrices",
+          "solution": "Employ sample preparation (desalting, protein precipitation, ultrafiltration), use gradient elution, MS detection"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "USP <1225>",
+          "description": "Validation of Compendial Procedures"
+        },
+        {
+          "standard": "ICH Q6B",
+          "description": "Specifications for Biotechnological Products"
+        },
+        {
+          "standard": "FDA Guidance",
+          "description": "Analytical Procedures for Biological Products"
+        },
+        {
+          "standard": "ISO 20391",
+          "description": "Biotechnology - Cell culture - Metabolomics"
+        }
+      ]
     },
     "clinical": {
       "title": "Clinical Research",
-      "description": "Biomarker discovery, metabolomics, drug metabolism studies"
+      "description": "Clinical research using HPLC is essential for biomarker discovery, therapeutic drug monitoring, and disease diagnosis. HPLC enables accurate quantification of drugs, metabolites, hormones, and biomarkers in biological fluids such as blood, plasma, and urine. It plays a critical role in pharmacokinetic studies, toxicology screening, and personalized medicine. Modern clinical analysis requires high sensitivity, specificity, and throughput to support clinical trials and routine diagnostic testing while meeting regulatory requirements for clinical laboratories.",
+      "analysisItems": [
+        {
+          "name": "Therapeutic Drug Monitoring",
+          "description": "Quantification of drug concentrations in patient samples for dose optimization"
+        },
+        {
+          "name": "Biomarker Analysis",
+          "description": "Detection and quantification of disease biomarkers for diagnosis and prognosis"
+        },
+        {
+          "name": "Hormone Analysis",
+          "description": "Measurement of steroid hormones, thyroid hormones, and other endocrine markers"
+        },
+        {
+          "name": "Metabolomics Profiling",
+          "description": "Comprehensive analysis of metabolites for disease phenotyping"
+        },
+        {
+          "name": "Toxicology Screening",
+          "description": "Detection of drugs of abuse, poisons, and toxic substances"
+        },
+        {
+          "name": "Vitamin D Testing",
+          "description": "Quantification of 25-hydroxyvitamin D for nutritional assessment"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecylsilane)",
+          "usp": "L1",
+          "particleSize": "1.8-5 µm",
+          "dimensions": "100 x 2.1 mm, 150 x 4.6 mm",
+          "applications": "General clinical analysis, drug monitoring, metabolomics"
+        },
+        {
+          "type": "C8 (Octylsilane)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Steroid hormones, lipophilic drugs"
+        },
+        {
+          "type": "Phenyl",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Aromatic drugs, catecholamines"
+        },
+        {
+          "type": "HILIC (Hydrophilic Interaction)",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "100 x 2.1 mm",
+          "applications": "Polar metabolites, nucleotides, amino acids"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Immunosuppressant Monitoring",
+          "sample": "Whole blood",
+          "goal": "Quantify tacrolimus levels for transplant patient management",
+          "column": "C18, 3 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Methanol:Water:Formic acid (85:15:0.1)",
+            "flowRate": "0.3 mL/min",
+            "detection": "MS/MS (ESI positive mode)",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "Vitamin D Quantification",
+          "sample": "Serum",
+          "goal": "Measure 25(OH)D2 and 25(OH)D3 for deficiency screening",
+          "column": "C18, 2.6 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Methanol:Water (90:10)",
+            "flowRate": "0.4 mL/min",
+            "detection": "MS/MS (APCI positive mode)",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Catecholamine Analysis",
+          "sample": "Plasma",
+          "goal": "Determine epinephrine, norepinephrine, and dopamine levels",
+          "column": "C18, 5 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Citrate buffer pH 3.0:Methanol (95:5)",
+            "flowRate": "1.0 mL/min",
+            "detection": "Electrochemical (ECD)",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Matrix effects from biological samples",
+          "solution": "Use protein precipitation or SPE for sample cleanup, employ internal standards, use MS/MS for selectivity"
+        },
+        {
+          "challenge": "Low analyte concentrations",
+          "solution": "Use sensitive detection (MS/MS, fluorescence), optimize extraction recovery, increase sample volume"
+        },
+        {
+          "challenge": "Regulatory compliance",
+          "solution": "Follow FDA/EMA bioanalytical method validation guidelines, implement quality control procedures, maintain documentation"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "FDA Bioanalytical Method Validation",
+          "description": "Guidance for Industry"
+        },
+        {
+          "standard": "EMA Bioanalytical Method Validation",
+          "description": "Guideline on bioanalytical method validation"
+        },
+        {
+          "standard": "CLSI C62-A",
+          "description": "Liquid Chromatography-Mass Spectrometry Methods"
+        },
+        {
+          "standard": "CAP/CLIA",
+          "description": "Clinical laboratory accreditation standards"
+        }
+      ]
     },
     "chemical": {
       "title": "Chemical Industry",
-      "description": "Polymer analysis, petrochemical testing, quality assurance"
+      "description": "Chemical industry analysis using HPLC is crucial for quality control, process monitoring, and product development in petrochemical, polymer, and specialty chemical manufacturing. HPLC provides accurate characterization of chemical products, intermediates, and impurities. It plays a vital role in ensuring product specifications, optimizing manufacturing processes, and meeting industry standards. Modern chemical analysis requires robust methods capable of handling diverse sample types and complex matrices while maintaining high precision and reliability.",
+      "analysisItems": [
+        {
+          "name": "Polymer Additives",
+          "description": "Analysis of antioxidants, UV stabilizers, and plasticizers in polymers"
+        },
+        {
+          "name": "Petrochemical Analysis",
+          "description": "Characterization of aromatic hydrocarbons and petroleum fractions"
+        },
+        {
+          "name": "Surfactant Analysis",
+          "description": "Determination of surfactant composition and purity"
+        },
+        {
+          "name": "Polymer Molecular Weight",
+          "description": "Determination of molecular weight distribution by size exclusion chromatography"
+        },
+        {
+          "name": "Dye and Pigment Analysis",
+          "description": "Identification and quantification of colorants in chemical products"
+        },
+        {
+          "name": "Catalyst Residues",
+          "description": "Detection of metal catalysts and organic catalyst residues"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecylsilane)",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "Additives, stabilizers, general chemical analysis"
+        },
+        {
+          "type": "C8 (Octylsilane)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Petrochemical products, hydrophobic compounds"
+        },
+        {
+          "type": "Phenyl",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Aromatic compounds, PAHs, dyes"
+        },
+        {
+          "type": "Size Exclusion (SEC/GPC)",
+          "usp": "L33/L38",
+          "particleSize": "5-10 µm",
+          "dimensions": "300 x 7.8 mm",
+          "applications": "Polymer molecular weight distribution"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Antioxidant in Plastics",
+          "sample": "Polymer extracts",
+          "goal": "Quantify Irganox 1010 and other antioxidants in polyethylene",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Acetonitrile:Water (90:10)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Aromatic Hydrocarbons in Gasoline",
+          "sample": "Gasoline samples",
+          "goal": "Determine benzene, toluene, and xylene content (BTX)",
+          "column": "Phenyl, 5 µm, 250 x 4.6 mm (USP L11)",
+          "parameters": {
+            "mobilePhase": "Acetonitrile:Water (70:30)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "Polymer Molecular Weight Distribution",
+          "sample": "Polystyrene solutions",
+          "goal": "Determine Mn, Mw, and polydispersity index",
+          "column": "SEC/GPC, 5 µm, 300 x 7.8 mm (USP L33)",
+          "parameters": {
+            "mobilePhase": "Tetrahydrofuran (THF)",
+            "flowRate": "1.0 mL/min",
+            "detection": "Refractive Index (RI)",
+            "injectionVolume": "100 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Sample solubility issues",
+          "solution": "Use appropriate solvents for extraction and dissolution, employ elevated temperatures when necessary, optimize sample preparation"
+        },
+        {
+          "challenge": "Complex polymer matrices",
+          "solution": "Use selective extraction methods, employ gradient elution, use appropriate detectors (RI, UV, ELSD)"
+        },
+        {
+          "challenge": "High molecular weight compounds",
+          "solution": "Use size exclusion chromatography (SEC/GPC), optimize column selection based on molecular weight range"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "ASTM D6591",
+          "description": "Determination of aromatic content in petroleum products"
+        },
+        {
+          "standard": "ISO 16014",
+          "description": "Plastics - Determination of average molecular weight"
+        },
+        {
+          "standard": "GB/T 7764",
+          "description": "Rubber identification by infrared spectroscopy"
+        },
+        {
+          "standard": "ASTM D5296",
+          "description": "Molecular weight averages and distribution by SEC"
+        }
+      ]
+    },
+    "food_beverage": {
+      "title": "Food & Beverage",
+      "description": "Food and beverage analysis using HPLC ensures product safety, quality, and authenticity throughout the supply chain. HPLC provides accurate quantification of nutrients, additives, contaminants, and adulterants in various food matrices. It plays a critical role in quality control, regulatory compliance, and food safety monitoring. Modern food analysis demands high sensitivity and selectivity to detect trace-level contaminants and verify product authenticity while meeting stringent food safety regulations.",
+      "analysisItems": [
+        {
+          "name": "Vitamin Analysis",
+          "description": "Quantification of water-soluble and fat-soluble vitamins in food products"
+        },
+        {
+          "name": "Preservative Testing",
+          "description": "Detection and quantification of food preservatives like benzoic acid and sorbic acid"
+        },
+        {
+          "name": "Mycotoxin Analysis",
+          "description": "Detection of aflatoxins, ochratoxin A, and other mycotoxins in grains and nuts"
+        },
+        {
+          "name": "Sweetener Analysis",
+          "description": "Quantification of artificial and natural sweeteners in beverages and foods"
+        },
+        {
+          "name": "Amino Acid Profiling",
+          "description": "Analysis of free and protein-bound amino acids for quality and authenticity"
+        },
+        {
+          "name": "Antioxidant Analysis",
+          "description": "Determination of natural and synthetic antioxidants in food products"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecylsilane)",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "General food analysis, vitamins, preservatives, antioxidants"
+        },
+        {
+          "type": "C8 (Octylsilane)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Fat-soluble vitamins, lipid analysis"
+        },
+        {
+          "type": "Amino Acid Analysis Column",
+          "usp": "Specialized",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Amino acid composition, protein hydrolysates"
+        },
+        {
+          "type": "HILIC (Hydrophilic Interaction)",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "Carbohydrates, sugars, polar sweeteners"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Vitamin C in Fruit Juice",
+          "sample": "Fruit juice samples",
+          "goal": "Quantify vitamin C (ascorbic acid) content for nutritional labeling",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Phosphate buffer pH 2.5:Methanol (95:5)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Aflatoxin in Peanuts",
+          "sample": "Peanut extracts",
+          "goal": "Detect aflatoxins B1, B2, G1, G2 at regulatory limits",
+          "column": "C18, 5 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Water:Methanol:Acetonitrile (60:20:20)",
+            "flowRate": "1.0 mL/min",
+            "detection": "Fluorescence (Ex 365 nm, Em 450 nm)",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "Preservatives in Soft Drinks",
+          "sample": "Carbonated beverages",
+          "goal": "Simultaneous determination of benzoic acid and sorbic acid",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Acetonitrile:Water:Acetic acid (25:74:1)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 230 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Complex food matrices",
+          "solution": "Use appropriate sample preparation (extraction, filtration, SPE), optimize gradient conditions for matrix separation"
+        },
+        {
+          "challenge": "Low analyte concentrations",
+          "solution": "Employ sample concentration techniques, use fluorescence or MS detection for enhanced sensitivity"
+        },
+        {
+          "challenge": "Unstable compounds (vitamins)",
+          "solution": "Protect samples from light and oxygen, use antioxidants, analyze immediately after preparation, control pH"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "AOAC Official Methods",
+          "description": "Food analysis methods by AOAC International"
+        },
+        {
+          "standard": "FDA BAM",
+          "description": "Bacteriological Analytical Manual"
+        },
+        {
+          "standard": "GB 5009 Series",
+          "description": "National food safety standards (China)"
+        },
+        {
+          "standard": "EU Regulation 1881/2006",
+          "description": "Maximum levels for certain contaminants in foodstuffs"
+        }
+      ]
     }
   }
 }
