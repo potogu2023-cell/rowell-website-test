@@ -1,0 +1,14 @@
+{
+  "query": "SELECT brand, COUNT(*) as count FROM products WHERE brand = 'Shimadzu' GROUP BY brand;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT brand, COUNT(*) as count FROM products WHERE brand = 'Shimadzu' GROUP BY brand;",
+  "rows": [
+    {
+      "brand": "Shimadzu",
+      "count": "1059"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcount\nShimadzu\t1059\n",
+  "stderr": "",
+  "execution_time_ms": 1574
+}

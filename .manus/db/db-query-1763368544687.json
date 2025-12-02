@@ -1,0 +1,62 @@
+{
+  "query": "SELECT prefix as series, COUNT(*) as count FROM products WHERE brand = 'Shimadzu' GROUP BY prefix ORDER BY count DESC LIMIT 15;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT prefix as series, COUNT(*) as count FROM products WHERE brand = 'Shimadzu' GROUP BY prefix ORDER BY count DESC LIMIT 15;",
+  "rows": [
+    {
+      "series": "SHIM",
+      "count": "493"
+    },
+    {
+      "series": "227",
+      "count": "268"
+    },
+    {
+      "series": "221",
+      "count": "84"
+    },
+    {
+      "series": "SH-1",
+      "count": "56"
+    },
+    {
+      "series": "SH-5",
+      "count": "45"
+    },
+    {
+      "series": "SH-200",
+      "count": "28"
+    },
+    {
+      "series": "SH-1301",
+      "count": "25"
+    },
+    {
+      "series": "SH-35",
+      "count": "20"
+    },
+    {
+      "series": "SH-50",
+      "count": "16"
+    },
+    {
+      "series": "SH-624",
+      "count": "12"
+    },
+    {
+      "series": "SH-VMS",
+      "count": "8"
+    },
+    {
+      "series": "SH-Volatiles",
+      "count": "3"
+    },
+    {
+      "series": "LPGC",
+      "count": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "series\tcount\nSHIM\t493\n227\t268\n221\t84\nSH-1\t56\nSH-5\t45\nSH-200\t28\nSH-1301\t25\nSH-35\t20\nSH-50\t16\nSH-624\t12\nSH-VMS\t8\nSH-Volatiles\t3\nLPGC\t1\n",
+  "stderr": "",
+  "execution_time_ms": 1618
+}

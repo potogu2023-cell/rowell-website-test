@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE products SET maxTemperature = CONCAT(maxTemperature, '°C') WHERE brand = 'Shimadzu' AND maxTemperature IS NOT NULL AND maxTemperature != '' AND maxTemperature NOT LIKE '%°C%' AND maxTemperature NOT LIKE '%℃%'",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute UPDATE products SET maxTemperature = CONCAT(maxTemperature, '°C') WHERE brand = 'Shimadzu' AND maxTemperature IS NOT NULL AND maxTemperature != '' AND maxTemperature NOT LIKE '%°C%' AND maxTemperature NOT LIKE '%℃%'",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1590
+}

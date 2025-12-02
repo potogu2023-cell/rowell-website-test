@@ -1,0 +1,150 @@
+{
+  "query": "SELECT id, productId, partNumber, brand, name FROM products ORDER BY brand, id LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT id, productId, partNumber, brand, name FROM products ORDER BY brand, id LIMIT 20;",
+  "rows": [
+    {
+      "id": "244979",
+      "productId": "AGIL-670150-902",
+      "partNumber": "670150-902",
+      "brand": "Agilent",
+      "name": "670150-902"
+    },
+    {
+      "id": "244980",
+      "productId": "AGIL-821725-955",
+      "partNumber": "821725-955",
+      "brand": "Agilent",
+      "name": "821725-955"
+    },
+    {
+      "id": "244981",
+      "productId": "AGIL-695775-742",
+      "partNumber": "695775-742",
+      "brand": "Agilent",
+      "name": "695775-742"
+    },
+    {
+      "id": "244982",
+      "productId": "AGIL-693775-742",
+      "partNumber": "693775-742",
+      "brand": "Agilent",
+      "name": "693775-742"
+    },
+    {
+      "id": "244983",
+      "productId": "AGIL-691775-742",
+      "partNumber": "691775-742",
+      "brand": "Agilent",
+      "name": "691775-742"
+    },
+    {
+      "id": "244984",
+      "productId": "AGIL-699775-742",
+      "partNumber": "699775-742",
+      "brand": "Agilent",
+      "name": "699775-742"
+    },
+    {
+      "id": "244985",
+      "productId": "AGIL-823750-953",
+      "partNumber": "823750-953",
+      "brand": "Agilent",
+      "name": "823750-953"
+    },
+    {
+      "id": "244986",
+      "productId": "AGIL-695675-742",
+      "partNumber": "695675-742",
+      "brand": "Agilent",
+      "name": "695675-742"
+    },
+    {
+      "id": "244987",
+      "productId": "AGIL-693675-742",
+      "partNumber": "693675-742",
+      "brand": "Agilent",
+      "name": "693675-742"
+    },
+    {
+      "id": "244988",
+      "productId": "AGIL-699675-742",
+      "partNumber": "699675-742",
+      "brand": "Agilent",
+      "name": "699675-742"
+    },
+    {
+      "id": "244989",
+      "productId": "AGIL-820750-942",
+      "partNumber": "820750-942",
+      "brand": "Agilent",
+      "name": "820750-942"
+    },
+    {
+      "id": "244990",
+      "productId": "AGIL-695975-742",
+      "partNumber": "695975-742",
+      "brand": "Agilent",
+      "name": "695975-742"
+    },
+    {
+      "id": "244991",
+      "productId": "AGIL-693975-742",
+      "partNumber": "693975-742",
+      "brand": "Agilent",
+      "name": "693975-742"
+    },
+    {
+      "id": "244992",
+      "productId": "AGIL-699975-742",
+      "partNumber": "699975-742",
+      "brand": "Agilent",
+      "name": "699975-742"
+    },
+    {
+      "id": "244993",
+      "productId": "AGIL-821725-925",
+      "partNumber": "821725-925",
+      "brand": "Agilent",
+      "name": "821725-925"
+    },
+    {
+      "id": "244994",
+      "productId": "AGIL-695768-901",
+      "partNumber": "695768-901",
+      "brand": "Agilent",
+      "name": "695768-901"
+    },
+    {
+      "id": "244995",
+      "productId": "AGIL-695768-901K",
+      "partNumber": "695768-901K",
+      "brand": "Agilent",
+      "name": "695768-901K"
+    },
+    {
+      "id": "244996",
+      "productId": "AGIL-695768-901T",
+      "partNumber": "695768-901T",
+      "brand": "Agilent",
+      "name": "695768-901T"
+    },
+    {
+      "id": "244997",
+      "productId": "AGIL-693768-901",
+      "partNumber": "693768-901",
+      "brand": "Agilent",
+      "name": "693768-901"
+    },
+    {
+      "id": "244998",
+      "productId": "AGIL-693768-901K",
+      "partNumber": "693768-901K",
+      "brand": "Agilent",
+      "name": "693768-901K"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tproductId\tpartNumber\tbrand\tname\n244979\tAGIL-670150-902\t670150-902\tAgilent\t670150-902\n244980\tAGIL-821725-955\t821725-955\tAgilent\t821725-955\n244981\tAGIL-695775-742\t695775-742\tAgilent\t695775-742\n244982\tAGIL-693775-742\t693775-742\tAgilent\t693775-742\n244983\tAGIL-691775-742\t691775-742\tAgilent\t691775-742\n244984\tAGIL-699775-742\t699775-742\tAgilent\t699775-742\n244985\tAGIL-823750-953\t823750-953\tAgilent\t823750-953\n244986\tAGIL-695675-742\t695675-742\tAgilent\t695675-742\n244987\tAGIL-693675-742\t693675-742\tAgilent\t693675-742\n244988\tAGIL-699675-742\t699675-742\tAgilent\t699675-742\n244989\tAGIL-820750-942\t820750-942\tAgilent\t820750-942\n244990\tAGIL-695975-742\t695975-742\tAgilent\t695975-742\n244991\tAGIL-693975-742\t693975-742\tAgilent\t693975-742\n244992\tAGIL-699975-742\t699975-742\tAgilent\t699975-742\n244993\tAGIL-821725-925\t821725-925\tAgilent\t821725-925\n244994\tAGIL-695768-901\t695768-901\tAgilent\t695768-901\n244995\tAGIL-695768-901K\t695768-901K\tAgilent\t695768-901K\n244996\tAGIL-695768-901T\t695768-901T\tAgilent\t695768-901T\n244997\tAGIL-693768-901\t693768-901\tAgilent\t693768-901\n244998\tAGIL-693768-901K\t693768-901K\tAgilent\t693768-901K\n",
+  "stderr": "",
+  "execution_time_ms": 2386
+}

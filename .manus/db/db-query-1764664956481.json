@@ -1,0 +1,38 @@
+{
+  "query": "SELECT brand, COUNT(*) as count FROM products GROUP BY brand ORDER BY brand;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 3oR8r6zhvNA54kM.root --database 7P2s8YLp8Q4WBmq2Lyj4MG --execute SELECT brand, COUNT(*) as count FROM products GROUP BY brand ORDER BY brand;",
+  "rows": [
+    {
+      "brand": "Agilent",
+      "count": "630"
+    },
+    {
+      "brand": "Daicel",
+      "count": "277"
+    },
+    {
+      "brand": "Develosil",
+      "count": "69"
+    },
+    {
+      "brand": "Phenomenex",
+      "count": "247"
+    },
+    {
+      "brand": "Restek",
+      "count": "215"
+    },
+    {
+      "brand": "Shimadzu",
+      "count": "1103"
+    },
+    {
+      "brand": "Thermo Fisher Scientific",
+      "count": "366"
+    }
+  ],
+  "messages": [],
+  "stdout": "brand\tcount\nAgilent\t630\nDaicel\t277\nDevelosil\t69\nPhenomenex\t247\nRestek\t215\nShimadzu\t1103\nThermo Fisher Scientific\t366\n",
+  "stderr": "",
+  "execution_time_ms": 1652
+}
