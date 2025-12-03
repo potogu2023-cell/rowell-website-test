@@ -12,11 +12,10 @@ export default function ProductDetail() {
   const { t } = useTranslation();
   const params = useParams<{ id: string }>();
   const [, setLocation] = useLocation();
-  const id = params.id;
-  const productId = id ? parseInt(id) : 0;
+  const slug = params.id || "";
 
-  const { data: product, isLoading } = trpc.products.getById.useQuery(productId, {
-    enabled: productId > 0,
+  const { data: product, isLoading } = trpc.products.getBySlug.useQuery(slug, {
+    enabled: slug.length > 0,
   });
 
   const addToCartMutation = trpc.cart.add.useMutation({

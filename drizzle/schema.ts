@@ -238,6 +238,8 @@ export const products = mysqlTable("products", {
 	phMax: int(),
 	productType: varchar({ length: 100 }),
 	descriptionQuality: mysqlEnum(['high','medium','low','extracted','none']).default('none'),
+	slug: varchar({ length: 128 }),
+	category: varchar({ length: 100 }),
 },
 (table) => [
 	index("products_productId_unique").on(table.productId),
