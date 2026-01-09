@@ -120,17 +120,8 @@ export default function Products() {
   const total = data?.total || 0;
   const totalPages = data?.totalPages || 0;
 
-  // Filter products based on search term and selected brand (client-side filtering)
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch =
-      product.productId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.partNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.brand.toLowerCase().includes(searchTerm.toLowerCase());
-
-    const matchesBrand = !selectedBrand || product.brand === selectedBrand;
-
-    return matchesSearch && matchesBrand;
-  });
+  // Use products from backend API directly (filtering is done on server-side)
+  const filteredProducts = products;
 
   // Get unique brands from brand stats API (all brands, not just current page)
   const brands = brandStats ? Object.keys(brandStats).sort() : [];
@@ -265,7 +256,10 @@ export default function Products() {
                     key={brand}
                     variant={selectedBrand === brand ? "default" : "outline"}
                     size="sm"
-                    onClick={() => setSelectedBrand(selectedBrand === brand ? null : brand)}
+                    onClick={() => {
+                      setSelectedBrand(selectedBrand === brand ? null : brand);
+                      setSearchTerm(""); // Clear search term when selecting brand
+                    }}
                   >
                     {brand} ({brandStats?.[brand] || 0})
                   </Button>
@@ -285,7 +279,7 @@ export default function Products() {
                 <Card 
                   key={product.id} 
                   className="hover:shadow-lg transition-shadow cursor-pointer"
-                  onClick={() => setLocation(`/products/${product.productId}`)}
+                  onClick={() => setLocation(`/products/${product.id}`)}
                 >
                   {/* Product Image */}
                   <div className="aspect-square w-full overflow-hidden bg-gray-50">
