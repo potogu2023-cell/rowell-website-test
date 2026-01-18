@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "corepack": true,
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/public",
   "framework": null,
