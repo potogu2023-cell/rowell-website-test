@@ -540,7 +540,7 @@ export const appRouter = router({
               .select()
               .from(products)
               .where(whereClause)
-              .orderBy(products.productName)
+              .orderBy(products.name)
               .limit(pageSize)
               .offset(offset);
             
@@ -553,7 +553,7 @@ export const appRouter = router({
             query = db
               .select()
               .from(products)
-              .orderBy(products.productName)
+              .orderBy(products.name)
               .limit(pageSize)
               .offset(offset);
             
