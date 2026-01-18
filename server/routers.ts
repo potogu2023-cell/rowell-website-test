@@ -568,12 +568,17 @@ export const appRouter = router({
           countQuery,
         ]);
         
+        console.log('[products.list] Query executed. Product results count:', productResults.length);
+        console.log('[products.list] Count results:', countResults);
+        
         const productList = input?.categoryId 
           ? productResults.map((r: any) => r.product)
           : productResults;
         
         const total = countResults[0]?.count || 0;
         const totalPages = Math.ceil(total / pageSize);
+        
+        console.log('[products.list] Returning:', { total, page, pageSize, totalPages, productsCount: productList.length });
         
         return {
           products: productList,
