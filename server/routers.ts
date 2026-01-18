@@ -563,13 +563,21 @@ export const appRouter = router({
           }
         }
         
-        const [productResults, countResults] = await Promise.all([
-          query,
-          countQuery,
-        ]);
+        console.log('[products.list] About to execute queries...');
         
-        console.log('[products.list] Query executed. Product results count:', productResults.length);
-        console.log('[products.list] Count results:', countResults);
+        let productResults, countResults;
+        try {
+          [productResults, countResults] = await Promise.all([
+            query,
+            countQuery,
+          ]);
+          console.log('[products.list] Query executed successfully');
+          console.log('[products.list] Product results count:', productResults.length);
+          console.log('[products.list] Count results:', countResults);
+        } catch (error) {
+          console.error('[products.list] Query execution error:', error);
+          throw error;
+        }
         
         const productList = input?.categoryId 
           ? productResults.map((r: any) => r.product)
