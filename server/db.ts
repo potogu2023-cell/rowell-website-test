@@ -24,7 +24,8 @@ export async function getDb() {
       
       // Parse the connection URL
       // Format: mysql://username:password@host:port/database
-      const urlMatch = connectionString.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+      // Note: database name should not include query parameters
+      const urlMatch = connectionString.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/([^?]+)/);
       console.log('[Database] URL match result:', urlMatch ? 'SUCCESS' : 'FAILED');
       
       if (!urlMatch) {
