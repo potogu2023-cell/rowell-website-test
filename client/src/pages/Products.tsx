@@ -29,9 +29,11 @@ export default function Products() {
   const { data: categoriesData } = trpc.category.getAll.useQuery();
   const categories = categoriesData || [];
 
-  // Read category from URL parameters on mount
+  // Read category and brand from URL parameters on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    
+    // Read category parameter
     const categoryParam = params.get('category');
     if (categoryParam && categories.length > 0) {
       // Try to parse as number first (for backward compatibility)
@@ -50,6 +52,12 @@ export default function Products() {
           setSelectedCategoryName(category.name);
         }
       }
+    }
+    
+    // Read brand parameter
+    const brandParam = params.get('brand');
+    if (brandParam) {
+      setSelectedBrand(brandParam);
     }
   }, [categories]);
 
