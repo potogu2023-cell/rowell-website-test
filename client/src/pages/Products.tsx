@@ -65,10 +65,11 @@ export default function Products() {
   const queryParams = useMemo(() => ({
     categoryId: selectedCategoryId || undefined,
     brand: selectedBrand || undefined,
+    search: searchTerm || undefined,
     ...advancedFilters,
     page: currentPage,
     pageSize,
-  }), [selectedCategoryId, selectedBrand, advancedFilters, currentPage, pageSize]);
+  }), [selectedCategoryId, selectedBrand, searchTerm, advancedFilters, currentPage, pageSize]);
   
   console.log('[Products] Query params:', queryParams);
   

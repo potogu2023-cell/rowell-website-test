@@ -420,6 +420,7 @@ export const appRouter = router({
       .input(z.object({
         categoryId: z.number().optional(),
         brand: z.string().optional(),
+        search: z.string().optional(),
         // Advanced filters
         particleSizeMin: z.number().optional(),
         particleSizeMax: z.number().optional(),
@@ -456,6 +457,19 @@ export const appRouter = router({
         // Brand filter
         if (input?.brand) {
           conditions.push(eq(products.brand, input.brand));
+        }
+        
+        // Search filter (productId, partNumber, or brand)
+        if (input?.search) {
+          const { or, like } = await import("drizzle-orm");
+          const searchPattern = `%${input.search}%`;
+          conditions.push(
+            or(
+              like(products.productId, searchPattern),
+              like(products.partNumber, searchPattern),
+              like(products.brand, searchPattern)
+            )
+          );
         }
         
         // Particle size range
