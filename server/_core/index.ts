@@ -1,9 +1,11 @@
 import "dotenv/config";
 import express from "express";
+import bodyParser from "body-parser";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
+import { registerImageSyncRoutes } from "./imageSync";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
@@ -30,15 +32,28 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 }
 
 async function startServer() {
+  // Run database migration first
+  try {
+    const { migrateDatabase } = await import('../migrate-db');
+    await migrateDatabase();
+  } catch (error) {
+    console.error('[Server] Failed to run database migration:', error);
+  }
+
   const app = express();
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  // Add text/csv parser for imageSync API
+  app.use(bodyParser.text({ type: 'text/csv', limit: '50mb' }));
+  app.use(bodyParser.text({ type: 'text/plain', limit: '50mb' }));
   // SEO meta tag injection for article pages
   app.use(seoMetaInjectionMiddleware);
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+  // ImageSync REST API for CSV uploads
+  registerImageSyncRoutes(app);
   // Sitemap.xml for SEO
   app.get("/sitemap.xml", generateSitemap);
   // robots.txt for search engines
