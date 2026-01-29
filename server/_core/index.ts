@@ -40,6 +40,21 @@ async function startServer() {
     console.error('[Server] Failed to run database migration:', error);
   }
 
+  // Validate production configuration
+  try {
+    const { validateAllConfigs } = await import('../config-validator');
+    const { db } = await import('../db');
+    const configValid = await validateAllConfigs(db);
+    if (!configValid) {
+      console.error('\n⛔ 服务器启动失败：配置验证未通过！');
+      console.error('请检查 PRODUCTION_CONFIG.md 文件获取正确配置。\n');
+      process.exit(1);
+    }
+  } catch (error) {
+    console.error('[Server] Failed to validate configuration:', error);
+    // Don't exit on validation error in case it's a dev environment
+  }
+
   const app = express();
   const server = createServer(app);
   // Configure body parser with larger size limit for file uploads
