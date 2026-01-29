@@ -2,6 +2,11 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { getUserByEmail, createUser, updateUserLastSignIn, getAllProducts, getProductsByIds, createInquiry, createInquiryItems } from './db';
+import { hashPassword, verifyPassword } from './password-utils';
+import { setSessionCookie } from './_core/cookies';
+import { generateInquiryNumber } from './inquiryUtils';
+import { sendInquiryEmail } from './emailService';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -32,9 +37,7 @@ export const appRouter = router({
       })
       .mutation(async ({ input }) => {
         console.log('[Auth] Register mutation called for email:', input.email);
-        const { getUserByEmail, createUser } = await import('./db');
-        console.log('[Auth] DB functions imported:', { getUserByEmail: typeof getUserByEmail, createUser: typeof createUser });
-        const { hashPassword } = await import('./password-utils');
+        console.log('[Auth] DB functions:', { getUserByEmail: typeof getUserByEmail, createUser: typeof createUser });
         
         // Check if user already exists
         const existingUser = await getUserByEmail(input.email);
@@ -72,9 +75,6 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input, ctx }) => {
-        const { getUserByEmail, updateUserLastSignIn } = await import('./db');
-        const { verifyPassword } = await import('./password-utils');
-        const { setSessionCookie } = await import('./_core/cookies');
         
         // Find user
         const user = await getUserByEmail(input.email);
@@ -113,7 +113,6 @@ export const appRouter = router({
   // Product routes
   products: router({
     list: publicProcedure.query(async () => {
-      const { getAllProducts } = await import('./db');
       return await getAllProducts();
     }),
     
@@ -125,7 +124,6 @@ export const appRouter = router({
         }).parse(raw);
       })
       .query(async ({ input }) => {
-        const { getProductsByIds } = await import('./db');
         return await getProductsByIds(input.productIds);
       }),
   }),
@@ -147,9 +145,6 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
-        const { createInquiry, createInquiryItems, getProductsByIds } = await import('./db');
-        const { generateInquiryNumber } = await import('./inquiryUtils');
-        const { sendInquiryEmail } = await import('./emailService');
         
         // Generate unique inquiry number
         const inquiryNumber = generateInquiryNumber();
