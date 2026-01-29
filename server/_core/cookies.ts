@@ -46,3 +46,24 @@ export function getSessionCookieOptions(
     secure: isSecureRequest(req),
   };
 }
+
+import type { Response } from "express";
+import { COOKIE_NAME } from "@shared/const";
+
+export function setSessionCookie(
+  req: Request,
+  res: Response,
+  session: {
+    userId: number;
+    openId?: string;
+    email?: string;
+    name?: string;
+  }
+) {
+  const cookieOptions = getSessionCookieOptions(req);
+  const sessionData = JSON.stringify(session);
+  res.cookie(COOKIE_NAME, sessionData, {
+    ...cookieOptions,
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+  });
+}

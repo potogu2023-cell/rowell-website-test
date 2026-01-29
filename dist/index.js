@@ -633,295 +633,6 @@ var init_db = __esm({
   }
 });
 
-// server/_core/cookies.ts
-var cookies_exports = {};
-__export(cookies_exports, {
-  getSessionCookieOptions: () => getSessionCookieOptions
-});
-function isSecureRequest(req) {
-  if (req.protocol === "https") return true;
-  const forwardedProto = req.headers["x-forwarded-proto"];
-  if (!forwardedProto) return false;
-  const protoList = Array.isArray(forwardedProto) ? forwardedProto : forwardedProto.split(",");
-  return protoList.some((proto) => proto.trim().toLowerCase() === "https");
-}
-function getSessionCookieOptions(req) {
-  return {
-    httpOnly: true,
-    path: "/",
-    sameSite: "none",
-    secure: isSecureRequest(req)
-  };
-}
-var init_cookies = __esm({
-  "server/_core/cookies.ts"() {
-    "use strict";
-  }
-});
-
-// server/password-utils.ts
-var password_utils_exports = {};
-__export(password_utils_exports, {
-  hashPassword: () => hashPassword,
-  verifyPassword: () => verifyPassword
-});
-import bcrypt from "bcryptjs";
-async function hashPassword(password) {
-  const saltRounds = 10;
-  return await bcrypt.hash(password, saltRounds);
-}
-async function verifyPassword(password, hash) {
-  return await bcrypt.compare(password, hash);
-}
-var init_password_utils = __esm({
-  "server/password-utils.ts"() {
-    "use strict";
-  }
-});
-
-// server/inquiryUtils.ts
-var inquiryUtils_exports = {};
-__export(inquiryUtils_exports, {
-  generateInquiryNumber: () => generateInquiryNumber,
-  validateInquiryNumber: () => validateInquiryNumber
-});
-function generateInquiryNumber() {
-  const now = /* @__PURE__ */ new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const random = Math.floor(Math.random() * 900) + 100;
-  return `INQ-${year}${month}${day}-${random}`;
-}
-function validateInquiryNumber(inquiryNumber) {
-  const pattern = /^INQ-\d{8}-\d{3}$/;
-  return pattern.test(inquiryNumber);
-}
-var init_inquiryUtils = __esm({
-  "server/inquiryUtils.ts"() {
-    "use strict";
-  }
-});
-
-// server/emailService.ts
-var emailService_exports = {};
-__export(emailService_exports, {
-  sendInquiryEmail: () => sendInquiryEmail,
-  verifySMTPConnection: () => verifySMTPConnection
-});
-import nodemailer from "nodemailer";
-function getSMTPConfig() {
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM;
-  if (!host || !port || !user || !pass || !from) {
-    console.warn("[Email Service] SMTP not configured. Email sending is disabled.");
-    console.warn("[Email Service] Required environment variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM");
-    return null;
-  }
-  return {
-    host,
-    port: parseInt(port, 10),
-    secure: parseInt(port, 10) === 465,
-    // true for 465, false for other ports
-    auth: {
-      user,
-      pass
-    },
-    from
-  };
-}
-function getTransporter() {
-  if (transporter) {
-    return transporter;
-  }
-  const config = getSMTPConfig();
-  if (!config) {
-    return null;
-  }
-  try {
-    transporter = nodemailer.createTransport({
-      host: config.host,
-      port: config.port,
-      secure: config.secure,
-      auth: config.auth
-    });
-    console.log("[Email Service] SMTP transporter created successfully");
-    return transporter;
-  } catch (error) {
-    console.error("[Email Service] Failed to create SMTP transporter:", error);
-    return null;
-  }
-}
-function generateInquiryEmailHTML(data) {
-  const productRows = data.products.map((p, index2) => `
-      <tr>
-        <td style="padding: 8px; border: 1px solid #ddd;">${index2 + 1}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${p.name}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${p.partNumber}</td>
-      </tr>
-    `).join("");
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>\u8BE2\u4EF7\u786E\u8BA4</title>
-</head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background-color: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-    <h1 style="margin: 0; font-size: 24px;">Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3</h1>
-    <p style="margin: 10px 0 0 0; font-size: 14px;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546</p>
-  </div>
-  
-  <div style="background-color: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-    <h2 style="color: #2563eb; margin-top: 0;">\u8BE2\u4EF7\u786E\u8BA4</h2>
-    
-    <p>\u5C0A\u656C\u7684 <strong>${data.userName}</strong>\uFF0C</p>
-    
-    <p>\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-    
-    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2563eb;">
-      <p style="margin: 5px 0;"><strong>\u8BE2\u4EF7\u5355\u53F7:</strong> ${data.inquiryNumber}</p>
-      <p style="margin: 5px 0;"><strong>\u63D0\u4EA4\u65F6\u95F4:</strong> ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
-      ${data.userCompany ? `<p style="margin: 5px 0;"><strong>\u516C\u53F8:</strong> ${data.userCompany}</p>` : ""}
-      ${data.userPhone ? `<p style="margin: 5px 0;"><strong>\u7535\u8BDD:</strong> ${data.userPhone}</p>` : ""}
-    </div>
-    
-    <h3 style="color: #2563eb; margin-top: 20px;">\u8BE2\u4EF7\u4EA7\u54C1</h3>
-    <table style="width: 100%; border-collapse: collapse; margin: 10px 0; background-color: white;">
-      <thead>
-        <tr style="background-color: #f3f4f6;">
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left; width: 50px;">#</th>
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u4EA7\u54C1\u540D\u79F0</th>
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u8D27\u53F7</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${productRows}
-      </tbody>
-    </table>
-    
-    ${data.userMessage ? `
-    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0;">
-      <h3 style="color: #2563eb; margin-top: 0;">\u60A8\u7684\u7559\u8A00</h3>
-      <p style="margin: 0; white-space: pre-wrap;">${data.userMessage}</p>
-    </div>
-    ` : ""}
-    
-    <div style="background-color: #fef3c7; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #f59e0b;">
-      <p style="margin: 0;"><strong>\u23F0 \u54CD\u5E94\u65F6\u95F4:</strong> \u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-    </div>
-    
-    <h3 style="color: #2563eb; margin-top: 20px;">\u8054\u7CFB\u6211\u4EEC</h3>
-    <p style="margin: 5px 0;">\u{1F4E7} \u90AE\u7BB1: <a href="mailto:sales@rowellhplc.com" style="color: #2563eb;">sales@rowellhplc.com</a></p>
-    <p style="margin: 5px 0;">\u{1F4DE} \u7535\u8BDD: +86 XXX-XXXX-XXXX</p>
-    
-    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
-    
-    <p style="color: #6b7280; font-size: 12px; margin: 0;">
-      \u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002\u5982\u6709\u95EE\u9898\uFF0C\u8BF7\u901A\u8FC7\u4E0A\u8FF0\u8054\u7CFB\u65B9\u5F0F\u4E0E\u6211\u4EEC\u8054\u7CFB\u3002
-    </p>
-  </div>
-  
-  <div style="text-align: center; padding: 20px; color: #6b7280; font-size: 12px;">
-    <p style="margin: 5px 0;">\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.</p>
-    <p style="margin: 5px 0;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546\uFF0C\u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5206\u6790\u89E3\u51B3\u65B9\u6848</p>
-  </div>
-</body>
-</html>
-  `.trim();
-}
-function generateInquiryEmailText(data) {
-  const productList = data.products.map((p, index2) => `${index2 + 1}. ${p.name} (\u8D27\u53F7: ${p.partNumber})`).join("\n");
-  return `
-\u5C0A\u656C\u7684 ${data.userName}\uFF0C
-
-\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01
-
-\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002
-
-\u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}
-\u63D0\u4EA4\u65F6\u95F4: ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}
-${data.userCompany ? `\u516C\u53F8: ${data.userCompany}
-` : ""}${data.userPhone ? `\u7535\u8BDD: ${data.userPhone}
-` : ""}
-\u8BE2\u4EF7\u4EA7\u54C1:
-${productList}
-
-${data.userMessage ? `\u60A8\u7684\u7559\u8A00:
-${data.userMessage}
-
-` : ""}\u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002
-
-\u5982\u6709\u4EFB\u4F55\u95EE\u9898\uFF0C\u8BF7\u968F\u65F6\u8054\u7CFB\u6211\u4EEC\uFF1A
-\u90AE\u7BB1: sales@rowellhplc.com
-\u7535\u8BDD: +86 XXX-XXXX-XXXX
-
-\u795D\u597D\uFF01
-Rowell HPLC \u56E2\u961F
-
----
-\u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002
-\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.
-  `.trim();
-}
-async function sendInquiryEmail(data) {
-  try {
-    const transporter2 = getTransporter();
-    if (!transporter2) {
-      console.log("[Email Service] SMTP not configured. Email content logged below:");
-      console.log("To:", data.userEmail);
-      console.log("Subject:", `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`);
-      console.log("Content (Text):", generateInquiryEmailText(data));
-      console.log("[Email Service] To enable real email sending, configure SMTP environment variables.");
-      return true;
-    }
-    const config = getSMTPConfig();
-    if (!config) {
-      return false;
-    }
-    const info = await transporter2.sendMail({
-      from: `"Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3" <${config.from}>`,
-      to: data.userEmail,
-      subject: `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`,
-      text: generateInquiryEmailText(data),
-      html: generateInquiryEmailHTML(data)
-    });
-    console.log("[Email Service] Email sent successfully:", info.messageId);
-    console.log("[Email Service] Preview URL:", nodemailer.getTestMessageUrl(info));
-    return true;
-  } catch (error) {
-    console.error("[Email Service] Failed to send inquiry email:", error);
-    return false;
-  }
-}
-async function verifySMTPConnection() {
-  try {
-    const transporter2 = getTransporter();
-    if (!transporter2) {
-      console.warn("[Email Service] SMTP not configured. Cannot verify connection.");
-      return false;
-    }
-    await transporter2.verify();
-    console.log("[Email Service] SMTP connection verified successfully");
-    return true;
-  } catch (error) {
-    console.error("[Email Service] SMTP connection verification failed:", error);
-    return false;
-  }
-}
-var transporter;
-var init_emailService = __esm({
-  "server/emailService.ts"() {
-    "use strict";
-    transporter = null;
-  }
-});
-
 // server/migrate-db.ts
 var migrate_db_exports = {};
 __export(migrate_db_exports, {
@@ -1098,7 +809,32 @@ var NOT_ADMIN_ERR_MSG = "You do not have required permission (10002)";
 
 // server/_core/oauth.ts
 init_db();
-init_cookies();
+
+// server/_core/cookies.ts
+function isSecureRequest(req) {
+  if (req.protocol === "https") return true;
+  const forwardedProto = req.headers["x-forwarded-proto"];
+  if (!forwardedProto) return false;
+  const protoList = Array.isArray(forwardedProto) ? forwardedProto : forwardedProto.split(",");
+  return protoList.some((proto) => proto.trim().toLowerCase() === "https");
+}
+function getSessionCookieOptions(req) {
+  return {
+    httpOnly: true,
+    path: "/",
+    sameSite: "none",
+    secure: isSecureRequest(req)
+  };
+}
+function setSessionCookie(req, res, session) {
+  const cookieOptions = getSessionCookieOptions(req);
+  const sessionData = JSON.stringify(session);
+  res.cookie(COOKIE_NAME, sessionData, {
+    ...cookieOptions,
+    maxAge: 30 * 24 * 60 * 60 * 1e3
+    // 30 days
+  });
+}
 
 // shared/_core/errors.ts
 var HttpError = class extends Error {
@@ -1506,9 +1242,6 @@ function registerImageSyncRoutes(app) {
   });
 }
 
-// server/routers.ts
-init_cookies();
-
 // server/_core/systemRouter.ts
 import { z } from "zod";
 
@@ -1654,6 +1387,222 @@ var systemRouter = router({
 });
 
 // server/routers.ts
+init_db();
+
+// server/password-utils.ts
+import bcrypt from "bcryptjs";
+async function hashPassword(password) {
+  const saltRounds = 10;
+  return await bcrypt.hash(password, saltRounds);
+}
+async function verifyPassword(password, hash) {
+  return await bcrypt.compare(password, hash);
+}
+
+// server/inquiryUtils.ts
+function generateInquiryNumber() {
+  const now = /* @__PURE__ */ new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const random = Math.floor(Math.random() * 900) + 100;
+  return `INQ-${year}${month}${day}-${random}`;
+}
+
+// server/emailService.ts
+import nodemailer from "nodemailer";
+function getSMTPConfig() {
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.SMTP_FROM;
+  if (!host || !port || !user || !pass || !from) {
+    console.warn("[Email Service] SMTP not configured. Email sending is disabled.");
+    console.warn("[Email Service] Required environment variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM");
+    return null;
+  }
+  return {
+    host,
+    port: parseInt(port, 10),
+    secure: parseInt(port, 10) === 465,
+    // true for 465, false for other ports
+    auth: {
+      user,
+      pass
+    },
+    from
+  };
+}
+var transporter = null;
+function getTransporter() {
+  if (transporter) {
+    return transporter;
+  }
+  const config = getSMTPConfig();
+  if (!config) {
+    return null;
+  }
+  try {
+    transporter = nodemailer.createTransport({
+      host: config.host,
+      port: config.port,
+      secure: config.secure,
+      auth: config.auth
+    });
+    console.log("[Email Service] SMTP transporter created successfully");
+    return transporter;
+  } catch (error) {
+    console.error("[Email Service] Failed to create SMTP transporter:", error);
+    return null;
+  }
+}
+function generateInquiryEmailHTML(data) {
+  const productRows = data.products.map((p, index2) => `
+      <tr>
+        <td style="padding: 8px; border: 1px solid #ddd;">${index2 + 1}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${p.name}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${p.partNumber}</td>
+      </tr>
+    `).join("");
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>\u8BE2\u4EF7\u786E\u8BA4</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background-color: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+    <h1 style="margin: 0; font-size: 24px;">Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3</h1>
+    <p style="margin: 10px 0 0 0; font-size: 14px;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546</p>
+  </div>
+  
+  <div style="background-color: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
+    <h2 style="color: #2563eb; margin-top: 0;">\u8BE2\u4EF7\u786E\u8BA4</h2>
+    
+    <p>\u5C0A\u656C\u7684 <strong>${data.userName}</strong>\uFF0C</p>
+    
+    <p>\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002</p>
+    
+    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2563eb;">
+      <p style="margin: 5px 0;"><strong>\u8BE2\u4EF7\u5355\u53F7:</strong> ${data.inquiryNumber}</p>
+      <p style="margin: 5px 0;"><strong>\u63D0\u4EA4\u65F6\u95F4:</strong> ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
+      ${data.userCompany ? `<p style="margin: 5px 0;"><strong>\u516C\u53F8:</strong> ${data.userCompany}</p>` : ""}
+      ${data.userPhone ? `<p style="margin: 5px 0;"><strong>\u7535\u8BDD:</strong> ${data.userPhone}</p>` : ""}
+    </div>
+    
+    <h3 style="color: #2563eb; margin-top: 20px;">\u8BE2\u4EF7\u4EA7\u54C1</h3>
+    <table style="width: 100%; border-collapse: collapse; margin: 10px 0; background-color: white;">
+      <thead>
+        <tr style="background-color: #f3f4f6;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left; width: 50px;">#</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u4EA7\u54C1\u540D\u79F0</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u8D27\u53F7</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${productRows}
+      </tbody>
+    </table>
+    
+    ${data.userMessage ? `
+    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0;">
+      <h3 style="color: #2563eb; margin-top: 0;">\u60A8\u7684\u7559\u8A00</h3>
+      <p style="margin: 0; white-space: pre-wrap;">${data.userMessage}</p>
+    </div>
+    ` : ""}
+    
+    <div style="background-color: #fef3c7; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+      <p style="margin: 0;"><strong>\u23F0 \u54CD\u5E94\u65F6\u95F4:</strong> \u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002</p>
+    </div>
+    
+    <h3 style="color: #2563eb; margin-top: 20px;">\u8054\u7CFB\u6211\u4EEC</h3>
+    <p style="margin: 5px 0;">\u{1F4E7} \u90AE\u7BB1: <a href="mailto:sales@rowellhplc.com" style="color: #2563eb;">sales@rowellhplc.com</a></p>
+    <p style="margin: 5px 0;">\u{1F4DE} \u7535\u8BDD: +86 XXX-XXXX-XXXX</p>
+    
+    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
+    
+    <p style="color: #6b7280; font-size: 12px; margin: 0;">
+      \u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002\u5982\u6709\u95EE\u9898\uFF0C\u8BF7\u901A\u8FC7\u4E0A\u8FF0\u8054\u7CFB\u65B9\u5F0F\u4E0E\u6211\u4EEC\u8054\u7CFB\u3002
+    </p>
+  </div>
+  
+  <div style="text-align: center; padding: 20px; color: #6b7280; font-size: 12px;">
+    <p style="margin: 5px 0;">\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.</p>
+    <p style="margin: 5px 0;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546\uFF0C\u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5206\u6790\u89E3\u51B3\u65B9\u6848</p>
+  </div>
+</body>
+</html>
+  `.trim();
+}
+function generateInquiryEmailText(data) {
+  const productList = data.products.map((p, index2) => `${index2 + 1}. ${p.name} (\u8D27\u53F7: ${p.partNumber})`).join("\n");
+  return `
+\u5C0A\u656C\u7684 ${data.userName}\uFF0C
+
+\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01
+
+\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002
+
+\u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}
+\u63D0\u4EA4\u65F6\u95F4: ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}
+${data.userCompany ? `\u516C\u53F8: ${data.userCompany}
+` : ""}${data.userPhone ? `\u7535\u8BDD: ${data.userPhone}
+` : ""}
+\u8BE2\u4EF7\u4EA7\u54C1:
+${productList}
+
+${data.userMessage ? `\u60A8\u7684\u7559\u8A00:
+${data.userMessage}
+
+` : ""}\u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002
+
+\u5982\u6709\u4EFB\u4F55\u95EE\u9898\uFF0C\u8BF7\u968F\u65F6\u8054\u7CFB\u6211\u4EEC\uFF1A
+\u90AE\u7BB1: sales@rowellhplc.com
+\u7535\u8BDD: +86 XXX-XXXX-XXXX
+
+\u795D\u597D\uFF01
+Rowell HPLC \u56E2\u961F
+
+---
+\u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002
+\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.
+  `.trim();
+}
+async function sendInquiryEmail(data) {
+  try {
+    const transporter2 = getTransporter();
+    if (!transporter2) {
+      console.log("[Email Service] SMTP not configured. Email content logged below:");
+      console.log("To:", data.userEmail);
+      console.log("Subject:", `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`);
+      console.log("Content (Text):", generateInquiryEmailText(data));
+      console.log("[Email Service] To enable real email sending, configure SMTP environment variables.");
+      return true;
+    }
+    const config = getSMTPConfig();
+    if (!config) {
+      return false;
+    }
+    const info = await transporter2.sendMail({
+      from: `"Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3" <${config.from}>`,
+      to: data.userEmail,
+      subject: `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`,
+      text: generateInquiryEmailText(data),
+      html: generateInquiryEmailHTML(data)
+    });
+    console.log("[Email Service] Email sent successfully:", info.messageId);
+    console.log("[Email Service] Preview URL:", nodemailer.getTestMessageUrl(info));
+    return true;
+  } catch (error) {
+    console.error("[Email Service] Failed to send inquiry email:", error);
+    return false;
+  }
+}
+
+// server/routers.ts
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -1680,14 +1629,14 @@ var appRouter = router({
         annualPurchaseVolume: z2.string().optional()
       }).parse(raw);
     }).mutation(async ({ input }) => {
-      const { getUserByEmail: getUserByEmail2, createUser: createUser2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { hashPassword: hashPassword2 } = await Promise.resolve().then(() => (init_password_utils(), password_utils_exports));
-      const existingUser = await getUserByEmail2(input.email);
+      console.log("[Auth] Register mutation called for email:", input.email);
+      console.log("[Auth] DB functions:", { getUserByEmail: typeof getUserByEmail, createUser: typeof createUser });
+      const existingUser = await getUserByEmail(input.email);
       if (existingUser) {
         throw new Error("\u8BE5\u90AE\u7BB1\u5DF2\u88AB\u6CE8\u518C");
       }
-      const passwordHash = await hashPassword2(input.password);
-      const userId = await createUser2({
+      const passwordHash = await hashPassword(input.password);
+      const userId = await createUser({
         email: input.email,
         passwordHash,
         name: input.name,
@@ -1710,18 +1659,15 @@ var appRouter = router({
         password: z2.string().min(1, "\u8BF7\u8F93\u5165\u5BC6\u7801")
       }).parse(raw);
     }).mutation(async ({ input, ctx }) => {
-      const { getUserByEmail: getUserByEmail2, updateUserLastSignIn: updateUserLastSignIn2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { verifyPassword: verifyPassword2 } = await Promise.resolve().then(() => (init_password_utils(), password_utils_exports));
-      const { setSessionCookie } = await Promise.resolve().then(() => (init_cookies(), cookies_exports));
-      const user = await getUserByEmail2(input.email);
+      const user = await getUserByEmail(input.email);
       if (!user || !user.passwordHash) {
         throw new Error("\u90AE\u7BB1\u6216\u5BC6\u7801\u9519\u8BEF");
       }
-      const isValid = await verifyPassword2(input.password, user.passwordHash);
+      const isValid = await verifyPassword(input.password, user.passwordHash);
       if (!isValid) {
         throw new Error("\u90AE\u7BB1\u6216\u5BC6\u7801\u9519\u8BEF");
       }
-      await updateUserLastSignIn2(user.id);
+      await updateUserLastSignIn(user.id);
       setSessionCookie(ctx.req, ctx.res, {
         userId: user.id,
         openId: user.openId || void 0,
@@ -1741,8 +1687,7 @@ var appRouter = router({
   // Product routes
   products: router({
     list: publicProcedure.query(async () => {
-      const { getAllProducts: getAllProducts2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return await getAllProducts2();
+      return await getAllProducts();
     }),
     getByIds: publicProcedure.input((raw) => {
       const { z: z2 } = __require("zod");
@@ -1750,8 +1695,7 @@ var appRouter = router({
         productIds: z2.array(z2.number())
       }).parse(raw);
     }).query(async ({ input }) => {
-      const { getProductsByIds: getProductsByIds2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      return await getProductsByIds2(input.productIds);
+      return await getProductsByIds(input.productIds);
     })
   }),
   // Inquiry routes
@@ -1769,15 +1713,12 @@ var appRouter = router({
         })
       }).parse(raw);
     }).mutation(async ({ input }) => {
-      const { createInquiry: createInquiry2, createInquiryItems: createInquiryItems2, getProductsByIds: getProductsByIds2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-      const { generateInquiryNumber: generateInquiryNumber2 } = await Promise.resolve().then(() => (init_inquiryUtils(), inquiryUtils_exports));
-      const { sendInquiryEmail: sendInquiryEmail2 } = await Promise.resolve().then(() => (init_emailService(), emailService_exports));
-      const inquiryNumber = generateInquiryNumber2();
-      const products2 = await getProductsByIds2(input.productIds);
+      const inquiryNumber = generateInquiryNumber();
+      const products2 = await getProductsByIds(input.productIds);
       if (products2.length === 0) {
         throw new Error("\u672A\u627E\u5230\u4EA7\u54C1\u4FE1\u606F");
       }
-      const inquiryId = await createInquiry2({
+      const inquiryId = await createInquiry({
         inquiryNumber,
         userName: input.userInfo.name,
         userEmail: input.userInfo.email,
@@ -1791,8 +1732,8 @@ var appRouter = router({
         productName: p.name,
         brand: p.brand
       }));
-      await createInquiryItems2(inquiryId, items);
-      const emailSent = await sendInquiryEmail2({
+      await createInquiryItems(inquiryId, items);
+      const emailSent = await sendInquiryEmail({
         inquiryNumber,
         userName: input.userInfo.name,
         userEmail: input.userInfo.email,
