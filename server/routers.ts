@@ -31,7 +31,9 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
+        console.log('[Auth] Register mutation called for email:', input.email);
         const { getUserByEmail, createUser } = await import('./db');
+        console.log('[Auth] DB functions imported:', { getUserByEmail: typeof getUserByEmail, createUser: typeof createUser });
         const { hashPassword } = await import('./password-utils');
         
         // Check if user already exists

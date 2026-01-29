@@ -992,6 +992,95 @@ var init_migrate_db = __esm({
   }
 });
 
+// server/config-validator.ts
+var config_validator_exports = {};
+__export(config_validator_exports, {
+  validateAllConfigs: () => validateAllConfigs,
+  validateDatabaseConfig: () => validateDatabaseConfig,
+  validateProductData: () => validateProductData
+});
+import { sql } from "drizzle-orm";
+function validateDatabaseConfig() {
+  const dbUrl = process.env.DATABASE_URL || "";
+  console.log("\n========================================");
+  console.log("\u{1F50D} \u5F00\u59CB\u9A8C\u8BC1\u751F\u4EA7\u73AF\u5883\u914D\u7F6E...");
+  console.log("========================================\n");
+  if (!dbUrl) {
+    console.error("\u274C \u9519\u8BEF\uFF1ADATABASE_URL\u73AF\u5883\u53D8\u91CF\u672A\u8BBE\u7F6E\uFF01");
+    return false;
+  }
+  const expectedDbName = "rowell_hplc";
+  if (!dbUrl.includes(expectedDbName)) {
+    console.error("\u274C \u9519\u8BEF\uFF1A\u6570\u636E\u5E93\u914D\u7F6E\u9519\u8BEF\uFF01");
+    console.error(`   \u9884\u671F\u6570\u636E\u5E93\uFF1A${expectedDbName}`);
+    console.error(`   \u5F53\u524D\u914D\u7F6E\uFF1A${dbUrl.replace(/:[^:@]+@/, ":****@")}`);
+    console.error("\n\u26A0\uFE0F  \u8B66\u544A\uFF1A\u5F53\u524D\u914D\u7F6E\u53EF\u80FD\u5BFC\u81F4\u4EA7\u54C1\u6570\u636E\u4E22\u5931\uFF01");
+    console.error("   \u8BF7\u68C0\u67E5 PRODUCTION_CONFIG.md \u6587\u4EF6\u83B7\u53D6\u6B63\u786E\u914D\u7F6E\u3002\n");
+    return false;
+  }
+  const expectedRegion = "us-west-2";
+  if (!dbUrl.includes(expectedRegion)) {
+    console.warn("\u26A0\uFE0F  \u8B66\u544A\uFF1A\u6570\u636E\u5E93\u533A\u57DF\u53EF\u80FD\u4E0D\u6B63\u786E\uFF01");
+    console.warn(`   \u9884\u671F\u533A\u57DF\uFF1A${expectedRegion}`);
+    console.warn(`   \u5F53\u524D\u914D\u7F6E\uFF1A${dbUrl.replace(/:[^:@]+@/, ":****@")}`);
+  }
+  console.log("\u2705 \u6570\u636E\u5E93\u914D\u7F6E\u9A8C\u8BC1\u901A\u8FC7");
+  console.log(`   \u6570\u636E\u5E93\u540D\u79F0\uFF1A${expectedDbName}`);
+  console.log(`   \u533A\u57DF\uFF1A${expectedRegion}
+`);
+  return true;
+}
+async function validateProductData(db) {
+  try {
+    console.log("\u{1F50D} \u68C0\u67E5\u4EA7\u54C1\u6570\u636E\u5B8C\u6574\u6027...");
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const result = await db.select({ count: sql`count(*)` }).from(products2);
+    const productCount = Number(result[0]?.count || 0);
+    const minExpectedCount = 1e3;
+    if (productCount < minExpectedCount) {
+      console.error("\u274C \u9519\u8BEF\uFF1A\u4EA7\u54C1\u6570\u636E\u5F02\u5E38\uFF01");
+      console.error(`   \u5F53\u524D\u4EA7\u54C1\u6570\u91CF\uFF1A${productCount}`);
+      console.error(`   \u9884\u671F\u4EA7\u54C1\u6570\u91CF\uFF1A>${minExpectedCount}`);
+      console.error("\n\u26A0\uFE0F  \u8B66\u544A\uFF1A\u53EF\u80FD\u8FDE\u63A5\u5230\u4E86\u9519\u8BEF\u7684\u6570\u636E\u5E93\uFF01");
+      console.error("   \u8BF7\u7ACB\u5373\u68C0\u67E5DATABASE_URL\u914D\u7F6E\u3002\n");
+      return false;
+    }
+    console.log("\u2705 \u4EA7\u54C1\u6570\u636E\u9A8C\u8BC1\u901A\u8FC7");
+    console.log(`   \u4EA7\u54C1\u6570\u91CF\uFF1A${productCount}
+`);
+    return true;
+  } catch (error) {
+    console.error("\u274C \u9519\u8BEF\uFF1A\u65E0\u6CD5\u9A8C\u8BC1\u4EA7\u54C1\u6570\u636E");
+    console.error("   ", error);
+    return false;
+  }
+}
+async function validateAllConfigs(db) {
+  const dbConfigValid = validateDatabaseConfig();
+  if (!dbConfigValid) {
+    console.error("\n========================================");
+    console.error("\u274C \u914D\u7F6E\u9A8C\u8BC1\u5931\u8D25\uFF01\u670D\u52A1\u5668\u5C06\u62D2\u7EDD\u542F\u52A8\u3002");
+    console.error("========================================\n");
+    return false;
+  }
+  const productDataValid = await validateProductData(db);
+  if (!productDataValid) {
+    console.error("\n========================================");
+    console.error("\u274C \u6570\u636E\u9A8C\u8BC1\u5931\u8D25\uFF01\u670D\u52A1\u5668\u5C06\u62D2\u7EDD\u542F\u52A8\u3002");
+    console.error("========================================\n");
+    return false;
+  }
+  console.log("========================================");
+  console.log("\u2705 \u6240\u6709\u914D\u7F6E\u9A8C\u8BC1\u901A\u8FC7\uFF01\u670D\u52A1\u5668\u6B63\u5E38\u542F\u52A8\u3002");
+  console.log("========================================\n");
+  return true;
+}
+var init_config_validator = __esm({
+  "server/config-validator.ts"() {
+    "use strict";
+  }
+});
+
 // server/_core/index.ts
 import "dotenv/config";
 import express2 from "express";
@@ -2111,6 +2200,18 @@ async function startServer() {
     await migrateDatabase2();
   } catch (error) {
     console.error("[Server] Failed to run database migration:", error);
+  }
+  try {
+    const { validateAllConfigs: validateAllConfigs2 } = await Promise.resolve().then(() => (init_config_validator(), config_validator_exports));
+    const { db } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const configValid = await validateAllConfigs2(db);
+    if (!configValid) {
+      console.error("\n\u26D4 \u670D\u52A1\u5668\u542F\u52A8\u5931\u8D25\uFF1A\u914D\u7F6E\u9A8C\u8BC1\u672A\u901A\u8FC7\uFF01");
+      console.error("\u8BF7\u68C0\u67E5 PRODUCTION_CONFIG.md \u6587\u4EF6\u83B7\u53D6\u6B63\u786E\u914D\u7F6E\u3002\n");
+      process.exit(1);
+    }
+  } catch (error) {
+    console.error("[Server] Failed to validate configuration:", error);
   }
   const app = express2();
   const server = createServer(app);
