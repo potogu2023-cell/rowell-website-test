@@ -2,27 +2,10 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
-import { getUserByEmail, createUser, updateUserLastSignIn, getAllProducts, getProductsByIds, createInquiry, createInquiryItems } from './db';
-import { hashPassword, verifyPassword } from './password-utils';
-import { setSessionCookie } from './_core/cookies';
-import { generateInquiryNumber } from './inquiryUtils';
-import { sendInquiryEmail } from './emailService';
-import { z } from 'zod';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
-  debug: router({
-    checkImports: publicProcedure.query(() => {
-      return {
-        getUserByEmail: typeof getUserByEmail,
-        createUser: typeof createUser,
-        updateUserLastSignIn: typeof updateUserLastSignIn,
-        hashPassword: typeof hashPassword,
-        verifyPassword: typeof verifyPassword,
-      };
-    }),
-  }),
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {
@@ -34,6 +17,7 @@ export const appRouter = router({
     }),
     register: publicProcedure
       .input((raw: unknown) => {
+        const { z } = require('zod');
         return z.object({
           email: z.string().email('请输入有效的邮箱地址'),
           password: z.string().min(6, '密码至少6个字符'),
@@ -47,27 +31,20 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
-        console.log('[Auth] Register mutation called for email:', input.email);
-        console.log('[Auth] DB functions:', { getUserByEmail: typeof getUserByEmail, createUser: typeof createUser });
+        const { getUserByEmail, createUser } = await import('./db');
+        const { hashPassword } = await import('./password-utils');
         
-        try {
-          // Check if user already exists
-          console.log('[Auth] Checking if user exists...');
-          const existingUser = await getUserByEmail(input.email);
-          console.log('[Auth] User check result:', existingUser ? 'User exists' : 'User does not exist');
-          if (existingUser) {
-            console.log('[Auth] User already exists, throwing error');
-            throw new Error('该邮箱已被注册');
-          }
-          
-          // Hash password
-          console.log('[Auth] Hashing password...');
-          const passwordHash = await hashPassword(input.password);
-          console.log('[Auth] Password hashed successfully');
-          
-          // Create user
-          console.log('[Auth] Creating user...');
-          const userId = await createUser({
+        // Check if user already exists
+        const existingUser = await getUserByEmail(input.email);
+        if (existingUser) {
+          throw new Error('该邮箱已被注册');
+        }
+        
+        // Hash password
+        const passwordHash = await hashPassword(input.password);
+        
+        // Create user
+        const userId = await createUser({
           email: input.email,
           passwordHash,
           name: input.name,
@@ -76,28 +53,26 @@ export const appRouter = router({
           country: input.country,
           industry: input.industry,
           purchasingRole: input.purchasingRole,
-            annualPurchaseVolume: input.annualPurchaseVolume,
-          });
-          console.log('[Auth] User created successfully with ID:', userId);
-          
-          return {
-            success: true,
-            message: '注册成功！请登录',
-          };
-        } catch (error) {
-          console.error('[Auth] Registration error:', error);
-          console.error('[Auth] Error stack:', error instanceof Error ? error.stack : 'No stack trace');
-          throw error;
-        }
+          annualPurchaseVolume: input.annualPurchaseVolume,
+        });
+        
+        return {
+          success: true,
+          message: '注册成功！请登录',
+        };
       }),
     login: publicProcedure
       .input((raw: unknown) => {
+        const { z } = require('zod');
         return z.object({
           email: z.string().email('请输入有效的邮箱地址'),
           password: z.string().min(1, '请输入密码'),
         }).parse(raw);
       })
       .mutation(async ({ input, ctx }) => {
+        const { getUserByEmail, updateUserLastSignIn } = await import('./db');
+        const { verifyPassword } = await import('./password-utils');
+        const { setSessionCookie } = await import('./_core/cookies');
         
         // Find user
         const user = await getUserByEmail(input.email);
@@ -135,17 +110,27 @@ export const appRouter = router({
 
   // Product routes
   products: router({
-    list: publicProcedure.query(async () => {
-      return await getAllProducts();
-    }),
+    list: publicProcedure
+      .input((raw: unknown) => {
+        const { productsListInput } = require('./products_list_new');
+        return productsListInput.parse(raw);
+      })
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { productsListQuery } = await import('./products_list_new');
+        const db = await getDb();
+        return await productsListQuery(input, db);
+      }),
     
     getByIds: publicProcedure
       .input((raw: unknown) => {
+        const { z } = require('zod');
         return z.object({
           productIds: z.array(z.number()),
         }).parse(raw);
       })
       .query(async ({ input }) => {
+        const { getProductsByIds } = await import('./db');
         return await getProductsByIds(input.productIds);
       }),
   }),
@@ -154,6 +139,7 @@ export const appRouter = router({
   inquiries: router({
     create: publicProcedure
       .input((raw: unknown) => {
+        const { z } = require('zod');
         return z.object({
           productIds: z.array(z.number()).min(1, '请选择至少一个产品'),
           userInfo: z.object({
@@ -166,6 +152,9 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
+        const { createInquiry, createInquiryItems, getProductsByIds } = await import('./db');
+        const { generateInquiryNumber } = await import('./inquiryUtils');
+        const { sendInquiryEmail } = await import('./emailService');
         
         // Generate unique inquiry number
         const inquiryNumber = generateInquiryNumber();
