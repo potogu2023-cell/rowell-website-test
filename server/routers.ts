@@ -2,6 +2,12 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { getUserByEmail, createUser, updateUserLastSignIn, getProductsByIds, createInquiry, createInquiryItems } from './db';
+import { hashPassword, verifyPassword } from './password-utils';
+import { setSessionCookie } from './_core/cookies';
+import { generateInquiryNumber } from './inquiryUtils';
+import { sendInquiryEmail } from './emailService';
+import { z } from 'zod';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -17,7 +23,6 @@ export const appRouter = router({
     }),
     register: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           email: z.string().email('请输入有效的邮箱地址'),
           password: z.string().min(6, '密码至少6个字符'),
@@ -31,9 +36,6 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
-        const { getUserByEmail, createUser } = await import('./db');
-        const { hashPassword } = await import('./password-utils');
-        
         // Check if user already exists
         const existingUser = await getUserByEmail(input.email);
         if (existingUser) {
@@ -63,17 +65,12 @@ export const appRouter = router({
       }),
     login: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           email: z.string().email('请输入有效的邮箱地址'),
           password: z.string().min(1, '请输入密码'),
         }).parse(raw);
       })
       .mutation(async ({ input, ctx }) => {
-        const { getUserByEmail, updateUserLastSignIn } = await import('./db');
-        const { verifyPassword } = await import('./password-utils');
-        const { setSessionCookie } = await import('./_core/cookies');
-        
         // Find user
         const user = await getUserByEmail(input.email);
         if (!user || !user.passwordHash) {
@@ -124,13 +121,11 @@ export const appRouter = router({
     
     getByIds: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           productIds: z.array(z.number()),
         }).parse(raw);
       })
       .query(async ({ input }) => {
-        const { getProductsByIds } = await import('./db');
         return await getProductsByIds(input.productIds);
       }),
   }),
@@ -139,7 +134,6 @@ export const appRouter = router({
   inquiries: router({
     create: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           productIds: z.array(z.number()).min(1, '请选择至少一个产品'),
           userInfo: z.object({
@@ -152,10 +146,6 @@ export const appRouter = router({
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
-        const { createInquiry, createInquiryItems, getProductsByIds } = await import('./db');
-        const { generateInquiryNumber } = await import('./inquiryUtils');
-        const { sendInquiryEmail } = await import('./emailService');
-        
         // Generate unique inquiry number
         const inquiryNumber = generateInquiryNumber();
         
