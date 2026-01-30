@@ -50,17 +50,24 @@ export const appRouter = router({
         console.log('[Auth] Register mutation called for email:', input.email);
         console.log('[Auth] DB functions:', { getUserByEmail: typeof getUserByEmail, createUser: typeof createUser });
         
-        // Check if user already exists
-        const existingUser = await getUserByEmail(input.email);
-        if (existingUser) {
-          throw new Error('该邮箱已被注册');
-        }
-        
-        // Hash password
-        const passwordHash = await hashPassword(input.password);
-        
-        // Create user
-        const userId = await createUser({
+        try {
+          // Check if user already exists
+          console.log('[Auth] Checking if user exists...');
+          const existingUser = await getUserByEmail(input.email);
+          console.log('[Auth] User check result:', existingUser ? 'User exists' : 'User does not exist');
+          if (existingUser) {
+            console.log('[Auth] User already exists, throwing error');
+            throw new Error('该邮箱已被注册');
+          }
+          
+          // Hash password
+          console.log('[Auth] Hashing password...');
+          const passwordHash = await hashPassword(input.password);
+          console.log('[Auth] Password hashed successfully');
+          
+          // Create user
+          console.log('[Auth] Creating user...');
+          const userId = await createUser({
           email: input.email,
           passwordHash,
           name: input.name,
@@ -69,13 +76,19 @@ export const appRouter = router({
           country: input.country,
           industry: input.industry,
           purchasingRole: input.purchasingRole,
-          annualPurchaseVolume: input.annualPurchaseVolume,
-        });
-        
-        return {
-          success: true,
-          message: '注册成功！请登录',
-        };
+            annualPurchaseVolume: input.annualPurchaseVolume,
+          });
+          console.log('[Auth] User created successfully with ID:', userId);
+          
+          return {
+            success: true,
+            message: '注册成功！请登录',
+          };
+        } catch (error) {
+          console.error('[Auth] Registration error:', error);
+          console.error('[Auth] Error stack:', error instanceof Error ? error.stack : 'No stack trace');
+          throw error;
+        }
       }),
     login: publicProcedure
       .input((raw: unknown) => {
