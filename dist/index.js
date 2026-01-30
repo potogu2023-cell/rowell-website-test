@@ -451,6 +451,14 @@ async function getDb() {
       const user = dbUrl.username;
       const password = dbUrl.password;
       const database = dbUrl.pathname.slice(1);
+      console.log("[Database] Connecting with config:", {
+        host,
+        port,
+        user,
+        database,
+        hasPassword: !!password,
+        sslEnabled: sslParam === "true"
+      });
       const poolConfig = {
         host,
         port,
@@ -464,9 +472,18 @@ async function getDb() {
         };
       }
       const pool = mysql.createPool(poolConfig);
+      try {
+        const connection = await pool.getConnection();
+        console.log("[Database] Connection test successful");
+        connection.release();
+      } catch (testError) {
+        console.error("[Database] Connection test failed:", testError);
+        throw testError;
+      }
       _db = drizzle(pool);
+      console.log("[Database] Drizzle instance created successfully");
     } catch (error) {
-      console.warn("[Database] Failed to connect:", error);
+      console.error("[Database] Failed to initialize:", error);
       _db = null;
     }
   }
