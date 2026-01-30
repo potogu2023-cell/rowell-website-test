@@ -127,6 +127,9 @@ importers:
       better-sqlite3:
         specifier: ^12.4.1
         version: 12.4.1
+      body-parser:
+        specifier: ^1.20.0
+        version: 1.20.3
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
