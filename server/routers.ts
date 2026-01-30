@@ -7,6 +7,7 @@ import { hashPassword, verifyPassword } from './password-utils';
 import { setSessionCookie } from './_core/cookies';
 import { generateInquiryNumber } from './inquiryUtils';
 import { sendInquiryEmail } from './emailService';
+import { z } from 'zod';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -33,7 +34,6 @@ export const appRouter = router({
     }),
     register: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           email: z.string().email('请输入有效的邮箱地址'),
           password: z.string().min(6, '密码至少6个字符'),
@@ -79,7 +79,6 @@ export const appRouter = router({
       }),
     login: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           email: z.string().email('请输入有效的邮箱地址'),
           password: z.string().min(1, '请输入密码'),
@@ -129,7 +128,6 @@ export const appRouter = router({
     
     getByIds: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           productIds: z.array(z.number()),
         }).parse(raw);
@@ -143,7 +141,6 @@ export const appRouter = router({
   inquiries: router({
     create: publicProcedure
       .input((raw: unknown) => {
-        const { z } = require('zod');
         return z.object({
           productIds: z.array(z.number()).min(1, '请选择至少一个产品'),
           userInfo: z.object({

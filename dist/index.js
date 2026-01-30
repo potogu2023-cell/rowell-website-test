@@ -1,11 +1,5 @@
 var __defProp = Object.defineProperty;
 var __getOwnPropNames = Object.getOwnPropertyNames;
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
-  if (typeof require !== "undefined") return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x + '" is not supported');
-});
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
@@ -1619,6 +1613,7 @@ async function sendInquiryEmail(data) {
 }
 
 // server/routers.ts
+import { z as z2 } from "zod";
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -1643,7 +1638,6 @@ var appRouter = router({
       };
     }),
     register: publicProcedure.input((raw) => {
-      const { z: z2 } = __require("zod");
       return z2.object({
         email: z2.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
         password: z2.string().min(6, "\u5BC6\u7801\u81F3\u5C116\u4E2A\u5B57\u7B26"),
@@ -1680,7 +1674,6 @@ var appRouter = router({
       };
     }),
     login: publicProcedure.input((raw) => {
-      const { z: z2 } = __require("zod");
       return z2.object({
         email: z2.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
         password: z2.string().min(1, "\u8BF7\u8F93\u5165\u5BC6\u7801")
@@ -1717,7 +1710,6 @@ var appRouter = router({
       return await getAllProducts();
     }),
     getByIds: publicProcedure.input((raw) => {
-      const { z: z2 } = __require("zod");
       return z2.object({
         productIds: z2.array(z2.number())
       }).parse(raw);
@@ -1728,7 +1720,6 @@ var appRouter = router({
   // Inquiry routes
   inquiries: router({
     create: publicProcedure.input((raw) => {
-      const { z: z2 } = __require("zod");
       return z2.object({
         productIds: z2.array(z2.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
         userInfo: z2.object({
