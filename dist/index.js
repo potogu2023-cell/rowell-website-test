@@ -445,10 +445,21 @@ __export(db_exports, {
 });
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      const dbUrl = new URL(process.env.DATABASE_URL);
+      const sslParam = dbUrl.searchParams.get("ssl");
+      dbUrl.searchParams.delete("ssl");
+      const poolConfig = {
+        uri: dbUrl.toString(),
+        ssl: sslParam === "true" ? {
+          rejectUnauthorized: true
+        } : false
+      };
+      const pool = mysql.createPool(poolConfig);
+      _db = drizzle(pool);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
@@ -1606,6 +1617,17 @@ async function sendInquiryEmail(data) {
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
+  debug: router({
+    checkImports: publicProcedure.query(() => {
+      return {
+        getUserByEmail: typeof getUserByEmail,
+        createUser: typeof createUser,
+        updateUserLastSignIn: typeof updateUserLastSignIn,
+        hashPassword: typeof hashPassword,
+        verifyPassword: typeof verifyPassword
+      };
+    })
+  }),
   auth: router({
     me: publicProcedure.query((opts) => opts.ctx.user),
     logout: publicProcedure.mutation(({ ctx }) => {

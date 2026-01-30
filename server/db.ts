@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
+import mysql from 'mysql2/promise';
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -9,7 +10,22 @@ let _db: ReturnType<typeof drizzle> | null = null;
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      // Parse DATABASE_URL and configure SSL properly
+      const dbUrl = new URL(process.env.DATABASE_URL);
+      const sslParam = dbUrl.searchParams.get('ssl');
+      
+      // Remove ssl from URL to avoid conflicts
+      dbUrl.searchParams.delete('ssl');
+      
+      const poolConfig = {
+        uri: dbUrl.toString(),
+        ssl: sslParam === 'true' ? {
+          rejectUnauthorized: true
+        } : false
+      };
+      
+      const pool = mysql.createPool(poolConfig);
+      _db = drizzle(pool);
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
