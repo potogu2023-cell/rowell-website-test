@@ -49,9 +49,8 @@ export function getSessionCookieOptions(
 
 import type { Response } from "express";
 import { COOKIE_NAME } from "@shared/const";
-import { sdk } from "./sdk";
 
-export async function setSessionCookie(
+export function setSessionCookie(
   req: Request,
   res: Response,
   session: {
@@ -62,17 +61,8 @@ export async function setSessionCookie(
   }
 ) {
   const cookieOptions = getSessionCookieOptions(req);
-  
-  // Create JWT session token
-  const sessionToken = await sdk.createSessionToken(
-    session.openId || `user_${session.userId}`,
-    {
-      name: session.name || session.email || '',
-      expiresInMs: 30 * 24 * 60 * 60 * 1000, // 30 days
-    }
-  );
-  
-  res.cookie(COOKIE_NAME, sessionToken, {
+  const sessionData = JSON.stringify(session);
+  res.cookie(COOKIE_NAME, sessionData, {
     ...cookieOptions,
     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
   });

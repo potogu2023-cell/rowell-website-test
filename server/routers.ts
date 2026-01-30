@@ -87,7 +87,7 @@ export const appRouter = router({
         await updateUserLastSignIn(user.id);
         
         // Set session cookie
-        await setSessionCookie(ctx.req, ctx.res, {
+        setSessionCookie(ctx.req, ctx.res, {
           userId: user.id,
           openId: user.openId || undefined,
           email: user.email || undefined,
