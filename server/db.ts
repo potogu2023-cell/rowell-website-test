@@ -14,15 +14,30 @@ export async function getDb() {
       const dbUrl = new URL(process.env.DATABASE_URL);
       const sslParam = dbUrl.searchParams.get('ssl');
       
-      // Remove ssl from URL to avoid conflicts
+      // Remove ssl parameter from URL
       dbUrl.searchParams.delete('ssl');
       
-      const poolConfig = {
-        uri: dbUrl.toString(),
-        ssl: sslParam === 'true' ? {
-          rejectUnauthorized: true
-        } : false
+      // Parse connection parameters
+      const host = dbUrl.hostname;
+      const port = dbUrl.port ? parseInt(dbUrl.port) : 3306;
+      const user = dbUrl.username;
+      const password = dbUrl.password;
+      const database = dbUrl.pathname.slice(1); // Remove leading '/'
+      
+      const poolConfig: any = {
+        host,
+        port,
+        user,
+        password,
+        database,
       };
+      
+      // Configure SSL if needed
+      if (sslParam === 'true') {
+        poolConfig.ssl = {
+          rejectUnauthorized: true
+        };
+      }
       
       const pool = mysql.createPool(poolConfig);
       _db = drizzle(pool);
