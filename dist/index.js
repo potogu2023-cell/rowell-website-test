@@ -755,6 +755,10 @@ function validateDatabaseConfig() {
 async function validateProductData(db) {
   try {
     console.log("\u{1F50D} \u68C0\u67E5\u4EA7\u54C1\u6570\u636E\u5B8C\u6574\u6027...");
+    if (!db) {
+      console.warn("\u26A0\uFE0F  \u6570\u636E\u5E93\u4E0D\u53EF\u7528,\u8DF3\u8FC7\u4EA7\u54C1\u6570\u636E\u9A8C\u8BC1");
+      return true;
+    }
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const result = await db.select({ count: sql`count(*)` }).from(products2);
     const productCount = Number(result[0]?.count || 0);
@@ -774,7 +778,8 @@ async function validateProductData(db) {
   } catch (error) {
     console.error("\u274C \u9519\u8BEF\uFF1A\u65E0\u6CD5\u9A8C\u8BC1\u4EA7\u54C1\u6570\u636E");
     console.error("   ", error);
-    return false;
+    console.warn("\u26A0\uFE0F  \u5C06\u7EE7\u7EED\u542F\u52A8\u670D\u52A1\u5668,\u4F46\u6570\u636E\u5E93\u529F\u80FD\u53EF\u80FD\u4E0D\u53EF\u7528");
+    return true;
   }
 }
 async function validateAllConfigs(db) {

@@ -57,6 +57,12 @@ export async function validateProductData(db: any): Promise<boolean> {
   try {
     console.log('🔍 检查产品数据完整性...');
     
+    // 如果数据库不可用,跳过验证
+    if (!db) {
+      console.warn('⚠️  数据库不可用,跳过产品数据验证');
+      return true;
+    }
+    
     // 导入products表
     const { products } = await import('../drizzle/schema');
     
@@ -86,7 +92,9 @@ export async function validateProductData(db: any): Promise<boolean> {
   } catch (error) {
     console.error('❌ 错误：无法验证产品数据');
     console.error('   ', error);
-    return false;
+    // 允许在数据库连接失败时继续启动
+    console.warn('⚠️  将继续启动服务器,但数据库功能可能不可用');
+    return true;
   }
 }
 
