@@ -23,7 +23,7 @@ export function validateDatabaseConfig(): boolean {
   }
 
   // 2. 检查数据库名称
-  const expectedDbName = 'rowell_hplc';
+  const expectedDbName = 'rowell_workflow';
   if (!dbUrl.includes(expectedDbName)) {
     console.error('❌ 错误：数据库配置错误！');
     console.error(`   预期数据库：${expectedDbName}`);
@@ -34,7 +34,7 @@ export function validateDatabaseConfig(): boolean {
   }
 
   // 3. 检查区域
-  const expectedRegion = 'us-west-2';
+  const expectedRegion = 'ap-northeast-1';
   if (!dbUrl.includes(expectedRegion)) {
     console.warn('⚠️  警告：数据库区域可能不正确！');
     console.warn(`   预期区域：${expectedRegion}`);
