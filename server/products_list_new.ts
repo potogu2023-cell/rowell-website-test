@@ -5,6 +5,7 @@ import { eq, and, gte, lte, inArray, sql } from "drizzle-orm";
 export const productsListInput = z.object({
   categoryId: z.number().optional(),
   brand: z.string().optional(),
+  search: z.string().optional(),
   // Advanced filters
   particleSizeMin: z.number().optional(),
   particleSizeMax: z.number().optional(),
@@ -31,6 +32,19 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   
   // Build WHERE conditions
   const conditions: any[] = [];
+  
+  // Search filter (search in productId, name, partNumber, brand)
+  if (input?.search && input.search.trim().length > 0) {
+    const searchTerm = input.search.trim().toLowerCase();
+    conditions.push(
+      sql`(
+        LOWER(${products.productId}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products.name}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products.partNumber}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products.brand}) LIKE ${`%${searchTerm}%`}
+      )`
+    );
+  }
   
   // Brand filter
   if (input?.brand) {

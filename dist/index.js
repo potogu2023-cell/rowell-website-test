@@ -31,6 +31,7 @@ __export(schema_exports, {
   cart: () => cart,
   categories: () => categories,
   conversionFunnel: () => conversionFunnel,
+  customerMessages: () => customerMessages,
   inquiries: () => inquiries,
   inquiryItems: () => inquiryItems,
   llmCostTracking: () => llmCostTracking,
@@ -43,7 +44,7 @@ __export(schema_exports, {
   users: () => users
 });
 import { mysqlTable, index, int, varchar, text, decimal, timestamp, mysqlEnum, json } from "drizzle-orm/mysql-core";
-var aiCache, aiConversationStats, aiConversations, aiMessages, aiQuestionAnalysis, apiKeys, cart, categories, conversionFunnel, inquiries, inquiryItems, llmCostTracking, productCategories, products, resourceCategories, resourcePostTags, resourceTags, resources, users;
+var aiCache, aiConversationStats, aiConversations, aiMessages, aiQuestionAnalysis, apiKeys, cart, categories, conversionFunnel, inquiries, inquiryItems, llmCostTracking, productCategories, products, resourceCategories, resourcePostTags, resourceTags, resources, users, customerMessages;
 var init_schema = __esm({
   "drizzle/schema.ts"() {
     "use strict";
@@ -410,6 +411,26 @@ var init_schema = __esm({
         index("users_openId_unique").on(table.openId)
       ]
     );
+    customerMessages = mysqlTable(
+      "customer_messages",
+      {
+        id: int().autoincrement().notNull(),
+        name: varchar({ length: 100 }).notNull(),
+        email: varchar({ length: 320 }).notNull(),
+        company: varchar({ length: 255 }),
+        phone: varchar({ length: 50 }),
+        productId: varchar({ length: 128 }),
+        message: text().notNull(),
+        status: mysqlEnum(["pending", "replied", "closed"]).default("pending").notNull(),
+        createdAt: timestamp({ mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+        updatedAt: timestamp({ mode: "string" }).defaultNow().onUpdateNow().notNull()
+      },
+      (table) => [
+        index("idx_customer_messages_status").on(table.status),
+        index("idx_customer_messages_createdAt").on(table.createdAt),
+        index("idx_customer_messages_email").on(table.email)
+      ]
+    );
   }
 });
 
@@ -677,6 +698,225 @@ var init_db = __esm({
   }
 });
 
+// server/emailService.ts
+var emailService_exports = {};
+__export(emailService_exports, {
+  sendInquiryEmail: () => sendInquiryEmail,
+  verifySMTPConnection: () => verifySMTPConnection
+});
+import nodemailer from "nodemailer";
+function getSMTPConfig() {
+  const host = process.env.SMTP_HOST;
+  const port = process.env.SMTP_PORT;
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const from = process.env.SMTP_FROM;
+  if (!host || !port || !user || !pass || !from) {
+    console.warn("[Email Service] SMTP not configured. Email sending is disabled.");
+    console.warn("[Email Service] Required environment variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM");
+    return null;
+  }
+  return {
+    host,
+    port: parseInt(port, 10),
+    secure: parseInt(port, 10) === 465,
+    // true for 465, false for other ports
+    auth: {
+      user,
+      pass
+    },
+    from
+  };
+}
+function getTransporter() {
+  if (transporter) {
+    return transporter;
+  }
+  const config = getSMTPConfig();
+  if (!config) {
+    return null;
+  }
+  try {
+    transporter = nodemailer.createTransport({
+      host: config.host,
+      port: config.port,
+      secure: config.secure,
+      auth: config.auth
+    });
+    console.log("[Email Service] SMTP transporter created successfully");
+    return transporter;
+  } catch (error) {
+    console.error("[Email Service] Failed to create SMTP transporter:", error);
+    return null;
+  }
+}
+function generateInquiryEmailHTML(data) {
+  const productRows = data.products.map((p, index2) => `
+      <tr>
+        <td style="padding: 8px; border: 1px solid #ddd;">${index2 + 1}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${p.name}</td>
+        <td style="padding: 8px; border: 1px solid #ddd;">${p.partNumber}</td>
+      </tr>
+    `).join("");
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>\u8BE2\u4EF7\u786E\u8BA4</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background-color: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+    <h1 style="margin: 0; font-size: 24px;">Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3</h1>
+    <p style="margin: 10px 0 0 0; font-size: 14px;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546</p>
+  </div>
+  
+  <div style="background-color: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
+    <h2 style="color: #2563eb; margin-top: 0;">\u8BE2\u4EF7\u786E\u8BA4</h2>
+    
+    <p>\u5C0A\u656C\u7684 <strong>${data.userName}</strong>\uFF0C</p>
+    
+    <p>\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002</p>
+    
+    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2563eb;">
+      <p style="margin: 5px 0;"><strong>\u8BE2\u4EF7\u5355\u53F7:</strong> ${data.inquiryNumber}</p>
+      <p style="margin: 5px 0;"><strong>\u63D0\u4EA4\u65F6\u95F4:</strong> ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
+      ${data.userCompany ? `<p style="margin: 5px 0;"><strong>\u516C\u53F8:</strong> ${data.userCompany}</p>` : ""}
+      ${data.userPhone ? `<p style="margin: 5px 0;"><strong>\u7535\u8BDD:</strong> ${data.userPhone}</p>` : ""}
+    </div>
+    
+    <h3 style="color: #2563eb; margin-top: 20px;">\u8BE2\u4EF7\u4EA7\u54C1</h3>
+    <table style="width: 100%; border-collapse: collapse; margin: 10px 0; background-color: white;">
+      <thead>
+        <tr style="background-color: #f3f4f6;">
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left; width: 50px;">#</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u4EA7\u54C1\u540D\u79F0</th>
+          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u8D27\u53F7</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${productRows}
+      </tbody>
+    </table>
+    
+    ${data.userMessage ? `
+    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0;">
+      <h3 style="color: #2563eb; margin-top: 0;">\u60A8\u7684\u7559\u8A00</h3>
+      <p style="margin: 0; white-space: pre-wrap;">${data.userMessage}</p>
+    </div>
+    ` : ""}
+    
+    <div style="background-color: #fef3c7; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #f59e0b;">
+      <p style="margin: 0;"><strong>\u23F0 \u54CD\u5E94\u65F6\u95F4:</strong> \u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002</p>
+    </div>
+    
+    <h3 style="color: #2563eb; margin-top: 20px;">\u8054\u7CFB\u6211\u4EEC</h3>
+    <p style="margin: 5px 0;">\u{1F4E7} \u90AE\u7BB1: <a href="mailto:sales@rowellhplc.com" style="color: #2563eb;">sales@rowellhplc.com</a></p>
+    <p style="margin: 5px 0;">\u{1F4DE} \u7535\u8BDD: +86 XXX-XXXX-XXXX</p>
+    
+    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
+    
+    <p style="color: #6b7280; font-size: 12px; margin: 0;">
+      \u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002\u5982\u6709\u95EE\u9898\uFF0C\u8BF7\u901A\u8FC7\u4E0A\u8FF0\u8054\u7CFB\u65B9\u5F0F\u4E0E\u6211\u4EEC\u8054\u7CFB\u3002
+    </p>
+  </div>
+  
+  <div style="text-align: center; padding: 20px; color: #6b7280; font-size: 12px;">
+    <p style="margin: 5px 0;">\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.</p>
+    <p style="margin: 5px 0;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546\uFF0C\u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5206\u6790\u89E3\u51B3\u65B9\u6848</p>
+  </div>
+</body>
+</html>
+  `.trim();
+}
+function generateInquiryEmailText(data) {
+  const productList = data.products.map((p, index2) => `${index2 + 1}. ${p.name} (\u8D27\u53F7: ${p.partNumber})`).join("\n");
+  return `
+\u5C0A\u656C\u7684 ${data.userName}\uFF0C
+
+\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01
+
+\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002
+
+\u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}
+\u63D0\u4EA4\u65F6\u95F4: ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}
+${data.userCompany ? `\u516C\u53F8: ${data.userCompany}
+` : ""}${data.userPhone ? `\u7535\u8BDD: ${data.userPhone}
+` : ""}
+\u8BE2\u4EF7\u4EA7\u54C1:
+${productList}
+
+${data.userMessage ? `\u60A8\u7684\u7559\u8A00:
+${data.userMessage}
+
+` : ""}\u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002
+
+\u5982\u6709\u4EFB\u4F55\u95EE\u9898\uFF0C\u8BF7\u968F\u65F6\u8054\u7CFB\u6211\u4EEC\uFF1A
+\u90AE\u7BB1: sales@rowellhplc.com
+\u7535\u8BDD: +86 XXX-XXXX-XXXX
+
+\u795D\u597D\uFF01
+Rowell HPLC \u56E2\u961F
+
+---
+\u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002
+\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.
+  `.trim();
+}
+async function sendInquiryEmail(data) {
+  try {
+    const transporter2 = getTransporter();
+    if (!transporter2) {
+      console.log("[Email Service] SMTP not configured. Email content logged below:");
+      console.log("To:", data.userEmail);
+      console.log("Subject:", `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`);
+      console.log("Content (Text):", generateInquiryEmailText(data));
+      console.log("[Email Service] To enable real email sending, configure SMTP environment variables.");
+      return true;
+    }
+    const config = getSMTPConfig();
+    if (!config) {
+      return false;
+    }
+    const info = await transporter2.sendMail({
+      from: `"Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3" <${config.from}>`,
+      to: data.userEmail,
+      subject: `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`,
+      text: generateInquiryEmailText(data),
+      html: generateInquiryEmailHTML(data)
+    });
+    console.log("[Email Service] Email sent successfully:", info.messageId);
+    console.log("[Email Service] Preview URL:", nodemailer.getTestMessageUrl(info));
+    return true;
+  } catch (error) {
+    console.error("[Email Service] Failed to send inquiry email:", error);
+    return false;
+  }
+}
+async function verifySMTPConnection() {
+  try {
+    const transporter2 = getTransporter();
+    if (!transporter2) {
+      console.warn("[Email Service] SMTP not configured. Cannot verify connection.");
+      return false;
+    }
+    await transporter2.verify();
+    console.log("[Email Service] SMTP connection verified successfully");
+    return true;
+  } catch (error) {
+    console.error("[Email Service] SMTP connection verification failed:", error);
+    return false;
+  }
+}
+var transporter;
+var init_emailService = __esm({
+  "server/emailService.ts"() {
+    "use strict";
+    transporter = null;
+  }
+});
+
 // server/products_list_new.ts
 var products_list_new_exports = {};
 __export(products_list_new_exports, {
@@ -692,6 +932,17 @@ async function productsListQuery(input, db) {
   const pageSize = input?.pageSize || 24;
   const offset = (page - 1) * pageSize;
   const conditions = [];
+  if (input?.search && input.search.trim().length > 0) {
+    const searchTerm = input.search.trim().toLowerCase();
+    conditions.push(
+      sql`(
+        LOWER(${products2.productId}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products2.name}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products2.partNumber}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products2.brand}) LIKE ${`%${searchTerm}%`}
+      )`
+    );
+  }
   if (input?.brand) {
     conditions.push(eq3(products2.brand, input.brand));
   }
@@ -762,6 +1013,7 @@ var init_products_list_new = __esm({
     productsListInput = z2.object({
       categoryId: z2.number().optional(),
       brand: z2.string().optional(),
+      search: z2.string().optional(),
       // Advanced filters
       particleSizeMin: z2.number().optional(),
       particleSizeMax: z2.number().optional(),
@@ -1542,200 +1794,8 @@ function generateInquiryNumber() {
   return `INQ-${year}${month}${day}-${random}`;
 }
 
-// server/emailService.ts
-import nodemailer from "nodemailer";
-function getSMTPConfig() {
-  const host = process.env.SMTP_HOST;
-  const port = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM;
-  if (!host || !port || !user || !pass || !from) {
-    console.warn("[Email Service] SMTP not configured. Email sending is disabled.");
-    console.warn("[Email Service] Required environment variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM");
-    return null;
-  }
-  return {
-    host,
-    port: parseInt(port, 10),
-    secure: parseInt(port, 10) === 465,
-    // true for 465, false for other ports
-    auth: {
-      user,
-      pass
-    },
-    from
-  };
-}
-var transporter = null;
-function getTransporter() {
-  if (transporter) {
-    return transporter;
-  }
-  const config = getSMTPConfig();
-  if (!config) {
-    return null;
-  }
-  try {
-    transporter = nodemailer.createTransport({
-      host: config.host,
-      port: config.port,
-      secure: config.secure,
-      auth: config.auth
-    });
-    console.log("[Email Service] SMTP transporter created successfully");
-    return transporter;
-  } catch (error) {
-    console.error("[Email Service] Failed to create SMTP transporter:", error);
-    return null;
-  }
-}
-function generateInquiryEmailHTML(data) {
-  const productRows = data.products.map((p, index2) => `
-      <tr>
-        <td style="padding: 8px; border: 1px solid #ddd;">${index2 + 1}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${p.name}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${p.partNumber}</td>
-      </tr>
-    `).join("");
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>\u8BE2\u4EF7\u786E\u8BA4</title>
-</head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background-color: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-    <h1 style="margin: 0; font-size: 24px;">Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3</h1>
-    <p style="margin: 10px 0 0 0; font-size: 14px;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546</p>
-  </div>
-  
-  <div style="background-color: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-    <h2 style="color: #2563eb; margin-top: 0;">\u8BE2\u4EF7\u786E\u8BA4</h2>
-    
-    <p>\u5C0A\u656C\u7684 <strong>${data.userName}</strong>\uFF0C</p>
-    
-    <p>\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-    
-    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2563eb;">
-      <p style="margin: 5px 0;"><strong>\u8BE2\u4EF7\u5355\u53F7:</strong> ${data.inquiryNumber}</p>
-      <p style="margin: 5px 0;"><strong>\u63D0\u4EA4\u65F6\u95F4:</strong> ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
-      ${data.userCompany ? `<p style="margin: 5px 0;"><strong>\u516C\u53F8:</strong> ${data.userCompany}</p>` : ""}
-      ${data.userPhone ? `<p style="margin: 5px 0;"><strong>\u7535\u8BDD:</strong> ${data.userPhone}</p>` : ""}
-    </div>
-    
-    <h3 style="color: #2563eb; margin-top: 20px;">\u8BE2\u4EF7\u4EA7\u54C1</h3>
-    <table style="width: 100%; border-collapse: collapse; margin: 10px 0; background-color: white;">
-      <thead>
-        <tr style="background-color: #f3f4f6;">
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left; width: 50px;">#</th>
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u4EA7\u54C1\u540D\u79F0</th>
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u8D27\u53F7</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${productRows}
-      </tbody>
-    </table>
-    
-    ${data.userMessage ? `
-    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0;">
-      <h3 style="color: #2563eb; margin-top: 0;">\u60A8\u7684\u7559\u8A00</h3>
-      <p style="margin: 0; white-space: pre-wrap;">${data.userMessage}</p>
-    </div>
-    ` : ""}
-    
-    <div style="background-color: #fef3c7; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #f59e0b;">
-      <p style="margin: 0;"><strong>\u23F0 \u54CD\u5E94\u65F6\u95F4:</strong> \u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-    </div>
-    
-    <h3 style="color: #2563eb; margin-top: 20px;">\u8054\u7CFB\u6211\u4EEC</h3>
-    <p style="margin: 5px 0;">\u{1F4E7} \u90AE\u7BB1: <a href="mailto:sales@rowellhplc.com" style="color: #2563eb;">sales@rowellhplc.com</a></p>
-    <p style="margin: 5px 0;">\u{1F4DE} \u7535\u8BDD: +86 XXX-XXXX-XXXX</p>
-    
-    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
-    
-    <p style="color: #6b7280; font-size: 12px; margin: 0;">
-      \u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002\u5982\u6709\u95EE\u9898\uFF0C\u8BF7\u901A\u8FC7\u4E0A\u8FF0\u8054\u7CFB\u65B9\u5F0F\u4E0E\u6211\u4EEC\u8054\u7CFB\u3002
-    </p>
-  </div>
-  
-  <div style="text-align: center; padding: 20px; color: #6b7280; font-size: 12px;">
-    <p style="margin: 5px 0;">\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.</p>
-    <p style="margin: 5px 0;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546\uFF0C\u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5206\u6790\u89E3\u51B3\u65B9\u6848</p>
-  </div>
-</body>
-</html>
-  `.trim();
-}
-function generateInquiryEmailText(data) {
-  const productList = data.products.map((p, index2) => `${index2 + 1}. ${p.name} (\u8D27\u53F7: ${p.partNumber})`).join("\n");
-  return `
-\u5C0A\u656C\u7684 ${data.userName}\uFF0C
-
-\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01
-
-\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002
-
-\u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}
-\u63D0\u4EA4\u65F6\u95F4: ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}
-${data.userCompany ? `\u516C\u53F8: ${data.userCompany}
-` : ""}${data.userPhone ? `\u7535\u8BDD: ${data.userPhone}
-` : ""}
-\u8BE2\u4EF7\u4EA7\u54C1:
-${productList}
-
-${data.userMessage ? `\u60A8\u7684\u7559\u8A00:
-${data.userMessage}
-
-` : ""}\u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002
-
-\u5982\u6709\u4EFB\u4F55\u95EE\u9898\uFF0C\u8BF7\u968F\u65F6\u8054\u7CFB\u6211\u4EEC\uFF1A
-\u90AE\u7BB1: sales@rowellhplc.com
-\u7535\u8BDD: +86 XXX-XXXX-XXXX
-
-\u795D\u597D\uFF01
-Rowell HPLC \u56E2\u961F
-
----
-\u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002
-\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.
-  `.trim();
-}
-async function sendInquiryEmail(data) {
-  try {
-    const transporter2 = getTransporter();
-    if (!transporter2) {
-      console.log("[Email Service] SMTP not configured. Email content logged below:");
-      console.log("To:", data.userEmail);
-      console.log("Subject:", `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`);
-      console.log("Content (Text):", generateInquiryEmailText(data));
-      console.log("[Email Service] To enable real email sending, configure SMTP environment variables.");
-      return true;
-    }
-    const config = getSMTPConfig();
-    if (!config) {
-      return false;
-    }
-    const info = await transporter2.sendMail({
-      from: `"Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3" <${config.from}>`,
-      to: data.userEmail,
-      subject: `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`,
-      text: generateInquiryEmailText(data),
-      html: generateInquiryEmailHTML(data)
-    });
-    console.log("[Email Service] Email sent successfully:", info.messageId);
-    console.log("[Email Service] Preview URL:", nodemailer.getTestMessageUrl(info));
-    return true;
-  } catch (error) {
-    console.error("[Email Service] Failed to send inquiry email:", error);
-    return false;
-  }
-}
-
 // server/routers.ts
+init_emailService();
 import { z as z3 } from "zod";
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -1757,6 +1817,60 @@ var appRouter = router({
       }).parse(raw);
     }).query(async ({ input }) => {
       return await getProductsByIds(input.productIds);
+    }),
+    getBySlug: publicProcedure.input((raw) => {
+      return z3.string().parse(raw);
+    }).query(async ({ input }) => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eq7 } = await import("drizzle-orm");
+      const db = await getDb2();
+      const result = await db.select().from(products2).where(eq7(products2.productId, input)).limit(1);
+      return result[0] || null;
+    })
+  }),
+  // Customer messages routes
+  messages: router({
+    create: publicProcedure.input((raw) => {
+      return z3.object({
+        name: z3.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
+        email: z3.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+        company: z3.string().optional(),
+        phone: z3.string().optional(),
+        productId: z3.string().optional(),
+        message: z3.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
+      }).parse(raw);
+    }).mutation(async ({ input }) => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const db = await getDb2();
+      const result = await db.insert(customerMessages2).values({
+        name: input.name,
+        email: input.email,
+        company: input.company,
+        phone: input.phone,
+        productId: input.productId,
+        message: input.message,
+        status: "pending"
+      });
+      try {
+        const { sendInquiryEmail: sendInquiryEmail2 } = await Promise.resolve().then(() => (init_emailService(), emailService_exports));
+        await sendInquiryEmail2({
+          inquiryNumber: `MSG-${result[0].insertId}`,
+          userName: input.name,
+          userEmail: input.email,
+          userMessage: input.message,
+          products: input.productId ? [{ name: input.productId, partNumber: input.productId }] : [],
+          createdAt: /* @__PURE__ */ new Date()
+        });
+      } catch (emailError) {
+        console.error("Failed to send notification email:", emailError);
+      }
+      return {
+        success: true,
+        messageId: result[0].insertId,
+        message: "\u7559\u8A00\u5DF2\u63D0\u4EA4,\u6211\u4EEC\u4F1A\u5C3D\u5FEB\u56DE\u590D\u60A8"
+      };
     })
   }),
   // Inquiry routes

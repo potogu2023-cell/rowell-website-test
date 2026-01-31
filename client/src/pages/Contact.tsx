@@ -3,70 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, MessageSquare, Send } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 import { useTranslation } from 'react-i18next';
-import { useState } from "react";
-import { toast } from "sonner";
+import CustomerMessageForm from "@/components/CustomerMessageForm";
 
 export default function Contact() {
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    phone: "",
-    productId: "",
-    quantity: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name || !formData.email || !formData.message) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // Send email using mailto (simple approach)
-      const subject = `Product Inquiry from ${formData.name}`;
-      const body = `
-Name: ${formData.name}
-Company: ${formData.company}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Product ID: ${formData.productId}
-Quantity: ${formData.quantity}
-
-Message:
-${formData.message}
-      `.trim();
-
-      const mailtoLink = `mailto:info@rowellhplc.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
-
-      toast.success("Opening email client...");
-      
-      // Reset form
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        productId: "",
-        quantity: "",
-        message: "",
-      });
-    } catch (error) {
-      toast.error("Failed to send inquiry");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -142,97 +84,10 @@ ${formData.message}
 
           {/* Quick Inquiry Form */}
           <div>
-            <Card>
-              <CardHeader>
-                <CardTitle>Quick Inquiry</CardTitle>
-                <CardDescription>
-                  Send us a message and we'll get back to you as soon as possible
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name *</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="company">Company</Label>
-                    <Input
-                      id="company"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email *</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="productId">Product ID</Label>
-                      <Input
-                        id="productId"
-                        placeholder="e.g., SHIM-227..."
-                        value={formData.productId}
-                        onChange={(e) => setFormData({ ...formData, productId: e.target.value })}
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="quantity">Quantity</Label>
-                      <Input
-                        id="quantity"
-                        type="number"
-                        min="1"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea
-                      id="message"
-                      rows={5}
-                      placeholder="Tell us about your inquiry..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    <Send className="w-4 h-4 mr-2" />
-                    {isSubmitting ? "Sending..." : "Send Inquiry"}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            <CustomerMessageForm 
+              title="Quick Inquiry"
+              description="Send us a message and we'll get back to you as soon as possible"
+            />
           </div>
         </div>
 

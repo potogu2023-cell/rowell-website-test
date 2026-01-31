@@ -332,6 +332,26 @@ export const users = mysqlTable("users", {
 	index("users_openId_unique").on(table.openId),
 ]);
 
+export const customerMessages = mysqlTable("customer_messages", {
+	id: int().autoincrement().notNull(),
+	name: varchar({ length: 100 }).notNull(),
+	email: varchar({ length: 320 }).notNull(),
+	company: varchar({ length: 255 }),
+	phone: varchar({ length: 50 }),
+	productId: varchar({ length: 128 }),
+	message: text().notNull(),
+	status: mysqlEnum(['pending','replied','closed']).default('pending').notNull(),
+	createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+	updatedAt: timestamp({ mode: 'string' }).defaultNow().onUpdateNow().notNull(),
+},
+(table) => [
+	index("idx_customer_messages_status").on(table.status),
+	index("idx_customer_messages_createdAt").on(table.createdAt),
+	index("idx_customer_messages_email").on(table.email),
+]);
+
 // Type exports
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
+export type CustomerMessage = typeof customerMessages.$inferSelect;
+export type InsertCustomerMessage = typeof customerMessages.$inferInsert;

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ShoppingCart, Bot, MessageCircle, RefreshCw, Lightbulb } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
+import CustomerMessageForm from "@/components/CustomerMessageForm";
 
 export default function ProductDetail() {
   const { t } = useTranslation();
@@ -277,6 +278,16 @@ export default function ProductDetail() {
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Customer Message Form */}
+        <div className="mt-12 max-w-4xl mx-auto">
+          <CustomerMessageForm 
+            productId={product.productId}
+            productName={product.name || undefined}
+            title="Have Questions About This Product?"
+            description="Send us a message and our team will get back to you within 24 hours."
+          />
         </div>
       </div>
     </div>
