@@ -923,7 +923,7 @@ __export(products_list_new_exports, {
   productsListInput: () => productsListInput,
   productsListQuery: () => productsListQuery
 });
-import { z as z2 } from "zod";
+import { z as z3 } from "zod";
 import { eq as eq3, and, gte, lte, inArray, sql } from "drizzle-orm";
 async function productsListQuery(input, db) {
   if (!db) return { products: [], total: 0, page: 1, pageSize: 24, totalPages: 0 };
@@ -1010,24 +1010,24 @@ var productsListInput;
 var init_products_list_new = __esm({
   "server/products_list_new.ts"() {
     "use strict";
-    productsListInput = z2.object({
-      categoryId: z2.number().optional(),
-      brand: z2.string().optional(),
-      search: z2.string().optional(),
+    productsListInput = z3.object({
+      categoryId: z3.number().optional(),
+      brand: z3.string().optional(),
+      search: z3.string().optional(),
       // Advanced filters
-      particleSizeMin: z2.number().optional(),
-      particleSizeMax: z2.number().optional(),
-      poreSizeMin: z2.number().optional(),
-      poreSizeMax: z2.number().optional(),
-      columnLengthMin: z2.number().optional(),
-      columnLengthMax: z2.number().optional(),
-      innerDiameterMin: z2.number().optional(),
-      innerDiameterMax: z2.number().optional(),
-      phaseTypes: z2.array(z2.string()).optional(),
-      phMin: z2.number().optional(),
-      phMax: z2.number().optional(),
-      page: z2.number().min(1).default(1),
-      pageSize: z2.number().min(1).max(100).default(24)
+      particleSizeMin: z3.number().optional(),
+      particleSizeMax: z3.number().optional(),
+      poreSizeMin: z3.number().optional(),
+      poreSizeMax: z3.number().optional(),
+      columnLengthMin: z3.number().optional(),
+      columnLengthMax: z3.number().optional(),
+      innerDiameterMin: z3.number().optional(),
+      innerDiameterMax: z3.number().optional(),
+      phaseTypes: z3.array(z3.string()).optional(),
+      phMin: z3.number().optional(),
+      phMax: z3.number().optional(),
+      page: z3.number().min(1).default(1),
+      pageSize: z3.number().min(1).max(100).default(24)
     }).optional();
   }
 });
@@ -1796,7 +1796,75 @@ function generateInquiryNumber() {
 
 // server/routers.ts
 init_emailService();
-import { z as z3 } from "zod";
+import { z as z4 } from "zod";
+
+// server/seed-api.ts
+import { readFileSync, readdirSync } from "fs";
+import { join } from "path";
+import { z as z2 } from "zod";
+var seedRouter = router({
+  importResources: publicProcedure.input(z2.object({ secret: z2.string().optional() }).optional()).mutation(async ({ input }) => {
+    const SECRET_KEY = process.env.SEED_SECRET || "rowell-seed-2025";
+    if (input?.secret && input.secret !== SECRET_KEY) {
+      throw new Error("Invalid secret key");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const db = await getDb2();
+    const articlesDir = join(process.cwd(), "resource_center_articles");
+    const categories2 = ["technical_guides", "application_notes", "industry_insights"];
+    let importedCount = 0;
+    const results = [];
+    for (const category of categories2) {
+      const categoryDir = join(articlesDir, category);
+      try {
+        const files = readdirSync(categoryDir).filter((f) => f.endsWith(".md"));
+        for (const file of files) {
+          const filePath = join(categoryDir, file);
+          const content = readFileSync(filePath, "utf-8");
+          const titleMatch = content.match(/^#\s+(.+)$/m);
+          const title = titleMatch ? titleMatch[1] : file.replace(".md", "");
+          const excerptMatch = content.match(/\n\n(.+?)\n\n/);
+          const excerpt = excerptMatch ? excerptMatch[1].substring(0, 200) : "";
+          let categoryLabel = "Technical Guide";
+          if (category === "application_notes") categoryLabel = "Application Note";
+          if (category === "industry_insights") categoryLabel = "Industry Insight";
+          const slug = file.replace(".md", "").toLowerCase();
+          const daysAgo = Math.floor(Math.random() * 365);
+          const publishedAt = /* @__PURE__ */ new Date();
+          publishedAt.setDate(publishedAt.getDate() - daysAgo);
+          await db.insert(resources2).values({
+            title,
+            slug,
+            excerpt,
+            content,
+            category: categoryLabel,
+            author: "Rowell HPLC Team",
+            publishedAt,
+            featured: Math.random() > 0.7
+            // 30% chance of being featured
+          });
+          importedCount++;
+          results.push({ title, category: categoryLabel, status: "success" });
+        }
+      } catch (error) {
+        results.push({
+          category,
+          status: "error",
+          message: error instanceof Error ? error.message : "Unknown error"
+        });
+      }
+    }
+    return {
+      success: true,
+      imported: importedCount,
+      results,
+      message: `Successfully imported ${importedCount} articles!`
+    };
+  })
+});
+
+// server/routers.ts
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
   system: systemRouter,
@@ -1812,14 +1880,14 @@ var appRouter = router({
       return await productsListQuery2(input, db);
     }),
     getByIds: publicProcedure.input((raw) => {
-      return z3.object({
-        productIds: z3.array(z3.number())
+      return z4.object({
+        productIds: z4.array(z4.number())
       }).parse(raw);
     }).query(async ({ input }) => {
       return await getProductsByIds(input.productIds);
     }),
     getBySlug: publicProcedure.input((raw) => {
-      return z3.string().parse(raw);
+      return z4.string().parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
@@ -1829,9 +1897,9 @@ var appRouter = router({
       return result[0] || null;
     }),
     getRelated: publicProcedure.input((raw) => {
-      return z3.object({
-        productId: z3.string(),
-        limit: z3.number().optional().default(6)
+      return z4.object({
+        productId: z4.string(),
+        limit: z4.number().optional().default(6)
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -1867,11 +1935,11 @@ var appRouter = router({
   // Customer messages routes
   messages: router({
     list: publicProcedure.input((raw) => {
-      return z3.object({
-        status: z3.enum(["pending", "replied", "closed", "all"]).optional().default("all"),
-        page: z3.number().optional().default(1),
-        pageSize: z3.number().optional().default(20),
-        search: z3.string().optional()
+      return z4.object({
+        status: z4.enum(["pending", "replied", "closed", "all"]).optional().default("all"),
+        page: z4.number().optional().default(1),
+        pageSize: z4.number().optional().default(20),
+        search: z4.string().optional()
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -1904,9 +1972,9 @@ var appRouter = router({
       };
     }),
     updateStatus: publicProcedure.input((raw) => {
-      return z3.object({
-        id: z3.number(),
-        status: z3.enum(["pending", "replied", "closed"])
+      return z4.object({
+        id: z4.number(),
+        status: z4.enum(["pending", "replied", "closed"])
       }).parse(raw);
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -1938,13 +2006,13 @@ var appRouter = router({
       return statsMap;
     }),
     create: publicProcedure.input((raw) => {
-      return z3.object({
-        name: z3.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
-        email: z3.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
-        company: z3.string().optional(),
-        phone: z3.string().optional(),
-        productId: z3.string().optional(),
-        message: z3.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
+      return z4.object({
+        name: z4.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
+        email: z4.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+        company: z4.string().optional(),
+        phone: z4.string().optional(),
+        productId: z4.string().optional(),
+        message: z4.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
       }).parse(raw);
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -1982,14 +2050,14 @@ var appRouter = router({
   // Inquiry routes
   inquiries: router({
     create: publicProcedure.input((raw) => {
-      return z3.object({
-        productIds: z3.array(z3.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
-        userInfo: z3.object({
-          name: z3.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(50, "\u59D3\u540D\u6700\u591A 50 \u4E2A\u5B57\u7B26"),
-          email: z3.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
-          company: z3.string().optional(),
-          phone: z3.string().optional(),
-          message: z3.string().max(500, "\u7559\u8A00\u6700\u591A 500 \u4E2A\u5B57\u7B26").optional()
+      return z4.object({
+        productIds: z4.array(z4.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
+        userInfo: z4.object({
+          name: z4.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(50, "\u59D3\u540D\u6700\u591A 50 \u4E2A\u5B57\u7B26"),
+          email: z4.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+          company: z4.string().optional(),
+          phone: z4.string().optional(),
+          message: z4.string().max(500, "\u7559\u8A00\u6700\u591A 500 \u4E2A\u5B57\u7B26").optional()
         })
       }).parse(raw);
     }).mutation(async ({ input }) => {
@@ -2030,7 +2098,9 @@ var appRouter = router({
         message: emailSent ? "\u8BE2\u4EF7\u5DF2\u63D0\u4EA4\uFF0C\u786E\u8BA4\u90AE\u4EF6\u5DF2\u53D1\u9001\u81F3\u60A8\u7684\u90AE\u7BB1" : "\u8BE2\u4EF7\u5DF2\u63D0\u4EA4\uFF0C\u4F46\u90AE\u4EF6\u53D1\u9001\u5931\u8D25\uFF0C\u8BF7\u8BB0\u5F55\u60A8\u7684\u8BE2\u4EF7\u5355\u53F7"
       };
     })
-  })
+  }),
+  // Seed API for importing resources
+  seed: seedRouter
 });
 
 // server/_core/context.ts
