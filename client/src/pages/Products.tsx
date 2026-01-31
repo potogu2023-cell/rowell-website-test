@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CategoryNav from "@/components/CategoryNav";
-import { useAuth } from "@/_core/hooks/useAuth";
+
 import { ShoppingCart, ChevronLeft, ChevronRight, Filter, Bot, MessageCircle, Lightbulb } from "lucide-react";
 import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilters";
 import { toast } from "sonner";
@@ -23,7 +23,7 @@ export default function Products() {
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersState>({});
   const pageSize = 24;
-  const { isAuthenticated } = useAuth();
+
 
   // Get all categories
   const { data: categoriesData } = trpc.category.getAll.useQuery();
@@ -80,17 +80,9 @@ export default function Products() {
     categoryId: selectedCategoryId || undefined,
   }) as { data: Record<string, number> | undefined };
 
-  const addToCartMutation = trpc.cart.add.useMutation({
-    onSuccess: () => {
-      toast.success(t('products.product_added'));
-    },
-    onError: (error) => {
-      toast.error(error.message || t('products.add_failed'));
-    },
-  });
-
-  const handleAddToInquiry = (productId: number) => {
-    addToCartMutation.mutate({ productId, quantity: 1 });
+  const handleContactWhatsApp = (productId: string) => {
+    const message = encodeURIComponent(`Hi, I'm interested in product: ${productId}`);
+    window.open(`https://wa.me/8613816548816?text=${message}`, '_blank');
   };
 
   // Reset to page 1 when category changes
@@ -342,15 +334,14 @@ export default function Products() {
                     )}
 
                     <Button 
-                      className="w-full"
+                      className="w-full bg-green-600 hover:bg-green-700"
                       onClick={(e) => {
                         e.stopPropagation(); // Prevent card click
-                        handleAddToInquiry(product.id);
+                        handleContactWhatsApp(product.productId);
                       }}
-                      disabled={!isAuthenticated || addToCartMutation.isPending}
                     >
-                      <ShoppingCart className="mr-2 h-4 w-4" />
-                      {t('products.add_to_inquiry')}
+                      <MessageCircle className="mr-2 h-4 w-4" />
+                      {t('products.contact_whatsapp')}
                     </Button>
                   </CardContent>
                 </Card>
