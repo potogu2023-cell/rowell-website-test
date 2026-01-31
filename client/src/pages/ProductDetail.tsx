@@ -20,18 +20,12 @@ export default function ProductDetail() {
     enabled: slug.length > 0,
   });
 
-  const addToCartMutation = trpc.cart.add.useMutation({
-    onSuccess: () => {
-      toast.success(t('products.product_added'));
-    },
-    onError: (error) => {
-      toast.error(error.message || t('products.add_failed'));
-    },
-  });
-
   const handleAddToInquiry = () => {
-    if (product) {
-      addToCartMutation.mutate({ productId: product.id, quantity: 1 });
+    // Scroll to the message form at the bottom of the page
+    const messageForm = document.getElementById('product-message-form');
+    if (messageForm) {
+      messageForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      toast.success(t('productDetail.scroll_to_inquiry'));
     }
   };
 
@@ -239,10 +233,9 @@ export default function ProductDetail() {
                   onClick={handleAddToInquiry}
                   className="w-full"
                   size="lg"
-                  disabled={addToCartMutation.isPending}
                 >
-                  <ShoppingCart className="w-5 h-5 mr-2" />
-                  {addToCartMutation.isPending ? t('productDetail.adding') : t('productDetail.add_to_inquiry_cart')}
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  {t('productDetail.add_to_inquiry_cart')}
                 </Button>
 
                 <div className="pt-4 border-t">
@@ -285,7 +278,7 @@ export default function ProductDetail() {
         <RelatedProducts productId={product.productId} limit={6} />
 
         {/* Customer Message Form */}
-        <div className="mt-12 max-w-4xl mx-auto">
+        <div id="product-message-form" className="mt-12 max-w-4xl mx-auto">
           <CustomerMessageForm 
             productId={product.productId}
             productName={product.name || undefined}

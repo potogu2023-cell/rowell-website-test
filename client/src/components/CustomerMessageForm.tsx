@@ -50,11 +50,15 @@ export default function CustomerMessageForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('[CustomerMessageForm] Form submitted', formData);
     
     if (!formData.name || !formData.email || !formData.message) {
+      console.log('[CustomerMessageForm] Validation failed');
       toast.error("Please fill in all required fields");
       return;
     }
+    
+    console.log('[CustomerMessageForm] Validation passed, calling API...');
 
     createMessageMutation.mutate({
       name: formData.name,
