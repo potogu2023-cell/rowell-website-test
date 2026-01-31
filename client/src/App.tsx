@@ -21,6 +21,7 @@ import TestFilters from "./pages/TestFilters";
 import ProductDetail from "./pages/ProductDetail";
 import Resources from "./pages/Resources";
 import ResourceDetail from "./pages/ResourceDetail";
+import AdminMessages from "./pages/AdminMessages";
 import WhatsAppButton from "./components/WhatsAppButton";
 import AIChatWidget from "./components/ai/AIChatWidget";
 
@@ -48,6 +49,7 @@ function Router() {
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/applications"} component={Applications} />
           <Route path={"/contact"} component={Contact} />
+          <Route path={"/admin/messages"} component={AdminMessages} />
 
           <Route path={"/test-filters"} component={TestFilters} />
           <Route path={"/404"} component={NotFound} />

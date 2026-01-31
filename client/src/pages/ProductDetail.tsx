@@ -8,6 +8,7 @@ import { ArrowLeft, ShoppingCart, Bot, MessageCircle, RefreshCw, Lightbulb } fro
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
 import CustomerMessageForm from "@/components/CustomerMessageForm";
+import RelatedProducts from "@/components/RelatedProducts";
 
 export default function ProductDetail() {
   const { t } = useTranslation();
@@ -279,6 +280,9 @@ export default function ProductDetail() {
             </Card>
           </div>
         </div>
+
+        {/* Related Products */}
+        <RelatedProducts productId={product.productId} limit={6} />
 
         {/* Customer Message Form */}
         <div className="mt-12 max-w-4xl mx-auto">

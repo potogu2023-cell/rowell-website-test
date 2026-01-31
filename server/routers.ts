@@ -53,10 +53,171 @@ export const appRouter = router({
         
         return result[0] || null;
       }),
+    
+    getRelated: publicProcedure
+      .input((raw: unknown) => {
+        return z.object({
+          productId: z.string(),
+          limit: z.number().optional().default(6),
+        }).parse(raw);
+      })
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { products } = await import('../drizzle/schema');
+        const { eq, and, or, ne, sql } = await import('drizzle-orm');
+        const db = await getDb();
+        
+        // First, get the current product
+        const currentProduct = await db
+          .select()
+          .from(products)
+          .where(eq(products.productId, input.productId))
+          .limit(1);
+        
+        if (!currentProduct || currentProduct.length === 0) {
+          return [];
+        }
+        
+        const product = currentProduct[0];
+        
+        // Build recommendation query based on similarity
+        // Priority: same brand > similar specs > same phase type > same USP
+        const relatedProducts = await db
+          .select()
+          .from(products)
+          .where(
+            and(
+              ne(products.id, product.id), // Exclude current product
+              eq(products.status, 'active'), // Only active products
+              or(
+                eq(products.brand, product.brand), // Same brand
+                eq(products.phaseType, product.phaseType), // Same phase type
+                eq(products.usp, product.usp), // Same USP
+                // Similar particle size (within 1 µm)
+                product.particleSize ? sql`ABS(${products.particleSize} - ${product.particleSize}) <= 1` : undefined,
+              )
+            )
+          )
+          .limit(input.limit);
+        
+        return relatedProducts;
+      }),
   }),
 
   // Customer messages routes
   messages: router({
+    list: publicProcedure
+      .input((raw: unknown) => {
+        return z.object({
+          status: z.enum(['pending', 'replied', 'closed', 'all']).optional().default('all'),
+          page: z.number().optional().default(1),
+          pageSize: z.number().optional().default(20),
+          search: z.string().optional(),
+        }).parse(raw);
+      })
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { customerMessages } = await import('../drizzle/schema');
+        const { eq, desc, or, sql, and } = await import('drizzle-orm');
+        const db = await getDb();
+        
+        const conditions = [];
+        
+        // Status filter
+        if (input.status !== 'all') {
+          conditions.push(eq(customerMessages.status, input.status));
+        }
+        
+        // Search filter
+        if (input.search) {
+          const searchTerm = `%${input.search}%`;
+          conditions.push(
+            or(
+              sql`LOWER(${customerMessages.name}) LIKE ${searchTerm.toLowerCase()}`,
+              sql`LOWER(${customerMessages.email}) LIKE ${searchTerm.toLowerCase()}`,
+              sql`LOWER(${customerMessages.productId}) LIKE ${searchTerm.toLowerCase()}`,
+              sql`LOWER(${customerMessages.message}) LIKE ${searchTerm.toLowerCase()}`
+            )!
+          );
+        }
+        
+        // Build where clause
+        const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+        
+        // Get total count
+        const countResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(customerMessages)
+          .where(whereClause);
+        const total = countResult[0]?.count || 0;
+        
+        // Get messages with pagination
+        const messages = await db
+          .select()
+          .from(customerMessages)
+          .where(whereClause)
+          .orderBy(desc(customerMessages.createdAt))
+          .limit(input.pageSize)
+          .offset((input.page - 1) * input.pageSize);
+        
+        return {
+          messages,
+          total,
+          totalPages: Math.ceil(total / input.pageSize),
+        };
+      }),
+    
+    updateStatus: publicProcedure
+      .input((raw: unknown) => {
+        return z.object({
+          id: z.number(),
+          status: z.enum(['pending', 'replied', 'closed']),
+        }).parse(raw);
+      })
+      .mutation(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { customerMessages } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+        const db = await getDb();
+        
+        await db
+          .update(customerMessages)
+          .set({ status: input.status })
+          .where(eq(customerMessages.id, input.id));
+        
+        return { success: true };
+      }),
+    
+    getStats: publicProcedure
+      .query(async () => {
+        const { getDb } = await import('./db');
+        const { customerMessages } = await import('../drizzle/schema');
+        const { eq, sql } = await import('drizzle-orm');
+        const db = await getDb();
+        
+        const stats = await db
+          .select({
+            status: customerMessages.status,
+            count: sql<number>`count(*)`
+          })
+          .from(customerMessages)
+          .groupBy(customerMessages.status);
+        
+        const statsMap = {
+          pending: 0,
+          replied: 0,
+          closed: 0,
+          total: 0,
+        };
+        
+        stats.forEach(stat => {
+          statsMap[stat.status as keyof typeof statsMap] = stat.count;
+          statsMap.total += stat.count;
+        });
+        
+        return statsMap;
+      }),
+    
     create: publicProcedure
       .input((raw: unknown) => {
         return z.object({

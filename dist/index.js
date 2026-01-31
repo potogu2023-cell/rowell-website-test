@@ -1827,10 +1827,116 @@ var appRouter = router({
       const db = await getDb2();
       const result = await db.select().from(products2).where(eq7(products2.productId, input)).limit(1);
       return result[0] || null;
+    }),
+    getRelated: publicProcedure.input((raw) => {
+      return z3.object({
+        productId: z3.string(),
+        limit: z3.number().optional().default(6)
+      }).parse(raw);
+    }).query(async ({ input }) => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eq7, and: and2, or, ne, sql: sql3 } = await import("drizzle-orm");
+      const db = await getDb2();
+      const currentProduct = await db.select().from(products2).where(eq7(products2.productId, input.productId)).limit(1);
+      if (!currentProduct || currentProduct.length === 0) {
+        return [];
+      }
+      const product = currentProduct[0];
+      const relatedProducts = await db.select().from(products2).where(
+        and2(
+          ne(products2.id, product.id),
+          // Exclude current product
+          eq7(products2.status, "active"),
+          // Only active products
+          or(
+            eq7(products2.brand, product.brand),
+            // Same brand
+            eq7(products2.phaseType, product.phaseType),
+            // Same phase type
+            eq7(products2.usp, product.usp),
+            // Same USP
+            // Similar particle size (within 1 µm)
+            product.particleSize ? sql3`ABS(${products2.particleSize} - ${product.particleSize}) <= 1` : void 0
+          )
+        )
+      ).limit(input.limit);
+      return relatedProducts;
     })
   }),
   // Customer messages routes
   messages: router({
+    list: publicProcedure.input((raw) => {
+      return z3.object({
+        status: z3.enum(["pending", "replied", "closed", "all"]).optional().default("all"),
+        page: z3.number().optional().default(1),
+        pageSize: z3.number().optional().default(20),
+        search: z3.string().optional()
+      }).parse(raw);
+    }).query(async ({ input }) => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eq7, desc, or, sql: sql3, and: and2 } = await import("drizzle-orm");
+      const db = await getDb2();
+      const conditions = [];
+      if (input.status !== "all") {
+        conditions.push(eq7(customerMessages2.status, input.status));
+      }
+      if (input.search) {
+        const searchTerm = `%${input.search}%`;
+        conditions.push(
+          or(
+            sql3`LOWER(${customerMessages2.name}) LIKE ${searchTerm.toLowerCase()}`,
+            sql3`LOWER(${customerMessages2.email}) LIKE ${searchTerm.toLowerCase()}`,
+            sql3`LOWER(${customerMessages2.productId}) LIKE ${searchTerm.toLowerCase()}`,
+            sql3`LOWER(${customerMessages2.message}) LIKE ${searchTerm.toLowerCase()}`
+          )
+        );
+      }
+      const whereClause = conditions.length > 0 ? and2(...conditions) : void 0;
+      const countResult = await db.select({ count: sql3`count(*)` }).from(customerMessages2).where(whereClause);
+      const total = countResult[0]?.count || 0;
+      const messages = await db.select().from(customerMessages2).where(whereClause).orderBy(desc(customerMessages2.createdAt)).limit(input.pageSize).offset((input.page - 1) * input.pageSize);
+      return {
+        messages,
+        total,
+        totalPages: Math.ceil(total / input.pageSize)
+      };
+    }),
+    updateStatus: publicProcedure.input((raw) => {
+      return z3.object({
+        id: z3.number(),
+        status: z3.enum(["pending", "replied", "closed"])
+      }).parse(raw);
+    }).mutation(async ({ input }) => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eq7 } = await import("drizzle-orm");
+      const db = await getDb2();
+      await db.update(customerMessages2).set({ status: input.status }).where(eq7(customerMessages2.id, input.id));
+      return { success: true };
+    }),
+    getStats: publicProcedure.query(async () => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eq7, sql: sql3 } = await import("drizzle-orm");
+      const db = await getDb2();
+      const stats = await db.select({
+        status: customerMessages2.status,
+        count: sql3`count(*)`
+      }).from(customerMessages2).groupBy(customerMessages2.status);
+      const statsMap = {
+        pending: 0,
+        replied: 0,
+        closed: 0,
+        total: 0
+      };
+      stats.forEach((stat) => {
+        statsMap[stat.status] = stat.count;
+        statsMap.total += stat.count;
+      });
+      return statsMap;
+    }),
     create: publicProcedure.input((raw) => {
       return z3.object({
         name: z3.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),

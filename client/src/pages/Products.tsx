@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import EnhancedSearch from "@/components/EnhancedSearch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CategoryNav from "@/components/CategoryNav";
@@ -159,12 +160,10 @@ export default function Products() {
             {/* Search and Filters */}
             <div className="mb-6">
               <div className="flex gap-2 mb-4">
-                <Input
-                  type="text"
-                  placeholder={t('products.search_placeholder')}
+                <EnhancedSearch
                   value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="flex-1"
+                  onChange={setSearchTerm}
+                  placeholder={t('products.search_placeholder')}
                 />
                 <Button
                   onClick={() => setShowAdvancedFilters(true)}
