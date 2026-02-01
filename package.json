@@ -11,7 +11,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "db:push": "drizzle-kit generate && drizzle-kit migrate",
-    "seed:resources": "tsx scripts/seed-resources.ts"
+    "seed:resources": "node scripts/seed-resources.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.693.0",
