@@ -336,6 +336,70 @@ export const appRouter = router({
       }),
   }),
 
+  // Resources routes
+  resources: router({
+    list: publicProcedure
+      .input((raw: unknown) => {
+        return z.object({
+          page: z.number().min(1).optional(),
+          pageSize: z.number().min(1).max(100).optional(),
+          search: z.string().optional(),
+          category: z.string().optional(),
+        }).optional().parse(raw);
+      })
+      .query(async ({ input }) => {
+        const page = input?.page || 1;
+        const pageSize = input?.pageSize || 12;
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        if (!db) {
+          return { items: [], total: 0, page, pageSize };
+        }
+
+        const { resources } = await import('../drizzle/schema');
+        const { eq, like, and, desc, sql } = await import('drizzle-orm');
+
+        // Build where conditions
+        const conditions: any[] = [];
+        // Only show published resources
+        conditions.push(eq(resources.status, 'published'));
+        
+        if (input?.search) {
+          conditions.push(
+            sql`(${resources.title} LIKE ${`%${input.search}%`} OR ${resources.excerpt} LIKE ${`%${input.search}%`})`
+          );
+        }
+        if (input?.category) {
+          conditions.push(eq(resources.categoryId, parseInt(input.category)));
+        }
+
+        // Get total count
+        const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+        const countResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(resources)
+          .where(whereClause);
+        const total = Number(countResult[0].count);
+
+        // Get paginated results
+        const offset = (page - 1) * pageSize;
+        const results = await db
+          .select()
+          .from(resources)
+          .where(whereClause)
+          .orderBy(desc(resources.publishedAt))
+          .limit(pageSize)
+          .offset(offset);
+
+        return {
+          items: results,
+          total,
+          page,
+          pageSize,
+        };
+      }),
+  }),
+
   // Seed API for importing resources
   seed: seedRouter,
 });
