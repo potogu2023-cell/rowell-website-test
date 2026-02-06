@@ -398,6 +398,49 @@ export const appRouter = router({
           pageSize,
         };
       }),
+
+    getBySlug: publicProcedure
+      .input((raw: unknown) => {
+        return z.object({
+          slug: z.string(),
+        }).parse(raw);
+      })
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        if (!db) {
+          return null;
+        }
+
+        const { resources } = await import('../drizzle/schema');
+        const { eq } = await import('drizzle-orm');
+
+        const results = await db
+          .select()
+          .from(resources)
+          .where(eq(resources.slug, input.slug))
+          .limit(1);
+
+        return results.length > 0 ? results[0] : null;
+      }),
+
+    listCategories: publicProcedure.query(async () => {
+      const { getDb } = await import('./db');
+      const db = await getDb();
+      if (!db) {
+        return [];
+      }
+
+      const { resources } = await import('../drizzle/schema');
+      const { sql } = await import('drizzle-orm');
+
+      const results = await db
+        .select({ category: resources.category })
+        .from(resources)
+        .groupBy(resources.category);
+
+      return results.map(r => r.category).filter(Boolean);
+    }),
   }),
 
   // Seed API for importing resources
