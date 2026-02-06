@@ -282,29 +282,24 @@ export const resourceTags = mysqlTable("resource_tags", {
 
 export const resources = mysqlTable("resources", {
 	id: int().autoincrement().notNull(),
-	slug: varchar({ length: 255 }).notNull(),
 	title: varchar({ length: 255 }).notNull(),
+	slug: varchar({ length: 255 }).notNull(),
 	content: text().notNull(),
-	excerpt: varchar({ length: 500 }),
-	metaDescription: varchar({ length: 200 }),
-	coverImage: varchar({ length: 500 }),
-	authorName: varchar({ length: 100 }).default('ROWELL Team'),
-	status: mysqlEnum(['draft','published','archived']).default('draft').notNull(),
-	language: varchar({ length: 10 }).default('en').notNull(),
-	categoryId: int(),
-	viewCount: int().default(0).notNull(),
-	featured: int().default(0).notNull(),
+	excerpt: text(),
+	category: varchar({ length: 50 }),
+	author: varchar({ length: 100 }),
 	publishedAt: timestamp({ mode: 'string' }),
-	createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
-	updatedAt: timestamp({ mode: 'string' }).defaultNow().onUpdateNow().notNull(),
+	tags: json(),
+	status: varchar({ length: 20 }),
+	views: int().default(0),
+	createdAt: timestamp({ mode: 'string' }),
+	updatedAt: timestamp({ mode: 'string' }),
 },
 (table) => [
 	index("resources_slug_unique").on(table.slug),
-	index("idx_resources_status_published").on(table.status, table.publishedAt),
-	index("idx_resources_category").on(table.categoryId),
-	index("idx_resources_featured").on(table.featured),
-	index("idx_resources_language").on(table.language),
 ]);
+export type Resource = typeof resources.$inferSelect;
+export type InsertResource = typeof resources.$inferInsert;
 
 export const users = mysqlTable("users", {
 	id: int().autoincrement().notNull(),

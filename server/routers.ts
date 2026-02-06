@@ -357,29 +357,23 @@ export const appRouter = router({
         }
 
         const { resources } = await import('../drizzle/schema');
-        const { eq, like, and, desc, sql } = await import('drizzle-orm');
+        const { eq, like, and, desc } = await import('drizzle-orm');
 
         // Build where conditions
         const conditions: any[] = [];
-        // Only show published resources
-        conditions.push(eq(resources.status, 'published'));
-        
         if (input?.search) {
           conditions.push(
-            sql`(${resources.title} LIKE ${`%${input.search}%`} OR ${resources.excerpt} LIKE ${`%${input.search}%`})`
+            like(resources.title, `%${input.search}%`)
           );
         }
         if (input?.category) {
-          conditions.push(eq(resources.categoryId, parseInt(input.category)));
+          conditions.push(eq(resources.category, input.category));
         }
 
         // Get total count
         const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
-        const countResult = await db
-          .select({ count: sql<number>`count(*)` })
-          .from(resources)
-          .where(whereClause);
-        const total = Number(countResult[0].count);
+        const allResources = await db.select().from(resources).where(whereClause);
+        const total = allResources.length;
 
         // Get paginated results
         const offset = (page - 1) * pageSize;
