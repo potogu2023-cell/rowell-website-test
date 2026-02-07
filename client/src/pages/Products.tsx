@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Products() {
   const { t } = useTranslation();
-  const [, setLocation] = useLocation();
+  const [location, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
@@ -69,6 +69,42 @@ export default function Products() {
       setSelectedUSP(uspParam);
     }
   }, [categories]);
+
+  // Listen to URL changes and update filters
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    
+    // Update brand from URL
+    const brandParam = params.get('brand');
+    setSelectedBrand(brandParam);
+    
+    // Update USP from URL
+    const uspParam = params.get('usp');
+    setSelectedUSP(uspParam);
+    
+    // Update category from URL
+    const categoryParam = params.get('category');
+    if (categoryParam && categories.length > 0) {
+      const categoryId = parseInt(categoryParam, 10);
+      if (!isNaN(categoryId)) {
+        setSelectedCategoryId(categoryId);
+        const category = categories.find((c: any) => c.id === categoryId);
+        if (category) {
+          setSelectedCategoryName(category.name);
+        }
+      } else {
+        const category = categories.find((c: any) => c.slug === categoryParam);
+        if (category) {
+          setSelectedCategoryId(category.id);
+          setSelectedCategoryName(category.name);
+        }
+      }
+    } else if (!categoryParam) {
+      // Clear category selection if no category in URL
+      setSelectedCategoryId(null);
+      setSelectedCategoryName(null);
+    }
+  }, [location, categories]);
 
   // Use useMemo to ensure queryParams is recalculated when dependencies change
   const queryParams = useMemo(() => ({
