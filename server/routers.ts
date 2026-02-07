@@ -487,7 +487,7 @@ export const appRouter = router({
         const db = await getDb();
         
         // Use raw SQL query for now to avoid drizzle issues
-        const result = await db.execute(`
+        const [rows] = await db.execute(`
           SELECT 
             c.id,
             c.name,
@@ -508,7 +508,7 @@ export const appRouter = router({
           ORDER BY c.parent_id, c.display_order
         `);
         
-        return result.rows;
+        return rows as any[];
       }),
   }),
 
