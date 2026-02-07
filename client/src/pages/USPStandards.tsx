@@ -85,16 +85,16 @@ export default function USPStandards() {
                   </p>
                   
                   {/* Chemical Formula (if available) */}
-                  {usp.chemicalFormula && (
+                  {usp.chemicalName && (
                     <p className="text-xs text-muted-foreground mb-3">
-                      <span className="font-semibold">Formula:</span> {usp.chemicalFormula}
+                      <span className="font-semibold">Formula:</span> {usp.chemicalName}
                     </p>
                   )}
                   
                   {/* Applications (if available) */}
-                  {usp.applications && (
+                  {usp.commonApplications && (
                     <p className="text-xs text-muted-foreground mb-4">
-                      <span className="font-semibold">Applications:</span> {usp.applications}
+                      <span className="font-semibold">Applications:</span> {usp.commonApplications}
                     </p>
                   )}
                   
