@@ -121,11 +121,6 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
             />
           )}
           <span className="flex-1">{translateCategory(category.name, i18n.language)}</span>
-          {category.nameEn && (
-            <span className="ml-2 text-xs text-gray-400">
-              {category.nameEn}
-            </span>
-          )}
           {category.productCount !== undefined && category.productCount > 0 && (
             <span className="ml-2 text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
               {category.productCount}
