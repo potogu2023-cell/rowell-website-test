@@ -8,7 +8,7 @@
  * 4. 获取USP标准及其产品数量
  */
 
-import { db } from './db';
+import { getDb } from './db';
 import { products, uspStandards } from '../drizzle/schema';
 import { eq, like, and, or, sql } from 'drizzle-orm';
 
@@ -17,6 +17,7 @@ import { eq, like, and, or, sql } from 'drizzle-orm';
  */
 export async function getAllUSPStandards() {
   try {
+    const db = await getDb();
     const standards = await db.select()
       .from(uspStandards)
       .orderBy(uspStandards.displayOrder);
@@ -34,6 +35,7 @@ export async function getAllUSPStandards() {
  */
 export async function getUSPStandardByCode(code: string) {
   try {
+    const db = await getDb();
     const standard = await db.select()
       .from(uspStandards)
       .where(eq(uspStandards.code, code))
@@ -65,6 +67,7 @@ export async function getProductsByUSPStandard(uspCode: string, limit: number = 
     // 2. usp = "L1,..." (开头)
     // 3. usp = "...,L1" (结尾)
     // 4. usp = "...,L1,..." (中间)
+    const db = await getDb();
     const matchedProducts = await db.select()
       .from(products)
       .where(
@@ -123,6 +126,7 @@ export async function getUSPStandardWithProducts(uspCode: string, productLimit: 
  */
 export async function getAllUSPStandardsWithProductCount() {
   try {
+    const db = await getDb();
     const standards = await getAllUSPStandards();
     
     // 为每个标准计算产品数量
@@ -167,6 +171,7 @@ export async function getAllUSPStandardsWithProductCount() {
  */
 export async function fillProductUSPData() {
   try {
+    const db = await getDb();
     const updates = [];
     
     // L1 (C18)
