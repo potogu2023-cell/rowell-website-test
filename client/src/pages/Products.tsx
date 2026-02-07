@@ -23,6 +23,7 @@ export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
   const [advancedFilters, setAdvancedFilters] = useState<AdvancedFiltersState>({});
+  const [selectedUSP, setSelectedUSP] = useState<string | null>(null);
   const pageSize = 24;
 
 
@@ -60,6 +61,12 @@ export default function Products() {
     if (brandParam) {
       setSelectedBrand(brandParam);
     }
+    
+    // Read USP parameter
+    const uspParam = params.get('usp');
+    if (uspParam) {
+      setSelectedUSP(uspParam);
+    }
   }, [categories]);
 
   // Use useMemo to ensure queryParams is recalculated when dependencies change
@@ -67,10 +74,11 @@ export default function Products() {
     categoryId: selectedCategoryId || undefined,
     brand: selectedBrand || undefined,
     search: searchTerm || undefined,
+    usp: selectedUSP || undefined,
     ...advancedFilters,
     page: currentPage,
     pageSize,
-  }), [selectedCategoryId, selectedBrand, searchTerm, advancedFilters, currentPage, pageSize]);
+  }), [selectedCategoryId, selectedBrand, searchTerm, selectedUSP, advancedFilters, currentPage, pageSize]);
   
   console.log('[Products] Query params:', queryParams);
   
@@ -211,6 +219,22 @@ export default function Products() {
                   <div className="flex flex-wrap gap-2">
                     {selectedBrand && (
                       <Badge variant="secondary">{t('products.brand')}: {selectedBrand}</Badge>
+                    )}
+                    {selectedUSP && (
+                      <Badge 
+                        variant="secondary" 
+                        className="cursor-pointer hover:bg-secondary/80"
+                        onClick={() => {
+                          setSelectedUSP(null);
+                          setCurrentPage(1);
+                          const params = new URLSearchParams(window.location.search);
+                          params.delete('usp');
+                          window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+                        }}
+                      >
+                        USP: {selectedUSP}
+                        <span className="ml-1">×</span>
+                      </Badge>
                     )}
                     {advancedFilters.particleSizeMin && (
                       <Badge variant="secondary">{t('products.particle_size_min')} {advancedFilters.particleSizeMin} µm</Badge>

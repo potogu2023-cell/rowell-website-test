@@ -18,6 +18,7 @@ export const productsListInput = z.object({
   phaseTypes: z.array(z.string()).optional(),
   phMin: z.number().optional(),
   phMax: z.number().optional(),
+  usp: z.string().optional(),
   page: z.number().min(1).default(1),
   pageSize: z.number().min(1).max(100).default(24),
 }).optional();
@@ -94,6 +95,19 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   }
   if (input?.phMax !== undefined) {
     conditions.push(lte(products.phMin, input.phMax)); // Product's min pH <= filter's max pH
+  }
+  
+  // USP filter (exact match)
+  if (input?.usp) {
+    const { or, like } = await import('drizzle-orm');
+    conditions.push(
+      or(
+        eq(products.usp, input.usp),                      // "L1"
+        like(products.usp, `${input.usp},%`),            // "L1,..."
+        like(products.usp, `%,${input.usp}`),            // "...,L1"
+        like(products.usp, `%,${input.usp},%`)           // "...,L1,..."
+      )
+    );
   }
   
   // Build query based on category filter

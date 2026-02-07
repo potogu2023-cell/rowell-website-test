@@ -336,6 +336,33 @@ export const appRouter = router({
       }),
   }),
 
+  // USP Standards routes
+  usp: router({
+    listWithProductCount: publicProcedure
+      .query(async () => {
+        const { getAllUSPStandardsWithProductCount } = await import('./db-usp');
+        return await getAllUSPStandardsWithProductCount();
+      }),
+    
+    getByCode: publicProcedure
+      .input((raw: unknown) => {
+        return z.object({
+          code: z.string(),
+          productLimit: z.number().optional().default(50),
+        }).parse(raw);
+      })
+      .query(async ({ input }) => {
+        const { getUSPStandardWithProducts } = await import('./db-usp');
+        return await getUSPStandardWithProducts(input.code, input.productLimit);
+      }),
+    
+    fillProductData: publicProcedure
+      .mutation(async () => {
+        const { fillProductUSPData } = await import('./db-usp');
+        return await fillProductUSPData();
+      }),
+  }),
+
   // Resources routes
   resources: router({
     list: publicProcedure
