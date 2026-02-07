@@ -512,6 +512,28 @@ export const appRouter = router({
       }),
   }),
 
+  // Brand routes
+  brand: router({
+    getWithProductCount: publicProcedure
+      .query(async () => {
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        
+        // Use raw SQL query to get brands with product counts
+        const [rows] = await db.execute(`
+          SELECT 
+            brand,
+            COUNT(*) as productCount
+          FROM products
+          WHERE brand IS NOT NULL AND brand != ''
+          GROUP BY brand
+          ORDER BY productCount DESC, brand ASC
+        `);
+        
+        return rows as any[];
+      }),
+  }),
+
   // Seed API for importing resources
   seed: seedRouter,
 });

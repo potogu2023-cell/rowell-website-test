@@ -7,6 +7,7 @@ import EnhancedSearch from "@/components/EnhancedSearch";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CategoryNav from "@/components/CategoryNav";
+import { BrandNav } from "@/components/BrandNav";
 
 import { ShoppingCart, ChevronLeft, ChevronRight, Filter, Bot, MessageCircle, Lightbulb } from "lucide-react";
 import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilters";
@@ -156,11 +157,15 @@ export default function Products() {
       <div className="container py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 space-y-6">
             <CategoryNav 
               onCategorySelect={handleCategorySelect}
               selectedCategoryId={selectedCategoryId}
             />
+            
+            <div className="border-t pt-6">
+              <BrandNav />
+            </div>
           </div>
 
           {/* Main Content */}
