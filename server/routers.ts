@@ -464,6 +464,33 @@ export const appRouter = router({
     }),
   }),
 
+  // Category routes
+  category: router({
+    getAll: publicProcedure
+      .query(async () => {
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        const result = await db.execute('SELECT * FROM categories ORDER BY parent_id, display_order');
+        return result.rows;
+      }),
+    
+    getWithProductCount: publicProcedure
+      .query(async () => {
+        const { getDb } = await import('./db');
+        const db = await getDb();
+        const result = await db.execute(`
+          SELECT 
+            c.*,
+            COUNT(p.id) as productCount
+          FROM categories c
+          LEFT JOIN products p ON c.id = p.category_id
+          GROUP BY c.id
+          ORDER BY c.parent_id, c.display_order
+        `);
+        return result.rows;
+      }),
+  }),
+
   // Seed API for importing resources
   seed: seedRouter,
 });
