@@ -13,14 +13,14 @@ import { products, uspStandards } from '../drizzle/schema';
 import { eq, like, and, or, sql } from 'drizzle-orm';
 
 /**
- * 获取所有USP标准,按displayOrder排序
+ * 获取所有USP标准,按code排序
  */
 export async function getAllUSPStandards() {
   try {
     const db = await getDb();
     const standards = await db.select()
       .from(uspStandards)
-      .orderBy(uspStandards.displayOrder);
+      .orderBy(uspStandards.code);
     
     return standards;
   } catch (error) {

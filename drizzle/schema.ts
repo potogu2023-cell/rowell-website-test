@@ -357,17 +357,15 @@ export const uspStandards = mysqlTable("usp_standards", {
 	code: varchar({ length: 10 }).notNull(),
 	name: varchar({ length: 100 }).notNull(),
 	description: text(),
-	detailedDescription: text(),
-	chemicalFormula: varchar({ length: 100 }),
-	applications: text(),
-	displayOrder: int().default(0).notNull(),
-	featured: int().default(0).notNull(),
+	chemicalName: varchar({ length: 200 }),
+	commonApplications: text(),
+	isPopular: int().default(0).notNull(),
 	createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
 	updatedAt: timestamp({ mode: 'string' }).defaultNow().onUpdateNow().notNull(),
 },
 (table) => [
 	index("usp_standards_code_unique").on(table.code),
-	index("idx_usp_standards_displayOrder").on(table.displayOrder),
+	index("idx_usp_standards_is_popular").on(table.isPopular),
 ]);
 
 export type USPStandard = typeof uspStandards.$inferSelect;
