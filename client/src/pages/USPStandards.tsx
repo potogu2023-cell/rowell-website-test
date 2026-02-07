@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from 'react-i18next';
 import { trpc } from "@/lib/trpc";
-import { Link } from "react-router-dom";
+import { Link } from "wouter";
 import { ArrowRight, Loader2 } from "lucide-react";
 
 export default function USPStandards() {
@@ -105,7 +105,7 @@ export default function USPStandards() {
                       </div>
                       
                       {usp.productCount > 0 && (
-                        <Link to={`/products?usp=${usp.code}`}>
+                        <Link href={`/products?usp=${usp.code}`}>
                           <Button variant="ghost" size="sm" className="group">
                             View Products
                             <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
