@@ -469,25 +469,47 @@ export const appRouter = router({
     getAll: publicProcedure
       .query(async () => {
         const { getDb } = await import('./db');
+        const { categories } = await import('../drizzle/schema');
+        const { asc } = await import('drizzle-orm');
         const db = await getDb();
-        const result = await db.execute('SELECT * FROM categories ORDER BY parent_id, display_order');
-        return result.rows;
+        
+        const result = await db
+          .select()
+          .from(categories)
+          .orderBy(asc(categories.parentId), asc(categories.displayOrder));
+        
+        return result;
       }),
     
     getWithProductCount: publicProcedure
       .query(async () => {
         const { getDb } = await import('./db');
+        const { categories, products } = await import('../drizzle/schema');
+        const { sql, asc } = await import('drizzle-orm');
         const db = await getDb();
-        const result = await db.execute(`
-          SELECT 
-            c.*,
-            COUNT(p.id) as productCount
-          FROM categories c
-          LEFT JOIN products p ON c.id = p.category_id
-          GROUP BY c.id
-          ORDER BY c.parent_id, c.display_order
-        `);
-        return result.rows;
+        
+        const result = await db
+          .select({
+            id: categories.id,
+            name: categories.name,
+            nameEn: categories.nameEn,
+            slug: categories.slug,
+            parentId: categories.parentId,
+            level: categories.level,
+            displayOrder: categories.displayOrder,
+            isVisible: categories.isVisible,
+            description: categories.description,
+            icon: categories.icon,
+            createdAt: categories.createdAt,
+            updatedAt: categories.updatedAt,
+            productCount: sql<number>`COUNT(${products.id})`,
+          })
+          .from(categories)
+          .leftJoin(products, sql`${categories.id} = ${products.categoryId}`)
+          .groupBy(categories.id)
+          .orderBy(asc(categories.parentId), asc(categories.displayOrder));
+        
+        return result;
       }),
   }),
 
