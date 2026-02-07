@@ -2,7 +2,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTranslation } from 'react-i18next';
-import { useQuery } from "@tanstack/react-query";
 import { trpc } from "@/lib/trpc";
 import { Link } from "react-router-dom";
 import { ArrowRight, Loader2 } from "lucide-react";
@@ -11,13 +10,7 @@ export default function USPStandards() {
   const { t } = useTranslation();
   
   // 从API获取USP标准及产品数量
-  const { data: uspStandards, isLoading, error } = useQuery({
-    queryKey: ['usp-standards'],
-    queryFn: async () => {
-      const result = await trpc.usp.listWithProductCount.query();
-      return result;
-    },
-  });
+  const { data: uspStandards, isLoading, error } = trpc.usp.listWithProductCount.useQuery();
 
   return (
     <div className="min-h-screen bg-background">
