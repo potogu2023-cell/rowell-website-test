@@ -488,6 +488,8 @@ export const appRouter = router({
         const { sql, asc } = await import('drizzle-orm');
         const db = await getDb();
         
+        const { eq } = await import('drizzle-orm');
+        
         const result = await db
           .select({
             id: categories.id,
@@ -505,7 +507,7 @@ export const appRouter = router({
             productCount: sql<number>`COUNT(${products.id})`,
           })
           .from(categories)
-          .leftJoin(products, sql`${categories.id} = ${products.categoryId}`)
+          .leftJoin(products, eq(categories.id, products.categoryId))
           .groupBy(categories.id)
           .orderBy(asc(categories.parentId), asc(categories.displayOrder));
         
