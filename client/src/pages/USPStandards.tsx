@@ -70,7 +70,7 @@ export default function USPStandards() {
                         {usp.name}
                       </CardDescription>
                     </div>
-                    {usp.featured === 1 && (
+                    {usp.isPopular === 1 && (
                       <Badge variant="secondary" className="ml-2">
                         Popular
                       </Badge>
