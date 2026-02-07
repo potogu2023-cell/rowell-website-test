@@ -484,34 +484,31 @@ export const appRouter = router({
     getWithProductCount: publicProcedure
       .query(async () => {
         const { getDb } = await import('./db');
-        const { categories, products } = await import('../drizzle/schema');
-        const { sql, asc } = await import('drizzle-orm');
         const db = await getDb();
         
-        const { eq } = await import('drizzle-orm');
+        // Use raw SQL query for now to avoid drizzle issues
+        const result = await db.execute(`
+          SELECT 
+            c.id,
+            c.name,
+            c.name_en as nameEn,
+            c.slug,
+            c.parent_id as parentId,
+            c.level,
+            c.display_order as displayOrder,
+            c.is_visible as isVisible,
+            c.description,
+            c.icon,
+            c.created_at as createdAt,
+            c.updated_at as updatedAt,
+            COUNT(p.id) as productCount
+          FROM categories c
+          LEFT JOIN products p ON c.id = p.category_id
+          GROUP BY c.id, c.name, c.name_en, c.slug, c.parent_id, c.level, c.display_order, c.is_visible, c.description, c.icon, c.created_at, c.updated_at
+          ORDER BY c.parent_id, c.display_order
+        `);
         
-        const result = await db
-          .select({
-            id: categories.id,
-            name: categories.name,
-            nameEn: categories.nameEn,
-            slug: categories.slug,
-            parentId: categories.parentId,
-            level: categories.level,
-            displayOrder: categories.displayOrder,
-            isVisible: categories.isVisible,
-            description: categories.description,
-            icon: categories.icon,
-            createdAt: categories.createdAt,
-            updatedAt: categories.updatedAt,
-            productCount: sql<number>`COUNT(${products.id})`,
-          })
-          .from(categories)
-          .leftJoin(products, eq(categories.id, products.categoryId))
-          .groupBy(categories.id)
-          .orderBy(asc(categories.parentId), asc(categories.displayOrder));
-        
-        return result;
+        return result.rows;
       }),
   }),
 
