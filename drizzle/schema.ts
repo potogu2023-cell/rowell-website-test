@@ -195,9 +195,9 @@ export const llmCostTracking = mysqlTable("llm_cost_tracking", {
 
 export const productCategories = mysqlTable("product_categories", {
 	id: int().autoincrement().notNull(),
-	productId: int().notNull().references(() => products.id, { onDelete: "cascade" } ),
-	categoryId: int().notNull().references(() => categories.id, { onDelete: "cascade" } ),
-	isPrimary: int().default(0).notNull(),
+	productId: int('product_id').notNull().references(() => products.id, { onDelete: "cascade" } ),
+	categoryId: int('category_id').notNull().references(() => categories.id, { onDelete: "cascade" } ),
+	isPrimary: int('is_primary').default(0).notNull(),
 	createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
 },
 (table) => [
