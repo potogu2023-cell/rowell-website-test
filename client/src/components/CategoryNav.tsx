@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { ChevronDown, ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translateCategory } from "@/lib/categoryTranslations";
 
 interface Category {
   id: number;
@@ -26,6 +28,7 @@ interface CategoryNavProps {
 
 export default function CategoryNav({ onCategorySelect, selectedCategoryId }: CategoryNavProps) {
   const [, setLocation] = useLocation();
+  const { language } = useLanguage();
   const [expandedCategories, setExpandedCategories] = useState<Set<number>>(new Set([1])); // 默认展开"色谱柱"
   
   const { data: allCategories, isLoading } = trpc.category.getWithProductCount.useQuery();
@@ -117,7 +120,7 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
               className="w-5 h-5 object-contain"
             />
           )}
-          <span className="flex-1">{category.name}</span>
+          <span className="flex-1">{translateCategory(category.name, language)}</span>
           {category.nameEn && (
             <span className="ml-2 text-xs text-gray-400">
               {category.nameEn}
@@ -141,7 +144,7 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
 
   return (
     <div className="bg-white rounded-lg shadow-sm p-6">
-      <h3 className="text-lg font-semibold mb-4 text-gray-900">产品分类</h3>
+      <h3 className="text-lg font-semibold mb-4 text-gray-900">{translateCategory('产品分类', language)}</h3>
       <div className="space-y-1">
         {topCategories?.map((category) => renderCategory(category as Category))}
       </div>
