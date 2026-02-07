@@ -151,6 +151,10 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
       .where(whereClause);
   }
   
+  // Debug: log query
+  console.log('[products_list_new] categoryId:', input?.categoryId);
+  console.log('[products_list_new] query SQL:', query.toSQL ? query.toSQL() : 'no toSQL method');
+  
   const [productResults, countResults] = await Promise.all([
     query,
     countQuery,
