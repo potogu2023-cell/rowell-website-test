@@ -1,11 +1,11 @@
 import { trpc } from "@/lib/trpc";
 import { useLocation } from "wouter";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { translateCategory } from "@/lib/categoryTranslations";
 
 export function BrandNav() {
   const [location, setLocation] = useLocation();
-  const { language } = useLanguage();
+  const { i18n } = useTranslation();
   const { data: brands, isLoading } = trpc.brand.getWithProductCount.useQuery();
 
   // Parse current brand from URL
@@ -46,7 +46,7 @@ export function BrandNav() {
 
   return (
     <div className="space-y-2">
-      <h3 className="font-semibold text-gray-900 mb-3">{translateCategory('品牌筛选', language)}</h3>
+      <h3 className="font-semibold text-gray-900 mb-3">{translateCategory('品牌筛选', i18n.language)}</h3>
       <div className="space-y-1">
         {brands.map((brand: any) => (
           <div
