@@ -117,16 +117,16 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
   
   if (input?.categoryId) {
-    // Query with category filter
-    const categoryCondition = eq(productCategories.categoryId, input.categoryId);
+    // Query with category filter using IN subquery
+    const categoryProductIds = sql`(SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`;
+    const categoryCondition = sql`${products.id} IN ${categoryProductIds}`;
     const finalCondition = whereClause 
       ? and(categoryCondition, whereClause)
       : categoryCondition;
     
     query = db
-      .select({ product: products })
+      .select()
       .from(products)
-      .innerJoin(productCategories, eq(products.id, productCategories.productId))
       .where(finalCondition)
       .limit(pageSize)
       .offset(offset);
@@ -134,7 +134,6 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     countQuery = db
       .select({ count: sql<number>`count(*)` })
       .from(products)
-      .innerJoin(productCategories, eq(products.id, productCategories.productId))
       .where(finalCondition);
   } else {
     // Query all products with filters
@@ -160,9 +159,7 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     countQuery,
   ]);
   
-  const productList = input?.categoryId 
-    ? productResults.map((r: any) => r.product)
-    : productResults;
+  const productList = productResults;
   
   const total = countResults[0]?.count || 0;
   const totalPages = Math.ceil(total / pageSize);
