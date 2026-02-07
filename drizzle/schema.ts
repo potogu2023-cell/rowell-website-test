@@ -240,7 +240,7 @@ export const products = mysqlTable("products", {
 	descriptionQuality: mysqlEnum(['high','medium','low','extracted','none']).default('none'),
 	slug: varchar({ length: 128 }),
 	category: varchar({ length: 100 }),
-	categoryId: int().references(() => categories.id, { onDelete: "set null" }),
+	categoryId: int('category_id').references(() => categories.id, { onDelete: "set null" }),
 },
 (table) => [
 	index("products_productId_unique").on(table.productId),
