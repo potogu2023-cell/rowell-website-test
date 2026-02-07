@@ -501,9 +501,9 @@ export const appRouter = router({
             c.icon,
             c.created_at as createdAt,
             c.updated_at as updatedAt,
-            COUNT(p.id) as productCount
+            COUNT(DISTINCT pc.product_id) as productCount
           FROM categories c
-          LEFT JOIN products p ON c.id = p.category_id
+          LEFT JOIN product_categories pc ON c.id = pc.category_id
           GROUP BY c.id, c.name, c.name_en, c.slug, c.parent_id, c.level, c.display_order, c.is_visible, c.description, c.icon, c.created_at, c.updated_at
           ORDER BY c.parent_id, c.display_order
         `);
