@@ -9,6 +9,8 @@ import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
 import CustomerMessageForm from "@/components/CustomerMessageForm";
 import RelatedProducts from "@/components/RelatedProducts";
+import ProductInquiryButton from "@/components/ProductInquiryButton";
+import ProductMessageButton from "@/components/ProductMessageButton";
 
 export default function ProductDetail() {
   const { t } = useTranslation();
@@ -229,14 +231,19 @@ export default function ProductDetail() {
                 <CardTitle>{t('productDetail.product_actions')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <Button
-                  onClick={handleAddToInquiry}
-                  className="w-full"
-                  size="lg"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('productDetail.add_to_inquiry_cart')}
-                </Button>
+                {/* 询价按钮 */}
+                <ProductInquiryButton 
+                  productId={product.productId}
+                  productName={product.name || product.productId}
+                  productPartNumber={product.partNumber}
+                />
+                
+                {/* 留言按钮 */}
+                <ProductMessageButton 
+                  productId={product.productId}
+                  productName={product.name || product.productId}
+                  productPartNumber={product.partNumber}
+                />
 
                 <div className="pt-4 border-t">
                   <h4 className="font-semibold mb-2">{t('productDetail.product_information')}</h4>

@@ -94,38 +94,17 @@
     "ask_ai_advisor": "Consultar asesor AI"
   },
   "products": {
-    "title": "Consumibles de Cromatografía",
-    "subtitle": "Explore nuestra completa colección de columnas chromatography de alta calidad de fabricantes líderes",
-    "search_placeholder": "Buscar por ID de producto, número de pieza o marca...",
-    "advanced_filters": "Filtros Avanzados",
-    "clear_filters": "Limpiar Filtros",
-    "current_filters": "Filtros Actuales:",
-    "brand": "Marca",
-    "particle_size_min": "Tamaño de Partícula ≥",
-    "particle_size_max": "Tamaño de Partícula ≤",
-    "pore_size_min": "Tamaño de Poro ≥",
-    "pore_size_max": "Tamaño de Poro ≤",
-    "column_length_min": "Longitud de Columna ≥",
-    "column_length_max": "Longitud de Columna ≤",
-    "inner_diameter_min": "Diámetro Interno ≥",
-    "inner_diameter_max": "Diámetro Interno ≤",
-    "phase_types": "Tipos de Fase",
-    "ph_min": "pH ≥",
-    "ph_max": "pH ≤",
-    "showing_results": "Mostrando",
-    "of": "de",
-    "products_count": "productos",
-    "in_category": "en",
-    "loading": "Cargando productos...",
-    "particle_size": "Tamaño de Partícula",
-    "pore_size": "Tamaño de Poro",
-    "dimensions": "Dimensiones",
-    "add_to_inquiry": "Agregar a Consulta",
-    "contact_whatsapp": "Contactar vía WhatsApp",
-    "previous": "Anterior",
-    "next": "Siguiente",
-    "product_added": "¡Producto agregado al carrito de consultas!",
-    "add_failed": "Error al agregar al carrito"
+    "request_quote": "Solicitar cotización",
+    "leave_message": "Dejar mensaje",
+    "inquiry_title": "Solicitar cotización",
+    "inquiry_description": "Complete el formulario a continuación y le enviaremos una cotización para este producto",
+    "message_title": "Dejar un mensaje",
+    "message_description": "¿Tiene preguntas sobre este producto? Envíenos un mensaje",
+    "product_info": "Producto",
+    "inquiry_message_label": "Sus requisitos *",
+    "inquiry_message_placeholder": "Describa sus requisitos (cantidad, plazo de entrega, etc.)",
+    "message_text_label": "Su mensaje *",
+    "message_text_placeholder": "Pregúntenos cualquier cosa sobre este producto..."
   },
   "auth": {
     "register_title": "Crear cuenta",
@@ -194,20 +173,7 @@
     "go_to_analytics": "Ir a análisis de datos"
   },
   "common": {
-    "loading": "Cargando...",
-    "error": "Error",
-    "success": "Éxito",
-    "cancel": "Cancelar",
-    "save": "Guardar",
-    "delete": "Eliminar",
-    "edit": "Editar",
-    "close": "Cerrar",
-    "confirm": "Confirmar",
-    "search": "Buscar",
-    "filter": "Filtrar",
-    "sort": "Ordenar",
-    "actions": "Acciones",
-    "products": "Productos"
+    "cancel": "Cancelar"
   },
   "footer": {
     "company_description": "ROWELL se dedica a proporcionar columnas chromatography y consumibles de alta calidad a clientes de todo el mundo, con precios competitivos y soporte técnico profesional.",
@@ -308,6 +274,13 @@
     "weekday": "Lunes - Viernes",
     "weekday_hours": "9:00 - 18:00 (GMT+8)",
     "weekend": "Sábado - Domingo",
-    "weekend_hours": "Cerrado"
+    "weekend_hours": "Cerrado",
+    "reminder_title": "Recordatorio amistoso",
+    "reminder_message": "Por favor, deje su información de contacto para que podamos responderle rápidamente",
+    "inquiry_success": "¡Consulta enviada con éxito! Nos pondremos en contacto pronto.",
+    "inquiry_error": "Error al enviar la consulta. Por favor, inténtelo de nuevo.",
+    "message_success": "¡Mensaje enviado con éxito! Responderemos lo antes posible.",
+    "message_error": "Error al enviar el mensaje. Por favor, inténtelo de nuevo.",
+    "required_fields": "Por favor, complete todos los campos obligatorios"
   }
 }

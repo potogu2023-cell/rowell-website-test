@@ -1114,6 +1114,29 @@
     "weekday": "Monday - Friday",
     "weekday_hours": "9:00 AM - 6:00 PM (GMT+8)",
     "weekend": "Saturday - Sunday",
-    "weekend_hours": "Closed"
+    "weekend_hours": "Closed",
+    "reminder_title": "Friendly Reminder",
+    "reminder_message": "Please leave your contact information so we can get back to you promptly",
+    "inquiry_success": "Inquiry submitted successfully! We'll get back to you soon.",
+    "inquiry_error": "Failed to submit inquiry. Please try again.",
+    "message_success": "Message sent successfully! We'll respond as soon as possible.",
+    "message_error": "Failed to send message. Please try again.",
+    "required_fields": "Please fill in all required fields"
+  },
+  "products": {
+    "request_quote": "Request Quote",
+    "leave_message": "Leave Message",
+    "inquiry_title": "Request a Quote",
+    "inquiry_description": "Fill out the form below and we'll send you a quote for this product",
+    "message_title": "Leave a Message",
+    "message_description": "Have questions about this product? Send us a message",
+    "product_info": "Product",
+    "inquiry_message_label": "Your Requirements *",
+    "inquiry_message_placeholder": "Please describe your requirements (quantity, delivery time, etc.)",
+    "message_text_label": "Your Message *",
+    "message_text_placeholder": "Ask us anything about this product..."
+  },
+  "common": {
+    "cancel": "Cancel"
   }
 }

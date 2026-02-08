@@ -94,38 +94,17 @@
     "ask_ai_advisor": "استشر مستشار الذكاء الاصطناعي"
   },
   "products": {
-    "title": "مستهلكات الكروماتوغرافيا",
-    "subtitle": "تصفح مجموعتنا الشاملة من أعمدة chromatography عالية الجودة من الشركات المصنعة الرائدة",
-    "search_placeholder": "البحث حسب معرف المنتج أو رقم الجزء أو العلامة التجارية...",
-    "advanced_filters": "فلاتر متقدمة",
-    "clear_filters": "مسح الفلاتر",
-    "current_filters": "الفلاتر الحالية:",
-    "brand": "العلامة التجارية",
-    "particle_size_min": "حجم الجسيمات ≥",
-    "particle_size_max": "حجم الجسيمات ≤",
-    "pore_size_min": "حجم المسام ≥",
-    "pore_size_max": "حجم المسام ≤",
-    "column_length_min": "طول العمود ≥",
-    "column_length_max": "طول العمود ≤",
-    "inner_diameter_min": "القطر الداخلي ≥",
-    "inner_diameter_max": "القطر الداخلي ≤",
-    "phase_types": "أنواع الطور",
-    "ph_min": "pH ≥",
-    "ph_max": "pH ≤",
-    "showing_results": "عرض",
-    "of": "من",
-    "products_count": "منتجات",
-    "in_category": "في",
-    "loading": "جارٍ تحميل المنتجات...",
-    "particle_size": "حجم الجسيمات",
-    "pore_size": "حجم المسام",
-    "dimensions": "الأبعاد",
-    "add_to_inquiry": "إضافة إلى الاستفسار",
-    "contact_whatsapp": "تواصل عبر واتساب",
-    "previous": "السابق",
-    "next": "التالي",
-    "product_added": "تمت إضافة المنتج إلى سلة الاستفسارات!",
-    "add_failed": "فشل الإضافة إلى السلة"
+    "request_quote": "طلب عرض سعر",
+    "leave_message": "ترك رسالة",
+    "inquiry_title": "طلب عرض سعر",
+    "inquiry_description": "املأ النموذج أدناه وسنرسل لك عرض سعر لهذا المنتج",
+    "message_title": "ترك رسالة",
+    "message_description": "هل لديك أسئلة حول هذا المنتج؟ أرسل لنا رسالة",
+    "product_info": "المنتج",
+    "inquiry_message_label": "متطلباتك *",
+    "inquiry_message_placeholder": "يرجى وصف متطلباتك (الكمية، وقت التسليم، إلخ)",
+    "message_text_label": "رسالتك *",
+    "message_text_placeholder": "اسألنا أي شيء عن هذا المنتج..."
   },
   "auth": {
     "register_title": "إنشاء حساب",
@@ -194,20 +173,7 @@
     "go_to_analytics": "الانتقال إلى تحليل البيانات"
   },
   "common": {
-    "loading": "جارٍ التحميل...",
-    "error": "خطأ",
-    "success": "نجاح",
-    "cancel": "إلغاء",
-    "save": "حفظ",
-    "delete": "حذف",
-    "edit": "تعديل",
-    "close": "إغلاق",
-    "confirm": "تأكيد",
-    "search": "بحث",
-    "filter": "تصفية",
-    "sort": "ترتيب",
-    "actions": "إجراءات",
-    "products": "منتجات"
+    "cancel": "إلغاء"
   },
   "footer": {
     "company_description": "تلتزم ROWELL بتوفير أعمدة chromatography والمواد الاستهلاكية عالية الجودة للعملاء في جميع أنحاء العالم، مع أسعار تنافسية ودعم فني محترف.",
@@ -308,6 +274,13 @@
     "weekday": "الاثنين - الجمعة",
     "weekday_hours": "9:00 - 18:00 (GMT+8)",
     "weekend": "السبت - الأحد",
-    "weekend_hours": "مغلق"
+    "weekend_hours": "مغلق",
+    "reminder_title": "تذكير ودي",
+    "reminder_message": "يرجى ترك معلومات الاتصال الخاصة بك حتى نتمكن من الرد عليك على الفور",
+    "inquiry_success": "تم إرسال الاستفسار بنجاح! سنتواصل معك قريباً.",
+    "inquiry_error": "فشل إرسال الاستفسار. يرجى المحاولة مرة أخرى.",
+    "message_success": "تم إرسال الرسالة بنجاح! سنرد في أقرب وقت ممكن.",
+    "message_error": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
+    "required_fields": "يرجى ملء جميع الحقول المطلوبة"
   }
 }

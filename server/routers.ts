@@ -6,6 +6,7 @@ import { generateInquiryNumber } from './inquiryUtils';
 import { sendInquiryEmail } from './emailService';
 import { z } from 'zod';
 import { seedRouter } from './seed-api';
+import { customerMessageRouter } from './customer_message';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -536,6 +537,9 @@ export const appRouter = router({
 
   // Seed API for importing resources
   seed: seedRouter,
+
+  // Customer message routes
+  customerMessage: customerMessageRouter,
 });
 
 export type AppRouter = typeof appRouter;

@@ -94,38 +94,17 @@
     "ask_ai_advisor": "AIアドバイザーに相談"
   },
   "products": {
-    "title": "クロマトグラフィー消耗品",
-    "subtitle": "主要メーカーの高品質chromatographyカラムの包括的なコレクションをご覧ください",
-    "search_placeholder": "製品ID、部品番号、またはブランドで検索...",
-    "advanced_filters": "詳細フィルター",
-    "clear_filters": "フィルターをクリア",
-    "current_filters": "現在のフィルター：",
-    "brand": "ブランド",
-    "particle_size_min": "粒子サイズ ≥",
-    "particle_size_max": "粒子サイズ ≤",
-    "pore_size_min": "細孔サイズ ≥",
-    "pore_size_max": "細孔サイズ ≤",
-    "column_length_min": "カラム長 ≥",
-    "column_length_max": "カラム長 ≤",
-    "inner_diameter_min": "内径 ≥",
-    "inner_diameter_max": "内径 ≤",
-    "phase_types": "相タイプ",
-    "ph_min": "pH ≥",
-    "ph_max": "pH ≤",
-    "showing_results": "表示中",
-    "of": "件中",
-    "products_count": "製品",
-    "in_category": "カテゴリ",
-    "loading": "製品を読み込み中...",
-    "particle_size": "粒子サイズ",
-    "pore_size": "細孔サイズ",
-    "dimensions": "寸法",
-    "add_to_inquiry": "お問い合わせに追加",
-    "contact_whatsapp": "WhatsAppでお問い合わせ",
-    "previous": "前へ",
-    "next": "次へ",
-    "product_added": "製品がお問い合わせカートに追加されました！",
-    "add_failed": "カートへの追加に失敗しました"
+    "request_quote": "見積依頼",
+    "leave_message": "メッセージを残す",
+    "inquiry_title": "見積依頼",
+    "inquiry_description": "以下のフォームにご記入いただければ、この製品のお見積りをお送りします",
+    "message_title": "メッセージを残す",
+    "message_description": "この製品について質問がありますか？メッセージをお送りください",
+    "product_info": "製品",
+    "inquiry_message_label": "ご要望 *",
+    "inquiry_message_placeholder": "ご要望をご記入ください（数量、納期など）",
+    "message_text_label": "メッセージ *",
+    "message_text_placeholder": "この製品について何でもお聞きください..."
   },
   "auth": {
     "register_title": "アカウントを作成",
@@ -194,20 +173,7 @@
     "go_to_analytics": "データ分析に移動"
   },
   "common": {
-    "loading": "読み込み中...",
-    "error": "エラー",
-    "success": "成功",
-    "cancel": "キャンセル",
-    "save": "保存",
-    "delete": "削除",
-    "edit": "編集",
-    "close": "閉じる",
-    "confirm": "確認",
-    "search": "検索",
-    "filter": "絞り込み",
-    "sort": "並び替え",
-    "actions": "操作",
-    "products": "製品"
+    "cancel": "キャンセル"
   },
   "footer": {
     "company_description": "ROWELLは、競争力のある価格と専門的な技術サポートにより、世界中のお客様に高品質なchromatographyカラムと消耗品を提供することに専念しています。",
@@ -308,6 +274,11 @@
     "weekday": "月曜日 - 金曜日",
     "weekday_hours": "9:00 - 18:00 (GMT+8)",
     "weekend": "土曜日 - 日曜日",
-    "weekend_hours": "定休日"
+    "weekend_hours": "定休日",
+    "inquiry_success": "お問い合わせが正常に送信されました！できるだけ早くご連絡いたします。",
+    "inquiry_error": "お問い合わせの送信に失敗しました。もう一度お試しください。",
+    "message_success": "メッセージが正常に送信されました！できるだけ早く返信いたします。",
+    "message_error": "メッセージの送信に失敗しました。もう一度お試しください。",
+    "required_fields": "すべての必須項目を入力してください"
   }
 }

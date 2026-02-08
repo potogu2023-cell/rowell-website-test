@@ -1,28 +1,27 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { MessageSquare, Send } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { useTranslation } from 'react-i18next';
 
-interface CustomerMessageFormProps {
-  productId?: string;
-  productName?: string;
-  title?: string;
-  description?: string;
+interface ProductMessageButtonProps {
+  productId: string;
+  productName: string;
+  productPartNumber?: string;
 }
 
-export default function CustomerMessageForm({ 
+export default function ProductMessageButton({ 
   productId, 
   productName,
-  title = "Leave a Message",
-  description = "Have questions? Send us a message and we'll get back to you soon."
-}: CustomerMessageFormProps) {
+  productPartNumber 
+}: ProductMessageButtonProps) {
   const { t } = useTranslation();
+  const [open, setOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,7 +32,8 @@ export default function CustomerMessageForm({
 
   const createMessageMutation = trpc.customerMessage.create.useMutation({
     onSuccess: (data) => {
-      toast.success(data.message || "Message sent successfully!");
+      toast.success(data.message || t('contact.message_success'));
+      setOpen(false);
       // Reset form
       setFormData({
         name: "",
@@ -44,21 +44,17 @@ export default function CustomerMessageForm({
       });
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to send message");
+      toast.error(error.message || t('contact.message_error'));
     },
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('[CustomerMessageForm] Form submitted', formData);
     
     if (!formData.name || !formData.email || !formData.message) {
-      console.log('[CustomerMessageForm] Validation failed');
-      toast.error("Please fill in all required fields");
+      toast.error(t('contact.required_fields'));
       return;
     }
-    
-    console.log('[CustomerMessageForm] Validation passed, calling API...');
 
     createMessageMutation.mutate({
       type: 'message',
@@ -68,39 +64,42 @@ export default function CustomerMessageForm({
       phone: formData.phone,
       productId: productId,
       productName: productName,
+      productPartNumber: productPartNumber,
       message: formData.message,
     });
   };
 
   return (
-    <Card>
-      <CardHeader>
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <MessageSquare className="w-5 h-5 text-blue-600" />
-          </div>
-          <div>
-            <CardTitle>{title}</CardTitle>
-            <CardDescription>{description}</CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {productId && (
-            <div className="p-3 bg-blue-50 rounded-md text-sm">
-              <span className="font-medium">Product: </span>
-              <span className="text-muted-foreground">
-                {productId}{productName && ` - ${productName}`}
-              </span>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <Button variant="outline" className="w-full">
+          <MessageSquare className="w-4 h-4 mr-2" />
+          {t('products.leave_message')}
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[500px]">
+        <DialogHeader>
+          <DialogTitle>{t('products.message_title')}</DialogTitle>
+          <DialogDescription>
+            {t('products.message_description')}
+          </DialogDescription>
+        </DialogHeader>
+        
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+          {/* 产品信息显示 */}
+          <div className="p-3 bg-purple-50 rounded-md text-sm">
+            <div className="font-medium text-purple-900 mb-1">{t('products.product_info')}:</div>
+            <div className="text-purple-700">
+              {productPartNumber && <div className="font-mono">{productPartNumber}</div>}
+              <div>{productName}</div>
             </div>
-          )}
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="name">{t('contact.name_label')}</Label>
+              <Label htmlFor="message-name">{t('contact.name_label')}</Label>
               <Input
-                id="name"
+                id="message-name"
                 type="text"
                 placeholder={t('contact.name_placeholder')}
                 value={formData.name}
@@ -110,9 +109,9 @@ export default function CustomerMessageForm({
             </div>
 
             <div>
-              <Label htmlFor="email">{t('contact.email_label')}</Label>
+              <Label htmlFor="message-email">{t('contact.email_label')}</Label>
               <Input
-                id="email"
+                id="message-email"
                 type="email"
                 placeholder={t('contact.email_placeholder')}
                 value={formData.email}
@@ -124,9 +123,9 @@ export default function CustomerMessageForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="company">{t('contact.company_label')}</Label>
+              <Label htmlFor="message-company">{t('contact.company_label')}</Label>
               <Input
-                id="company"
+                id="message-company"
                 type="text"
                 placeholder={t('contact.company_placeholder')}
                 value={formData.company}
@@ -135,9 +134,9 @@ export default function CustomerMessageForm({
             </div>
 
             <div>
-              <Label htmlFor="phone">{t('contact.phone_label')}</Label>
+              <Label htmlFor="message-phone">{t('contact.phone_label')}</Label>
               <Input
-                id="phone"
+                id="message-phone"
                 type="tel"
                 placeholder={t('contact.phone_placeholder')}
                 value={formData.phone}
@@ -147,34 +146,44 @@ export default function CustomerMessageForm({
           </div>
 
           <div>
-            <Label htmlFor="message">{t('contact.message_label')}</Label>
+            <Label htmlFor="message-text">{t('products.message_text_label')}</Label>
             <Textarea
-              id="message"
-              placeholder={t('contact.message_placeholder')}
+              id="message-text"
+              placeholder={t('products.message_text_placeholder')}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              rows={5}
+              rows={4}
               required
             />
           </div>
 
           {/* 友情提示 */}
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
-            <p className="text-sm text-blue-800">
+          <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+            <p className="text-xs text-purple-800">
               <span className="font-medium">💡 {t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
             </p>
           </div>
 
-          <Button 
-            type="submit" 
-            className="w-full"
-            disabled={createMessageMutation.isPending}
-          >
-            <Send className="w-4 h-4 mr-2" />
-            {createMessageMutation.isPending ? t('contact.sending') : t('contact.send_button')}
-          </Button>
+          <div className="flex gap-3">
+            <Button 
+              type="button" 
+              variant="outline" 
+              onClick={() => setOpen(false)}
+              className="flex-1"
+            >
+              {t('common.cancel')}
+            </Button>
+            <Button 
+              type="submit" 
+              className="flex-1"
+              disabled={createMessageMutation.isPending}
+            >
+              <Send className="w-4 h-4 mr-2" />
+              {createMessageMutation.isPending ? t('contact.sending') : t('contact.send_button')}
+            </Button>
+          </div>
         </form>
-      </CardContent>
-    </Card>
+      </DialogContent>
+    </Dialog>
   );
 }
