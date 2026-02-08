@@ -74,21 +74,21 @@ export default function ProductMessageButton({
       <DialogTrigger asChild>
         <Button variant="outline" className="w-full">
           <MessageSquare className="w-4 h-4 mr-2" />
-          {t('products.leave_message')}
+          {t('productInquiry.leave_message')}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>{t('products.message_title')}</DialogTitle>
+          <DialogTitle>{t('productInquiry.message_title')}</DialogTitle>
           <DialogDescription>
-            {t('products.message_description')}
+            {t('productInquiry.message_description')}
           </DialogDescription>
         </DialogHeader>
         
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           {/* 产品信息显示 */}
           <div className="p-3 bg-purple-50 rounded-md text-sm">
-            <div className="font-medium text-purple-900 mb-1">{t('products.product_info')}:</div>
+            <div className="font-medium text-purple-900 mb-1">{t('productInquiry.product_info')}:</div>
             <div className="text-purple-700">
               {productPartNumber && <div className="font-mono">{productPartNumber}</div>}
               <div>{productName}</div>
@@ -146,10 +146,10 @@ export default function ProductMessageButton({
           </div>
 
           <div>
-            <Label htmlFor="message-text">{t('products.message_text_label')}</Label>
+            <Label htmlFor="message-text">{t('productInquiry.message_text_label')}</Label>
             <Textarea
               id="message-text"
-              placeholder={t('products.message_text_placeholder')}
+              placeholder={t('productInquiry.message_text_placeholder')}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={4}
