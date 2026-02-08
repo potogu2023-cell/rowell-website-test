@@ -18,8 +18,8 @@
   "home": {
     "ai_powered_badge": "AI-Powered Solution Provider",
     "hero_title": "Global Chromatography Consumables Solutions",
-    "hero_subtitle": "24/7 AI Product Advisor • 11 Premium Brands • 2400+ Products",
-    "hero_description": "Don't know which column to choose? Our AI advisor provides instant technical recommendations based on your application. Backed by 10 years of expertise and 11 world-class brands.",
+    "hero_subtitle": "11 Premium Brands • 2400+ Products • Global Service",
+    "hero_description": "Don't know which column to choose? Our expert team provides instant technical recommendations based on your application. Backed by 10 years of expertise and 11 world-class brands.",
     "ask_ai_advisor": "Ask AI Advisor",
     "response_time": "<5s Response Time",
     "accuracy_rate": "95% Accuracy Rate",
@@ -28,11 +28,11 @@
     "contact_us": "Contact Us",
     "why_choose_title": "Why Choose ROWELL",
     "why_choose_subtitle": "Not just a supplier - Your chromatography problem-solving partner",
-    "advantage_1_title": "24/7 AI Product Advisor + Expert Consultation",
-    "advantage_1_desc": "Get instant technical recommendations from our AI advisor, trained on 10+ years of chromatography expertise. Can't find the answer? Our expert Oscar is here to help.",
+    "advantage_1_title": "Expert Consultation + Technical Support",
+    "advantage_1_desc": "Get instant technical recommendations from our expert team with 10+ years of chromatography expertise. Our specialists are always here to help you find the perfect solution.",
     "advantage_1_feature_1": "<5 seconds response time",
     "advantage_1_feature_2": "95% question accuracy rate",
-    "advantage_1_feature_3": "Smart product matching",
+    "advantage_1_feature_3": "Expert product matching",
     "advantage_2_title": "11 Premium Brands, 2400+ Products, One Supplier",
     "advantage_2_desc": "Compare and choose from Waters, Agilent, Phenomenex, Thermo Fisher, Merck, and 6 more leading brands. HPLC/GC columns, SPE cartridges, consumables - everything in one place.",
     "advantage_2_feature_1": "11 world-class brands",
@@ -1095,5 +1095,25 @@
         }
       ]
     }
+  },
+  "contact": {
+    "name_label": "Name *",
+    "name_placeholder": "Your name",
+    "email_label": "Email *",
+    "email_placeholder": "your@email.com",
+    "company_label": "Company",
+    "company_placeholder": "Your company",
+    "phone_label": "Phone",
+    "phone_placeholder": "+1 234 567 8900",
+    "message_label": "Message *",
+    "message_placeholder": "Tell us about your inquiry or question...",
+    "send_button": "Send Message",
+    "sending": "Sending...",
+    "whatsapp_instruction": "Scan QR code or contact us via WhatsApp",
+    "business_hours": "Business Hours",
+    "weekday": "Monday - Friday",
+    "weekday_hours": "9:00 AM - 6:00 PM (GMT+8)",
+    "weekend": "Saturday - Sunday",
+    "weekend_hours": "Closed"
   }
 }

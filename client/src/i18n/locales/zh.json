@@ -18,8 +18,8 @@
   "home": {
     "ai_powered_badge": "AI赋能解决方案提供商",
     "hero_title": "全球色谱耗材解决方案",
-    "hero_subtitle": "24/7 AI产品顾问 • 11个高端品牌 • 2400+产品",
-    "hero_description": "不知道选择哪款色谱柱？我们的AI顾问根据您的应用提供即时技术建议。基于10年专业经验和11个世界级品牌。",
+    "hero_subtitle": "11个高端品牌 • 2400+产品 • 全球服务",
+    "hero_description": "不知道选择哪款色谱柱？我们的专家团队根据您的应用提供即时技术建议。基于10年专业经验和11个世界级品牌。",
     "ask_ai_advisor": "咨询AI顾问",
     "response_time": "<5秒响应时间",
     "accuracy_rate": "95%准确率",
@@ -28,11 +28,11 @@
     "contact_us": "联系我们",
     "why_choose_title": "为什么选择 ROWELL",
     "why_choose_subtitle": "不仅是供应商 - 您的色谱问题解决合作伙伴",
-    "advantage_1_title": "24/7 AI产品顾问 + 专家咨询",
-    "advantage_1_desc": "从我们的AI顾问获得即时技术建议，经过10年以上色谱专业知识训练。找不到答案？我们的专家Oscar随时为您提供帮助。",
+    "advantage_1_title": "专家咨询 + 技术支持",
+    "advantage_1_desc": "从我们的专家团队获得即时技术建议，拥有10年以上色谱专业经验。我们的专家随时为您提供帮助，找到完美的解决方案。",
     "advantage_1_feature_1": "<5秒响应时间",
     "advantage_1_feature_2": "95%问题准确率",
-    "advantage_1_feature_3": "智能产品匹配",
+    "advantage_1_feature_3": "专家产品匹配",
     "advantage_2_title": "11个高端品牌，2400+产品，一站式采购",
     "advantage_2_desc": "从Waters、Agilent、Phenomenex、Thermo Fisher、Merck等6个以上领先品牌中进行比较和选择。HPLC/GC色谱柱、SPE小柱、耗材 - 一站式采购。",
     "advantage_2_feature_1": "11个世界级品牌",
@@ -1095,5 +1095,25 @@
         }
       ]
     }
+  },
+  "contact": {
+    "name_label": "姓名 *",
+    "name_placeholder": "您的姓名",
+    "email_label": "邮箱 *",
+    "email_placeholder": "your@email.com",
+    "company_label": "公司",
+    "company_placeholder": "您的公司",
+    "phone_label": "电话",
+    "phone_placeholder": "+86 138 0000 0000",
+    "message_label": "留言 *",
+    "message_placeholder": "告诉我们您的咨询或问题...",
+    "send_button": "发送消息",
+    "sending": "发送中...",
+    "whatsapp_instruction": "扫描二维码或通过WhatsApp联系我们",
+    "business_hours": "营业时间",
+    "weekday": "周一至周五",
+    "weekday_hours": "上午9:00 - 下午6:00 (GMT+8)",
+    "weekend": "周六至周日",
+    "weekend_hours": "休息"
   }
 }

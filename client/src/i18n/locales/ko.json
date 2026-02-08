@@ -31,7 +31,7 @@
     "advantage_3_desc": "10년 이상의 chromatography 업계 경험으로 전문적인 방법 개발 및 USP 표준 참조 제공",
     "advantage_1_feature_1": "5초 이내 응답 시간",
     "advantage_1_feature_2": "95% 문제 해결 정확도",
-    "advantage_1_feature_3": "지능형 제품 매칭",
+    "advantage_1_feature_3": "전문가 제품 매칭",
     "advantage_2_feature_1": "11개 글로벌 브랜드",
     "advantage_2_feature_2": "2400개 이상 재고 제품",
     "advantage_2_feature_3": "대량 할인",
@@ -289,5 +289,25 @@
     "our_story": "우리의 이야기",
     "our_mission": "우리의 사명",
     "company_highlights": "회사 하이라이트"
+  },
+  "contact": {
+    "name_label": "성함 *",
+    "name_placeholder": "성함을 입력하세요",
+    "email_label": "이메일 *",
+    "email_placeholder": "your@email.com",
+    "company_label": "회사",
+    "company_placeholder": "회사명을 입력하세요",
+    "phone_label": "전화번호",
+    "phone_placeholder": "+82 10 0000 0000",
+    "message_label": "메시지 *",
+    "message_placeholder": "문의 내용을 입력하세요...",
+    "send_button": "메시지 보내기",
+    "sending": "전송 중...",
+    "whatsapp_instruction": "QR 코드를 스캔하거나 WhatsApp으로 문의하세요",
+    "business_hours": "영업 시간",
+    "weekday": "월요일 - 금요일",
+    "weekday_hours": "9:00 - 18:00 (GMT+8)",
+    "weekend": "토요일 - 일요일",
+    "weekend_hours": "휴무"
   }
 }

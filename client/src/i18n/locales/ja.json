@@ -31,7 +31,7 @@
     "advantage_3_desc": "10 年以上の chromatography 業界経験により、専門的な方法開発と USP 標準参照を提供",
     "advantage_1_feature_1": "5秒以内の応答時間",
     "advantage_1_feature_2": "95%の問題解決精度",
-    "advantage_1_feature_3": "インテリジェント製品マッチング",
+    "advantage_1_feature_3": "専門家による製品マッチング",
     "advantage_2_feature_1": "11の世界的ブランド",
     "advantage_2_feature_2": "2400以上の在庫製品",
     "advantage_2_feature_3": "大量割引",
@@ -289,5 +289,25 @@
     "our_story": "私たちのストーリー",
     "our_mission": "私たちの使命",
     "company_highlights": "会社のハイライト"
+  },
+  "contact": {
+    "name_label": "お名前 *",
+    "name_placeholder": "お名前を入力",
+    "email_label": "メールアドレス *",
+    "email_placeholder": "your@email.com",
+    "company_label": "会社名",
+    "company_placeholder": "会社名を入力",
+    "phone_label": "電話番号",
+    "phone_placeholder": "+81 90 0000 0000",
+    "message_label": "メッセージ *",
+    "message_placeholder": "お問い合わせ内容を入力してください...",
+    "send_button": "送信",
+    "sending": "送信中...",
+    "whatsapp_instruction": "QRコードをスキャンするか、WhatsAppでお問い合わせください",
+    "business_hours": "営業時間",
+    "weekday": "月曜日 - 金曜日",
+    "weekday_hours": "9:00 - 18:00 (GMT+8)",
+    "weekend": "土曜日 - 日曜日",
+    "weekend_hours": "定休日"
   }
 }

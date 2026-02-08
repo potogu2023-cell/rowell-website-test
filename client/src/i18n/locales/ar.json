@@ -31,7 +31,7 @@
     "advantage_3_desc": "أكثر من 10 سنوات من الخبرة في صناعة chromatography، نوفر تطوير طرق احترافية ومراجع معايير USP",
     "advantage_1_feature_1": "وقت استجابة أقل من 5 ثوان",
     "advantage_1_feature_2": "دقة 95% في حل المشاكل",
-    "advantage_1_feature_3": "مطابقة ذكية للمنتجات",
+    "advantage_1_feature_3": "مطابقة منتجات من قبل الخبراء",
     "advantage_2_feature_1": "11 علامة تجارية عالمية",
     "advantage_2_feature_2": "أكثر من 2400 منتج في المخزون",
     "advantage_2_feature_3": "خصومات على الكميات الكبيرة",
@@ -289,5 +289,25 @@
     "our_story": "قصتنا",
     "our_mission": "مهمتنا",
     "company_highlights": "أبرز ملامح الشركة"
+  },
+  "contact": {
+    "name_label": "الاسم *",
+    "name_placeholder": "اسمك",
+    "email_label": "البريد الإلكتروني *",
+    "email_placeholder": "your@email.com",
+    "company_label": "الشركة",
+    "company_placeholder": "شركتك",
+    "phone_label": "الهاتف",
+    "phone_placeholder": "+966 50 000 0000",
+    "message_label": "الرسالة *",
+    "message_placeholder": "أخبرنا عن استفسارك أو سؤالك...",
+    "send_button": "إرسال الرسالة",
+    "sending": "جاري الإرسال...",
+    "whatsapp_instruction": "امسح رمز QR أو اتصل بنا عبر WhatsApp",
+    "business_hours": "ساعات العمل",
+    "weekday": "الاثنين - الجمعة",
+    "weekday_hours": "9:00 - 18:00 (GMT+8)",
+    "weekend": "السبت - الأحد",
+    "weekend_hours": "مغلق"
   }
 }

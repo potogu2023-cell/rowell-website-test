@@ -31,7 +31,7 @@
     "advantage_3_desc": "Más de 10 años de experiencia en la industria chromatography, proporcionando desarrollo de métodos profesionales y referencias de estándares USP",
     "advantage_1_feature_1": "<5 segundos de respuesta",
     "advantage_1_feature_2": "95% de precisión",
-    "advantage_1_feature_3": "Coincidencia inteligente de productos",
+    "advantage_1_feature_3": "Coincidencia experta de productos",
     "advantage_2_feature_1": "11 marcas mundiales",
     "advantage_2_feature_2": "Más de 2400 productos en stock",
     "advantage_2_feature_3": "Descuentos por volumen",
@@ -289,5 +289,25 @@
     "our_story": "Nuestra historia",
     "our_mission": "Nuestra misión",
     "company_highlights": "Aspectos destacados de la empresa"
+  },
+  "contact": {
+    "name_label": "Nombre *",
+    "name_placeholder": "Su nombre",
+    "email_label": "Email *",
+    "email_placeholder": "su@email.com",
+    "company_label": "Empresa",
+    "company_placeholder": "Su empresa",
+    "phone_label": "Teléfono",
+    "phone_placeholder": "+34 600 000 000",
+    "message_label": "Mensaje *",
+    "message_placeholder": "Cuéntenos sobre su consulta o pregunta...",
+    "send_button": "Enviar mensaje",
+    "sending": "Enviando...",
+    "whatsapp_instruction": "Escanee el código QR o contáctenos por WhatsApp",
+    "business_hours": "Horario de atención",
+    "weekday": "Lunes - Viernes",
+    "weekday_hours": "9:00 - 18:00 (GMT+8)",
+    "weekend": "Sábado - Domingo",
+    "weekend_hours": "Cerrado"
   }
 }

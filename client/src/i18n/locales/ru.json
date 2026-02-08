@@ -31,7 +31,7 @@
     "advantage_3_desc": "Более 10 лет опыта в индустрии ВЭЖХ, предоставление профессиональной разработки методов и справки по стандартам USP",
     "advantage_1_feature_1": "Время отклика <5 секунд",
     "advantage_1_feature_2": "95% точность решения проблем",
-    "advantage_1_feature_3": "Интеллектуальный подбор продуктов",
+    "advantage_1_feature_3": "Экспертный подбор продуктов",
     "advantage_2_feature_1": "11 мировых брендов",
     "advantage_2_feature_2": "Более 2400 продуктов в наличии",
     "advantage_2_feature_3": "Скидки на опт",
@@ -289,5 +289,25 @@
     "our_story": "Наша история",
     "our_mission": "Наша миссия",
     "company_highlights": "Основные моменты компании"
+  },
+  "contact": {
+    "name_label": "Имя *",
+    "name_placeholder": "Ваше имя",
+    "email_label": "Email *",
+    "email_placeholder": "your@email.com",
+    "company_label": "Компания",
+    "company_placeholder": "Ваша компания",
+    "phone_label": "Телефон",
+    "phone_placeholder": "+7 900 000 0000",
+    "message_label": "Сообщение *",
+    "message_placeholder": "Расскажите нам о вашем запросе или вопросе...",
+    "send_button": "Отправить сообщение",
+    "sending": "Отправка...",
+    "whatsapp_instruction": "Отсканируйте QR-код или свяжитесь с нами через WhatsApp",
+    "business_hours": "Часы работы",
+    "weekday": "Понедельник - Пятница",
+    "weekday_hours": "9:00 - 18:00 (GMT+8)",
+    "weekend": "Суббота - Воскресенье",
+    "weekend_hours": "Закрыто"
   }
 }

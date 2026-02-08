@@ -64,7 +64,7 @@ export default function Contact() {
                 <CardDescription>{t('home.contact_whatsapp_desc')}</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">Scan QR code or contact us via WhatsApp</p>
+                <p className="text-muted-foreground text-sm">{t('contact.whatsapp_instruction')}</p>
               </CardContent>
             </Card>
 
@@ -94,17 +94,17 @@ export default function Contact() {
         <div className="mt-12 max-w-2xl mx-auto">
           <Card>
             <CardHeader>
-              <CardTitle>Business Hours</CardTitle>
+              <CardTitle>{t('contact.business_hours')}</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Monday - Friday:</span>
-                  <span className="font-medium">9:00 AM - 6:00 PM (GMT+8)</span>
+                  <span className="text-muted-foreground">{t('contact.weekday')}:</span>
+                  <span className="font-medium">{t('contact.weekday_hours')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Saturday - Sunday:</span>
-                  <span className="font-medium">Closed</span>
+                  <span className="text-muted-foreground">{t('contact.weekend')}:</span>
+                  <span className="font-medium">{t('contact.weekend_hours')}</span>
                 </div>
               </div>
             </CardContent>

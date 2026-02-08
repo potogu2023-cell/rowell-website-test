@@ -98,11 +98,11 @@ export default function CustomerMessageForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="name">Name *</Label>
+              <Label htmlFor="name">{t('contact.name_label')}</Label>
               <Input
                 id="name"
                 type="text"
-                placeholder="Your name"
+                placeholder={t('contact.name_placeholder')}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 required
@@ -110,11 +110,11 @@ export default function CustomerMessageForm({
             </div>
 
             <div>
-              <Label htmlFor="email">Email *</Label>
+              <Label htmlFor="email">{t('contact.email_label')}</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="your@email.com"
+                placeholder={t('contact.email_placeholder')}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
@@ -124,22 +124,22 @@ export default function CustomerMessageForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="company">Company</Label>
+              <Label htmlFor="company">{t('contact.company_label')}</Label>
               <Input
                 id="company"
                 type="text"
-                placeholder="Your company"
+                placeholder={t('contact.company_placeholder')}
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
               />
             </div>
 
             <div>
-              <Label htmlFor="phone">Phone</Label>
+              <Label htmlFor="phone">{t('contact.phone_label')}</Label>
               <Input
                 id="phone"
                 type="tel"
-                placeholder="+1 234 567 8900"
+                placeholder={t('contact.phone_placeholder')}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
@@ -147,10 +147,10 @@ export default function CustomerMessageForm({
           </div>
 
           <div>
-            <Label htmlFor="message">Message *</Label>
+            <Label htmlFor="message">{t('contact.message_label')}</Label>
             <Textarea
               id="message"
-              placeholder="Tell us about your inquiry or question..."
+              placeholder={t('contact.message_placeholder')}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={5}
@@ -167,7 +167,7 @@ export default function CustomerMessageForm({
             disabled={createMessageMutation.isPending}
           >
             <Send className="w-4 h-4 mr-2" />
-            {createMessageMutation.isPending ? "Sending..." : "Send Message"}
+            {createMessageMutation.isPending ? t('contact.sending') : t('contact.send_button')}
           </Button>
         </form>
       </CardContent>
