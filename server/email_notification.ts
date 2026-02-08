@@ -1,11 +1,12 @@
 import nodemailer from 'nodemailer';
 
 // 邮件配置
+const port = parseInt(process.env.SMTP_PORT || '587');
 const EMAIL_CONFIG = {
   // 使用环境变量配置SMTP
   host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.SMTP_PORT || '587'),
-  secure: false, // true for 465, false for other ports
+  port: port,
+  secure: port === 465, // true for 465, false for other ports
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
@@ -142,6 +143,6 @@ export async function sendCustomerMessageNotification(data: {
     return { success: true, messageId: info.messageId };
   } catch (error) {
     console.error('Failed to send email:', error);
-    return { success: false, error: error.message };
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }
