@@ -111,7 +111,7 @@ export const appRouter = router({
     list: publicProcedure
       .input((raw: unknown) => {
         return z.object({
-          status: z.enum(['pending', 'replied', 'closed', 'all']).optional().default('all'),
+          status: z.enum(['new', 'read', 'replied', 'closed', 'all']).optional().default('all'),
           page: z.number().optional().default(1),
           pageSize: z.number().optional().default(20),
           search: z.string().optional(),
@@ -173,7 +173,7 @@ export const appRouter = router({
       .input((raw: unknown) => {
         return z.object({
           id: z.number(),
-          status: z.enum(['pending', 'replied', 'closed']),
+          status: z.enum(['new', 'read', 'replied', 'closed']),
         }).parse(raw);
       })
       .mutation(async ({ input }) => {
@@ -206,7 +206,8 @@ export const appRouter = router({
           .groupBy(customerMessages.status);
         
         const statsMap = {
-          pending: 0,
+          new: 0,
+          read: 0,
           replied: 0,
           closed: 0,
           total: 0,
