@@ -1,5 +1,4 @@
 import { Toaster } from "@/components/ui/sonner";
-import './i18n/config'; // Initialize i18n
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';

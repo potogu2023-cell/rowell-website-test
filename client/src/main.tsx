@@ -7,7 +7,12 @@ import superjson from "superjson";
 import App from "./App";
 import { getLoginUrl } from "./const";
 import "./index.css";
-import "./i18n/config"; // Initialize i18n
+import i18n from "./i18n/config"; // Initialize i18n
+
+// Ensure i18n is initialized before rendering
+if (!i18n.isInitialized) {
+  console.error('[i18n] Failed to initialize!');
+}
 import { HelmetProvider } from "react-helmet-async";
 
 const queryClient = new QueryClient();
