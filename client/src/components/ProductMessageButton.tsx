@@ -32,7 +32,7 @@ export default function ProductMessageButton({
 
   const createMessageMutation = trpc.customerMessage.create.useMutation({
     onSuccess: (data) => {
-      toast.success(data.message || t('contact.message_success'));
+      toast.success(t('contact.message_success'));
       setOpen(false);
       // Reset form
       setFormData({

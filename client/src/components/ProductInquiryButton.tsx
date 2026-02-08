@@ -32,7 +32,7 @@ export default function ProductInquiryButton({
 
   const createInquiryMutation = trpc.customerMessage.create.useMutation({
     onSuccess: (data) => {
-      toast.success(data.message || t('contact.inquiry_success'));
+      toast.success(t('contact.inquiry_success'));
       setOpen(false);
       // Reset form
       setFormData({
