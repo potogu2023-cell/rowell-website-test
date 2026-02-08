@@ -154,6 +154,80 @@ export const categoryTranslations: Record<string, Record<string, string>> = {
     zh: '其他色谱柱'
   },
 
+  // Sample Preparation subcategories
+  '固相萃取柱': {
+    en: 'SPE Cartridges',
+    ja: 'SPEカートリッジ',
+    es: 'Cartuchos SPE',
+    pt: 'Cartuchos SPE',
+    ar: 'خراطيش SPE',
+    ko: 'SPE 카트리지',
+    ru: 'SPE картриджи',
+    zh: '固相萃取柱'
+  },
+  '保护柱': {
+    en: 'Guard Columns',
+    ja: 'ガードカラム',
+    es: 'Columnas de Guardia',
+    pt: 'Colunas de Guarda',
+    ar: 'أعمدة الحماية',
+    ko: '가드 컬럼',
+    ru: 'Защитные колонки',
+    zh: '保护柱'
+  },
+  '滤膜滤器': {
+    en: 'Filters',
+    ja: 'フィルター',
+    es: 'Filtros',
+    pt: 'Filtros',
+    ar: 'المرشحات',
+    ko: '필터',
+    ru: 'Фильтры',
+    zh: '滤膜滤器'
+  },
+
+  // Accessories subcategories
+  '样品瓶': {
+    en: 'Vials',
+    ja: 'バイアル',
+    es: 'Viales',
+    pt: 'Frascos',
+    ar: 'القوارير',
+    ko: '바이알',
+    ru: 'Флаконы',
+    zh: '样品瓶'
+  },
+  '瓶盖隔垫': {
+    en: 'Caps & Septa',
+    ja: 'キャップとセプタ',
+    es: 'Tapas y Septos',
+    pt: 'Tampas e Septos',
+    ar: 'الأغطية والحواجز',
+    ko: '캡 및 격막',
+    ru: 'Крышки и септы',
+    zh: '瓶盖隔垫'
+  },
+  '注射器': {
+    en: 'Syringes',
+    ja: 'シリンジ',
+    es: 'Jeringas',
+    pt: 'Seringas',
+    ar: 'المحاقن',
+    ko: '주사기',
+    ru: 'Шприцы',
+    zh: '注射器'
+  },
+  '连接件管路': {
+    en: 'Fittings & Tubing',
+    ja: '継手とチューブ',
+    es: 'Conexiones y Tubos',
+    pt: 'Conexões e Tubos',
+    ar: 'التوصيلات والأنابيب',
+    ko: '피팅 및 튜빙',
+    ru: 'Фитинги и трубки',
+    zh: '连接件管路'
+  },
+
   // UI labels
   '产品分类': {
     en: 'Product Categories',
