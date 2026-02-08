@@ -78,18 +78,11 @@ export default function Footer() {
         </div>
 
         {/* Legal Disclaimer */}
-        <div className="mt-8 pt-8 border-t space-y-4">
-          <div>
-            <p className="text-xs font-semibold text-foreground mb-2">⚠️ {t('footer.legal_disclaimer_title')}</p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              <strong>中文：</strong>{t('footer.legal_disclaimer_cn')}
-            </p>
-          </div>
-          <div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              <strong>English:</strong> {t('footer.legal_disclaimer_en')}
-            </p>
-          </div>
+        <div className="mt-8 pt-8 border-t">
+          <p className="text-xs font-semibold text-foreground mb-2">⚠️ {t('footer.legal_disclaimer_title')}</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            {t('footer.legal_disclaimer_en')}
+          </p>
         </div>
       </div>
     </footer>
