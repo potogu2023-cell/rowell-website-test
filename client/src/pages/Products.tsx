@@ -13,9 +13,10 @@ import { ShoppingCart, ChevronLeft, ChevronRight, Filter, Bot, MessageCircle, Li
 import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilters";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
+import { translateCategory } from '@/lib/categoryTranslations';
 
 export default function Products() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [location, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
@@ -315,7 +316,7 @@ export default function Products() {
             {/* Results Count */}
             <div className="mb-4 text-sm text-muted-foreground">
               {t('products.showing_results')} {filteredProducts.length} {t('products.of')} {total} {t('products.products_count')}
-              {selectedCategoryName && ` ${t('products.in_category')} ${selectedCategoryName}`}
+              {selectedCategoryName && ` ${t('products.in_category')} ${translateCategory(selectedCategoryName, i18n.language)}`}
             </div>
 
             {/* Product Grid */}
