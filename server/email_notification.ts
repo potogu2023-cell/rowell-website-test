@@ -19,7 +19,7 @@ const RECIPIENT_EMAIL = 'oscar@rowellhplc.com';
 // 创建邮件传输器
 const createTransporter = () => {
   try {
-    return nodemailer.createTransporter(EMAIL_CONFIG);
+    return nodemailer.createTransport(EMAIL_CONFIG);
   } catch (error) {
     console.error('Failed to create email transporter:', error);
     return null;
