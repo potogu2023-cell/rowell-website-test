@@ -6,7 +6,7 @@ import { generateInquiryNumber } from './inquiryUtils';
 import { sendInquiryEmail } from './emailService';
 import { z } from 'zod';
 import { seedRouter } from './seed-api';
-import { customerMessageRouter } from './customer_message';
+
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -223,11 +223,13 @@ export const appRouter = router({
     create: publicProcedure
       .input((raw: unknown) => {
         return z.object({
+          type: z.enum(['inquiry', 'message', 'quote_request']).default('message'),
           name: z.string().min(2, '姓名至少 2 个字符').max(100, '姓名最多 100 个字符'),
           email: z.string().email('请输入有效的邮箱地址'),
           company: z.string().optional(),
           phone: z.string().optional(),
           productId: z.string().optional(),
+          productName: z.string().optional(),
           message: z.string().min(10, '留言至少 10 个字符').max(1000, '留言最多 1000 个字符'),
         }).parse(raw);
       })
@@ -238,25 +240,29 @@ export const appRouter = router({
         
         // Insert message into database
         const result = await db.insert(customerMessages).values({
+          type: input.type || 'message',
           name: input.name,
           email: input.email,
           company: input.company,
           phone: input.phone,
           productId: input.productId,
+          productName: input.productName,
           message: input.message,
-          status: 'pending',
+          status: 'new',
         });
         
         // Send notification email (optional)
         try {
-          const { sendInquiryEmail } = await import('./emailService');
-          await sendInquiryEmail({
-            inquiryNumber: `MSG-${result[0].insertId}`,
-            userName: input.name,
-            userEmail: input.email,
-            userMessage: input.message,
-            products: input.productId ? [{ name: input.productId, partNumber: input.productId }] : [],
-            createdAt: new Date(),
+          const { sendCustomerMessageNotification } = await import('./email_notification');
+          await sendCustomerMessageNotification({
+            type: input.type || 'message',
+            name: input.name,
+            email: input.email,
+            phone: input.phone,
+            company: input.company,
+            message: input.message,
+            productId: input.productId,
+            productName: input.productName,
           });
         } catch (emailError) {
           console.error('Failed to send notification email:', emailError);
@@ -538,8 +544,7 @@ export const appRouter = router({
   // Seed API for importing resources
   seed: seedRouter,
 
-  // Customer message routes
-  customerMessage: customerMessageRouter,
+
 });
 
 export type AppRouter = typeof appRouter;
