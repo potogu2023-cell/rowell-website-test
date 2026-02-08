@@ -14,6 +14,8 @@ import koTranslation from './locales/ko.json';
 
 // Debug: Log translation imports
 console.log('[i18n] enTranslation:', enTranslation);
+console.log('[i18n] enTranslation.products:', enTranslation.products);
+console.log('[i18n] enTranslation.products.title:', enTranslation.products?.title);
 console.log('[i18n] zhTranslation:', zhTranslation);
 
 const resources = {
@@ -65,6 +67,9 @@ i18n
 console.log('[i18n] Initialized:', i18n.isInitialized);
 console.log('[i18n] Current language:', i18n.language);
 console.log('[i18n] Resources:', i18n.store.data);
+console.log('[i18n] EN resources:', i18n.store.data.en);
+console.log('[i18n] EN translation:', i18n.store.data.en?.translation);
+console.log('[i18n] EN translation.products:', i18n.store.data.en?.translation?.products);
 console.log('[i18n] Test translation products.title:', i18n.t('products.title'));
 
 export default i18n;
