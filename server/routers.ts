@@ -272,7 +272,6 @@ export const appRouter = router({
         return {
           success: true,
           messageId: result[0].insertId,
-          message: '留言已提交,我们会尽快回复您',
         };
       }),
   }),
