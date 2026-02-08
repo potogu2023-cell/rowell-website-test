@@ -31,7 +31,7 @@ export default function CustomerMessageForm({
     message: "",
   });
 
-  const createMessageMutation = trpc.customerMessage.create.useMutation({
+  const createMessageMutation = trpc.messages.create.useMutation({
     onSuccess: (data) => {
       toast.success(data.message || "Message sent successfully!");
       // Reset form
