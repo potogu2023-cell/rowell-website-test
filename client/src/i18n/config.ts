@@ -12,6 +12,10 @@ import ptTranslation from './locales/pt.json';
 import arTranslation from './locales/ar.json';
 import koTranslation from './locales/ko.json';
 
+// Debug: Log translation imports
+console.log('[i18n] enTranslation:', enTranslation);
+console.log('[i18n] zhTranslation:', zhTranslation);
+
 const resources = {
   en: {
     translation: enTranslation,
@@ -56,6 +60,12 @@ i18n
       lookupQuerystring: 'lng',
     },
   });
+
+// Debug: Log i18n state after initialization
+console.log('[i18n] Initialized:', i18n.isInitialized);
+console.log('[i18n] Current language:', i18n.language);
+console.log('[i18n] Resources:', i18n.store.data);
+console.log('[i18n] Test translation products.title:', i18n.t('products.title'));
 
 export default i18n;
 
