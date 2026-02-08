@@ -29,7 +29,7 @@ export default function Products() {
 
 
   // Get all categories
-  const { data: categoriesData } = trpc.category.getAll.useQuery();
+  const { data: categoriesData } = trpc.category.getWithProductCount.useQuery();
   const categories = categoriesData || [];
 
   // Read category and brand from URL parameters on mount
