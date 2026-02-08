@@ -134,10 +134,7 @@ export default function Home() {
       {/* Hero Section - AI-Powered */}
       <section className="bg-gradient-to-b from-blue-50 via-purple-50 to-white py-20">
         <div className="container text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Bot className="w-4 h-4" />
-            {t('home.ai_powered_badge')}
-          </div>
+
           <h1 className="text-5xl font-bold mb-4">
             {t('home.hero_title') || 'Smart Chromatography Solutions'}
           </h1>
@@ -148,10 +145,7 @@ export default function Home() {
             {t('home.hero_description')}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              {t('home.ask_ai_advisor')}
-            </Button>
+
             <Button size="lg" asChild>
               <Link href="/products">
                 <a>{t('home.browse_products') || 'Browse Products'}</a>

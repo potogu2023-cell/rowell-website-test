@@ -23,7 +23,7 @@ import Resources from "./pages/Resources";
 import ResourceDetail from "./pages/ResourceDetail";
 import AdminMessages from "./pages/AdminMessages";
 import WhatsAppButton from "./components/WhatsAppButton";
-import AIChatWidget from "./components/ai/AIChatWidget";
+
 
 function Router() {
   const { i18n } = useTranslation();
@@ -58,7 +58,7 @@ function Router() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <AIChatWidget />
+
     </div>
   );
 }
