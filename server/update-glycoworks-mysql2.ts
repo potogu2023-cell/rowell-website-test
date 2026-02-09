@@ -25,13 +25,13 @@ export const updateGlycoWorksMysql2Router = router({
       try {
         // Update first product
         const [result1] = await connection.execute(
-          'UPDATE products SET category_id = ? WHERE partNumber = ?',
+          'UPDATE products SET category_id = ? WHERE part_number = ?',
           [16, '186007239']
         );
         
         // Update second product
         const [result2] = await connection.execute(
-          'UPDATE products SET category_id = ? WHERE partNumber = ?',
+          'UPDATE products SET category_id = ? WHERE part_number = ?',
           [16, '186007080']
         );
         
