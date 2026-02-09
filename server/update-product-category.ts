@@ -24,12 +24,7 @@ export const updateProductCategoryRouter = router({
       // Update products using raw SQL to avoid Drizzle field mapping issues
       const results = [];
       for (const partNumber of input.partNumbers) {
-        await db.execute(sql`
-          UPDATE products 
-          SET category_id = ${input.categoryId}, updatedAt = NOW() 
-          WHERE partNumber = ${partNumber}
-        `);
-        
+        await db.execute(sql`UPDATE products SET category_id = ${input.categoryId}, updatedAt = NOW() WHERE partNumber = ${partNumber}`);
         results.push({ partNumber, action: 'updated' });
       }
 
