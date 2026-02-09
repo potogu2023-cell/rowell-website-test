@@ -3,7 +3,6 @@ import { z } from 'zod';
 import mysql from 'mysql2/promise';
 
 export const updateGlycoWorksMysql2Router = router({
-  // Update using mysql2 directly
   updateDirect: publicProcedure
     .input((raw: unknown) => {
       return z.object({
@@ -23,28 +22,28 @@ export const updateGlycoWorksMysql2Router = router({
       });
       
       try {
-        // Update using product_id instead
+        // Update using primary key ID
         const [result1] = await connection.execute(
-          'UPDATE products SET category_id = ? WHERE product_id = ?',
-          [16, 'WATS-186007239']
+          'UPDATE products SET category_id = ? WHERE id = ?',
+          [16, 31323]
         );
         
         const [result2] = await connection.execute(
-          'UPDATE products SET category_id = ? WHERE product_id = ?',
-          [16, 'WATS-186007080']
+          'UPDATE products SET category_id = ? WHERE id = ?',
+          [16, 31324]
         );
         
-        // Verify using product_id
+        // Verify
         const [rows] = await connection.execute(
-          'SELECT * FROM products WHERE product_id IN (?, ?)',
-          ['WATS-186007239', 'WATS-186007080']
+          'SELECT * FROM products WHERE id IN (?, ?)',
+          [31323, 31324]
         );
         
         return {
           success: true,
           updated: [
-            { productId: 'WATS-186007239', affectedRows: (result1 as any).affectedRows },
-            { productId: 'WATS-186007080', affectedRows: (result2 as any).affectedRows }
+            { id: 31323, affectedRows: (result1 as any).affectedRows },
+            { id: 31324, affectedRows: (result2 as any).affectedRows }
           ],
           verification: rows
         };
