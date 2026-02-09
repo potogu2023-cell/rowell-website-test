@@ -25,6 +25,7 @@ import { diagnoseDatabaseRouter } from "./diagnose-database";
 import { findPlateCategoriesRouter } from "./find-plate-categories";
 import { getAllCategoriesRouter } from "./get-all-categories";
 import { fixProductCategoriesFinalRouter } from "./fix-product-categories-final";
+import { fixNullCategoriesRouter } from "./fix-null-categories";
 
 
 export const appRouter = router({
@@ -613,6 +614,9 @@ export const appRouter = router({
 
   // Fix product categories (final version)
   fixProductCategoriesFinal: fixProductCategoriesFinalRouter,
+
+  // Fix products with NULL category_id
+  fixNullCategories: fixNullCategoriesRouter,
 
 });
 
