@@ -32,6 +32,7 @@ import { createGcCategoriesRouter } from "./create-gc-categories";
 import { reclassifyGcProductsRouter } from "./reclassify-gc-products";
 import { fixRemainingGcRouter } from "./fix-remaining-gc";
 import { checkGcSlugRouter } from "./check-gc-slug";
+import { uploadProductImagesBatchRouter } from "./upload-product-images-batch";
 
 
 export const appRouter = router({
@@ -641,6 +642,7 @@ export const appRouter = router({
 
   // Check GC categories slug
   checkGcSlug: checkGcSlugRouter,
+  uploadProductImagesBatch: uploadProductImagesBatchRouter,
 
 });
 

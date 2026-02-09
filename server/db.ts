@@ -24,13 +24,28 @@ export async function getDb() {
       const password = dbUrl.password;
       const database = dbUrl.pathname.slice(1); // Remove leading '/'
       
+      // Parse SSL configuration
+      let sslConfig: any = null;
+      if (sslParam) {
+        if (sslParam === 'true') {
+          sslConfig = { rejectUnauthorized: true };
+        } else {
+          try {
+            sslConfig = JSON.parse(sslParam);
+          } catch (e) {
+            console.warn('[Database] Failed to parse SSL config, using default:', e);
+            sslConfig = { rejectUnauthorized: true };
+          }
+        }
+      }
+      
       console.log('[Database] Connecting with config:', {
         host,
         port,
         user,
         database,
         hasPassword: !!password,
-        sslEnabled: sslParam === 'true'
+        sslEnabled: !!sslConfig
       });
       
       const poolConfig: any = {
@@ -42,10 +57,8 @@ export async function getDb() {
       };
       
       // Configure SSL if needed
-      if (sslParam === 'true') {
-        poolConfig.ssl = {
-          rejectUnauthorized: true
-        };
+      if (sslConfig) {
+        poolConfig.ssl = sslConfig;
       }
       
       const pool = mysql.createPool(poolConfig);
