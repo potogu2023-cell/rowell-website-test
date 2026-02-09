@@ -58,26 +58,28 @@ export const addGlycoWorksSimpleRouter = router({
 
       const results = [];
       
+      // Only insert if products don't exist
+      if (existingProducts.length > 0) {
+        return {
+          success: false,
+          message: 'Products already exist',
+          existing: existingProducts.map(p => ({
+            id: p.id,
+            partNumber: p.partNumber,
+            name: p.name,
+            categoryId: p.categoryId
+          }))
+        };
+      }
+      
+      // Insert new products
       for (const product of newProducts) {
-        const existing = existingProducts.find(p => p.partNumber === product.partNumber);
-        
-        if (existing) {
-          // Update existing product
-          await db
-            .update(products)
-            .set({
-              name: product.name,
-              categoryId: product.categoryId,
-              productType: product.productType,
-              updatedAt: new Date()
-            })
-            .where(eq(products.partNumber, product.partNumber));
-          results.push({ partNumber: product.partNumber, action: 'updated', id: existing.id });
-        } else {
-          // Insert new product
-          const result = await db.insert(products).values(product);
-          results.push({ partNumber: product.partNumber, action: 'added', id: result[0].insertId });
-        }
+        const result = await db.insert(products).values(product);
+        results.push({ 
+          partNumber: product.partNumber, 
+          action: 'added', 
+          id: result[0].insertId 
+        });
       }
 
       return {
