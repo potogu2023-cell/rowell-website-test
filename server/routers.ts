@@ -30,6 +30,7 @@ import { checkSyringeFiltersRouter } from "./check-syringe-filters";
 import { findGcColumnsRouter } from "./find-gc-columns";
 import { createGcCategoriesRouter } from "./create-gc-categories";
 import { reclassifyGcProductsRouter } from "./reclassify-gc-products";
+import { fixRemainingGcRouter } from "./fix-remaining-gc";
 
 
 export const appRouter = router({
@@ -633,6 +634,9 @@ export const appRouter = router({
 
   // Reclassify GC column products
   reclassifyGcProducts: reclassifyGcProductsRouter,
+
+  // Fix remaining GC products
+  fixRemainingGc: fixRemainingGcRouter,
 
 });
 
