@@ -23,29 +23,28 @@ export const updateGlycoWorksMysql2Router = router({
       });
       
       try {
-        // Update first product
+        // Update using product_id instead
         const [result1] = await connection.execute(
-          'UPDATE products SET category_id = ? WHERE part_number = ?',
-          [16, '186007239']
+          'UPDATE products SET category_id = ? WHERE product_id = ?',
+          [16, 'WATS-186007239']
         );
         
-        // Update second product
         const [result2] = await connection.execute(
-          'UPDATE products SET category_id = ? WHERE part_number = ?',
-          [16, '186007080']
+          'UPDATE products SET category_id = ? WHERE product_id = ?',
+          [16, 'WATS-186007080']
         );
         
-        // Verify
+        // Verify using product_id
         const [rows] = await connection.execute(
-          'SELECT id, product_id, part_number, name, brand, category_id, status, image_url FROM products WHERE part_number IN (?, ?)',
-          ['186007239', '186007080']
+          'SELECT * FROM products WHERE product_id IN (?, ?)',
+          ['WATS-186007239', 'WATS-186007080']
         );
         
         return {
           success: true,
           updated: [
-            { partNumber: '186007239', result: result1 },
-            { partNumber: '186007080', result: result2 }
+            { productId: 'WATS-186007239', affectedRows: (result1 as any).affectedRows },
+            { productId: 'WATS-186007080', affectedRows: (result2 as any).affectedRows }
           ],
           verification: rows
         };
