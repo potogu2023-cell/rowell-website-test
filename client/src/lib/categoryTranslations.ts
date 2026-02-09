@@ -154,6 +154,58 @@ export const categoryTranslations: Record<string, Record<string, string>> = {
     zh: '其他色谱柱'
   },
 
+  // GC Columns categories
+  'GC色谱柱': {
+    en: 'GC Columns',
+    ja: 'GCカラム',
+    es: 'Columnas GC',
+    pt: 'Colunas GC',
+    ar: 'أعمدة GC',
+    ko: 'GC 컬럼',
+    ru: 'ГХ колонки',
+    zh: 'GC色谱柱'
+  },
+  '毛细管GC柱': {
+    en: 'Capillary GC Columns',
+    ja: 'キャピラリーGCカラム',
+    es: 'Columnas GC Capilares',
+    pt: 'Colunas GC Capilares',
+    ar: 'أعمدة GC الشعرية',
+    ko: '모세관 GC 컬럼',
+    ru: 'Капиллярные ГХ колонки',
+    zh: '毛细管GC柱'
+  },
+  '填充GC柱': {
+    en: 'Packed GC Columns',
+    ja: '充填GCカラム',
+    es: 'Columnas GC Empacadas',
+    pt: 'Colunas GC Empacotadas',
+    ar: 'أعمدة GC المعبأة',
+    ko: '충전 GC 컬럼',
+    ru: 'Насадочные ГХ колонки',
+    zh: '填充GC柱'
+  },
+  'GC保护柱': {
+    en: 'GC Guard Columns',
+    ja: 'GCガードカラム',
+    es: 'Columnas de Guardia GC',
+    pt: 'Colunas de Guarda GC',
+    ar: 'أعمدة حماية GC',
+    ko: 'GC 가드 컬럼',
+    ru: 'Защитные ГХ колонки',
+    zh: 'GC保护柱'
+  },
+  '其他GC柱': {
+    en: 'Other GC Columns',
+    ja: 'その他のGCカラム',
+    es: 'Otras Columnas GC',
+    pt: 'Outras Colunas GC',
+    ar: 'أعمدة GC أخرى',
+    ko: '기타 GC 컬럼',
+    ru: 'Другие ГХ колонки',
+    zh: '其他GC柱'
+  },
+
   // Sample Preparation subcategories
   '固相萃取柱': {
     en: 'SPE Cartridges',
