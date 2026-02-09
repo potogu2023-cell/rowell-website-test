@@ -22,6 +22,7 @@ import { batchFixOrphanPaginatedRouter } from "./batch-fix-orphan-paginated";
 import { exportAllProductsRouter } from "./export-all-products";
 import { fixKnownMisclassificationsRouter } from "./fix-known-misclassifications";
 import { diagnoseDatabaseRouter } from "./diagnose-database";
+import { findPlateCategoriesRouter } from "./find-plate-categories";
 
 
 export const appRouter = router({
@@ -601,6 +602,9 @@ export const appRouter = router({
 
   // Diagnose database structure and categories
   diagnoseDatabase: diagnoseDatabaseRouter,
+
+  // Find plate-related categories
+  findPlateCategories: findPlateCategoriesRouter,
 
 });
 
