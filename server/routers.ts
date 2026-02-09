@@ -23,6 +23,7 @@ import { exportAllProductsRouter } from "./export-all-products";
 import { fixKnownMisclassificationsRouter } from "./fix-known-misclassifications";
 import { diagnoseDatabaseRouter } from "./diagnose-database";
 import { findPlateCategoriesRouter } from "./find-plate-categories";
+import { getAllCategoriesRouter } from "./get-all-categories";
 
 
 export const appRouter = router({
@@ -605,6 +606,9 @@ export const appRouter = router({
 
   // Find plate-related categories
   findPlateCategories: findPlateCategoriesRouter,
+
+  // Get all categories
+  getAllCategories: getAllCategoriesRouter,
 
 });
 
