@@ -20,6 +20,7 @@ import { getOrphanProductsRouter } from "./get-orphan-products";
 import { batchFixOrphanProductsRouter } from "./batch-fix-orphan-products";
 import { batchFixOrphanPaginatedRouter } from "./batch-fix-orphan-paginated";
 import { exportAllProductsRouter } from "./export-all-products";
+import { fixKnownMisclassificationsRouter } from "./fix-known-misclassifications";
 
 
 export const appRouter = router({
@@ -593,6 +594,9 @@ export const appRouter = router({
 
   // Export all products
   exportAllProducts: exportAllProductsRouter,
+
+  // Fix known misclassifications
+  fixKnownMisclassifications: fixKnownMisclassificationsRouter,
 
 });
 
