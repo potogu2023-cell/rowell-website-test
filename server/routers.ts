@@ -28,6 +28,7 @@ import { fixProductCategoriesFinalRouter } from "./fix-product-categories-final"
 import { fixNullCategoriesRouter } from "./fix-null-categories";
 import { checkSyringeFiltersRouter } from "./check-syringe-filters";
 import { findGcColumnsRouter } from "./find-gc-columns";
+import { createGcCategoriesRouter } from "./create-gc-categories";
 
 
 export const appRouter = router({
@@ -625,6 +626,9 @@ export const appRouter = router({
 
   // Find GC column products
   findGcColumns: findGcColumnsRouter,
+
+  // Create GC Column categories
+  createGcCategories: createGcCategoriesRouter,
 
 });
 
