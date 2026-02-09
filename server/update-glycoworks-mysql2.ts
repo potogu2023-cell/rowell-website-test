@@ -15,7 +15,12 @@ export const updateGlycoWorksMysql2Router = router({
         throw new Error('Unauthorized');
       }
 
-      const connection = await mysql.createConnection(process.env.DATABASE_URL!);
+      const connection = await mysql.createConnection({
+        uri: process.env.DATABASE_URL!,
+        ssl: {
+          rejectUnauthorized: true
+        }
+      });
       
       try {
         // Update first product
