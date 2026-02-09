@@ -21,6 +21,7 @@ import { batchFixOrphanProductsRouter } from "./batch-fix-orphan-products";
 import { batchFixOrphanPaginatedRouter } from "./batch-fix-orphan-paginated";
 import { exportAllProductsRouter } from "./export-all-products";
 import { fixKnownMisclassificationsRouter } from "./fix-known-misclassifications";
+import { diagnoseDatabaseRouter } from "./diagnose-database";
 
 
 export const appRouter = router({
@@ -597,6 +598,9 @@ export const appRouter = router({
 
   // Fix known misclassifications
   fixKnownMisclassifications: fixKnownMisclassificationsRouter,
+
+  // Diagnose database structure and categories
+  diagnoseDatabase: diagnoseDatabaseRouter,
 
 });
 
