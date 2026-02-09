@@ -20,8 +20,8 @@ export const createGcCategoriesRouter = router({
       // 1. Create GC Columns parent category
       try {
         const [parentResult] = await connection.execute(`
-          INSERT INTO categories (name_en, slug, parent_id, created_at, updated_at)
-          VALUES ('GC Columns', 'gc-columns', NULL, NOW(), NOW())
+          INSERT INTO categories (name, name_en, slug, parent_id, created_at, updated_at)
+          VALUES ('GC色谱柱', 'GC Columns', 'gc-columns', NULL, NOW(), NOW())
         `);
         results.parent = {
           id: (parentResult as any).insertId,
@@ -38,18 +38,18 @@ export const createGcCategoriesRouter = router({
 
       // 2. Create subcategories
       const subcategories = [
-        { name: 'Capillary GC Columns', slug: 'capillary-gc-columns' },
-        { name: 'Packed GC Columns', slug: 'packed-gc-columns' },
-        { name: 'GC Guard Columns', slug: 'gc-guard-columns' },
-        { name: 'Other GC Columns', slug: 'other-gc-columns' }
+        { name: 'Capillary GC Columns', name_zh: '毛细管GC柱', slug: 'capillary-gc-columns' },
+        { name: 'Packed GC Columns', name_zh: '填充GC柱', slug: 'packed-gc-columns' },
+        { name: 'GC Guard Columns', name_zh: 'GC保护柱', slug: 'gc-guard-columns' },
+        { name: 'Other GC Columns', name_zh: '其他GC柱', slug: 'other-gc-columns' }
       ];
 
       for (const subcat of subcategories) {
         try {
           const [subResult] = await connection.execute(`
-            INSERT INTO categories (name_en, slug, parent_id, created_at, updated_at)
-            VALUES (?, ?, ?, NOW(), NOW())
-          `, [subcat.name, subcat.slug, parentId]);
+            INSERT INTO categories (name, name_en, slug, parent_id, created_at, updated_at)
+            VALUES (?, ?, ?, ?, NOW(), NOW())
+          `, [subcat.name_zh, subcat.name, subcat.slug, parentId]);
           
           results.subcategories.push({
             id: (subResult as any).insertId,
