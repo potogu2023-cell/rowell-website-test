@@ -20,17 +20,17 @@ export const adminRouter = router({
       const { eq, or } = await import('drizzle-orm');
       const db = await getDb();
 
-      // Get Sample Preparation category ID
-      const samplePrepCategories = await db
+      // Get SPE Cartridges category ID (slug: spe-cartridges)
+      const speCategories = await db
         .select()
         .from(categories)
-        .where(eq(categories.nameEn, "Sample Preparation"));
+        .where(eq(categories.slug, "spe-cartridges"));
 
-      if (samplePrepCategories.length === 0) {
-        throw new Error('Sample Preparation category not found');
+      if (speCategories.length === 0) {
+        throw new Error('SPE Cartridges category not found');
       }
 
-      const samplePrepCategoryId = samplePrepCategories[0].id;
+      const speCategoryId = speCategories[0].id;
 
       // Check if products already exist
       const existingProducts = await db
@@ -49,7 +49,7 @@ export const adminRouter = router({
           productId: "WATS-186007239",
           name: "GlycoWorks HILIC 1 cc Flangeless Cartridge",
           brand: "Waters",
-          categoryId: samplePrepCategoryId,
+          categoryId: speCategoryId,
           status: "active" as const,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -59,7 +59,7 @@ export const adminRouter = router({
           productId: "WATS-186007080",
           name: "GlycoWorks HILIC 1 cc Cartridge, 20/pk",
           brand: "Waters",
-          categoryId: samplePrepCategoryId,
+          categoryId: speCategoryId,
           status: "active" as const,
           createdAt: new Date(),
           updatedAt: new Date()
@@ -92,7 +92,7 @@ export const adminRouter = router({
       return {
         success: true,
         results,
-        categoryId: samplePrepCategoryId
+        categoryId: speCategoryId
       };
     }),
 
