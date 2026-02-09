@@ -26,6 +26,7 @@ import { findPlateCategoriesRouter } from "./find-plate-categories";
 import { getAllCategoriesRouter } from "./get-all-categories";
 import { fixProductCategoriesFinalRouter } from "./fix-product-categories-final";
 import { fixNullCategoriesRouter } from "./fix-null-categories";
+import { checkSyringeFiltersRouter } from "./check-syringe-filters";
 
 
 export const appRouter = router({
@@ -617,6 +618,9 @@ export const appRouter = router({
 
   // Fix products with NULL category_id
   fixNullCategories: fixNullCategoriesRouter,
+
+  // Check syringe filter products
+  checkSyringeFilters: checkSyringeFiltersRouter,
 
 });
 
