@@ -6,7 +6,7 @@ export const fixKnownMisclassificationsRouter = router({
     try {
       // Parse DATABASE_URL
       const databaseUrl = process.env.DATABASE_URL || '';
-      const urlMatch = databaseUrl.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+      const urlMatch = databaseUrl.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/([^?]+)/);
       
       if (!urlMatch) {
         throw new Error('Invalid DATABASE_URL format');
