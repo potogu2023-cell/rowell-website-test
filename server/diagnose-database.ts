@@ -32,7 +32,7 @@ export const diagnoseDatabaseRouter = router({
 
       // 2. Get sample products with Bond Elut
       const [bondElutProducts] = await connection.execute(`
-        SELECT id, product_id, name, category_id, status
+        SELECT id, productId, name, category_id, status
         FROM products 
         WHERE name LIKE '%Bond Elut%'
         LIMIT 5
@@ -47,7 +47,7 @@ export const diagnoseDatabaseRouter = router({
 
       // 4. Get sample product_categories entries
       const [productCategories] = await connection.execute(`
-        SELECT pc.*, p.name, p.product_id
+        SELECT pc.*, p.name, p.productId
         FROM product_categories pc
         JOIN products p ON pc.product_id = p.id
         WHERE p.name LIKE '%Bond Elut%'
