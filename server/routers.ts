@@ -10,6 +10,7 @@ import { adminRouter } from './admin-api';
 import { listCategoriesRouter } from './list-categories-api';
 import { addGlycoWorksSimpleRouter } from './add-glycoworks-simple';
 import { updateProductCategoryRouter } from './update-product-category';
+import { updateGlycoWorksMysql2Router } from './update-glycoworks-mysql2';
 
 
 export const appRouter = router({
@@ -559,6 +560,9 @@ export const appRouter = router({
 
   // Update product category
   updateProductCategory: updateProductCategoryRouter,
+
+  // Update GlycoWorks using mysql2
+  updateGlycoWorksMysql2: updateGlycoWorksMysql2Router,
 
 });
 
