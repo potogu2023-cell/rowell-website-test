@@ -6,6 +6,7 @@ import { generateInquiryNumber } from './inquiryUtils';
 import { sendInquiryEmail } from './emailService';
 import { z } from 'zod';
 import { seedRouter } from './seed-api';
+import { adminRouter } from './admin-api';
 
 
 export const appRouter = router({
@@ -544,6 +545,8 @@ export const appRouter = router({
   // Seed API for importing resources
   seed: seedRouter,
 
+  // Admin API for data management
+  admin: adminRouter,
 
 });
 
