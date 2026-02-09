@@ -6,13 +6,29 @@ import mysql from 'mysql2/promise';
 export const exportAllProductsRouter = router({
   getAllProducts: publicProcedure.query(async () => {
     try {
+      // Parse DATABASE_URL from environment
+      const databaseUrl = process.env.DATABASE_URL || '';
+      console.log('DATABASE_URL exists:', !!databaseUrl);
+      
+      // Extract connection details from DATABASE_URL
+      // Format: mysql://username:password@host:port/database
+      const urlMatch = databaseUrl.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)/);
+      
+      if (!urlMatch) {
+        throw new Error('Invalid DATABASE_URL format');
+      }
+      
+      const [, user, password, host, port, database] = urlMatch;
+      
+      console.log('Connecting to database:', { host, port, database, user: user.substring(0, 3) + '***' });
+      
       // Use mysql2 to get all products with their categories
       const connection = await mysql.createConnection({
-        host: process.env.DATABASE_HOST,
-        user: process.env.DATABASE_USERNAME,
-        password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_NAME,
-        port: parseInt(process.env.DATABASE_PORT || '4000'),
+        host,
+        user,
+        password,
+        database,
+        port: parseInt(port),
         ssl: {
           rejectUnauthorized: true
         }
