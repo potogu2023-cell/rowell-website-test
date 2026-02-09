@@ -575,7 +575,9 @@ export const appRouter = router({
   // Query categories
   queryCategories: queryCategoriesRouter,
 
+  // Full consistency check
+  fullConsistencyCheck: fullConsistencyCheckRouter,
+
 });
 
 export type AppRouter = typeof appRouter;
-  fullConsistencyCheck: fullConsistencyCheckRouter,
