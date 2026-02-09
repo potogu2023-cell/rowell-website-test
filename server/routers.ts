@@ -566,7 +566,6 @@ export const appRouter = router({
   // Update GlycoWorks using mysql2
   updateGlycoWorksMysql2: updateGlycoWorksMysql2Router,
   describeProductsTable: describeProductsTableRouter,
-import { describeProductsTableRouter } from './describe-products-table';
 
   // Query categories
   queryCategories: queryCategoriesRouter,
