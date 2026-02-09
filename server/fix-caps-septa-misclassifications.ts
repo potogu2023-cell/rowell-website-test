@@ -3,7 +3,7 @@ import { db } from "./db";
 import { products } from "./db/schema";
 import { eq, and, or, like } from "drizzle-orm";
 
-export const fixCapsSepta = router({
+export const fixCapsSeptaRouter = router({
   analyze: publicProcedure.query(async () => {
     console.log("Analyzing Caps & Septa category (ID 20) for misclassifications...");
     
