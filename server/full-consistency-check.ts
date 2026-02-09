@@ -4,15 +4,7 @@ import mysql from 'mysql2/promise';
 
 export const fullConsistencyCheckRouter = router({
   run: publicProcedure
-    .input((raw: unknown) => {
-      return z.object({
-        adminKey: z.string(),
-      }).parse(raw);
-    })
-    .query(async ({ input }) => {
-      if (input.adminKey !== 'temp-admin-2024') {
-        throw new Error('Unauthorized');
-      }
+    .query(async () => {
 
       const connection = await mysql.createConnection({
         uri: process.env.DATABASE_URL!,
