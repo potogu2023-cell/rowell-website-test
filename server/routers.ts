@@ -24,6 +24,7 @@ import { fixKnownMisclassificationsRouter } from "./fix-known-misclassifications
 import { diagnoseDatabaseRouter } from "./diagnose-database";
 import { findPlateCategoriesRouter } from "./find-plate-categories";
 import { getAllCategoriesRouter } from "./get-all-categories";
+import { fixProductCategoriesFinalRouter } from "./fix-product-categories-final";
 
 
 export const appRouter = router({
@@ -609,6 +610,9 @@ export const appRouter = router({
 
   // Get all categories
   getAllCategories: getAllCategoriesRouter,
+
+  // Fix product categories (final version)
+  fixProductCategoriesFinal: fixProductCategoriesFinalRouter,
 
 });
 
