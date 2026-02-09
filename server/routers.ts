@@ -19,6 +19,7 @@ import { fullConsistencyCheckRouter } from "./full-consistency-check";
 import { getOrphanProductsRouter } from "./get-orphan-products";
 import { batchFixOrphanProductsRouter } from "./batch-fix-orphan-products";
 import { batchFixOrphanPaginatedRouter } from "./batch-fix-orphan-paginated";
+import { exportAllProductsRouter } from "./export-all-products";
 
 
 export const appRouter = router({
@@ -589,6 +590,9 @@ export const appRouter = router({
 
   // Batch fix orphan products (paginated)
   batchFixOrphanPaginated: batchFixOrphanPaginatedRouter,
+
+  // Export all products
+  exportAllProducts: exportAllProductsRouter,
 
 });
 
