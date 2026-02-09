@@ -24,7 +24,7 @@ export const queryCategoriesRouter = router({
       
       try {
         const [rows] = await connection.execute(
-          'SELECT id, name, nameEn, slug, parentId, level FROM categories ORDER BY id'
+          'SELECT id, name, name_en as nameEn, slug, parent_id as parentId, level FROM categories ORDER BY id'
         );
         
         return {
