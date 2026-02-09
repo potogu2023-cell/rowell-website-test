@@ -18,16 +18,16 @@ export const fixKnownMisclassificationsRouter = router({
         total_updated: 0
       };
 
-      // 1. Fix Bond Elut SPE products - should be in SPE Cartridges (category_id: 16)
+      // 1. Fix Bond Elut SPE products - should be in SPE Cartridges (category_id: 31)
       // Pattern: "Bond Elut" in name
       try {
         const [speResult] = await connection.execute(`
           UPDATE product_categories pc
           INNER JOIN products p ON pc.product_id = p.id
-          SET pc.category_id = 16
+          SET pc.category_id = 31
           WHERE p.name LIKE '%Bond Elut%'
             AND p.name NOT LIKE '%Column%'
-            AND pc.category_id != 16
+            AND pc.category_id != 31
             AND p.status = 'active'
         `);
         results.spe_products.updated = (speResult as any).affectedRows || 0;
@@ -35,10 +35,10 @@ export const fixKnownMisclassificationsRouter = router({
         // Also update products table
         await connection.execute(`
           UPDATE products
-          SET category_id = 16
+          SET category_id = 31
           WHERE name LIKE '%Bond Elut%'
             AND name NOT LIKE '%Column%'
-            AND category_id != 16
+            AND category_id != 31
             AND status = 'active'
         `);
       } catch (error: any) {
