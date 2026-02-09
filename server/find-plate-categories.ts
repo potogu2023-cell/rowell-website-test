@@ -13,7 +13,7 @@ export const findPlateCategoriesRouter = router({
 
       // Find all categories with "plate" or "well" in name
       const [categories] = await connection.execute(`
-        SELECT id, name_en, slug, name_zh
+        SELECT id, name_en, slug
         FROM categories 
         WHERE LOWER(name_en) LIKE '%plate%' 
            OR LOWER(name_en) LIKE '%well%'
