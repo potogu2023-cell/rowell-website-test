@@ -22,7 +22,7 @@ export const updateGlycoWorksMysql2Router = router({
       });
       
       try {
-        // Update using primary key ID
+        // Update products table
         const [result1] = await connection.execute(
           'UPDATE products SET category_id = ? WHERE id = ?',
           [16, 31323]
@@ -33,9 +33,26 @@ export const updateGlycoWorksMysql2Router = router({
           [16, 31324]
         );
         
-        // Verify
-        const [rows] = await connection.execute(
-          'SELECT * FROM products WHERE id IN (?, ?)',
+        // Insert into product_categories table (or update if exists)
+        await connection.execute(
+          'INSERT INTO product_categories (product_id, category_id, is_primary) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE category_id = ?, is_primary = 1',
+          [31323, 16, 16]
+        );
+        
+        await connection.execute(
+          'INSERT INTO product_categories (product_id, category_id, is_primary) VALUES (?, ?, 1) ON DUPLICATE KEY UPDATE category_id = ?, is_primary = 1',
+          [31324, 16, 16]
+        );
+        
+        // Verify products table
+        const [productsRows] = await connection.execute(
+          'SELECT id, productId, category_id FROM products WHERE id IN (?, ?)',
+          [31323, 31324]
+        );
+        
+        // Verify product_categories table
+        const [categoriesRows] = await connection.execute(
+          'SELECT * FROM product_categories WHERE product_id IN (?, ?)',
           [31323, 31324]
         );
         
@@ -45,7 +62,8 @@ export const updateGlycoWorksMysql2Router = router({
             { id: 31323, affectedRows: (result1 as any).affectedRows },
             { id: 31324, affectedRows: (result2 as any).affectedRows }
           ],
-          verification: rows
+          productsVerification: productsRows,
+          productCategoriesVerification: categoriesRows
         };
       } finally {
         await connection.end();
