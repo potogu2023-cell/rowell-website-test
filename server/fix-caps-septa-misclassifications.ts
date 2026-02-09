@@ -1,6 +1,6 @@
 import { publicProcedure, router } from "./_core/trpc";
-import { db } from "./_core/db";
-import { products } from "./_core/db/schema";
+import { db } from "./db";
+import { products } from "../drizzle/schema";
 import { eq, and, or, like } from "drizzle-orm";
 
 export const fixCapsSeptaRouter = router({
