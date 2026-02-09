@@ -21,16 +21,13 @@ export const updateProductCategoryRouter = router({
       const { eq, inArray } = await import('drizzle-orm');
       const db = await getDb();
 
-      // Update products
+      // Update products using raw SQL to avoid Drizzle field mapping issues
       const results = [];
       for (const partNumber of input.partNumbers) {
-        await db
-          .update(products)
-          .set({
-            categoryId: input.categoryId,
-            updatedAt: new Date()
-          })
-          .where(eq(products.partNumber, partNumber));
+        await db.execute(
+          `UPDATE products SET category_id = ?, updatedAt = NOW() WHERE partNumber = ?`,
+          [input.categoryId, partNumber]
+        );
         
         results.push({ partNumber, action: 'updated' });
       }
