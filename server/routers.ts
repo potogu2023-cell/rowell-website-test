@@ -9,6 +9,7 @@ import { seedRouter } from './seed-api';
 import { adminRouter } from './admin-api';
 import { listCategoriesRouter } from './list-categories-api';
 import { addGlycoWorksSimpleRouter } from './add-glycoworks-simple';
+import { updateProductCategoryRouter } from './update-product-category';
 
 
 export const appRouter = router({
@@ -555,6 +556,9 @@ export const appRouter = router({
 
   // Add GlycoWorks products (simple version)
   addGlycoWorksSimple: addGlycoWorksSimpleRouter,
+
+  // Update product category
+  updateProductCategory: updateProductCategoryRouter,
 
 });
 
