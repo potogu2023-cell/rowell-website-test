@@ -4,23 +4,11 @@ import mysql from 'mysql2/promise';
 export const fixKnownMisclassificationsRouter = router({
   fixAll: publicProcedure.query(async () => {
     try {
-      // Parse DATABASE_URL
-      const databaseUrl = process.env.DATABASE_URL || '';
-      const urlMatch = databaseUrl.match(/mysql:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/([^?]+)/);
-      
-      if (!urlMatch) {
-        throw new Error('Invalid DATABASE_URL format');
-      }
-      
-      const [, user, password, host, port, database] = urlMatch;
-      
       const connection = await mysql.createConnection({
-        host,
-        user,
-        password,
-        database,
-        port: parseInt(port),
-        ssl: { rejectUnauthorized: true }
+        uri: process.env.DATABASE_URL!,
+        ssl: {
+          rejectUnauthorized: true
+        }
       });
 
       const results = {
