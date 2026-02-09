@@ -15,6 +15,7 @@ import { cleanupProductCategoriesRouter } from './cleanup-product-categories';
 import { checkDataConsistencyRouter } from './check-data-consistency';
 import { describeProductsTableRouter } from './describe-products-table';
 import { queryCategoriesRouter } from './query-categories';
+import { fullConsistencyCheckRouter } from './full-consistency-check';
 
 
 export const appRouter = router({
@@ -577,3 +578,4 @@ export const appRouter = router({
 });
 
 export type AppRouter = typeof appRouter;
+  fullConsistencyCheck: fullConsistencyCheckRouter,
