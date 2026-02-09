@@ -54,8 +54,10 @@ export const batchFixOrphanPaginatedRouter = router({
     .input(z.object({
       offset: z.number().default(0),
       limit: z.number().default(100)
-    }))
+    }).optional())
     .query(async ({ input }) => {
+      const offset = input?.offset ?? 0;
+      const limit = input?.limit ?? 100;
       const connection = await mysql.createConnection({
         uri: process.env.DATABASE_URL!,
         ssl: { rejectUnauthorized: true }
@@ -79,7 +81,7 @@ export const batchFixOrphanPaginatedRouter = router({
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
           LIMIT ? OFFSET ?
-        `, [input.limit, input.offset]);
+        `, [limit, offset]);
         
         const products = orphanProducts as any[];
         const results: any[] = [];
@@ -127,14 +129,14 @@ export const batchFixOrphanPaginatedRouter = router({
           success: true,
           totalOrphans,
           currentBatch: {
-            offset: input.offset,
-            limit: input.limit,
+            offset,
+            limit,
             processed: products.length
           },
           successCount,
           errorCount,
-          hasMore: input.offset + input.limit < totalOrphans,
-          nextOffset: input.offset + input.limit,
+          hasMore: offset + limit < totalOrphans,
+          nextOffset: offset + limit,
           results
         };
       } finally {
