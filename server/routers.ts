@@ -33,6 +33,7 @@ import { reclassifyGcProductsRouter } from "./reclassify-gc-products";
 import { fixRemainingGcRouter } from "./fix-remaining-gc";
 import { checkGcSlugRouter } from "./check-gc-slug";
 import { uploadProductImagesBatchRouter } from "./upload-product-images-batch";
+import { fixCapsSepta } from "./fix-caps-septa-misclassifications";
 
 
 export const appRouter = router({
@@ -642,8 +643,9 @@ export const appRouter = router({
 
   // Check GC categories slug
   checkGcSlug: checkGcSlugRouter,
-  uploadProductImagesBatch: uploadProductImagesBatchRouter,
-
+   uploadProductImagesBatch: uploadProductImagesBatchRouter,
+  // Fix Caps & Septa misclassifications
+  fixCapsSepta: fixCapsSepta,
 });
 
 export type AppRouter = typeof appRouter;
