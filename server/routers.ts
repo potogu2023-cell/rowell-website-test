@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { seedRouter } from './seed-api';
 import { adminRouter } from './admin-api';
 import { listCategoriesRouter } from './list-categories-api';
+import { addGlycoWorksSimpleRouter } from './add-glycoworks-simple';
 
 
 export const appRouter = router({
@@ -551,6 +552,9 @@ export const appRouter = router({
 
   // List categories API
   listCategories: listCategoriesRouter,
+
+  // Add GlycoWorks products (simple version)
+  addGlycoWorksSimple: addGlycoWorksSimpleRouter,
 
 });
 
