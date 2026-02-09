@@ -27,6 +27,7 @@ import { getAllCategoriesRouter } from "./get-all-categories";
 import { fixProductCategoriesFinalRouter } from "./fix-product-categories-final";
 import { fixNullCategoriesRouter } from "./fix-null-categories";
 import { checkSyringeFiltersRouter } from "./check-syringe-filters";
+import { findGcColumnsRouter } from "./find-gc-columns";
 
 
 export const appRouter = router({
@@ -621,6 +622,9 @@ export const appRouter = router({
 
   // Check syringe filter products
   checkSyringeFilters: checkSyringeFiltersRouter,
+
+  // Find GC column products
+  findGcColumns: findGcColumnsRouter,
 
 });
 
