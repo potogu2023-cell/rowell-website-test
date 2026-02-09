@@ -7,6 +7,7 @@ import { sendInquiryEmail } from './emailService';
 import { z } from 'zod';
 import { seedRouter } from './seed-api';
 import { adminRouter } from './admin-api';
+import { listCategoriesRouter } from './list-categories-api';
 
 
 export const appRouter = router({
@@ -547,6 +548,9 @@ export const appRouter = router({
 
   // Admin API for data management
   admin: adminRouter,
+
+  // List categories API
+  listCategories: listCategoriesRouter,
 
 });
 
