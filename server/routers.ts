@@ -11,6 +11,7 @@ import { listCategoriesRouter } from './list-categories-api';
 import { addGlycoWorksSimpleRouter } from './add-glycoworks-simple';
 import { updateProductCategoryRouter } from './update-product-category';
 import { updateGlycoWorksMysql2Router } from './update-glycoworks-mysql2';
+import { queryCategoriesRouter } from './query-categories';
 
 
 export const appRouter = router({
@@ -563,6 +564,9 @@ export const appRouter = router({
 
   // Update GlycoWorks using mysql2
   updateGlycoWorksMysql2: updateGlycoWorksMysql2Router,
+
+  // Query categories
+  queryCategories: queryCategoriesRouter,
 
 });
 
