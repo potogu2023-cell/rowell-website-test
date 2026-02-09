@@ -1,7 +1,7 @@
-import { publicProcedure, router } from "./trpc";
-import { storagePut } from "./storage";
-import { getDb } from "./db";
-import { products } from "../drizzle/schema";
+import { publicProcedure, router } from "./_core/trpc";
+import { storagePut } from "./_core/storage";
+import { getDb } from "./_core/db";
+import { products } from "./_core/db/schema";
 import { eq } from "drizzle-orm";
 import * as fs from "fs";
 import * as path from "path";
