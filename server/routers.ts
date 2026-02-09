@@ -17,6 +17,7 @@ import { describeProductsTableRouter } from './describe-products-table';
 import { queryCategoriesRouter } from './query-categories';
 import { fullConsistencyCheckRouter } from "./full-consistency-check";
 import { getOrphanProductsRouter } from "./get-orphan-products";
+import { batchFixOrphanProductsRouter } from "./batch-fix-orphan-products";
 
 
 export const appRouter = router({
@@ -581,6 +582,9 @@ export const appRouter = router({
 
   // Get orphan products
   getOrphanProducts: getOrphanProductsRouter,
+
+  // Batch fix orphan products
+  batchFixOrphanProducts: batchFixOrphanProductsRouter,
 
 });
 
