@@ -28,12 +28,15 @@ export const reclassifyGcProductsRouter = router({
         OTHER: 30005
       };
 
-      // 1. Reclassify Capillary GC Columns
+      // 1. Reclassify Capillary GC Columns (including Metal Capillary)
       try {
         const [capillaryResult] = await connection.execute(`
           UPDATE products 
           SET category_id = ?
-          WHERE (name LIKE '%Capillary GC Column%' OR name LIKE '%GC Cap.%' OR name LIKE '%GC Capillary%')
+          WHERE (name LIKE '%Capillary GC Column%' 
+             OR name LIKE '%GC Cap.%' 
+             OR name LIKE '%GC Capillary%'
+             OR name LIKE '%GC Metal Capillary%')
           AND name LIKE '%GC%'
         `, [GC_CATS.CAPILLARY]);
         results.capillary = (capillaryResult as any).affectedRows;
