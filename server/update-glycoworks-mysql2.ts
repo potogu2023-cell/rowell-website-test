@@ -37,7 +37,7 @@ export const updateGlycoWorksMysql2Router = router({
         
         // Verify
         const [rows] = await connection.execute(
-          'SELECT id, productId, partNumber, name, brand, categoryId, status, imageUrl FROM products WHERE partNumber IN (?, ?)',
+          'SELECT id, product_id, part_number, name, brand, category_id, status, image_url FROM products WHERE part_number IN (?, ?)',
           ['186007239', '186007080']
         );
         
