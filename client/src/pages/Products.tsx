@@ -351,24 +351,28 @@ export default function Products() {
                     
                     {/* Technical Specifications */}
                     <div className="space-y-2 mb-4 text-sm">
-                      {product.particleSize && (
-                        <div className="flex justify-between">
-                          <span className="text-muted-foreground">{t('products.particle_size')}:</span>
-                          <span className="font-medium">{product.particleSize}</span>
-                        </div>
-                      )}
-                      {product.poreSize && (
-                        <div className="flex justify-between">
-                          <span className="text-muted-foreground">{t('products.pore_size')}:</span>
-                          <span className="font-medium">{product.poreSize}</span>
-                        </div>
-                      )}
-                      {(product.columnLength && product.innerDiameter) && (
-                        <div className="flex justify-between">
-                          <span className="text-muted-foreground">{t('products.dimensions')}:</span>
-                          <span className="font-medium">{product.columnLength} × {product.innerDiameter}</span>
-                        </div>
-                      )}
+                      {/* Always show Particle Size for HPLC products */}
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">{t('products.particle_size')}:</span>
+                        <span className="font-medium">{product.particleSize || 'N/A'}</span>
+                      </div>
+                      
+                      {/* Always show Pore Size for HPLC products */}
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">{t('products.pore_size')}:</span>
+                        <span className="font-medium">{product.poreSize || 'N/A'}</span>
+                      </div>
+                      
+                      {/* Always show Dimensions */}
+                      <div className="flex justify-between">
+                        <span className="text-muted-foreground">{t('products.dimensions')}:</span>
+                        <span className="font-medium">
+                          {(product.columnLength && product.innerDiameter) 
+                            ? `${product.columnLength} × ${product.innerDiameter}`
+                            : 'N/A'
+                          }
+                        </span>
+                      </div>
                     </div>
 
                     {/* Detailed Description */}
