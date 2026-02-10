@@ -141,13 +141,13 @@ export default function ProductDetail() {
                     {product.columnLength && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.column_length')}:</span>
-                        <span className="font-medium">{product.columnLength} mm</span>
+                        <span className="font-medium">{product.columnLength}</span>
                       </div>
                     )}
                     {product.innerDiameter && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.inner_diameter')}:</span>
-                        <span className="font-medium">{product.innerDiameter} mm</span>
+                        <span className="font-medium">{product.innerDiameter}</span>
                       </div>
                     )}
                     {product.phaseType && (
