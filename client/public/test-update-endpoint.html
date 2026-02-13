@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execute YMC/Tosoh Data Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Execute YMC/Tosoh Data Update</h1>
+        <p><strong>Warning:</strong> This operation can only be executed ONCE. After execution, the endpoint will be permanently disabled.</p>
+        
+        <div class="info" style="margin: 20px 0;">
+            <strong>What this will do:</strong>
+            <ul>
+                <li>Fetch data for 86 YMC products from CDN</li>
+                <li>Fetch data for 95 Tosoh products from CDN</li>
+                <li>Update product specifications (particleSize, poreSize, dimensions)</li>
+                <li>Set product status to "active"</li>
+                <li>Update additional fields (phRange, usp, description, applications)</li>
+            </ul>
+        </div>
+        
+        <button id="executeBtn" onclick="executeUpdate()">Execute Update</button>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function executeUpdate() {
+            const btn = document.getElementById('executeBtn');
+            const resultDiv = document.getElementById('result');
+            
+            btn.disabled = true;
+            btn.textContent = 'Executing...';
+            resultDiv.innerHTML = '<div class="info">⏳ Executing update... This may take a few minutes.</div>';
+            
+            try {
+                const response = await fetch('/api/trpc/updateYmcTosoh.execute', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({})
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.result?.data?.success) {
+                    const summary = data.result.data.summary;
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <h3>✅ Update Completed Successfully!</h3>
+                            <p><strong>Summary:</strong></p>
+                            <ul>
+                                <li>Total processed: ${summary.totalProcessed}</li>
+                                <li>Successfully updated: ${summary.successfullyUpdated}</li>
+                                <li>Not found: ${summary.notFound}</li>
+                            </ul>
+                            <p><strong>Status:</strong> ${data.result.data.endpointStatus}</p>
+                            <p>${data.result.data.message}</p>
+                        </div>
+                    `;
+                    btn.textContent = 'Update Completed';
+                } else if (data.error) {
+                    resultDiv.innerHTML = `
+                        <div class="error">
+                            <h3>❌ Error</h3>
+                            <p>${data.error.message || JSON.stringify(data.error)}</p>
+                        </div>
+                    `;
+                    btn.disabled = false;
+                    btn.textContent = 'Retry Update';
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="warning">
+                            <h3>⚠️ Unexpected Response</h3>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                    btn.disabled = false;
+                    btn.textContent = 'Retry Update';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Network Error</h3>
+                        <p>${error.message}</p>
+                        <p>Please check if the server is running and try again.</p>
+                    </div>
+                `;
+                btn.disabled = false;
+                btn.textContent = 'Retry Update';
+            }
+        }
+    </script>
+</body>
+</html>
