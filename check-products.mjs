@@ -1,14 +1,36 @@
 import mysql from 'mysql2/promise';
 
-const connection = await mysql.createConnection(process.env.DATABASE_URL);
+const DATABASE_URL = process.env.DATABASE_URL;
 
-const [totalRows] = await connection.execute('SELECT COUNT(*) as count FROM products');
-console.log('Current total products:', totalRows[0].count);
+if (!DATABASE_URL) {
+  console.error('DATABASE_URL not set');
+  process.exit(1);
+}
 
-const [agilentRows] = await connection.execute('SELECT COUNT(*) as count FROM products WHERE brand = ?', ['Agilent']);
-console.log('Current Agilent products:', agilentRows[0].count);
+const dbUrl = new URL(DATABASE_URL);
+const connection = await mysql.createConnection({
+  host: dbUrl.hostname,
+  port: dbUrl.port ? parseInt(dbUrl.port) : 3306,
+  user: dbUrl.username,
+  password: dbUrl.password,
+  database: dbUrl.pathname.slice(1),
+  ssl: { rejectUnauthorized: true }
+});
 
-const [watersRows] = await connection.execute('SELECT COUNT(*) as count FROM products WHERE brand = ?', ['Waters']);
-console.log('Current Waters products:', watersRows[0].count);
+// Check YMC products
+const [ymcRows] = await connection.execute(
+  'SELECT partNumber, particleSize, poreSize, dimensions, status FROM products WHERE brand = ? LIMIT 5',
+  ['YMC']
+);
+console.log('YMC Products Sample:');
+console.log(JSON.stringify(ymcRows, null, 2));
+
+// Check Tosoh products
+const [tosohRows] = await connection.execute(
+  'SELECT partNumber, particleSize, poreSize, dimensions, status FROM products WHERE brand = ? LIMIT 5',
+  ['Tosoh']
+);
+console.log('\nTosoh Products Sample:');
+console.log(JSON.stringify(tosohRows, null, 2));
 
 await connection.end();
