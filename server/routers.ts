@@ -33,6 +33,7 @@ import { reclassifyGcProductsRouter } from "./reclassify-gc-products";
 import { fixRemainingGcRouter } from "./fix-remaining-gc";
 import { checkGcSlugRouter } from "./check-gc-slug";
 import { updateYmcTosohRouter } from "./update-ymc-tosoh-router";
+import { updateDimensionsRouter } from "./update-dimensions-router";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
 
 
@@ -646,6 +647,7 @@ export const appRouter = router({
 
   // One-time update for YMC and Tosoh product data
   updateYmcTosoh: updateYmcTosohRouter,
+  updateDimensions: updateDimensionsRouter,
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
