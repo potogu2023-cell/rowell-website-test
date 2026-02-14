@@ -13,13 +13,13 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import USPStandards from "./pages/USPStandards";
-import Applications from "./pages/Applications";
 import Contact from "./pages/Contact";
+import LearningCenter from "./pages/LearningCenter";
+import ArticleDetail from "./pages/ArticleDetail";
+import AuthorDetail from "./pages/AuthorDetail";
 
 import TestFilters from "./pages/TestFilters";
 import ProductDetail from "./pages/ProductDetail";
-import Resources from "./pages/Resources";
-import ResourceDetail from "./pages/ResourceDetail";
 import AdminMessages from "./pages/AdminMessages";
 import WhatsAppButton from "./components/WhatsAppButton";
 
@@ -42,11 +42,16 @@ function Router() {
           <Route path={"/"} component={Home} />
           <Route path={"/products"} component={Products} />
           <Route path={"/products/:id"} component={ProductDetail} />
-          <Route path={"/resources"} component={Resources} />
-          <Route path={"/resources/:slug"} component={ResourceDetail} />
+          
+          {/* Learning Center routes (replacing Applications and Resources) */}
+          <Route path={"/learning"} component={LearningCenter} />
+          <Route path={"/learning/authors/:slug"} component={AuthorDetail} />
+          <Route path={"/learning/:slug"} component={ArticleDetail} />
+          <Route path={"/applications"} component={LearningCenter} />
+          <Route path={"/resources"} component={LearningCenter} />
+          
           <Route path={"/about"} component={About} />
           <Route path={"/usp-standards"} component={USPStandards} />
-          <Route path={"/applications"} component={Applications} />
           <Route path={"/contact"} component={Contact} />
           <Route path={"/admin/messages"} component={AdminMessages} />
 
