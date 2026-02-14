@@ -561,7 +561,7 @@ export const appRouter = router({
             brand,
             COUNT(*) as productCount
           FROM products
-          WHERE brand IS NOT NULL AND brand != ''
+          WHERE brand IS NOT NULL AND brand != '' AND status = 'active'
           GROUP BY brand
           ORDER BY productCount DESC, brand ASC
         `);
