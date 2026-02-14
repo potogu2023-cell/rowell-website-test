@@ -396,3 +396,113 @@ export const customerMessages = mysqlTable("customer_messages", {
 
 export type CustomerMessage = typeof customerMessages.$inferSelect;
 export type InsertCustomerMessage = typeof customerMessages.$inferInsert;
+
+
+// ============================================
+// Learning Center Tables
+// ============================================
+
+// Authors table
+export const authors = mysqlTable("authors", {
+  id: int().autoincrement().notNull(),
+  slug: varchar({ length: 100 }).notNull(),
+  fullName: varchar({ length: 100 }).notNull(),
+  title: varchar({ length: 150 }).notNull(),
+  yearsOfExperience: int().notNull(),
+  education: varchar({ length: 255 }),
+  expertise: text(),
+  biography: text().notNull(),
+  photoUrl: varchar({ length: 500 }),
+  createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+  updatedAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+},
+(table) => [
+  index("authors_slug_unique").on(table.slug),
+  index("idx_authors_slug").on(table.slug),
+]);
+
+export type Author = typeof authors.$inferSelect;
+export type InsertAuthor = typeof authors.$inferInsert;
+
+// Articles table
+export const articles = mysqlTable("articles", {
+  id: int().autoincrement().notNull(),
+  slug: varchar({ length: 200 }).notNull(),
+  title: varchar({ length: 255 }).notNull(),
+  authorId: int().notNull().references(() => authors.id, { onDelete: "restrict" }),
+  category: mysqlEnum(['application-notes', 'technical-guides', 'industry-trends', 'literature-reviews']).notNull(),
+  applicationArea: mysqlEnum(['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical']).notNull(),
+  content: text().notNull(),
+  metaDescription: varchar({ length: 255 }),
+  keywords: text(),
+  publishedDate: timestamp({ mode: 'string' }).notNull(),
+  viewCount: int().default(0).notNull(),
+  createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+  updatedAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+},
+(table) => [
+  index("articles_slug_unique").on(table.slug),
+  index("idx_articles_slug").on(table.slug),
+  index("idx_articles_authorId").on(table.authorId),
+  index("idx_articles_category").on(table.category),
+  index("idx_articles_applicationArea").on(table.applicationArea),
+  index("idx_articles_publishedDate").on(table.publishedDate),
+]);
+
+export type Article = typeof articles.$inferSelect;
+export type InsertArticle = typeof articles.$inferInsert;
+
+// Literature table
+export const literature = mysqlTable("literature", {
+  id: int().autoincrement().notNull(),
+  slug: varchar({ length: 200 }).notNull(),
+  title: varchar({ length: 500 }).notNull(),
+  authors: varchar({ length: 500 }).notNull(),
+  journal: varchar({ length: 255 }).notNull(),
+  year: int().notNull(),
+  doi: varchar({ length: 255 }),
+  url: varchar({ length: 1000 }).notNull(),
+  applicationArea: mysqlEnum(['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical']).notNull(),
+  summary: text().notNull(),
+  keyFindings: text(),
+  relevance: text(),
+  keywords: text(),
+  addedDate: timestamp({ mode: 'string' }).notNull(),
+  viewCount: int().default(0).notNull(),
+  createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+  updatedAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+},
+(table) => [
+  index("literature_slug_unique").on(table.slug),
+  index("idx_literature_slug").on(table.slug),
+  index("idx_literature_applicationArea").on(table.applicationArea),
+  index("idx_literature_year").on(table.year),
+  index("idx_literature_addedDate").on(table.addedDate),
+]);
+
+export type Literature = typeof literature.$inferSelect;
+export type InsertLiterature = typeof literature.$inferInsert;
+
+// Article-Product relationship table
+export const articleProducts = mysqlTable("article_products", {
+  id: int().autoincrement().notNull(),
+  articleId: int().notNull().references(() => articles.id, { onDelete: "cascade" }),
+  productId: int().notNull().references(() => products.id, { onDelete: "cascade" }),
+  createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+},
+(table) => [
+  index("idx_article_products_articleId").on(table.articleId),
+  index("idx_article_products_productId").on(table.productId),
+]);
+
+// Literature-Product relationship table
+export const literatureProducts = mysqlTable("literature_products", {
+  id: int().autoincrement().notNull(),
+  literatureId: int().notNull().references(() => literature.id, { onDelete: "cascade" }),
+  productId: int().notNull().references(() => products.id, { onDelete: "cascade" }),
+  createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+},
+(table) => [
+  index("idx_literature_products_literatureId").on(table.literatureId),
+  index("idx_literature_products_productId").on(table.productId),
+]);
