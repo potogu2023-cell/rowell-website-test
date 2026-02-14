@@ -34,6 +34,9 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   // Build WHERE conditions
   const conditions: any[] = [];
   
+  // Always filter by active status
+  conditions.push(eq(products.status, 'active'));
+  
   // Search filter (search in productId, name, partNumber, brand)
   if (input?.search && input.search.trim().length > 0) {
     const searchTerm = input.search.trim().toLowerCase();
