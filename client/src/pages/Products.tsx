@@ -33,9 +33,18 @@ export default function Products() {
   const { data: categoriesData } = trpc.category.getWithProductCount.useQuery();
   const categories = categoriesData || [];
 
-  // Read category and brand from URL parameters on mount
+  // Read category, brand, and page from URL parameters on mount
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+    
+    // Read page parameter
+    const pageParam = params.get('page');
+    if (pageParam) {
+      const pageNum = parseInt(pageParam, 10);
+      if (!isNaN(pageNum) && pageNum > 0) {
+        setCurrentPage(pageNum);
+      }
+    }
     
     // Read category parameter
     const categoryParam = params.get('category');
@@ -137,11 +146,26 @@ export default function Products() {
     setSelectedCategoryId(categoryId);
     setSelectedCategoryName(categoryName);
     setCurrentPage(1);
+    
+    // Update URL parameter
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', '1');
+    if (categoryId) {
+      params.set('category', categoryId.toString());
+    } else {
+      params.delete('category');
+    }
+    window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
   const handleAdvancedFiltersChange = (filters: AdvancedFiltersState) => {
     setAdvancedFilters(filters);
     setCurrentPage(1);
+    
+    // Update URL parameter
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', '1');
+    window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
   const handleClearFilters = () => {
@@ -149,6 +173,11 @@ export default function Products() {
     setSelectedBrand(null);
     setSearchTerm("");
     setCurrentPage(1);
+    
+    // Update URL parameter
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', '1');
+    window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
   const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || searchTerm;
@@ -176,6 +205,12 @@ export default function Products() {
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
+    
+    // Update URL parameter
+    const params = new URLSearchParams(window.location.search);
+    params.set('page', newPage.toString());
+    window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+    
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
