@@ -45,14 +45,9 @@ export default function Navbar() {
               {t('nav.usp_standards')}
             </a>
           </Link>
-          <Link href="/applications">
+          <Link href="/learning">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              {t('nav.applications')}
-            </a>
-          </Link>
-          <Link href="/resources">
-            <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
-              {t('nav.resources')}
+              Learning Center
             </a>
           </Link>
           <Link href="/contact">
