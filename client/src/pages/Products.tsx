@@ -84,6 +84,15 @@ export default function Products() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     
+    // Update page from URL
+    const pageParam = params.get('page');
+    if (pageParam) {
+      const pageNum = parseInt(pageParam, 10);
+      if (!isNaN(pageNum) && pageNum > 0) {
+        setCurrentPage(pageNum);
+      }
+    }
+    
     // Update brand from URL
     const brandParam = params.get('brand');
     setSelectedBrand(brandParam);
