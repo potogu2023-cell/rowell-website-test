@@ -309,5 +309,53 @@
     "message_success": "تم إرسال الرسالة بنجاح! سنرد في أقرب وقت ممكن.",
     "message_error": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى.",
     "required_fields": "يرجى ملء جميع الحقول المطلوبة"
+  },
+  "learningCenter": {
+    "title": "مركز التعلم",
+    "subtitle": "رؤى الخبراء والأدلة التقنية وملاحظات التطبيق لمحترفي الكروماتوغرافيا",
+    "browseByArea": "تصفح حسب مجال التطبيق",
+    "applicationAreas": {
+      "pharmaceutical": "صيدلاني",
+      "environmental": "بيئي",
+      "foodSafety": "سلامة الغذاء",
+      "clinical": "سريري",
+      "biopharmaceutical": "صيدلاني حيوي",
+      "chemical": "كيميائي"
+    },
+    "categories": {
+      "allArticles": "جميع المقالات",
+      "applications": "التطبيقات",
+      "guides": "الأدلة",
+      "trends": "الاتجاهات",
+      "reviews": "المراجعات"
+    },
+    "stats": {
+      "articles": "مقالات",
+      "expertAuthors": "مؤلفون خبراء",
+      "totalViews": "إجمالي المشاهدات"
+    },
+    "articleCard": {
+      "readMore": "اقرأ المزيد"
+    },
+    "emptyState": {
+      "title": "لم يتم العثور على مقالات",
+      "description": "حاول تعديل الفلاتر أو تحقق لاحقًا من المحتوى الجديد."
+    },
+    "pagination": {
+      "previous": "السابق",
+      "next": "التالي",
+      "page": "صفحة"
+    },
+    "authors": {
+      "title": "مؤلفونا الخبراء",
+      "article": "مقالة",
+      "articles": "مقالات"
+    },
+    "categoryBadges": {
+      "applicationNote": "ملاحظة تطبيق",
+      "technicalGuide": "دليل تقني",
+      "industryTrend": "اتجاه الصناعة",
+      "literatureReview": "مراجعة الأدبيات"
+    }
   }
 }

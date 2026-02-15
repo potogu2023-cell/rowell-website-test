@@ -217,21 +217,7 @@
     "legal_disclaimer_en": "This website and Shanghai Luweimei E-commerce Co., Ltd. (ROWELL) are NOT authorized distributors or official agents of any brands mentioned herein. All products listed are independently sourced genuine items provided for reference and educational purposes only. All brand names, product names, and trademarks are the property of their respective owners. We are not affiliated with, endorsed by, or sponsored by any original manufacturers. We independently guarantee product authenticity, quality, and after-sales service. Please confirm that you understand and accept this disclaimer before making any purchase."
   },
   "common": {
-    "loading": "Loading...",
-    "error": "Error",
-    "success": "Success",
-    "cancel": "Cancel",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit",
-    "close": "Close",
-    "confirm": "Confirm",
-    "search": "Search",
-    "filter": "Filter",
-    "sort": "Sort",
-    "actions": "Actions",
-    "products": "Products",
-    "optional": "Optional"
+    "cancel": "Cancel"
   },
   "productDetail": {
     "loading": "Loading product details...",
@@ -1136,7 +1122,52 @@
     "message_text_label": "Your Message *",
     "message_text_placeholder": "Ask us anything about this product..."
   },
-  "common": {
-    "cancel": "Cancel"
+  "learningCenter": {
+    "title": "Learning Center",
+    "subtitle": "Expert insights, technical guides, and application notes for chromatography professionals",
+    "browseByArea": "Browse by Application Area",
+    "applicationAreas": {
+      "pharmaceutical": "Pharmaceutical",
+      "environmental": "Environmental",
+      "foodSafety": "Food Safety",
+      "clinical": "Clinical",
+      "biopharmaceutical": "Biopharmaceutical",
+      "chemical": "Chemical"
+    },
+    "categories": {
+      "allArticles": "All Articles",
+      "applications": "Applications",
+      "guides": "Guides",
+      "trends": "Trends",
+      "reviews": "Reviews"
+    },
+    "stats": {
+      "articles": "Articles",
+      "expertAuthors": "Expert Authors",
+      "totalViews": "Total Views"
+    },
+    "articleCard": {
+      "readMore": "Read More"
+    },
+    "emptyState": {
+      "title": "No articles found",
+      "description": "Try adjusting your filters or check back later for new content."
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page"
+    },
+    "authors": {
+      "title": "Our Expert Authors",
+      "article": "article",
+      "articles": "articles"
+    },
+    "categoryBadges": {
+      "applicationNote": "Application Note",
+      "technicalGuide": "Technical Guide",
+      "industryTrend": "Industry Trend",
+      "literatureReview": "Literature Review"
+    }
   }
 }

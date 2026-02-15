@@ -309,5 +309,53 @@
     "message_success": "메시지가 성공적으로 전송되었습니다! 가능한 한 빨리 답변드리겠습니다.",
     "message_error": "메시지 전송에 실패했습니다. 다시 시도해 주세요.",
     "required_fields": "모든 필수 항목을 입력해 주세요"
+  },
+  "learningCenter": {
+    "title": "학습 센터",
+    "subtitle": "크로마토그래피 전문가를 위한 전문가 인사이트, 기술 가이드 및 응용 노트",
+    "browseByArea": "응용 분야별 탐색",
+    "applicationAreas": {
+      "pharmaceutical": "제약",
+      "environmental": "환경",
+      "foodSafety": "식품 안전",
+      "clinical": "임상",
+      "biopharmaceutical": "바이오 제약",
+      "chemical": "화학"
+    },
+    "categories": {
+      "allArticles": "모든 기사",
+      "applications": "응용",
+      "guides": "가이드",
+      "trends": "트렌드",
+      "reviews": "리뷰"
+    },
+    "stats": {
+      "articles": "기사",
+      "expertAuthors": "전문 저자",
+      "totalViews": "총 조회수"
+    },
+    "articleCard": {
+      "readMore": "더 읽기"
+    },
+    "emptyState": {
+      "title": "기사를 찾을 수 없습니다",
+      "description": "필터를 조정하거나 나중에 새 콘텐츠를 확인하세요."
+    },
+    "pagination": {
+      "previous": "이전",
+      "next": "다음",
+      "page": "페이지"
+    },
+    "authors": {
+      "title": "전문 저자",
+      "article": "기사",
+      "articles": "기사"
+    },
+    "categoryBadges": {
+      "applicationNote": "응용 노트",
+      "technicalGuide": "기술 가이드",
+      "industryTrend": "산업 트렌드",
+      "literatureReview": "문헌 검토"
+    }
   }
 }

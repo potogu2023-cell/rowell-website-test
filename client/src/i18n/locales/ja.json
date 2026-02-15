@@ -307,5 +307,53 @@
     "message_success": "メッセージが正常に送信されました！できるだけ早く返信いたします。",
     "message_error": "メッセージの送信に失敗しました。もう一度お試しください。",
     "required_fields": "すべての必須項目を入力してください"
+  },
+  "learningCenter": {
+    "title": "ラーニングセンター",
+    "subtitle": "クロマトグラフィー専門家のための専門的な洞察、技術ガイド、アプリケーションノート",
+    "browseByArea": "応用分野別に閲覧",
+    "applicationAreas": {
+      "pharmaceutical": "医薬品",
+      "environmental": "環境",
+      "foodSafety": "食品安全",
+      "clinical": "臨床",
+      "biopharmaceutical": "バイオ医薬品",
+      "chemical": "化学"
+    },
+    "categories": {
+      "allArticles": "すべての記事",
+      "applications": "アプリケーション",
+      "guides": "ガイド",
+      "trends": "トレンド",
+      "reviews": "レビュー"
+    },
+    "stats": {
+      "articles": "記事",
+      "expertAuthors": "専門著者",
+      "totalViews": "総閲覧数"
+    },
+    "articleCard": {
+      "readMore": "続きを読む"
+    },
+    "emptyState": {
+      "title": "記事が見つかりません",
+      "description": "フィルターを調整するか、後で新しいコンテンツを確認してください。"
+    },
+    "pagination": {
+      "previous": "前へ",
+      "next": "次へ",
+      "page": "ページ"
+    },
+    "authors": {
+      "title": "専門著者",
+      "article": "記事",
+      "articles": "記事"
+    },
+    "categoryBadges": {
+      "applicationNote": "アプリケーションノート",
+      "technicalGuide": "技術ガイド",
+      "industryTrend": "業界トレンド",
+      "literatureReview": "文献レビュー"
+    }
   }
 }

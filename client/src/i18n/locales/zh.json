@@ -1114,5 +1114,53 @@
     "message_success": "留言发送成功！我们会尽快回复。",
     "message_error": "发送留言失败，请重试。",
     "required_fields": "请填写所有必填字段"
+  },
+  "learningCenter": {
+    "title": "学习中心",
+    "subtitle": "为色谱专业人士提供专家见解、技术指南和应用说明",
+    "browseByArea": "按应用领域浏览",
+    "applicationAreas": {
+      "pharmaceutical": "制药",
+      "environmental": "环境",
+      "foodSafety": "食品安全",
+      "clinical": "临床",
+      "biopharmaceutical": "生物制药",
+      "chemical": "化学"
+    },
+    "categories": {
+      "allArticles": "所有文章",
+      "applications": "应用",
+      "guides": "指南",
+      "trends": "趋势",
+      "reviews": "综述"
+    },
+    "stats": {
+      "articles": "篇文章",
+      "expertAuthors": "位专家作者",
+      "totalViews": "总浏览量"
+    },
+    "articleCard": {
+      "readMore": "阅读更多"
+    },
+    "emptyState": {
+      "title": "未找到文章",
+      "description": "请尝试调整筛选条件或稍后查看新内容。"
+    },
+    "pagination": {
+      "previous": "上一页",
+      "next": "下一页",
+      "page": "第"
+    },
+    "authors": {
+      "title": "我们的专家作者",
+      "article": "篇文章",
+      "articles": "篇文章"
+    },
+    "categoryBadges": {
+      "applicationNote": "应用说明",
+      "technicalGuide": "技术指南",
+      "industryTrend": "行业趋势",
+      "literatureReview": "文献综述"
+    }
   }
 }

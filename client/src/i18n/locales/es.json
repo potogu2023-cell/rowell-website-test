@@ -309,5 +309,53 @@
     "message_success": "¡Mensaje enviado con éxito! Responderemos lo antes posible.",
     "message_error": "Error al enviar el mensaje. Por favor, inténtelo de nuevo.",
     "required_fields": "Por favor, complete todos los campos obligatorios"
+  },
+  "learningCenter": {
+    "title": "Centro de Aprendizaje",
+    "subtitle": "Perspectivas expertas, guías técnicas y notas de aplicación para profesionales de cromatografía",
+    "browseByArea": "Explorar por área de aplicación",
+    "applicationAreas": {
+      "pharmaceutical": "Farmacéutico",
+      "environmental": "Ambiental",
+      "foodSafety": "Seguridad Alimentaria",
+      "clinical": "Clínico",
+      "biopharmaceutical": "Biofarmacéutico",
+      "chemical": "Químico"
+    },
+    "categories": {
+      "allArticles": "Todos los artículos",
+      "applications": "Aplicaciones",
+      "guides": "Guías",
+      "trends": "Tendencias",
+      "reviews": "Revisiones"
+    },
+    "stats": {
+      "articles": "Artículos",
+      "expertAuthors": "Autores expertos",
+      "totalViews": "Vistas totales"
+    },
+    "articleCard": {
+      "readMore": "Leer más"
+    },
+    "emptyState": {
+      "title": "No se encontraron artículos",
+      "description": "Intente ajustar sus filtros o vuelva más tarde para ver nuevo contenido."
+    },
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página"
+    },
+    "authors": {
+      "title": "Nuestros autores expertos",
+      "article": "artículo",
+      "articles": "artículos"
+    },
+    "categoryBadges": {
+      "applicationNote": "Nota de aplicación",
+      "technicalGuide": "Guía técnica",
+      "industryTrend": "Tendencia de la industria",
+      "literatureReview": "Revisión de literatura"
+    }
   }
 }

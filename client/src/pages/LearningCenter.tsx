@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
+import { useTranslation } from "react-i18next";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Search, Calendar, Eye, User, BookOpen, Microscope, FlaskConical, Leaf, Apple, Pill, Dna } from "lucide-react";
 
 export default function LearningCenter() {
+  const { t } = useTranslation();
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState<string | undefined>();
   const [area, setArea] = useState<string | undefined>();
@@ -26,12 +28,12 @@ export default function LearningCenter() {
   const { data: authors } = trpc.learningCenter.authors.list.useQuery();
 
   const applicationAreas = [
-    { value: 'pharmaceutical', label: 'Pharmaceutical', icon: Pill, color: 'bg-blue-100 text-blue-700' },
-    { value: 'environmental', label: 'Environmental', icon: Leaf, color: 'bg-green-100 text-green-700' },
-    { value: 'food-safety', label: 'Food Safety', icon: Apple, color: 'bg-orange-100 text-orange-700' },
-    { value: 'clinical', label: 'Clinical', icon: Microscope, color: 'bg-purple-100 text-purple-700' },
-    { value: 'biopharmaceutical', label: 'Biopharmaceutical', icon: Dna, color: 'bg-pink-100 text-pink-700' },
-    { value: 'chemical', label: 'Chemical', icon: FlaskConical, color: 'bg-cyan-100 text-cyan-700' },
+    { value: 'pharmaceutical', label: t('learningCenter.applicationAreas.pharmaceutical'), icon: Pill, color: 'bg-blue-100 text-blue-700' },
+    { value: 'environmental', label: t('learningCenter.applicationAreas.environmental'), icon: Leaf, color: 'bg-green-100 text-green-700' },
+    { value: 'food-safety', label: t('learningCenter.applicationAreas.foodSafety'), icon: Apple, color: 'bg-orange-100 text-orange-700' },
+    { value: 'clinical', label: t('learningCenter.applicationAreas.clinical'), icon: Microscope, color: 'bg-purple-100 text-purple-700' },
+    { value: 'biopharmaceutical', label: t('learningCenter.applicationAreas.biopharmaceutical'), icon: Dna, color: 'bg-pink-100 text-pink-700' },
+    { value: 'chemical', label: t('learningCenter.applicationAreas.chemical'), icon: FlaskConical, color: 'bg-cyan-100 text-cyan-700' },
   ];
 
   const formatDate = (dateString: string) => {
@@ -44,10 +46,10 @@ export default function LearningCenter() {
 
   const getCategoryBadge = (cat: string) => {
     const badges: Record<string, { label: string; variant: "default" | "secondary" | "outline" }> = {
-      'application-notes': { label: 'Application Note', variant: 'default' },
-      'technical-guides': { label: 'Technical Guide', variant: 'secondary' },
-      'industry-trends': { label: 'Industry Trend', variant: 'outline' },
-      'literature-reviews': { label: 'Literature Review', variant: 'outline' },
+      'application-notes': { label: t('learningCenter.categoryBadges.applicationNote'), variant: 'default' },
+      'technical-guides': { label: t('learningCenter.categoryBadges.technicalGuide'), variant: 'secondary' },
+      'industry-trends': { label: t('learningCenter.categoryBadges.industryTrend'), variant: 'outline' },
+      'literature-reviews': { label: t('learningCenter.categoryBadges.literatureReview'), variant: 'outline' },
     };
     return badges[cat] || { label: cat, variant: 'outline' };
   };
@@ -59,10 +61,10 @@ export default function LearningCenter() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl font-bold mb-4 text-gray-900">
-              Learning Center
+              {t('learningCenter.title')}
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Expert insights, technical guides, and application notes for chromatography professionals
+              {t('learningCenter.subtitle')}
             </p>
             
             {/* Stats */}
@@ -70,15 +72,15 @@ export default function LearningCenter() {
               <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mb-8">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary">{stats.total_articles}</div>
-                  <div className="text-sm text-muted-foreground">Articles</div>
+                  <div className="text-sm text-muted-foreground">{t('learningCenter.stats.articles')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary">{stats.total_authors}</div>
-                  <div className="text-sm text-muted-foreground">Expert Authors</div>
+                  <div className="text-sm text-muted-foreground">{t('learningCenter.stats.expertAuthors')}</div>
                 </div>
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary">{stats.total_views?.toLocaleString()}</div>
-                  <div className="text-sm text-muted-foreground">Total Views</div>
+                  <div className="text-sm text-muted-foreground">{t('learningCenter.stats.totalViews')}</div>
                 </div>
               </div>
             )}
@@ -89,7 +91,7 @@ export default function LearningCenter() {
       {/* Application Areas */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-6 text-center">Browse by Application Area</h2>
+          <h2 className="text-2xl font-bold mb-6 text-center">{t('learningCenter.browseByArea')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {applicationAreas.map((appArea) => {
               const Icon = appArea.icon;
@@ -126,11 +128,11 @@ export default function LearningCenter() {
             setPage(1);
           }} className="mb-8">
             <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-5">
-              <TabsTrigger value="all">All Articles</TabsTrigger>
-              <TabsTrigger value="application-notes">Applications</TabsTrigger>
-              <TabsTrigger value="technical-guides">Guides</TabsTrigger>
-              <TabsTrigger value="industry-trends">Trends</TabsTrigger>
-              <TabsTrigger value="literature-reviews">Reviews</TabsTrigger>
+              <TabsTrigger value="all">{t('learningCenter.categories.allArticles')}</TabsTrigger>
+              <TabsTrigger value="application-notes">{t('learningCenter.categories.applications')}</TabsTrigger>
+              <TabsTrigger value="technical-guides">{t('learningCenter.categories.guides')}</TabsTrigger>
+              <TabsTrigger value="industry-trends">{t('learningCenter.categories.trends')}</TabsTrigger>
+              <TabsTrigger value="literature-reviews">{t('learningCenter.categories.reviews')}</TabsTrigger>
             </TabsList>
           </Tabs>
 
@@ -204,11 +206,11 @@ export default function LearningCenter() {
                     onClick={() => setPage(p => Math.max(1, p - 1))}
                     disabled={page === 1}
                   >
-                    Previous
+                    {t('learningCenter.pagination.previous')}
                   </Button>
                   <div className="flex items-center gap-2 px-4">
                     <span className="text-sm text-muted-foreground">
-                      Page {page} of {data.pagination.totalPages}
+                      {t('learningCenter.pagination.page')} {page} of {data.pagination.totalPages}
                     </span>
                   </div>
                   <Button
@@ -216,7 +218,7 @@ export default function LearningCenter() {
                     onClick={() => setPage(p => p + 1)}
                     disabled={page >= data.pagination.totalPages}
                   >
-                    Next
+                    {t('learningCenter.pagination.next')}
                   </Button>
                 </div>
               )}
@@ -224,9 +226,9 @@ export default function LearningCenter() {
           ) : (
             <div className="text-center py-12">
               <BookOpen className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
-              <h3 className="text-xl font-semibold mb-2">No articles found</h3>
+              <h3 className="text-xl font-semibold mb-2">{t('learningCenter.emptyState.title')}</h3>
               <p className="text-muted-foreground">
-                Try adjusting your filters or check back later for new content.
+                {t('learningCenter.emptyState.description')}
               </p>
             </div>
           )}
@@ -237,7 +239,7 @@ export default function LearningCenter() {
       {authors && authors.length > 0 && (
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-2xl font-bold mb-6 text-center">Our Expert Authors</h2>
+            <h2 className="text-2xl font-bold mb-6 text-center">{t('learningCenter.authors.title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {(authors as any[]).map((author: any) => (
                 <Link key={author.id} href={`/learning/authors/${author.slug}`}>
@@ -253,7 +255,7 @@ export default function LearningCenter() {
                       <CardTitle className="text-lg">{author.full_name}</CardTitle>
                       <CardDescription>{author.title}</CardDescription>
                       <div className="text-sm text-muted-foreground mt-2">
-                        {author.article_count} {author.article_count === 1 ? 'article' : 'articles'}
+                        {author.article_count} {author.article_count === 1 ? t('learningCenter.authors.article') : t('learningCenter.authors.articles')}
                       </div>
                     </CardHeader>
                   </Card>
