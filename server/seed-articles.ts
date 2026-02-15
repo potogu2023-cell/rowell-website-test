@@ -5,6 +5,7 @@ import * as path from 'path';
 import matter from 'gray-matter';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { eq } from 'drizzle-orm';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -67,22 +68,31 @@ export async function seedArticles() {
   console.log('\n=== Seeding Authors ===');
   let authorsCreated = 0;
   let authorsExisted = 0;
+  const authorIdMap = new Map<string, number>(); // slug -> id mapping
   
   for (const profile of authorProfiles) {
     try {
-      await db.insert(authors).values({
+      const result = await db.insert(authors).values({
         ...profile,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       });
-      console.log(`✓ Created author: ${profile.name}`);
+      const authorId = Number(result.insertId);
+      authorIdMap.set(profile.slug, authorId);
+      console.log(`✓ Created author: ${profile.fullName} (ID: ${authorId})`);
       authorsCreated++;
     } catch (error: any) {
-      if (error.code === 'ER_DUP_ENTRY') {
-        console.log(`- Author already exists: ${profile.name}`);
+      if (error.code === 'ER_DUP_ENTRY' || error.message?.includes('Duplicate')) {
+        console.log(`- Author already exists: ${profile.fullName}`);
+        // Fetch existing author ID
+        const existingAuthor = await db.select().from(authors).where(eq(authors.slug, profile.slug)).limit(1);
+        if (existingAuthor.length > 0) {
+          authorIdMap.set(profile.slug, existingAuthor[0].id);
+          console.log(`  Found existing ID: ${existingAuthor[0].id}`);
+        }
         authorsExisted++;
       } else {
-        console.error(`✗ Error creating author ${profile.name}:`, error.message);
+        console.error(`✗ Error creating author ${profile.fullName}:`, error.message);
       }
     }
   }
@@ -126,6 +136,15 @@ export async function seedArticles() {
         keywords
       } = frontmatter;
       
+      // Get author ID from slug
+      const authorId = authorIdMap.get(author_slug);
+      
+      if (!authorId) {
+        console.error(`✗ Author not found for slug: ${author_slug} in ${filename}`);
+        articlesError++;
+        continue;
+      }
+      
       // Insert article
       await db.insert(articles).values({
         title,
@@ -134,22 +153,22 @@ export async function seedArticles() {
         excerpt: description,
         category: category as any,
         applicationArea: area as any,
-        authorSlug: author_slug,
+        authorId: authorId,
         featuredImage: null,
         tags: keywords ? JSON.stringify(keywords.split(', ')) : null,
         metaDescription: description,
         metaKeywords: keywords,
-        publishedAt: new Date(published_date),
+        publishedAt: new Date(published_date).toISOString(),
         viewCount: 0,
         featured: false,
-        createdAt: new Date(),
-        updatedAt: new Date()
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
       });
       
       console.log(`✓ Created: ${title}`);
       articlesCreated++;
     } catch (error: any) {
-      if (error.code === 'ER_DUP_ENTRY') {
+      if (error.code === 'ER_DUP_ENTRY' || error.message?.includes('Duplicate')) {
         console.log(`- Article already exists: ${filename}`);
         articlesExisted++;
       } else {
