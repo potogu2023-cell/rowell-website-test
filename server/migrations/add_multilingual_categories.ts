@@ -55,15 +55,4 @@ export async function addMultilingualCategories() {
   console.log("All translations updated successfully!");
 }
 
-// Run migration if this file is executed directly
-if (require.main === module) {
-  addMultilingualCategories()
-    .then(() => {
-      console.log("Migration completed");
-      process.exit(0);
-    })
-    .catch((error) => {
-      console.error("Migration failed:", error);
-      process.exit(1);
-    });
-}
+// Note: This migration is run via tRPC or manually, not directly
