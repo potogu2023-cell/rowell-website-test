@@ -99,7 +99,10 @@ export async function seedArticles() {
   
   // Step 2: Import articles
   console.log('\n=== Seeding Articles ===');
+  console.log('DEBUG: __dirname =', __dirname);
+  console.log('DEBUG: __filename =', __filename);
   const articlesDir = path.join(__dirname, '../data/articles');
+  console.log('DEBUG: articlesDir =', articlesDir);
   
   if (!fs.existsSync(articlesDir)) {
     console.error(`Articles directory not found: ${articlesDir}`);
@@ -113,6 +116,8 @@ export async function seedArticles() {
   
   const articleFiles = fs.readdirSync(articlesDir)
     .filter(file => file.startsWith('ARTICLE_') && file.endsWith('.md'));
+  console.log('DEBUG: Found', articleFiles.length, 'article files');
+  console.log('DEBUG: First 3 files:', articleFiles.slice(0, 3));
   
   let articlesCreated = 0;
   let articlesExisted = 0;
