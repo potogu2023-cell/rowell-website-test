@@ -46,6 +46,7 @@ function Router() {
           
           {/* Learning Center routes (replacing Applications and Resources) */}
           <Route path={"/learning"} component={LearningCenter} />
+          <Route path={"/learning-center"} component={LearningCenter} />
           <Route path={"/learning/authors/:slug"} component={AuthorDetail} />
           <Route path={"/learning/:slug"} component={ArticleDetail} />
           <Route path={"/applications"} component={LearningCenter} />
