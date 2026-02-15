@@ -35,6 +35,7 @@ import { checkGcSlugRouter } from "./check-gc-slug";
 import { updateYmcTosohRouter } from "./update-ymc-tosoh-router";
 import { updateDimensionsRouter } from "./update-dimensions-router";
 import { learningCenterRouter } from "./learning-center-api";
+import { seedArticlesRouter } from "./seed-articles-router";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
 
 
@@ -652,6 +653,9 @@ export const appRouter = router({
   
   // Learning Center routes
   learningCenter: learningCenterRouter,
+  
+  // Seed articles (one-time operation)
+  seedArticles: seedArticlesRouter,
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
