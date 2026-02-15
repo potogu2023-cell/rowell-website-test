@@ -1,60 +1,47 @@
 import { Router } from "express";
-import { db } from "./db";
-import { articles, authors, categories, tags, articleTags } from "../drizzle/schema";
-import { eq, desc, and, sql, inArray } from "drizzle-orm";
+import { getDb } from "./db";
+import { articles, authors } from "../drizzle/schema";
+import { eq, desc, and, sql } from "drizzle-orm";
 
 export const learningCenterRouter = Router();
 
 // Get all articles with pagination
 learningCenterRouter.get("/articles", async (req, res) => {
   try {
+    const db = await getDb();
     const page = parseInt(req.query.page as string) || 1;
     const limit = parseInt(req.query.limit as string) || 12;
     const offset = (page - 1) * limit;
-    const categoryId = req.query.categoryId as string;
-    const tagId = req.query.tagId as string;
+    const category = req.query.category as string;
+    const applicationArea = req.query.applicationArea as string;
 
     let query = db
       .select({
         id: articles.id,
         title: articles.title,
         slug: articles.slug,
-        excerpt: articles.excerpt,
-        featuredImage: articles.featuredImage,
-        publishedAt: articles.publishedAt,
-        readTime: articles.readTime,
+        metaDescription: articles.metaDescription,
+        publishedDate: articles.publishedDate,
         viewCount: articles.viewCount,
-        categoryId: articles.categoryId,
-        categoryName: categories.name,
-        categorySlug: categories.slug,
+        category: articles.category,
+        applicationArea: articles.applicationArea,
         authorId: articles.authorId,
-        authorName: authors.name,
-        authorAvatar: authors.avatar,
+        authorName: authors.fullName,
       })
       .from(articles)
-      .leftJoin(categories, eq(articles.categoryId, categories.id))
       .leftJoin(authors, eq(articles.authorId, authors.id))
-      .where(eq(articles.status, "published"))
-      .orderBy(desc(articles.publishedAt))
+      .orderBy(desc(articles.publishedDate))
       .limit(limit)
       .offset(offset);
 
     // Apply category filter if provided
-    if (categoryId) {
-      query = query.where(eq(articles.categoryId, parseInt(categoryId)));
+    if (category) {
+      query = query.where(eq(articles.category, category as any));
     }
 
-    // Apply tag filter if provided
-    if (tagId) {
-      const articleIds = await db
-        .select({ articleId: articleTags.articleId })
-        .from(articleTags)
-        .where(eq(articleTags.tagId, parseInt(tagId)));
-      
-      const ids = articleIds.map(a => a.articleId);
-      if (ids.length > 0) {
-        query = query.where(inArray(articles.id, ids));
-      }
+    // Apply application area filter if provided
+    if (applicationArea) {
+      query = query.where(eq(articles.applicationArea, applicationArea as any));
     }
 
     const result = await query;
@@ -62,8 +49,7 @@ learningCenterRouter.get("/articles", async (req, res) => {
     // Get total count
     const totalResult = await db
       .select({ count: sql<number>`count(*)` })
-      .from(articles)
-      .where(eq(articles.status, "published"));
+      .from(articles);
 
     const total = Number(totalResult[0].count);
 
@@ -85,6 +71,7 @@ learningCenterRouter.get("/articles", async (req, res) => {
 // Get single article by slug
 learningCenterRouter.get("/articles/:slug", async (req, res) => {
   try {
+    const db = await getDb();
     const { slug } = req.params;
 
     const result = await db
@@ -93,25 +80,22 @@ learningCenterRouter.get("/articles/:slug", async (req, res) => {
         title: articles.title,
         slug: articles.slug,
         content: articles.content,
-        excerpt: articles.excerpt,
-        featuredImage: articles.featuredImage,
-        publishedAt: articles.publishedAt,
+        metaDescription: articles.metaDescription,
+        keywords: articles.keywords,
+        publishedDate: articles.publishedDate,
         updatedAt: articles.updatedAt,
-        readTime: articles.readTime,
         viewCount: articles.viewCount,
-        categoryId: articles.categoryId,
-        categoryName: categories.name,
-        categorySlug: categories.slug,
+        category: articles.category,
+        applicationArea: articles.applicationArea,
         authorId: articles.authorId,
-        authorName: authors.name,
+        authorName: authors.fullName,
         authorTitle: authors.title,
-        authorBio: authors.bio,
-        authorAvatar: authors.avatar,
+        authorBio: authors.biography,
+        authorPhoto: authors.photoUrl,
       })
       .from(articles)
-      .leftJoin(categories, eq(articles.categoryId, categories.id))
       .leftJoin(authors, eq(articles.authorId, authors.id))
-      .where(and(eq(articles.slug, slug), eq(articles.status, "published")))
+      .where(eq(articles.slug, slug))
       .limit(1);
 
     if (result.length === 0) {
@@ -120,46 +104,32 @@ learningCenterRouter.get("/articles/:slug", async (req, res) => {
 
     const article = result[0];
 
-    // Get article tags
-    const articleTagsResult = await db
-      .select({
-        id: tags.id,
-        name: tags.name,
-        slug: tags.slug,
-      })
-      .from(articleTags)
-      .leftJoin(tags, eq(articleTags.tagId, tags.id))
-      .where(eq(articleTags.articleId, article.id));
-
     // Increment view count
     await db
       .update(articles)
       .set({ viewCount: sql`${articles.viewCount} + 1` })
       .where(eq(articles.id, article.id));
 
-    res.json({
-      ...article,
-      tags: articleTagsResult,
-    });
+    res.json(article);
   } catch (error) {
     console.error("Error fetching article:", error);
     res.status(500).json({ error: "Failed to fetch article" });
   }
 });
 
-// Get all categories
+// Get all categories (return enum values)
 learningCenterRouter.get("/categories", async (req, res) => {
   try {
+    const db = await getDb();
+    
+    // Get unique categories with article counts
     const result = await db
       .select({
-        id: categories.id,
-        name: categories.name,
-        slug: categories.slug,
-        description: categories.description,
-        articleCount: sql<number>`(SELECT COUNT(*) FROM ${articles} WHERE ${articles.categoryId} = ${categories.id} AND ${articles.status} = 'published')`,
+        category: articles.category,
+        count: sql<number>`count(*)`,
       })
-      .from(categories)
-      .orderBy(categories.name);
+      .from(articles)
+      .groupBy(articles.category);
 
     res.json(result);
   } catch (error) {
@@ -168,41 +138,44 @@ learningCenterRouter.get("/categories", async (req, res) => {
   }
 });
 
-// Get all tags
-learningCenterRouter.get("/tags", async (req, res) => {
+// Get all application areas (return enum values)
+learningCenterRouter.get("/application-areas", async (req, res) => {
   try {
+    const db = await getDb();
+    
+    // Get unique application areas with article counts
     const result = await db
       .select({
-        id: tags.id,
-        name: tags.name,
-        slug: tags.slug,
-        articleCount: sql<number>`(SELECT COUNT(*) FROM ${articleTags} WHERE ${articleTags.tagId} = ${tags.id})`,
+        applicationArea: articles.applicationArea,
+        count: sql<number>`count(*)`,
       })
-      .from(tags)
-      .orderBy(tags.name);
+      .from(articles)
+      .groupBy(articles.applicationArea);
 
     res.json(result);
   } catch (error) {
-    console.error("Error fetching tags:", error);
-    res.status(500).json({ error: "Failed to fetch tags" });
+    console.error("Error fetching application areas:", error);
+    res.status(500).json({ error: "Failed to fetch application areas" });
   }
 });
 
 // Get all authors
 learningCenterRouter.get("/authors", async (req, res) => {
   try {
+    const db = await getDb();
+    
     const result = await db
       .select({
         id: authors.id,
-        name: authors.name,
+        name: authors.fullName,
         slug: authors.slug,
         title: authors.title,
-        bio: authors.bio,
-        avatar: authors.avatar,
-        articleCount: sql<number>`(SELECT COUNT(*) FROM ${articles} WHERE ${articles.authorId} = ${authors.id} AND ${articles.status} = 'published')`,
+        bio: authors.biography,
+        photo: authors.photoUrl,
+        articleCount: sql<number>`(SELECT COUNT(*) FROM ${articles} WHERE ${articles.authorId} = ${authors.id})`,
       })
       .from(authors)
-      .orderBy(authors.name);
+      .orderBy(authors.fullName);
 
     res.json(result);
   } catch (error) {
@@ -214,6 +187,7 @@ learningCenterRouter.get("/authors", async (req, res) => {
 // Get single author by slug
 learningCenterRouter.get("/authors/:slug", async (req, res) => {
   try {
+    const db = await getDb();
     const { slug } = req.params;
 
     const result = await db
@@ -234,18 +208,15 @@ learningCenterRouter.get("/authors/:slug", async (req, res) => {
         id: articles.id,
         title: articles.title,
         slug: articles.slug,
-        excerpt: articles.excerpt,
-        featuredImage: articles.featuredImage,
-        publishedAt: articles.publishedAt,
-        readTime: articles.readTime,
+        metaDescription: articles.metaDescription,
+        publishedDate: articles.publishedDate,
         viewCount: articles.viewCount,
-        categoryName: categories.name,
-        categorySlug: categories.slug,
+        category: articles.category,
+        applicationArea: articles.applicationArea,
       })
       .from(articles)
-      .leftJoin(categories, eq(articles.categoryId, categories.id))
-      .where(and(eq(articles.authorId, author.id), eq(articles.status, "published")))
-      .orderBy(desc(articles.publishedAt));
+      .where(eq(articles.authorId, author.id))
+      .orderBy(desc(articles.publishedDate));
 
     res.json({
       ...author,
@@ -260,25 +231,22 @@ learningCenterRouter.get("/authors/:slug", async (req, res) => {
 // Get featured articles (top 3 by view count)
 learningCenterRouter.get("/featured", async (req, res) => {
   try {
+    const db = await getDb();
+    
     const result = await db
       .select({
         id: articles.id,
         title: articles.title,
         slug: articles.slug,
-        excerpt: articles.excerpt,
-        featuredImage: articles.featuredImage,
-        publishedAt: articles.publishedAt,
-        readTime: articles.readTime,
+        metaDescription: articles.metaDescription,
+        publishedDate: articles.publishedDate,
         viewCount: articles.viewCount,
-        categoryName: categories.name,
-        categorySlug: categories.slug,
-        authorName: authors.name,
-        authorAvatar: authors.avatar,
+        category: articles.category,
+        applicationArea: articles.applicationArea,
+        authorName: authors.fullName,
       })
       .from(articles)
-      .leftJoin(categories, eq(articles.categoryId, categories.id))
       .leftJoin(authors, eq(articles.authorId, authors.id))
-      .where(eq(articles.status, "published"))
       .orderBy(desc(articles.viewCount))
       .limit(3);
 
@@ -292,11 +260,12 @@ learningCenterRouter.get("/featured", async (req, res) => {
 // Get related articles (same category, exclude current article)
 learningCenterRouter.get("/articles/:slug/related", async (req, res) => {
   try {
+    const db = await getDb();
     const { slug } = req.params;
 
     // First get the current article
     const currentArticle = await db
-      .select({ id: articles.id, categoryId: articles.categoryId })
+      .select({ id: articles.id, category: articles.category })
       .from(articles)
       .where(eq(articles.slug, slug))
       .limit(1);
@@ -311,23 +280,19 @@ learningCenterRouter.get("/articles/:slug/related", async (req, res) => {
         id: articles.id,
         title: articles.title,
         slug: articles.slug,
-        excerpt: articles.excerpt,
-        featuredImage: articles.featuredImage,
-        publishedAt: articles.publishedAt,
-        readTime: articles.readTime,
-        categoryName: categories.name,
-        categorySlug: categories.slug,
+        metaDescription: articles.metaDescription,
+        publishedDate: articles.publishedDate,
+        viewCount: articles.viewCount,
+        category: articles.category,
       })
       .from(articles)
-      .leftJoin(categories, eq(articles.categoryId, categories.id))
       .where(
         and(
-          eq(articles.categoryId, currentArticle[0].categoryId),
-          eq(articles.status, "published"),
+          eq(articles.category, currentArticle[0].category),
           sql`${articles.id} != ${currentArticle[0].id}`
         )
       )
-      .orderBy(desc(articles.publishedAt))
+      .orderBy(desc(articles.publishedDate))
       .limit(3);
 
     res.json(result);
