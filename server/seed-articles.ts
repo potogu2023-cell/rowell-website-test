@@ -12,39 +12,43 @@ const __dirname = dirname(__filename);
 // Author profiles
 const authorProfiles = [
   {
-    name: 'Dr. Michael Zhang',
+    fullName: 'Dr. Michael Zhang',
     slug: 'dr-michael-zhang',
     title: 'Technical Director',
-    bio: 'Dr. Michael Zhang is a seasoned chromatography expert with over 15 years of experience in analytical chemistry. He specializes in HPLC method development and instrumentation, providing practical guidance for laboratories worldwide.',
+    yearsOfExperience: 15,
+    education: 'Ph.D. in Analytical Chemistry',
+    biography: 'Dr. Michael Zhang is a seasoned chromatography expert with over 15 years of experience in analytical chemistry. He specializes in HPLC method development and instrumentation, providing practical guidance for laboratories worldwide.',
     expertise: JSON.stringify(['HPLC', 'Method Development', 'Instrumentation', 'Troubleshooting']),
-    email: 'michael.zhang@rowellhplc.com',
     photoUrl: null
   },
   {
-    name: 'Dr. Evelyn Reed',
+    fullName: 'Dr. Evelyn Reed',
     slug: 'dr-evelyn-reed',
     title: 'Pharmaceutical Analysis Expert',
-    bio: 'Dr. Evelyn Reed brings extensive pharmaceutical industry experience, specializing in drug development and quality control. Her expertise spans API characterization, impurity profiling, and regulatory compliance.',
+    yearsOfExperience: 12,
+    education: 'Ph.D. in Pharmaceutical Sciences',
+    biography: 'Dr. Evelyn Reed brings extensive pharmaceutical industry experience, specializing in drug development and quality control. Her expertise spans API characterization, impurity profiling, and regulatory compliance.',
     expertise: JSON.stringify(['Pharmaceutical Analysis', 'Drug Development', 'Quality Control', 'Regulatory Compliance']),
-    email: 'evelyn.reed@rowellhplc.com',
     photoUrl: null
   },
   {
-    name: 'Dr. James Chen',
+    fullName: 'Dr. James Chen',
     slug: 'dr-james-chen',
     title: 'Environmental & Food Safety Specialist',
-    bio: 'Dr. James Chen focuses on environmental monitoring and food safety testing using chromatographic techniques. He has published numerous papers on pesticide analysis and contaminant detection.',
+    yearsOfExperience: 10,
+    education: 'Ph.D. in Environmental Chemistry',
+    biography: 'Dr. James Chen focuses on environmental monitoring and food safety testing using chromatographic techniques. He has published numerous papers on pesticide analysis and contaminant detection.',
     expertise: JSON.stringify(['Environmental Testing', 'Food Safety', 'Pesticide Analysis', 'Contaminant Detection']),
-    email: 'james.chen@rowellhplc.com',
     photoUrl: null
   },
   {
-    name: 'Dr. Sarah Martinez',
+    fullName: 'Dr. Sarah Martinez',
     slug: 'dr-sarah-martinez',
     title: 'Clinical & Biopharmaceutical Specialist',
-    bio: 'Dr. Sarah Martinez specializes in clinical diagnostics and biopharmaceutical analysis. Her work includes therapeutic drug monitoring, biomarker discovery, and monoclonal antibody characterization.',
+    yearsOfExperience: 8,
+    education: 'Ph.D. in Clinical Chemistry',
+    biography: 'Dr. Sarah Martinez specializes in clinical diagnostics and biopharmaceutical analysis. Her work includes therapeutic drug monitoring, biomarker discovery, and monoclonal antibody characterization.',
     expertise: JSON.stringify(['Clinical Diagnostics', 'Therapeutic Drug Monitoring', 'Biopharmaceuticals', 'Biomarker Analysis']),
-    email: 'sarah.martinez@rowellhplc.com',
     photoUrl: null
   }
 ];
