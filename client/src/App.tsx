@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import LearningCenter from "./pages/LearningCenter";
 import ArticleDetail from "./pages/ArticleDetail";
 import AuthorDetail from "./pages/AuthorDetail";
+import AdminSeed from "./pages/AdminSeed";
 
 import TestFilters from "./pages/TestFilters";
 import ProductDetail from "./pages/ProductDetail";
@@ -54,6 +55,7 @@ function Router() {
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/contact"} component={Contact} />
           <Route path={"/admin/messages"} component={AdminMessages} />
+          <Route path={"/admin/seed"} component={AdminSeed} />
 
           <Route path={"/test-filters"} component={TestFilters} />
           <Route path={"/404"} component={NotFound} />
