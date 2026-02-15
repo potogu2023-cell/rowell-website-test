@@ -166,12 +166,4 @@ export async function seedArticles() {
   return summary;
 }
 
-// If run directly
-if (require.main === module) {
-  seedArticles()
-    .then(() => process.exit(0))
-    .catch(error => {
-      console.error('Fatal error:', error);
-      process.exit(1);
-    });
-}
+// Note: This function is called via tRPC router, not directly
