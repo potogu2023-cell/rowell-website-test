@@ -15,6 +15,20 @@ export default function LiteratureDetail() {
 
   const { data: literature, isLoading } = trpc.learningCenter.literature.bySlug.useQuery(slug);
 
+  // Debug: Log literature data
+  React.useEffect(() => {
+    if (literature) {
+      console.log('Literature Data:', {
+        slug: literature.slug,
+        contentEnhanced: literature.contentEnhanced,
+        hasExpandedAnalysis: !!literature.expandedAnalysis,
+        hasMethodologyDetails: !!literature.methodologyDetails,
+        hasPracticalGuide: !!literature.practicalGuide,
+        hasOriginalPaperUrl: !!literature.originalPaperUrl
+      });
+    }
+  }, [literature]);
+
   const getAreaBadgeColor = (area: string) => {
     const colors: Record<string, string> = {
       'pharmaceutical': 'bg-blue-100 text-blue-700',
