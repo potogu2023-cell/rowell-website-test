@@ -471,6 +471,13 @@ export const literature = mysqlTable("literature", {
   viewCount: int().default(0).notNull(),
   createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
   updatedAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+  // Enhanced content fields
+  originalPaperUrl: varchar('original_paper_url', { length: 500 }),
+  expandedAnalysis: text('expanded_analysis'),
+  methodologyDetails: json('methodology_details'),
+  practicalGuide: text('practical_guide'),
+  contentEnhanced: int('content_enhanced').default(0).notNull(),
+  enhancedAt: timestamp('enhanced_at', { mode: 'string' }),
 },
 (table) => [
   index("literature_slug_unique").on(table.slug),

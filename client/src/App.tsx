@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import LearningCenter from "./pages/LearningCenter";
 import ArticleDetail from "./pages/ArticleDetail";
 import AuthorDetail from "./pages/AuthorDetail";
+import LiteratureDetail from "./pages/LiteratureDetail";
 import AdminSeed from "./pages/AdminSeed";
 
 import TestFilters from "./pages/TestFilters";
@@ -48,6 +49,7 @@ function Router() {
           <Route path={"/learning"} component={LearningCenter} />
           <Route path={"/learning-center"} component={LearningCenter} />
           <Route path={"/learning/authors/:slug"} component={AuthorDetail} />
+          <Route path={"/learning/literature/:slug"} component={LiteratureDetail} />
           <Route path={"/learning/:slug"} component={ArticleDetail} />
           <Route path={"/applications"} component={LearningCenter} />
           <Route path={"/resources"} component={LearningCenter} />
