@@ -171,7 +171,7 @@ export default function LiteratureDetail() {
           )}
 
           {/* Enhanced Content Section */}
-          {literature.contentEnhanced && (
+          {true && (
             <>
               {/* Expanded Analysis */}
               {literature.expandedAnalysis && (
