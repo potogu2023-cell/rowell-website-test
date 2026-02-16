@@ -11,6 +11,13 @@ export type TrpcContext = {
 export async function createContext(
   opts: CreateExpressContextOptions
 ): Promise<TrpcContext> {
+  // Debug: Log request details
+  if (opts.req.url?.includes('literature')) {
+    console.log('[tRPC Debug] Request URL:', opts.req.url);
+    console.log('[tRPC Debug] Query params:', opts.req.query);
+    console.log('[tRPC Debug] Body:', opts.req.body);
+  }
+  
   let user: User | null = null;
 
   try {
