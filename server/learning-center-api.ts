@@ -1,7 +1,7 @@
 import { router, publicProcedure } from "./_core/trpc";
 import { z } from "zod";
 import { getDb } from "./db";
-import { articles, authors } from "../drizzle/schema";
+import { articles, authors, literature } from "../drizzle/schema";
 import { eq, desc, and, sql } from "drizzle-orm";
 
 export const learningCenterRouter = router({
@@ -219,6 +219,90 @@ export const learningCenterRouter = router({
       }),
   }),
 
+  literature: router({
+    list: publicProcedure
+      .input(
+        z.object({
+          page: z.number().optional().default(1),
+          pageSize: z.number().optional().default(12),
+          area: z.string().optional(),
+        })
+      )
+      .query(async ({ input }) => {
+        const db = await getDb();
+        const offset = (input.page - 1) * input.pageSize;
+
+        let conditions = [];
+        if (input.area) {
+          conditions.push(eq(literature.applicationArea, input.area as any));
+        }
+
+        const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
+
+        const result = await db
+          .select({
+            id: literature.id,
+            title: literature.title,
+            slug: literature.slug,
+            authors: literature.authors,
+            journal: literature.journal,
+            year: literature.year,
+            summary: literature.summary,
+            applicationArea: literature.applicationArea,
+            addedDate: literature.addedDate,
+            viewCount: literature.viewCount,
+          })
+          .from(literature)
+          .where(whereClause)
+          .orderBy(desc(literature.addedDate))
+          .limit(input.pageSize)
+          .offset(offset);
+
+        const totalResult = await db
+          .select({ count: sql<number>`count(*)` })
+          .from(literature)
+          .where(whereClause);
+
+        const total = Number(totalResult[0].count);
+
+        return {
+          literature: result,
+          pagination: {
+            page: input.page,
+            pageSize: input.pageSize,
+            total,
+            totalPages: Math.ceil(total / input.pageSize),
+          },
+        };
+      }),
+
+    bySlug: publicProcedure
+      .input(z.string())
+      .query(async ({ input }) => {
+        const db = await getDb();
+
+        const result = await db
+          .select()
+          .from(literature)
+          .where(eq(literature.slug, input))
+          .limit(1);
+
+        if (result.length === 0) {
+          throw new Error("Literature not found");
+        }
+
+        const lit = result[0];
+
+        // Increment view count
+        await db
+          .update(literature)
+          .set({ viewCount: sql`${literature.viewCount} + 1` })
+          .where(eq(literature.id, lit.id));
+
+        return lit;
+      }),
+  }),
+
   stats: publicProcedure.query(async () => {
     const db = await getDb();
 
@@ -226,18 +310,26 @@ export const learningCenterRouter = router({
       .select({ count: sql<number>`count(*)` })
       .from(articles);
 
+    const totalLiterature = await db
+      .select({ count: sql<number>`count(*)` })
+      .from(literature);
+
     const totalAuthors = await db
       .select({ count: sql<number>`count(*)` })
       .from(authors);
 
-    const totalViews = await db
+    const totalArticleViews = await db
       .select({ total: sql<number>`SUM(${articles.viewCount})` })
       .from(articles);
 
+    const totalLiteratureViews = await db
+      .select({ total: sql<number>`SUM(${literature.viewCount})` })
+      .from(literature);
+
     return {
-      totalArticles: Number(totalArticles[0].count),
+      totalArticles: Number(totalArticles[0].count) + Number(totalLiterature[0].count),
       totalAuthors: Number(totalAuthors[0].count),
-      totalViews: Number(totalViews[0].total || 0),
+      totalViews: Number(totalArticleViews[0].total || 0) + Number(totalLiteratureViews[0].total || 0),
     };
   }),
 });
