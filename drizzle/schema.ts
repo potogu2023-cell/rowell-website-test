@@ -463,7 +463,7 @@ export const literature = mysqlTable("literature", {
   year: int().notNull(),
   doi: varchar({ length: 255 }),
   url: varchar({ length: 1000 }).notNull(),
-  applicationArea: mysqlEnum('application_area', ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical']).notNull(),
+  applicationArea: mysqlEnum("application_area", ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical']).notNull(),
   summary: text().notNull(),
   keyFindings: text('key_findings'),
   relevance: text(),
