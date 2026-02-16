@@ -105,6 +105,7 @@ export default function ArticleDetail() {
 
           {/* Author Info */}
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
+            {article.author_slug ? (
             <Link href={`/learning/authors/${article.author_slug}`}>
               <div className="flex items-center gap-2 hover:text-primary cursor-pointer">
                 {article.author_photo && (
@@ -120,6 +121,21 @@ export default function ArticleDetail() {
                 </div>
               </div>
             </Link>
+            ) : (
+            <div className="flex items-center gap-2">
+              {article.author_photo && (
+                <img
+                  src={article.author_photo}
+                  alt={article.author_name}
+                  className="w-10 h-10 rounded-full object-cover"
+                />
+              )}
+              <div>
+                <div className="font-medium text-foreground">{article.author_name}</div>
+                <div className="text-xs">{article.author_title}</div>
+              </div>
+            </div>
+            )}
             
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
