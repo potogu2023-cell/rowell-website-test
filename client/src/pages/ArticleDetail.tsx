@@ -105,34 +105,34 @@ export default function ArticleDetail() {
 
           {/* Author Info */}
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            {article.author_slug ? (
-            <Link href={`/learning/authors/${article.author_slug}`}>
+            {article.authorSlug ? (
+            <Link href={`/learning/authors/${article.authorSlug}`}>
               <div className="flex items-center gap-2 hover:text-primary cursor-pointer">
-                {article.author_photo && (
+                {article.authorPhoto && (
                   <img
-                    src={article.author_photo}
-                    alt={article.author_name}
+                    src={article.authorPhoto}
+                    alt={article.authorName}
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 )}
                 <div>
-                  <div className="font-medium text-foreground">{article.author_name}</div>
-                  <div className="text-xs">{article.author_title}</div>
+                  <div className="font-medium text-foreground">{article.authorName}</div>
+                  <div className="text-xs">{article.authorTitle}</div>
                 </div>
               </div>
             </Link>
             ) : (
             <div className="flex items-center gap-2">
-              {article.author_photo && (
+              {article.authorPhoto && (
                 <img
-                  src={article.author_photo}
-                  alt={article.author_name}
+                  src={article.authorPhoto}
+                  alt={article.authorName}
                   className="w-10 h-10 rounded-full object-cover"
                 />
               )}
               <div>
-                <div className="font-medium text-foreground">{article.author_name}</div>
-                <div className="text-xs">{article.author_title}</div>
+                <div className="font-medium text-foreground">{article.authorName}</div>
+                <div className="text-xs">{article.authorTitle}</div>
               </div>
             </div>
             )}
@@ -207,17 +207,17 @@ export default function ArticleDetail() {
         <Card className="mt-12">
           <CardHeader>
             <div className="flex items-start gap-4">
-              {article.author_photo && (
+              {article.authorPhoto && (
                 <img
-                  src={article.author_photo}
-                  alt={article.author_name}
+                  src={article.authorPhoto}
+                  alt={article.authorName}
                   className="w-20 h-20 rounded-full object-cover"
                 />
               )}
               <div className="flex-1">
-                <h3 className="text-xl font-bold mb-1">{article.author_name}</h3>
-                <p className="text-muted-foreground mb-3">{article.author_title}</p>
-                <Link href={`/learning/authors/${article.author_slug}`}>
+                <h3 className="text-xl font-bold mb-1">{article.authorName}</h3>
+                <p className="text-muted-foreground mb-3">{article.authorTitle}</p>
+                <Link href={`/learning/authors/${article.authorSlug}`}>
                   <Button variant="outline" size="sm">
                     View Profile
                   </Button>
