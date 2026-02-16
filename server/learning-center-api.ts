@@ -41,6 +41,7 @@ export const learningCenterRouter = router({
             applicationArea: articles.applicationArea,
             authorId: articles.authorId,
             authorName: authors.fullName,
+            authorSlug: authors.slug,
           })
           .from(articles)
           .leftJoin(authors, eq(articles.authorId, authors.id))
@@ -87,6 +88,7 @@ export const learningCenterRouter = router({
             applicationArea: articles.applicationArea,
             authorId: articles.authorId,
             authorName: authors.fullName,
+            authorSlug: authors.slug,
             authorTitle: authors.title,
             authorBio: authors.biography,
             authorPhoto: authors.photoUrl,
@@ -131,6 +133,7 @@ export const learningCenterRouter = router({
             applicationArea: articles.applicationArea,
             authorId: articles.authorId,
             authorName: authors.fullName,
+            authorSlug: authors.slug,
             authorTitle: authors.title,
             authorBio: authors.biography,
             authorPhoto: authors.photoUrl,
