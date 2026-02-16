@@ -453,7 +453,6 @@ export type Article = typeof articles.$inferSelect;
 export type InsertArticle = typeof articles.$inferInsert;
 
 // Literature table
-// Literature table - FIXED VERSION
 export const literature = mysqlTable("literature", {
   id: int().autoincrement().notNull(),
   slug: varchar({ length: 200 }).notNull(),
@@ -463,15 +462,15 @@ export const literature = mysqlTable("literature", {
   year: int().notNull(),
   doi: varchar({ length: 255 }),
   url: varchar({ length: 1000 }).notNull(),
-  applicationArea: mysqlEnum('application_area', ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical']).notNull(),
+  applicationArea: mysqlEnum(['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical']).notNull(),
   summary: text().notNull(),
-  keyFindings: text('key_findings'),
+  keyFindings: text(),
   relevance: text(),
   keywords: text(),
-  addedDate: timestamp('added_date', { mode: 'string' }).notNull(),
-  viewCount: int('view_count').default(0).notNull(),
-  createdAt: timestamp('created_at', { mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
-  updatedAt: timestamp('updated_at', { mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+  addedDate: timestamp({ mode: 'string' }).notNull(),
+  viewCount: int().default(0).notNull(),
+  createdAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
+  updatedAt: timestamp({ mode: 'string' }).default('CURRENT_TIMESTAMP').notNull(),
   // Enhanced content fields
   originalPaperUrl: varchar('original_paper_url', { length: 500 }),
   expandedAnalysis: text('expanded_analysis'),
