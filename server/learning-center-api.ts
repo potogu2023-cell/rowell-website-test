@@ -67,6 +67,50 @@ export const learningCenterRouter = router({
         };
       }),
 
+    bySlug: publicProcedure
+      .input(z.object({ slug: z.string() }))
+      .query(async ({ input }) => {
+        const db = await getDb();
+
+        const result = await db
+          .select({
+            id: articles.id,
+            title: articles.title,
+            slug: articles.slug,
+            content: articles.content,
+            metaDescription: articles.metaDescription,
+            keywords: articles.keywords,
+            publishedDate: articles.publishedDate,
+            updatedAt: articles.updatedAt,
+            viewCount: articles.viewCount,
+            category: articles.category,
+            applicationArea: articles.applicationArea,
+            authorId: articles.authorId,
+            authorName: authors.fullName,
+            authorTitle: authors.title,
+            authorBio: authors.biography,
+            authorPhoto: authors.photoUrl,
+          })
+          .from(articles)
+          .leftJoin(authors, eq(articles.authorId, authors.id))
+          .where(eq(articles.slug, input.slug))
+          .limit(1);
+
+        if (result.length === 0) {
+          throw new Error("Article not found");
+        }
+
+        const article = result[0];
+
+        // Increment view count
+        await db
+          .update(articles)
+          .set({ viewCount: sql`${articles.viewCount} + 1` })
+          .where(eq(articles.id, article.id));
+
+        return article;
+      }),
+
     getBySlug: publicProcedure
       .input(z.string())
       .query(async ({ input }) => {
