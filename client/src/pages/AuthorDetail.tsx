@@ -10,8 +10,8 @@ export default function AuthorDetail() {
   const params = useParams();
   const slug = params.slug as string;
 
-  const { data: author, isLoading: authorLoading } = trpc.learningCenter.authors.bySlug.useQuery(
-    { slug },
+  const { data: author, isLoading: authorLoading } = trpc.learningCenter.authors.getBySlug.useQuery(
+    slug,
     { enabled: !!slug }
   );
 
