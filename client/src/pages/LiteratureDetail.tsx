@@ -156,82 +156,82 @@ export default function LiteratureDetail() {
           )}
 
           {/* Enhanced Content Section */}
-          {literature.contentEnhanced && (
+          {literature.content_enhanced && (
             <>
               {/* Expanded Analysis */}
-              {literature.expandedAnalysis && (
+              {literature.expanded_analysis && (
                 <Card className="mb-8">
                   <CardHeader>
                     <CardTitle>{t('literature.expandedAnalysis')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="prose max-w-none">
-                      <ReactMarkdown>{literature.expandedAnalysis}</ReactMarkdown>
+                      <ReactMarkdown>{literature.expanded_analysis}</ReactMarkdown>
                     </div>
                   </CardContent>
                 </Card>
               )}
 
               {/* Methodology Details */}
-              {literature.methodologyDetails && (
+              {literature.methodology_details && (
                 <Card className="mb-8">
                   <CardHeader>
                     <CardTitle>{t('literature.methodologyDetails')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {literature.methodologyDetails.hplc_system && (
+                      {literature.methodology_details.hplc_system && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">HPLC System</h4>
-                          <p className="text-gray-600">{literature.methodologyDetails.hplc_system}</p>
+                          <p className="text-gray-600">{literature.methodology_details.hplc_system}</p>
                         </div>
                       )}
-                      {literature.methodologyDetails.column && (
+                      {literature.methodology_details.column && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">Column</h4>
                           <dl className="grid grid-cols-2 gap-2 text-sm">
                             <dt className="text-gray-600">Type:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.column.type}</dd>
+                            <dd className="text-gray-800">{literature.methodology_details.column.type}</dd>
                             <dt className="text-gray-600">Dimensions:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.column.dimensions}</dd>
+                            <dd className="text-gray-800">{literature.methodology_details.column.dimensions}</dd>
                             <dt className="text-gray-600">Particle Size:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.column.particle_size}</dd>
-                            {literature.methodologyDetails.column.temperature && (
+                            <dd className="text-gray-800">{literature.methodology_details.column.particle_size}</dd>
+                            {literature.methodology_details.column.temperature && (
                               <>
                                 <dt className="text-gray-600">Temperature:</dt>
-                                <dd className="text-gray-800">{literature.methodologyDetails.column.temperature}</dd>
+                                <dd className="text-gray-800">{literature.methodology_details.column.temperature}</dd>
                               </>
                             )}
                           </dl>
                         </div>
                       )}
-                      {literature.methodologyDetails.mobile_phase && (
+                      {literature.methodology_details.mobile_phase && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">Mobile Phase</h4>
                           <dl className="grid grid-cols-2 gap-2 text-sm">
                             <dt className="text-gray-600">Composition:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.composition}</dd>
+                            <dd className="text-gray-800">{literature.methodology_details.mobile_phase.composition}</dd>
                             <dt className="text-gray-600">Flow Rate:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.flow_rate}</dd>
+                            <dd className="text-gray-800">{literature.methodology_details.mobile_phase.flow_rate}</dd>
                             <dt className="text-gray-600">Gradient:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.gradient}</dd>
-                            {literature.methodologyDetails.mobile_phase.ph && (
+                            <dd className="text-gray-800">{literature.methodology_details.mobile_phase.gradient}</dd>
+                            {literature.methodology_details.mobile_phase.ph && (
                               <>
                                 <dt className="text-gray-600">pH:</dt>
-                                <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.ph}</dd>
+                                <dd className="text-gray-800">{literature.methodology_details.mobile_phase.ph}</dd>
                               </>
                             )}
                           </dl>
                         </div>
                       )}
-                      {literature.methodologyDetails.detection && (
+                      {literature.methodology_details.detection && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">Detection</h4>
                           <dl className="grid grid-cols-2 gap-2 text-sm">
                             <dt className="text-gray-600">Type:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.detection.type}</dd>
+                            <dd className="text-gray-800">{literature.methodology_details.detection.type}</dd>
                             <dt className="text-gray-600">Wavelength:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.detection.wavelength}</dd>
+                            <dd className="text-gray-800">{literature.methodology_details.detection.wavelength}</dd>
                           </dl>
                         </div>
                       )}
@@ -241,14 +241,14 @@ export default function LiteratureDetail() {
               )}
 
               {/* Practical Application Guide */}
-              {literature.practicalGuide && (
+              {literature.practical_guide && (
                 <Card className="mb-8">
                   <CardHeader>
                     <CardTitle>{t('literature.practicalGuide')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="prose max-w-none">
-                      <ReactMarkdown>{literature.practicalGuide}</ReactMarkdown>
+                      <ReactMarkdown>{literature.practical_guide}</ReactMarkdown>
                     </div>
                   </CardContent>
                 </Card>
