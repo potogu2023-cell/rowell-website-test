@@ -11,7 +11,7 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { generateSitemap } from "../sitemap";
 import { seoMetaInjectionMiddleware } from "../seo-meta-injection";
-import { learningCenterRouter } from "../learning-center-api";
+import { learningCenterRouter as learningCenterRestRouter } from "../learning-center-rest-api";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -70,7 +70,7 @@ async function startServer() {
   registerOAuthRoutes(app);
   // ImageSync REST API for CSV uploads
   registerImageSyncRoutes(app);// Learning Center API
-app.use("/api/learning-center", learningCenterRouter);
+app.use("/api/learning-center", learningCenterRestRouter);
 
   // Sitemap.xml for SEO
   app.get("/sitemap.xml", generateSitemap);
