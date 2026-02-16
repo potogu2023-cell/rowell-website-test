@@ -1,12 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/api/:path*",
+      "destination": "https://rowell.manus.space/api/:path*"
+    },
+    {
       "source": "/sitemap.xml",
-      "destination": "/api/sitemap.xml"
+      "destination": "https://rowell.manus.space/api/sitemap.xml"
     },
     {
       "source": "/robots.txt",
-      "destination": "/api/robots.txt"
+      "destination": "https://rowell.manus.space/api/robots.txt"
     }
   ]
 }
