@@ -77,11 +77,11 @@ export const appRouter = router({
         const { eq } = await import('drizzle-orm');
         const db = await getDb();
         
-        // Query product by productId (slug)
+        // Query product by slug
         const result = await db
           .select()
           .from(products)
-          .where(eq(products.productId, input))
+          .where(eq(products.slug, input))
           .limit(1);
         
         return result[0] || null;
