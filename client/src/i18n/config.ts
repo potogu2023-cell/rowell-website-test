@@ -52,7 +52,7 @@ i18n
   .init({
     resources,
     fallbackLng: 'zh', // Fallback language (Chinese)
-    debug: true,
+    debug: false,
     interpolation: {
       escapeValue: false, // React already escapes values
     },
