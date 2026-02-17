@@ -159,8 +159,13 @@ export default function LearningCenter() {
                   const badge = getCategoryBadge(article.category);
                   const appArea = applicationAreas.find(a => a.value === article.application_area);
                   
+                  // Generate correct URL based on category
+                  const articleUrl = article.category === 'literature-reviews' 
+                    ? `/learning/literature/${article.slug}` 
+                    : `/learning/${article.slug}`;
+                  
                   return (
-                    <Link key={article.id} href={`/learning/${article.slug}`}>
+                    <Link key={article.id} href={articleUrl}>
                       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer">
                         <CardHeader>
                           <div className="flex items-center gap-2 mb-2">
