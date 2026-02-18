@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getDb } from "./db";
-import { resources } from "../drizzle/schema";
+import { resources, products, articles } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 import { ENV } from "./_core/env";
 
@@ -45,14 +45,31 @@ export async function generateSitemap(req: Request, res: Response) {
       return res.status(500).send("Database not available");
     }
 
-    // Fetch all published articles
-    const articles = await db
+    // Fetch all published resource articles
+    const resourceArticles = await db
       .select({
         slug: resources.slug,
         updatedAt: resources.updatedAt,
       })
       .from(resources)
       .where(eq(resources.status, "published"));
+
+    // Fetch all products
+    const allProducts = await db
+      .select({
+        slug: products.slug,
+        updatedAt: products.updatedAt,
+      })
+      .from(products);
+
+    // Fetch all literature articles
+    const literatureArticles = await db
+      .select({
+        slug: articles.slug,
+        publishedDate: articles.publishedDate,
+      })
+      .from(articles)
+      .where(eq(articles.category, "literature-reviews"));
 
     // Build XML
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
@@ -69,12 +86,36 @@ export async function generateSitemap(req: Request, res: Response) {
     }
 
     // Add resource articles
-    for (const article of articles) {
+    for (const article of resourceArticles) {
       xml += "  <url>\n";
       xml += `    <loc>${BASE_URL}/resources/${article.slug}</loc>\n`;
       xml += `    <lastmod>${formatDate(article.updatedAt)}</lastmod>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`;
       xml += `    <priority>0.8</priority>\n`;
+      xml += "  </url>\n";
+    }
+
+    // Add product pages
+    for (const product of allProducts) {
+      xml += "  <url>\n";
+      xml += `    <loc>${BASE_URL}/products/${product.slug}</loc>\n`;
+      if (product.updatedAt) {
+        xml += `    <lastmod>${formatDate(product.updatedAt)}</lastmod>\n`;
+      }
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += "  </url>\n";
+    }
+
+    // Add literature pages
+    for (const article of literatureArticles) {
+      xml += "  <url>\n";
+      xml += `    <loc>${BASE_URL}/learning/literature/${article.slug}</loc>\n`;
+      if (article.publishedDate) {
+        xml += `    <lastmod>${formatDate(article.publishedDate)}</lastmod>\n`;
+      }
+      xml += `    <changefreq>monthly</changefreq>\n`;
+      xml += `    <priority>0.7</priority>\n`;
       xml += "  </url>\n";
     }
 
@@ -87,7 +128,7 @@ export async function generateSitemap(req: Request, res: Response) {
     // Send XML
     res.send(xml);
 
-    console.log(`[Sitemap] Generated sitemap with ${STATIC_PAGES.length} static pages and ${articles.length} articles`);
+    console.log(`[Sitemap] Generated sitemap with ${STATIC_PAGES.length} static pages, ${resourceArticles.length} resources, ${allProducts.length} products, and ${literatureArticles.length} literature articles`);
   } catch (error) {
     console.error("[Sitemap] Error generating sitemap:", error);
     res.status(500).send("Error generating sitemap");
