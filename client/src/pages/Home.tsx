@@ -3,9 +3,44 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Globe, DollarSign, Wrench, Star, Bot, MessageCircle, Lightbulb, Target, Zap, Rocket } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 export default function Home() {
   const { t } = useTranslation();
+
+  // Add Organization Schema for SEO
+  useEffect(() => {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ROWELL",
+      "alternateName": "LWMHPLC",
+      "url": "https://www.rowellhplc.com",
+      "logo": "https://www.rowellhplc.com/logo.png",
+      "description": "Global provider of professional chromatography consumables, including HPLC and GC columns from premium brands.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "sales",
+        "availableLanguage": ["en", "zh", "ja", "ko", "ru", "es", "pt", "ar"]
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/rowell"
+      ]
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    script.id = 'organization-schema';
+    document.head.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('organization-schema');
+      if (existingScript) {
+        document.head.removeChild(existingScript);
+      }
+    };
+  }, []);
   
   const brands = [
     {
