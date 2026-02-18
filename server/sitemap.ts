@@ -9,10 +9,8 @@ import { ENV } from "./_core/env";
  * Includes all static pages and dynamic resource articles
  */
 
-// Base URL from environment or default
-const BASE_URL = ENV.viteAppTitle?.includes("ROWELL")
-  ? "https://www.rowellhplc.com"
-  : "https://rowell-website-test.manus.space";
+// Base URL - always use production domain
+const BASE_URL = "https://www.rowellhplc.com";
 
 // Static pages configuration
 const STATIC_PAGES = [
