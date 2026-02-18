@@ -25,7 +25,7 @@ export default function Home() {
       color: "green"
     },
     {
-      name: "Thermo Fisher Scientific",
+      name: "Thermo Fisher",
       prefix: "THER-",
       category: "HPLC Columns",
       series: "Hypersil GOLD, Accucore series",
