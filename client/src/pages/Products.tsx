@@ -377,6 +377,7 @@ export default function Products() {
                       src={product.imageUrl || "/images/hplc-column-placeholder.png"}
                       alt={product.name || product.productId}
                       className="w-full h-full object-contain p-4"
+                      loading="lazy"
                       onError={(e) => {
                         e.currentTarget.src = "/images/hplc-column-placeholder.png";
                       }}
