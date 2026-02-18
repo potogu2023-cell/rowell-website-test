@@ -189,7 +189,7 @@ export default function LearningCenter() {
                             </div>
                             <div className="flex items-center gap-1">
                               <Calendar className="w-4 h-4" />
-                              <span>{formatDate(article.published_date)}</span>
+                              <span>{formatDate(article.publishedDate)}</span>
                             </div>
                           </div>
                           <div className="flex items-center gap-1">
