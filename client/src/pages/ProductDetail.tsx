@@ -156,18 +156,14 @@ export default function ProductDetail() {
                         <span className="font-medium">{product.phaseType}</span>
                       </div>
                     )}
-                    {product.phMin && product.phMax && (
+                    {(product.phMin && product.phMax) || product.phRange ? (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
-                        <span className="font-medium">{product.phMin} - {product.phMax}</span>
+                        <span className="font-medium">
+                          {product.phMin && product.phMax ? `${product.phMin} - ${product.phMax}` : product.phRange}
+                        </span>
                       </div>
-                    )}
-                    {product.phRange && (
-                      <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
-                        <span className="font-medium">{product.phRange}</span>
-                      </div>
-                    )}
+                    ) : null}
                     {product.maxPressure && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.max_pressure')}:</span>
