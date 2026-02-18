@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ShoppingCart, Bot, MessageCircle, RefreshCw, Lightbulb } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 import CustomerMessageForm from "@/components/CustomerMessageForm";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductInquiryButton from "@/components/ProductInquiryButton";
@@ -21,6 +22,49 @@ export default function ProductDetail() {
   const { data: product, isLoading } = trpc.products.getBySlug.useQuery(slug, {
     enabled: slug.length > 0,
   });
+
+  // Add Product Schema for SEO
+  useEffect(() => {
+    if (product) {
+      const schema = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": product.name,
+        "image": product.imageUrl || "",
+        "description": product.description || product.detailedDescription || "",
+        "sku": product.partNumber,
+        "mpn": product.partNumber,
+        "brand": {
+          "@type": "Brand",
+          "name": product.brand
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD",
+          "seller": {
+            "@type": "Organization",
+            "name": "ROWELL"
+          }
+        }
+      };
+
+      // Add schema to page
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(schema);
+      script.id = 'product-schema';
+      document.head.appendChild(script);
+
+      // Cleanup on unmount
+      return () => {
+        const existingScript = document.getElementById('product-schema');
+        if (existingScript) {
+          document.head.removeChild(existingScript);
+        }
+      };
+    }
+  }, [product]);
 
   const handleAddToInquiry = () => {
     // Scroll to the message form at the bottom of the page
