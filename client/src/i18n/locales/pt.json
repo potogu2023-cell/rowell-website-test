@@ -1,229 +1,234 @@
 {
   "nav": {
     "home": "Início",
-    "about": "Sobre",
+    "about": "Sobre Nós",
     "products": "Produtos",
     "usp_standards": "Padrões USP",
     "applications": "Aplicações",
-    "resources": "Resources",
+    "resources": "Recursos",
     "contact": "Contato",
-    "login": "Entrar",
+    "login": "Login",
     "register": "Registrar",
-    "inquiry_cart": "Carrinho de cotação",
+    "inquiry_cart": "Carrinho de Consulta",
     "profile": "Perfil",
-    "inquiry_history": "Histórico de cotações",
-    "admin_panel": "Painel administrativo",
+    "inquiry_history": "Histórico de Consultas",
+    "admin_panel": "Painel de Administração",
     "logout": "Sair"
   },
   "home": {
-    "hero_title": "Soluções HPLC Globais",
-    "hero_subtitle": "Profissional · Confiável · Eficiente",
-    "hero_description": "A ROWELL se dedica a fornecer colunas chromatography e consumíveis de alta qualidade para clientes em todo o mundo, com preços competitivos e suporte técnico profissional, conectando marcas a laboratórios.",
-    "browse_products": "Ver produtos",
-    "contact_us": "Entre em contato",
+    "ai_powered_badge": "Provedor de Soluções Impulsionadas por IA",
+    "hero_title": "Soluções Globais em Consumíveis para Cromatografia",
+    "hero_subtitle": "11 Marcas Premium • Mais de 2400 Produtos • Serviço Global",
+    "hero_description": "Não sabe qual coluna escolher? Nossa equipe de especialistas oferece recomendações técnicas instantâneas com base na sua aplicação. Contamos com 10 anos de experiência e 11 marcas de renome mundial.",
+    "ask_ai_advisor": "Pergunte ao Consultor de IA",
+    "response_time": "Tempo de Resposta <5s",
+    "accuracy_rate": "Taxa de Precisão de 95%",
+    "labs_served": "Mais de 500 Laboratórios Atendidos",
+    "browse_products": "Explorar Produtos",
+    "contact_us": "Contacte-nos",
     "why_choose_title": "Por que escolher a ROWELL",
-    "why_choose_subtitle": "Nossas principais vantagens tornam sua pesquisa mais eficiente",
-    "advantage_1_title": "Capacidade de serviço global",
-    "advantage_1_desc": "Atendimento a instituições de pesquisa, empresas farmacêuticas e laboratórios de teste líderes nas Américas, Oriente Médio e regiões da CEI",
-    "advantage_2_title": "Preços competitivos",
-    "advantage_2_desc": "Através de nossos canais independentes e estratégia de aquisição, oferecemos preços 20-40% mais baixos que os fabricantes",
-    "advantage_3_title": "Suporte técnico profissional",
-    "advantage_3_desc": "Mais de 10 anos de experiência na indústria chromatography, fornecendo desenvolvimento de métodos profissionais e referência de padrões USP",
+    "why_choose_subtitle": "Não somos apenas um fornecedor - Somos seu parceiro na resolução de problemas em cromatografia",
+    "advantage_1_title": "Consultoria Especializada + Suporte Técnico",
+    "advantage_1_desc": "Obtenha recomendações técnicas instantâneas da nossa equipe de especialistas com mais de 10 anos de experiência em cromatografia. Nossos especialistas estão sempre à disposição para ajudá-lo a encontrar a solução perfeita.",
     "advantage_1_feature_1": "Tempo de resposta <5 segundos",
-    "advantage_1_feature_2": "95% de precisão",
+    "advantage_1_feature_2": "Taxa de precisão das perguntas de 95%",
     "advantage_1_feature_3": "Correspondência especializada de produtos",
-    "advantage_2_feature_1": "11 marcas mundiais",
-    "advantage_2_feature_2": "Mais de 2400 produtos em estoque",
-    "advantage_2_feature_3": "Descontos por volume",
+    "advantage_2_title": "11 Marcas Premium, mais de 2400 Produtos, Um Fornecedor",
+    "advantage_2_desc": "Compare e escolha entre Waters, Agilent, Phenomenex, Thermo Fisher, Merck e mais 6 marcas líderes. Colunas HPLC/GC, cartuchos SPE, consumíveis - tudo em um só lugar.",
+    "advantage_2_feature_1": "11 marcas de classe mundial",
+    "advantage_2_feature_2": "Mais de 2400 produtos em stock",
+    "advantage_2_feature_3": "Descontos de volume disponíveis",
+    "advantage_3_title": "Da Consulta à Entrega - Nós Cuidamos de Tudo",
+    "advantage_3_desc": "Desembaraço aduaneiro especializado, envio mundial rápido, embalagem profissional para itens frágeis e suporte técnico pós-venda. Tornamos a compra internacional descomplicada.",
     "advantage_3_feature_1": "Envio para mais de 50 países",
-    "advantage_3_feature_2": "98% de entregas pontuais",
-    "advantage_3_feature_3": "Documentação aduaneira profissional",
-    "product_portfolio": "Portfólio de produtos",
-    "product_portfolio_subtitle": "Colunas chromatography de alta qualidade de marcas reconhecidas mundialmente",
-    "view_products": "Ver produtos",
-    "browse_all": "Ver todos os produtos",
+    "advantage_3_feature_2": "Taxa de entrega pontual de 98%",
+    "advantage_3_feature_3": "Documentos aduaneiros profissionais",
+    "product_portfolio": "Portfólio de Produtos",
+    "product_portfolio_subtitle": "Consumíveis de cromatografia de alta qualidade das marcas mais renomadas globalmente",
+    "view_products": "Ver Produtos",
+    "browse_all": "Explorar Todos os Produtos",
     "about_title": "Sobre a ROWELL",
-    "about_description": "A imagem da marca ROWELL transmite a originalidade da aquisição da rowellhplc, simbolizando a conexão entre fabricantes de marcas e clientes de laboratório através de nosso conhecimento e rotas únicas. Isso não é um simples comércio de produtos, mas a construção de uma ponte de recursos globais.",
+    "about_description": "A imagem da marca ROWELL transmite originalidade na aquisição de \"rowellhplc\", simbolizando a conexão entre fabricantes de marcas e clientes de laboratório através do nosso conhecimento e caminho únicos, que não é uma simples troca de produtos, mas sim a construção de uma ponte de recursos globais.",
     "about_milestone_1_year": "2020",
-    "about_milestone_1_title": "Estabelecida em 2020 com experiência profissional",
+    "about_milestone_1_title": "Fundada em 2020, com a experiência profissional",
     "about_milestone_2_year": "11",
-    "about_milestone_2_title": "Linhas de produtos de marcas globais aumentadas",
+    "about_milestone_2_title": "Linhas de produtos da marca globalmente expandidas",
     "about_milestone_3_year": "4",
-    "about_milestone_3_title": "Atendimento na Ásia, Américas, Oriente Médio e regiões da CEI",
-    "about_value_1_title": "Garantia rigorosa",
-    "about_value_1_desc": "Garantir que cada coluna chromatography atenda a altos padrões de qualidade",
-    "about_value_2_title": "Serviço global",
-    "about_value_2_desc": "Serviço global através de logística confiável e suporte técnico",
-    "about_value_3_title": "Excelência técnica",
-    "about_value_3_desc": "Aproveitando 10 anos de experiência em chromatography para o sucesso do cliente",
-    "usp_title": "Referência de padrões USP",
-    "usp_subtitle": "Correspondência profissional de padrões USP para suas necessidades analíticas",
-    "view_all_standards": "Ver todos os padrões",
+    "about_milestone_3_title": "Atendendo às regiões da Ásia, Américas, Oriente Médio e CEI",
+    "about_value_1_title": "Garantia Rigorosa",
+    "about_value_1_desc": "Garantindo que cada consumível para cromatografia atenda a altos padrões de qualidade",
+    "about_value_2_title": "Serviço Global",
+    "about_value_2_desc": "Atendimento global com logística confiável e suporte técnico",
+    "about_value_3_title": "Excelência Técnica",
+    "about_value_3_desc": "Aproveitando 10 anos de expertise em cromatografia para o sucesso do cliente",
+    "usp_title": "Referência de Padrões USP",
+    "usp_subtitle": "Correspondência profissional com padrões USP para suas necessidades analíticas",
+    "view_all_standards": "Ver Todos os Padrões",
     "testimonials_title": "O que nossos clientes dizem",
-    "testimonials_subtitle": "Confiado por pesquisadores e laboratórios em todo o mundo",
-    "testimonial_1_name": "Dr. Liu",
-    "testimonial_1_role": "Pesquisador sênior, P&D farmacêutico",
-    "testimonial_1_text": "A ROWELL tem sido sempre nosso fornecedor preferido de colunas HPLC. A qualidade de seus produtos é excelente e os preços são muito competitivos. A equipe de suporte técnico está sempre disposta a ajudar com problemas de métodos analíticos. Apreciamos especialmente sua entrega rápida e ampla gama de produtos.",
+    "testimonials_subtitle": "Confiável por pesquisadores e laboratórios em todo o mundo",
+    "testimonial_1_name": "Dra. Jennifer Liu",
+    "testimonial_1_role": "Pesquisadora Sênior, P&D Farmacêutico",
+    "testimonial_1_text": "A ROWELL tem sido o nosso fornecedor de eleição para consumíveis de cromatografia. A qualidade dos seus produtos é excelente e o preço é muito competitivo. A equipa de suporte técnico está sempre disponível para ajudar a resolver problemas com os métodos analíticos. Agradecemos especialmente a entrega rápida e a vasta gama de produtos.",
     "testimonial_2_name": "Michael Schmidt",
-    "testimonial_2_role": "Gerente de controle de qualidade, fabricação química",
-    "testimonial_2_text": "Colaboramos com a ROWELL para atender nossas necessidades de colunas HPLC. A qualidade do produto é estável e os preços são competitivos. O processo de pedido é simples e a equipe responde rapidamente às nossas consultas. No geral, um fornecedor confiável para nossas necessidades de testes diários.",
+    "testimonial_2_role": "Gerente de CQ, Fabricação Química",
+    "testimonial_2_text": "Trabalhamos com a ROWELL para as nossas necessidades de consumíveis para cromatografia. A qualidade dos seus produtos é consistente e oferecem preços competitivos. O processo de encomenda é simples e a sua equipa é responsiva às nossas questões. No geral, um fornecedor fiável para as nossas necessidades de testes de rotina.",
     "testimonial_3_name": "Dra. Sarah Ahmed",
-    "testimonial_3_role": "Diretora de laboratório, pesquisa universitária",
-    "testimonial_3_text": "Trabalhar com a ROWELL tem sido uma ótima experiência. Suas colunas HPLC funcionam de forma confiável e o suporte técnico é excelente. A equipe é muito conhecedora e sempre está disposta a ajudar com o desenvolvimento de métodos. Seus preços competitivos nos permitem alocar mais orçamento para outras áreas de pesquisa.",
-    "stats_customers": "Clientes satisfeitos",
-    "stats_satisfaction": "Satisfação do cliente",
-    "stats_countries": "Países atendidos",
-    "contact_title": "Entre em contato",
-    "contact_subtitle": "Pronto para fazer um pedido? Nossa equipe está aqui para responder a qualquer pergunta ou consulta.",
-    "contact_email_title": "Contato por e-mail",
-    "contact_email_desc": "Envie um e-mail para consultas sobre produtos e cotações",
-    "contact_phone_title": "Consulta telefônica",
-    "contact_phone_desc": "Equipe profissional fornecendo suporte técnico e soluções",
-    "contact_whatsapp_title": "Contato por WhatsApp",
-    "contact_whatsapp_desc": "Escaneie o código QR para mensagens instantâneas do WhatsApp",
-    "contact_address_title": "Endereço da empresa",
+    "testimonial_3_role": "Diretora de Laboratório, Pesquisa Universitária",
+    "testimonial_3_text": "Trabalhar com a ROWELL tem sido uma excelente experiência. Seus consumíveis para cromatografia apresentam desempenho confiável, e o suporte técnico é excepcional. A equipe é altamente qualificada e sempre disposta a auxiliar no desenvolvimento de métodos. Seus preços competitivos nos permitem alocar mais orçamento para outras áreas de pesquisa.",
+    "stats_customers": "Clientes Satisfeitos",
+    "stats_satisfaction": "Satisfação do Cliente",
+    "stats_countries": "Países Atendidos",
+    "contact_title": "Contacte-nos",
+    "contact_subtitle": "Pronto para fazer um pedido? Nossa equipe está à disposição para ajudar com quaisquer dúvidas ou questões.",
+    "contact_email_title": "Contato por E-mail",
+    "contact_email_desc": "Envie-nos um e-mail para consultas sobre produtos e orçamentos",
+    "contact_phone_title": "Consulta por Telefone",
+    "contact_phone_desc": "Equipe profissional oferecendo suporte técnico e soluções",
+    "contact_whatsapp_title": "Contato via WhatsApp",
+    "contact_whatsapp_desc": "Digitalize o código QR para mensagens instantâneas via WhatsApp",
+    "contact_address_title": "Endereço da Empresa",
     "contact_address_desc": "Bem-vindo para visitar e discutir cooperação",
     "contact_address": "Xangai, China",
-    "usp_l1_desc": "Empacotamento de fase reversa mais comum",
+    "usp_l1_desc": "Preenchimento de fase reversa mais comum",
     "usp_l7_desc": "Hidrofobicidade intermediária",
     "usp_l11_desc": "Seletividade aromática",
-    "usp_l60_desc": "Separação de compostos polares",
-    "response_time": "Tempo de resposta <5s",
-    "accuracy_rate": "95% de precisão",
-    "labs_served": "500+ laboratórios atendidos",
-    "ask_ai_advisor": "Consultar assessor AI"
+    "usp_l60_desc": "Separação de compostos polares"
   },
   "products": {
-    "title": "Consumíveis de Cromatografia",
-    "subtitle": "Navegue por nossa coleção abrangente de consumíveis de cromatografia de alta qualidade de fabricantes líderes",
+    "title": "Consumíveis para Cromatografia",
+    "subtitle": "Explore a nossa coleção abrangente de consumíveis para cromatografia de alta qualidade dos principais fabricantes",
     "search_placeholder": "Pesquisar por ID do produto, número da peça ou marca...",
-    "loading": "Carregando...",
-    "no_products": "Nenhum produto encontrado",
-    "showing_results": "Mostrando {{count}} resultados",
-    "advanced_filters": "Filtros avançados",
-    "clear_filters": "Limpar filtros",
+    "advanced_filters": "Filtros Avançados",
+    "clear_filters": "Limpar Filtros",
+    "current_filters": "Filtros Atuais:",
     "brand": "Marca",
-    "current_filters": "Filtros atuais",
-    "in_category": "Na categoria",
-    "contact_whatsapp": "Contatar via WhatsApp",
-    "add_to_inquiry": "Adicionar à cotação",
-    "add_failed": "Falha ao adicionar",
-    "next": "Próximo",
-    "previous": "Anterior",
-    "column_length_min": "Comprimento mín. da coluna (mm)",
-    "column_length_max": "Comprimento máx. da coluna (mm)",
-    "inner_diameter_min": "Diâmetro interno mín. (mm)",
-    "inner_diameter_max": "Diâmetro interno máx. (mm)",
-    "particle_size": "Tamanho de partícula",
-    "pore_size": "Tamanho de poro",
+    "particle_size_min": "Tamanho da Partícula ≥",
+    "particle_size_max": "Tamanho da Partícula ≤",
+    "pore_size_min": "Tamanho do Poro ≥",
+    "pore_size_max": "Tamanho do Poro ≤",
+    "column_length_min": "Comprimento da Coluna ≥",
+    "column_length_max": "Comprimento da Coluna ≤",
+    "inner_diameter_min": "Diâmetro Interno ≥",
+    "inner_diameter_max": "Diâmetro Interno ≤",
+    "phase_types": "Tipos de Fase",
+    "ph_min": "pH ≥",
+    "ph_max": "pH ≤",
+    "showing_results": "Exibindo",
+    "of": "de",
+    "products_count": "produtos",
+    "in_category": "em",
+    "loading": "Carregando produtos...",
+    "particle_size": "Tamanho da Partícula",
+    "pore_size": "Tamanho do Poro",
     "dimensions": "Dimensões",
-    "ph_range": "Faixa de pH",
-    "temperature_max": "Temperatura máxima"
-  },
-  "productInquiry": {
-    "request_quote": "Solicitar orçamento",
-    "leave_message": "Deixar mensagem",
-    "inquiry_title": "Solicitar orçamento",
-    "inquiry_description": "Preencha o formulário abaixo e enviaremos um orçamento para este produto",
-    "message_title": "Deixar uma mensagem",
-    "message_description": "Tem dúvidas sobre este produto? Envie-nos uma mensagem",
-    "product_info": "Produto",
-    "inquiry_message_label": "Seus requisitos *",
-    "inquiry_message_placeholder": "Descreva seus requisitos (quantidade, prazo de entrega, etc.)",
-    "message_text_label": "Sua mensagem *",
-    "message_text_placeholder": "Pergunte-nos qualquer coisa sobre este produto..."
+    "add_to_inquiry": "Adicionar ao Pedido",
+    "contact_whatsapp": "Contato via WhatsApp",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "product_added": "Produto adicionado ao carrinho de consulta!",
+    "add_failed": "Falha ao adicionar ao carrinho"
   },
   "auth": {
-    "register_title": "Criar conta",
-    "register_subtitle": "Junte-se à ROWELL para começar sua cotação",
+    "register_title": "Criar Conta",
+    "register_subtitle": "Junte-se à ROWELL para iniciar sua consulta",
     "login_title": "Bem-vindo de volta",
-    "login_subtitle": "Faça login na sua conta",
+    "login_subtitle": "Faça login em sua conta",
     "name": "Nome",
     "email": "E-mail",
     "password": "Senha",
-    "company": "Nome da empresa",
-    "phone": "Número de telefone",
+    "company": "Nome da Empresa",
+    "phone": "Número de Telefone",
     "country": "País",
-    "industry": "Indústria",
-    "purchasing_role": "Função de compra",
-    "annual_purchase_volume": "Volume de compra anual",
+    "industry": "Setor",
+    "purchasing_role": "Função de Compra",
+    "annual_purchase_volume": "Volume Anual de Compras",
     "register_button": "Registrar",
-    "login_button": "Entrar",
+    "login_button": "Login",
     "already_have_account": "Já tem uma conta?",
     "dont_have_account": "Não tem uma conta?",
-    "register_success": "Registro bem-sucedido! Por favor, faça login.",
+    "register_success": "Registo efetuado com sucesso! Por favor, faça login.",
     "login_success": "Login bem-sucedido!",
     "logout_success": "Logout bem-sucedido!"
   },
   "inquiry": {
-    "cart_title": "Carrinho de cotação",
-    "cart_empty": "Seu carrinho de cotação está vazio",
-    "browse_products": "Ver produtos",
+    "cart_title": "Carrinho de Consulta",
+    "cart_subtitle": "Analise os produtos selecionados e envie uma consulta",
+    "cart_empty": "Seu carrinho de consulta está vazio",
+    "cart_empty_message": "Navegue pelos nossos produtos e adicione itens ao seu carrinho de consulta",
+    "browse_products": "Explorar Produtos",
     "product": "Produto",
     "quantity": "Quantidade",
-    "notes": "Observações",
+    "notes": "Notas",
     "remove": "Remover",
-    "submit_inquiry": "Enviar cotação",
-    "inquiry_details": "Detalhes da cotação",
+    "submit_inquiry": "Enviar Consulta",
+    "inquiry_details": "Detalhes da Consulta",
     "urgency": "Urgência",
     "urgency_normal": "Normal",
     "urgency_urgent": "Urgente",
-    "urgency_very_urgent": "Muito urgente",
-    "budget_range": "Faixa de orçamento",
-    "delivery_address": "Endereço de entrega",
-    "additional_notes": "Observações adicionais",
+    "urgency_very_urgent": "Muito Urgente",
+    "budget_range": "Faixa de Orçamento",
+    "budget_placeholder": "por exemplo, $1.000 - $5.000",
+    "application_notes": "Notas de Aplicação",
+    "application_notes_optional": "Notas de Aplicação (Opcional)",
+    "application_notes_placeholder": "Descreva a sua aplicação...",
+    "delivery_address": "Endereço de Entrega",
+    "delivery_address_optional": "Endereço de Entrega (Opcional)",
+    "delivery_address_placeholder": "Inserir endereço de entrega...",
+    "additional_notes": "Notas Adicionais",
+    "additional_notes_optional": "Notas Adicionais (Opcional)",
+    "additional_notes_placeholder": "Qualquer outra informação...",
     "submit": "Enviar",
     "submitting": "Enviando...",
-    "inquiry_submitted": "Cotação enviada com sucesso!",
-    "history_title": "Histórico de cotações",
-    "no_inquiries": "Sem cotações",
-    "inquiry_number": "Cotação #",
+    "inquiry_submitted": "Consulta enviada com sucesso!",
+    "history_title": "Histórico de Consultas",
+    "no_inquiries": "Nenhuma consulta ainda",
+    "inquiry_number": "Consulta nº",
     "status": "Status",
     "status_pending": "Pendente",
     "status_quoted": "Cotado",
     "status_completed": "Concluído",
     "status_cancelled": "Cancelado",
-    "created_at": "Data de criação",
-    "view_details": "Ver detalhes"
+    "created_at": "Criado",
+    "view_details": "Ver Detalhes"
   },
   "admin": {
-    "dashboard": "Painel administrativo",
+    "dashboard": "Painel de Administração",
     "welcome_back": "Bem-vindo de volta",
-    "inquiry_management": "Gestão de cotações",
-    "inquiry_management_desc": "Ver e gerenciar cotações de clientes",
-    "customer_management": "Gestão de clientes",
+    "inquiry_management": "Gestão de Consultas",
+    "inquiry_management_desc": "Visualize e gerencie consultas de clientes",
+    "customer_management": "Gestão de Clientes",
     "customer_management_desc": "Gerenciar contas e níveis de clientes",
-    "analytics": "Análise de dados",
-    "analytics_desc": "Ver estatísticas e relatórios",
-    "go_to_inquiries": "Ir para gestão de cotações",
-    "go_to_customers": "Ir para gestão de clientes",
-    "go_to_analytics": "Ir para análise de dados"
+    "analytics": "Análise",
+    "analytics_desc": "Visualizar estatísticas e relatórios",
+    "go_to_inquiries": "Ir para Consultas",
+    "go_to_customers": "Ir para Clientes",
+    "go_to_analytics": "Ir para Análises"
+  },
+  "footer": {
+    "company_description": "A ROWELL dedica-se a fornecer consumíveis de cromatografia de alta qualidade a clientes em todo o mundo, com preços competitivos e suporte técnico profissional.",
+    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. Todos os direitos reservados.",
+    "quick_links": "Links Rápidos",
+    "contact_us": "Contacte-nos",
+    "email": "E-mail",
+    "phone": "Telefone",
+    "location": "Localização",
+    "legal_disclaimer_title": "Aviso Legal Importante",
+    "legal_disclaimer_cn": "Este site e a Shanghai Rowell E-commerce Co., Ltd. (ROWELL) não são distribuidores autorizados ou agentes oficiais de nenhuma marca. Todos os produtos listados neste site são genuínos, adquiridos de forma independente, e destinam-se apenas para fins de referência e educacionais. Todos os nomes de marcas, nomes de produtos e marcas registradas são propriedade de seus respectivos proprietários. Não há afiliação, endosso ou patrocínio entre nós e os fabricantes originais. Somos independentemente responsáveis pela autenticidade, qualidade e serviço pós-venda dos produtos. Por favor, confirme que você entende e aceita esta declaração antes de fazer uma compra.",
+    "legal_disclaimer_en": "Este website e a Shanghai Luweimei E-commerce Co., Ltd. (ROWELL) NÃO são distribuidores autorizados ou agentes oficiais de quaisquer marcas aqui mencionadas. Todos os produtos listados são itens genuínos de origem independente, fornecidos apenas para referência e fins educacionais. Todos os nomes de marcas, nomes de produtos e marcas registradas são propriedade de seus respectivos proprietários. Não somos afiliados, endossados ou patrocinados por nenhum fabricante original. Garantimos independentemente a autenticidade, qualidade e serviço pós-venda do produto. Por favor, confirme que compreende e aceita este aviso legal antes de efetuar qualquer compra."
   },
   "common": {
     "cancel": "Cancelar"
   },
-  "footer": {
-    "company_description": "A ROWELL dedica-se a fornecer colunas chromatography e consumíveis de alta qualidade a clientes em todo o mundo, com preços competitivos e suporte técnico profissional.",
-    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. Todos os direitos reservados.",
-    "quick_links": "Links rápidos",
-    "contact_us": "Contate-nos",
-    "email": "E-mail",
-    "phone": "Telefone",
-    "location": "Localização",
-    "legal_disclaimer_title": "Importante aviso legal",
-    "legal_disclaimer_cn": "本网站及上海洛维美电子商务有限公司（ROWELL）并非任何品牌的授权经销商或官方代理商。本网站所列产品均为独立采购的正品，仅供参考和教育用途。所有品牌名称、产品名称和商标均为其各自所有者的财产。我们与原始制造商之间不存在任何隶属、认可或赞助关系。产品的真实性、质量和售后服务由我们独立负责。购买前请确认您了解并接受此声明。",
-    "legal_disclaimer_en": "Este site e a Shanghai Luweimei E-commerce Co., Ltd. (ROWELL) NÃO são distribuidores autorizados ou agentes oficiais de quaisquer marcas mencionadas aqui. Todos os produtos listados são itens genuínos adquiridos de forma independente, fornecidos apenas para fins de referência e educacionais. Todos os nomes de marcas, nomes de produtos e marcas registradas são propriedade de seus respectivos proprietários. Não somos afiliados, endossados ou patrocinados por quaisquer fabricantes originais. Garantimos independentemente a autenticidade do produto, qualidade e serviço pós-venda. Por favor, confirme que você entende e aceita este aviso antes de fazer qualquer compra."
-  },
   "productDetail": {
-    "loading": "Carregando detalhes do produto...",
-    "not_found": "Produto Não Encontrado",
-    "not_found_message": "O produto que você procura não existe.",
+    "loading": "A carregar detalhes do produto...",
+    "not_found": "Produto não encontrado",
+    "not_found_message": "O produto que procura não existe.",
     "back_to_products": "Voltar aos Produtos",
     "product_description": "Descrição do Produto",
     "no_description": "Nenhuma descrição disponível.",
     "technical_specs": "Especificações Técnicas",
-    "particle_size": "Tamanho de Partícula",
-    "pore_size": "Tamanho de Poro",
+    "particle_size": "Tamanho da Partícula",
+    "pore_size": "Tamanho do Poro",
     "column_length": "Comprimento da Coluna",
     "inner_diameter": "Diâmetro Interno",
     "phase_type": "Tipo de Fase",
@@ -233,7 +238,7 @@
     "usp_classification": "Classificação USP",
     "product_actions": "Ações do Produto",
     "adding": "Adicionando...",
-    "add_to_inquiry_cart": "Adicionar ao Carrinho de Consultas",
+    "add_to_inquiry_cart": "Adicionar ao Carrinho de Consulta",
     "product_information": "Informações do Produto",
     "product_id": "ID do Produto",
     "part_number": "Número da Peça",
@@ -241,25 +246,316 @@
     "status": "Status",
     "need_help": "Precisa de Ajuda?",
     "need_help_message": "Entre em contato com nossa equipe de suporte técnico para recomendações de produtos e assistência técnica.",
-    "contact_us": "Fale Conosco"
+    "contact_us": "Contacte-nos",
+    "scroll_to_inquiry": "Role para o formulário de consulta"
   },
   "usp": {
     "title": "Referência de Padrões USP",
-    "subtitle": "Correspondência profissional de padrões USP para suas necessidades analíticas",
-    "intro": "A Farmacopeia dos Estados Unidos (USP) fornece classificações padronizadas de colunas para garantir consistência nos métodos analíticos. Nossos produtos são categorizados de acordo com os padrões USP."
+    "subtitle": "Correspondência profissional com padrões USP para suas necessidades analíticas",
+    "intro": "A Farmacopeia dos Estados Unidos (USP) fornece classificações padronizadas de colunas para garantir a consistência nos métodos analíticos. Nossos produtos são categorizados de acordo com os padrões da USP.",
+    "standards": {
+      "L1": {
+        "name": "Octadecilsilano (C18)",
+        "description": "Preenchimento de fase reversa mais comum",
+        "details": "A fase estacionária de HPLC mais amplamente utilizada para separações em fase reversa."
+      },
+      "L7": {
+        "name": "Octilsilano (C8)",
+        "description": "Hidrofobicidade intermediária",
+        "details": "Cadeia alquílica mais curta que a C18, proporcionando seletividade diferente."
+      },
+      "L11": {
+        "name": "Fenilsilano",
+        "description": "Seletividade aromática",
+        "details": "Proporciona interações π-π para compostos aromáticos."
+      },
+      "L60": {
+        "name": "HILIC",
+        "description": "Separação de compostos polares",
+        "details": "Cromatografia de interação hidrofílica para analitos polares."
+      },
+      "L10": {
+        "name": "Nitrila",
+        "description": "Interações polares",
+        "details": "Fase ligada a ciano para seletividade única."
+      },
+      "L3": {
+        "name": "Sílica porosa",
+        "description": "Fase normal",
+        "details": "Sílica não modificada para separações em fase normal."
+      }
+    }
+  },
+  "about": {
+    "title": "Sobre Nós",
+    "subtitle": "Conheça nossa história e missão",
+    "our_story": "Nossa História",
+    "our_mission": "Nossa Missão",
+    "company_highlights": "Destaques da Empresa"
   },
   "applications": {
-    "resources": "Resources",
     "title": "Aplicações",
-    "subtitle": "Soluções Chromatography para diversas necessidades analíticas em todos os setores",
-    "intro": "Nossas colunas chromatography atendem a uma ampla gama de aplicações nos setores farmacêutico, ambiental, alimentício e de pesquisa. Com mais de 10 anos de experiência, fornecemos suporte técnico para ajudá-lo a selecionar a coluna certa para suas necessidades analíticas específicas.",
+    "subtitle": "Soluções em cromatografia para diversas necessidades analíticas em todas as indústrias",
+    "intro": "Nossos consumíveis para cromatografia atendem a uma ampla gama de aplicações nos setores farmacêutico, ambiental, alimentício e de pesquisa. Com mais de 10 anos de experiência, fornecemos suporte técnico para ajudá-lo a selecionar os consumíveis certos para suas necessidades analíticas específicas.",
     "pharmaceutical": {
       "title": "Análise Farmacêutica",
-      "description": "Testes de pureza de medicamentos, perfil de impurezas e estudos de estabilidade"
+      "description": "A análise farmacêutica utilizando HPLC é crucial para garantir a qualidade, segurança e eficácia dos medicamentos ao longo do processo de desenvolvimento e fabricação. A HPLC oferece quantificação precisa de ingredientes farmacêuticos ativos (IFAs), impurezas e produtos de degradação. Ela desempenha um papel vital no controle de qualidade, testes de estabilidade e conformidade regulatória. A análise farmacêutica moderna exige alta sensibilidade, seletividade e reprodutibilidade para atender aos rigorosos requisitos regulatórios de agências como FDA, EMA e ICH.",
+      "analysisItems": [
+        {
+          "name": "Ensaio de API",
+          "description": "Quantificação precisa de ingredientes farmacêuticos ativos em formulações de medicamentos"
+        },
+        {
+          "name": "Perfil de Impurezas",
+          "description": "Detecção e quantificação de impurezas relacionadas ao processo e de degradação"
+        },
+        {
+          "name": "Testes de Estabilidade",
+          "description": "Monitorização da degradação de fármacos sob várias condições de armazenamento"
+        },
+        {
+          "name": "Teste de Dissolução",
+          "description": "Medição da taxa de liberação de fármacos a partir de formas farmacêuticas sólidas"
+        },
+        {
+          "name": "Validação de Limpeza",
+          "description": "Verificação da eficácia da limpeza de equipamentos entre lotes de produção"
+        },
+        {
+          "name": "Separação Quiral",
+          "description": "Separação e quantificação de enantiômeros em fármacos quirais"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecilsilano)",
+          "usp": "L1",
+          "particleSize": "1,8-5 µm",
+          "dimensions": "150 x 4,6 mm, 100 x 2,1 mm",
+          "applications": "Análise farmacêutica geral, ensaio de API, teste de impurezas"
+        },
+        {
+          "type": "C8 (Octilssilano)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Compostos hidrofóbicos, peptídeos, proteínas"
+        },
+        {
+          "type": "Fenil",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Compostos aromáticos, seletividade alternativa"
+        },
+        {
+          "type": "Quiral",
+          "usp": "Diversos",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm, 250 x 4,6 mm",
+          "applications": "Separação de enantiômeros, teste de pureza quiral"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Análise de Pureza da Aspirina",
+          "sample": "Comprimidos de Aspirina",
+          "goal": "Quantificar o teor de aspirina e detectar impurezas de ácido salicílico",
+          "column": "C18, 5 µm, 250 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Acetonitrila:Água:Ácido acético (30:69:1)",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Teste de Resíduos de Antibióticos",
+          "sample": "Matérias-primas farmacêuticas",
+          "goal": "Detecção de níveis residuais de antibióticos na fabricação",
+          "column": "C18, 3 µm, 150 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradiente: Água (0,1% TFA) para Acetonitrila",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 254 nm / MS",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "Separação de Enantiômeros de Ibuprofeno",
+          "sample": "Formulações de Ibuprofeno",
+          "goal": "Separação e quantificação de enantiômeros S-(+) e R-(-)",
+          "column": "Coluna quiral (Daicel CHIRALPAK), 5 µm, 250 x 4,6 mm",
+          "parameters": {
+            "mobilePhase": "Hexano:Isopropanol:Ácido Acético (95:5:0,1)",
+            "flowRate": "0,8 mL/min",
+            "detection": "UV 220 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Detecção de impurezas em baixo nível",
+          "solution": "Utilize detectores de alta sensibilidade (UV-DAD, MS), otimize o volume de injeção, utilize partículas sub-2µm para melhor resolução"
+        },
+        {
+          "challenge": "Interferência de matriz complexa",
+          "solution": "Implementar limpeza de amostra (SPE), usar eluição por gradiente, otimizar a seletividade com diferentes fases estacionárias"
+        },
+        {
+          "challenge": "Dificuldade na separação quiral",
+          "solution": "Analise múltiplas colunas quirais, otimize a composição da fase móvel, ajuste a temperatura e a vazão"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "USP <621>",
+          "description": "Cromatografia - Requisitos gerais"
+        },
+        {
+          "standard": "ICH Q2(R1)",
+          "description": "Validação de Procedimentos Analíticos"
+        },
+        {
+          "standard": "ICH Q3A/B",
+          "description": "Impurezas em Novas Substâncias/Produtos Farmacêuticos"
+        },
+        {
+          "standard": "FDA 21 CFR Parte 211",
+          "description": "Boas Práticas de Fabricação Atuais"
+        }
+      ]
     },
     "environmental": {
       "title": "Testes Ambientais",
-      "description": "Análise de qualidade da água, detecção de resíduos de pesticidas"
+      "description": "Testes ambientais utilizando HPLC são essenciais para monitorar a qualidade da água, a contaminação do solo e os poluentes atmosféricos, visando proteger a saúde pública e os ecossistemas. A HPLC permite a detecção e quantificação precisas de pesticidas, herbicidas, produtos farmacêuticos e produtos químicos industriais em amostras ambientais. Ela desempenha um papel crucial na conformidade regulatória, nas avaliações de impacto ambiental e no controle da poluição. A análise ambiental moderna exige alta sensibilidade e seletividade para detectar contaminantes em níveis de traço em matrizes complexas.",
+      "analysisItems": [
+        {
+          "name": "Análise de Resíduos de Pesticidas",
+          "description": "Detecção de pesticidas organofosforados, organoclorados e carbamatos em água e solo"
+        },
+        {
+          "name": "Análise de HPA",
+          "description": "Quantificação de hidrocarbonetos aromáticos policíclicos em amostras ambientais"
+        },
+        {
+          "name": "Resíduos Farmacêuticos",
+          "description": "Detecção de compostos farmacêuticos em águas residuais e superficiais"
+        },
+        {
+          "name": "Compostos Fenólicos",
+          "description": "Análise de fenóis e clorofenóis em efluentes industriais"
+        },
+        {
+          "name": "Análise de PFAS",
+          "description": "Determinação de substâncias perfluoroalquiladas e polifluoroalquiladas em água e solo"
+        },
+        {
+          "name": "Complexos de Metais Pesados",
+          "description": "Análise de complexos metalo-orgânicos usando cromatografia de par iônico"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecilsilano)",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm, 250 x 4,6 mm",
+          "applications": "Análise ambiental geral, pesticidas, HAPs"
+        },
+        {
+          "type": "C8 (Octilssilano)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Compostos moderadamente polares, herbicidas"
+        },
+        {
+          "type": "Fenil",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "HAPs, poluentes aromáticos, compostos fenólicos"
+        },
+        {
+          "type": "HILIC (Interação Hidrofílica)",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Pesticidas polares, PFAS, resíduos farmacêuticos"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Resíduos de Pesticidas em Água Potável",
+          "sample": "Amostras de água potável",
+          "goal": "Detetar e quantificar múltiplos resíduos de pesticidas a níveis de ppb",
+          "column": "C18, 3 µm, 150 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradiente: Água (0,1% Ácido fórmico) para Metanol",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 254 nm / MS",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "Análise de HAPs em Solos",
+          "sample": "Extratos de solo",
+          "goal": "Quantificar 16 HAPs prioritários da EPA em solo contaminado",
+          "column": "Fenil, 5 µm, 250 x 4.6 mm (USP L11)",
+          "parameters": {
+            "mobilePhase": "Gradiente: Água para Acetonitrila",
+            "flowRate": "1,0 mL/min",
+            "detection": "Fluorescência (Ex 254 nm, Em 400 nm)",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "PFAS em Águas Residuais",
+          "sample": "Amostras de águas residuais",
+          "goal": "Determinar as concentrações de PFOA e PFOS em águas residuais industriais",
+          "column": "C18, 2,6 µm, 100 x 2,1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradiente: Água (2 mM Acetato de Amônio) para Metanol",
+            "flowRate": "0,4 mL/min",
+            "detection": "MS/MS (modo ESI negativo)",
+            "injectionVolume": "10 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Complexidade e interferência da matriz",
+          "solution": "Utilize extração em fase sólida (SPE) para limpeza da amostra, empregue eluição em gradiente, utilize detecção por MS para seletividade"
+        },
+        {
+          "challenge": "Detecção em nível de traços",
+          "solution": "Aumente o volume de injeção, utilize técnicas de injeção de grande volume, empregue MS/MS para sensibilidade aprimorada"
+        },
+        {
+          "challenge": "Análise multirresíduo",
+          "solution": "Otimize as condições de gradiente, utilize colunas universais (C18), empregue MS com modos full-scan e MRM"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "Método EPA 8321",
+          "description": "Pesticidas por HPLC com detecção UV"
+        },
+        {
+          "standard": "Método EPA 537.1",
+          "description": "PFAS em água potável por LC-MS/MS"
+        },
+        {
+          "standard": "ISO 11369",
+          "description": "Qualidade da água - determinação de HPA"
+        },
+        {
+          "standard": "GB 5749",
+          "description": "Padrões para qualidade da água potável (China)"
+        }
+      ]
     },
     "food": {
       "title": "Alimentos e Bebidas",
@@ -267,79 +563,595 @@
     },
     "biochemistry": {
       "title": "Bioquímica",
-      "description": "Análise de proteínas, mapeamento de peptídeos, análise de aminoácidos"
+      "description": "A análise bioquímica utilizando HPLC é fundamental para o estudo de biomoléculas, incluindo proteínas, peptídeos, nucleotídeos e metabólitos. A HPLC permite a separação e caracterização precisas de misturas biológicas complexas, apoiando a pesquisa em proteômica, genômica e metabolômica. Ela desempenha um papel crucial na purificação de proteínas, mapeamento de peptídeos e estudos de cinética enzimática. A análise bioquímica moderna requer colunas especializadas e condições de separação suaves para manter a integridade das biomoléculas, ao mesmo tempo em que se alcança alta resolução e reprodutibilidade.",
+      "analysisItems": [
+        {
+          "name": "Análise de Proteínas",
+          "description": "Separação e caracterização de proteínas por tamanho, carga ou hidrofobicidade"
+        },
+        {
+          "name": "Mapeamento de Peptídeos",
+          "description": "Análise de digestações proteolíticas para identificação e caracterização de proteínas"
+        },
+        {
+          "name": "Análise de Nucleotídeos",
+          "description": "Separação e quantificação de nucleotídeos, nucleosídeos e oligonucleotídeos"
+        },
+        {
+          "name": "Ensaios Enzimáticos",
+          "description": "Monitoramento de reações enzimáticas e determinação de parâmetros cinéticos"
+        },
+        {
+          "name": "Perfil de Metabólitos",
+          "description": "Análise de metabólitos celulares para estudos de metabolômica"
+        },
+        {
+          "name": "Análise de Glicanos",
+          "description": "Caracterização de glicoproteínas e oligossacarídeos"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecilsilano)",
+          "usp": "L1",
+          "particleSize": "1,8-5 µm",
+          "dimensions": "150 x 4,6 mm, 100 x 2,1 mm",
+          "applications": "Separação de peptídeos, metabólitos de pequenas moléculas"
+        },
+        {
+          "type": "C4 (Butilssilano)",
+          "usp": "L26",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Proteínas grandes, proteínas hidrofóbicas"
+        },
+        {
+          "type": "Exclusão por Tamanho (SEC)",
+          "usp": "L33/L38",
+          "particleSize": "5-10 µm",
+          "dimensions": "300 x 7,8 mm",
+          "applications": "Determinação do peso molecular de proteínas, análise de agregação"
+        },
+        {
+          "type": "Troca Iônica (IEX)",
+          "usp": "Especializado",
+          "particleSize": "5-10 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Purificação de proteínas, análise de variantes de carga"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Pureza de Anticorpos Monoclonais",
+          "sample": "Amostras de mAb",
+          "goal": "Avaliar a pureza e detectar agregados, fragmentos e variantes de carga",
+          "column": "SEC, 5 µm, 300 x 7,8 mm (USP L33)",
+          "parameters": {
+            "mobilePhase": "100 mM Fosfato de sódio, 150 mM NaCl, pH 7,0",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "Mapeamento de Peptídeos de Insulina",
+          "sample": "Digestão tríptica de insulina",
+          "goal": "Identificar e quantificar fragmentos de peptídeos para controle de qualidade",
+          "column": "C18, 2,6 µm, 100 x 2,1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Gradiente: Água (0,1% TFA) para Acetonitrila (0,1% TFA)",
+            "flowRate": "0,3 mL/min",
+            "detection": "UV 214 nm / EM",
+            "injectionVolume": "5 µL"
+          }
+        },
+        {
+          "title": "Análise do Pool de Nucleotídeos",
+          "sample": "Extratos celulares",
+          "goal": "Quantificar ATP, ADP, AMP e outros nucleotídeos no metabolismo celular",
+          "column": "C18, 5 µm, 250 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "100 mM Fosfato de potássio pH 6.0:Metanol (95:5)",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Adsorção e perda de proteínas",
+          "solution": "Utilize colunas biocompatíveis com baixa ligação não específica, otimize o pH da fase móvel e a concentração de sal"
+        },
+        {
+          "challenge": "Manutenção da atividade biológica",
+          "solution": "Utilize condições de separação brandas, evite solventes orgânicos sempre que possível, controle a temperatura, minimize o tempo de análise"
+        },
+        {
+          "challenge": "Matrizes de amostras complexas",
+          "solution": "Empregar preparação de amostras (dessalinização, precipitação de proteínas, ultrafiltração), usar eluição por gradiente, detecção por MS"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "USP <1225>",
+          "description": "Validação de Procedimentos Compendiais"
+        },
+        {
+          "standard": "ICH Q6B",
+          "description": "Especificações para Produtos Biotecnológicos"
+        },
+        {
+          "standard": "Orientação da FDA",
+          "description": "Procedimentos Analíticos para Produtos Biológicos"
+        },
+        {
+          "standard": "ISO 20391",
+          "description": "Biotecnologia - Cultura celular - Metabolômica"
+        }
+      ]
     },
     "clinical": {
       "title": "Pesquisa Clínica",
-      "description": "Descoberta de biomarcadores, metabolômica, estudos de metabolismo de medicamentos"
+      "description": "A pesquisa clínica utilizando HPLC é essencial para a descoberta de biomarcadores, monitoramento terapêutico de medicamentos e diagnóstico de doenças. A HPLC permite a quantificação precisa de medicamentos, metabólitos, hormônios e biomarcadores em fluidos biológicos como sangue, plasma e urina. Ela desempenha um papel crítico em estudos farmacocinéticos, triagem toxicológica e medicina personalizada. A análise clínica moderna requer alta sensibilidade, especificidade e produtividade para apoiar ensaios clínicos e testes diagnósticos de rotina, ao mesmo tempo em que atende aos requisitos regulatórios para laboratórios clínicos.",
+      "analysisItems": [
+        {
+          "name": "Monitoramento de Fármacos Terapêuticos",
+          "description": "Quantificação de concentrações de fármacos em amostras de pacientes para otimização de dose"
+        },
+        {
+          "name": "Análise de Biomarcadores",
+          "description": "Detecção e quantificação de biomarcadores de doenças para diagnóstico e prognóstico"
+        },
+        {
+          "name": "Análise Hormonal",
+          "description": "Medição de hormônios esteroides, hormônios tireoidianos e outros marcadores endócrinos"
+        },
+        {
+          "name": "Perfil Metabolômico",
+          "description": "Análise abrangente de metabólitos para fenotipagem de doenças"
+        },
+        {
+          "name": "Rastreamento Toxicológico",
+          "description": "Detecção de drogas de abuso, venenos e substâncias tóxicas"
+        },
+        {
+          "name": "Teste de Vitamina D",
+          "description": "Quantificação de 25-hidroxivitamina D para avaliação nutricional"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecilsilano)",
+          "usp": "L1",
+          "particleSize": "1,8-5 µm",
+          "dimensions": "100 x 2,1 mm, 150 x 4,6 mm",
+          "applications": "Análise clínica geral, monitoramento de medicamentos, metabolômica"
+        },
+        {
+          "type": "C8 (Octilssilano)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Hormônios esteroides, fármacos lipofílicos"
+        },
+        {
+          "type": "Fenil",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Fármacos aromáticos, catecolaminas"
+        },
+        {
+          "type": "HILIC (Interação Hidrofílica)",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "100 x 2,1 mm",
+          "applications": "Metabólitos polares, nucleotídeos, aminoácidos"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Monitoramento de Imunossupressores",
+          "sample": "Sangue total",
+          "goal": "Quantificar os níveis de tacrolimus para o manejo de pacientes transplantados",
+          "column": "C18, 3 µm, 100 x 2,1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Metanol:Água:Ácido fórmico (85:15:0.1)",
+            "flowRate": "0,3 mL/min",
+            "detection": "MS/MS (modo ESI positivo)",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "Quantificação de Vitamina D",
+          "sample": "Soro",
+          "goal": "Medição de 25(OH)D2 e 25(OH)D3 para rastreamento de deficiência",
+          "column": "C18, 2,6 µm, 100 x 2,1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Metanol:Água (90:10)",
+            "flowRate": "0,4 mL/min",
+            "detection": "MS/MS (modo positivo APCI)",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Análise de Catecolaminas",
+          "sample": "Plasma",
+          "goal": "Determinar os níveis de epinefrina, norepinefrina e dopamina",
+          "column": "C18, 5 µm, 150 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Tampão citrato pH 3.0:Metanol (95:5)",
+            "flowRate": "1,0 mL/min",
+            "detection": "Eletroquímico (ECD)",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Efeitos de matriz de amostras biológicas",
+          "solution": "Utilize precipitação de proteínas ou SPE para limpeza da amostra, empregue padrões internos, use MS/MS para seletividade"
+        },
+        {
+          "challenge": "Baixas concentrações de analito",
+          "solution": "Utilize detecção sensível (MS/MS, fluorescência), otimize a recuperação da extração, aumente o volume da amostra"
+        },
+        {
+          "challenge": "Conformidade regulatória",
+          "solution": "Seguir as diretrizes de validação de métodos bioanalíticos da FDA/EMA, implementar procedimentos de controle de qualidade, manter a documentação"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "Validação de Método Bioanalítico FDA",
+          "description": "Orientação para a Indústria"
+        },
+        {
+          "standard": "Validação de Método Bioanalítico EMA",
+          "description": "Diretriz sobre validação de método bioanalítico"
+        },
+        {
+          "standard": "CLSI C62-A",
+          "description": "Métodos de Cromatografia Líquida-Espectrometria de Massas"
+        },
+        {
+          "standard": "CAP/CLIA",
+          "description": "Normas de acreditação de laboratórios clínicos"
+        }
+      ]
     },
     "chemical": {
       "title": "Indústria Química",
-      "description": "Análise de polímeros, testes petroquímicos, garantia de qualidade"
+      "description": "A análise da indústria química usando HPLC é crucial para o controle de qualidade, monitoramento de processos e desenvolvimento de produtos na fabricação petroquímica, de polímeros e de produtos químicos especiais. A HPLC fornece caracterização precisa de produtos químicos, intermediários e impurezas. Ela desempenha um papel vital em garantir as especificações do produto, otimizar os processos de fabricação e atender aos padrões da indústria. A análise química moderna requer métodos robustos capazes de lidar com diversos tipos de amostras e matrizes complexas, mantendo alta precisão e confiabilidade.",
+      "analysisItems": [
+        {
+          "name": "Aditivos poliméricos",
+          "description": "Análise de antioxidantes, estabilizadores UV e plastificantes em polímeros"
+        },
+        {
+          "name": "Análise Petroquímica",
+          "description": "Caracterização de hidrocarbonetos aromáticos e frações de petróleo"
+        },
+        {
+          "name": "Análise de Surfactantes",
+          "description": "Determinação da composição e pureza de surfactantes"
+        },
+        {
+          "name": "Peso Molecular de Polímeros",
+          "description": "Determinação da distribuição de peso molecular por cromatografia de exclusão por tamanho"
+        },
+        {
+          "name": "Análise de Corantes e Pigmentos",
+          "description": "Identificação e quantificação de corantes em produtos químicos"
+        },
+        {
+          "name": "Resíduos de Catalisador",
+          "description": "Detecção de catalisadores metálicos e resíduos de catalisadores orgânicos"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecilsilano)",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm, 250 x 4,6 mm",
+          "applications": "Aditivos, estabilizadores, análise química geral"
+        },
+        {
+          "type": "C8 (Octilssilano)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Produtos petroquímicos, compostos hidrofóbicos"
+        },
+        {
+          "type": "Fenil",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Compostos aromáticos, HAPs, corantes"
+        },
+        {
+          "type": "Exclusão por Tamanho (SEC/GPC)",
+          "usp": "L33/L38",
+          "particleSize": "5-10 µm",
+          "dimensions": "300 x 7,8 mm",
+          "applications": "Distribuição do peso molecular de polímeros"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Antioxidantes em Plásticos",
+          "sample": "Extratos de Polímeros",
+          "goal": "Quantificar Irganox 1010 e outros antioxidantes em polietileno",
+          "column": "C18, 5 µm, 250 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Acetonitrila:Água (90:10)",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Hidrocarbonetos Aromáticos em Gasolina",
+          "sample": "Amostras de gasolina",
+          "goal": "Determinar o teor de benzeno, tolueno e xileno (BTX)",
+          "column": "Fenil, 5 µm, 250 x 4.6 mm (USP L11)",
+          "parameters": {
+            "mobilePhase": "Acetonitrila:Água (70:30)",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "Distribuição do Peso Molecular de Polímeros",
+          "sample": "Soluções de poliestireno",
+          "goal": "Determinar Mn, Mw e índice de polidispersão",
+          "column": "SEC/GPC, 5 µm, 300 x 7,8 mm (USP L33)",
+          "parameters": {
+            "mobilePhase": "Tetrahidrofurano (THF)",
+            "flowRate": "1,0 mL/min",
+            "detection": "Índice de Refração (IR)",
+            "injectionVolume": "100 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Problemas de solubilidade da amostra",
+          "solution": "Utilizar solventes apropriados para extração e dissolução, empregar temperaturas elevadas quando necessário, otimizar a preparação da amostra"
+        },
+        {
+          "challenge": "Matrizes poliméricas complexas",
+          "solution": "Utilize métodos de extração seletiva, empregue eluição por gradiente, use detectores apropriados (RI, UV, ELSD)"
+        },
+        {
+          "challenge": "Compostos de alto peso molecular",
+          "solution": "Utilize cromatografia de exclusão por tamanho (SEC/GPC), otimize a seleção da coluna com base na faixa de peso molecular"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "ASTM D6591",
+          "description": "Determinação do teor de aromáticos em produtos de petróleo"
+        },
+        {
+          "standard": "ISO 16014",
+          "description": "Plásticos - Determinação do peso molecular médio"
+        },
+        {
+          "standard": "GB/T 7764",
+          "description": "Identificação de borracha por espectroscopia de infravermelho"
+        },
+        {
+          "standard": "ASTM D5296",
+          "description": "Médias de peso molecular e distribuição por SEC"
+        }
+      ]
+    },
+    "food_beverage": {
+      "title": "Alimentos e Bebidas",
+      "description": "A análise de alimentos e bebidas utilizando HPLC garante a segurança, qualidade e autenticidade do produto em toda a cadeia de suprimentos. A HPLC oferece quantificação precisa de nutrientes, aditivos, contaminantes e adulterantes em diversas matrizes alimentares. Ela desempenha um papel crítico no controle de qualidade, conformidade regulatória e monitoramento da segurança alimentar. A análise alimentar moderna exige alta sensibilidade e seletividade para detectar contaminantes em níveis de traço e verificar a autenticidade do produto, ao mesmo tempo em que atende a rigorosas regulamentações de segurança alimentar.",
+      "analysisItems": [
+        {
+          "name": "Análise de Vitaminas",
+          "description": "Quantificação de vitaminas hidrossolúveis e lipossolúveis em produtos alimentícios"
+        },
+        {
+          "name": "Teste de Conservantes",
+          "description": "Detecção e quantificação de conservantes alimentares como ácido benzoico e ácido sórbico"
+        },
+        {
+          "name": "Análise de Micotoxinas",
+          "description": "Detecção de aflatoxinas, ocratoxina A e outras micotoxinas em grãos e nozes"
+        },
+        {
+          "name": "Análise de Adoçantes",
+          "description": "Quantificação de adoçantes artificiais e naturais em bebidas e alimentos"
+        },
+        {
+          "name": "Perfil de Aminoácidos",
+          "description": "Análise de aminoácidos livres e ligados a proteínas para qualidade e autenticidade"
+        },
+        {
+          "name": "Análise de Antioxidantes",
+          "description": "Determinação de antioxidantes naturais e sintéticos em produtos alimentícios"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18 (Octadecilsilano)",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm, 250 x 4,6 mm",
+          "applications": "Análise de alimentos em geral, vitaminas, conservantes, antioxidantes"
+        },
+        {
+          "type": "C8 (Octilssilano)",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Vitaminas lipossolúveis, análise lipídica"
+        },
+        {
+          "type": "Coluna para Análise de Aminoácidos",
+          "usp": "Especializado",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Composição de aminoácidos, hidrolisados de proteínas"
+        },
+        {
+          "type": "HILIC (Interação Hidrofílica)",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4,6 mm",
+          "applications": "Carboidratos, açúcares, adoçantes polares"
+        }
+      ],
+      "cases": [
+        {
+          "title": "Vitamina C em Suco de Fruta",
+          "sample": "Amostras de suco de fruta",
+          "goal": "Quantificar o teor de vitamina C (ácido ascórbico) para rotulagem nutricional",
+          "column": "C18, 5 µm, 250 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Tampão fosfato pH 2.5:Metanol (95:5)",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "Aflatoxina em amendoins",
+          "sample": "Extratos de amendoim",
+          "goal": "Detetar aflatoxinas B1, B2, G1, G2 nos limites regulamentares",
+          "column": "C18, 5 µm, 150 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Água:Metanol:Acetonitrila (60:20:20)",
+            "flowRate": "1,0 mL/min",
+            "detection": "Fluorescência (Ex 365 nm, Em 450 nm)",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "Conservantes em Refrigerantes",
+          "sample": "Bebidas carbonatadas",
+          "goal": "Determinação simultânea de ácido benzoico e ácido sórbico",
+          "column": "C18, 5 µm, 250 x 4,6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "Acetonitrila:Água:Ácido acético (25:74:1)",
+            "flowRate": "1,0 mL/min",
+            "detection": "UV 230 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "Matrizes alimentares complexas",
+          "solution": "Utilizar preparação de amostra apropriada (extração, filtração, cartuchos SPE), otimizar as condições de gradiente para separação da matriz"
+        },
+        {
+          "challenge": "Baixas concentrações de analito",
+          "solution": "Empregar técnicas de concentração de amostra, usar detecção por fluorescência ou EM para sensibilidade aprimorada"
+        },
+        {
+          "challenge": "Compostos instáveis (vitaminas)",
+          "solution": "Proteger as amostras da luz e do oxigénio, usar antioxidantes, analisar imediatamente após a preparação, controlar o pH"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "Métodos Oficiais AOAC",
+          "description": "Métodos de análise de alimentos pela AOAC International"
+        },
+        {
+          "standard": "FDA BAM",
+          "description": "Manual Analítico Bacteriológico"
+        },
+        {
+          "standard": "Série GB 5009",
+          "description": "Normas Nacionais de Segurança Alimentar (China)"
+        },
+        {
+          "standard": "Regulamento Europeu 1881/2006",
+          "description": "Níveis máximos para certos contaminantes em produtos alimentícios"
+        }
+      ]
     }
-  },
-  "about": {
-    "our_story": "Nossa história",
-    "our_mission": "Nossa missão",
-    "company_highlights": "Destaques da empresa"
   },
   "contact": {
     "name_label": "Nome *",
     "name_placeholder": "Seu nome",
-    "email_label": "Email *",
+    "email_label": "E-mail *",
     "email_placeholder": "seu@email.com",
     "company_label": "Empresa",
     "company_placeholder": "Sua empresa",
     "phone_label": "Telefone",
-    "phone_placeholder": "+55 11 90000 0000",
+    "phone_placeholder": "+1 234 567 8900",
     "message_label": "Mensagem *",
     "message_placeholder": "Conte-nos sobre sua consulta ou pergunta...",
-    "send_button": "Enviar mensagem",
+    "send_button": "Enviar Mensagem",
     "sending": "Enviando...",
-    "whatsapp_instruction": "Escaneie o código QR ou entre em contato pelo WhatsApp",
-    "business_hours": "Horário de atendimento",
+    "whatsapp_instruction": "Escaneie o código QR ou entre em contato via WhatsApp",
+    "business_hours": "Horário de Funcionamento",
     "weekday": "Segunda - Sexta",
     "weekday_hours": "9:00 - 18:00 (GMT+8)",
     "weekend": "Sábado - Domingo",
     "weekend_hours": "Fechado",
-    "reminder_title": "Lembrete amigável",
-    "reminder_message": "Por favor, deixe suas informações de contato para que possamos responder prontamente",
+    "reminder_title": "Lembrete Amigável",
+    "reminder_message": "Por favor, deixe suas informações de contato para que possamos retornar prontamente",
     "inquiry_success": "Consulta enviada com sucesso! Entraremos em contato em breve.",
-    "inquiry_error": "Falha ao enviar consulta. Por favor, tente novamente.",
+    "inquiry_error": "Falha ao enviar a consulta. Por favor, tente novamente.",
     "message_success": "Mensagem enviada com sucesso! Responderemos o mais breve possível.",
     "message_error": "Falha ao enviar mensagem. Por favor, tente novamente.",
     "required_fields": "Por favor, preencha todos os campos obrigatórios"
   },
+  "productInquiry": {
+    "request_quote": "Solicitar Orçamento",
+    "leave_message": "Deixar Mensagem",
+    "inquiry_title": "Solicitar um Orçamento",
+    "inquiry_description": "Preencha o formulário abaixo e enviaremos uma cotação para este produto",
+    "message_title": "Deixe uma Mensagem",
+    "message_description": "Tem perguntas sobre este produto? Envie-nos uma mensagem",
+    "product_info": "Produto",
+    "inquiry_message_label": "Suas Necessidades *",
+    "inquiry_message_placeholder": "Por favor, descreva suas necessidades (quantidade, prazo de entrega, etc.)",
+    "message_text_label": "Sua Mensagem *",
+    "message_text_placeholder": "Pergunte-nos qualquer coisa sobre este produto..."
+  },
   "learningCenter": {
     "title": "Centro de Aprendizagem",
-    "subtitle": "Insights especializados, guias técnicos e notas de aplicação para profissionais de cromatografia",
-    "browseByArea": "Navegar por área de aplicação",
+    "subtitle": "Informações de especialistas, guias técnicos e notas de aplicação para profissionais de cromatografia",
+    "browseByArea": "Navegar por Área de Aplicação",
     "applicationAreas": {
       "pharmaceutical": "Farmacêutico",
       "environmental": "Ambiental",
       "foodSafety": "Segurança Alimentar",
       "clinical": "Clínico",
-      "biopharmaceutical": "Biofarmacêutico",
-      "chemical": "Químico"
+      "biopharmaceutical": "Biofarmacêutica",
+      "chemical": "Química"
     },
     "categories": {
-      "allArticles": "Todos os artigos",
+      "allArticles": "Todos os Artigos",
       "applications": "Aplicações",
       "guides": "Guias",
       "trends": "Tendências",
-      "reviews": "Revisões"
+      "reviews": "Avaliações"
     },
     "stats": {
       "articles": "Artigos",
-      "expertAuthors": "Autores especialistas",
-      "totalViews": "Visualizações totais"
+      "expertAuthors": "Autores Especialistas",
+      "totalViews": "Visualizações Totais"
     },
     "articleCard": {
-      "readMore": "Leia mais"
+      "readMore": "Ler Mais"
     },
     "emptyState": {
       "title": "Nenhum artigo encontrado",
-      "description": "Tente ajustar seus filtros ou volte mais tarde para novo conteúdo."
+      "description": "Tente ajustar seus filtros ou volte mais tarde para ver novos conteúdos."
     },
     "pagination": {
       "previous": "Anterior",
@@ -347,28 +1159,28 @@
       "page": "Página"
     },
     "authors": {
-      "title": "Nossos autores especialistas",
+      "title": "Nossos Autores Especialistas",
       "article": "artigo",
       "articles": "artigos"
     },
     "categoryBadges": {
-      "applicationNote": "Nota de aplicação",
-      "technicalGuide": "Guia técnico",
-      "industryTrend": "Tendência da indústria",
-      "literatureReview": "Revisão de literatura"
+      "applicationNote": "Nota de Aplicação",
+      "technicalGuide": "Guia Técnico",
+      "industryTrend": "Tendência da Indústria",
+      "literatureReview": "Revisão da Literatura"
     }
   },
   "literature": {
     "summary": "Resumo",
     "keyFindings": "Principais Descobertas",
-    "relevanceToRowell": "Relevância para ROWELL",
+    "relevanceToRowell": "Relevância para a ROWELL",
     "expandedAnalysis": "Análise Expandida",
     "methodologyDetails": "Detalhes da Metodologia",
     "practicalGuide": "Guia de Aplicação Prática",
     "publicationDetails": "Detalhes da Publicação",
     "doi": "DOI",
     "year": "Ano",
-    "journal": "Revista",
+    "journal": "Periódico",
     "readFullPaper": "Ler Artigo Completo"
   }
 }

@@ -3,227 +3,232 @@
     "home": "ホーム",
     "about": "会社概要",
     "products": "製品",
-    "usp_standards": "USP 標準",
+    "usp_standards": "USP基準",
     "applications": "アプリケーション",
-    "resources": "Resources",
+    "resources": "リソース",
     "contact": "お問い合わせ",
     "login": "ログイン",
     "register": "登録",
-    "inquiry_cart": "見積カート",
+    "inquiry_cart": "お問い合わせカート",
     "profile": "プロフィール",
-    "inquiry_history": "見積履歴",
+    "inquiry_history": "お問い合わせ履歴",
     "admin_panel": "管理パネル",
     "logout": "ログアウト"
   },
   "home": {
-    "hero_title": "グローバル HPLC ソリューション",
-    "hero_subtitle": "プロフェッショナル · 信頼性 · 効率的",
-    "hero_description": "ROWELL は、競争力のある価格と専門的な技術サポートで、世界中のお客様に高品質な chromatography カラムと消耗品を提供し、ブランドと研究室をつなぎます。",
-    "browse_products": "製品を見る",
+    "ai_powered_badge": "AIを活用したソリューションプロバイダー",
+    "hero_title": "グローバルクロマトグラフィー消耗品ソリューション",
+    "hero_subtitle": "11のプレミアムブランド • 2400以上の製品 • グローバルサービス",
+    "hero_description": "どのカラムを選べばよいかお悩みですか？当社の専門チームは、お客様のアプリケーションに基づいて即座に技術的な推奨事項を提供します。10年の専門知識と11の世界クラスのブランドに裏打ちされています。",
+    "ask_ai_advisor": "AIアドバイザーに質問する",
+    "response_time": "応答時間5秒未満",
+    "accuracy_rate": "95%の精度",
+    "labs_served": "500以上のラボにサービスを提供",
+    "browse_products": "製品を閲覧する",
     "contact_us": "お問い合わせ",
-    "why_choose_title": "ROWELL を選ぶ理由",
-    "why_choose_subtitle": "研究をより効率的にする当社の中核的な強み",
-    "advantage_1_title": "グローバルサービス能力",
-    "advantage_1_desc": "アメリカ、中東、CIS 地域の主要な研究機関、製薬会社、検査研究室にサービスを提供",
-    "advantage_2_title": "競争力のある価格",
-    "advantage_2_desc": "独自のチャネルと調達戦略により、メーカーより 20-40% 低い価格を提供",
-    "advantage_3_title": "専門的な技術サポート",
-    "advantage_3_desc": "10 年以上の chromatography 業界経験により、専門的な方法開発と USP 標準参照を提供",
-    "advantage_1_feature_1": "5秒以内の応答時間",
-    "advantage_1_feature_2": "95%の問題解決精度",
-    "advantage_1_feature_3": "専門家による製品マッチング",
-    "advantage_2_feature_1": "11の世界的ブランド",
-    "advantage_2_feature_2": "2400以上の在庫製品",
-    "advantage_2_feature_3": "大量割引",
-    "advantage_3_feature_1": "50カ国以上への配送",
-    "advantage_3_feature_2": "98%の時間厳守配送",
-    "advantage_3_feature_3": "専門的な通関書類",
+    "why_choose_title": "ROWELLを選ぶ理由",
+    "why_choose_subtitle": "単なるサプライヤーではなく、お客様のクロマトグラフィー問題解決パートナー",
+    "advantage_1_title": "専門家によるコンサルティング + 技術サポート",
+    "advantage_1_desc": "クロマトグラフィーに関する10年以上の専門知識を持つ当社のエキスパートチームから、即座に技術的な推奨事項を入手してください。当社のスペシャリストは、お客様に最適なソリューションを見つけるお手伝いをいたします。",
+    "advantage_1_feature_1": "応答時間5秒未満",
+    "advantage_1_feature_2": "95%の質問精度",
+    "advantage_1_feature_3": "専門的な製品マッチング",
+    "advantage_2_title": "11のプレミアムブランド、2400以上の製品、サプライヤーは1社",
+    "advantage_2_desc": "Waters、Agilent、Phenomenex、Thermo Fisher、Merck、その他6つの主要ブランドから比較検討し、お選びください。HPLC/GCカラム、SPEカートリッジ、消耗品など、すべてがここに揃っています。",
+    "advantage_2_feature_1": "11のワールドクラスブランド",
+    "advantage_2_feature_2": "2400以上の製品を在庫",
+    "advantage_2_feature_3": "ボリュームディスカウントあり",
+    "advantage_3_title": "お問い合わせから配送まで - 全てお任せください",
+    "advantage_3_desc": "専門家による通関手続き、迅速な世界中への配送、壊れやすい品物に対するプロフェッショナルな梱包、および販売後の技術サポート。国際的な購入を手間なく行えます。",
+    "advantage_3_feature_1": "50カ国以上への発送",
+    "advantage_3_feature_2": "98%の納期遵守率",
+    "advantage_3_feature_3": "プロフェッショナルな通関書類",
     "product_portfolio": "製品ポートフォリオ",
-    "product_portfolio_subtitle": "世界的に有名なブランドからの高品質 chromatography カラム",
+    "product_portfolio_subtitle": "世界的に有名なブランドの高品質クロマトグラフィー消耗品",
     "view_products": "製品を見る",
     "browse_all": "すべての製品を見る",
-    "about_title": "ROWELL について",
-    "about_description": "ROWELL のブランドイメージは、rowellhplc 調達の独創性を伝え、独自の知識とルートを通じてブランドメーカーと研究室の顧客をつなぐことを象徴しています。これは単純な製品取引ではなく、グローバルリソースの橋を架けることです。",
+    "about_title": "ROWELLについて",
+    "about_description": "ROWELLのブランドイメージは、「rowellhplc」の調達における独創性を伝えています。これは、ブランドメーカーとラボのお客様を、単なる製品の取引ではなく、グローバルリソースの経路の橋を築く独自の知識と経路を通じて結びつけることを象徴しています。",
     "about_milestone_1_year": "2020",
-    "about_milestone_1_title": "2020 年設立、専門的な経験を持つ",
+    "about_milestone_1_title": "2020年設立、専門的な経験を持つ",
     "about_milestone_2_year": "11",
-    "about_milestone_2_title": "グローバルに増加したブランド製品ライン",
+    "about_milestone_2_title": "世界的に増加したブランド製品ライン",
     "about_milestone_3_year": "4",
-    "about_milestone_3_title": "アジア、アメリカ、中東、CIS 地域にサービス提供",
+    "about_milestone_3_title": "アジア、アメリカ、中東、CIS地域にサービスを提供",
     "about_value_1_title": "厳格な保証",
-    "about_value_1_desc": "すべての chromatography カラムが高品質基準を満たすことを保証",
+    "about_value_1_desc": "すべてのクロマトグラフィー消耗品が高い品質基準を満たしていることを保証",
     "about_value_2_title": "グローバルサービス",
-    "about_value_2_desc": "信頼性の高い物流と技術サポートで世界中にサービスを提供",
+    "about_value_2_desc": "信頼性の高いロジスティクスと技術サポートで世界中にサービスを提供",
     "about_value_3_title": "技術的卓越性",
-    "about_value_3_desc": "10 年の chromatography 専門知識を活用してお客様の成功を支援",
-    "usp_title": "USP 標準参照",
-    "usp_subtitle": "分析ニーズに対する専門的な USP 標準マッチング",
-    "view_all_standards": "すべての標準を見る",
+    "about_value_3_desc": "クロマトグラフィーにおける10年の専門知識を活用し、お客様の成功を支援します",
+    "usp_title": "USP基準参照",
+    "usp_subtitle": "分析ニーズに対応するプロフェッショナルなUSP標準適合",
+    "view_all_standards": "すべての基準を見る",
     "testimonials_title": "お客様の声",
-    "testimonials_subtitle": "世界中の研究者と研究室から信頼されています",
-    "testimonial_1_name": "劉博士",
-    "testimonial_1_role": "シニア研究員、製薬研究開発",
-    "testimonial_1_text": "ROWELL は常に私たちの HPLC カラムの第一選択サプライヤーです。製品の品質が優れており、価格も非常に競争力があります。技術サポートチームは常に分析方法の問題を解決するのを喜んで手伝ってくれます。迅速な配送と包括的な製品範囲を特に評価しています。",
-    "testimonial_2_name": "Michael Schmidt",
-    "testimonial_2_role": "品質管理マネージャー、化学製造",
-    "testimonial_2_text": "私たちは ROWELL と協力して HPLC カラムのニーズを満たしています。製品の品質は安定しており、価格は競争力があります。注文プロセスはシンプルで、チームは私たちの問い合わせに迅速に対応します。全体的に、日常的なテストニーズに対する信頼できるサプライヤーです。",
-    "testimonial_3_name": "Sarah Ahmed 博士",
-    "testimonial_3_role": "研究室ディレクター、大学研究",
-    "testimonial_3_text": "ROWELL との協力は素晴らしい経験でした。HPLC カラムの性能は信頼性があり、技術サポートは非常に優れています。チームは知識が豊富で、常に方法開発を手伝ってくれます。競争力のある価格により、より多くの予算を他の研究分野に割り当てることができます。",
-    "stats_customers": "満足した顧客",
+    "testimonials_subtitle": "世界中の研究者や研究室から信頼されています",
+    "testimonial_1_name": "ジェニファー・リウ博士",
+    "testimonial_1_role": "主任研究員、製薬R&D",
+    "testimonial_1_text": "ROWELLは、クロマトグラフィー消耗品の頼れるサプライヤーです。製品の品質は素晴らしく、価格も非常に競争力があります。技術サポートチームは、分析方法の問題解決に常に協力的です。特に、迅速な配送と包括的な製品範囲に感謝しています。",
+    "testimonial_2_name": "ミヒャエル・シュミット",
+    "testimonial_2_role": "品質管理マネージャー、化学品製造",
+    "testimonial_2_text": "クロマトグラフィー消耗品のニーズに関して、当社はROWELLと協力しています。同社の製品品質は一貫しており、競争力のある価格設定を提供しています。注文プロセスは簡単で、同社のチームは当社の問い合わせに迅速に対応してくれます。全体として、当社の日常的な試験ニーズにとって信頼できるサプライヤーです。",
+    "testimonial_3_name": "サラ・アーメド博士",
+    "testimonial_3_role": "大学研究室長",
+    "testimonial_3_text": "ROWELLとの連携は素晴らしい経験でした。同社のクロマトグラフィー消耗品は信頼性の高い性能を発揮し、技術サポートも優れています。チームは知識が豊富で、メソッド開発にも常に協力してくれます。競争力のある価格設定により、他の研究分野により多くの予算を割り当てることができます。",
+    "stats_customers": "お客様の声",
     "stats_satisfaction": "顧客満足度",
     "stats_countries": "サービス提供国",
     "contact_title": "お問い合わせ",
-    "contact_subtitle": "ご注文の準備はできましたか？製品や見積に関するご質問にお答えします。",
-    "contact_email_title": "メールでのお問い合わせ",
-    "contact_email_desc": "製品と見積についてメールでお問い合わせください",
+    "contact_subtitle": "ご注文の準備はできましたか？ご質問やお問い合わせは、当社のチームがお手伝いいたします。",
+    "contact_email_title": "Eメールでのお問い合わせ",
+    "contact_email_desc": "製品に関するお問い合わせや見積もりについては、Eメールでお問い合わせください",
     "contact_phone_title": "電話相談",
-    "contact_phone_desc": "専門チームが技術サポートとソリューションを提供",
-    "contact_whatsapp_title": "WhatsApp でのお問い合わせ",
-    "contact_whatsapp_desc": "QR コードをスキャンして WhatsApp でインスタントメッセージ",
+    "contact_phone_desc": "技術サポートとソリューションを提供するプロフェッショナルチーム",
+    "contact_whatsapp_title": "WhatsAppでのお問い合わせ",
+    "contact_whatsapp_desc": "WhatsAppインスタントメッセージングのQRコードをスキャン",
     "contact_address_title": "会社住所",
-    "contact_address_desc": "訪問と協力の議論を歓迎します",
-    "contact_address": "中国上海",
+    "contact_address_desc": "ご訪問と協力についてのご相談を歓迎します",
+    "contact_address": "中国、上海",
     "usp_l1_desc": "最も一般的な逆相充填剤",
     "usp_l7_desc": "中程度の疎水性",
     "usp_l11_desc": "芳香族選択性",
-    "usp_l60_desc": "極性化合物の分離",
-    "response_time": "5秒以内の応答時間",
-    "accuracy_rate": "95%の精度",
-    "labs_served": "500以上の研究室にサービス提供",
-    "ask_ai_advisor": "AIアドバイザーに相談"
+    "usp_l60_desc": "極性化合物の分離"
   },
   "products": {
     "title": "クロマトグラフィー消耗品",
     "subtitle": "主要メーカーの高品質クロマトグラフィー消耗品の包括的なコレクションをご覧ください",
     "search_placeholder": "製品ID、部品番号、またはブランドで検索...",
-    "loading": "読み込み中...",
-    "no_products": "製品が見つかりません",
-    "showing_results": "{{count}}件の結果を表示",
-    "advanced_filters": "詳細フィルター",
+    "advanced_filters": "高度なフィルター",
     "clear_filters": "フィルターをクリア",
+    "current_filters": "現在のフィルター:",
     "brand": "ブランド",
-    "current_filters": "現在のフィルター",
-    "in_category": "カテゴリー内",
-    "contact_whatsapp": "WhatsAppで連絡",
-    "add_to_inquiry": "見積もりに追加",
-    "add_failed": "追加に失敗しました",
-    "next": "次へ",
-    "previous": "前へ",
-    "column_length_min": "カラム長最小値 (mm)",
-    "column_length_max": "カラム長最大値 (mm)",
-    "inner_diameter_min": "内径最小値 (mm)",
-    "inner_diameter_max": "内径最大値 (mm)",
+    "particle_size_min": "粒子径 ≥",
+    "particle_size_max": "粒子径 ≤",
+    "pore_size_min": "細孔径 ≥",
+    "pore_size_max": "細孔径 ≤",
+    "column_length_min": "カラム長 ≥",
+    "column_length_max": "カラム長 ≤",
+    "inner_diameter_min": "内径 ≥",
+    "inner_diameter_max": "内径 ≤",
+    "phase_types": "相タイプ",
+    "ph_min": "pH ≥",
+    "ph_max": "pH ≤",
+    "showing_results": "表示中",
+    "of": "の",
+    "products_count": "製品",
+    "in_category": "内",
+    "loading": "製品を読み込み中...",
     "particle_size": "粒子径",
     "pore_size": "細孔径",
     "dimensions": "寸法",
-    "ph_range": "pH範囲",
-    "temperature_max": "最高温度"
-  },
-  "productInquiry": {
-    "request_quote": "見積依頼",
-    "leave_message": "メッセージを残す",
-    "inquiry_title": "見積依頼",
-    "inquiry_description": "以下のフォームにご記入いただければ、この製品のお見積りをお送りします",
-    "message_title": "メッセージを残す",
-    "message_description": "この製品について質問がありますか？メッセージをお送りください",
-    "product_info": "製品",
-    "inquiry_message_label": "ご要望 *",
-    "inquiry_message_placeholder": "ご要望をご記入ください（数量、納期など）",
-    "message_text_label": "メッセージ *",
-    "message_text_placeholder": "この製品について何でもお聞きください..."
+    "add_to_inquiry": "お問い合わせに追加",
+    "contact_whatsapp": "WhatsAppで連絡する",
+    "previous": "前へ",
+    "next": "次へ",
+    "product_added": "製品が見積もりカートに追加されました！",
+    "add_failed": "カートへの追加に失敗しました"
   },
   "auth": {
-    "register_title": "アカウントを作成",
-    "register_subtitle": "ROWELL に参加して見積を開始",
+    "register_title": "アカウント作成",
+    "register_subtitle": "ROWELLに参加して、お問い合わせを開始してください",
     "login_title": "おかえりなさい",
     "login_subtitle": "アカウントにログイン",
-    "name": "名前",
-    "email": "メール",
+    "name": "氏名",
+    "email": "Eメール",
     "password": "パスワード",
     "company": "会社名",
     "phone": "電話番号",
     "country": "国",
-    "industry": "業界",
-    "purchasing_role": "購買役割",
-    "annual_purchase_volume": "年間購買量",
+    "industry": "産業",
+    "purchasing_role": "購買担当",
+    "annual_purchase_volume": "年間購入量",
     "register_button": "登録",
     "login_button": "ログイン",
     "already_have_account": "すでにアカウントをお持ちですか？",
-    "dont_have_account": "アカウントをお持ちでないですか？",
-    "register_success": "登録に成功しました！ログインしてください。",
+    "dont_have_account": "アカウントをお持ちではありませんか？",
+    "register_success": "登録が完了しました！ログインしてください。",
     "login_success": "ログインに成功しました！",
     "logout_success": "ログアウトに成功しました！"
   },
   "inquiry": {
-    "cart_title": "見積カート",
-    "cart_empty": "見積カートは空です",
-    "browse_products": "製品を見る",
+    "cart_title": "お問い合わせカート",
+    "cart_subtitle": "選択された製品を確認し、お問い合わせを送信してください",
+    "cart_empty": "お問い合わせカートは空です",
+    "cart_empty_message": "製品を閲覧し、お問い合わせカートに商品を追加してください",
+    "browse_products": "製品を閲覧する",
     "product": "製品",
     "quantity": "数量",
     "notes": "備考",
     "remove": "削除",
-    "submit_inquiry": "見積を送信",
-    "inquiry_details": "見積詳細",
+    "submit_inquiry": "お問い合わせを送信",
+    "inquiry_details": "お問い合わせ詳細",
     "urgency": "緊急度",
-    "urgency_normal": "通常",
+    "urgency_normal": "ノーマル",
     "urgency_urgent": "緊急",
     "urgency_very_urgent": "非常に緊急",
     "budget_range": "予算範囲",
+    "budget_placeholder": "例: $1,000 - $5,000",
+    "application_notes": "アプリケーションノート",
+    "application_notes_optional": "アプリケーションノート（任意）",
+    "application_notes_placeholder": "アプリケーションについてご説明ください...",
     "delivery_address": "配送先住所",
-    "additional_notes": "追加備考",
+    "delivery_address_optional": "配送先住所（任意）",
+    "delivery_address_placeholder": "配送先住所を入力してください...",
+    "additional_notes": "追加注意事項",
+    "additional_notes_optional": "追加注意事項（任意）",
+    "additional_notes_placeholder": "その他情報...",
     "submit": "送信",
     "submitting": "送信中...",
-    "inquiry_submitted": "見積が正常に送信されました！",
-    "history_title": "見積履歴",
-    "no_inquiries": "見積はありません",
-    "inquiry_number": "見積 #",
+    "inquiry_submitted": "お問い合わせが正常に送信されました！",
+    "history_title": "お問い合わせ履歴",
+    "no_inquiries": "まだお問い合わせはありません",
+    "inquiry_number": "お問い合わせ番号",
     "status": "ステータス",
     "status_pending": "保留中",
-    "status_quoted": "見積済み",
+    "status_quoted": "見積もり済み",
     "status_completed": "完了",
-    "status_cancelled": "キャンセル",
-    "created_at": "作成日時",
+    "status_cancelled": "キャンセル済み",
+    "created_at": "作成済み",
     "view_details": "詳細を見る"
   },
   "admin": {
-    "dashboard": "管理パネル",
+    "dashboard": "管理者ダッシュボード",
     "welcome_back": "おかえりなさい",
-    "inquiry_management": "見積管理",
-    "inquiry_management_desc": "顧客の見積を表示および管理",
+    "inquiry_management": "お問い合わせ管理",
+    "inquiry_management_desc": "顧客からの問い合わせを表示および管理する",
     "customer_management": "顧客管理",
-    "customer_management_desc": "顧客アカウントとレベルを管理",
-    "analytics": "データ分析",
-    "analytics_desc": "統計とレポートを表示",
-    "go_to_inquiries": "見積管理に移動",
-    "go_to_customers": "顧客管理に移動",
-    "go_to_analytics": "データ分析に移動"
-  },
-  "common": {
-    "cancel": "キャンセル"
+    "customer_management_desc": "顧客アカウントと階層を管理する",
+    "analytics": "分析",
+    "analytics_desc": "統計とレポートを表示する",
+    "go_to_inquiries": "お問い合わせへ移動",
+    "go_to_customers": "顧客へ移動",
+    "go_to_analytics": "分析へ移動"
   },
   "footer": {
-    "company_description": "ROWELLは、競争力のある価格と専門的な技術サポートにより、世界中のお客様に高品質なchromatographyカラムと消耗品を提供することに専念しています。",
-    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. 全著作権所有。",
+    "company_description": "ROWELLは、競争力のある価格とプロフェッショナルな技術サポートにより、世界中のお客様に高品質のクロマトグラフィー消耗品を提供することに専念しています。",
+    "copyright": "Shanghai Luweimei E-commerce Co., Ltd. 無断複写・転載を禁じます。",
     "quick_links": "クイックリンク",
     "contact_us": "お問い合わせ",
-    "email": "メール",
+    "email": "Eメール",
     "phone": "電話",
     "location": "所在地",
     "legal_disclaimer_title": "重要な法的免責事項",
-    "legal_disclaimer_cn": "本网站及上海洛维美电子商务有限公司（ROWELL）并非任何品牌的授权经销商或官方代理商。本网站所列产品均为独立采购的正品，仅供参考和教育用途。所有品牌名称、产品名称和商标均为其各自所有者的财产。我们与原始制造商之间不存在任何隶属、认可或赞助关系。产品的真实性、质量和售后服务由我们独立负责。购买前请确认您了解并接受此声明。",
-    "legal_disclaimer_en": "本ウェブサイトおよび上海洛維美電子商務有限公司（ROWELL）は、ここに記載されているいかなるブランドの正規販売店または公式代理店でもありません。掲載されているすべての製品は、参考および教育目的のみで提供される独立調達の正規品です。すべてのブランド名、製品名、商標は、それぞれの所有者の財産です。当社は、いかなる元の製造業者とも提携、承認、スポンサーされていません。製品の真正性、品質、アフターサービスは当社が独自に保証します。購入前にこの免責事項を理解し、受け入れることを確認してください。"
+    "legal_disclaimer_cn": "本ウェブサイトおよび上海洛維美電子商務有限公司（ROWELL）は、いかなるブランドの正規販売代理店または公式代理店でもありません。本ウェブサイトに掲載されている製品はすべて独自に調達された正規品であり、参考および教育目的のみに提供されています。すべてのブランド名、製品名、商標はそれぞれの所有者の財産です。当社と元の製造業者との間に、いかなる提携、承認、または後援関係も存在しません。製品の真正性、品質、およびアフターサービスは、当社が単独で責任を負います。ご購入前に、この声明を理解し、同意されることをご確認ください。",
+    "legal_disclaimer_en": "本ウェブサイトおよびShanghai Luweimei E-commerce Co., Ltd. (ROWELL) は、ここに記載されているいかなるブランドの正規販売代理店または公式代理店でもありません。記載されているすべての製品は、参照および教育目的のみに提供される独立して調達された純正品です。すべてのブランド名、製品名、および商標は、それぞれの所有者の財産です。当社は、いかなる元の製造業者とも提携、承認、または後援されていません。当社は、製品の信頼性、品質、およびアフターサービスを独自に保証します。ご購入前に、この免責事項を理解し、同意することを確認してください。"
+  },
+  "common": {
+    "cancel": "キャンセル"
   },
   "productDetail": {
     "loading": "製品詳細を読み込み中...",
     "not_found": "製品が見つかりません",
     "not_found_message": "お探しの製品は存在しません。",
-    "back_to_products": "製品一覧に戻る",
+    "back_to_products": "製品に戻る",
     "product_description": "製品説明",
     "no_description": "説明はありません。",
     "technical_specs": "技術仕様",
-    "particle_size": "粒子サイズ",
-    "pore_size": "細孔サイズ",
+    "particle_size": "粒子径",
+    "pore_size": "細孔径",
     "column_length": "カラム長",
     "inner_diameter": "内径",
     "phase_type": "相タイプ",
@@ -240,78 +245,887 @@
     "brand": "ブランド",
     "status": "ステータス",
     "need_help": "お困りですか？",
-    "need_help_message": "製品の推奨事項や技術サポートについては、技術サポートチームにお問い合わせください。",
-    "contact_us": "お問い合わせ"
+    "need_help_message": "製品の推奨事項や技術的なサポートについては、当社のテクニカルサポートチームにお問い合わせください。",
+    "contact_us": "お問い合わせ",
+    "scroll_to_inquiry": "お問い合わせフォームまでスクロール"
   },
   "usp": {
-    "title": "USP 規格リファレンス",
-    "subtitle": "分析ニーズに対応するプロフェッショナルな USP 規格マッチング",
-    "intro": "米国薬局方（USP）は、分析方法の一貫性を確保するために標準化されたカラム分類を提供しています。当社の製品は USP 規格に従って分類されています。"
-  },
-  "applications": {
-    "resources": "Resources",
-    "title": "アプリケーション",
-    "subtitle": "業界全体の多様な分析ニーズに対応する Chromatography ソリューション",
-    "intro": "当社の chromatography カラムは、製薬、環境、食品、研究分野における幅広いアプリケーションに対応しています。10年以上の経験を持ち、お客様の特定の分析ニーズに適したカラムを選択するための技術サポートを提供しています。",
-    "pharmaceutical": {
-      "title": "医薬品分析",
-      "description": "薬物純度試験、不純物プロファイリング、安定性試験"
-    },
-    "environmental": {
-      "title": "環境試験",
-      "description": "水質分析、農薬残留物検出"
-    },
-    "food": {
-      "title": "食品・飲料",
-      "description": "添加物分析、汚染物質検出、品質管理"
-    },
-    "biochemistry": {
-      "title": "生化学",
-      "description": "タンパク質分析、ペプチドマッピング、アミノ酸分析"
-    },
-    "clinical": {
-      "title": "臨床研究",
-      "description": "バイオマーカー発見、メタボロミクス、薬物代謝研究"
-    },
-    "chemical": {
-      "title": "化学工業",
-      "description": "ポリマー分析、石油化学試験、品質保証"
+    "title": "USP基準参照",
+    "subtitle": "分析ニーズに対応するプロフェッショナルなUSP標準適合",
+    "intro": "米国薬局方 (USP) は、分析方法の一貫性を確保するために標準化されたカラム分類を提供しています。当社の製品はUSP基準に従って分類されています。",
+    "standards": {
+      "L1": {
+        "name": "オクタデシルシラン (C18)",
+        "description": "最も一般的な逆相充填剤",
+        "details": "逆相分離に最も広く使用されているHPLC固定相。"
+      },
+      "L7": {
+        "name": "オクチルシラン (C8)",
+        "description": "中程度の疎水性",
+        "details": "C18よりも短いアルキル鎖で、異なる選択性を提供します。"
+      },
+      "L11": {
+        "name": "フェニルシラン",
+        "description": "芳香族選択性",
+        "details": "芳香族化合物にπ-π相互作用を提供します。"
+      },
+      "L60": {
+        "name": "HILIC",
+        "description": "極性化合物の分離",
+        "details": "極性分析物用親水性相互作用クロマトグラフィー"
+      },
+      "L10": {
+        "name": "ニトリル",
+        "description": "極性相互作用",
+        "details": "独自の選択性を持つシアノ結合相。"
+      },
+      "L3": {
+        "name": "多孔質シリカ",
+        "description": "順相",
+        "details": "順相分離用未修飾シリカ。"
+      }
     }
   },
   "about": {
-    "our_story": "私たちのストーリー",
+    "title": "会社概要",
+    "subtitle": "私たちの歴史と使命について",
+    "our_story": "私たちの物語",
     "our_mission": "私たちの使命",
     "company_highlights": "会社のハイライト"
   },
+  "applications": {
+    "title": "アプリケーション",
+    "subtitle": "多様な産業の分析ニーズに対応するクロマトグラフィーソリューション",
+    "intro": "当社のクロマトグラフィー消耗品は、製薬、環境、食品、研究分野にわたる幅広いアプリケーションに対応しています。10年以上の経験を持つ当社は、お客様の特定の分析ニーズに合った消耗品を選択できるよう、技術サポートを提供しています。",
+    "pharmaceutical": {
+      "title": "医薬品分析",
+      "description": "HPLCを用いた医薬品分析は、医薬品開発および製造プロセス全体を通じて、医薬品の品質、安全性、有効性を確保するために不可欠です。HPLCは、原薬（API）、不純物、分解生成物の精密な定量を提供します。品質管理、安定性試験、規制遵守において重要な役割を果たします。現代の医薬品分析には、FDA、EMA、ICHなどの機関が定める厳格な規制要件を満たすために、高い感度、選択性、再現性が求められます。",
+      "analysisItems": [
+        {
+          "name": "APIアッセイ",
+          "description": "医薬品製剤中の有効成分の正確な定量"
+        },
+        {
+          "name": "不純物プロファイリング",
+          "description": "プロセス関連および分解不純物の検出と定量"
+        },
+        {
+          "name": "安定性試験",
+          "description": "様々な保管条件下での薬物分解のモニタリング"
+        },
+        {
+          "name": "溶出試験",
+          "description": "固形製剤からの薬物放出速度の測定"
+        },
+        {
+          "name": "洗浄バリデーション",
+          "description": "製造バッチ間の装置洗浄効果の検証"
+        },
+        {
+          "name": "キラル分離",
+          "description": "キラル医薬品中のエナンチオマーの分離と定量"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18（オクタデシルシラン）",
+          "usp": "L1",
+          "particleSize": "1.8-5 µm",
+          "dimensions": "150 x 4.6 mm, 100 x 2.1 mm",
+          "applications": "一般医薬品分析、APIアッセイ、不純物試験"
+        },
+        {
+          "type": "C8（オクチルシラン）",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "疎水性化合物、ペプチド、タンパク質"
+        },
+        {
+          "type": "フェニル",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "芳香族化合物、代替選択性"
+        },
+        {
+          "type": "キラル",
+          "usp": "その他",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "エナンチオマー分離、キラル純度試験"
+        }
+      ],
+      "cases": [
+        {
+          "title": "アスピリン純度分析",
+          "sample": "アスピリン錠",
+          "goal": "アスピリン含有量を定量し、サリチル酸不純物を検出",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "アセトニトリル:水:酢酸 (30:69:1)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "抗生物質残留物検査",
+          "sample": "医薬品原材料",
+          "goal": "製造工程からの微量な抗生物質残留物を検出",
+          "column": "C18, 3 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "グラジエント：水（0.1% TFA）からアセトニトリル",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm / MS",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "イブプロフェンエナンチオマー分離",
+          "sample": "イブプロフェン製剤",
+          "goal": "S-(+)およびR-(-)エナンチオマーの分離と定量",
+          "column": "キラルカラム（ダイセル CHIRALPAK）, 5 µm, 250 x 4.6 mm",
+          "parameters": {
+            "mobilePhase": "ヘキサン：イソプロパノール：酢酸（95:5:0.1）",
+            "flowRate": "0.8 mL/min",
+            "detection": "UV 220 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "低レベル不純物検出",
+          "solution": "高感度検出器（UV-DAD、MS）を使用し、注入量を最適化し、より良い分離のために2µm以下の粒子を使用する"
+        },
+        {
+          "challenge": "複雑なマトリックス干渉",
+          "solution": "サンプルクリーンアップ（SPE）の実施、グラジエント溶出の使用、異なる固定相による選択性の最適化"
+        },
+        {
+          "challenge": "キラル分離の難易度",
+          "solution": "複数のキラルカラムのスクリーニング、移動相組成の最適化、温度と流量の調整"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "USP <621>",
+          "description": "クロマトグラフィー - 一般要件"
+        },
+        {
+          "standard": "ICH Q2(R1)",
+          "description": "分析法バリデーション"
+        },
+        {
+          "standard": "ICH Q3A/B",
+          "description": "新薬物質/製品中の不純物"
+        },
+        {
+          "standard": "FDA 21 CFR Part 211",
+          "description": "医薬品製造管理および品質管理基準"
+        }
+      ]
+    },
+    "environmental": {
+      "title": "環境試験",
+      "description": "HPLCを用いた環境試験は、公衆衛生と生態系を保護するために、水質、土壌汚染、大気汚染物質の監視に不可欠です。HPLCは、環境サンプル中の農薬、除草剤、医薬品、工業用化学物質の正確な検出と定量化を可能にします。これは、規制遵守、環境影響評価、汚染管理において重要な役割を果たします。現代の環境分析では、複雑なマトリックス中の微量汚染物質を検出するために、高い感度と選択性が求められます。",
+      "analysisItems": [
+        {
+          "name": "残留農薬分析",
+          "description": "水および土壌中の有機リン系、有機塩素系、カーバメート系農薬の検出"
+        },
+        {
+          "name": "PAH分析",
+          "description": "環境サンプル中の多環芳香族炭化水素の定量"
+        },
+        {
+          "name": "医薬品残留物",
+          "description": "廃水および地表水中の医薬品化合物の検出"
+        },
+        {
+          "name": "フェノール化合物",
+          "description": "工業廃水中のフェノールおよびクロロフェノールの分析"
+        },
+        {
+          "name": "PFAS分析",
+          "description": "水および土壌中のPFAS（パーフルオロアルキル化合物およびポリフルオロアルキル化合物）の測定"
+        },
+        {
+          "name": "重金属錯体",
+          "description": "イオンペアクロマトグラフィーを用いた金属有機錯体の分析"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18（オクタデシルシラン）",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "一般環境分析、農薬、PAH"
+        },
+        {
+          "type": "C8（オクチルシラン）",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "中程度の極性化合物、除草剤"
+        },
+        {
+          "type": "フェニル",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "PAH、芳香族汚染物質、フェノール化合物"
+        },
+        {
+          "type": "HILIC（親水性相互作用）",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "極性農薬、PFAS、医薬品残留物"
+        }
+      ],
+      "cases": [
+        {
+          "title": "飲料水中の残留農薬",
+          "sample": "飲料水サンプル",
+          "goal": "ppbレベルで複数の残留農薬を検出・定量",
+          "column": "C18, 3 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "グラジエント：水（0.1%ギ酸）からメタノール",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm / MS",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "土壌中のPAH分析",
+          "sample": "土壌抽出物",
+          "goal": "汚染土壌中の16種類のEPA優先PAHを定量",
+          "column": "フェニル、5 µm、250 x 4.6 mm (USP L11)",
+          "parameters": {
+            "mobilePhase": "グラジエント：水からアセトニトリル",
+            "flowRate": "1.0 mL/min",
+            "detection": "蛍光 (励起 254 nm, 発光 400 nm)",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "廃水中のPFAS",
+          "sample": "廃水サンプル",
+          "goal": "工業廃水中のPFOAおよびPFOS濃度を測定",
+          "column": "C18, 2.6 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "グラジエント：水（2 mM酢酸アンモニウム）からメタノール",
+            "flowRate": "0.4 mL/min",
+            "detection": "MS/MS (ESIネガティブモード)",
+            "injectionVolume": "10 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "マトリックスの複雑さと干渉",
+          "solution": "サンプルクリーンアップに固相抽出（SPE）を使用し、グラジエント溶出を用い、選択性のためにMS検出を使用する"
+        },
+        {
+          "challenge": "微量検出",
+          "solution": "注入量の増加、大容量注入技術の使用、感度向上のためのMS/MSの採用"
+        },
+        {
+          "challenge": "多成分残留分析",
+          "solution": "グラジエント条件の最適化、ユニバーサルカラム (C18) の使用、フルスキャンおよびMRMモードでのMSの採用"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "EPA Method 8321",
+          "description": "UV検出HPLCによる農薬分析"
+        },
+        {
+          "standard": "EPA Method 537.1",
+          "description": "LC-MS/MSによる飲料水中のPFAS"
+        },
+        {
+          "standard": "ISO 11369",
+          "description": "水質 - PAH測定"
+        },
+        {
+          "standard": "GB 5749",
+          "description": "飲料水水質基準（中国）"
+        }
+      ]
+    },
+    "food": {
+      "title": "食品・飲料",
+      "description": "添加剤分析、汚染物質検出、品質管理"
+    },
+    "biochemistry": {
+      "title": "生化学",
+      "description": "HPLCを用いた生化学分析は、タンパク質、ペプチド、ヌクレオチド、代謝物を含む生体分子の研究に不可欠です。HPLCは、複雑な生体混合物の精密な分離と特性評価を可能にし、プロテオミクス、ゲノミクス、メタボロミクスにおける研究をサポートします。タンパク質精製、ペプチドマッピング、酵素動力学研究において重要な役割を果たします。現代の生化学分析には、生体分子の完全性を維持しつつ、高分解能と再現性を達成するために、特殊なカラムと穏やかな分離条件が必要です。",
+      "analysisItems": [
+        {
+          "name": "タンパク質分析",
+          "description": "サイズ、電荷、または疎水性によるタンパク質の分離と特性評価"
+        },
+        {
+          "name": "ペプチドマッピング",
+          "description": "タンパク質同定および特性評価のためのプロテオリシス消化物の分析"
+        },
+        {
+          "name": "ヌクレオチド分析",
+          "description": "ヌクレオチド、ヌクレオシド、およびオリゴヌクレオチドの分離と定量"
+        },
+        {
+          "name": "酵素アッセイ",
+          "description": "酵素反応のモニタリングと動力学的パラメーターの決定"
+        },
+        {
+          "name": "代謝物プロファイリング",
+          "description": "メタボロミクス研究のための細胞代謝物の分析"
+        },
+        {
+          "name": "糖鎖分析",
+          "description": "糖タンパク質およびオリゴ糖の特性評価"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18（オクタデシルシラン）",
+          "usp": "L1",
+          "particleSize": "1.8-5 µm",
+          "dimensions": "150 x 4.6 mm, 100 x 2.1 mm",
+          "applications": "ペプチド分離、低分子代謝物"
+        },
+        {
+          "type": "C4（ブチルシラン）",
+          "usp": "L26",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "大型タンパク質、疎水性タンパク質"
+        },
+        {
+          "type": "サイズ排除 (SEC)",
+          "usp": "L33/L38",
+          "particleSize": "5-10 µm",
+          "dimensions": "300 x 7.8 mm",
+          "applications": "タンパク質分子量測定、凝集分析"
+        },
+        {
+          "type": "イオン交換 (IEX)",
+          "usp": "専門",
+          "particleSize": "5-10 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "タンパク質精製、電荷バリアント分析"
+        }
+      ],
+      "cases": [
+        {
+          "title": "モノクローナル抗体純度",
+          "sample": "mAbサンプル",
+          "goal": "純度を評価し、凝集体、断片、電荷バリアントを検出する",
+          "column": "SEC、5 µm、300 x 7.8 mm (USP L33)",
+          "parameters": {
+            "mobilePhase": "100 mM リン酸ナトリウム, 150 mM NaCl, pH 7.0",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "インスリンのペプチドマッピング",
+          "sample": "インスリンのトリプシン消化物",
+          "goal": "品質管理のためのペプチド断片の同定と定量",
+          "column": "C18, 2.6 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "グラジエント：水（0.1% TFA）からアセトニトリル（0.1% TFA）",
+            "flowRate": "0.3 mL/min",
+            "detection": "UV 214 nm / MS",
+            "injectionVolume": "5 µL"
+          }
+        },
+        {
+          "title": "ヌクレオチドプール分析",
+          "sample": "細胞抽出物",
+          "goal": "細胞代謝におけるATP、ADP、AMP、およびその他のヌクレオチドを定量",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "100 mM リン酸カリウム pH 6.0:メタノール (95:5)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "タンパク質の吸着と損失",
+          "solution": "非特異的結合の低い生体適合性カラムを使用し、移動相のpHと塩濃度を最適化する"
+        },
+        {
+          "challenge": "生物学的活性の維持",
+          "solution": "穏やかな分離条件を使用し、可能な限り有機溶媒を避け、温度を制御し、分析時間を最小限に抑える"
+        },
+        {
+          "challenge": "複雑なサンプルマトリックス",
+          "solution": "サンプル前処理（脱塩、タンパク質沈殿、限外ろ過）の採用、グラジエント溶出、MS検出の使用"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "USP <1225>",
+          "description": "局方収載手順のバリデーション"
+        },
+        {
+          "standard": "ICH Q6B",
+          "description": "バイオテクノロジー製品の仕様"
+        },
+        {
+          "standard": "FDAガイダンス",
+          "description": "生物学的製剤の分析手順"
+        },
+        {
+          "standard": "ISO 20391",
+          "description": "バイオテクノロジー - 細胞培養 - メタボロミクス"
+        }
+      ]
+    },
+    "clinical": {
+      "title": "臨床研究",
+      "description": "HPLCを用いた臨床研究は、バイオマーカーの発見、治療薬モニタリング、疾患診断に不可欠です。HPLCは、血液、血漿、尿などの生体液中の薬剤、代謝物、ホルモン、バイオマーカーの正確な定量化を可能にします。薬物動態研究、毒性スクリーニング、個別化医療において重要な役割を果たします。現代の臨床分析には、臨床試験や日常的な診断検査をサポートし、臨床検査室の規制要件を満たすために、高い感度、特異性、スループットが求められます。",
+      "analysisItems": [
+        {
+          "name": "治療薬物モニタリング",
+          "description": "用量最適化のための患者サンプル中の薬物濃度定量"
+        },
+        {
+          "name": "バイオマーカー分析",
+          "description": "診断および予後予測のための疾患バイオマーカーの検出と定量"
+        },
+        {
+          "name": "ホルモン分析",
+          "description": "ステロイドホルモン、甲状腺ホルモン、その他の内分泌マーカーの測定"
+        },
+        {
+          "name": "メタボロミクスプロファイリング",
+          "description": "疾患表現型解析のための包括的な代謝物分析"
+        },
+        {
+          "name": "毒性スクリーニング",
+          "description": "乱用薬物、毒物、有害物質の検出"
+        },
+        {
+          "name": "ビタミンD検査",
+          "description": "栄養評価のための25-ヒドロキシビタミンDの定量"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18（オクタデシルシラン）",
+          "usp": "L1",
+          "particleSize": "1.8-5 µm",
+          "dimensions": "100 x 2.1 mm, 150 x 4.6 mm",
+          "applications": "一般的な臨床分析、薬物モニタリング、メタボロミクス"
+        },
+        {
+          "type": "C8（オクチルシラン）",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "ステロイドホルモン、親油性薬物"
+        },
+        {
+          "type": "フェニル",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "芳香族薬物、カテコールアミン"
+        },
+        {
+          "type": "HILIC（親水性相互作用）",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "100 x 2.1 mm",
+          "applications": "極性代謝物、ヌクレオチド、アミノ酸"
+        }
+      ],
+      "cases": [
+        {
+          "title": "免疫抑制剤モニタリング",
+          "sample": "全血",
+          "goal": "移植患者管理のためのタクロリムスレベルを定量",
+          "column": "C18, 3 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "メタノール:水:ギ酸 (85:15:0.1)",
+            "flowRate": "0.3 mL/min",
+            "detection": "MS/MS (ESIポジティブモード)",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "ビタミンD定量",
+          "sample": "血清",
+          "goal": "欠乏症スクリーニングのための25(OH)D2および25(OH)D3の測定",
+          "column": "C18, 2.6 µm, 100 x 2.1 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "メタノール:水 (90:10)",
+            "flowRate": "0.4 mL/min",
+            "detection": "MS/MS (APCIポジティブモード)",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "カテコールアミン分析",
+          "sample": "血漿",
+          "goal": "エピネフリン、ノルエピネフリン、ドーパミンレベルを測定",
+          "column": "C18, 5 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "クエン酸緩衝液 pH 3.0:メタノール (95:5)",
+            "flowRate": "1.0 mL/min",
+            "detection": "電気化学検出器 (ECD)",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "生体サンプルからのマトリックス効果",
+          "solution": "サンプルクリーンアップにタンパク質沈殿またはSPEを使用し、内部標準を用い、選択性のためにMS/MSを使用する"
+        },
+        {
+          "challenge": "低分析物濃度",
+          "solution": "高感度検出（MS/MS、蛍光）を使用し、抽出回収率を最適化し、サンプル量を増やす"
+        },
+        {
+          "challenge": "規制遵守",
+          "solution": "FDA/EMAバイオアナリシス法バリデーションガイドラインの遵守、品質管理手順の実施、文書管理の維持"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "FDAバイオアナリシス法バリデーション",
+          "description": "業界向けガイダンス"
+        },
+        {
+          "standard": "EMAバイオアナリシス法バリデーション",
+          "description": "生体分析法バリデーションに関するガイドライン"
+        },
+        {
+          "standard": "CLSI C62-A",
+          "description": "液体クロマトグラフィー質量分析法"
+        },
+        {
+          "standard": "CAP/CLIA",
+          "description": "臨床検査室認定基準"
+        }
+      ]
+    },
+    "chemical": {
+      "title": "化学産業",
+      "description": "化学産業におけるHPLCを用いた分析は、石油化学、ポリマー、特殊化学品の製造における品質管理、プロセス監視、製品開発にとって極めて重要です。HPLCは、化学製品、中間体、不純物の正確な特性評価を提供します。製品仕様の確保、製造プロセスの最適化、業界標準への適合において重要な役割を果たします。現代の化学分析には、多様なサンプルタイプと複雑なマトリックスに対応し、高い精度と信頼性を維持できる堅牢な手法が求められます。",
+      "analysisItems": [
+        {
+          "name": "ポリマー添加剤",
+          "description": "ポリマー中の抗酸化剤、UV安定剤、可塑剤の分析"
+        },
+        {
+          "name": "石油化学分析",
+          "description": "芳香族炭化水素および石油留分の特性評価"
+        },
+        {
+          "name": "界面活性剤分析",
+          "description": "界面活性剤の組成と純度の測定"
+        },
+        {
+          "name": "ポリマー分子量",
+          "description": "サイズ排除クロマトグラフィーによる分子量分布の測定"
+        },
+        {
+          "name": "染料・顔料分析",
+          "description": "化学製品中の着色料の同定と定量"
+        },
+        {
+          "name": "触媒残渣",
+          "description": "金属触媒および有機触媒残留物の検出"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18（オクタデシルシラン）",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "添加剤、安定剤、一般化学分析"
+        },
+        {
+          "type": "C8（オクチルシラン）",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "石油化学製品、疎水性化合物"
+        },
+        {
+          "type": "フェニル",
+          "usp": "L11",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "芳香族化合物、PAH、染料"
+        },
+        {
+          "type": "サイズ排除 (SEC/GPC)",
+          "usp": "L33/L38",
+          "particleSize": "5-10 µm",
+          "dimensions": "300 x 7.8 mm",
+          "applications": "ポリマー分子量分布"
+        }
+      ],
+      "cases": [
+        {
+          "title": "プラスチック中の抗酸化剤",
+          "sample": "ポリマー抽出物",
+          "goal": "ポリエチレン中のイルガノックス1010およびその他の抗酸化剤を定量",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "アセトニトリル:水 (90:10)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 280 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "ガソリン中の芳香族炭化水素",
+          "sample": "ガソリンサンプル",
+          "goal": "ベンゼン、トルエン、キシレン含有量（BTX）を測定",
+          "column": "フェニル、5 µm、250 x 4.6 mm (USP L11)",
+          "parameters": {
+            "mobilePhase": "アセトニトリル:水 (70:30)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "10 µL"
+          }
+        },
+        {
+          "title": "ポリマー分子量分布",
+          "sample": "ポリスチレン溶液",
+          "goal": "Mn、Mw、および多分散度指数を決定",
+          "column": "SEC/GPC、5 µm、300 x 7.8 mm (USP L33)",
+          "parameters": {
+            "mobilePhase": "テトラヒドロフラン (THF)",
+            "flowRate": "1.0 mL/min",
+            "detection": "屈折率 (RI)",
+            "injectionVolume": "100 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "サンプル溶解性の問題",
+          "solution": "抽出および溶解に適切な溶媒を使用し、必要に応じて高温を用い、サンプル前処理を最適化する"
+        },
+        {
+          "challenge": "複雑なポリマーマトリックス",
+          "solution": "選択的抽出方法を使用し、グラジエント溶出を用い、適切な検出器（RI、UV、ELSD）を使用する"
+        },
+        {
+          "challenge": "高分子量化合物",
+          "solution": "サイズ排除クロマトグラフィー（SEC/GPC）を使用し、分子量範囲に基づいてカラム選択を最適化する"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "ASTM D6591",
+          "description": "石油製品中の芳香族含有量の測定"
+        },
+        {
+          "standard": "ISO 16014",
+          "description": "プラスチック - 平均分子量の決定"
+        },
+        {
+          "standard": "GB/T 7764",
+          "description": "赤外分光法によるゴムの識別"
+        },
+        {
+          "standard": "ASTM D5296",
+          "description": "SECによる分子量平均と分布"
+        }
+      ]
+    },
+    "food_beverage": {
+      "title": "食品・飲料",
+      "description": "HPLCを用いた食品および飲料分析は、サプライチェーン全体で製品の安全性、品質、真正性を保証します。HPLCは、様々な食品マトリックス中の栄養素、添加物、汚染物質、異物混入物質の正確な定量化を提供します。これは、品質管理、規制遵守、食品安全監視において重要な役割を果たします。現代の食品分析では、厳格な食品安全規制を満たしながら、微量汚染物質を検出し、製品の真正性を検証するために、高い感度と選択性が求められます。",
+      "analysisItems": [
+        {
+          "name": "ビタミン分析",
+          "description": "食品中の水溶性および脂溶性ビタミンの定量"
+        },
+        {
+          "name": "防腐剤試験",
+          "description": "安息香酸やソルビン酸などの食品保存料の検出と定量"
+        },
+        {
+          "name": "マイコトキシン分析",
+          "description": "穀物およびナッツ中のアフラトキシン、オクラトキシンA、その他のマイコトキシン検出"
+        },
+        {
+          "name": "甘味料分析",
+          "description": "飲料および食品中の人工および天然甘味料の定量"
+        },
+        {
+          "name": "アミノ酸プロファイリング",
+          "description": "品質および真正性のための遊離アミノ酸およびタンパク質結合アミノ酸の分析"
+        },
+        {
+          "name": "抗酸化剤分析",
+          "description": "食品中の天然および合成抗酸化物質の測定"
+        }
+      ],
+      "columns": [
+        {
+          "type": "C18（オクタデシルシラン）",
+          "usp": "L1",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm, 250 x 4.6 mm",
+          "applications": "一般食品分析、ビタミン、保存料、抗酸化物質"
+        },
+        {
+          "type": "C8（オクチルシラン）",
+          "usp": "L7",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "脂溶性ビタミン、脂質分析"
+        },
+        {
+          "type": "アミノ酸分析カラム",
+          "usp": "専門",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "アミノ酸組成、タンパク質加水分解物"
+        },
+        {
+          "type": "HILIC（親水性相互作用）",
+          "usp": "L68",
+          "particleSize": "3-5 µm",
+          "dimensions": "150 x 4.6 mm",
+          "applications": "炭水化物、糖類、極性甘味料"
+        }
+      ],
+      "cases": [
+        {
+          "title": "フルーツジュース中のビタミンC",
+          "sample": "フルーツジュースサンプル",
+          "goal": "栄養表示のためのビタミンC（アスコルビン酸）含有量を定量",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "リン酸緩衝液 pH 2.5:メタノール (95:5)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 254 nm",
+            "injectionVolume": "20 µL"
+          }
+        },
+        {
+          "title": "ピーナッツ中のアフラトキシン",
+          "sample": "ピーナッツ抽出物",
+          "goal": "規制値でアフラトキシンB1、B2、G1、G2を検出",
+          "column": "C18, 5 µm, 150 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "水:メタノール:アセトニトリル (60:20:20)",
+            "flowRate": "1.0 mL/min",
+            "detection": "蛍光 (励起 365 nm, 発光 450 nm)",
+            "injectionVolume": "50 µL"
+          }
+        },
+        {
+          "title": "清涼飲料水中の防腐剤",
+          "sample": "炭酸飲料",
+          "goal": "安息香酸とソルビン酸の同時定量",
+          "column": "C18, 5 µm, 250 x 4.6 mm (USP L1)",
+          "parameters": {
+            "mobilePhase": "アセトニトリル:水:酢酸 (25:74:1)",
+            "flowRate": "1.0 mL/min",
+            "detection": "UV 230 nm",
+            "injectionVolume": "20 µL"
+          }
+        }
+      ],
+      "challenges": [
+        {
+          "challenge": "複雑な食品マトリックス",
+          "solution": "適切なサンプル前処理（抽出、ろ過、SPE）を使用し、マトリックス分離のためにグラジエント条件を最適化する"
+        },
+        {
+          "challenge": "低分析物濃度",
+          "solution": "サンプル濃縮技術の採用、感度向上のための蛍光またはMS検出の使用"
+        },
+        {
+          "challenge": "不安定な化合物（ビタミン）",
+          "solution": "サンプルを光と酸素から保護し、抗酸化剤を使用し、調製後すぐに分析し、pHを制御する"
+        }
+      ],
+      "standards": [
+        {
+          "standard": "AOAC公定法",
+          "description": "AOAC Internationalによる食品分析法"
+        },
+        {
+          "standard": "FDA BAM",
+          "description": "細菌学的分析マニュアル"
+        },
+        {
+          "standard": "GB 5009 シリーズ",
+          "description": "国家食品安全基準 (中国)"
+        },
+        {
+          "standard": "EU規則 1881/2006",
+          "description": "食品中の特定の汚染物質の最大レベル"
+        }
+      ]
+    }
+  },
   "contact": {
-    "name_label": "お名前 *",
-    "name_placeholder": "お名前を入力",
-    "email_label": "メールアドレス *",
+    "name_label": "氏名 *",
+    "name_placeholder": "氏名",
+    "email_label": "Eメール *",
     "email_placeholder": "your@email.com",
-    "company_label": "会社名",
-    "company_placeholder": "会社名を入力",
-    "phone_label": "電話番号",
-    "phone_placeholder": "+81 90 0000 0000",
+    "company_label": "会社",
+    "company_placeholder": "貴社名",
+    "phone_label": "電話",
+    "phone_placeholder": "+1 234 567 8900",
     "message_label": "メッセージ *",
-    "message_placeholder": "お問い合わせ内容を入力してください...",
-    "send_button": "送信",
+    "message_placeholder": "お問い合わせ内容をご記入ください。",
+    "send_button": "メッセージを送信",
     "sending": "送信中...",
-    "whatsapp_instruction": "QRコードをスキャンするか、WhatsAppでお問い合わせください",
+    "whatsapp_instruction": "QRコードをスキャンするか、WhatsApp経由でお問い合わせください",
     "business_hours": "営業時間",
-    "weekday": "月曜日 - 金曜日",
-    "weekday_hours": "9:00 - 18:00 (GMT+8)",
+    "weekday": "月曜日～金曜日",
+    "weekday_hours": "午前9時～午後6時 (GMT+8)",
     "weekend": "土曜日 - 日曜日",
-    "weekend_hours": "定休日",
-    "inquiry_success": "お問い合わせが正常に送信されました！できるだけ早くご連絡いたします。",
+    "weekend_hours": "クローズ",
+    "reminder_title": "ご注意",
+    "reminder_message": "迅速にご連絡できるよう、連絡先情報をご記入ください",
+    "inquiry_success": "お問い合わせが正常に送信されました！追ってご連絡いたします。",
     "inquiry_error": "お問い合わせの送信に失敗しました。もう一度お試しください。",
-    "message_success": "メッセージが正常に送信されました！できるだけ早く返信いたします。",
+    "message_success": "メッセージは正常に送信されました。できるだけ早くご返信いたします。",
     "message_error": "メッセージの送信に失敗しました。もう一度お試しください。",
-    "required_fields": "すべての必須項目を入力してください"
+    "required_fields": "必須項目をすべてご記入ください"
+  },
+  "productInquiry": {
+    "request_quote": "見積もりを依頼",
+    "leave_message": "メッセージを残す",
+    "inquiry_title": "見積もりを依頼",
+    "inquiry_description": "以下のフォームにご記入いただければ、この製品の見積もりをお送りします",
+    "message_title": "メッセージを残す",
+    "message_description": "この製品についてご質問がありますか？メッセージを送信してください",
+    "product_info": "製品",
+    "inquiry_message_label": "ご要望 *",
+    "inquiry_message_placeholder": "ご要望（数量、納期など）をご記入ください",
+    "message_text_label": "メッセージ *",
+    "message_text_placeholder": "この製品について何でもお気軽にお問い合わせください..."
   },
   "learningCenter": {
     "title": "ラーニングセンター",
-    "subtitle": "クロマトグラフィー専門家のための専門的な洞察、技術ガイド、アプリケーションノート",
-    "browseByArea": "応用分野別に閲覧",
+    "subtitle": "クロマトグラフィー専門家向けのエキスパートインサイト、技術ガイド、アプリケーションノート",
+    "browseByArea": "用途別で閲覧する",
     "applicationAreas": {
       "pharmaceutical": "医薬品",
       "environmental": "環境",
@@ -333,11 +1147,11 @@
       "totalViews": "総閲覧数"
     },
     "articleCard": {
-      "readMore": "続きを読む"
+      "readMore": "詳細を見る"
     },
     "emptyState": {
-      "title": "記事が見つかりません",
-      "description": "フィルターを調整するか、後で新しいコンテンツを確認してください。"
+      "title": "記事は見つかりませんでした",
+      "description": "フィルターを調整するか、後で新しいコンテンツがないか確認してください。"
     },
     "pagination": {
       "previous": "前へ",
@@ -345,7 +1159,7 @@
       "page": "ページ"
     },
     "authors": {
-      "title": "専門著者",
+      "title": "当社の専門著者",
       "article": "記事",
       "articles": "記事"
     },
@@ -358,15 +1172,15 @@
   },
   "literature": {
     "summary": "概要",
-    "keyFindings": "主な発見",
+    "keyFindings": "主な発見事項",
     "relevanceToRowell": "ROWELLとの関連性",
     "expandedAnalysis": "拡張分析",
-    "methodologyDetails": "方法の詳細",
-    "practicalGuide": "実用的なアプリケーションガイド",
-    "publicationDetails": "出版の詳細",
+    "methodologyDetails": "方法論の詳細",
+    "practicalGuide": "実用アプリケーションガイド",
+    "publicationDetails": "出版物の詳細",
     "doi": "DOI",
     "year": "年",
     "journal": "ジャーナル",
-    "readFullPaper": "全文を読む"
+    "readFullPaper": "論文全文を読む"
   }
 }
