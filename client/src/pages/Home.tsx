@@ -296,7 +296,7 @@ export default function Home() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">{brand.series}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">{brand.count} {t('common.products') || 'Products'}</span>
+                    <span className="text-sm font-medium">{brand.count} {t('common.products') || 'products'}</span>
                     <Button variant="link" size="sm" asChild>
                       <Link href={`/products?brand=${brand.name}`}>
                         <a>{t('home.view_products')} →</a>
@@ -402,7 +402,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">{standard.description}</p>
-                  <p className="text-sm font-medium">{standard.count} {t('common.products') || 'Products'}</p>
+                  <p className="text-sm font-medium">{standard.count} {t('common.products') || 'products'}</p>
                 </CardContent>
               </Card>
             ))}
