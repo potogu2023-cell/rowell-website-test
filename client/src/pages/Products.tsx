@@ -369,7 +369,7 @@ export default function Products() {
                 <Card 
                   key={product.id} 
                   className="hover:shadow-lg transition-shadow cursor-pointer"
-                  onClick={() => setLocation(`/products/${product.productId}`)}
+                  onClick={() => setLocation(`/products/${product.slug}`)}
                 >
                   {/* Product Image */}
                   <div className="aspect-square w-full overflow-hidden bg-gray-50">
