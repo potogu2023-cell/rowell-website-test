@@ -17,6 +17,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
   const [, setLocation] = useLocation();
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const [debouncedValue, setDebouncedValue] = useState(value);
   const searchRef = useRef<HTMLDivElement>(null);
 
   // Popular searches (could be fetched from backend in the future)
@@ -43,10 +44,19 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
     localStorage.setItem("searchHistory", JSON.stringify(newHistory));
   };
 
+  // Debounce search value
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, 300); // 300ms debounce delay
+
+    return () => clearTimeout(timer);
+  }, [value]);
+
   // Get search suggestions
   const { data: suggestions } = trpc.products.list.useQuery(
     {
-      search: value,
+      search: debouncedValue,
       pageSize: 5,
     },
     {
