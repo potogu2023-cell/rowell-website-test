@@ -17,6 +17,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
   const [, setLocation] = useLocation();
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  const [localValue, setLocalValue] = useState(value);
   const [debouncedValue, setDebouncedValue] = useState(value);
   const searchRef = useRef<HTMLDivElement>(null);
 
@@ -44,14 +45,22 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
     localStorage.setItem("searchHistory", JSON.stringify(newHistory));
   };
 
-  // Debounce search value
+  // Sync local value with prop value
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  // Debounce local value and call onChange
   useEffect(() => {
     const timer = setTimeout(() => {
-      setDebouncedValue(value);
-    }, 300); // 300ms debounce delay
+      setDebouncedValue(localValue);
+      if (localValue !== value) {
+        onChange(localValue);
+      }
+    }, 500); // 500ms debounce delay
 
     return () => clearTimeout(timer);
-  }, [value]);
+  }, [localValue]);
 
   // Get search suggestions
   const { data: suggestions } = trpc.products.list.useQuery(
@@ -77,7 +86,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
   }, []);
 
   const handleInputChange = (newValue: string) => {
-    onChange(newValue);
+    setLocalValue(newValue);
     setShowSuggestions(true);
   };
 
@@ -112,7 +121,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
         <Input
           type="text"
           placeholder={placeholder}
-          value={value}
+          value={localValue}
           onChange={(e) => handleInputChange(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
           onKeyDown={(e) => {
