@@ -19,6 +19,7 @@ export default function Products() {
   const { t, i18n } = useTranslation();
   const [location, setLocation] = useLocation();
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<string | null>(null);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
   const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null);
@@ -80,6 +81,15 @@ export default function Products() {
     }
   }, [categories]);
 
+  // Debounce search term
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // 500ms debounce delay
+
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
   // Listen to URL changes and update filters
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -129,12 +139,12 @@ export default function Products() {
   const queryParams = useMemo(() => ({
     categoryId: selectedCategoryId || undefined,
     brand: selectedBrand || undefined,
-    search: searchTerm || undefined,
+    search: debouncedSearchTerm || undefined,
     usp: selectedUSP || undefined,
     ...advancedFilters,
     page: currentPage,
     pageSize,
-  }), [selectedCategoryId, selectedBrand, searchTerm, selectedUSP, advancedFilters, currentPage, pageSize]);
+  }), [selectedCategoryId, selectedBrand, debouncedSearchTerm, selectedUSP, advancedFilters, currentPage, pageSize]);
   
   console.log('[Products] Query params:', queryParams);
   
