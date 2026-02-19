@@ -45,22 +45,15 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
     localStorage.setItem("searchHistory", JSON.stringify(newHistory));
   };
 
-  // Sync local value with prop value
-  useEffect(() => {
-    setLocalValue(value);
-  }, [value]);
-
   // Debounce local value and call onChange
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedValue(localValue);
-      if (localValue !== value) {
-        onChange(localValue);
-      }
+      onChange(localValue);
     }, 500); // 500ms debounce delay
 
     return () => clearTimeout(timer);
-  }, [localValue]);
+  }, [localValue, onChange]);
 
   // Get search suggestions
   const { data: suggestions } = trpc.products.list.useQuery(
