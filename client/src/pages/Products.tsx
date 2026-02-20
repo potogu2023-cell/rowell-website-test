@@ -148,7 +148,7 @@ export default function Products() {
   
   console.log('[Products] Query params:', queryParams);
   
-  const { data, isLoading } = trpc.products.list.useQuery(queryParams);
+  const { data, isLoading, isFetching } = trpc.products.list.useQuery(queryParams);
   
   // Get all brands for the current category (or all brands if no category selected)
   const { data: brandStats } = trpc.products.getBrandStats.useQuery({
@@ -201,7 +201,8 @@ export default function Products() {
 
   const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || searchTerm;
 
-  if (isLoading) {
+  // Only show full-page loading on initial load
+  if (isLoading && !data) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
