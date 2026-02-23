@@ -6,7 +6,8 @@ import { articles, authors } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
 
 // Articles directory in the project
-const ARTICLES_DIR = path.join(process.cwd(), 'content', 'articles');
+// Use __dirname to get the correct path in production environment
+const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articles');
 
 // Required fields validation
 const REQUIRED_FIELDS = [
