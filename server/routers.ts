@@ -36,6 +36,7 @@ import { updateYmcTosohRouter } from "./update-ymc-tosoh-router";
 import { updateDimensionsRouter } from "./update-dimensions-router";
 import { learningCenterRouter } from "./learning-center-api";
 import { seedArticlesRouter } from "./seed-articles-router";
+import { manualImportRouter } from "./manual-import-api";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
 
 
@@ -656,6 +657,9 @@ export const appRouter = router({
   
   // Seed articles (one-time operation)
   seedArticles: seedArticlesRouter,
+  
+  // Manual import articles for testing
+  manualImport: manualImportRouter,
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
