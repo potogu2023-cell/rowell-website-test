@@ -1,12 +1,16 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 import { getDb } from './db';
 import { articles, authors } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
 
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Articles directory in the project
-// Use __dirname to get the correct path in production environment
 const ARTICLES_DIR = path.join(__dirname, '..', 'content', 'articles');
 
 // Required fields validation
