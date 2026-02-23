@@ -13,6 +13,7 @@ import { generateSitemap } from "../sitemap";
 import { seoMetaInjectionMiddleware } from "../seo-meta-injection";
 import { learningCenterRouter as learningCenterRestRouter } from "../learning-center-rest-api";
 import { testLiteratureRouter } from "../test-literature-api";
+import { startArticleMonitor } from "../article-monitor";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -106,6 +107,13 @@ app.use("/api/learning-center", learningCenterRestRouter);
   server.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
   });
+
+  // Start article monitor service
+  try {
+    await startArticleMonitor();
+  } catch (error) {
+    console.error('[Server] Failed to start article monitor:', error);
+  }
 }
 
 startServer().catch(console.error);
