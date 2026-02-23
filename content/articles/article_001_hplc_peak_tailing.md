@@ -1,6 +1,6 @@
 ---
 title: "Top 5 Causes of HPLC Peak Tailing and How to Fix Them"
-author_slug: rowell-hplc-team
+author_slug: rowell-team
 category: technical-guides
 application_area: pharmaceutical
 slug: hplc-peak-tailing-troubleshooting
