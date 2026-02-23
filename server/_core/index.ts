@@ -13,7 +13,7 @@ import { generateSitemap } from "../sitemap";
 import { seoMetaInjectionMiddleware } from "../seo-meta-injection";
 import { learningCenterRouter as learningCenterRestRouter } from "../learning-center-rest-api";
 import { testLiteratureRouter } from "../test-literature-api";
-import { startArticleMonitor } from "../article-monitor";
+import { importArticles } from "../article-importer";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -108,11 +108,11 @@ app.use("/api/learning-center", learningCenterRestRouter);
     console.log(`Server running on http://localhost:${port}/`);
   });
 
-  // Start article monitor service
+  // Import articles from content directory
   try {
-    await startArticleMonitor();
+    await importArticles();
   } catch (error) {
-    console.error('[Server] Failed to start article monitor:', error);
+    console.error('[Server] Failed to import articles:', error);
   }
 }
 
