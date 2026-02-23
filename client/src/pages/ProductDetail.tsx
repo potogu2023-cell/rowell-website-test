@@ -31,7 +31,7 @@ export default function ProductDetail() {
         "@type": "Product",
         "name": product.name,
         "image": product.imageUrl || "",
-        "description": product.description || product.detailedDescription || "",
+        "description": product.description || product.detailedDescription || product.name || "High-quality chromatography product",
         "sku": product.partNumber,
         "mpn": product.partNumber,
         "brand": {
