@@ -1,7 +1,7 @@
 /**
  * ANPEL Standards 数据库查询模块
  * 独立于现有 products 表，不影响现有业务
- * 使用 getPool() 直接执行参数化 SQL 查询
+ * 使用 pool.query() 执行参数化 SQL，LIMIT/OFFSET 直接内联
  */
 import { getPool } from './db';
 
@@ -55,15 +55,16 @@ function mapProduct(row: any): StandardsProduct {
   };
 }
 
-async function query(sql: string, params?: any[]): Promise<any[]> {
+async function q(sql: string, params?: any[]): Promise<any[]> {
   const pool = await getPool();
   if (!pool) return [];
-  const [rows] = await pool.execute(sql, params);
+  // Use query() instead of execute() to avoid type coercion issues with LIMIT/OFFSET
+  const [rows] = await (pool as any).query(sql, params);
   return rows as any[];
 }
 
 export async function getAllStandardsCategories(): Promise<StandardsCategory[]> {
-  const rows = await query(`
+  const rows = await q(`
     SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
            COUNT(sp.id) as product_count
     FROM standards_categories sc
@@ -84,7 +85,7 @@ export async function getAllStandardsCategories(): Promise<StandardsCategory[]> 
 }
 
 export async function getStandardsCategoryBySlug(slug: string): Promise<StandardsCategory | null> {
-  const rows = await query(`
+  const rows = await q(`
     SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
            COUNT(sp.id) as product_count
     FROM standards_categories sc
@@ -114,15 +115,15 @@ export async function getStandardsByCategory(
 ): Promise<StandardsListResult> {
   const offset = (page - 1) * pageSize;
   const [itemRows, countRows] = await Promise.all([
-    query(`
+    q(`
       SELECT id, part_number, name_en, name_cn, specification, cas_number,
              category_slug, brand, price_cny, price_usd, slug, status
       FROM standards_products
       WHERE category_slug = ? AND status = 'active'
       ORDER BY name_en ASC
-      LIMIT ? OFFSET ?
-    `, [categorySlug, pageSize, offset]),
-    query(`
+      LIMIT ${pageSize} OFFSET ${offset}
+    `, [categorySlug]),
+    q(`
       SELECT COUNT(*) as total FROM standards_products
       WHERE category_slug = ? AND status = 'active'
     `, [categorySlug]),
@@ -146,7 +147,7 @@ export async function searchStandardsProducts(
 
   if (categorySlug) {
     [itemRows, countRows] = await Promise.all([
-      query(`
+      q(`
         SELECT id, part_number, name_en, name_cn, specification, cas_number,
                category_slug, brand, price_cny, price_usd, slug, status
         FROM standards_products
@@ -158,9 +159,9 @@ export async function searchStandardsProducts(
                WHEN name_en LIKE ? THEN 2
                ELSE 3
           END, name_en ASC
-        LIMIT ? OFFSET ?
-      `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm, pageSize, offset]),
-      query(`
+        LIMIT ${pageSize} OFFSET ${offset}
+      `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm]),
+      q(`
         SELECT COUNT(*) as total FROM standards_products
         WHERE status = 'active' AND category_slug = ?
           AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
@@ -168,7 +169,7 @@ export async function searchStandardsProducts(
     ]);
   } else {
     [itemRows, countRows] = await Promise.all([
-      query(`
+      q(`
         SELECT id, part_number, name_en, name_cn, specification, cas_number,
                category_slug, brand, price_cny, price_usd, slug, status
         FROM standards_products
@@ -180,9 +181,9 @@ export async function searchStandardsProducts(
                WHEN name_en LIKE ? THEN 2
                ELSE 3
           END, name_en ASC
-        LIMIT ? OFFSET ?
-      `, [searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm, pageSize, offset]),
-      query(`
+        LIMIT ${pageSize} OFFSET ${offset}
+      `, [searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm]),
+      q(`
         SELECT COUNT(*) as total FROM standards_products
         WHERE status = 'active'
           AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
@@ -195,7 +196,7 @@ export async function searchStandardsProducts(
 }
 
 export async function getStandardsProductBySlug(slug: string): Promise<StandardsProduct | null> {
-  const rows = await query(`
+  const rows = await q(`
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
@@ -211,21 +212,21 @@ export async function getRelatedStandardsProducts(
   excludeId: number,
   limit: number = 6
 ): Promise<StandardsProduct[]> {
-  const rows = await query(`
+  const rows = await q(`
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
     WHERE category_slug = ? AND status = 'active' AND id != ?
     ORDER BY RAND()
-    LIMIT ?
-  `, [categorySlug, excludeId, limit]);
+    LIMIT ${limit}
+  `, [categorySlug, excludeId]);
   return rows.map(mapProduct);
 }
 
 export async function getStandardsStats(): Promise<{ total: number; categories: number }> {
   const [totalRows, catRows] = await Promise.all([
-    query(`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`),
-    query(`SELECT COUNT(*) as total FROM standards_categories`),
+    q(`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`),
+    q(`SELECT COUNT(*) as total FROM standards_categories`),
   ]);
   return {
     total: Number(totalRows[0]?.total || 0),
