@@ -26,6 +26,10 @@ export default function ProductDetail() {
   // Add Product Schema for SEO
   useEffect(() => {
     if (product) {
+      // Generate dynamic priceValidUntil: always 2 years from now to avoid expiry issues
+      const nextYear = new Date().getFullYear() + 2;
+      const priceValidUntil = `${nextYear}-12-31`;
+
       const schema = {
         "@context": "https://schema.org/",
         "@type": "Product",
@@ -42,7 +46,7 @@ export default function ProductDetail() {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD",
-          "priceValidUntil": "2025-12-31",
+          "priceValidUntil": priceValidUntil,
           "availability": "https://schema.org/InStock",
           "url": `https://www.rowellhplc.com/products/${product.slug || product.partNumber}`,
           "seller": {
