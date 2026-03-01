@@ -23,6 +23,10 @@ import AdminSeed from "./pages/AdminSeed";
 import TestFilters from "./pages/TestFilters";
 import ProductDetail from "./pages/ProductDetail";
 import AdminMessages from "./pages/AdminMessages";
+import Standards from "./pages/Standards";
+import StandardsCategory from "./pages/StandardsCategory";
+import StandardsProductDetail from "./pages/StandardsProductDetail";
+import StandardsSearch from "./pages/StandardsSearch";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 
@@ -59,6 +63,12 @@ function Router() {
           <Route path={"/contact"} component={Contact} />
           <Route path={"/admin/messages"} component={AdminMessages} />
           <Route path={"/admin/seed"} component={AdminSeed} />
+
+          {/* ANPEL Reference Standards routes */}
+          <Route path={"/standards"} component={Standards} />
+          <Route path={"/standards/search"} component={StandardsSearch} />
+          <Route path={"/standards/category/:slug"} component={StandardsCategory} />
+          <Route path={"/standards/product/:slug"} component={StandardsProductDetail} />
 
           <Route path={"/test-filters"} component={TestFilters} />
           <Route path={"/404"} component={NotFound} />

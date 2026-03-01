@@ -40,6 +40,11 @@ export default function Navbar() {
               {t('nav.products')}
             </a>
           </Link>
+          <Link href="/standards">
+            <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              {t('standards.nav_label')}
+            </a>
+          </Link>
           <Link href="/usp-standards">
             <a className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
               {t('nav.usp_standards')}

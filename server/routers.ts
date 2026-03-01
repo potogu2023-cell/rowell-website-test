@@ -37,6 +37,7 @@ import { updateDimensionsRouter } from "./update-dimensions-router";
 import { learningCenterRouter } from "./learning-center-api";
 import { seedArticlesRouter } from "./seed-articles-router";
 import { manualImportRouter } from "./manual-import-api";
+import { standardsRouter } from "./standards-api";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
 
 
@@ -660,6 +661,9 @@ export const appRouter = router({
   
   // Manual import articles for testing
   manualImport: manualImportRouter,
+
+  // ANPEL Reference Standards
+  standards: standardsRouter,
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
