@@ -5,6 +5,7 @@ import { ENV } from './_core/env';
 import mysql from 'mysql2/promise';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _pool: mysql.Pool | null = null;
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
@@ -62,6 +63,7 @@ export async function getDb() {
       }
       
       const pool = mysql.createPool(poolConfig);
+      _pool = pool;
       
       // Test connection
       try {
@@ -81,6 +83,11 @@ export async function getDb() {
     }
   }
   return _db;
+}
+
+export async function getPool(): Promise<mysql.Pool | null> {
+  await getDb(); // Ensure pool is initialized
+  return _pool;
 }
 
 export async function upsertUser(user: InsertUser): Promise<void> {

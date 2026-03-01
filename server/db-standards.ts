@@ -1,9 +1,9 @@
 /**
  * ANPEL Standards 数据库查询模块
  * 独立于现有 products 表，不影响现有业务
- * 使用与现有代码一致的 db.execute(string, params) 语法
+ * 使用 getPool() 直接执行参数化 SQL 查询
  */
-import { getDb } from './db';
+import { getPool } from './db';
 
 export interface StandardsCategory {
   id: number;
@@ -55,10 +55,15 @@ function mapProduct(row: any): StandardsProduct {
   };
 }
 
+async function query(sql: string, params?: any[]): Promise<any[]> {
+  const pool = await getPool();
+  if (!pool) return [];
+  const [rows] = await pool.execute(sql, params);
+  return rows as any[];
+}
+
 export async function getAllStandardsCategories(): Promise<StandardsCategory[]> {
-  const db = await getDb();
-  if (!db) return [];
-  const [rows] = await db.execute(`
+  const rows = await query(`
     SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
            COUNT(sp.id) as product_count
     FROM standards_categories sc
@@ -66,7 +71,7 @@ export async function getAllStandardsCategories(): Promise<StandardsCategory[]> 
     GROUP BY sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order
     ORDER BY sc.sort_order ASC
   `);
-  return (rows as any[]).map((row: any) => ({
+  return rows.map((row: any) => ({
     id: Number(row.id),
     slug: row.slug,
     name_en: row.name_en,
@@ -79,9 +84,7 @@ export async function getAllStandardsCategories(): Promise<StandardsCategory[]> 
 }
 
 export async function getStandardsCategoryBySlug(slug: string): Promise<StandardsCategory | null> {
-  const db = await getDb();
-  if (!db) return null;
-  const [rows] = await db.execute(`
+  const rows = await query(`
     SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
            COUNT(sp.id) as product_count
     FROM standards_categories sc
@@ -90,9 +93,8 @@ export async function getStandardsCategoryBySlug(slug: string): Promise<Standard
     GROUP BY sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order
     LIMIT 1
   `, [slug]);
-  const arr = rows as any[];
-  if (!arr || arr.length === 0) return null;
-  const row = arr[0];
+  if (!rows || rows.length === 0) return null;
+  const row = rows[0];
   return {
     id: Number(row.id),
     slug: row.slug,
@@ -110,113 +112,98 @@ export async function getStandardsByCategory(
   page: number = 1,
   pageSize: number = 20
 ): Promise<StandardsListResult> {
-  const db = await getDb();
-  if (!db) return { items: [], total: 0, page, pageSize };
   const offset = (page - 1) * pageSize;
-  const [itemRows] = await db.execute(`
-    SELECT id, part_number, name_en, name_cn, specification, cas_number,
-           category_slug, brand, price_cny, price_usd, slug, status
-    FROM standards_products
-    WHERE category_slug = ? AND status = 'active'
-    ORDER BY name_en ASC
-    LIMIT ? OFFSET ?
-  `, [categorySlug, pageSize, offset]);
-  const [countRows] = await db.execute(`
-    SELECT COUNT(*) as total FROM standards_products
-    WHERE category_slug = ? AND status = 'active'
-  `, [categorySlug]);
-  const total = Number((countRows as any[])[0]?.total || 0);
-  return {
-    items: (itemRows as any[]).map(mapProduct),
-    total,
-    page,
-    pageSize,
-  };
+  const [itemRows, countRows] = await Promise.all([
+    query(`
+      SELECT id, part_number, name_en, name_cn, specification, cas_number,
+             category_slug, brand, price_cny, price_usd, slug, status
+      FROM standards_products
+      WHERE category_slug = ? AND status = 'active'
+      ORDER BY name_en ASC
+      LIMIT ? OFFSET ?
+    `, [categorySlug, pageSize, offset]),
+    query(`
+      SELECT COUNT(*) as total FROM standards_products
+      WHERE category_slug = ? AND status = 'active'
+    `, [categorySlug]),
+  ]);
+  const total = Number(countRows[0]?.total || 0);
+  return { items: itemRows.map(mapProduct), total, page, pageSize };
 }
 
 export async function searchStandardsProducts(
-  query: string,
+  queryStr: string,
   page: number = 1,
   pageSize: number = 20,
   categorySlug?: string
 ): Promise<StandardsListResult> {
-  const db = await getDb();
-  if (!db) return { items: [], total: 0, page, pageSize };
   const offset = (page - 1) * pageSize;
-  const searchTerm = `%${query}%`;
-  const startTerm = `${query}%`;
+  const searchTerm = `%${queryStr}%`;
+  const startTerm = `${queryStr}%`;
 
   let itemRows: any[];
   let countRows: any[];
 
   if (categorySlug) {
-    const [ir] = await db.execute(`
-      SELECT id, part_number, name_en, name_cn, specification, cas_number,
-             category_slug, brand, price_cny, price_usd, slug, status
-      FROM standards_products
-      WHERE status = 'active' AND category_slug = ?
-        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
-      ORDER BY
-        CASE WHEN cas_number = ? THEN 0
-             WHEN part_number = ? THEN 1
-             WHEN name_en LIKE ? THEN 2
-             ELSE 3
-        END, name_en ASC
-      LIMIT ? OFFSET ?
-    `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm, query, query, startTerm, pageSize, offset]);
-    const [cr] = await db.execute(`
-      SELECT COUNT(*) as total FROM standards_products
-      WHERE status = 'active' AND category_slug = ?
-        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
-    `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm]);
-    itemRows = ir as any[];
-    countRows = cr as any[];
+    [itemRows, countRows] = await Promise.all([
+      query(`
+        SELECT id, part_number, name_en, name_cn, specification, cas_number,
+               category_slug, brand, price_cny, price_usd, slug, status
+        FROM standards_products
+        WHERE status = 'active' AND category_slug = ?
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+        ORDER BY
+          CASE WHEN cas_number = ? THEN 0
+               WHEN part_number = ? THEN 1
+               WHEN name_en LIKE ? THEN 2
+               ELSE 3
+          END, name_en ASC
+        LIMIT ? OFFSET ?
+      `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm, pageSize, offset]),
+      query(`
+        SELECT COUNT(*) as total FROM standards_products
+        WHERE status = 'active' AND category_slug = ?
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+      `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm]),
+    ]);
   } else {
-    const [ir] = await db.execute(`
-      SELECT id, part_number, name_en, name_cn, specification, cas_number,
-             category_slug, brand, price_cny, price_usd, slug, status
-      FROM standards_products
-      WHERE status = 'active'
-        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
-      ORDER BY
-        CASE WHEN cas_number = ? THEN 0
-             WHEN part_number = ? THEN 1
-             WHEN name_en LIKE ? THEN 2
-             ELSE 3
-        END, name_en ASC
-      LIMIT ? OFFSET ?
-    `, [searchTerm, searchTerm, searchTerm, searchTerm, query, query, startTerm, pageSize, offset]);
-    const [cr] = await db.execute(`
-      SELECT COUNT(*) as total FROM standards_products
-      WHERE status = 'active'
-        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
-    `, [searchTerm, searchTerm, searchTerm, searchTerm]);
-    itemRows = ir as any[];
-    countRows = cr as any[];
+    [itemRows, countRows] = await Promise.all([
+      query(`
+        SELECT id, part_number, name_en, name_cn, specification, cas_number,
+               category_slug, brand, price_cny, price_usd, slug, status
+        FROM standards_products
+        WHERE status = 'active'
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+        ORDER BY
+          CASE WHEN cas_number = ? THEN 0
+               WHEN part_number = ? THEN 1
+               WHEN name_en LIKE ? THEN 2
+               ELSE 3
+          END, name_en ASC
+        LIMIT ? OFFSET ?
+      `, [searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm, pageSize, offset]),
+      query(`
+        SELECT COUNT(*) as total FROM standards_products
+        WHERE status = 'active'
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+      `, [searchTerm, searchTerm, searchTerm, searchTerm]),
+    ]);
   }
 
-  const total = Number((countRows)[0]?.total || 0);
-  return {
-    items: itemRows.map(mapProduct),
-    total,
-    page,
-    pageSize,
-  };
+  const total = Number(countRows[0]?.total || 0);
+  return { items: itemRows.map(mapProduct), total, page, pageSize };
 }
 
 export async function getStandardsProductBySlug(slug: string): Promise<StandardsProduct | null> {
-  const db = await getDb();
-  if (!db) return null;
-  const [rows] = await db.execute(`
+  const rows = await query(`
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
     WHERE slug = ? AND status = 'active'
     LIMIT 1
   `, [slug]);
-  const arr = rows as any[];
-  if (!arr || arr.length === 0) return null;
-  return mapProduct(arr[0]);
+  if (!rows || rows.length === 0) return null;
+  return mapProduct(rows[0]);
 }
 
 export async function getRelatedStandardsProducts(
@@ -224,9 +211,7 @@ export async function getRelatedStandardsProducts(
   excludeId: number,
   limit: number = 6
 ): Promise<StandardsProduct[]> {
-  const db = await getDb();
-  if (!db) return [];
-  const [rows] = await db.execute(`
+  const rows = await query(`
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
@@ -234,16 +219,16 @@ export async function getRelatedStandardsProducts(
     ORDER BY RAND()
     LIMIT ?
   `, [categorySlug, excludeId, limit]);
-  return (rows as any[]).map(mapProduct);
+  return rows.map(mapProduct);
 }
 
 export async function getStandardsStats(): Promise<{ total: number; categories: number }> {
-  const db = await getDb();
-  if (!db) return { total: 0, categories: 0 };
-  const [totalRows] = await db.execute(`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`);
-  const [catRows] = await db.execute(`SELECT COUNT(*) as total FROM standards_categories`);
+  const [totalRows, catRows] = await Promise.all([
+    query(`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`),
+    query(`SELECT COUNT(*) as total FROM standards_categories`),
+  ]);
   return {
-    total: Number((totalRows as any[])[0]?.total || 0),
-    categories: Number((catRows as any[])[0]?.total || 0),
+    total: Number(totalRows[0]?.total || 0),
+    categories: Number(catRows[0]?.total || 0),
   };
 }
