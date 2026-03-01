@@ -1,10 +1,9 @@
 /**
  * ANPEL Standards 数据库查询模块
  * 独立于现有 products 表，不影响现有业务
+ * 使用与现有代码一致的 db.execute(string, params) 语法
  */
-
 import { getDb } from './db';
-import { sql } from 'drizzle-orm';
 
 export interface StandardsCategory {
   id: number;
@@ -39,72 +38,73 @@ export interface StandardsListResult {
   pageSize: number;
 }
 
-/**
- * 获取所有分类及产品数量
- */
+function mapProduct(row: any): StandardsProduct {
+  return {
+    id: Number(row.id),
+    part_number: row.part_number || '',
+    name_en: row.name_en || '',
+    name_cn: row.name_cn || null,
+    specification: row.specification || null,
+    cas_number: row.cas_number || null,
+    category_slug: row.category_slug || null,
+    brand: row.brand || 'ANPEL',
+    price_cny: row.price_cny != null ? String(row.price_cny) : null,
+    price_usd: row.price_usd != null ? String(row.price_usd) : null,
+    slug: row.slug || null,
+    status: row.status || 'active',
+  };
+}
+
 export async function getAllStandardsCategories(): Promise<StandardsCategory[]> {
   const db = await getDb();
   if (!db) return [];
-
-  const result = await db.execute(sql`
-    SELECT 
-      sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
-      COUNT(sp.id) as product_count
+  const [rows] = await db.execute(`
+    SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
+           COUNT(sp.id) as product_count
     FROM standards_categories sc
     LEFT JOIN standards_products sp ON sp.category_slug = sc.slug AND sp.status = 'active'
     GROUP BY sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order
     ORDER BY sc.sort_order ASC
   `);
-
-  return (result as any[]).map((row: any) => ({
+  return (rows as any[]).map((row: any) => ({
     id: Number(row.id),
     slug: row.slug,
     name_en: row.name_en,
-    name_cn: row.name_cn,
-    description: row.description,
-    icon: row.icon,
+    name_cn: row.name_cn || null,
+    description: row.description || null,
+    icon: row.icon || null,
     sort_order: Number(row.sort_order),
     product_count: Number(row.product_count),
   }));
 }
 
-/**
- * 获取单个分类详情
- */
 export async function getStandardsCategoryBySlug(slug: string): Promise<StandardsCategory | null> {
   const db = await getDb();
   if (!db) return null;
-
-  const result = await db.execute(sql`
-    SELECT 
-      sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
-      COUNT(sp.id) as product_count
+  const [rows] = await db.execute(`
+    SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
+           COUNT(sp.id) as product_count
     FROM standards_categories sc
     LEFT JOIN standards_products sp ON sp.category_slug = sc.slug AND sp.status = 'active'
-    WHERE sc.slug = ${slug}
+    WHERE sc.slug = ?
     GROUP BY sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order
     LIMIT 1
-  `);
-
-  const rows = result as any[];
-  if (!rows || rows.length === 0) return null;
-
-  const row = rows[0];
+  `, [slug]);
+  const arr = rows as any[];
+  if (!arr || arr.length === 0) return null;
+  const row = arr[0];
   return {
     id: Number(row.id),
     slug: row.slug,
     name_en: row.name_en,
-    name_cn: row.name_cn,
-    description: row.description,
-    icon: row.icon,
+    name_cn: row.name_cn || null,
+    description: row.description || null,
+    icon: row.icon || null,
     sort_order: Number(row.sort_order),
     product_count: Number(row.product_count),
   };
 }
 
-/**
- * 获取分类下的产品列表（分页）
- */
 export async function getStandardsByCategory(
   categorySlug: string,
   page: number = 1,
@@ -112,37 +112,28 @@ export async function getStandardsByCategory(
 ): Promise<StandardsListResult> {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page, pageSize };
-
   const offset = (page - 1) * pageSize;
-
-  const [items, countResult] = await Promise.all([
-    db.execute(sql`
-      SELECT id, part_number, name_en, name_cn, specification, cas_number,
-             category_slug, brand, price_cny, price_usd, slug, status
-      FROM standards_products
-      WHERE category_slug = ${categorySlug} AND status = 'active'
-      ORDER BY name_en ASC
-      LIMIT ${pageSize} OFFSET ${offset}
-    `),
-    db.execute(sql`
-      SELECT COUNT(*) as total FROM standards_products
-      WHERE category_slug = ${categorySlug} AND status = 'active'
-    `),
-  ]);
-
-  const total = Number((countResult as any[])[0]?.total || 0);
-
+  const [itemRows] = await db.execute(`
+    SELECT id, part_number, name_en, name_cn, specification, cas_number,
+           category_slug, brand, price_cny, price_usd, slug, status
+    FROM standards_products
+    WHERE category_slug = ? AND status = 'active'
+    ORDER BY name_en ASC
+    LIMIT ? OFFSET ?
+  `, [categorySlug, pageSize, offset]);
+  const [countRows] = await db.execute(`
+    SELECT COUNT(*) as total FROM standards_products
+    WHERE category_slug = ? AND status = 'active'
+  `, [categorySlug]);
+  const total = Number((countRows as any[])[0]?.total || 0);
   return {
-    items: (items as any[]).map(mapProduct),
+    items: (itemRows as any[]).map(mapProduct),
     total,
     page,
     pageSize,
   };
 }
 
-/**
- * 搜索标准品（支持产品名、CAS号、货号）
- */
 export async function searchStandardsProducts(
   query: string,
   page: number = 1,
@@ -151,102 +142,83 @@ export async function searchStandardsProducts(
 ): Promise<StandardsListResult> {
   const db = await getDb();
   if (!db) return { items: [], total: 0, page, pageSize };
-
   const offset = (page - 1) * pageSize;
   const searchTerm = `%${query}%`;
+  const startTerm = `${query}%`;
 
-  const categoryFilter = categorySlug
-    ? sql`AND category_slug = ${categorySlug}`
-    : sql``;
+  let itemRows: any[];
+  let countRows: any[];
 
-  const [items, countResult] = await Promise.all([
-    db.execute(sql`
+  if (categorySlug) {
+    const [ir] = await db.execute(`
+      SELECT id, part_number, name_en, name_cn, specification, cas_number,
+             category_slug, brand, price_cny, price_usd, slug, status
+      FROM standards_products
+      WHERE status = 'active' AND category_slug = ?
+        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+      ORDER BY
+        CASE WHEN cas_number = ? THEN 0
+             WHEN part_number = ? THEN 1
+             WHEN name_en LIKE ? THEN 2
+             ELSE 3
+        END, name_en ASC
+      LIMIT ? OFFSET ?
+    `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm, query, query, startTerm, pageSize, offset]);
+    const [cr] = await db.execute(`
+      SELECT COUNT(*) as total FROM standards_products
+      WHERE status = 'active' AND category_slug = ?
+        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+    `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm]);
+    itemRows = ir as any[];
+    countRows = cr as any[];
+  } else {
+    const [ir] = await db.execute(`
       SELECT id, part_number, name_en, name_cn, specification, cas_number,
              category_slug, brand, price_cny, price_usd, slug, status
       FROM standards_products
       WHERE status = 'active'
-        AND (
-          name_en LIKE ${searchTerm}
-          OR name_cn LIKE ${searchTerm}
-          OR cas_number LIKE ${searchTerm}
-          OR part_number LIKE ${searchTerm}
-        )
-        ${categoryFilter}
-      ORDER BY 
-        CASE WHEN cas_number = ${query} THEN 0
-             WHEN part_number = ${query} THEN 1
-             WHEN name_en LIKE ${`${query}%`} THEN 2
+        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+      ORDER BY
+        CASE WHEN cas_number = ? THEN 0
+             WHEN part_number = ? THEN 1
+             WHEN name_en LIKE ? THEN 2
              ELSE 3
-        END,
-        name_en ASC
-      LIMIT ${pageSize} OFFSET ${offset}
-    `),
-    db.execute(sql`
+        END, name_en ASC
+      LIMIT ? OFFSET ?
+    `, [searchTerm, searchTerm, searchTerm, searchTerm, query, query, startTerm, pageSize, offset]);
+    const [cr] = await db.execute(`
       SELECT COUNT(*) as total FROM standards_products
       WHERE status = 'active'
-        AND (
-          name_en LIKE ${searchTerm}
-          OR name_cn LIKE ${searchTerm}
-          OR cas_number LIKE ${searchTerm}
-          OR part_number LIKE ${searchTerm}
-        )
-        ${categoryFilter}
-    `),
-  ]);
+        AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+    `, [searchTerm, searchTerm, searchTerm, searchTerm]);
+    itemRows = ir as any[];
+    countRows = cr as any[];
+  }
 
-  const total = Number((countResult as any[])[0]?.total || 0);
-
+  const total = Number((countRows)[0]?.total || 0);
   return {
-    items: (items as any[]).map(mapProduct),
+    items: itemRows.map(mapProduct),
     total,
     page,
     pageSize,
   };
 }
 
-/**
- * 通过 slug 获取单个产品详情
- */
 export async function getStandardsProductBySlug(slug: string): Promise<StandardsProduct | null> {
   const db = await getDb();
   if (!db) return null;
-
-  const result = await db.execute(sql`
+  const [rows] = await db.execute(`
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
-    WHERE slug = ${slug} AND status = 'active'
+    WHERE slug = ? AND status = 'active'
     LIMIT 1
-  `);
-
-  const rows = result as any[];
-  if (!rows || rows.length === 0) return null;
-  return mapProduct(rows[0]);
+  `, [slug]);
+  const arr = rows as any[];
+  if (!arr || arr.length === 0) return null;
+  return mapProduct(arr[0]);
 }
 
-/**
- * 通过货号获取产品详情
- */
-export async function getStandardsProductByPartNumber(partNumber: string): Promise<StandardsProduct | null> {
-  const db = await getDb();
-  if (!db) return null;
-
-  const result = await db.execute(sql`
-    SELECT id, part_number, name_en, name_cn, specification, cas_number,
-           category_slug, brand, price_cny, price_usd, slug, status
-    FROM standards_products
-    WHERE part_number = ${partNumber} AND status = 'active'
-    LIMIT 1
-  `);
-
-  const rows = result as any[];
-  if (!rows || rows.length === 0) return null;
-  return mapProduct(rows[0]);
-}
-
-/**
- * 获取同类别的相关产品
- */
 export async function getRelatedStandardsProducts(
   categorySlug: string,
   excludeId: number,
@@ -254,50 +226,24 @@ export async function getRelatedStandardsProducts(
 ): Promise<StandardsProduct[]> {
   const db = await getDb();
   if (!db) return [];
-
-  const result = await db.execute(sql`
+  const [rows] = await db.execute(`
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
-    WHERE category_slug = ${categorySlug} AND status = 'active' AND id != ${excludeId}
+    WHERE category_slug = ? AND status = 'active' AND id != ?
     ORDER BY RAND()
-    LIMIT ${limit}
-  `);
-
-  return (result as any[]).map(mapProduct);
+    LIMIT ?
+  `, [categorySlug, excludeId, limit]);
+  return (rows as any[]).map(mapProduct);
 }
 
-/**
- * 获取总产品数统计
- */
 export async function getStandardsStats(): Promise<{ total: number; categories: number }> {
   const db = await getDb();
   if (!db) return { total: 0, categories: 0 };
-
-  const [totalResult, catResult] = await Promise.all([
-    db.execute(sql`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`),
-    db.execute(sql`SELECT COUNT(*) as total FROM standards_categories`),
-  ]);
-
+  const [totalRows] = await db.execute(`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`);
+  const [catRows] = await db.execute(`SELECT COUNT(*) as total FROM standards_categories`);
   return {
-    total: Number((totalResult as any[])[0]?.total || 0),
-    categories: Number((catResult as any[])[0]?.total || 0),
-  };
-}
-
-function mapProduct(row: any): StandardsProduct {
-  return {
-    id: Number(row.id),
-    part_number: row.part_number,
-    name_en: row.name_en,
-    name_cn: row.name_cn,
-    specification: row.specification,
-    cas_number: row.cas_number,
-    category_slug: row.category_slug,
-    brand: row.brand || 'ANPEL',
-    price_cny: row.price_cny ? String(row.price_cny) : null,
-    price_usd: row.price_usd ? String(row.price_usd) : null,
-    slug: row.slug,
-    status: row.status || 'active',
+    total: Number((totalRows as any[])[0]?.total || 0),
+    categories: Number((catRows as any[])[0]?.total || 0),
   };
 }
