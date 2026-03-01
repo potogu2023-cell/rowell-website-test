@@ -16,11 +16,14 @@ export default function StandardsSearch() {
   const { t } = useTranslation();
   const [, navigate] = useLocation();
 
-  // Parse query from URL
-  const urlParams = new URLSearchParams(
-    typeof window !== "undefined" ? window.location.search : ""
-  );
-  const initialQuery = urlParams.get("q") || "";
+  // Parse query from URL - use a function to ensure consistent initialization
+  const getInitialQuery = () => {
+    if (typeof window !== "undefined") {
+      return new URLSearchParams(window.location.search).get("q") || "";
+    }
+    return "";
+  };
+  const initialQuery = getInitialQuery();
 
   const [searchInput, setSearchInput] = useState(initialQuery);
   const [activeQuery, setActiveQuery] = useState(initialQuery);
@@ -28,9 +31,12 @@ export default function StandardsSearch() {
   const [selectedProduct, setSelectedProduct] = useState<{ id: string; name: string; partNumber: string } | null>(null);
   const PAGE_SIZE = 20;
 
-  const { data: results, isLoading } = trpc.standards.search.useQuery(
+  const { data: results, isLoading, isFetching } = trpc.standards.search.useQuery(
     { query: activeQuery, page, pageSize: PAGE_SIZE },
-    { enabled: activeQuery.length > 0 }
+    { 
+      enabled: activeQuery.trim().length > 0,
+      keepPreviousData: true,
+    }
   );
 
   const handleSearch = (e: React.FormEvent) => {
@@ -99,7 +105,7 @@ export default function StandardsSearch() {
       {/* Results */}
       <div className="container max-w-6xl mx-auto px-4 py-8">
         {/* Loading */}
-        {isLoading && (
+        {(isLoading || isFetching) && activeQuery && (
           <div className="flex justify-center items-center py-16">
             <Loader2 className="h-6 w-6 animate-spin text-emerald-600" />
             <span className="ml-2 text-muted-foreground">{t("standards.loading")}</span>
@@ -115,7 +121,7 @@ export default function StandardsSearch() {
         )}
 
         {/* No Results */}
-        {results && results.items.length === 0 && (
+        {results && results.items.length === 0 && !isLoading && !isFetching && (
           <div className="text-center py-16">
             <p className="text-muted-foreground text-lg">{t("standards.no_results")}</p>
             <p className="text-sm text-muted-foreground mt-2">{t("standards.no_results_hint")}</p>
@@ -128,7 +134,7 @@ export default function StandardsSearch() {
         )}
 
         {/* Results count */}
-        {results && results.items.length > 0 && (
+        {results && results.items.length > 0 && !isLoading && (
           <>
             <p className="text-sm text-muted-foreground mb-4">
               {t("standards.showing_results", {
