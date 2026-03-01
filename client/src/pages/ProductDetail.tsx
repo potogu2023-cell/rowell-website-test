@@ -62,7 +62,7 @@ export default function ProductDetail() {
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "Worldwide"
+              "addressCountry": "US"
             },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
@@ -82,7 +82,7 @@ export default function ProductDetail() {
           },
           "hasMerchantReturnPolicy": {
             "@type": "MerchantReturnPolicy",
-            "applicableCountry": "Worldwide",
+            "applicableCountry": "US",
             "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
             "merchantReturnDays": 30,
             "returnMethod": "https://schema.org/ReturnByMail",
