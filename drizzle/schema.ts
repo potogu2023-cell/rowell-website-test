@@ -241,6 +241,8 @@ export const products = mysqlTable("products", {
 	slug: varchar({ length: 128 }),
 	category: varchar({ length: 100 }),
 	categoryId: int('category_id').references(() => categories.id, { onDelete: "set null" }),
+	metaTitle: varchar({ length: 70 }),
+	metaDescription: varchar({ length: 160 }),
 },
 (table) => [
 	index("products_productId_unique").on(table.productId),

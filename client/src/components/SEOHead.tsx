@@ -23,7 +23,7 @@ export function SEOHead({
 }: SEOHeadProps) {
   const siteUrl = "https://www.rowellhplc.com";
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
-  const fullTitle = title.includes("Rowell HPLC") ? title : `${title} | Rowell HPLC`;
+  const fullTitle = (title.includes("Rowell HPLC") || title.includes("ROWELL")) ? title : `${title} | Rowell HPLC`;
 
   return (
     <Helmet>

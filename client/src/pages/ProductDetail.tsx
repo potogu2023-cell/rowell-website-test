@@ -12,6 +12,7 @@ import CustomerMessageForm from "@/components/CustomerMessageForm";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductInquiryButton from "@/components/ProductInquiryButton";
 import ProductMessageButton from "@/components/ProductMessageButton";
+import { SEOHead } from "@/components/SEOHead";
 
 export default function ProductDetail() {
   const { t } = useTranslation();
@@ -145,6 +146,12 @@ export default function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Dynamic SEO Meta Tags */}
+      <SEOHead
+        title={product.metaTitle || `${product.brand} ${product.name} ${product.partNumber}`}
+        description={product.metaDescription || `Buy ${product.brand} ${product.name} (${product.partNumber}) at ROWELL. Global shipping available. Request a quote today for competitive pricing.`}
+        url={`/products/${product.slug || product.productId}`}
+      />
       <div className="container mx-auto px-4 py-8">
         {/* Back Button */}
         <Button
