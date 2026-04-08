@@ -171,7 +171,7 @@ export default function ProductDetail() {
               <div className="w-full aspect-video bg-gray-50 flex items-center justify-center overflow-hidden">
                 <img 
                   src={product.imageUrl || "/images/hplc-column-placeholder.png"}
-                  alt={product.name || product.productId}
+                  alt={`${product.brand} ${product.name} ${product.partNumber} HPLC Column - ROWELL`}
                   className="max-w-full max-h-full object-contain p-8"
                   onError={(e) => {
                     e.currentTarget.src = "/images/hplc-column-placeholder.png";

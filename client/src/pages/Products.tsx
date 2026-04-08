@@ -386,7 +386,7 @@ export default function Products() {
                   <div className="aspect-square w-full overflow-hidden bg-gray-50">
                     <img 
                       src={product.imageUrl || "/images/hplc-column-placeholder.png"}
-                      alt={product.name || product.productId}
+                      alt={`${product.brand} ${product.name} ${product.partNumber} HPLC Column - ROWELL`}
                       className="w-full h-full object-contain p-4"
                       loading="lazy"
                       onError={(e) => {
