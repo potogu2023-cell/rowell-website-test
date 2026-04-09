@@ -1,54 +1,17 @@
 /**
  * SEO Meta Tag Injection Middleware
- * Dynamically injects meta tags for article pages to improve SEO
+ * Dynamically injects meta tags for article pages and product pages to improve SEO
+ * This solves the "Soft 404" problem for React SPA pages by injecting full meta content
+ * server-side before Google crawlers see the page.
  */
-
 import { Request, Response, NextFunction } from "express";
 import { getDb } from "./db";
-import { resources } from "../drizzle/schema";
+import { resources, products } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
-import { ENV } from "./_core/env";
 
-/**
- * Extract slug from resource URL
- * /resources/article-slug-here -> article-slug-here
- */
-function extractSlugFromPath(path: string): string | null {
-  const match = path.match(/^\/resources\/([^\/\?]+)/);
-  return match ? match[1] : null;
-}
-
-/**
- * Generate meta tags HTML
- */
-function generateMetaTags(article: any, fullUrl: string): string {
-  const title = article.title || ENV.appTitle;
-  const description = article.metaDescription || article.excerpt || "";
-  const image = article.coverImage || ENV.appLogo;
-  
-  return `
-    <title>${title} | ${ENV.appTitle}</title>
-    <meta name="description" content="${escapeHtml(description)}" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="${fullUrl}" />
-    <meta property="og:title" content="${escapeHtml(title)}" />
-    <meta property="og:description" content="${escapeHtml(description)}" />
-    <meta property="og:image" content="${image}" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="${fullUrl}" />
-    <meta name="twitter:title" content="${escapeHtml(title)}" />
-    <meta name="twitter:description" content="${escapeHtml(description)}" />
-    <meta name="twitter:image" content="${image}" />
-    
-    <!-- Article metadata -->
-    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ''}" />
-    <meta property="article:author" content="${article.authorName || 'ROWELL Team'}" />
-  `.trim();
-}
+const SITE_TITLE = "ROWELL";
+const SITE_URL = "https://www.rowellhplc.com";
+const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
 
 /**
  * Escape HTML special characters
@@ -65,87 +28,314 @@ function escapeHtml(text: string): string {
 }
 
 /**
+ * Extract slug from resource URL
+ * /resources/article-slug-here -> article-slug-here
+ */
+function extractResourceSlug(path: string): string | null {
+  const match = path.match(/^\/resources\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Extract slug from product URL
+ * /products/695775-742 -> 695775-742
+ */
+function extractProductSlug(path: string): string | null {
+  const match = path.match(/^\/products\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+
+/**
+ * Generate meta tags HTML for article pages
+ */
+function generateArticleMetaTags(article: any, fullUrl: string): string {
+  const title = article.title || SITE_TITLE;
+  const description = article.metaDescription || article.excerpt || "";
+  const image = article.coverImage || SITE_LOGO;
+  const fullTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
+
+  return `
+    <title>${escapeHtml(fullTitle)}</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(fullTitle)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:image" content="${image}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${fullUrl}" />
+    <meta name="twitter:title" content="${escapeHtml(fullTitle)}" />
+    <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:image" content="${image}" />
+    
+    <!-- Article metadata -->
+    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ''}" />
+    <meta property="article:author" content="${article.authorName || 'ROWELL Team'}" />
+  `.trim();
+}
+
+/**
+ * Generate meta tags HTML for product pages
+ * Solves the Soft 404 problem by providing full content to Google crawlers
+ */
+function generateProductMetaTags(product: any, fullUrl: string): string {
+  // Use database metaTitle/metaDescription if available, otherwise generate from product data
+  const title = product.metaTitle ||
+    `${product.brand || ''} ${product.name || ''} ${product.partNumber || ''} | ${SITE_TITLE}`.trim();
+  const description = product.metaDescription ||
+    `Buy ${product.brand || ''} ${product.name || ''} (${product.partNumber || ''}) at ${SITE_TITLE}. Global shipping available. Request a quote today.`.trim();
+
+  // Build product image URL
+  const brandFolder = (product.brand || '').replace(/\s+/g, '');
+  const imageUrl = product.imageUrl ||
+    `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+
+  // Build JSON-LD structured data for Google Merchant Listings
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.name || product.partNumber,
+    "description": product.description || description,
+    "sku": product.partNumber,
+    "mpn": product.partNumber,
+    "brand": {
+      "@type": "Brand",
+      "name": product.brand || "ROWELL"
+    },
+    "image": imageUrl,
+    "url": fullUrl,
+    "offers": {
+      "@type": "Offer",
+      "url": fullUrl,
+      "priceCurrency": "USD",
+      "price": "1",
+      "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "ROWELL"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "USD"
+        },
+        "shippingDestination": [
+          { "@type": "DefinedRegion", "addressCountry": "US" },
+          { "@type": "DefinedRegion", "addressCountry": "GB" },
+          { "@type": "DefinedRegion", "addressCountry": "DE" },
+          { "@type": "DefinedRegion", "addressCountry": "JP" },
+          { "@type": "DefinedRegion", "addressCountry": "AU" },
+          { "@type": "DefinedRegion", "addressCountry": "CA" },
+          { "@type": "DefinedRegion", "addressCountry": "SG" },
+          { "@type": "DefinedRegion", "addressCountry": "KR" },
+          { "@type": "DefinedRegion", "addressCountry": "IN" }
+        ],
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 3,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 5,
+            "maxValue": 14,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    }
+  };
+
+  return `
+    <title>${escapeHtml(title)}</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(title)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:site_name" content="${SITE_TITLE}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${fullUrl}" />
+    <meta name="twitter:title" content="${escapeHtml(title)}" />
+    <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:image" content="${imageUrl}" />
+    
+    <!-- Product specific -->
+    <meta property="product:brand" content="${escapeHtml(product.brand || '')}" />
+    <meta property="product:availability" content="in stock" />
+    <meta property="product:condition" content="new" />
+    <meta property="product:price:amount" content="1" />
+    <meta property="product:price:currency" content="USD" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
+  `.trim();
+}
+
+/**
+ * Inject meta tags into HTML string
+ */
+function injectMetaTagsIntoHtml(html: string, metaTags: string): string {
+  // Remove existing title tag
+  let result = html.replace(/<title>.*?<\/title>/s, '');
+
+  // Inject after charset meta tag
+  const injected = result.replace(
+    /(<meta charset="UTF-8" \/>)/,
+    `$1\n    ${metaTags}`
+  );
+
+  // Fallback: inject before </head> if charset replacement didn't work
+  if (injected === result) {
+    return result.replace('</head>', `    ${metaTags}\n  </head>`);
+  }
+
+  return injected;
+}
+
+/**
  * SEO Meta Injection Middleware
- * Intercepts HTML responses and injects meta tags for article pages
+ * Intercepts HTML responses and injects meta tags for:
+ * 1. Product pages (/products/:slug) - solves Soft 404 problem for 1,182 pages
+ * 2. Article pages (/resources/:slug)
  */
 export async function seoMetaInjectionMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  // Only process GET requests for HTML pages
+  // Only process GET requests
   if (req.method !== "GET") {
     return next();
   }
 
-  // Check if this is a resource article page
-  const slug = extractSlugFromPath(req.path);
-  if (!slug) {
-    return next();
-  }
+  const path = req.path;
 
-  try {
-    const db = await getDb();
-    if (!db) {
-      console.warn("[SEO] Database not available, skipping meta injection");
-      return next();
-    }
-
-    // Fetch article from database
-    const articles = await db
-      .select()
-      .from(resources)
-      .where(eq(resources.slug, slug))
-      .limit(1);
-
-    if (articles.length === 0) {
-      // Article not found, continue to 404 handler
-      return next();
-    }
-
-    const article = articles[0];
-
-    // Only inject meta tags for published articles
-    if (article.status !== "published") {
-      return next();
-    }
-
-    // Intercept response
-    const originalSend = res.send.bind(res);
-    
-    res.send = function (data: any): Response {
-      // Only process HTML responses
-      const contentType = res.getHeader("Content-Type");
-      if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
-        // Generate full URL
-        const protocol = req.protocol;
-        const host = req.get("host");
-        const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-
-        // Generate meta tags
-        const metaTags = generateMetaTags(article, fullUrl);
-
-        // Inject meta tags into <head>
-        // Replace default title and add meta tags after charset
-        data = data.replace(
-          /<title>.*?<\/title>/,
-          ""
-        );
-        
-        data = data.replace(
-          /(<meta charset="UTF-8" \/>)/,
-          `$1\n    ${metaTags}`
-        );
-
-        console.log(`[SEO] Injected meta tags for article: ${article.title}`);
+  // ── 1. Product pages (/products/:slug) ──────────────────────────────────
+  const productSlug = extractProductSlug(path);
+  if (productSlug) {
+    try {
+      const db = await getDb();
+      if (!db) {
+        console.warn("[SEO] Database not available, skipping product meta injection");
+        return next();
       }
 
-      return originalSend(data);
-    };
+      // Query product by slug field
+      const result = await db
+        .select()
+        .from(products)
+        .where(eq(products.slug, productSlug))
+        .limit(1);
 
-    next();
-  } catch (error) {
-    console.error("[SEO] Error in meta injection middleware:", error);
-    next();
+      if (result.length === 0) {
+        // Product not found, continue normally
+        return next();
+      }
+
+      const product = result[0];
+
+      // Intercept response to inject meta tags
+      const originalSend = res.send.bind(res);
+      res.send = function (data: any): Response {
+        const contentType = res.getHeader("Content-Type");
+        if (
+          typeof contentType === "string" &&
+          contentType.includes("text/html") &&
+          typeof data === "string"
+        ) {
+          const protocol = req.protocol;
+          const host = req.get("host");
+          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+          const metaTags = generateProductMetaTags(product, fullUrl);
+          data = injectMetaTagsIntoHtml(data, metaTags);
+          console.log(`[SEO] Injected product meta tags: ${product.partNumber}`);
+        }
+        return originalSend(data);
+      };
+
+      return next();
+    } catch (error) {
+      console.error("[SEO] Error in product meta injection:", error);
+      return next();
+    }
   }
+
+  // ── 2. Article pages (/resources/:slug) ─────────────────────────────────
+  const resourceSlug = extractResourceSlug(path);
+  if (resourceSlug) {
+    try {
+      const db = await getDb();
+      if (!db) {
+        console.warn("[SEO] Database not available, skipping article meta injection");
+        return next();
+      }
+
+      const articles = await db
+        .select()
+        .from(resources)
+        .where(eq(resources.slug, resourceSlug))
+        .limit(1);
+
+      if (articles.length === 0) {
+        return next();
+      }
+
+      const article = articles[0];
+      if (article.status !== "published") {
+        return next();
+      }
+
+      const originalSend = res.send.bind(res);
+      res.send = function (data: any): Response {
+        const contentType = res.getHeader("Content-Type");
+        if (
+          typeof contentType === "string" &&
+          contentType.includes("text/html") &&
+          typeof data === "string"
+        ) {
+          const protocol = req.protocol;
+          const host = req.get("host");
+          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+          const metaTags = generateArticleMetaTags(article, fullUrl);
+          data = injectMetaTagsIntoHtml(data, metaTags);
+          console.log(`[SEO] Injected article meta tags: ${article.title}`);
+        }
+        return originalSend(data);
+      };
+
+      return next();
+    } catch (error) {
+      console.error("[SEO] Error in article meta injection:", error);
+      return next();
+    }
+  }
+
+  // Not a product or article page, continue normally
+  return next();
 }
