@@ -24,10 +24,8 @@ export const queryProductDetailsRouter = router({
       
       try {
         const placeholders = input.partNumbers.map(() => '?').join(',');
-        const [rows] = await connection.execute(
-          \`SELECT id, product_id as productId, part_number as partNumber, name, brand, category_id as categoryId, status, created_at as createdAt, updated_at as updatedAt FROM products WHERE part_number IN (\${placeholders})\`,
-          input.partNumbers
-        );
+        const sql = `SELECT id, product_id as productId, part_number as partNumber, name, brand, category_id as categoryId, status, created_at as createdAt, updated_at as updatedAt FROM products WHERE part_number IN (${placeholders})`;
+        const [rows] = await connection.execute(sql, input.partNumbers);
         
         return {
           success: true,
