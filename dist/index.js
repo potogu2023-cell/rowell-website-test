@@ -315,7 +315,9 @@ var init_schema = __esm({
         descriptionQuality: mysqlEnum(["high", "medium", "low", "extracted", "none"]).default("none"),
         slug: varchar({ length: 128 }),
         category: varchar({ length: 100 }),
-        categoryId: int("category_id").references(() => categories.id, { onDelete: "set null" })
+        categoryId: int("category_id").references(() => categories.id, { onDelete: "set null" }),
+        metaTitle: varchar({ length: 70 }),
+        metaDescription: varchar({ length: 160 })
       },
       (table) => [
         index("products_productId_unique").on(table.productId)
@@ -514,19 +516,19 @@ var init_schema = __esm({
     literature = mysqlTable(
       "literature",
       {
-        id: int().autoincrement().notNull(),
-        slug: varchar({ length: 200 }).notNull(),
-        title: varchar({ length: 500 }).notNull(),
-        authors: varchar({ length: 500 }).notNull(),
-        journal: varchar({ length: 255 }).notNull(),
-        year: int().notNull(),
-        doi: varchar({ length: 255 }),
-        url: varchar({ length: 1e3 }).notNull(),
+        id: int("id").autoincrement().notNull(),
+        slug: varchar("slug", { length: 200 }).notNull(),
+        title: varchar("title", { length: 500 }).notNull(),
+        authors: varchar("authors", { length: 500 }).notNull(),
+        journal: varchar("journal", { length: 255 }).notNull(),
+        year: int("year").notNull(),
+        doi: varchar("doi", { length: 255 }),
+        url: varchar("url", { length: 1e3 }).notNull(),
         applicationArea: mysqlEnum("application_area", ["pharmaceutical", "environmental", "food-safety", "biopharmaceutical", "clinical", "chemical"]).notNull(),
-        summary: text().notNull(),
+        summary: text("summary").notNull(),
         keyFindings: text("key_findings"),
-        relevance: text(),
-        keywords: text(),
+        relevance: text("relevance"),
+        keywords: text("keywords"),
         addedDate: timestamp("added_date", { mode: "string" }).notNull(),
         viewCount: int("view_count").default(0).notNull(),
         createdAt: timestamp("created_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
@@ -604,6 +606,7 @@ __export(db_exports, {
   getDb: () => getDb,
   getInquiryByNumber: () => getInquiryByNumber,
   getInquiryItems: () => getInquiryItems,
+  getPool: () => getPool,
   getProductById: () => getProductById,
   getProductsByIds: () => getProductsByIds,
   getUserByEmail: () => getUserByEmail,
@@ -657,6 +660,7 @@ async function getDb() {
         poolConfig.ssl = sslConfig;
       }
       const pool = mysql.createPool(poolConfig);
+      _pool = pool;
       try {
         const connection = await pool.getConnection();
         console.log("[Database] Connection test successful");
@@ -673,6 +677,10 @@ async function getDb() {
     }
   }
   return _db;
+}
+async function getPool() {
+  await getDb();
+  return _pool;
 }
 async function upsertUser(user) {
   if (!user.openId) {
@@ -841,13 +849,202 @@ async function updateUserLastSignIn(userId) {
   }
   await db.update(users).set({ lastSignedIn: /* @__PURE__ */ new Date() }).where(eq(users.id, userId));
 }
-var _db;
+var _db, _pool;
 var init_db = __esm({
   "server/db.ts"() {
     "use strict";
     init_schema();
     init_env();
     _db = null;
+    _pool = null;
+  }
+});
+
+// server/db-standards.ts
+var db_standards_exports = {};
+__export(db_standards_exports, {
+  getAllStandardsCategories: () => getAllStandardsCategories,
+  getRelatedStandardsProducts: () => getRelatedStandardsProducts,
+  getStandardsByCategory: () => getStandardsByCategory,
+  getStandardsCategoryBySlug: () => getStandardsCategoryBySlug,
+  getStandardsProductBySlug: () => getStandardsProductBySlug,
+  getStandardsStats: () => getStandardsStats,
+  searchStandardsProducts: () => searchStandardsProducts
+});
+function mapProduct(row) {
+  return {
+    id: Number(row.id),
+    part_number: row.part_number || "",
+    name_en: row.name_en || "",
+    name_cn: row.name_cn || null,
+    specification: row.specification || null,
+    cas_number: row.cas_number || null,
+    category_slug: row.category_slug || null,
+    brand: row.brand || "ANPEL",
+    price_cny: row.price_cny != null ? String(row.price_cny) : null,
+    price_usd: row.price_usd != null ? String(row.price_usd) : null,
+    slug: row.slug || null,
+    status: row.status || "active"
+  };
+}
+async function q(sql6, params) {
+  const pool = await getPool();
+  if (!pool) return [];
+  const [rows] = await pool.query(sql6, params);
+  return rows;
+}
+async function getAllStandardsCategories() {
+  const rows = await q(`
+    SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
+           COUNT(sp.id) as product_count
+    FROM standards_categories sc
+    LEFT JOIN standards_products sp ON sp.category_slug = sc.slug AND sp.status = 'active'
+    GROUP BY sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order
+    ORDER BY sc.sort_order ASC
+  `);
+  return rows.map((row) => ({
+    id: Number(row.id),
+    slug: row.slug,
+    name_en: row.name_en,
+    name_cn: row.name_cn || null,
+    description: row.description || null,
+    icon: row.icon || null,
+    sort_order: Number(row.sort_order),
+    product_count: Number(row.product_count)
+  }));
+}
+async function getStandardsCategoryBySlug(slug) {
+  const rows = await q(`
+    SELECT sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order,
+           COUNT(sp.id) as product_count
+    FROM standards_categories sc
+    LEFT JOIN standards_products sp ON sp.category_slug = sc.slug AND sp.status = 'active'
+    WHERE sc.slug = ?
+    GROUP BY sc.id, sc.slug, sc.name_en, sc.name_cn, sc.description, sc.icon, sc.sort_order
+    LIMIT 1
+  `, [slug]);
+  if (!rows || rows.length === 0) return null;
+  const row = rows[0];
+  return {
+    id: Number(row.id),
+    slug: row.slug,
+    name_en: row.name_en,
+    name_cn: row.name_cn || null,
+    description: row.description || null,
+    icon: row.icon || null,
+    sort_order: Number(row.sort_order),
+    product_count: Number(row.product_count)
+  };
+}
+async function getStandardsByCategory(categorySlug, page = 1, pageSize = 20) {
+  const offset = (page - 1) * pageSize;
+  const [itemRows, countRows] = await Promise.all([
+    q(`
+      SELECT id, part_number, name_en, name_cn, specification, cas_number,
+             category_slug, brand, price_cny, price_usd, slug, status
+      FROM standards_products
+      WHERE category_slug = ? AND status = 'active'
+      ORDER BY name_en ASC
+      LIMIT ${pageSize} OFFSET ${offset}
+    `, [categorySlug]),
+    q(`
+      SELECT COUNT(*) as total FROM standards_products
+      WHERE category_slug = ? AND status = 'active'
+    `, [categorySlug])
+  ]);
+  const total = Number(countRows[0]?.total || 0);
+  return { items: itemRows.map(mapProduct), total, page, pageSize };
+}
+async function searchStandardsProducts(queryStr, page = 1, pageSize = 20, categorySlug) {
+  const offset = (page - 1) * pageSize;
+  const searchTerm = `%${queryStr}%`;
+  const startTerm = `${queryStr}%`;
+  let itemRows;
+  let countRows;
+  if (categorySlug) {
+    [itemRows, countRows] = await Promise.all([
+      q(`
+        SELECT id, part_number, name_en, name_cn, specification, cas_number,
+               category_slug, brand, price_cny, price_usd, slug, status
+        FROM standards_products
+        WHERE status = 'active' AND category_slug = ?
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+        ORDER BY
+          CASE WHEN cas_number = ? THEN 0
+               WHEN part_number = ? THEN 1
+               WHEN name_en LIKE ? THEN 2
+               ELSE 3
+          END, name_en ASC
+        LIMIT ${pageSize} OFFSET ${offset}
+      `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm]),
+      q(`
+        SELECT COUNT(*) as total FROM standards_products
+        WHERE status = 'active' AND category_slug = ?
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+      `, [categorySlug, searchTerm, searchTerm, searchTerm, searchTerm])
+    ]);
+  } else {
+    [itemRows, countRows] = await Promise.all([
+      q(`
+        SELECT id, part_number, name_en, name_cn, specification, cas_number,
+               category_slug, brand, price_cny, price_usd, slug, status
+        FROM standards_products
+        WHERE status = 'active'
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+        ORDER BY
+          CASE WHEN cas_number = ? THEN 0
+               WHEN part_number = ? THEN 1
+               WHEN name_en LIKE ? THEN 2
+               ELSE 3
+          END, name_en ASC
+        LIMIT ${pageSize} OFFSET ${offset}
+      `, [searchTerm, searchTerm, searchTerm, searchTerm, queryStr, queryStr, startTerm]),
+      q(`
+        SELECT COUNT(*) as total FROM standards_products
+        WHERE status = 'active'
+          AND (name_en LIKE ? OR name_cn LIKE ? OR cas_number LIKE ? OR part_number LIKE ?)
+      `, [searchTerm, searchTerm, searchTerm, searchTerm])
+    ]);
+  }
+  const total = Number(countRows[0]?.total || 0);
+  return { items: itemRows.map(mapProduct), total, page, pageSize };
+}
+async function getStandardsProductBySlug(slug) {
+  const rows = await q(`
+    SELECT id, part_number, name_en, name_cn, specification, cas_number,
+           category_slug, brand, price_cny, price_usd, slug, status
+    FROM standards_products
+    WHERE slug = ? AND status = 'active'
+    LIMIT 1
+  `, [slug]);
+  if (!rows || rows.length === 0) return null;
+  return mapProduct(rows[0]);
+}
+async function getRelatedStandardsProducts(categorySlug, excludeId, limit = 6) {
+  const rows = await q(`
+    SELECT id, part_number, name_en, name_cn, specification, cas_number,
+           category_slug, brand, price_cny, price_usd, slug, status
+    FROM standards_products
+    WHERE category_slug = ? AND status = 'active' AND id != ?
+    ORDER BY RAND()
+    LIMIT ${limit}
+  `, [categorySlug, excludeId]);
+  return rows.map(mapProduct);
+}
+async function getStandardsStats() {
+  const [totalRows, catRows] = await Promise.all([
+    q(`SELECT COUNT(*) as total FROM standards_products WHERE status = 'active'`),
+    q(`SELECT COUNT(*) as total FROM standards_categories`)
+  ]);
+  return {
+    total: Number(totalRows[0]?.total || 0),
+    categories: Number(catRows[0]?.total || 0)
+  };
+}
+var init_db_standards = __esm({
+  "server/db-standards.ts"() {
+    "use strict";
+    init_db();
   }
 });
 
@@ -857,8 +1054,8 @@ __export(products_list_new_exports, {
   productsListInput: () => productsListInput,
   productsListQuery: () => productsListQuery
 });
-import { z as z14 } from "zod";
-import { eq as eq6, and as and2, gte, lte, inArray, sql as sql2 } from "drizzle-orm";
+import { z as z15 } from "zod";
+import { eq as eq7, and as and2, gte, lte, inArray, sql as sql2 } from "drizzle-orm";
 async function productsListQuery(input, db) {
   if (!db) return { products: [], total: 0, page: 1, pageSize: 24, totalPages: 0 };
   const { products: products2, productCategories: productCategories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
@@ -866,7 +1063,7 @@ async function productsListQuery(input, db) {
   const pageSize = input?.pageSize || 24;
   const offset = (page - 1) * pageSize;
   const conditions = [];
-  conditions.push(eq6(products2.status, "active"));
+  conditions.push(eq7(products2.status, "active"));
   if (input?.search && input.search.trim().length > 0) {
     const searchTerm = input.search.trim().toLowerCase();
     conditions.push(
@@ -879,7 +1076,7 @@ async function productsListQuery(input, db) {
     );
   }
   if (input?.brand) {
-    conditions.push(eq6(products2.brand, input.brand));
+    conditions.push(eq7(products2.brand, input.brand));
   }
   if (input?.particleSizeMin !== void 0) {
     conditions.push(gte(products2.particleSizeNum, input.particleSizeMin));
@@ -918,7 +1115,7 @@ async function productsListQuery(input, db) {
     const { or: or2, like: like2 } = await import("drizzle-orm");
     conditions.push(
       or2(
-        eq6(products2.usp, input.usp),
+        eq7(products2.usp, input.usp),
         // "L1"
         like2(products2.usp, `${input.usp},%`),
         // "L1,..."
@@ -963,25 +1160,25 @@ var productsListInput;
 var init_products_list_new = __esm({
   "server/products_list_new.ts"() {
     "use strict";
-    productsListInput = z14.object({
-      categoryId: z14.number().optional(),
-      brand: z14.string().optional(),
-      search: z14.string().optional(),
+    productsListInput = z15.object({
+      categoryId: z15.number().optional(),
+      brand: z15.string().optional(),
+      search: z15.string().optional(),
       // Advanced filters
-      particleSizeMin: z14.number().optional(),
-      particleSizeMax: z14.number().optional(),
-      poreSizeMin: z14.number().optional(),
-      poreSizeMax: z14.number().optional(),
-      columnLengthMin: z14.number().optional(),
-      columnLengthMax: z14.number().optional(),
-      innerDiameterMin: z14.number().optional(),
-      innerDiameterMax: z14.number().optional(),
-      phaseTypes: z14.array(z14.string()).optional(),
-      phMin: z14.number().optional(),
-      phMax: z14.number().optional(),
-      usp: z14.string().optional(),
-      page: z14.number().min(1).default(1),
-      pageSize: z14.number().min(1).max(100).default(24)
+      particleSizeMin: z15.number().optional(),
+      particleSizeMax: z15.number().optional(),
+      poreSizeMin: z15.number().optional(),
+      poreSizeMax: z15.number().optional(),
+      columnLengthMin: z15.number().optional(),
+      columnLengthMax: z15.number().optional(),
+      innerDiameterMin: z15.number().optional(),
+      innerDiameterMax: z15.number().optional(),
+      phaseTypes: z15.array(z15.string()).optional(),
+      phMin: z15.number().optional(),
+      phMax: z15.number().optional(),
+      usp: z15.string().optional(),
+      page: z15.number().min(1).default(1),
+      pageSize: z15.number().min(1).max(100).default(24)
     }).optional();
   }
 });
@@ -1126,7 +1323,7 @@ __export(db_usp_exports, {
   getUSPStandardByCode: () => getUSPStandardByCode,
   getUSPStandardWithProducts: () => getUSPStandardWithProducts
 });
-import { eq as eq7, like, and as and3, or, sql as sql3 } from "drizzle-orm";
+import { eq as eq8, like, and as and3, or, sql as sql3 } from "drizzle-orm";
 async function getAllUSPStandards() {
   try {
     const db = await getDb();
@@ -1140,7 +1337,7 @@ async function getAllUSPStandards() {
 async function getUSPStandardByCode(code) {
   try {
     const db = await getDb();
-    const standard = await db.select().from(uspStandards).where(eq7(uspStandards.code, code)).limit(1);
+    const standard = await db.select().from(uspStandards).where(eq8(uspStandards.code, code)).limit(1);
     if (standard.length === 0) {
       return null;
     }
@@ -1156,7 +1353,7 @@ async function getProductsByUSPStandard(uspCode, limit = 50) {
     const matchedProducts = await db.select().from(products).where(
       and3(
         or(
-          eq7(products.usp, uspCode),
+          eq8(products.usp, uspCode),
           // "L1"
           like(products.usp, `${uspCode},%`),
           // "L1,..."
@@ -1166,7 +1363,7 @@ async function getProductsByUSPStandard(uspCode, limit = 50) {
           // "...,L1,..."
         ),
         // 只返回active状态的产品
-        eq7(products.status, "active")
+        eq8(products.status, "active")
       )
     ).orderBy(products.brand, products.name).limit(limit);
     return matchedProducts;
@@ -1203,12 +1400,12 @@ async function getAllUSPStandardsWithProductCount() {
         }).from(products).where(
           and3(
             or(
-              eq7(products.usp, standard.code),
+              eq8(products.usp, standard.code),
               like(products.usp, `${standard.code},%`),
               like(products.usp, `%,${standard.code}`),
               like(products.usp, `%,${standard.code},%`)
             ),
-            eq7(products.status, "active")
+            eq8(products.status, "active")
           )
         );
         return {
@@ -1236,8 +1433,8 @@ async function fillProductUSPData() {
             like(products.name, "%ODS%")
           ),
           or(
-            eq7(products.usp, null),
-            eq7(products.usp, "")
+            eq8(products.usp, null),
+            eq8(products.usp, "")
           )
         )
       )
@@ -1250,8 +1447,8 @@ async function fillProductUSPData() {
             like(products.name, "%Octyl%")
           ),
           or(
-            eq7(products.usp, null),
-            eq7(products.usp, "")
+            eq8(products.usp, null),
+            eq8(products.usp, "")
           )
         )
       )
@@ -1261,8 +1458,8 @@ async function fillProductUSPData() {
         and3(
           like(products.name, "%Phenyl%"),
           or(
-            eq7(products.usp, null),
-            eq7(products.usp, "")
+            eq8(products.usp, null),
+            eq8(products.usp, "")
           )
         )
       )
@@ -1272,8 +1469,8 @@ async function fillProductUSPData() {
         and3(
           like(products.name, "%HILIC%"),
           or(
-            eq7(products.usp, null),
-            eq7(products.usp, "")
+            eq8(products.usp, null),
+            eq8(products.usp, "")
           )
         )
       )
@@ -1287,8 +1484,8 @@ async function fillProductUSPData() {
             like(products.name, "%CN%")
           ),
           or(
-            eq7(products.usp, null),
-            eq7(products.usp, "")
+            eq8(products.usp, null),
+            eq8(products.usp, "")
           )
         )
       )
@@ -1301,8 +1498,8 @@ async function fillProductUSPData() {
             like(products.name, "%SiO2%")
           ),
           or(
-            eq7(products.usp, null),
-            eq7(products.usp, "")
+            eq8(products.usp, null),
+            eq8(products.usp, "")
           )
         )
       )
@@ -2283,7 +2480,7 @@ async function sendInquiryEmail(data) {
 }
 
 // server/routers.ts
-import { z as z15 } from "zod";
+import { z as z16 } from "zod";
 
 // server/seed-api.ts
 import { readFileSync, readdirSync } from "fs";
@@ -2365,17 +2562,17 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2, categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq13, or: or2 } = await import("drizzle-orm");
+    const { eq: eq15, or: or2 } = await import("drizzle-orm");
     const db = await getDb2();
-    const speCategories = await db.select().from(categories2).where(eq13(categories2.slug, "spe-cartridges"));
+    const speCategories = await db.select().from(categories2).where(eq15(categories2.slug, "spe-cartridges"));
     if (speCategories.length === 0) {
       throw new Error("SPE Cartridges category not found");
     }
     const speCategoryId = speCategories[0].id;
     const existingProducts = await db.select().from(products2).where(
       or2(
-        eq13(products2.partNumber, "WATS-186007239"),
-        eq13(products2.partNumber, "WATS-186007080")
+        eq15(products2.partNumber, "WATS-186007239"),
+        eq15(products2.partNumber, "WATS-186007080")
       )
     );
     const newProducts = [
@@ -2408,7 +2605,7 @@ var adminRouter = router({
           name: product.name,
           categoryId: product.categoryId,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq13(products2.partNumber, product.partNumber));
+        }).where(eq15(products2.partNumber, product.partNumber));
         results.push({ partNumber: product.partNumber, action: "updated" });
       } else {
         await db.insert(products2).values(product);
@@ -2432,17 +2629,17 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2, categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq13, sql: sql6 } = await import("drizzle-orm");
+    const { eq: eq15, sql: sql6 } = await import("drizzle-orm");
     const db = await getDb2();
     const totalProductsResult = await db.select({ count: sql6`count(*)` }).from(products2);
     const totalProducts = totalProductsResult[0].count;
-    const activeProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq13(products2.status, "active"));
+    const activeProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq15(products2.status, "active"));
     const activeProducts = activeProductsResult[0].count;
     const categoryStats = await db.select({
       categoryId: products2.categoryId,
       categoryName: categories2.nameEn,
       count: sql6`count(*)`
-    }).from(products2).leftJoin(categories2, eq13(products2.categoryId, categories2.id)).groupBy(products2.categoryId, categories2.nameEn);
+    }).from(products2).leftJoin(categories2, eq15(products2.categoryId, categories2.id)).groupBy(products2.categoryId, categories2.nameEn);
     const nullCategoryResult = await db.select({ count: sql6`count(*)` }).from(products2).where(sql6`${products2.categoryId} IS NULL`);
     const nullCategoryCount = nullCategoryResult[0].count;
     const duplicates = await db.execute(sql6`
@@ -2451,7 +2648,7 @@ var adminRouter = router({
         GROUP BY part_number 
         HAVING count > 1
       `);
-    const watersProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq13(products2.brand, "Waters"));
+    const watersProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq15(products2.brand, "Waters"));
     const watersProducts = watersProductsResult[0].count;
     return {
       totalProducts,
@@ -2509,12 +2706,12 @@ var addGlycoWorksSimpleRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq13, or: or2 } = await import("drizzle-orm");
+    const { eq: eq15, or: or2 } = await import("drizzle-orm");
     const db = await getDb2();
     const existingProducts = await db.select().from(products2).where(
       or2(
-        eq13(products2.partNumber, "186007239"),
-        eq13(products2.partNumber, "186007080")
+        eq15(products2.partNumber, "186007239"),
+        eq15(products2.partNumber, "186007080")
       )
     );
     const newProducts = [
@@ -2586,7 +2783,7 @@ var updateProductCategoryRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq13, inArray: inArray2, sql: sql6 } = await import("drizzle-orm");
+    const { eq: eq15, inArray: inArray2, sql: sql6 } = await import("drizzle-orm");
     const db = await getDb2();
     const results = [];
     for (const partNumber of input.partNumbers) {
@@ -3967,11 +4164,11 @@ var updateYmcTosohRouter = router({
       console.log("[UPDATE] Starting database update...");
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13 } = await import("drizzle-orm");
+      const { eq: eq15 } = await import("drizzle-orm");
       const db = await getDb2();
       for (const row of allData) {
         try {
-          const existingProducts = await db.select().from(products2).where(eq13(products2.partNumber, row.productCode)).limit(1);
+          const existingProducts = await db.select().from(products2).where(eq15(products2.partNumber, row.productCode)).limit(1);
           if (existingProducts.length === 0) {
             console.log(`[UPDATE] Product not found: ${row.productCode}`);
             notFoundCount++;
@@ -3988,7 +4185,7 @@ var updateYmcTosohRouter = router({
             usp: row.usp || null,
             description: row.description || null,
             applications: row.applications || null
-          }).where(eq13(products2.partNumber, row.productCode));
+          }).where(eq15(products2.partNumber, row.productCode));
           updatedCount++;
           if (updatedCount % 20 === 0) {
             console.log(`[UPDATE] Progress: ${updatedCount}/${allData.length} products updated`);
@@ -4534,6 +4731,201 @@ var seedArticlesRouter = router({
   })
 });
 
+// server/manual-import-api.ts
+init_db();
+init_schema();
+import * as fs2 from "fs";
+import * as path2 from "path";
+import { fileURLToPath as fileURLToPath2 } from "url";
+import matter2 from "gray-matter";
+import { eq as eq6 } from "drizzle-orm";
+var __filename2 = fileURLToPath2(import.meta.url);
+var __dirname2 = path2.dirname(__filename2);
+var ARTICLES_DIR = path2.join(__dirname2, "..", "content", "articles");
+var REQUIRED_FIELDS = [
+  "title",
+  "author_slug",
+  "category",
+  "application_area",
+  "slug",
+  "published_date"
+];
+var VALID_CATEGORIES = ["application-notes", "technical-guides", "industry-trends", "literature-reviews"];
+var VALID_AREAS = ["pharmaceutical", "environmental", "food-safety", "biopharmaceutical", "clinical", "chemical"];
+function validateLanguage(text2) {
+  if (!text2) return true;
+  const chineseRegex = /[\u4e00-\u9fa5]/;
+  return !chineseRegex.test(text2);
+}
+function validateFormat(frontmatter) {
+  const errors = [];
+  for (const field of REQUIRED_FIELDS) {
+    if (!frontmatter[field]) {
+      errors.push(`Missing required field: ${field}`);
+    }
+  }
+  if (frontmatter.category && !VALID_CATEGORIES.includes(frontmatter.category)) {
+    errors.push(`Invalid category: ${frontmatter.category}. Must be one of: ${VALID_CATEGORIES.join(", ")}`);
+  }
+  if (frontmatter.application_area && !VALID_AREAS.includes(frontmatter.application_area)) {
+    errors.push(`Invalid application_area: ${frontmatter.application_area}. Must be one of: ${VALID_AREAS.join(", ")}`);
+  }
+  return { valid: errors.length === 0, errors };
+}
+var manualImportRouter = router({
+  importArticles: publicProcedure.query(async () => {
+    const results = [];
+    const logs = [];
+    try {
+      logs.push(`[INFO] Articles directory: ${ARTICLES_DIR}`);
+      logs.push(`[INFO] Directory exists: ${fs2.existsSync(ARTICLES_DIR)}`);
+      if (!fs2.existsSync(ARTICLES_DIR)) {
+        return {
+          success: false,
+          error: `Articles directory not found: ${ARTICLES_DIR}`,
+          logs
+        };
+      }
+      const files = fs2.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith(".md") && f !== "README.md");
+      logs.push(`[INFO] Found ${files.length} markdown files`);
+      const db = await getDb();
+      if (!db) {
+        return {
+          success: false,
+          error: "Database connection failed",
+          logs
+        };
+      }
+      for (const filename of files) {
+        const filePath = path2.join(ARTICLES_DIR, filename);
+        logs.push(`
+[INFO] Processing: ${filename}`);
+        try {
+          const fileContent = fs2.readFileSync(filePath, "utf-8");
+          const { data: frontmatter, content } = matter2(fileContent);
+          const formatValidation = validateFormat(frontmatter);
+          if (!formatValidation.valid) {
+            logs.push(`[ERROR] Format validation failed: ${formatValidation.errors.join(", ")}`);
+            results.push({ filename, status: "error", error: formatValidation.errors.join(", ") });
+            continue;
+          }
+          const textsToCheck = [
+            frontmatter.title,
+            content,
+            frontmatter.meta_description,
+            frontmatter.keywords
+          ];
+          for (const text2 of textsToCheck) {
+            if (text2 && !validateLanguage(text2)) {
+              logs.push(`[ERROR] Chinese content detected - REJECTED`);
+              results.push({ filename, status: "error", error: "Chinese content detected" });
+              continue;
+            }
+          }
+          const authorResult = await db.select().from(authors).where(eq6(authors.slug, frontmatter.author_slug)).limit(1);
+          if (authorResult.length === 0) {
+            logs.push(`[ERROR] Author not found: ${frontmatter.author_slug}`);
+            results.push({ filename, status: "error", error: `Author not found: ${frontmatter.author_slug}` });
+            continue;
+          }
+          const authorId = authorResult[0].id;
+          logs.push(`[INFO] Found author ID: ${authorId}`);
+          const existingArticle = await db.select().from(articles).where(eq6(articles.slug, frontmatter.slug)).limit(1);
+          const articleData = {
+            title: frontmatter.title,
+            slug: frontmatter.slug,
+            content,
+            category: frontmatter.category,
+            applicationArea: frontmatter.application_area,
+            metaDescription: frontmatter.meta_description || "",
+            keywords: frontmatter.keywords || "",
+            publishedDate: new Date(frontmatter.published_date),
+            authorId,
+            viewCount: 0
+          };
+          if (existingArticle.length > 0) {
+            await db.update(articles).set(articleData).where(eq6(articles.slug, frontmatter.slug));
+            logs.push(`[SUCCESS] Updated article: ${frontmatter.slug}`);
+            results.push({ filename, status: "updated", slug: frontmatter.slug });
+          } else {
+            await db.insert(articles).values(articleData);
+            logs.push(`[SUCCESS] Created article: ${frontmatter.slug}`);
+            results.push({ filename, status: "created", slug: frontmatter.slug });
+          }
+        } catch (error) {
+          logs.push(`[ERROR] Failed to process ${filename}: ${error.message}`);
+          results.push({ filename, status: "error", error: error.message });
+        }
+      }
+      return {
+        success: true,
+        results,
+        logs
+      };
+    } catch (error) {
+      logs.push(`[FATAL] ${error.message}`);
+      return {
+        success: false,
+        error: error.message,
+        logs
+      };
+    }
+  })
+});
+
+// server/standards-api.ts
+import { z as z14 } from "zod";
+var standardsRouter = router({
+  // 获取所有分类
+  listCategories: publicProcedure.query(async () => {
+    const { getAllStandardsCategories: getAllStandardsCategories2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await getAllStandardsCategories2();
+  }),
+  // 获取单个分类详情
+  getCategoryBySlug: publicProcedure.input((raw) => z14.string().parse(raw)).query(async ({ input }) => {
+    const { getStandardsCategoryBySlug: getStandardsCategoryBySlug2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await getStandardsCategoryBySlug2(input);
+  }),
+  // 获取分类下的产品列表
+  listByCategory: publicProcedure.input((raw) => z14.object({
+    categorySlug: z14.string(),
+    page: z14.number().min(1).optional().default(1),
+    pageSize: z14.number().min(1).max(100).optional().default(20)
+  }).parse(raw)).query(async ({ input }) => {
+    const { getStandardsByCategory: getStandardsByCategory2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await getStandardsByCategory2(input.categorySlug, input.page, input.pageSize);
+  }),
+  // 搜索产品
+  search: publicProcedure.input((raw) => z14.object({
+    query: z14.string().min(1),
+    page: z14.number().min(1).optional().default(1),
+    pageSize: z14.number().min(1).max(100).optional().default(20),
+    categorySlug: z14.string().optional()
+  }).parse(raw)).query(async ({ input }) => {
+    const { searchStandardsProducts: searchStandardsProducts2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await searchStandardsProducts2(input.query, input.page, input.pageSize, input.categorySlug);
+  }),
+  // 获取产品详情（by slug）
+  getBySlug: publicProcedure.input((raw) => z14.string().parse(raw)).query(async ({ input }) => {
+    const { getStandardsProductBySlug: getStandardsProductBySlug2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await getStandardsProductBySlug2(input);
+  }),
+  // 获取相关产品
+  getRelated: publicProcedure.input((raw) => z14.object({
+    categorySlug: z14.string(),
+    excludeId: z14.number(),
+    limit: z14.number().optional().default(6)
+  }).parse(raw)).query(async ({ input }) => {
+    const { getRelatedStandardsProducts: getRelatedStandardsProducts2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await getRelatedStandardsProducts2(input.categorySlug, input.excludeId, input.limit);
+  }),
+  // 获取统计数据
+  getStats: publicProcedure.query(async () => {
+    const { getStandardsStats: getStandardsStats2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
+    return await getStandardsStats2();
+  })
+});
+
 // server/routers.ts
 var appRouter = router({
   // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -4550,33 +4942,33 @@ var appRouter = router({
       return await productsListQuery2(input, db);
     }),
     getByIds: publicProcedure.input((raw) => {
-      return z15.object({
-        productIds: z15.array(z15.number())
+      return z16.object({
+        productIds: z16.array(z16.number())
       }).parse(raw);
     }).query(async ({ input }) => {
       return await getProductsByIds(input.productIds);
     }),
     getBySlug: publicProcedure.input((raw) => {
-      return z15.string().parse(raw);
+      return z16.string().parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13 } = await import("drizzle-orm");
+      const { eq: eq15 } = await import("drizzle-orm");
       const db = await getDb2();
-      const result = await db.select().from(products2).where(eq13(products2.productId, input)).limit(1);
+      const result = await db.select().from(products2).where(eq15(products2.slug, input)).limit(1);
       return result[0] || null;
     }),
     getRelated: publicProcedure.input((raw) => {
-      return z15.object({
-        productId: z15.string(),
-        limit: z15.number().optional().default(6)
+      return z16.object({
+        productId: z16.string(),
+        limit: z16.number().optional().default(6)
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13, and: and5, or: or2, ne, sql: sql6 } = await import("drizzle-orm");
+      const { eq: eq15, and: and5, or: or2, ne, sql: sql6 } = await import("drizzle-orm");
       const db = await getDb2();
-      const currentProduct = await db.select().from(products2).where(eq13(products2.productId, input.productId)).limit(1);
+      const currentProduct = await db.select().from(products2).where(eq15(products2.productId, input.productId)).limit(1);
       if (!currentProduct || currentProduct.length === 0) {
         return [];
       }
@@ -4585,14 +4977,14 @@ var appRouter = router({
         and5(
           ne(products2.id, product.id),
           // Exclude current product
-          eq13(products2.status, "active"),
+          eq15(products2.status, "active"),
           // Only active products
           or2(
-            eq13(products2.brand, product.brand),
+            eq15(products2.brand, product.brand),
             // Same brand
-            eq13(products2.phaseType, product.phaseType),
+            eq15(products2.phaseType, product.phaseType),
             // Same phase type
-            eq13(products2.usp, product.usp),
+            eq15(products2.usp, product.usp),
             // Same USP
             // Similar particle size (within 1 µm)
             product.particleSize ? sql6`ABS(${products2.particleSize} - ${product.particleSize}) <= 1` : void 0
@@ -4605,20 +4997,20 @@ var appRouter = router({
   // Customer messages routes
   messages: router({
     list: publicProcedure.input((raw) => {
-      return z15.object({
-        status: z15.enum(["new", "read", "replied", "closed", "all"]).optional().default("all"),
-        page: z15.number().optional().default(1),
-        pageSize: z15.number().optional().default(20),
-        search: z15.string().optional()
+      return z16.object({
+        status: z16.enum(["new", "read", "replied", "closed", "all"]).optional().default("all"),
+        page: z16.number().optional().default(1),
+        pageSize: z16.number().optional().default(20),
+        search: z16.string().optional()
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13, desc: desc3, or: or2, sql: sql6, and: and5 } = await import("drizzle-orm");
+      const { eq: eq15, desc: desc3, or: or2, sql: sql6, and: and5 } = await import("drizzle-orm");
       const db = await getDb2();
       const conditions = [];
       if (input.status !== "all") {
-        conditions.push(eq13(customerMessages2.status, input.status));
+        conditions.push(eq15(customerMessages2.status, input.status));
       }
       if (input.search) {
         const searchTerm = `%${input.search}%`;
@@ -4642,22 +5034,22 @@ var appRouter = router({
       };
     }),
     updateStatus: publicProcedure.input((raw) => {
-      return z15.object({
-        id: z15.number(),
-        status: z15.enum(["new", "read", "replied", "closed"])
+      return z16.object({
+        id: z16.number(),
+        status: z16.enum(["new", "read", "replied", "closed"])
       }).parse(raw);
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13 } = await import("drizzle-orm");
+      const { eq: eq15 } = await import("drizzle-orm");
       const db = await getDb2();
-      await db.update(customerMessages2).set({ status: input.status }).where(eq13(customerMessages2.id, input.id));
+      await db.update(customerMessages2).set({ status: input.status }).where(eq15(customerMessages2.id, input.id));
       return { success: true };
     }),
     getStats: publicProcedure.query(async () => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13, sql: sql6 } = await import("drizzle-orm");
+      const { eq: eq15, sql: sql6 } = await import("drizzle-orm");
       const db = await getDb2();
       const stats = await db.select({
         status: customerMessages2.status,
@@ -4677,15 +5069,15 @@ var appRouter = router({
       return statsMap;
     }),
     create: publicProcedure.input((raw) => {
-      return z15.object({
-        type: z15.enum(["inquiry", "message", "quote_request"]).default("message"),
-        name: z15.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
-        email: z15.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
-        company: z15.string().optional(),
-        phone: z15.string().optional(),
-        productId: z15.string().optional(),
-        productName: z15.string().optional(),
-        message: z15.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
+      return z16.object({
+        type: z16.enum(["inquiry", "message", "quote_request"]).default("message"),
+        name: z16.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
+        email: z16.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+        company: z16.string().optional(),
+        phone: z16.string().optional(),
+        productId: z16.string().optional(),
+        productName: z16.string().optional(),
+        message: z16.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
       }).parse(raw);
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -4726,14 +5118,14 @@ var appRouter = router({
   // Inquiry routes
   inquiries: router({
     create: publicProcedure.input((raw) => {
-      return z15.object({
-        productIds: z15.array(z15.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
-        userInfo: z15.object({
-          name: z15.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(50, "\u59D3\u540D\u6700\u591A 50 \u4E2A\u5B57\u7B26"),
-          email: z15.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
-          company: z15.string().optional(),
-          phone: z15.string().optional(),
-          message: z15.string().max(500, "\u7559\u8A00\u6700\u591A 500 \u4E2A\u5B57\u7B26").optional()
+      return z16.object({
+        productIds: z16.array(z16.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
+        userInfo: z16.object({
+          name: z16.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(50, "\u59D3\u540D\u6700\u591A 50 \u4E2A\u5B57\u7B26"),
+          email: z16.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+          company: z16.string().optional(),
+          phone: z16.string().optional(),
+          message: z16.string().max(500, "\u7559\u8A00\u6700\u591A 500 \u4E2A\u5B57\u7B26").optional()
         })
       }).parse(raw);
     }).mutation(async ({ input }) => {
@@ -4782,9 +5174,9 @@ var appRouter = router({
       return await getAllUSPStandardsWithProductCount2();
     }),
     getByCode: publicProcedure.input((raw) => {
-      return z15.object({
-        code: z15.string(),
-        productLimit: z15.number().optional().default(50)
+      return z16.object({
+        code: z16.string(),
+        productLimit: z16.number().optional().default(50)
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getUSPStandardWithProducts: getUSPStandardWithProducts2 } = await Promise.resolve().then(() => (init_db_usp(), db_usp_exports));
@@ -4798,11 +5190,11 @@ var appRouter = router({
   // Resources routes
   resources: router({
     list: publicProcedure.input((raw) => {
-      return z15.object({
-        page: z15.number().min(1).optional(),
-        pageSize: z15.number().min(1).max(100).optional(),
-        search: z15.string().optional(),
-        category: z15.string().optional()
+      return z16.object({
+        page: z16.number().min(1).optional(),
+        pageSize: z16.number().min(1).max(100).optional(),
+        search: z16.string().optional(),
+        category: z16.string().optional()
       }).optional().parse(raw);
     }).query(async ({ input }) => {
       const page = input?.page || 1;
@@ -4813,7 +5205,7 @@ var appRouter = router({
         return { items: [], total: 0, page, pageSize };
       }
       const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13, like: like2, and: and5, desc: desc3 } = await import("drizzle-orm");
+      const { eq: eq15, like: like2, and: and5, desc: desc3 } = await import("drizzle-orm");
       const conditions = [];
       if (input?.search) {
         conditions.push(
@@ -4821,7 +5213,7 @@ var appRouter = router({
         );
       }
       if (input?.category) {
-        conditions.push(eq13(resources2.category, input.category));
+        conditions.push(eq15(resources2.category, input.category));
       }
       const whereClause = conditions.length > 0 ? and5(...conditions) : void 0;
       const allResources = await db.select().from(resources2).where(whereClause);
@@ -4836,8 +5228,8 @@ var appRouter = router({
       };
     }),
     getBySlug: publicProcedure.input((raw) => {
-      return z15.object({
-        slug: z15.string()
+      return z16.object({
+        slug: z16.string()
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -4846,8 +5238,8 @@ var appRouter = router({
         return null;
       }
       const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq13 } = await import("drizzle-orm");
-      const results = await db.select().from(resources2).where(eq13(resources2.slug, input.slug)).limit(1);
+      const { eq: eq15 } = await import("drizzle-orm");
+      const results = await db.select().from(resources2).where(eq15(resources2.slug, input.slug)).limit(1);
       return results.length > 0 ? results[0] : null;
     }),
     listCategories: publicProcedure.query(async () => {
@@ -4972,7 +5364,11 @@ var appRouter = router({
   // Learning Center routes
   learningCenter: learningCenterRouter,
   // Seed articles (one-time operation)
-  seedArticles: seedArticlesRouter
+  seedArticles: seedArticlesRouter,
+  // Manual import articles for testing
+  manualImport: manualImportRouter,
+  // ANPEL Reference Standards
+  standards: standardsRouter
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
@@ -4998,31 +5394,31 @@ async function createContext(opts) {
 
 // server/_core/vite.ts
 import express from "express";
-import fs2 from "fs";
+import fs3 from "fs";
 import { nanoid } from "nanoid";
-import path3 from "path";
+import path4 from "path";
 import { createServer as createViteServer } from "vite";
 
 // vite.config.ts
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import path2 from "path";
+import path3 from "path";
 import { defineConfig } from "vite";
 var plugins = [react(), tailwindcss()];
 var vite_config_default = defineConfig({
   plugins,
   resolve: {
     alias: {
-      "@": path2.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path2.resolve(import.meta.dirname, "shared"),
-      "@assets": path2.resolve(import.meta.dirname, "attached_assets")
+      "@": path3.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path3.resolve(import.meta.dirname, "shared"),
+      "@assets": path3.resolve(import.meta.dirname, "attached_assets")
     }
   },
-  envDir: path2.resolve(import.meta.dirname),
-  root: path2.resolve(import.meta.dirname, "client"),
-  publicDir: path2.resolve(import.meta.dirname, "client", "public"),
+  envDir: path3.resolve(import.meta.dirname),
+  root: path3.resolve(import.meta.dirname, "client"),
+  publicDir: path3.resolve(import.meta.dirname, "client", "public"),
   build: {
-    outDir: path2.resolve(import.meta.dirname, "dist/public"),
+    outDir: path3.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
     rollupOptions: {
       output: {
@@ -5055,9 +5451,14 @@ var vite_config_default = defineConfig({
 init_db();
 init_schema();
 init_env();
-import { eq as eq8 } from "drizzle-orm";
-function extractSlugFromPath(path4) {
-  const match = path4.match(/^\/resources\/([^\/\?]+)/);
+import { eq as eq9 } from "drizzle-orm";
+var SITE_URL = "https://www.rowellhplc.com";
+function extractSlugFromPath(urlPath) {
+  const match = urlPath.match(/^\/resources\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+function extractProductSlugFromPath(urlPath) {
+  const match = urlPath.match(/^\/products\/([^\/\?]+)/);
   return match ? match[1] : null;
 }
 function escapeHtml(text2) {
@@ -5070,12 +5471,9 @@ function escapeHtml(text2) {
   };
   return text2.replace(/[&<>"']/g, (m) => map[m]);
 }
-async function injectSeoMetaTags(template, req) {
-  console.log(`[SEO] Processing request: ${req.path}`);
-  const slug = extractSlugFromPath(req.path);
-  console.log(`[SEO] Extracted slug: ${slug}`);
+async function injectArticleSeoMetaTags(template, req, overridePath) {
+  const slug = extractSlugFromPath(overridePath || req.path);
   if (!slug) {
-    console.log(`[SEO] No slug found, skipping injection`);
     return template;
   }
   try {
@@ -5083,13 +5481,13 @@ async function injectSeoMetaTags(template, req) {
     if (!db) {
       return template;
     }
-    const articles2 = await db.select().from(resources).where(eq8(resources.slug, slug)).limit(1);
+    const articles2 = await db.select().from(resources).where(eq9(resources.slug, slug)).limit(1);
     if (articles2.length === 0 || articles2[0].status !== "published") {
       return template;
     }
     const article = articles2[0];
     const protocol = req.protocol || "https";
-    const host = req.get("host") || "rowellhplc.com";
+    const host = req.get("host") || "www.rowellhplc.com";
     const fullUrl = `${protocol}://${host}${req.originalUrl}`;
     const title = article.title || ENV.appTitle;
     const description = article.metaDescription || article.excerpt || "";
@@ -5097,6 +5495,7 @@ async function injectSeoMetaTags(template, req) {
     const metaTags = `
     <title>${escapeHtml(title)} | ${ENV.appTitle}</title>
     <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
@@ -5120,12 +5519,153 @@ async function injectSeoMetaTags(template, req) {
       /(<head[^>]*>)/i,
       `$1${metaTags}`
     );
-    console.log(`[SEO] Injected meta tags for: ${article.title}`);
+    console.log(`[SEO] Injected article meta tags for: ${article.title}`);
     return template;
   } catch (error) {
-    console.error("[SEO] Error injecting meta tags:", error);
+    console.error("[SEO] Error injecting article meta tags:", error);
     return template;
   }
+}
+async function injectProductSeoMetaTags(template, req, overridePath) {
+  const slug = extractProductSlugFromPath(overridePath || req.path);
+  if (!slug) {
+    return template;
+  }
+  try {
+    const db = await getDb();
+    if (!db) {
+      return template;
+    }
+    const result = await db.select().from(products).where(eq9(products.slug, slug)).limit(1);
+    if (result.length === 0) {
+      return template;
+    }
+    const product = result[0];
+    const protocol = req.protocol || "https";
+    const host = req.get("host") || "www.rowellhplc.com";
+    const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+    const title = product.metaTitle || `${product.brand || ""} ${product.name || ""} ${product.partNumber || ""} | ROWELL`.trim();
+    const description = product.metaDescription || `Buy ${product.brand || ""} ${product.name || ""} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
+    const brandFolder = (product.brand || "").replace(/\s+/g, "");
+    const imageUrl = product.imageUrl || `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+    const structuredData = {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": product.name || product.partNumber,
+      "description": product.description || description,
+      "sku": product.partNumber,
+      "mpn": product.partNumber,
+      "brand": {
+        "@type": "Brand",
+        "name": product.brand || "ROWELL"
+      },
+      "image": imageUrl,
+      "url": fullUrl,
+      "offers": {
+        "@type": "Offer",
+        "url": fullUrl,
+        "priceCurrency": "USD",
+        "price": "1",
+        "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1e3).toISOString().split("T")[0],
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "ROWELL"
+        },
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "shippingDestination": [
+            { "@type": "DefinedRegion", "addressCountry": "US" },
+            { "@type": "DefinedRegion", "addressCountry": "GB" },
+            { "@type": "DefinedRegion", "addressCountry": "DE" },
+            { "@type": "DefinedRegion", "addressCountry": "JP" },
+            { "@type": "DefinedRegion", "addressCountry": "AU" },
+            { "@type": "DefinedRegion", "addressCountry": "CA" },
+            { "@type": "DefinedRegion", "addressCountry": "SG" },
+            { "@type": "DefinedRegion", "addressCountry": "KR" },
+            { "@type": "DefinedRegion", "addressCountry": "IN" }
+          ],
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 1,
+              "maxValue": 3,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 5,
+              "maxValue": 14,
+              "unitCode": "DAY"
+            }
+          }
+        },
+        "hasMerchantReturnPolicy": {
+          "@type": "MerchantReturnPolicy",
+          "applicableCountry": "US",
+          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+          "merchantReturnDays": 30,
+          "returnMethod": "https://schema.org/ReturnByMail",
+          "returnFees": "https://schema.org/FreeReturn"
+        }
+      }
+    };
+    const metaTags = `
+    <title>${escapeHtml(title)}</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(title)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:site_name" content="ROWELL" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${fullUrl}" />
+    <meta name="twitter:title" content="${escapeHtml(title)}" />
+    <meta name="twitter:description" content="${escapeHtml(description)}" />
+    <meta name="twitter:image" content="${imageUrl}" />
+    
+    <!-- Product specific -->
+    <meta property="product:brand" content="${escapeHtml(product.brand || "")}" />
+    <meta property="product:availability" content="in stock" />
+    <meta property="product:condition" content="new" />
+    <meta property="product:price:amount" content="1" />
+    <meta property="product:price:currency" content="USD" />
+    
+    <!-- JSON-LD Structured Data for Google Merchant Listings -->
+    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+    template = template.replace(/<title>.*?<\/title>/i, "");
+    template = template.replace(
+      /(<head[^>]*>)/i,
+      `$1${metaTags}`
+    );
+    console.log(`[SEO] Injected product meta tags for: ${product.partNumber}`);
+    return template;
+  } catch (error) {
+    console.error("[SEO] Error injecting product meta tags:", error);
+    return template;
+  }
+}
+async function injectSeoMetaTags(template, req, overridePath) {
+  const effectivePath = overridePath || req.path;
+  if (effectivePath.startsWith("/products/")) {
+    return injectProductSeoMetaTags(template, req, effectivePath);
+  }
+  if (effectivePath.startsWith("/resources/")) {
+    return injectArticleSeoMetaTags(template, req, effectivePath);
+  }
+  return template;
 }
 async function setupVite(app, server) {
   const serverOptions = {
@@ -5151,13 +5691,13 @@ async function setupVite(app, server) {
       return next();
     }
     try {
-      const clientTemplate = path3.resolve(
+      const clientTemplate = path4.resolve(
         import.meta.dirname,
         "../..",
         "client",
         "index.html"
       );
-      let template = await fs2.promises.readFile(clientTemplate, "utf-8");
+      let template = await fs3.promises.readFile(clientTemplate, "utf-8");
       template = template.replace(
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
@@ -5172,28 +5712,41 @@ async function setupVite(app, server) {
   });
 }
 function serveStatic(app) {
-  const distPath = process.env.NODE_ENV === "development" ? path3.resolve(import.meta.dirname, "../..", "dist", "public") : path3.resolve(import.meta.dirname, "public");
-  if (!fs2.existsSync(distPath)) {
+  const distPath = process.env.NODE_ENV === "development" ? path4.resolve(import.meta.dirname, "../..", "dist", "public") : path4.resolve(import.meta.dirname, "public");
+  if (!fs3.existsSync(distPath)) {
     console.error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
   app.use(express.static(distPath));
-  app.use("*", (req, res, next) => {
+  app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
     if (url.startsWith("/api/") || url === "/sitemap.xml" || url === "/robots.txt") {
       return next();
     }
-    res.sendFile(path3.resolve(distPath, "index.html"));
+    try {
+      const indexPath = path4.resolve(distPath, "index.html");
+      const requestPath = req.originalUrl.split("?")[0];
+      const needsMetaInjection = requestPath.startsWith("/products/") || requestPath.startsWith("/resources/");
+      if (needsMetaInjection) {
+        let template = await fs3.promises.readFile(indexPath, "utf-8");
+        template = await injectSeoMetaTags(template, req, requestPath);
+        res.status(200).set({ "Content-Type": "text/html" }).send(template);
+      } else {
+        res.sendFile(indexPath);
+      }
+    } catch (error) {
+      console.error("[SSR] Error serving index.html:", error);
+      res.sendFile(path4.resolve(distPath, "index.html"));
+    }
   });
 }
 
 // server/sitemap.ts
 init_db();
 init_schema();
-init_env();
-import { eq as eq9 } from "drizzle-orm";
-var BASE_URL = ENV.viteAppTitle?.includes("ROWELL") ? "https://www.rowellhplc.com" : "https://rowell-website-test.manus.space";
+import { eq as eq10 } from "drizzle-orm";
+var BASE_URL = "https://www.rowellhplc.com";
 var STATIC_PAGES = [
   { path: "/", priority: 1, changefreq: "daily" },
   { path: "/products", priority: 0.9, changefreq: "weekly" },
@@ -5214,10 +5767,18 @@ async function generateSitemap(req, res) {
       console.error("[Sitemap] Database not available");
       return res.status(500).send("Database not available");
     }
-    const articles2 = await db.select({
+    const resourceArticles = await db.select({
       slug: resources.slug,
       updatedAt: resources.updatedAt
-    }).from(resources).where(eq9(resources.status, "published"));
+    }).from(resources).where(eq10(resources.status, "published"));
+    const allProducts = await db.select({
+      slug: products.slug,
+      updatedAt: products.updatedAt
+    }).from(products);
+    const literatureArticles = await db.select({
+      slug: articles.slug,
+      publishedDate: articles.publishedDate
+    }).from(articles).where(eq10(articles.category, "literature-reviews"));
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
     xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
     for (const page of STATIC_PAGES) {
@@ -5232,7 +5793,7 @@ async function generateSitemap(req, res) {
 `;
       xml += "  </url>\n";
     }
-    for (const article of articles2) {
+    for (const article of resourceArticles) {
       xml += "  <url>\n";
       xml += `    <loc>${BASE_URL}/resources/${article.slug}</loc>
 `;
@@ -5244,11 +5805,39 @@ async function generateSitemap(req, res) {
 `;
       xml += "  </url>\n";
     }
+    for (const product of allProducts) {
+      xml += "  <url>\n";
+      xml += `    <loc>${BASE_URL}/products/${product.slug}</loc>
+`;
+      if (product.updatedAt) {
+        xml += `    <lastmod>${formatDate(product.updatedAt)}</lastmod>
+`;
+      }
+      xml += `    <changefreq>weekly</changefreq>
+`;
+      xml += `    <priority>0.8</priority>
+`;
+      xml += "  </url>\n";
+    }
+    for (const article of literatureArticles) {
+      xml += "  <url>\n";
+      xml += `    <loc>${BASE_URL}/learning/literature/${article.slug}</loc>
+`;
+      if (article.publishedDate) {
+        xml += `    <lastmod>${formatDate(article.publishedDate)}</lastmod>
+`;
+      }
+      xml += `    <changefreq>monthly</changefreq>
+`;
+      xml += `    <priority>0.7</priority>
+`;
+      xml += "  </url>\n";
+    }
     xml += "</urlset>";
     res.setHeader("Content-Type", "application/xml; charset=utf-8");
     res.setHeader("Cache-Control", "public, max-age=3600");
     res.send(xml);
-    console.log(`[Sitemap] Generated sitemap with ${STATIC_PAGES.length} static pages and ${articles2.length} articles`);
+    console.log(`[Sitemap] Generated sitemap with ${STATIC_PAGES.length} static pages, ${resourceArticles.length} resources, ${allProducts.length} products, and ${literatureArticles.length} literature articles`);
   } catch (error) {
     console.error("[Sitemap] Error generating sitemap:", error);
     res.status(500).send("Error generating sitemap");
@@ -5258,39 +5847,10 @@ async function generateSitemap(req, res) {
 // server/seo-meta-injection.ts
 init_db();
 init_schema();
-init_env();
-import { eq as eq10 } from "drizzle-orm";
-function extractSlugFromPath2(path4) {
-  const match = path4.match(/^\/resources\/([^\/\?]+)/);
-  return match ? match[1] : null;
-}
-function generateMetaTags(article, fullUrl) {
-  const title = article.title || ENV.appTitle;
-  const description = article.metaDescription || article.excerpt || "";
-  const image = article.coverImage || ENV.appLogo;
-  return `
-    <title>${title} | ${ENV.appTitle}</title>
-    <meta name="description" content="${escapeHtml2(description)}" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="${fullUrl}" />
-    <meta property="og:title" content="${escapeHtml2(title)}" />
-    <meta property="og:description" content="${escapeHtml2(description)}" />
-    <meta property="og:image" content="${image}" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="${fullUrl}" />
-    <meta name="twitter:title" content="${escapeHtml2(title)}" />
-    <meta name="twitter:description" content="${escapeHtml2(description)}" />
-    <meta name="twitter:image" content="${image}" />
-    
-    <!-- Article metadata -->
-    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ""}" />
-    <meta property="article:author" content="${article.authorName || "ROWELL Team"}" />
-  `.trim();
-}
+import { eq as eq11 } from "drizzle-orm";
+var SITE_TITLE = "ROWELL";
+var SITE_URL2 = "https://www.rowellhplc.com";
+var SITE_LOGO = "https://www.rowellhplc.com/logo.png";
 function escapeHtml2(text2) {
   const map = {
     "&": "&amp;",
@@ -5301,61 +5861,240 @@ function escapeHtml2(text2) {
   };
   return text2.replace(/[&<>"']/g, (m) => map[m]);
 }
+function extractResourceSlug(path6) {
+  const match = path6.match(/^\/resources\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+function extractProductSlug(path6) {
+  const match = path6.match(/^\/products\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+function generateArticleMetaTags(article, fullUrl) {
+  const title = article.title || SITE_TITLE;
+  const description = article.metaDescription || article.excerpt || "";
+  const image = article.coverImage || SITE_LOGO;
+  const fullTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
+  return `
+    <title>${escapeHtml2(fullTitle)}</title>
+    <meta name="description" content="${escapeHtml2(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml2(fullTitle)}" />
+    <meta property="og:description" content="${escapeHtml2(description)}" />
+    <meta property="og:image" content="${image}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${fullUrl}" />
+    <meta name="twitter:title" content="${escapeHtml2(fullTitle)}" />
+    <meta name="twitter:description" content="${escapeHtml2(description)}" />
+    <meta name="twitter:image" content="${image}" />
+    
+    <!-- Article metadata -->
+    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ""}" />
+    <meta property="article:author" content="${article.authorName || "ROWELL Team"}" />
+  `.trim();
+}
+function generateProductMetaTags(product, fullUrl) {
+  const title = product.metaTitle || `${product.brand || ""} ${product.name || ""} ${product.partNumber || ""} | ${SITE_TITLE}`.trim();
+  const description = product.metaDescription || `Buy ${product.brand || ""} ${product.name || ""} (${product.partNumber || ""}) at ${SITE_TITLE}. Global shipping available. Request a quote today.`.trim();
+  const brandFolder = (product.brand || "").replace(/\s+/g, "");
+  const imageUrl = product.imageUrl || `${SITE_URL2}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+  const structuredData = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": product.name || product.partNumber,
+    "description": product.description || description,
+    "sku": product.partNumber,
+    "mpn": product.partNumber,
+    "brand": {
+      "@type": "Brand",
+      "name": product.brand || "ROWELL"
+    },
+    "image": imageUrl,
+    "url": fullUrl,
+    "offers": {
+      "@type": "Offer",
+      "url": fullUrl,
+      "priceCurrency": "USD",
+      "price": "1",
+      "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1e3).toISOString().split("T")[0],
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "ROWELL"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "USD"
+        },
+        "shippingDestination": [
+          { "@type": "DefinedRegion", "addressCountry": "US" },
+          { "@type": "DefinedRegion", "addressCountry": "GB" },
+          { "@type": "DefinedRegion", "addressCountry": "DE" },
+          { "@type": "DefinedRegion", "addressCountry": "JP" },
+          { "@type": "DefinedRegion", "addressCountry": "AU" },
+          { "@type": "DefinedRegion", "addressCountry": "CA" },
+          { "@type": "DefinedRegion", "addressCountry": "SG" },
+          { "@type": "DefinedRegion", "addressCountry": "KR" },
+          { "@type": "DefinedRegion", "addressCountry": "IN" }
+        ],
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 3,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 5,
+            "maxValue": 14,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    }
+  };
+  return `
+    <title>${escapeHtml2(title)}</title>
+    <meta name="description" content="${escapeHtml2(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml2(title)}" />
+    <meta property="og:description" content="${escapeHtml2(description)}" />
+    <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:site_name" content="${SITE_TITLE}" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${fullUrl}" />
+    <meta name="twitter:title" content="${escapeHtml2(title)}" />
+    <meta name="twitter:description" content="${escapeHtml2(description)}" />
+    <meta name="twitter:image" content="${imageUrl}" />
+    
+    <!-- Product specific -->
+    <meta property="product:brand" content="${escapeHtml2(product.brand || "")}" />
+    <meta property="product:availability" content="in stock" />
+    <meta property="product:condition" content="new" />
+    <meta property="product:price:amount" content="1" />
+    <meta property="product:price:currency" content="USD" />
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
+  `.trim();
+}
+function injectMetaTagsIntoHtml(html, metaTags) {
+  let result = html.replace(/<title>.*?<\/title>/s, "");
+  const injected = result.replace(
+    /(<meta charset="UTF-8" \/>)/,
+    `$1
+    ${metaTags}`
+  );
+  if (injected === result) {
+    return result.replace("</head>", `    ${metaTags}
+  </head>`);
+  }
+  return injected;
+}
 async function seoMetaInjectionMiddleware(req, res, next) {
   if (req.method !== "GET") {
     return next();
   }
-  const slug = extractSlugFromPath2(req.path);
-  if (!slug) {
-    return next();
-  }
-  try {
-    const db = await getDb();
-    if (!db) {
-      console.warn("[SEO] Database not available, skipping meta injection");
-      return next();
-    }
-    const articles2 = await db.select().from(resources).where(eq10(resources.slug, slug)).limit(1);
-    if (articles2.length === 0) {
-      return next();
-    }
-    const article = articles2[0];
-    if (article.status !== "published") {
-      return next();
-    }
-    const originalSend = res.send.bind(res);
-    res.send = function(data) {
-      const contentType = res.getHeader("Content-Type");
-      if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
-        const protocol = req.protocol;
-        const host = req.get("host");
-        const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-        const metaTags = generateMetaTags(article, fullUrl);
-        data = data.replace(
-          /<title>.*?<\/title>/,
-          ""
-        );
-        data = data.replace(
-          /(<meta charset="UTF-8" \/>)/,
-          `$1
-    ${metaTags}`
-        );
-        console.log(`[SEO] Injected meta tags for article: ${article.title}`);
+  const path6 = req.path;
+  const productSlug = extractProductSlug(path6);
+  if (productSlug) {
+    try {
+      const db = await getDb();
+      if (!db) {
+        console.warn("[SEO] Database not available, skipping product meta injection");
+        return next();
       }
-      return originalSend(data);
-    };
-    next();
-  } catch (error) {
-    console.error("[SEO] Error in meta injection middleware:", error);
-    next();
+      const result = await db.select().from(products).where(eq11(products.slug, productSlug)).limit(1);
+      if (result.length === 0) {
+        return next();
+      }
+      const product = result[0];
+      const originalSend = res.send.bind(res);
+      res.send = function(data) {
+        const contentType = res.getHeader("Content-Type");
+        if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
+          const protocol = req.protocol;
+          const host = req.get("host");
+          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+          const metaTags = generateProductMetaTags(product, fullUrl);
+          data = injectMetaTagsIntoHtml(data, metaTags);
+          console.log(`[SEO] Injected product meta tags: ${product.partNumber}`);
+        }
+        return originalSend(data);
+      };
+      return next();
+    } catch (error) {
+      console.error("[SEO] Error in product meta injection:", error);
+      return next();
+    }
   }
+  const resourceSlug = extractResourceSlug(path6);
+  if (resourceSlug) {
+    try {
+      const db = await getDb();
+      if (!db) {
+        console.warn("[SEO] Database not available, skipping article meta injection");
+        return next();
+      }
+      const articles2 = await db.select().from(resources).where(eq11(resources.slug, resourceSlug)).limit(1);
+      if (articles2.length === 0) {
+        return next();
+      }
+      const article = articles2[0];
+      if (article.status !== "published") {
+        return next();
+      }
+      const originalSend = res.send.bind(res);
+      res.send = function(data) {
+        const contentType = res.getHeader("Content-Type");
+        if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
+          const protocol = req.protocol;
+          const host = req.get("host");
+          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+          const metaTags = generateArticleMetaTags(article, fullUrl);
+          data = injectMetaTagsIntoHtml(data, metaTags);
+          console.log(`[SEO] Injected article meta tags: ${article.title}`);
+        }
+        return originalSend(data);
+      };
+      return next();
+    } catch (error) {
+      console.error("[SEO] Error in article meta injection:", error);
+      return next();
+    }
+  }
+  return next();
 }
 
 // server/learning-center-rest-api.ts
 init_db();
 init_schema();
 import { Router } from "express";
-import { eq as eq11, desc as desc2, and as and4, sql as sql4 } from "drizzle-orm";
+import { eq as eq12, desc as desc2, and as and4, sql as sql4 } from "drizzle-orm";
 var learningCenterRouter2 = Router();
 learningCenterRouter2.get("/articles", async (req, res) => {
   try {
@@ -5376,12 +6115,12 @@ learningCenterRouter2.get("/articles", async (req, res) => {
       applicationArea: articles.applicationArea,
       authorId: articles.authorId,
       authorName: authors.fullName
-    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).orderBy(desc2(articles.publishedDate)).limit(limit).offset(offset);
+    }).from(articles).leftJoin(authors, eq12(articles.authorId, authors.id)).orderBy(desc2(articles.publishedDate)).limit(limit).offset(offset);
     if (category) {
-      query = query.where(eq11(articles.category, category));
+      query = query.where(eq12(articles.category, category));
     }
     if (applicationArea) {
-      query = query.where(eq11(articles.applicationArea, applicationArea));
+      query = query.where(eq12(articles.applicationArea, applicationArea));
     }
     const result = await query;
     const totalResult = await db.select({ count: sql4`count(*)` }).from(articles);
@@ -5421,12 +6160,12 @@ learningCenterRouter2.get("/articles/:slug", async (req, res) => {
       authorTitle: authors.title,
       authorBio: authors.biography,
       authorPhoto: authors.photoUrl
-    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).where(eq11(articles.slug, slug)).limit(1);
+    }).from(articles).leftJoin(authors, eq12(articles.authorId, authors.id)).where(eq12(articles.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Article not found" });
     }
     const article = result[0];
-    await db.update(articles).set({ viewCount: sql4`${articles.viewCount} + 1` }).where(eq11(articles.id, article.id));
+    await db.update(articles).set({ viewCount: sql4`${articles.viewCount} + 1` }).where(eq12(articles.id, article.id));
     res.json(article);
   } catch (error) {
     console.error("Error fetching article:", error);
@@ -5481,7 +6220,7 @@ learningCenterRouter2.get("/authors/:slug", async (req, res) => {
   try {
     const db = await getDb();
     const { slug } = req.params;
-    const result = await db.select().from(authors).where(eq11(authors.slug, slug)).limit(1);
+    const result = await db.select().from(authors).where(eq12(authors.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Author not found" });
     }
@@ -5495,7 +6234,7 @@ learningCenterRouter2.get("/authors/:slug", async (req, res) => {
       viewCount: articles.viewCount,
       category: articles.category,
       applicationArea: articles.applicationArea
-    }).from(articles).where(eq11(articles.authorId, author.id)).orderBy(desc2(articles.publishedDate));
+    }).from(articles).where(eq12(articles.authorId, author.id)).orderBy(desc2(articles.publishedDate));
     res.json({
       ...author,
       articles: authorArticles
@@ -5518,7 +6257,7 @@ learningCenterRouter2.get("/featured", async (req, res) => {
       category: articles.category,
       applicationArea: articles.applicationArea,
       authorName: authors.fullName
-    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).orderBy(desc2(articles.viewCount)).limit(3);
+    }).from(articles).leftJoin(authors, eq12(articles.authorId, authors.id)).orderBy(desc2(articles.viewCount)).limit(3);
     res.json(result);
   } catch (error) {
     console.error("Error fetching featured articles:", error);
@@ -5529,7 +6268,7 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
   try {
     const db = await getDb();
     const { slug } = req.params;
-    const currentArticle = await db.select({ id: articles.id, category: articles.category }).from(articles).where(eq11(articles.slug, slug)).limit(1);
+    const currentArticle = await db.select({ id: articles.id, category: articles.category }).from(articles).where(eq12(articles.slug, slug)).limit(1);
     if (currentArticle.length === 0) {
       return res.status(404).json({ error: "Article not found" });
     }
@@ -5543,7 +6282,7 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
       category: articles.category
     }).from(articles).where(
       and4(
-        eq11(articles.category, currentArticle[0].category),
+        eq12(articles.category, currentArticle[0].category),
         sql4`${articles.id} != ${currentArticle[0].id}`
       )
     ).orderBy(desc2(articles.publishedDate)).limit(3);
@@ -5558,14 +6297,14 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
 init_db();
 init_schema();
 import { Router as Router2 } from "express";
-import { eq as eq12 } from "drizzle-orm";
+import { eq as eq13 } from "drizzle-orm";
 var testLiteratureRouter = Router2();
 testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
   try {
     const { slug } = req.params;
     console.log("[Test API] Querying literature with slug:", slug);
     const db = await getDb();
-    const result = await db.select().from(literature).where(eq12(literature.slug, slug)).limit(1);
+    const result = await db.select().from(literature).where(eq13(literature.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Literature not found" });
     }
@@ -5597,6 +6336,182 @@ testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
     });
   }
 });
+
+// server/article-importer.ts
+init_db();
+init_schema();
+import * as fs4 from "fs/promises";
+import * as path5 from "path";
+import { fileURLToPath as fileURLToPath3 } from "url";
+import matter3 from "gray-matter";
+import { eq as eq14 } from "drizzle-orm";
+var __filename3 = fileURLToPath3(import.meta.url);
+var __dirname3 = path5.dirname(__filename3);
+var ARTICLES_DIR2 = path5.join(__dirname3, "..", "content", "articles");
+var REQUIRED_FIELDS2 = [
+  "title",
+  "author_slug",
+  "category",
+  "application_area",
+  "slug",
+  "published_date"
+];
+var VALID_CATEGORIES2 = ["application-notes", "technical-guides", "industry-trends", "literature-reviews"];
+var VALID_AREAS2 = ["pharmaceutical", "environmental", "food-safety", "biopharmaceutical", "clinical", "chemical"];
+function validateLanguage2(text2) {
+  if (!text2) return true;
+  const chineseRegex = /[\u4e00-\u9fa5]/;
+  return !chineseRegex.test(text2);
+}
+function validateFormat2(frontmatter) {
+  const errors = [];
+  for (const field of REQUIRED_FIELDS2) {
+    if (!frontmatter[field]) {
+      errors.push(`Missing required field: ${field}`);
+    }
+  }
+  if (frontmatter.category && !VALID_CATEGORIES2.includes(frontmatter.category)) {
+    errors.push(`Invalid category: ${frontmatter.category}. Must be one of: ${VALID_CATEGORIES2.join(", ")}`);
+  }
+  if (frontmatter.application_area && !VALID_AREAS2.includes(frontmatter.application_area)) {
+    errors.push(`Invalid application_area: ${frontmatter.application_area}. Must be one of: ${VALID_AREAS2.join(", ")}`);
+  }
+  if (frontmatter.published_date) {
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(frontmatter.published_date)) {
+      errors.push(`Invalid date format: ${frontmatter.published_date}. Must be YYYY-MM-DD`);
+    }
+  }
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+async function processArticle(filePath, db) {
+  try {
+    const fileName = path5.basename(filePath);
+    console.log(`\u{1F4C4} Processing: ${fileName}`);
+    const fileContent = await fs4.readFile(filePath, "utf-8");
+    const { data: frontmatter, content } = matter3(fileContent);
+    const formatValidation = validateFormat2(frontmatter);
+    if (!formatValidation.valid) {
+      const error = `Format validation failed:
+${formatValidation.errors.join("\n")}`;
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage2(frontmatter.title)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in title";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage2(content)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in content";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage2(frontmatter.meta_description)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in meta_description";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage2(frontmatter.keywords)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in keywords";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    console.log("\u2713 Language validation passed (English content confirmed)");
+    let authorId;
+    const existingAuthor = await db.select().from(authors).where(eq14(authors.slug, frontmatter.author_slug)).limit(1);
+    if (existingAuthor.length > 0) {
+      authorId = existingAuthor[0].id;
+      console.log(`\u2713 Found existing author: ${frontmatter.author_slug} (ID: ${authorId})`);
+    } else {
+      const [newAuthor] = await db.insert(authors).values({
+        name: frontmatter.author_slug.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase()),
+        slug: frontmatter.author_slug,
+        bio: "Chromatography expert at ROWELL HPLC",
+        expertise: frontmatter.application_area,
+        avatar: "/images/authors/default.jpg"
+      });
+      authorId = newAuthor.insertId;
+      console.log(`\u2713 Created new author: ${frontmatter.author_slug} (ID: ${authorId})`);
+    }
+    const existingArticle = await db.select().from(articles).where(eq14(articles.slug, frontmatter.slug)).limit(1);
+    if (existingArticle.length > 0) {
+      await db.update(articles).set({
+        title: frontmatter.title,
+        content,
+        category: frontmatter.category,
+        applicationArea: frontmatter.application_area,
+        publishedDate: new Date(frontmatter.published_date),
+        metaDescription: frontmatter.meta_description || null,
+        keywords: frontmatter.keywords || null,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq14(articles.id, existingArticle[0].id));
+      console.log(`\u2705 Updated article: ${frontmatter.title}`);
+    } else {
+      await db.insert(articles).values({
+        title: frontmatter.title,
+        slug: frontmatter.slug,
+        content,
+        authorId,
+        category: frontmatter.category,
+        applicationArea: frontmatter.application_area,
+        publishedDate: new Date(frontmatter.published_date),
+        metaDescription: frontmatter.meta_description || null,
+        keywords: frontmatter.keywords || null,
+        createdAt: /* @__PURE__ */ new Date(),
+        updatedAt: /* @__PURE__ */ new Date()
+      });
+      console.log(`\u2705 Created article: ${frontmatter.title}`);
+    }
+    return { success: true };
+  } catch (error) {
+    console.error(`\u274C Error processing ${filePath}:`, error.message);
+    return { success: false, error: error.message };
+  }
+}
+async function importArticles() {
+  console.log("\n\u{1F680} Starting article import...");
+  console.log(`\u{1F4C1} Articles directory: ${ARTICLES_DIR2}`);
+  try {
+    try {
+      await fs4.access(ARTICLES_DIR2);
+    } catch {
+      console.log(`\u26A0\uFE0F  Articles directory not found: ${ARTICLES_DIR2}`);
+      console.log("Creating directory...");
+      await fs4.mkdir(ARTICLES_DIR2, { recursive: true });
+      console.log("\u2713 Directory created");
+      return;
+    }
+    const files = await fs4.readdir(ARTICLES_DIR2);
+    const mdFiles = files.filter((f) => f.endsWith(".md"));
+    if (mdFiles.length === 0) {
+      console.log("\u2139\uFE0F  No articles found to import");
+      return;
+    }
+    console.log(`\u{1F4DA} Found ${mdFiles.length} article(s) to process`);
+    const db = await getDb();
+    let successCount = 0;
+    let errorCount = 0;
+    for (const file of mdFiles) {
+      const filePath = path5.join(ARTICLES_DIR2, file);
+      const result = await processArticle(filePath, db);
+      if (result.success) {
+        successCount++;
+      } else {
+        errorCount++;
+      }
+    }
+    console.log("\n\u{1F4CA} Import Summary:");
+    console.log(`\u2705 Success: ${successCount}`);
+    console.log(`\u274C Errors: ${errorCount}`);
+    console.log("\u{1F3C1} Article import completed\n");
+  } catch (error) {
+    console.error("\u274C Fatal error during article import:", error.message);
+  }
+}
 
 // server/_core/index.ts
 function isPortAvailable(port2) {
@@ -5673,5 +6588,10 @@ Sitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
   server.listen(port2, () => {
     console.log(`Server running on http://localhost:${port2}/`);
   });
+  try {
+    await importArticles();
+  } catch (error) {
+    console.error("[Server] Failed to import articles:", error);
+  }
 }
 startServer().catch(console.error);
