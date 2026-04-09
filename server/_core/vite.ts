@@ -375,12 +375,18 @@ export function serveStatic(app: Express) {
       const indexPath = path.resolve(distPath, "index.html");
       
       // Check if it's a product or article page that needs meta injection
-      const needsMetaInjection = req.path.startsWith('/products/') || req.path.startsWith('/resources/');
+      // NOTE: Must use req.originalUrl instead of req.path here!
+      // When using app.use("*", handler), req.path is always "/" (relative to mount point),
+      // but req.originalUrl contains the actual full path like "/products/695775-742".
+      const requestPath = req.originalUrl.split('?')[0]; // Remove query string
+      const needsMetaInjection = requestPath.startsWith('/products/') || requestPath.startsWith('/resources/');
       
       if (needsMetaInjection) {
         // Read the file, inject meta tags, send as string
         let template = await fs.promises.readFile(indexPath, "utf-8");
-        template = await injectSeoMetaTags(template, req);
+        // Pass a modified req-like object with correct path for slug extraction
+        const reqWithPath = { ...req, path: requestPath };
+        template = await injectSeoMetaTags(template, reqWithPath);
         res.status(200).set({ "Content-Type": "text/html" }).send(template);
       } else {
         // For non-product/article pages, use fast sendFile
