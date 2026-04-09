@@ -27,15 +27,16 @@ export default function ProductDetail() {
   // Add Product Schema for SEO
   useEffect(() => {
     if (product) {
-      // Generate dynamic priceValidUntil: always 2 years from now to avoid expiry issues
-      const nextYear = new Date().getFullYear() + 2;
-      const priceValidUntil = `${nextYear}-12-31`;
+      // Build absolute image URL for schema
+      const imageAbsoluteUrl = product.imageUrl
+        ? (product.imageUrl.startsWith('http') ? product.imageUrl : `https://www.rowellhplc.com${product.imageUrl}`)
+        : "";
 
       const schema = {
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.name,
-        "image": product.imageUrl || "",
+        "image": imageAbsoluteUrl,
         "description": product.description || product.detailedDescription || product.name || "High-quality chromatography product",
         "sku": product.partNumber,
         "mpn": product.partNumber,
@@ -45,14 +46,18 @@ export default function ProductDetail() {
         },
         "offers": {
           "@type": "Offer",
-          "price": "0",
+          // Google Merchant Listings requires a valid price > 0.
+          // As a B2B quote-based seller, we use a nominal price of 1 USD
+          // and direct buyers to contact us for actual pricing.
+          "price": "1",
           "priceCurrency": "USD",
-          "priceValidUntil": priceValidUntil,
           "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
           "url": `https://www.rowellhplc.com/products/${product.slug || product.partNumber}`,
           "seller": {
             "@type": "Organization",
-            "name": "ROWELL"
+            "name": "ROWELL",
+            "url": "https://www.rowellhplc.com"
           },
           "shippingDetails": {
             "@type": "OfferShippingDetails",
@@ -61,10 +66,17 @@ export default function ProductDetail() {
               "value": "0",
               "currency": "USD"
             },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "US"
-            },
+            "shippingDestination": [
+              { "@type": "DefinedRegion", "addressCountry": "US" },
+              { "@type": "DefinedRegion", "addressCountry": "GB" },
+              { "@type": "DefinedRegion", "addressCountry": "DE" },
+              { "@type": "DefinedRegion", "addressCountry": "JP" },
+              { "@type": "DefinedRegion", "addressCountry": "AU" },
+              { "@type": "DefinedRegion", "addressCountry": "CA" },
+              { "@type": "DefinedRegion", "addressCountry": "SG" },
+              { "@type": "DefinedRegion", "addressCountry": "KR" },
+              { "@type": "DefinedRegion", "addressCountry": "IN" }
+            ],
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
               "handlingTime": {

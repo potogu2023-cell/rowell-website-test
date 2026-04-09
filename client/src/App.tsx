@@ -28,6 +28,8 @@ import StandardsCategory from "./pages/StandardsCategory";
 import StandardsProductDetail from "./pages/StandardsProductDetail";
 import StandardsSearch from "./pages/StandardsSearch";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ApplicationsHub from "./pages/ApplicationsHub";
+import IndustryApplication from "./pages/IndustryApplication";
 
 
 function Router() {
@@ -55,7 +57,8 @@ function Router() {
           <Route path={"/learning/authors/:slug"} component={AuthorDetail} />
           <Route path={"/learning/literature/:slug"} component={LiteratureDetail} />
           <Route path={"/learning/:slug"} component={ArticleDetail} />
-          <Route path={"/applications"} component={LearningCenter} />
+          <Route path={"/applications"} component={ApplicationsHub} />
+          <Route path={"/applications/:industry"} component={IndustryApplication} />
           <Route path={"/resources"} component={LearningCenter} />
           
           <Route path={"/about"} component={About} />

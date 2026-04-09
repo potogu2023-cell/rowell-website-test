@@ -209,6 +209,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Global Shipping Trust Banner */}
+      <div className="bg-slate-900 text-white py-3">
+        <div className="container">
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
+              <Globe className="w-4 h-4 text-blue-400" />
+              <span className="font-medium">Global Shipping to 50+ Countries</span>
+            </div>
+            <div className="hidden md:block w-px h-4 bg-slate-600" />
+            <div className="flex items-center gap-2">
+              <span className="text-blue-400">✈</span>
+              <span>US · EU · UK · JP · AU · SG · KR · IN · CA</span>
+            </div>
+            <div className="hidden md:block w-px h-4 bg-slate-600" />
+            <div className="flex items-center gap-2">
+              <span className="text-green-400">✓</span>
+              <span>DDP Available · Customs Clearance Support</span>
+            </div>
+            <div className="hidden md:block w-px h-4 bg-slate-600" />
+            <div className="flex items-center gap-2">
+              <span className="text-yellow-400">★</span>
+              <span>500+ Labs Served Worldwide</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Why Choose ROWELL - AI-Powered Advantages */}
       <section className="py-16">
         <div className="container">
@@ -458,6 +485,28 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">{t('home.testimonials_title')}</h2>
             <p className="text-muted-foreground">{t('home.testimonials_subtitle')}</p>
+            {/* Country flags - global reach indicator */}
+            <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
+              {[
+                { flag: '🇺🇸', country: 'United States' },
+                { flag: '🇬🇧', country: 'United Kingdom' },
+                { flag: '🇩🇪', country: 'Germany' },
+                { flag: '🇯🇵', country: 'Japan' },
+                { flag: '🇦🇺', country: 'Australia' },
+                { flag: '🇨🇦', country: 'Canada' },
+                { flag: '🇸🇬', country: 'Singapore' },
+                { flag: '🇰🇷', country: 'South Korea' },
+                { flag: '🇮🇳', country: 'India' },
+                { flag: '🇫🇷', country: 'France' },
+                { flag: '🇳🇱', country: 'Netherlands' },
+                { flag: '🇧🇷', country: 'Brazil' },
+              ].map(({ flag, country }) => (
+                <span key={country} title={country} className="text-2xl hover:scale-125 transition-transform cursor-default" aria-label={country}>
+                  {flag}
+                </span>
+              ))}
+              <span className="text-sm text-muted-foreground ml-2">+40 more countries</span>
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
