@@ -82,6 +82,30 @@ app.use("/api/learning-center", learningCenterRestRouter);
     res.setHeader("Content-Type", "text/plain");
     res.send(`User-agent: *\nAllow: /\nSitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
   });
+  // Debug endpoint to verify deployed code version
+  app.get("/api/debug/version", (req, res) => {
+    const crypto = require('crypto');
+    const fs = require('fs');
+    const path = require('path');
+    try {
+      const indexPath = path.resolve(import.meta.dirname, 'index.js');
+      const content = fs.readFileSync(indexPath, 'utf-8');
+      const hash = crypto.createHash('md5').update(content.slice(0, 1000)).digest('hex');
+      const hasSendFileInterception = content.includes('originalSendFile');
+      const hasResourcesCheck = content.includes('startsWith("/resources/")');
+      const hasOriginalUrl = content.includes('req.originalUrl.split');
+      res.json({
+        hash,
+        hasSendFileInterception,
+        hasResourcesCheck,
+        hasOriginalUrl,
+        timestamp: new Date().toISOString()
+      });
+    } catch (e: any) {
+      res.json({ error: e.message });
+    }
+  });
+
   // tRPC API
   app.use(
     "/api/trpc",
