@@ -5848,6 +5848,7 @@ async function generateSitemap(req, res) {
 init_db();
 init_schema();
 import { eq as eq11 } from "drizzle-orm";
+import * as fs4 from "fs";
 var SITE_TITLE = "ROWELL";
 var SITE_URL2 = "https://www.rowellhplc.com";
 var SITE_LOGO = "https://www.rowellhplc.com/logo.png";
@@ -6068,18 +6069,30 @@ async function seoMetaInjectionMiddleware(req, res, next) {
       if (article.status !== "published") {
         return next();
       }
+      const protocol = req.protocol;
+      const host = req.get("host");
+      const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+      const metaTags = generateArticleMetaTags(article, fullUrl);
       const originalSend = res.send.bind(res);
       res.send = function(data) {
         const contentType = res.getHeader("Content-Type");
         if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
-          const protocol = req.protocol;
-          const host = req.get("host");
-          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-          const metaTags = generateArticleMetaTags(article, fullUrl);
           data = injectMetaTagsIntoHtml(data, metaTags);
-          console.log(`[SEO] Injected article meta tags: ${article.title}`);
+          console.log(`[SEO] Injected article meta tags (via send): ${article.title}`);
         }
         return originalSend(data);
+      };
+      const originalSendFile = res.sendFile.bind(res);
+      res.sendFile = function(filePath, ...args) {
+        fs4.readFile(filePath, "utf-8", (err, data) => {
+          if (err) {
+            console.error(`[SEO] Error reading file for article injection: ${err.message}`);
+            return originalSendFile(filePath, ...args);
+          }
+          const injected = injectMetaTagsIntoHtml(data, metaTags);
+          console.log(`[SEO] Injected article meta tags (via sendFile): ${article.title}`);
+          res.status(200).set({ "Content-Type": "text/html" }).send(injected);
+        });
       };
       return next();
     } catch (error) {
@@ -6340,7 +6353,7 @@ testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
 // server/article-importer.ts
 init_db();
 init_schema();
-import * as fs4 from "fs/promises";
+import * as fs5 from "fs/promises";
 import * as path5 from "path";
 import { fileURLToPath as fileURLToPath3 } from "url";
 import matter3 from "gray-matter";
@@ -6391,7 +6404,7 @@ async function processArticle(filePath, db) {
   try {
     const fileName = path5.basename(filePath);
     console.log(`\u{1F4C4} Processing: ${fileName}`);
-    const fileContent = await fs4.readFile(filePath, "utf-8");
+    const fileContent = await fs5.readFile(filePath, "utf-8");
     const { data: frontmatter, content } = matter3(fileContent);
     const formatValidation = validateFormat2(frontmatter);
     if (!formatValidation.valid) {
@@ -6477,15 +6490,15 @@ async function importArticles() {
   console.log(`\u{1F4C1} Articles directory: ${ARTICLES_DIR2}`);
   try {
     try {
-      await fs4.access(ARTICLES_DIR2);
+      await fs5.access(ARTICLES_DIR2);
     } catch {
       console.log(`\u26A0\uFE0F  Articles directory not found: ${ARTICLES_DIR2}`);
       console.log("Creating directory...");
-      await fs4.mkdir(ARTICLES_DIR2, { recursive: true });
+      await fs5.mkdir(ARTICLES_DIR2, { recursive: true });
       console.log("\u2713 Directory created");
       return;
     }
-    const files = await fs4.readdir(ARTICLES_DIR2);
+    const files = await fs5.readdir(ARTICLES_DIR2);
     const mdFiles = files.filter((f) => f.endsWith(".md"));
     if (mdFiles.length === 0) {
       console.log("\u2139\uFE0F  No articles found to import");

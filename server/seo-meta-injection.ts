@@ -8,6 +8,7 @@ import { Request, Response, NextFunction } from "express";
 import { getDb } from "./db";
 import { resources, products } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
+import * as fs from "fs";
 
 const SITE_TITLE = "ROWELL";
 const SITE_URL = "https://www.rowellhplc.com";
@@ -311,6 +312,12 @@ export async function seoMetaInjectionMiddleware(
         return next();
       }
 
+      const protocol = req.protocol;
+      const host = req.get("host");
+      const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+      const metaTags = generateArticleMetaTags(article, fullUrl);
+
+      // Intercept res.send (used when needsMetaInjection=true in serveStatic)
       const originalSend = res.send.bind(res);
       res.send = function (data: any): Response {
         const contentType = res.getHeader("Content-Type");
@@ -319,14 +326,25 @@ export async function seoMetaInjectionMiddleware(
           contentType.includes("text/html") &&
           typeof data === "string"
         ) {
-          const protocol = req.protocol;
-          const host = req.get("host");
-          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-          const metaTags = generateArticleMetaTags(article, fullUrl);
           data = injectMetaTagsIntoHtml(data, metaTags);
-          console.log(`[SEO] Injected article meta tags: ${article.title}`);
+          console.log(`[SEO] Injected article meta tags (via send): ${article.title}`);
         }
         return originalSend(data);
+      };
+
+      // Also intercept res.sendFile (used when needsMetaInjection=false in serveStatic)
+      // This ensures injection works even if serveStatic falls back to sendFile
+      const originalSendFile = (res as any).sendFile.bind(res);
+      (res as any).sendFile = function (filePath: string, ...args: any[]) {
+        fs.readFile(filePath, "utf-8", (err, data) => {
+          if (err) {
+            console.error(`[SEO] Error reading file for article injection: ${err.message}`);
+            return originalSendFile(filePath, ...args);
+          }
+          const injected = injectMetaTagsIntoHtml(data, metaTags);
+          console.log(`[SEO] Injected article meta tags (via sendFile): ${article.title}`);
+          res.status(200).set({ "Content-Type": "text/html" }).send(injected);
+        });
       };
 
       return next();
