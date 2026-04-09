@@ -46,8 +46,8 @@ function escapeHtml(text: string): string {
 /**
  * Inject SEO meta tags into HTML template for article pages
  */
-async function injectArticleSeoMetaTags(template: string, req: any): Promise<string> {
-  const slug = extractSlugFromPath(req.path);
+async function injectArticleSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
+  const slug = extractSlugFromPath(overridePath || req.path);
   if (!slug) {
     return template;
   }
@@ -121,8 +121,8 @@ async function injectArticleSeoMetaTags(template: string, req: any): Promise<str
  * Google crawlers see empty <div id="root"></div> in SPA mode, which triggers soft 404.
  * By injecting full meta tags server-side, we give Google enough content to index properly.
  */
-async function injectProductSeoMetaTags(template: string, req: any): Promise<string> {
-  const slug = extractProductSlugFromPath(req.path);
+async function injectProductSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
+  const slug = extractProductSlugFromPath(overridePath || req.path);
   if (!slug) {
     return template;
   }
@@ -276,15 +276,20 @@ async function injectProductSeoMetaTags(template: string, req: any): Promise<str
 
 /**
  * Unified SEO meta tag injection - handles both articles and products
+ * @param template - HTML template string
+ * @param req - Express request object (must be the original req, NOT a spread copy)
+ * @param overridePath - Optional path override (use req.originalUrl in app.use('*') handlers)
  */
-async function injectSeoMetaTags(template: string, req: any): Promise<string> {
+async function injectSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
+  // Use overridePath if provided (needed in app.use('*') where req.path is always '/')
+  const effectivePath = overridePath || req.path;
   // Try product pages first
-  if (req.path.startsWith('/products/')) {
-    return injectProductSeoMetaTags(template, req);
+  if (effectivePath.startsWith('/products/')) {
+    return injectProductSeoMetaTags(template, req, effectivePath);
   }
   // Then try article pages
-  if (req.path.startsWith('/resources/')) {
-    return injectArticleSeoMetaTags(template, req);
+  if (effectivePath.startsWith('/resources/')) {
+    return injectArticleSeoMetaTags(template, req, effectivePath);
   }
   return template;
 }
@@ -384,9 +389,10 @@ export function serveStatic(app: Express) {
       if (needsMetaInjection) {
         // Read the file, inject meta tags, send as string
         let template = await fs.promises.readFile(indexPath, "utf-8");
-        // Pass a modified req-like object with correct path for slug extraction
-        const reqWithPath = { ...req, path: requestPath };
-        template = await injectSeoMetaTags(template, reqWithPath);
+        // IMPORTANT: Do NOT spread req object! Express req.get() is a prototype method
+        // and will be lost when spread with { ...req }. Instead, pass req directly
+        // and override path separately via the overridePath parameter.
+        template = await injectSeoMetaTags(template, req, requestPath);
         res.status(200).set({ "Content-Type": "text/html" }).send(template);
       } else {
         // For non-product/article pages, use fast sendFile
