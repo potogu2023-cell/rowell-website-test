@@ -5450,7 +5450,6 @@ var vite_config_default = defineConfig({
 // server/_core/vite.ts
 init_db();
 init_schema();
-init_env();
 import { eq as eq9 } from "drizzle-orm";
 var SITE_URL = "https://www.rowellhplc.com";
 function extractSlugFromPath(urlPath) {
@@ -5489,11 +5488,13 @@ async function injectArticleSeoMetaTags(template, req, overridePath) {
     const protocol = req.protocol || "https";
     const host = req.get("host") || "www.rowellhplc.com";
     const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-    const title = article.title || ENV.appTitle;
+    const SITE_TITLE2 = "ROWELL";
+    const SITE_LOGO2 = "https://www.rowellhplc.com/logo.png";
+    const title = article.title || SITE_TITLE2;
     const description = article.metaDescription || article.excerpt || "";
-    const image = article.coverImage || ENV.appLogo;
+    const image = article.coverImage || SITE_LOGO2;
     const metaTags = `
-    <title>${escapeHtml(title)} | ${ENV.appTitle}</title>
+    <title>${escapeHtml(title)} | ${SITE_TITLE2}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${fullUrl}" />
     

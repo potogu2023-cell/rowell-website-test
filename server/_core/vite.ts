@@ -73,12 +73,14 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     const host = req.get('host') || 'www.rowellhplc.com';
     const fullUrl = `${protocol}://${host}${req.originalUrl}`;
 
-    const title = article.title || ENV.appTitle;
+    const SITE_TITLE = "ROWELL";
+    const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
+    const title = article.title || SITE_TITLE;
     const description = article.metaDescription || article.excerpt || "";
-    const image = article.coverImage || ENV.appLogo;
+    const image = article.coverImage || SITE_LOGO;
 
     const metaTags = `
-    <title>${escapeHtml(title)} | ${ENV.appTitle}</title>
+    <title>${escapeHtml(title)} | ${SITE_TITLE}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${fullUrl}" />
     
