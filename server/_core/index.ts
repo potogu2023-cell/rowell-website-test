@@ -82,6 +82,39 @@ app.use("/api/learning-center", learningCenterRestRouter);
     res.setHeader("Content-Type", "text/plain");
     res.send(`User-agent: *\nAllow: /\nSitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
   });
+  // Debug endpoint to test article meta injection directly
+  app.get("/api/debug/article-meta", async (req, res) => {
+    try {
+      const { getDb } = await import('../db');
+      const { resources: resourcesTable } = await import('../../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      if (!db) {
+        return res.json({ error: 'DB not available' });
+      }
+      const slug = req.query.slug as string || 'food-analysis-artificial-sweeteners-beverages';
+      const articles = await db.select().from(resourcesTable).where(eq(resourcesTable.slug, slug)).limit(1);
+      if (articles.length === 0) {
+        return res.json({ error: 'Article not found', slug });
+      }
+      const article = articles[0];
+      res.json({
+        found: true,
+        slug: article.slug,
+        status: article.status,
+        title: article.title,
+        hasMetaDescription: !!article.metaDescription,
+        hasExcerpt: !!article.excerpt,
+        hasCoverImage: !!article.coverImage,
+        reqGet: typeof req.get,
+        host: req.get('host'),
+        protocol: req.protocol
+      });
+    } catch (e: any) {
+      res.json({ error: String(e), stack: e.stack?.slice(0, 500) });
+    }
+  });
+
   // Debug endpoint to verify deployed code version
   app.get("/api/debug/version", async (req, res) => {
     try {

@@ -6581,6 +6581,37 @@ async function startServer() {
 Allow: /
 Sitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
   });
+  app.get("/api/debug/article-meta", async (req, res) => {
+    try {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { resources: resourcesTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { eq: eq15 } = await import("drizzle-orm");
+      const db = await getDb2();
+      if (!db) {
+        return res.json({ error: "DB not available" });
+      }
+      const slug = req.query.slug || "food-analysis-artificial-sweeteners-beverages";
+      const articles2 = await db.select().from(resourcesTable).where(eq15(resourcesTable.slug, slug)).limit(1);
+      if (articles2.length === 0) {
+        return res.json({ error: "Article not found", slug });
+      }
+      const article = articles2[0];
+      res.json({
+        found: true,
+        slug: article.slug,
+        status: article.status,
+        title: article.title,
+        hasMetaDescription: !!article.metaDescription,
+        hasExcerpt: !!article.excerpt,
+        hasCoverImage: !!article.coverImage,
+        reqGet: typeof req.get,
+        host: req.get("host"),
+        protocol: req.protocol
+      });
+    } catch (e) {
+      res.json({ error: String(e), stack: e.stack?.slice(0, 500) });
+    }
+  });
   app.get("/api/debug/version", async (req, res) => {
     try {
       const { createHash } = await import("crypto");
