@@ -5537,7 +5537,13 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     if (!db) {
       return template;
     }
-    const result = await db.select().from(products).where(eq9(products.slug, slug)).limit(1);
+    let result = await db.select().from(products).where(eq9(products.slug, slug)).limit(1);
+    if (result.length === 0) {
+      result = await db.select().from(products).where(eq9(products.partNumber, slug)).limit(1);
+      if (result.length > 0) {
+        console.log(`[SEO] Slug '${slug}' not found, matched by partNumber fallback`);
+      }
+    }
     if (result.length === 0) {
       return template;
     }
@@ -5549,6 +5555,25 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     const description = product.metaDescription || `Buy ${product.brand || ""} ${product.name || ""} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
     const brandFolder = (product.brand || "").replace(/\s+/g, "");
     const imageUrl = product.imageUrl || `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+    const specsRows = [
+      product.particleSize ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : "",
+      product.poreSize ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : "",
+      product.columnLength ? `<tr><td>Column Length</td><td>${escapeHtml(product.columnLength)}</td></tr>` : "",
+      product.innerDiameter ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : "",
+      product.usp ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : "",
+      product.phaseType ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : ""
+    ].filter(Boolean).join("");
+    const contentSkeleton = `
+    <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+      <h1>${escapeHtml(title)}</h1>
+      <p>${escapeHtml(description)}</p>
+      ${product.brand ? `<p>Brand: ${escapeHtml(product.brand)}</p>` : ""}
+      <p>Part Number: ${escapeHtml(product.partNumber || "")}</p>
+      ${product.name ? `<p>Product Name: ${escapeHtml(product.name)}</p>` : ""}
+      ${product.description ? `<p>${escapeHtml((product.description || "").substring(0, 500))}</p>` : ""}
+      ${specsRows ? `<table><tbody>${specsRows}</tbody></table>` : ""}
+      <p>Available at ROWELL. Global shipping. Request a quote for competitive pricing.</p>
+    </div>`;
     const structuredData = {
       "@context": "https://schema.org/",
       "@type": "Product",
@@ -5651,7 +5676,11 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
       /(<head[^>]*>)/i,
       `$1${metaTags}`
     );
-    console.log(`[SEO] Injected product meta tags for: ${product.partNumber}`);
+    template = template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"></div>${contentSkeleton}`
+    );
+    console.log(`[SEO] Injected product meta tags + content skeleton for: ${product.partNumber}`);
     return template;
   } catch (error) {
     console.error("[SEO] Error injecting product meta tags:", error);
@@ -6580,7 +6609,7 @@ async function startServer() {
     res.setHeader("Content-Type", "text/plain");
     res.send(`User-agent: *
 Allow: /
-Sitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
+Sitemap: https://${req.get("host")}/sitemap.xml`);
   });
   app.get("/api/debug/article-meta", async (req, res) => {
     try {

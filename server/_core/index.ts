@@ -80,7 +80,8 @@ app.use("/api/learning-center", learningCenterRestRouter);
   // robots.txt for search engines
   app.get("/robots.txt", (req, res) => {
     res.setHeader("Content-Type", "text/plain");
-    res.send(`User-agent: *\nAllow: /\nSitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
+    // Always use https for Sitemap URL (P2 fix: Google prefers https)
+    res.send(`User-agent: *\nAllow: /\nSitemap: https://${req.get("host")}/sitemap.xml`);
   });
   // Debug endpoint to test article meta injection directly
   app.get("/api/debug/article-meta", async (req, res) => {

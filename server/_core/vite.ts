@@ -135,11 +135,26 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       return template;
     }
 
-    const result = await db
+    // Primary query: by slug field
+    let result = await db
       .select()
       .from(products)
       .where(eq(products.slug, slug))
       .limit(1);
+
+    // P1 FIX: Fallback query by partNumber if slug lookup fails
+    // This handles cases where Google indexed old URLs like /products/92325
+    // but the database slug is daicel-92325
+    if (result.length === 0) {
+      result = await db
+        .select()
+        .from(products)
+        .where(eq(products.partNumber, slug))
+        .limit(1);
+      if (result.length > 0) {
+        console.log(`[SEO] Slug '${slug}' not found, matched by partNumber fallback`);
+      }
+    }
 
     if (result.length === 0) {
       return template;
@@ -160,6 +175,31 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const brandFolder = (product.brand || '').replace(/\s+/g, '');
     const imageUrl = product.imageUrl ||
       `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+
+    // ── P0 FIX: Inject visible content skeleton into <body> to prevent Soft 404 ──
+    // Google's soft 404 detection requires actual visible text content in the page body,
+    // not just meta tags in <head>. Without this, Google sees an empty <div id="root"> and
+    // classifies the page as soft 404, refusing to index it.
+    const specsRows = [
+      product.particleSize ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : '',
+      product.poreSize ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : '',
+      product.columnLength ? `<tr><td>Column Length</td><td>${escapeHtml(product.columnLength)}</td></tr>` : '',
+      product.innerDiameter ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : '',
+      product.usp ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : '',
+      product.phaseType ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : '',
+    ].filter(Boolean).join('');
+
+    const contentSkeleton = `
+    <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+      <h1>${escapeHtml(title)}</h1>
+      <p>${escapeHtml(description)}</p>
+      ${product.brand ? `<p>Brand: ${escapeHtml(product.brand)}</p>` : ''}
+      <p>Part Number: ${escapeHtml(product.partNumber || '')}</p>
+      ${product.name ? `<p>Product Name: ${escapeHtml(product.name)}</p>` : ''}
+      ${product.description ? `<p>${escapeHtml((product.description || '').substring(0, 500))}</p>` : ''}
+      ${specsRows ? `<table><tbody>${specsRows}</tbody></table>` : ''}
+      <p>Available at ROWELL. Global shipping. Request a quote for competitive pricing.</p>
+    </div>`;
 
     // JSON-LD structured data for Google Merchant Listings
     const structuredData = {
@@ -268,7 +308,13 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       `$1${metaTags}`
     );
 
-    console.log(`[SEO] Injected product meta tags for: ${product.partNumber}`);
+    // Inject visible content skeleton into <body> for Soft 404 prevention
+    template = template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"></div>${contentSkeleton}`
+    );
+
+    console.log(`[SEO] Injected product meta tags + content skeleton for: ${product.partNumber}`);
     return template;
   } catch (error) {
     console.error("[SEO] Error injecting product meta tags:", error);
