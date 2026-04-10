@@ -6620,15 +6620,19 @@ Sitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
       const { resolve } = await import("path");
       const indexPath = resolve(import.meta.dirname, "index.js");
       const content = readFileSync4(indexPath, "utf-8");
-      const hash = createHash("md5").update(content.slice(0, 1e3)).digest("hex");
+      const hash = createHash("md5").update(content).digest("hex");
       const hasSendFileInterception = content.includes("originalSendFile");
       const hasResourcesCheck = content.includes('startsWith("/resources/")');
       const hasOriginalUrl = content.includes("req.originalUrl.split");
+      const hasFixedSiteTitle = content.includes('SITE_TITLE2 = "ROWELL"') || content.includes('SITE_TITLE = "ROWELL"');
+      const hasNoEnvAppTitle = !content.includes("ENV.appTitle");
       res.json({
         hash,
         hasSendFileInterception,
         hasResourcesCheck,
         hasOriginalUrl,
+        hasFixedSiteTitle,
+        hasNoEnvAppTitle,
         timestamp: (/* @__PURE__ */ new Date()).toISOString()
       });
     } catch (e) {
