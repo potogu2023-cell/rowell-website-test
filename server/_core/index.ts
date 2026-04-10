@@ -83,14 +83,14 @@ app.use("/api/learning-center", learningCenterRestRouter);
     res.send(`User-agent: *\nAllow: /\nSitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
   });
   // Debug endpoint to verify deployed code version
-  app.get("/api/debug/version", (req, res) => {
-    const crypto = require('crypto');
-    const fs = require('fs');
-    const path = require('path');
+  app.get("/api/debug/version", async (req, res) => {
     try {
-      const indexPath = path.resolve(import.meta.dirname, 'index.js');
-      const content = fs.readFileSync(indexPath, 'utf-8');
-      const hash = crypto.createHash('md5').update(content.slice(0, 1000)).digest('hex');
+      const { createHash } = await import('crypto');
+      const { readFileSync } = await import('fs');
+      const { resolve } = await import('path');
+      const indexPath = resolve(import.meta.dirname, 'index.js');
+      const content = readFileSync(indexPath, 'utf-8');
+      const hash = createHash('md5').update(content.slice(0, 1000)).digest('hex');
       const hasSendFileInterception = content.includes('originalSendFile');
       const hasResourcesCheck = content.includes('startsWith("/resources/")');
       const hasOriginalUrl = content.includes('req.originalUrl.split');
@@ -102,7 +102,7 @@ app.use("/api/learning-center", learningCenterRestRouter);
         timestamp: new Date().toISOString()
       });
     } catch (e: any) {
-      res.json({ error: e.message });
+      res.json({ error: String(e) });
     }
   });
 

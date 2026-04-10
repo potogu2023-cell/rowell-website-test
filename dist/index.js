@@ -2,12 +2,6 @@ var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
-  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
-}) : x)(function(x) {
-  if (typeof require !== "undefined") return require.apply(this, arguments);
-  throw Error('Dynamic require of "' + x + '" is not supported');
-});
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
@@ -6587,14 +6581,14 @@ async function startServer() {
 Allow: /
 Sitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
   });
-  app.get("/api/debug/version", (req, res) => {
-    const crypto = __require("crypto");
-    const fs6 = __require("fs");
-    const path6 = __require("path");
+  app.get("/api/debug/version", async (req, res) => {
     try {
-      const indexPath = path6.resolve(import.meta.dirname, "index.js");
-      const content = fs6.readFileSync(indexPath, "utf-8");
-      const hash = crypto.createHash("md5").update(content.slice(0, 1e3)).digest("hex");
+      const { createHash } = await import("crypto");
+      const { readFileSync: readFileSync4 } = await import("fs");
+      const { resolve } = await import("path");
+      const indexPath = resolve(import.meta.dirname, "index.js");
+      const content = readFileSync4(indexPath, "utf-8");
+      const hash = createHash("md5").update(content.slice(0, 1e3)).digest("hex");
       const hasSendFileInterception = content.includes("originalSendFile");
       const hasResourcesCheck = content.includes('startsWith("/resources/")');
       const hasOriginalUrl = content.includes("req.originalUrl.split");
@@ -6606,7 +6600,7 @@ Sitemap: ${req.protocol}://${req.get("host")}/sitemap.xml`);
         timestamp: (/* @__PURE__ */ new Date()).toISOString()
       });
     } catch (e) {
-      res.json({ error: e.message });
+      res.json({ error: String(e) });
     }
   });
   app.use(
