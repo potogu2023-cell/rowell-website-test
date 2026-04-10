@@ -5512,8 +5512,8 @@ async function injectArticleSeoMetaTags(template, req, overridePath) {
     <meta name="twitter:image" content="${image}" />
     
     <!-- Article metadata -->
-    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ""}" />
-    <meta property="article:author" content="${article.authorName || "ROWELL Team"}" />`;
+    <meta property="article:published_time" content="${article.publishedAt || ""}" />
+    <meta property="article:author" content="${article.author || "ROWELL Team"}" />`;
     template = template.replace(/<title>.*?<\/title>/i, "");
     template = template.replace(
       /(<head[^>]*>)/i,
