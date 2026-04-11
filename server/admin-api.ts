@@ -96,6 +96,62 @@ export const adminRouter = router({
       };
     }),
 
+  // Batch update metaTitles for high-impression zero-click products
+  batchUpdateMetaTitles: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          partNumber: z.string(),
+          metaTitle: z.string(),
+        })),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+
+      const results = [];
+
+      for (const update of input.updates) {
+        try {
+          // Verify product exists
+          const existing = await db
+            .select({ partNumber: products.partNumber, metaTitle: products.metaTitle })
+            .from(products)
+            .where(eq(products.partNumber, update.partNumber))
+            .limit(1);
+
+          if (existing.length === 0) {
+            results.push({ partNumber: update.partNumber, status: 'not_found' });
+            continue;
+          }
+
+          await db
+            .update(products)
+            .set({ metaTitle: update.metaTitle, updatedAt: new Date() })
+            .where(eq(products.partNumber, update.partNumber));
+
+          results.push({
+            partNumber: update.partNumber,
+            status: 'updated',
+            oldMetaTitle: existing[0].metaTitle,
+            newMetaTitle: update.metaTitle,
+          });
+        } catch (err) {
+          results.push({ partNumber: update.partNumber, status: 'error', error: String(err) });
+        }
+      }
+
+      return { success: true, results };
+    }),
+
   // Check data consistency
   checkDataConsistency: publicProcedure
     .input((raw: unknown) => {

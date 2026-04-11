@@ -2618,6 +2618,44 @@ var adminRouter = router({
       categoryId: speCategoryId
     };
   }),
+  // Batch update metaTitles for high-impression zero-click products
+  batchUpdateMetaTitles: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      updates: z3.array(z3.object({
+        partNumber: z3.string(),
+        metaTitle: z3.string()
+      }))
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq15 } = await import("drizzle-orm");
+    const db = await getDb2();
+    const results = [];
+    for (const update of input.updates) {
+      try {
+        const existing = await db.select({ partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq15(products2.partNumber, update.partNumber)).limit(1);
+        if (existing.length === 0) {
+          results.push({ partNumber: update.partNumber, status: "not_found" });
+          continue;
+        }
+        await db.update(products2).set({ metaTitle: update.metaTitle, updatedAt: /* @__PURE__ */ new Date() }).where(eq15(products2.partNumber, update.partNumber));
+        results.push({
+          partNumber: update.partNumber,
+          status: "updated",
+          oldMetaTitle: existing[0].metaTitle,
+          newMetaTitle: update.metaTitle
+        });
+      } catch (err) {
+        results.push({ partNumber: update.partNumber, status: "error", error: String(err) });
+      }
+    }
+    return { success: true, results };
+  }),
   // Check data consistency
   checkDataConsistency: publicProcedure.input((raw) => {
     return z3.object({
