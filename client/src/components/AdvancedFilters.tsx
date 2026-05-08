@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface AdvancedFiltersState {
   particleSizeMin?: number;
@@ -27,6 +28,7 @@ const COMMON_COLUMN_LENGTHS = [30, 50, 75, 100, 150, 250];
 const COMMON_INNER_DIAMETERS = [1.0, 2.1, 3.0, 4.6];
 
 export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose }: AdvancedFiltersProps) {
+  const { t } = useTranslation();
   // 使用单独的状态变量而不是一个大对象
   const [particleSizeMin, setParticleSizeMin] = useState<string>(initialFilters.particleSizeMin?.toString() || '');
   const [particleSizeMax, setParticleSizeMax] = useState<string>(initialFilters.particleSizeMax?.toString() || '');
@@ -87,7 +89,7 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
       <div className="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto m-4">
         <div className="sticky top-0 bg-white border-b px-6 py-4 flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-gray-900">高级筛选</h2>
+          <h2 className="text-2xl font-bold text-gray-900">{t("products.advanced_filters")}</h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-gray-600 text-2xl"
@@ -100,30 +102,30 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
           {/* Particle Size */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              粒径 (Particle Size) - µm
+              {t("products.particle_size")} (Particle Size) - µm
             </label>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最小值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.min_value") || "Min"}</label>
                 <select
                   value={particleSizeMin}
                   onChange={(e) => setParticleSizeMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_PARTICLE_SIZES.map(size => (
                     <option key={size} value={size}>{size} µm</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最大值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.max_value") || "Max"}</label>
                 <select
                   value={particleSizeMax}
                   onChange={(e) => setParticleSizeMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_PARTICLE_SIZES.map(size => (
                     <option key={size} value={size}>{size} µm</option>
                   ))}
@@ -135,30 +137,30 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
           {/* Pore Size */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              孔径 (Pore Size) - Å
+              {t("products.pore_size")} (Pore Size) - Å
             </label>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最小值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.min_value") || "Min"}</label>
                 <select
                   value={poreSizeMin}
                   onChange={(e) => setPoreSizeMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_PORE_SIZES.map(size => (
                     <option key={size} value={size}>{size} Å</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最大值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.max_value") || "Max"}</label>
                 <select
                   value={poreSizeMax}
                   onChange={(e) => setPoreSizeMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_PORE_SIZES.map(size => (
                     <option key={size} value={size}>{size} Å</option>
                   ))}
@@ -170,30 +172,30 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
           {/* Column Length */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              柱长 (Column Length) - mm
+              {t("products.column_length") || "Column Length"} - mm
             </label>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最小值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.min_value") || "Min"}</label>
                 <select
                   value={columnLengthMin}
                   onChange={(e) => setColumnLengthMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_COLUMN_LENGTHS.map(length => (
                     <option key={length} value={length}>{length} mm</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最大值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.max_value") || "Max"}</label>
                 <select
                   value={columnLengthMax}
                   onChange={(e) => setColumnLengthMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_COLUMN_LENGTHS.map(length => (
                     <option key={length} value={length}>{length} mm</option>
                   ))}
@@ -205,30 +207,30 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
           {/* Inner Diameter */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              内径 (Inner Diameter) - mm
+              {t("products.inner_diameter") || "Inner Diameter"} - mm
             </label>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最小值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.min_value") || "Min"}</label>
                 <select
                   value={innerDiameterMin}
                   onChange={(e) => setInnerDiameterMin(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_INNER_DIAMETERS.map(diameter => (
                     <option key={diameter} value={diameter}>{diameter} mm</option>
                   ))}
                 </select>
               </div>
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最大值</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.max_value") || "Max"}</label>
                 <select
                   value={innerDiameterMax}
                   onChange={(e) => setInnerDiameterMax(e.target.value)}
                   className="w-full border border-gray-300 rounded-md px-3 py-2"
                 >
-                  <option value="">不限</option>
+                  <option value="">{t("products.no_limit") || "No Limit"}</option>
                   {COMMON_INNER_DIAMETERS.map(diameter => (
                     <option key={diameter} value={diameter}>{diameter} mm</option>
                   ))}
@@ -240,7 +242,7 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
           {/* Phase Type */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              填料类型 (Phase Type)
+              {t("products.phase_type") || "Phase Type"}
             </label>
             <div className="flex flex-wrap gap-2">
               {COMMON_PHASE_TYPES.map(type => (
@@ -262,11 +264,11 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
           {/* pH Range */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              pH范围
+              {t("products.ph_range") || "pH Range"}
             </label>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最小pH</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.min_ph") || "Min pH"}</label>
                 <input
                   type="number"
                   min="0"
@@ -279,7 +281,7 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
                 />
               </div>
               <div>
-                <label className="block text-xs text-gray-500 mb-1">最大pH</label>
+                <label className="block text-xs text-gray-500 mb-1">{t("products.max_ph") || "Max pH"}</label>
                 <input
                   type="number"
                   min="0"

@@ -69,9 +69,9 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     }
 
     const article = articles[0];
-    const protocol = req.protocol || 'https';
+    // Always use HTTPS for canonical URLs to ensure consistent indexing
     const host = req.get('host') || 'www.rowellhplc.com';
-    const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+    const fullUrl = `https://${host}${req.originalUrl}`;
 
     const SITE_TITLE = "ROWELL";
     const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
@@ -161,9 +161,9 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     }
 
     const product = result[0];
-    const protocol = req.protocol || 'https';
+    // Always use HTTPS for canonical URLs to ensure consistent indexing
     const host = req.get('host') || 'www.rowellhplc.com';
-    const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+    const fullUrl = `https://${host}${req.originalUrl}`;
 
     // Use database metaTitle/metaDescription if available, otherwise generate
     const title = product.metaTitle ||

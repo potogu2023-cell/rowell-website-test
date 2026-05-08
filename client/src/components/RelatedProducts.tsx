@@ -25,7 +25,7 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
       <div className="mt-12">
         <div className="flex items-center gap-2 mb-6">
           <Sparkles className="w-5 h-5 text-primary" />
-          <h2 className="text-2xl font-bold">相关产品推荐</h2>
+          <h2 className="text-2xl font-bold">{t('products.related_products')}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[1, 2, 3].map((i) => (
@@ -50,9 +50,9 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
     <div className="mt-12">
       <div className="flex items-center gap-2 mb-6">
         <Sparkles className="w-5 h-5 text-primary" />
-        <h2 className="text-2xl font-bold">相关产品推荐</h2>
+        <h2 className="text-2xl font-bold">{t('products.related_products')}</h2>
         <Badge variant="secondary" className="ml-2">
-          基于相似规格和品牌
+          {t('products.related_products_badge') || 'Based on similar specs & brand'}
         </Badge>
       </div>
 
@@ -93,19 +93,19 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
               <div className="grid grid-cols-2 gap-2 text-xs mb-4">
                 {product.particleSize && (
                   <div className="flex justify-between p-2 bg-gray-50 rounded">
-                    <span className="text-muted-foreground">粒径:</span>
+                    <span className="text-muted-foreground">{t('products.particle_size') || 'Particle Size'}:</span>
                     <span className="font-medium">{product.particleSize}</span>
                   </div>
                 )}
                 {product.poreSize && (
                   <div className="flex justify-between p-2 bg-gray-50 rounded">
-                    <span className="text-muted-foreground">孔径:</span>
+                    <span className="text-muted-foreground">{t('products.pore_size') || 'Pore Size'}:</span>
                     <span className="font-medium">{product.poreSize}</span>
                   </div>
                 )}
                 {product.columnLength && (
                   <div className="flex justify-between p-2 bg-gray-50 rounded">
-                    <span className="text-muted-foreground">尺寸:</span>
+                    <span className="text-muted-foreground">{t('products.dimensions') || 'Dimensions'}:</span>
                     <span className="font-medium">{product.columnLength} × {product.innerDiameter}</span>
                   </div>
                 )}
@@ -121,7 +121,7 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
                   setLocation(`/products/${product.productId}`);
                 }}
               >
-                查看详情
+                {t('inquiry.view_details')}
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </CardContent>
@@ -137,7 +137,7 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
             size="lg"
             onClick={() => setLocation("/products")}
           >
-            浏览更多产品
+            {t('home.browse_all') || 'Browse All Products'}
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>

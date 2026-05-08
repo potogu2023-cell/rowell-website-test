@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Globe, DollarSign, Wrench, Star, Bot, MessageCircle, Lightbulb, Target, Zap, Rocket } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
+import { SEOHead } from "@/components/SEOHead";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -166,6 +167,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
+      {/* SEO Meta Tags */}
+      <SEOHead
+        title="ROWELL - Global Chromatography Consumables Solutions | HPLC & GC Columns"
+        description="ROWELL is a global supplier of premium chromatography consumables. Shop 2400+ HPLC/GC columns, SPE cartridges from Waters, Agilent, Phenomenex, Thermo Fisher & 7 more brands. Expert technical support, DDP shipping to 50+ countries."
+        keywords="HPLC columns, GC columns, chromatography consumables, Waters columns, Agilent columns, Phenomenex columns, SPE cartridges, laboratory consumables, global chromatography supplier"
+        url="/"
+        type="website"
+      />
       {/* Hero Section - AI-Powered */}
       <section className="bg-gradient-to-b from-blue-50 via-purple-50 to-white py-20">
         <div className="container text-center">

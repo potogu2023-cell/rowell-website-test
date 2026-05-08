@@ -21,9 +21,10 @@ export function SEOHead({
   publishedTime,
   author = "Rowell HPLC"
 }: SEOHeadProps) {
+  // Always use HTTPS canonical URL to ensure consistent indexing
   const siteUrl = "https://www.rowellhplc.com";
   const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
-  const fullTitle = (title.includes("Rowell HPLC") || title.includes("ROWELL")) ? title : `${title} | Rowell HPLC`;
+  const fullTitle = (title.includes("Rowell HPLC") || title.includes("ROWELL") || title.includes("ROWELL")) ? title : `${title} | ROWELL`;
 
   return (
     <Helmet>

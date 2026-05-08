@@ -270,10 +270,10 @@ export async function seoMetaInjectionMiddleware(
           contentType.includes("text/html") &&
           typeof data === "string"
         ) {
-          const protocol = req.protocol;
-          const host = req.get("host");
-          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
-          const metaTags = generateProductMetaTags(product, fullUrl);
+      // Always use HTTPS for canonical URLs to ensure consistent indexing
+      const host = req.get("host") || "www.rowellhplc.com";
+      const fullUrl = `https://${host}${req.originalUrl}`;
+      const metaTags = generateProductMetaTags(product, fullUrl);
           data = injectMetaTagsIntoHtml(data, metaTags);
           console.log(`[SEO] Injected product meta tags: ${product.partNumber}`);
         }
@@ -312,9 +312,9 @@ export async function seoMetaInjectionMiddleware(
         return next();
       }
 
-      const protocol = req.protocol;
-      const host = req.get("host");
-      const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+      // Always use HTTPS for canonical URLs to ensure consistent indexing
+      const host = req.get("host") || "www.rowellhplc.com";
+      const fullUrl = `https://${host}${req.originalUrl}`;
       const metaTags = generateArticleMetaTags(article, fullUrl);
 
       // Intercept res.send (used when needsMetaInjection=true in serveStatic)
