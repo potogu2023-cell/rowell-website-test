@@ -5523,9 +5523,8 @@ async function injectArticleSeoMetaTags(template, req, overridePath) {
       return template;
     }
     const article = articles2[0];
-    const protocol = req.protocol || "https";
     const host = req.get("host") || "www.rowellhplc.com";
-    const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+    const fullUrl = `https://${host}${req.originalUrl}`;
     const SITE_TITLE2 = "ROWELL";
     const SITE_LOGO2 = "https://www.rowellhplc.com/logo.png";
     const title = article.title || SITE_TITLE2;
@@ -5586,9 +5585,8 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
       return template;
     }
     const product = result[0];
-    const protocol = req.protocol || "https";
     const host = req.get("host") || "www.rowellhplc.com";
-    const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+    const fullUrl = `https://${host}${req.originalUrl}`;
     const title = product.metaTitle || `${product.brand || ""} ${product.name || ""} ${product.partNumber || ""} | ROWELL`.trim();
     const description = product.metaDescription || `Buy ${product.brand || ""} ${product.name || ""} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
     const brandFolder = (product.brand || "").replace(/\s+/g, "");
@@ -6106,9 +6104,8 @@ async function seoMetaInjectionMiddleware(req, res, next) {
       res.send = function(data) {
         const contentType = res.getHeader("Content-Type");
         if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
-          const protocol = req.protocol;
-          const host = req.get("host");
-          const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+          const host = req.get("host") || "www.rowellhplc.com";
+          const fullUrl = `https://${host}${req.originalUrl}`;
           const metaTags = generateProductMetaTags(product, fullUrl);
           data = injectMetaTagsIntoHtml(data, metaTags);
           console.log(`[SEO] Injected product meta tags: ${product.partNumber}`);
@@ -6137,9 +6134,8 @@ async function seoMetaInjectionMiddleware(req, res, next) {
       if (article.status !== "published") {
         return next();
       }
-      const protocol = req.protocol;
-      const host = req.get("host");
-      const fullUrl = `${protocol}://${host}${req.originalUrl}`;
+      const host = req.get("host") || "www.rowellhplc.com";
+      const fullUrl = `https://${host}${req.originalUrl}`;
       const metaTags = generateArticleMetaTags(article, fullUrl);
       const originalSend = res.send.bind(res);
       res.send = function(data) {
