@@ -100,6 +100,32 @@ export default function Standards() {
               {t("standards.search_button")}
             </Button>
           </form>
+
+          {/* Online Catalog Banner */}
+          <div className="mt-6 max-w-2xl">
+            <a
+              href="https://rowellcatalogmigration.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between gap-4 px-5 py-4 bg-white border border-emerald-200 rounded-xl shadow-sm hover:shadow-md hover:border-emerald-400 transition-all group"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-2xl">📖</span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-900 group-hover:text-emerald-700 transition-colors">
+                    {t("standards.catalog_link_title", "Browse Full Online Catalog")}
+                  </p>
+                  <p className="text-xs text-muted-foreground">
+                    {t("standards.catalog_link_desc", "18,000+ reference standards · Searchable · Instant access")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 text-emerald-700 font-medium text-sm flex-shrink-0">
+                {t("standards.catalog_link_cta", "Open Catalog")}
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
