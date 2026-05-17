@@ -279,4 +279,80 @@ export const adminRouter = router({
       }
       return { success: true, results };
     }),
+
+  // List all draft resources (for date update)
+  listDraftResources: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        limit: z.number().optional(),
+      }).parse(raw);
+    })
+    .query(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { resources } = await import('../drizzle/schema');
+      const { eq, desc } = await import('drizzle-orm');
+      const db = await getDb();
+      const items = await db
+        .select({ id: resources.id, title: resources.title, slug: resources.slug, publishedAt: resources.publishedAt, status: resources.status })
+        .from(resources)
+        .where(eq(resources.status, 'draft'))
+        .orderBy(desc(resources.id))
+        .limit(input.limit || 200);
+      return { success: true, count: items.length, items };
+    }),
+
+  // Batch update publishedAt dates for resources
+  updateResourcesDates: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          id: z.number(),
+          publishedAt: z.string(),
+        })),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { resources } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      let updated = 0;
+      for (const update of input.updates) {
+        await db.update(resources)
+          .set({ publishedAt: update.publishedAt })
+          .where(eq(resources.id, update.id));
+        updated++;
+      }
+      return { success: true, updated };
+    }),
+
+  // Publish all draft resources (for scheduled task on 2026-06-10)
+  publishDraftResources: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { resources } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const result = await db.update(resources)
+        .set({ status: 'published', updatedAt: now })
+        .where(eq(resources.status, 'draft'));
+      return { success: true, message: 'All draft resources have been published.' };
+    }),
 });
