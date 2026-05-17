@@ -2696,6 +2696,58 @@ var adminRouter = router({
       duplicatePartNumbers: duplicates.rows,
       watersProducts
     };
+  }),
+  // Batch create resources/articles
+  createResources: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      resources: z3.array(z3.object({
+        title: z3.string(),
+        slug: z3.string(),
+        content: z3.string(),
+        excerpt: z3.string().optional(),
+        category: z3.string().optional(),
+        author: z3.string().optional(),
+        tags: z3.array(z3.string()).optional(),
+        publishedAt: z3.string().optional(),
+        status: z3.string().optional()
+      }))
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const db = await getDb2();
+    const results = [];
+    for (const resource of input.resources) {
+      try {
+        const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
+        await db.insert(resources2).values({
+          title: resource.title,
+          slug: resource.slug,
+          content: resource.content,
+          excerpt: resource.excerpt || null,
+          category: resource.category || null,
+          author: resource.author || null,
+          tags: resource.tags ? JSON.stringify(resource.tags) : null,
+          publishedAt: resource.publishedAt || now,
+          status: resource.status || "published",
+          views: 0,
+          createdAt: now,
+          updatedAt: now
+        });
+        results.push({ slug: resource.slug, status: "created" });
+      } catch (err) {
+        if (err?.message?.includes("Duplicate")) {
+          results.push({ slug: resource.slug, status: "duplicate_skipped" });
+        } else {
+          results.push({ slug: resource.slug, status: "error", error: String(err) });
+        }
+      }
+    }
+    return { success: true, results };
   })
 });
 

@@ -224,4 +224,59 @@ export const adminRouter = router({
         watersProducts
       };
     }),
+
+  // Batch create resources/articles
+  createResources: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        resources: z.array(z.object({
+          title: z.string(),
+          slug: z.string(),
+          content: z.string(),
+          excerpt: z.string().optional(),
+          category: z.string().optional(),
+          author: z.string().optional(),
+          tags: z.array(z.string()).optional(),
+          publishedAt: z.string().optional(),
+          status: z.string().optional(),
+        })),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { resources } = await import('../drizzle/schema');
+      const db = await getDb();
+      const results = [];
+      for (const resource of input.resources) {
+        try {
+          const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+          await db.insert(resources).values({
+            title: resource.title,
+            slug: resource.slug,
+            content: resource.content,
+            excerpt: resource.excerpt || null,
+            category: resource.category || null,
+            author: resource.author || null,
+            tags: resource.tags ? JSON.stringify(resource.tags) : null,
+            publishedAt: resource.publishedAt || now,
+            status: resource.status || 'published',
+            views: 0,
+            createdAt: now,
+            updatedAt: now,
+          });
+          results.push({ slug: resource.slug, status: 'created' });
+        } catch (err: any) {
+          if (err?.message?.includes('Duplicate')) {
+            results.push({ slug: resource.slug, status: 'duplicate_skipped' });
+          } else {
+            results.push({ slug: resource.slug, status: 'error', error: String(err) });
+          }
+        }
+      }
+      return { success: true, results };
+    }),
 });
