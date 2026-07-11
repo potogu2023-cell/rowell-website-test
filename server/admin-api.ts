@@ -152,6 +152,55 @@ export const adminRouter = router({
       return { success: true, results };
     }),
 
+  // Batch update metaTitles by product ID (for products where partNumber-based update fails)
+  batchUpdateMetaTitlesById: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          id: z.number(),
+          metaTitle: z.string(),
+        })),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      const results = [];
+      for (const update of input.updates) {
+        try {
+          const existing = await db
+            .select({ id: products.id, partNumber: products.partNumber, metaTitle: products.metaTitle })
+            .from(products)
+            .where(eq(products.id, update.id))
+            .limit(1);
+          if (existing.length === 0) {
+            results.push({ id: update.id, status: 'not_found' });
+            continue;
+          }
+          await db
+            .update(products)
+            .set({ metaTitle: update.metaTitle })
+            .where(eq(products.id, update.id));
+          results.push({
+            id: update.id,
+            partNumber: existing[0].partNumber,
+            status: 'updated',
+            oldMetaTitle: existing[0].metaTitle,
+            newMetaTitle: update.metaTitle,
+          });
+        } catch (err) {
+          results.push({ id: update.id, status: 'error', error: String(err) });
+        }
+      }
+      return { success: true, results };
+    }),
+
   // Check data consistency
   checkDataConsistency: publicProcedure
     .input((raw: unknown) => {
