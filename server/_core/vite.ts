@@ -166,10 +166,17 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const fullUrl = `https://${host}${req.originalUrl}`;
 
     // Use database metaTitle/metaDescription if available, otherwise generate
+    // De-duplicate brand name: if product.name already starts with brand name, strip it
+    // e.g. brand="Thermo Fisher", name="Thermo Fisher Scientific Filtration" -> cleanName="Scientific Filtration"
+    const rawName = product.name || '';
+    const brandPrefix = product.brand || '';
+    const cleanName = brandPrefix && rawName.toLowerCase().startsWith(brandPrefix.toLowerCase())
+      ? rawName.slice(brandPrefix.length).replace(/^[\s|,\-]+/, '')
+      : rawName;
     const title = product.metaTitle ||
-      `${product.brand || ''} ${product.name || ''} ${product.partNumber || ''} | ROWELL`.trim();
+      `${brandPrefix} ${cleanName} ${product.partNumber || ''} | ROWELL`.trim();
     const description = product.metaDescription ||
-      `Buy ${product.brand || ''} ${product.name || ''} (${product.partNumber || ''}) at ROWELL. Global shipping available. Request a quote today.`.trim();
+      `Buy ${brandPrefix} ${cleanName} (${product.partNumber || ''}) at ROWELL. Global shipping available. Request a quote today.`.trim();
 
     // Build product image URL
     const brandFolder = (product.brand || '').replace(/\s+/g, '');
