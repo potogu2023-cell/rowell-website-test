@@ -335,9 +335,15 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
   if (effectivePath.startsWith('/products/')) {
     return injectProductSeoMetaTags(template, req, effectivePath);
   }
-  // Then try article pages
+  // Then try article pages (/resources/ and /learning/literature/)
   if (effectivePath.startsWith('/resources/')) {
     return injectArticleSeoMetaTags(template, req, effectivePath);
+  }
+  // Literature pages share the same resources table (category-based)
+  if (effectivePath.startsWith('/learning/literature/')) {
+    // Map /learning/literature/slug to /resources/slug for DB lookup
+    const literatureSlug = effectivePath.replace('/learning/literature/', '/resources/');
+    return injectArticleSeoMetaTags(template, req, literatureSlug);
   }
   return template;
 }
@@ -432,7 +438,7 @@ export function serveStatic(app: Express) {
       // When using app.use("*", handler), req.path is always "/" (relative to mount point),
       // but req.originalUrl contains the actual full path like "/products/695775-742".
       const requestPath = req.originalUrl.split('?')[0]; // Remove query string
-      const needsMetaInjection = requestPath.startsWith('/products/') || requestPath.startsWith('/resources/');
+      const needsMetaInjection = requestPath.startsWith('/products/') || requestPath.startsWith('/resources/') || requestPath.startsWith('/learning/literature/');
       
       if (needsMetaInjection) {
         // Read the file, inject meta tags, send as string
