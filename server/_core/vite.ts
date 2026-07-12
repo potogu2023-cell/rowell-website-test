@@ -227,6 +227,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
         "url": fullUrl,
         "priceCurrency": "USD",
         "price": "1",
+        "validFrom": new Date().toISOString().split('T')[0],
         "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         "availability": "https://schema.org/InStock",
         "seller": {
