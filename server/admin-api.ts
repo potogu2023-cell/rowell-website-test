@@ -383,6 +383,43 @@ export const adminRouter = router({
       return { success: true, updated };
     }),
 
+  // Batch set product status (active/inactive) by product ID list
+  // Used for bulk product discontinuation/reactivation operations
+  batchSetProductStatus: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        productIds: z.array(z.number()),
+        status: z.enum(['active', 'inactive']),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { inArray } = await import('drizzle-orm');
+      const db = await getDb();
+      const results: { id: number; status: string }[] = [];
+      // Process in batches of 50 to avoid query size limits
+      const batchSize = 50;
+      let totalUpdated = 0;
+      for (let i = 0; i < input.productIds.length; i += batchSize) {
+        const batch = input.productIds.slice(i, i + batchSize);
+        try {
+          await db.update(products)
+            .set({ status: input.status })
+            .where(inArray(products.id, batch));
+          batch.forEach(id => results.push({ id, status: 'updated' }));
+          totalUpdated += batch.length;
+        } catch (err) {
+          batch.forEach(id => results.push({ id, status: 'error' }));
+        }
+      }
+      return { success: true, totalUpdated, results };
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
