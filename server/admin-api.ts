@@ -543,8 +543,11 @@ export const adminRouter = router({
           results.push({ partNumber: row.partNumber, action: 'inserted', productId });
         } catch (err: any) {
           errors++;
-          const errMsg = err.message + (err.cause ? ' | cause: ' + String(err.cause) : '') + (err.code ? ' | code: ' + err.code : '');
-          results.push({ partNumber: row.partNumber, action: 'error', error: errMsg });
+          let errDetail = '';
+          try {
+            errDetail = JSON.stringify({ msg: err.message, code: err.code, errno: err.errno, sqlMessage: err.sqlMessage, cause: err.cause ? String(err.cause) : undefined });
+          } catch { errDetail = String(err); }
+          results.push({ partNumber: row.partNumber, action: 'error', error: errDetail });
         }
       }
 
