@@ -2656,6 +2656,45 @@ var adminRouter = router({
     }
     return { success: true, results };
   }),
+  // Batch update metaTitles by product ID (for products where partNumber-based update fails)
+  batchUpdateMetaTitlesById: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      updates: z3.array(z3.object({
+        id: z3.number(),
+        metaTitle: z3.string()
+      }))
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq15 } = await import("drizzle-orm");
+    const db = await getDb2();
+    const results = [];
+    for (const update of input.updates) {
+      try {
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq15(products2.id, update.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: update.id, status: "not_found" });
+          continue;
+        }
+        await db.update(products2).set({ metaTitle: update.metaTitle }).where(eq15(products2.id, update.id));
+        results.push({
+          id: update.id,
+          partNumber: existing[0].partNumber,
+          status: "updated",
+          oldMetaTitle: existing[0].metaTitle,
+          newMetaTitle: update.metaTitle
+        });
+      } catch (err) {
+        results.push({ id: update.id, status: "error", error: String(err) });
+      }
+    }
+    return { success: true, results };
+  }),
   // Check data consistency
   checkDataConsistency: publicProcedure.input((raw) => {
     return z3.object({
@@ -2789,6 +2828,145 @@ var adminRouter = router({
       updated++;
     }
     return { success: true, updated };
+  }),
+  // Batch set product status (active/inactive) by product ID list
+  // Used for bulk product discontinuation/reactivation operations
+  batchSetProductStatus: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      productIds: z3.array(z3.number()),
+      status: z3.enum(["active", "inactive"])
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { inArray: inArray2 } = await import("drizzle-orm");
+    const db = await getDb2();
+    const results = [];
+    const batchSize = 50;
+    let totalUpdated = 0;
+    for (let i = 0; i < input.productIds.length; i += batchSize) {
+      const batch = input.productIds.slice(i, i + batchSize);
+      try {
+        await db.update(products2).set({ status: input.status }).where(inArray2(products2.id, batch));
+        batch.forEach((id) => results.push({ id, status: "updated" }));
+        totalUpdated += batch.length;
+      } catch (err) {
+        batch.forEach((id) => results.push({ id, status: "error" }));
+      }
+    }
+    return { success: true, totalUpdated, results };
+  }),
+  // Batch import new products from CSV data (SUBTASK-005)
+  batchImportProducts: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      products: z3.array(z3.object({
+        brand: z3.string(),
+        partNumber: z3.string(),
+        name: z3.string(),
+        productType: z3.string(),
+        description: z3.string().optional(),
+        detailedDescription: z3.string().optional(),
+        particleSize: z3.string().optional(),
+        poreSize: z3.string().optional(),
+        columnLength: z3.string().optional(),
+        innerDiameter: z3.string().optional(),
+        phaseType: z3.string().optional(),
+        applications: z3.string().optional()
+      }))
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq15 } = await import("drizzle-orm");
+    const db = await getDb2();
+    const brandPrefixMap = {
+      "Thermo Fisher": "THER",
+      "Agilent": "AGIL",
+      "Restek": "RES",
+      "Phenomenex": "PHE"
+    };
+    const categoryIdMap = {
+      "HPLC Column": 1,
+      "GC Column": 30001
+    };
+    const extractNum = (s) => {
+      if (!s) return null;
+      const m = s.match(/[\d.]+/);
+      return m ? Math.round(parseFloat(m[0])) : null;
+    };
+    const extractColumnLengthMm = (s) => {
+      if (!s) return null;
+      const m = s.match(/[\d.]+/);
+      if (!m) return null;
+      const val = parseFloat(m[0]);
+      if (s.includes("m") && !s.toLowerCase().includes("mm")) {
+        return Math.round(val * 1e3);
+      }
+      return Math.round(val);
+    };
+    const results = [];
+    let inserted = 0, skipped = 0, errors = 0;
+    for (const row of input.products) {
+      try {
+        const existing = await db.select({ id: products2.id }).from(products2).where(eq15(products2.partNumber, row.partNumber)).limit(1);
+        if (existing.length > 0) {
+          skipped++;
+          results.push({ partNumber: row.partNumber, action: "skipped", error: "already exists" });
+          continue;
+        }
+        const prefix = brandPrefixMap[row.brand];
+        if (!prefix) {
+          errors++;
+          results.push({ partNumber: row.partNumber, action: "error", error: `Unknown brand: ${row.brand}` });
+          continue;
+        }
+        const productId = `${prefix}-${row.partNumber}`;
+        const categoryId = categoryIdMap[row.productType] ?? null;
+        await db.insert(products2).values({
+          productId,
+          partNumber: row.partNumber,
+          brand: row.brand,
+          prefix,
+          name: row.name,
+          productType: row.productType,
+          description: row.description || null,
+          detailedDescription: row.detailedDescription || null,
+          particleSize: row.particleSize || null,
+          particleSizeNum: extractNum(row.particleSize),
+          poreSize: row.poreSize || null,
+          poreSizeNum: extractNum(row.poreSize),
+          columnLength: row.columnLength || null,
+          columnLengthNum: extractColumnLengthMm(row.columnLength),
+          innerDiameter: row.innerDiameter || null,
+          innerDiameterNum: extractNum(row.innerDiameter),
+          phaseType: row.phaseType || null,
+          applications: row.applications || null,
+          imageUrl: null,
+          categoryId,
+          status: "active",
+          createdAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " "),
+          updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
+        });
+        inserted++;
+        results.push({ partNumber: row.partNumber, action: "inserted", productId });
+      } catch (err) {
+        errors++;
+        results.push({ partNumber: row.partNumber, action: "error", error: err.message });
+      }
+    }
+    return {
+      success: true,
+      summary: { inserted, skipped, errors, total: input.products.length },
+      results
+    };
   }),
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure.input((raw) => {
@@ -5697,8 +5875,11 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     const product = result[0];
     const host = req.get("host") || "www.rowellhplc.com";
     const fullUrl = `https://${host}${req.originalUrl}`;
-    const title = product.metaTitle || `${product.brand || ""} ${product.name || ""} ${product.partNumber || ""} | ROWELL`.trim();
-    const description = product.metaDescription || `Buy ${product.brand || ""} ${product.name || ""} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
+    const rawName = product.name || "";
+    const brandPrefix = product.brand || "";
+    const cleanName = brandPrefix && rawName.toLowerCase().startsWith(brandPrefix.toLowerCase()) ? rawName.slice(brandPrefix.length).replace(/^[\s|,\-]+/, "") : rawName;
+    const title = product.metaTitle || `${brandPrefix} ${cleanName} ${product.partNumber || ""} | ROWELL`.trim();
+    const description = product.metaDescription || `Buy ${brandPrefix} ${cleanName} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
     const brandFolder = (product.brand || "").replace(/\s+/g, "");
     const imageUrl = product.imageUrl || `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
     const specsRows = [
@@ -5738,6 +5919,7 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
         "url": fullUrl,
         "priceCurrency": "USD",
         "price": "1",
+        "validFrom": (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
         "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1e3).toISOString().split("T")[0],
         "availability": "https://schema.org/InStock",
         "seller": {
@@ -5841,6 +6023,10 @@ async function injectSeoMetaTags(template, req, overridePath) {
   if (effectivePath.startsWith("/resources/")) {
     return injectArticleSeoMetaTags(template, req, effectivePath);
   }
+  if (effectivePath.startsWith("/learning/literature/")) {
+    const literatureSlug = effectivePath.replace("/learning/literature/", "/resources/");
+    return injectArticleSeoMetaTags(template, req, literatureSlug);
+  }
   return template;
 }
 async function setupVite(app, server) {
@@ -5903,7 +6089,7 @@ function serveStatic(app) {
     try {
       const indexPath = path4.resolve(distPath, "index.html");
       const requestPath = req.originalUrl.split("?")[0];
-      const needsMetaInjection = requestPath.startsWith("/products/") || requestPath.startsWith("/resources/");
+      const needsMetaInjection = requestPath.startsWith("/products/") || requestPath.startsWith("/resources/") || requestPath.startsWith("/learning/literature/");
       if (needsMetaInjection) {
         let template = await fs3.promises.readFile(indexPath, "utf-8");
         template = await injectSeoMetaTags(template, req, requestPath);
