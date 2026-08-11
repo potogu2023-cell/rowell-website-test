@@ -420,6 +420,140 @@ export const adminRouter = router({
       return { success: true, totalUpdated, results };
     }),
 
+  // Batch import new products from CSV data (SUBTASK-005)
+  batchImportProducts: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        products: z.array(z.object({
+          brand: z.string(),
+          partNumber: z.string(),
+          name: z.string(),
+          productType: z.string(),
+          description: z.string().optional(),
+          detailedDescription: z.string().optional(),
+          particleSize: z.string().optional(),
+          poreSize: z.string().optional(),
+          columnLength: z.string().optional(),
+          innerDiameter: z.string().optional(),
+          phaseType: z.string().optional(),
+          applications: z.string().optional(),
+        })),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+
+      // Brand prefix mapping
+      const brandPrefixMap: Record<string, string> = {
+        'Thermo Fisher': 'THER',
+        'Agilent': 'AGIL',
+        'Restek': 'RES',
+        'Phenomenex': 'PHE',
+      };
+
+      // Category ID mapping
+      const categoryIdMap: Record<string, number> = {
+        'HPLC Column': 1,
+        'GC Column': 30001,
+      };
+
+      // Helper: extract numeric value from string like "2.7um", "50mm", "30m"
+      const extractNum = (s: string | undefined): number | null => {
+        if (!s) return null;
+        const m = s.match(/[\d.]+/);
+        return m ? Math.round(parseFloat(m[0])) : null;
+      };
+
+      // Helper: extract columnLength in mm (convert m to mm)
+      const extractColumnLengthMm = (s: string | undefined): number | null => {
+        if (!s) return null;
+        const m = s.match(/[\d.]+/);
+        if (!m) return null;
+        const val = parseFloat(m[0]);
+        // If unit is m (not mm), convert to mm
+        if (s.includes('m') && !s.toLowerCase().includes('mm')) {
+          return Math.round(val * 1000);
+        }
+        return Math.round(val);
+      };
+
+      const results: Array<{ partNumber: string; action: string; productId?: string; error?: string }> = [];
+      let inserted = 0, skipped = 0, errors = 0;
+
+      for (const row of input.products) {
+        try {
+          // Check if product already exists
+          const existing = await db
+            .select({ id: products.id })
+            .from(products)
+            .where(eq(products.partNumber, row.partNumber))
+            .limit(1);
+
+          if (existing.length > 0) {
+            skipped++;
+            results.push({ partNumber: row.partNumber, action: 'skipped', error: 'already exists' });
+            continue;
+          }
+
+          // Generate productId and prefix
+          const prefix = brandPrefixMap[row.brand];
+          if (!prefix) {
+            errors++;
+            results.push({ partNumber: row.partNumber, action: 'error', error: `Unknown brand: ${row.brand}` });
+            continue;
+          }
+          const productId = `${prefix}-${row.partNumber}`;
+          const categoryId = categoryIdMap[row.productType] ?? null;
+
+          // Insert product (imageUrl always null)
+          await db.insert(products).values({
+            productId,
+            partNumber: row.partNumber,
+            brand: row.brand,
+            prefix,
+            name: row.name,
+            productType: row.productType,
+            description: row.description || null,
+            detailedDescription: row.detailedDescription || null,
+            particleSize: row.particleSize || null,
+            particleSizeNum: extractNum(row.particleSize),
+            poreSize: row.poreSize || null,
+            poreSizeNum: extractNum(row.poreSize),
+            columnLength: row.columnLength || null,
+            columnLengthNum: extractColumnLengthMm(row.columnLength),
+            innerDiameter: row.innerDiameter || null,
+            innerDiameterNum: extractNum(row.innerDiameter),
+            phaseType: row.phaseType || null,
+            applications: row.applications || null,
+            imageUrl: null,
+            categoryId,
+            status: 'active',
+            createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+            updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+          });
+
+          inserted++;
+          results.push({ partNumber: row.partNumber, action: 'inserted', productId });
+        } catch (err: any) {
+          errors++;
+          results.push({ partNumber: row.partNumber, action: 'error', error: err.message });
+        }
+      }
+
+      return {
+        success: true,
+        summary: { inserted, skipped, errors, total: input.products.length },
+        results,
+      };
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
