@@ -160,6 +160,7 @@ export const adminRouter = router({
         updates: z.array(z.object({
           id: z.number(),
           metaTitle: z.string(),
+          metaDescription: z.string().optional(),
         })),
       }).parse(raw);
     })
@@ -183,9 +184,13 @@ export const adminRouter = router({
             results.push({ id: update.id, status: 'not_found' });
             continue;
           }
+          const setFields: Record<string, unknown> = { metaTitle: update.metaTitle };
+          if (update.metaDescription !== undefined) {
+            setFields.metaDescription = update.metaDescription;
+          }
           await db
             .update(products)
-            .set({ metaTitle: update.metaTitle })
+            .set(setFields as any)
             .where(eq(products.id, update.id));
           results.push({
             id: update.id,
