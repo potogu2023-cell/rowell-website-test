@@ -2883,10 +2883,9 @@ var adminRouter = router({
     if (input.adminKey !== "temp-admin-2024") {
       throw new Error("Unauthorized");
     }
-    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15 } = await import("drizzle-orm");
-    const db = await getDb2();
+    const { getPool: getPool2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const pool = await getPool2();
+    if (!pool) throw new Error("Database pool not available");
     const brandPrefixMap = {
       "Thermo Fisher": "THER",
       "Agilent": "AGIL",
@@ -2914,10 +2913,14 @@ var adminRouter = router({
     };
     const results = [];
     let inserted = 0, skipped = 0, errors = 0;
+    const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
     for (const row of input.products) {
       try {
-        const existing = await db.select({ id: products2.id }).from(products2).where(eq15(products2.partNumber, row.partNumber)).limit(1);
-        if (existing.length > 0) {
+        const [existRows] = await pool.execute(
+          "SELECT id FROM products WHERE partNumber = ? LIMIT 1",
+          [row.partNumber]
+        );
+        if (existRows.length > 0) {
           skipped++;
           results.push({ partNumber: row.partNumber, action: "skipped", error: "already exists" });
           continue;
@@ -2930,41 +2933,42 @@ var adminRouter = router({
         }
         const productId = `${prefix}-${row.partNumber}`;
         const categoryId = categoryIdMap[row.productType] ?? null;
-        await db.insert(products2).values({
-          productId,
-          partNumber: row.partNumber,
-          brand: row.brand,
-          prefix,
-          name: row.name,
-          productType: row.productType,
-          description: row.description || null,
-          detailedDescription: row.detailedDescription || null,
-          particleSize: row.particleSize || null,
-          particleSizeNum: extractNum(row.particleSize),
-          poreSize: row.poreSize || null,
-          poreSizeNum: extractNum(row.poreSize),
-          columnLength: row.columnLength || null,
-          columnLengthNum: extractColumnLengthMm(row.columnLength),
-          innerDiameter: row.innerDiameter || null,
-          innerDiameterNum: extractNum(row.innerDiameter),
-          phaseType: row.phaseType || null,
-          applications: row.applications || null,
-          imageUrl: null,
-          categoryId,
-          status: "active",
-          createdAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " "),
-          updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
-        });
+        await pool.execute(
+          `INSERT INTO products
+              (productId, partNumber, brand, prefix, name, productType, description, detailedDescription,
+               particleSize, particleSizeNum, poreSize, poreSizeNum,
+               columnLength, columnLengthNum, innerDiameter, innerDiameterNum,
+               phaseType, applications, imageUrl, category_id, status, createdAt, updatedAt)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, 'active', ?, ?)`,
+          [
+            productId,
+            row.partNumber,
+            row.brand,
+            prefix,
+            row.name,
+            row.productType,
+            row.description || null,
+            row.detailedDescription || null,
+            row.particleSize || null,
+            extractNum(row.particleSize),
+            row.poreSize || null,
+            extractNum(row.poreSize),
+            row.columnLength || null,
+            extractColumnLengthMm(row.columnLength),
+            row.innerDiameter || null,
+            extractNum(row.innerDiameter),
+            row.phaseType || null,
+            row.applications || null,
+            categoryId,
+            now,
+            now
+          ]
+        );
         inserted++;
         results.push({ partNumber: row.partNumber, action: "inserted", productId });
       } catch (err) {
         errors++;
-        let errDetail = "";
-        try {
-          errDetail = JSON.stringify({ msg: err.message, code: err.code, errno: err.errno, sqlMessage: err.sqlMessage, cause: err.cause ? String(err.cause) : void 0 });
-        } catch {
-          errDetail = String(err);
-        }
+        const errDetail = `code=${err.code} errno=${err.errno} sqlMessage=${err.sqlMessage} msg=${err.message}`;
         results.push({ partNumber: row.partNumber, action: "error", error: errDetail });
       }
     }
