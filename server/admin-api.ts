@@ -161,6 +161,7 @@ export const adminRouter = router({
           id: z.number(),
           metaTitle: z.string(),
           metaDescription: z.string().optional(),
+          detailedDescription: z.string().optional(),
         })),
       }).parse(raw);
     })
@@ -187,6 +188,9 @@ export const adminRouter = router({
           const setFields: Record<string, unknown> = { metaTitle: update.metaTitle };
           if (update.metaDescription !== undefined) {
             setFields.metaDescription = update.metaDescription;
+          }
+          if (update.detailedDescription !== undefined) {
+            setFields.detailedDescription = update.detailedDescription;
           }
           await db
             .update(products)
