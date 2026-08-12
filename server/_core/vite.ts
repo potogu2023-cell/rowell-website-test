@@ -43,6 +43,16 @@ function escapeHtml(text: string): string {
   return text.replace(/[&<>"']/g, (m) => map[m]);
 }
 
+function serializeJsonLd(data: unknown): string {
+  // Prevent a data value from prematurely closing the script element.
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+
+function toAbsoluteUrl(value: string): string {
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${SITE_URL}${value.startsWith("/") ? "" : "/"}${value}`;
+}
+
 /**
  * Inject SEO meta tags into HTML template for article pages
  */
@@ -69,15 +79,15 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     }
 
     const article = articles[0];
-    // Always use HTTPS for canonical URLs to ensure consistent indexing
-    const host = req.get('host') || 'www.rowellhplc.com';
-    const fullUrl = `https://${host}${req.originalUrl}`;
+    // Canonical URLs must not inherit tracking/query parameters or alternate hosts.
+    const canonicalPath = (overridePath || req.originalUrl).split('?')[0];
+    const fullUrl = `${SITE_URL}${canonicalPath}`;
 
     const SITE_TITLE = "ROWELL";
     const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
     const title = article.title || SITE_TITLE;
     const description = article.metaDescription || article.excerpt || "";
-    const image = article.coverImage || SITE_LOGO;
+    const image = article.coverImage ? toAbsoluteUrl(article.coverImage) : SITE_LOGO;
     const publishedAt = article.publishedAt
       ? new Date(article.publishedAt).toISOString()
       : new Date().toISOString();
@@ -139,7 +149,7 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     <!-- Article metadata -->
     <meta property="article:published_time" content="${article.publishedAt || ''}" />
     <meta property="article:author" content="${article.author || 'ROWELL Team'}" />
-    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
 
     // Replace default title and inject meta tags
     template = template.replace(/<title>.*?<\/title>/i, "");
@@ -200,9 +210,9 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     }
 
     const product = result[0];
-    // Always use HTTPS for canonical URLs to ensure consistent indexing
-    const host = req.get('host') || 'www.rowellhplc.com';
-    const fullUrl = `https://${host}${req.originalUrl}`;
+    // Canonical URLs must not inherit tracking/query parameters or alternate hosts.
+    const canonicalPath = (overridePath || req.originalUrl).split('?')[0];
+    const fullUrl = `${SITE_URL}${canonicalPath}`;
 
     // Use database metaTitle/metaDescription if available, otherwise generate
     // De-duplicate brand name: if product.name already starts with brand name, strip it
@@ -217,10 +227,11 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const description = product.metaDescription ||
       `Buy ${brandPrefix} ${cleanName} (${product.partNumber || ''}) at ROWELL. Global shipping available. Request a quote today.`.trim();
 
-    // Build product image URL
+    // Use absolute image URLs for social previews and Product structured data.
     const brandFolder = (product.brand || '').replace(/\s+/g, '');
-    const imageUrl = product.imageUrl ||
-      `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+    const rawImageUrl = product.imageUrl ||
+      `/product-images/${brandFolder}/${product.partNumber}.jpg`;
+    const imageUrl = toAbsoluteUrl(rawImageUrl);
 
     // ── P0 FIX: Inject visible content skeleton into <body> to prevent Soft 404 ──
     // Google's soft 404 detection requires actual visible text content in the page body,
@@ -273,6 +284,15 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
         }
       }
     };
+    const productBreadcrumbData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
+        { "@type": "ListItem", "position": 3, "name": product.name || product.partNumber, "item": fullUrl }
+      ]
+    };
 
     const metaTags = `
     <title>${escapeHtml(title)}</title>
@@ -300,7 +320,8 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     <meta property="product:condition" content="new" />
     
     <!-- JSON-LD Structured Data for product discovery -->
-    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>
+    <script type="application/ld+json">${serializeJsonLd(productBreadcrumbData)}</script>`;
 
     // Replace default title and inject meta tags
     template = template.replace(/<title>.*?<\/title>/i, "");
