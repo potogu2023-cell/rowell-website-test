@@ -550,14 +550,26 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
   }
 }
 
-function redirectLegacyLearningArticle(req: any, res: any, next: () => void): void {
+async function redirectLegacyLearningArticle(req: any, res: any, next: () => void): Promise<void> {
   if (req.method !== "GET") return next();
   const match = req.originalUrl.match(/^\/learning\/([^/?]+)(?:\?[^]*)?$/);
   if (!match) return next();
-  // Article routes used to live under /learning/:slug. Their canonical and Sitemap
-  // URLs are /resources/:slug, so redirect instead of exposing duplicate content.
-  if (["authors", "literature"].includes(match[1])) return next();
-  return res.redirect(301, `/resources/${match[1]}`);
+  // The legacy `/learning/:slug` namespace also contains an independent article
+  // collection. Redirect only when the same slug exists in the resources table;
+  // otherwise leave the learning-center article route intact.
+  try {
+    const db = await getDb();
+    if (!db) return next();
+    const resourceRecord = await db.select({ id: resources.id })
+      .from(resources)
+      .where(eq(resources.slug, match[1]))
+      .limit(1);
+    if (resourceRecord.length === 0) return next();
+    return res.redirect(301, `/resources/${match[1]}`);
+  } catch (error) {
+    console.error("[SEO] Legacy learning URL check failed:", error);
+    return next();
+  }
 }
 
 function renderNotFoundTemplate(template: string, requestPath: string, statusCode: 404 | 410): string {
