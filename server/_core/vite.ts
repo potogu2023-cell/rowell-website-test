@@ -549,12 +549,15 @@ export function serveStatic(app: Express) {
     try {
       const indexPath = path.resolve(distPath, "index.html");
       
-      // Check if it's a product or article page that needs meta injection
       // NOTE: Must use req.originalUrl instead of req.path here!
       // When using app.use("*", handler), req.path is always "/" (relative to mount point),
       // but req.originalUrl contains the actual full path like "/products/695775-742".
       const requestPath = req.originalUrl.split('?')[0]; // Remove query string
-      const needsMetaInjection = requestPath.startsWith('/products/') || requestPath.startsWith('/resources/') || requestPath.startsWith('/learning/literature/');
+      const needsMetaInjection =
+        requestPath.startsWith('/products/') ||
+        requestPath.startsWith('/resources/') ||
+        requestPath.startsWith('/learning/literature/') ||
+        Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath);
       
       if (needsMetaInjection) {
         // Read the file, inject meta tags, send as string
@@ -565,7 +568,7 @@ export function serveStatic(app: Express) {
         template = await injectSeoMetaTags(template, req, requestPath);
         res.status(200).set({ "Content-Type": "text/html" }).send(template);
       } else {
-        // For non-product/article pages, use fast sendFile
+        // For routes without a defined SEO profile, use the fast static response.
         res.sendFile(indexPath);
       }
     } catch (error) {
