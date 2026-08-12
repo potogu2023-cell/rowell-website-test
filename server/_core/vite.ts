@@ -78,6 +78,44 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     const title = article.title || SITE_TITLE;
     const description = article.metaDescription || article.excerpt || "";
     const image = article.coverImage || SITE_LOGO;
+    const publishedAt = article.publishedAt
+      ? new Date(article.publishedAt).toISOString()
+      : new Date().toISOString();
+    const modifiedAt = article.updatedAt
+      ? new Date(article.updatedAt).toISOString()
+      : publishedAt;
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": fullUrl },
+          "headline": title,
+          "description": description,
+          "image": [image],
+          "datePublished": publishedAt,
+          "dateModified": modifiedAt,
+          "author": {
+            "@type": "Organization",
+            "name": article.author || "ROWELL Expert",
+            "url": "https://www.rowellhplc.com/about"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "ROWELL",
+            "logo": { "@type": "ImageObject", "url": SITE_LOGO }
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rowellhplc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.rowellhplc.com/resources" },
+            { "@type": "ListItem", "position": 3, "name": title, "item": fullUrl }
+          ]
+        }
+      ]
+    };
 
     const metaTags = `
     <title>${escapeHtml(title)} | ${SITE_TITLE}</title>
@@ -100,7 +138,8 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     
     <!-- Article metadata -->
     <meta property="article:published_time" content="${article.publishedAt || ''}" />
-    <meta property="article:author" content="${article.author || 'ROWELL Team'}" />`;
+    <meta property="article:author" content="${article.author || 'ROWELL Team'}" />
+    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
 
     // Replace default title and inject meta tags
     template = template.replace(/<title>.*?<\/title>/i, "");
@@ -222,59 +261,15 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       },
       "image": imageUrl,
       "url": fullUrl,
+      // ROWELL is a request-for-quote B2B catalog. Do not publish a fabricated
+      // retail price, shipping promise, or return policy in structured data.
       "offers": {
         "@type": "Offer",
         "url": fullUrl,
-        "priceCurrency": "USD",
-        "price": "1",
-        "validFrom": new Date().toISOString().split('T')[0],
-        "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
           "name": "ROWELL"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "USD"
-          },
-          "shippingDestination": [
-            { "@type": "DefinedRegion", "addressCountry": "US" },
-            { "@type": "DefinedRegion", "addressCountry": "GB" },
-            { "@type": "DefinedRegion", "addressCountry": "DE" },
-            { "@type": "DefinedRegion", "addressCountry": "JP" },
-            { "@type": "DefinedRegion", "addressCountry": "AU" },
-            { "@type": "DefinedRegion", "addressCountry": "CA" },
-            { "@type": "DefinedRegion", "addressCountry": "SG" },
-            { "@type": "DefinedRegion", "addressCountry": "KR" },
-            { "@type": "DefinedRegion", "addressCountry": "IN" }
-          ],
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 3,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 5,
-              "maxValue": 14,
-              "unitCode": "DAY"
-            }
-          }
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "US",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 30,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn"
         }
       }
     };
@@ -303,10 +298,8 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     <meta property="product:brand" content="${escapeHtml(product.brand || '')}" />
     <meta property="product:availability" content="in stock" />
     <meta property="product:condition" content="new" />
-    <meta property="product:price:amount" content="1" />
-    <meta property="product:price:currency" content="USD" />
     
-    <!-- JSON-LD Structured Data for Google Merchant Listings -->
+    <!-- JSON-LD Structured Data for product discovery -->
     <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
 
     // Replace default title and inject meta tags

@@ -31,6 +31,15 @@ function formatDate(date: Date | string): string {
   return dateObj.toISOString().split("T")[0];
 }
 
+function escapeXml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 /**
  * Generate sitemap XML
  */
@@ -52,13 +61,15 @@ export async function generateSitemap(req: Request, res: Response) {
       .from(resources)
       .where(eq(resources.status, "published"));
 
-    // Fetch all products
+    // Only active products belong in the indexable sitemap.
     const allProducts = await db
       .select({
         slug: products.slug,
         updatedAt: products.updatedAt,
+        imageUrl: products.imageUrl,
       })
-      .from(products);
+      .from(products)
+      .where(eq(products.status, "active"));
 
     // Fetch all literature articles
     const literatureArticles = await db
@@ -71,7 +82,7 @@ export async function generateSitemap(req: Request, res: Response) {
 
     // Build XML
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
 
     // Add static pages
     for (const page of STATIC_PAGES) {
@@ -83,25 +94,38 @@ export async function generateSitemap(req: Request, res: Response) {
       xml += "  </url>\n";
     }
 
-    // Add resource articles
+    // Add published resource articles.
     for (const article of resourceArticles) {
       xml += "  <url>\n";
-      xml += `    <loc>${BASE_URL}/resources/${article.slug}</loc>\n`;
-      xml += `    <lastmod>${formatDate(article.updatedAt)}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
+      xml += `    <loc>${escapeXml(`${BASE_URL}/resources/${encodeURIComponent(article.slug)}`)}</loc>\n`;
+      if (article.updatedAt) {
+        xml += `    <lastmod>${formatDate(article.updatedAt)}</lastmod>\n`;
+      }
+      xml += "    <changefreq>monthly</changefreq>\n";
+      xml += "    <priority>0.8</priority>\n";
       xml += "  </url>\n";
     }
 
-    // Add product pages
+    // Add only active, uniquely addressable product pages. Include product imagery
+    // when available so image search can associate it with the product URL.
     for (const product of allProducts) {
+      if (!product.slug) continue;
+      const productUrl = `${BASE_URL}/products/${encodeURIComponent(product.slug)}`;
       xml += "  <url>\n";
-      xml += `    <loc>${BASE_URL}/products/${product.slug}</loc>\n`;
+      xml += `    <loc>${escapeXml(productUrl)}</loc>\n`;
       if (product.updatedAt) {
         xml += `    <lastmod>${formatDate(product.updatedAt)}</lastmod>\n`;
       }
-      xml += `    <changefreq>weekly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
+      if (product.imageUrl) {
+        const imageUrl = product.imageUrl.startsWith("http")
+          ? product.imageUrl
+          : `${BASE_URL}${product.imageUrl.startsWith("/") ? "" : "/"}${product.imageUrl}`;
+        xml += "    <image:image>\n";
+        xml += `      <image:loc>${escapeXml(imageUrl)}</image:loc>\n`;
+        xml += "    </image:image>\n";
+      }
+      xml += "    <changefreq>weekly</changefreq>\n";
+      xml += "    <priority>0.8</priority>\n";
       xml += "  </url>\n";
     }
 
