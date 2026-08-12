@@ -99,6 +99,14 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
       .replace(/\s+/g, " ")
       .trim()
       .slice(0, 1800);
+    // Preserve one verified, same-site product-catalog link in the server-side
+    // fallback. The strict pattern prevents arbitrary URLs or HTML injection.
+    const internalLinkMatch = (article.content || "").match(
+      /\[([^\]]{1,120})\]\((\/products(?:\?[A-Za-z0-9%=&._-]+)?)\)/
+    );
+    const internalCatalogLink = internalLinkMatch
+      ? { label: internalLinkMatch[1], href: internalLinkMatch[2] }
+      : null;
     const publishedAt = article.publishedAt
       ? new Date(article.publishedAt).toISOString()
       : new Date().toISOString();
@@ -170,7 +178,7 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     );
     template = template.replace(
       /<div id="root"><\/div>/,
-      `<div id="root"><article><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p>${articleText ? `<p>${escapeHtml(articleText)}</p>` : ""}</article></div>`
+      `<div id="root"><article><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p>${articleText ? `<p>${escapeHtml(articleText)}</p>` : ""}${internalCatalogLink ? `<p><a href="${internalCatalogLink.href}">${escapeHtml(internalCatalogLink.label)}</a></p>` : ""}</article></div>`
     );
 
     console.log(`[SEO] Injected article meta tags and content fallback for: ${article.title}`);
