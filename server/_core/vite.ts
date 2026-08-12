@@ -533,7 +533,9 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Do not let express.static serve index.html for `/` before the SSR/SEO
+  // middleware below has a chance to inject route-specific metadata.
+  app.use(express.static(distPath, { index: false }));
 
   // ── PRODUCTION SSR: Serve index.html with dynamic meta tag injection ──
   // This is the KEY fix for Soft 404 problem in Google Search Console.
