@@ -11,6 +11,22 @@ import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
 // import { Helmet } from "react-helmet-async";
 
+function normalizeTagLabels(value: unknown): string[] {
+  if (Array.isArray(value)) {
+    return value.map((tag) => {
+      if (typeof tag === "string") return tag;
+      if (tag && typeof tag === "object" && "name" in tag && typeof tag.name === "string") return tag.name;
+      return "";
+    }).filter(Boolean);
+  }
+  if (typeof value !== "string" || !value.trim()) return [];
+  try {
+    return normalizeTagLabels(JSON.parse(value));
+  } catch {
+    return value.split(",").map((tag) => tag.trim()).filter(Boolean);
+  }
+}
+
 export default function ResourceDetail() {
   const params = useParams();
   const slug = params.slug as string;
@@ -19,6 +35,8 @@ export default function ResourceDetail() {
     { slug },
     { enabled: !!slug }
   );
+
+  const tagLabels = normalizeTagLabels(article?.tags);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -138,11 +156,11 @@ export default function ResourceDetail() {
                   </div>
                   <div className="flex items-center gap-1">
                     <Eye className="h-4 w-4" />
-                    <span>{article.viewCount} views</span>
+                    <span>{article.views ?? 0} views</span>
                   </div>
-                  {article.authorName && (
+                  {article.author && (
                     <div>
-                      By <span className="font-medium">{article.authorName}</span>
+                      By <span className="font-medium">{article.author}</span>
                     </div>
                   )}
                 </div>
@@ -150,17 +168,11 @@ export default function ResourceDetail() {
                 {/* Category and Tags */}
                 <div className="flex flex-wrap items-center gap-2 mb-6">
                   {article.category && (
-                    <Badge variant="secondary">{article.category.name}</Badge>
+                    <Badge variant="secondary">{article.category}</Badge>
                   )}
-                  {article.tags && article.tags.length > 0 && (
-                    <>
-                      {article.tags.map((tag) => (
-                        <Badge key={tag.id} variant="outline">
-                          {tag.name}
-                        </Badge>
-                      ))}
-                    </>
-                  )}
+                  {tagLabels.map((tag) => (
+                    <Badge key={tag} variant="outline">{tag}</Badge>
+                  ))}
                 </div>
 
                 {/* Share Button */}
