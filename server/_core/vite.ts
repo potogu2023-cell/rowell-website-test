@@ -7,7 +7,7 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getDb } from "../db";
 import { resources, products } from "../../drizzle/schema";
-import { eq } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
 
@@ -587,6 +587,74 @@ function renderNotFoundTemplate(template: string, requestPath: string, statusCod
   );
 }
 
+async function injectResourcesIndexSeoMetaTags(template: string): Promise<string> {
+  const page = STATIC_PAGE_SEO["/resources"];
+  const fullUrl = `${SITE_URL}/resources`;
+  try {
+    const db = await getDb();
+    if (!db) return injectStaticPageSeoMetaTags(template, "/resources");
+    const latestResources = await db.select({
+      title: resources.title,
+      slug: resources.slug,
+      excerpt: resources.excerpt,
+      category: resources.category,
+      publishedAt: resources.publishedAt,
+    })
+      .from(resources)
+      .where(eq(resources.status, "published"))
+      .orderBy(desc(resources.publishedAt))
+      .limit(12);
+
+    const itemList = latestResources.map((article, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: article.title,
+      url: `${SITE_URL}/resources/${encodeURIComponent(article.slug)}`,
+    }));
+    const structuredData = [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: page.heading,
+        description: page.description,
+        url: fullUrl,
+        inLanguage: "en",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Latest Chromatography Resources",
+        itemListElement: itemList,
+      },
+    ];
+    const articleLinks = latestResources.map((article) => {
+      const articleUrl = `/resources/${encodeURIComponent(article.slug)}`;
+      const excerpt = article.excerpt ? `<p>${escapeHtml(article.excerpt)}</p>` : "";
+      const category = article.category ? `<p>${escapeHtml(article.category)}</p>` : "";
+      return `<article><h2><a href="${articleUrl}">${escapeHtml(article.title)}</a></h2>${category}${excerpt}</article>`;
+    }).join("");
+    const metaTags = `
+      <title>${escapeHtml(page.title)}</title>
+      <meta name="description" content="${escapeHtml(page.description)}" />
+      <link rel="canonical" href="${fullUrl}" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="${fullUrl}" />
+      <meta property="og:title" content="${escapeHtml(page.title)}" />
+      <meta property="og:description" content="${escapeHtml(page.description)}" />
+      <meta property="og:site_name" content="ROWELL" />
+      <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+    template = template.replace(/<title>.*?<\/title>/i, "");
+    template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+    return template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"><main><h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p><section><h2>Latest Technical Resources</h2>${articleLinks}</section></main></div>`
+    );
+  } catch (error) {
+    console.error("[SEO] Failed to render resources index:", error);
+    return injectStaticPageSeoMetaTags(template, "/resources");
+  }
+}
+
 function injectStaticPageSeoMetaTags(template: string, requestPath: string): string {
   const canonicalPath = requestPath.split("?")[0].replace(/\/$/, "") || "/";
   const page = STATIC_PAGE_SEO[canonicalPath];
@@ -648,6 +716,9 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
   const categorySlug = extractCategoryLandingSlug(effectivePath);
   if (categorySlug && CATEGORY_LANDING_SLUGS.includes(categorySlug)) {
     return injectCategoryLandingSeoMetaTags(template, effectivePath);
+  }
+  if (effectivePath === "/resources") {
+    return injectResourcesIndexSeoMetaTags(template);
   }
   // Try product pages first
   if (effectivePath.startsWith('/products/')) {
