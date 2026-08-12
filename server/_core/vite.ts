@@ -550,6 +550,16 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
   }
 }
 
+function redirectLegacyLearningArticle(req: any, res: any, next: () => void): void {
+  if (req.method !== "GET") return next();
+  const match = req.originalUrl.match(/^\/learning\/([^/?]+)(?:\?[^]*)?$/);
+  if (!match) return next();
+  // Article routes used to live under /learning/:slug. Their canonical and Sitemap
+  // URLs are /resources/:slug, so redirect instead of exposing duplicate content.
+  if (["authors", "literature"].includes(match[1])) return next();
+  return res.redirect(301, `/resources/${match[1]}`);
+}
+
 function renderNotFoundTemplate(template: string, requestPath: string, statusCode: 404 | 410): string {
   const title = statusCode === 410 ? "Content No Longer Available | ROWELL" : "Page Not Found | ROWELL";
   const heading = statusCode === 410 ? "This content is no longer available" : "Page not found";
@@ -658,6 +668,9 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
+  // Canonicalize legacy article URLs before Vite serves the application shell.
+  app.use(redirectLegacyLearningArticle);
+
   // Use Vite middleware but exclude sitemap.xml and robots.txt
   app.use((req, res, next) => {
     if (req.path === '/sitemap.xml' || req.path === '/robots.txt') {
@@ -712,6 +725,9 @@ export function serveStatic(app: Express) {
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
+
+  // Canonicalize legacy article URLs before static serving or SEO injection.
+  app.use(redirectLegacyLearningArticle);
 
   // Core static routes must be intercepted before express.static can serve the
   // root index.html. Otherwise `/` bypasses route-specific SEO metadata.

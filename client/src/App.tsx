@@ -63,6 +63,7 @@ function Router() {
           <Route path={"/learning/:slug"} component={ArticleDetail} />
           <Route path={"/applications"} component={ApplicationsHub} />
           <Route path={"/applications/:industry"} component={IndustryApplication} />
+          <Route path={"/resources/:slug"} component={ArticleDetail} />
           <Route path={"/resources"} component={LearningCenter} />
           
           <Route path={"/about"} component={About} />
