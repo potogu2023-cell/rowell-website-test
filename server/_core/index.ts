@@ -10,7 +10,6 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { generateSitemap } from "../sitemap";
-import { seoMetaInjectionMiddleware } from "../seo-meta-injection";
 import { learningCenterRouter as learningCenterRestRouter } from "../learning-center-rest-api";
 import { testLiteratureRouter } from "../test-literature-api";
 import { importArticles } from "../article-importer";
@@ -66,8 +65,9 @@ async function startServer() {
   // Add text/csv parser for imageSync API
   app.use(bodyParser.text({ type: 'text/csv', limit: '50mb' }));
   app.use(bodyParser.text({ type: 'text/plain', limit: '50mb' }));
-  // SEO meta tag injection for article pages
-  app.use(seoMetaInjectionMiddleware);
+  // Product and article SEO tags are injected once in serveStatic/setupVite.
+  // Do not mount the legacy response-interception middleware here: it duplicates
+  // canonical tags and Product JSON-LD in production HTML.
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // ImageSync REST API for CSV uploads
