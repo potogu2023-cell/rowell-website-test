@@ -418,6 +418,79 @@ const STATIC_PAGE_SEO: Record<string, { title: string; description: string; head
   },
 };
 
+type DynamicRouteStatus = "active" | "gone" | "missing" | "unavailable";
+
+function isKnownPublicSpaRoute(requestPath: string): boolean {
+  if (Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath)) return true;
+  return [
+    /^\/products\/[^/]+$/,
+    /^\/resources\/[^/]+$/,
+    /^\/learning(?:-center)?$/,
+    /^\/learning\/authors\/[^/]+$/,
+    /^\/learning\/literature\/[^/]+$/,
+    /^\/learning\/[^/]+$/,
+    /^\/applications\/[^/]+$/,
+    /^\/standards(?:\/search|\/category\/[^/]+|\/product\/[^/]+)?$/,
+    /^\/admin\/(?:messages|seed)$/,
+    /^\/test-filters$/,
+    /^\/404$/,
+  ].some((pattern) => pattern.test(requestPath));
+}
+
+async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteStatus> {
+  const productSlug = extractProductSlugFromPath(requestPath);
+  const resourceSlug = extractSlugFromPath(requestPath) ||
+    (requestPath.match(/^\/learning\/literature\/([^/?]+)/)?.[1] ?? null);
+
+  if (!productSlug && !resourceSlug) return "active";
+
+  try {
+    const db = await getDb();
+    // Avoid responding with a false 404 if database connectivity is temporarily unavailable.
+    if (!db) return "unavailable";
+
+    if (productSlug) {
+      let records = await db.select({ id: products.id, status: products.status })
+        .from(products)
+        .where(eq(products.slug, productSlug))
+        .limit(1);
+      if (records.length === 0) {
+        records = await db.select({ id: products.id, status: products.status })
+          .from(products)
+          .where(eq(products.partNumber, productSlug))
+          .limit(1);
+      }
+      if (records.length === 0) return "missing";
+      return records[0].status === "active" ? "active" : "gone";
+    }
+
+    const records = await db.select({ id: resources.id, status: resources.status })
+      .from(resources)
+      .where(eq(resources.slug, resourceSlug!))
+      .limit(1);
+    if (records.length === 0) return "missing";
+    return records[0].status === "published" ? "active" : "gone";
+  } catch (error) {
+    console.error("[SEO] Dynamic route existence check failed:", error);
+    return "unavailable";
+  }
+}
+
+function renderNotFoundTemplate(template: string, requestPath: string, statusCode: 404 | 410): string {
+  const title = statusCode === 410 ? "Content No Longer Available | ROWELL" : "Page Not Found | ROWELL";
+  const heading = statusCode === 410 ? "This content is no longer available" : "Page not found";
+  const description = statusCode === 410
+    ? "This product or resource is no longer available. Browse current chromatography consumables and technical resources at ROWELL."
+    : "The requested page could not be found. Browse ROWELL's current chromatography consumables and technical resources.";
+  const metaTags = `<title>${title}</title><meta name="description" content="${description}" /><meta name="robots" content="noindex, follow" />`;
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  return template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><h1>${heading}</h1><p>${description}</p><p><a href="/products">Browse products</a> or <a href="/resources">explore technical resources</a>.</p></main></div>`
+  );
+}
+
 function injectStaticPageSeoMetaTags(template: string, requestPath: string): string {
   const canonicalPath = requestPath.split("?")[0].replace(/\/$/, "") || "/";
   const page = STATIC_PAGE_SEO[canonicalPath];
@@ -597,7 +670,21 @@ export function serveStatic(app: Express) {
       // NOTE: Must use req.originalUrl instead of req.path here!
       // When using app.use("*", handler), req.path is always "/" (relative to mount point),
       // but req.originalUrl contains the actual full path like "/products/695775-742".
-      const requestPath = req.originalUrl.split('?')[0]; // Remove query string
+      const requestPath = req.originalUrl.split('?')[0].replace(/\/+$/, '') || '/'; // Remove query string and normalize trailing slash
+      const dynamicRouteStatus = await getDynamicRouteStatus(requestPath);
+      if (dynamicRouteStatus === "missing" || dynamicRouteStatus === "gone") {
+        let template = await fs.promises.readFile(indexPath, "utf-8");
+        const statusCode = dynamicRouteStatus === "gone" ? 410 : 404;
+        template = renderNotFoundTemplate(template, requestPath, statusCode);
+        return res.status(statusCode).set({ "Content-Type": "text/html" }).send(template);
+      }
+
+      if (!isKnownPublicSpaRoute(requestPath)) {
+        let template = await fs.promises.readFile(indexPath, "utf-8");
+        template = renderNotFoundTemplate(template, requestPath, 404);
+        return res.status(404).set({ "Content-Type": "text/html" }).send(template);
+      }
+
       const needsMetaInjection =
         requestPath.startsWith('/products/') ||
         requestPath.startsWith('/resources/') ||
