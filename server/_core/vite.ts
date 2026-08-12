@@ -88,6 +88,17 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     const title = article.title || SITE_TITLE;
     const description = article.metaDescription || article.excerpt || "";
     const image = article.coverImage ? toAbsoluteUrl(article.coverImage) : SITE_LOGO;
+    // Render a concise, truthful text fallback so non-JavaScript crawlers receive
+    // meaningful article content rather than an empty SPA root.
+    const articleText = (article.content || description)
+      .replace(/```[\s\S]*?```/g, " ")
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/[#>*_`]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 1800);
     const publishedAt = article.publishedAt
       ? new Date(article.publishedAt).toISOString()
       : new Date().toISOString();
@@ -157,8 +168,12 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
       /(<head[^>]*>)/i,
       `$1${metaTags}`
     );
+    template = template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"><article><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p>${articleText ? `<p>${escapeHtml(articleText)}</p>` : ""}</article></div>`
+    );
 
-    console.log(`[SEO] Injected article meta tags for: ${article.title}`);
+    console.log(`[SEO] Injected article meta tags and content fallback for: ${article.title}`);
     return template;
   } catch (error) {
     console.error("[SEO] Error injecting article meta tags:", error);
