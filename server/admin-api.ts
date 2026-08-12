@@ -218,7 +218,7 @@ export const adminRouter = router({
         updates: z.array(z.object({
           id: z.number(),
           name: z.string().min(3).max(255).optional(),
-          columnLength: z.string().regex(/^\\d+(?:\\.\\d+)?mm$/),
+          columnLength: z.string().regex(/^\d+(?:\.\d+)?mm$/),
           columnLengthNum: z.number().positive(),
         })).min(1).max(50),
       }).parse(raw);
