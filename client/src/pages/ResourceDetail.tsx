@@ -215,14 +215,17 @@ export default function ResourceDetail() {
                       );
                     },
                     // Custom link styling
-                    a: ({ node, ...props }) => (
-                      <a
-                        {...props}
-                        className="text-primary hover:underline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      />
-                    ),
+                    a: ({ node, href, ...props }) => {
+                      const isInternalLink = !!href && href.startsWith("/");
+                      return (
+                        <a
+                          {...props}
+                          href={href}
+                          className="text-primary hover:underline"
+                          {...(isInternalLink ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+                        />
+                      );
+                    },
                   }}
                 >
                   {article.content}
