@@ -210,13 +210,14 @@ export const adminRouter = router({
       return { success: true, results };
     }),
 
-  // Correct verified product dimensions only; intentionally narrow to prevent broad product edits.
+  // Correct verified product dimensions and display names only; intentionally narrow to prevent broad product edits.
   batchCorrectProductDimensions: publicProcedure
     .input((raw: unknown) => {
       return z.object({
         adminKey: z.string(),
         updates: z.array(z.object({
           id: z.number(),
+          name: z.string().min(3).max(255).optional(),
           columnLength: z.string().regex(/^\\d+(?:\\.\\d+)?mm$/),
           columnLengthNum: z.number().positive(),
         })).min(1).max(50),
@@ -233,7 +234,7 @@ export const adminRouter = router({
       const results = [];
       for (const update of input.updates) {
         const existing = await db
-          .select({ id: products.id, partNumber: products.partNumber, columnLength: products.columnLength })
+          .select({ id: products.id, partNumber: products.partNumber, name: products.name, columnLength: products.columnLength })
           .from(products)
           .where(eq(products.id, update.id))
           .limit(1);
@@ -243,12 +244,18 @@ export const adminRouter = router({
         }
         await db
           .update(products)
-          .set({ columnLength: update.columnLength, columnLengthNum: update.columnLengthNum })
+          .set({
+            ...(update.name ? { name: update.name } : {}),
+            columnLength: update.columnLength,
+            columnLengthNum: update.columnLengthNum,
+          })
           .where(eq(products.id, update.id));
         results.push({
           id: update.id,
           partNumber: existing[0].partNumber,
           status: 'updated',
+          oldName: existing[0].name,
+          newName: update.name ?? existing[0].name,
           oldColumnLength: existing[0].columnLength,
           newColumnLength: update.columnLength,
         });
