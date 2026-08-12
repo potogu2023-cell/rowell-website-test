@@ -601,9 +601,15 @@ function injectStaticPageSeoMetaTags(template: string, requestPath: string): str
 
   template = template.replace(/<title>.*?<\/title>/i, "");
   template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  const categoryHubLinks = canonicalPath === "/products"
+    ? `<nav aria-label="Featured product category guides"><ul>${CATEGORY_LANDING_SLUGS.map((slug) => {
+        const profile = CATEGORY_LANDING_PROFILES[slug];
+        return `<li><a href="/categories/${encodeURIComponent(slug)}">${escapeHtml(profile.name)} selection guide</a></li>`;
+      }).join("")}</ul></nav>`
+    : "";
   template = template.replace(
     /<div id="root"><\/div>/,
-    `<div id="root"><main><h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p></main></div>`
+    `<div id="root"><main><h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p>${categoryHubLinks}</main></div>`
   );
   return template;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +14,13 @@ import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilt
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
 import { translateCategory } from '@/lib/categoryTranslations';
+
+const CATEGORY_HUBS = [
+  { slug: "c18-columns", label: "C18 HPLC Columns", description: "Reversed-phase column selection" },
+  { slug: "guard-columns", label: "HPLC Guard Columns", description: "Analytical column protection" },
+  { slug: "gc-columns", label: "GC Columns", description: "Capillary GC column selection" },
+  { slug: "spe-cartridges", label: "SPE Cartridges", description: "Sample preparation selection" },
+];
 
 export default function Products() {
   const { t, i18n } = useTranslation();
@@ -246,7 +253,19 @@ export default function Products() {
         </div>
       </div>
 
-      <div className="container py-8">
+      <section className="container mx-auto px-4 pt-8" aria-label="Featured chromatography category guides">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {CATEGORY_HUBS.map((hub) => (
+            <Link key={hub.slug} href={`/categories/${hub.slug}`} className="rounded-lg border border-slate-200 bg-white p-5 transition-shadow hover:shadow-md">
+              <span className="block font-semibold text-slate-900">{hub.label}</span>
+              <span className="mt-1 block text-sm text-slate-600">{hub.description}</span>
+              <span className="mt-3 block text-sm font-medium text-primary">Selection guide →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
