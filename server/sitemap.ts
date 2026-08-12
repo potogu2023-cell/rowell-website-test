@@ -16,6 +16,10 @@ const BASE_URL = "https://www.rowellhplc.com";
 const STATIC_PAGES = [
   { path: "/", priority: 1.0, changefreq: "daily" },
   { path: "/products", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/c18-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/guard-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/gc-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/spe-cartridges", priority: 0.9, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "monthly" },
   { path: "/resources", priority: 0.9, changefreq: "daily" },
   { path: "/usp-standards", priority: 0.7, changefreq: "monthly" },

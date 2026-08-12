@@ -1,84 +1,73 @@
-// Version: 2.0.1 - Added literature translation keys for enhanced content
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-
-// Import translation files
 import enTranslation from './locales/en.json';
-import zhTranslation from './locales/zh.json';
-import ruTranslation from './locales/ru.json';
-import jaTranslation from './locales/ja.json';
-import esTranslation from './locales/es.json';
-import ptTranslation from './locales/pt.json';
-import arTranslation from './locales/ar.json';
-import koTranslation from './locales/ko.json';
 
-// Debug: Log translation imports
-console.log('[i18n] enTranslation:', enTranslation);
-console.log('[i18n] enTranslation.products:', enTranslation.products);
-console.log('[i18n] enTranslation.products.title:', enTranslation.products?.title);
-console.log('[i18n] zhTranslation:', zhTranslation);
+type TranslationBundle = Record<string, unknown>;
+type TranslationModule = { default: TranslationBundle };
 
-const resources = {
-  en: {
-    translation: enTranslation,
-  },
-  zh: {
-    translation: zhTranslation,
-  },
-  ru: {
-    translation: ruTranslation,
-  },
-  ja: {
-    translation: jaTranslation,
-  },
-  es: {
-    translation: esTranslation,
-  },
-  pt: {
-    translation: ptTranslation,
-  },
-  ar: {
-    translation: arTranslation,
-  },
-  ko: {
-    translation: koTranslation,
-  },
+// English is the global fallback and is bundled for the first render. Other locale
+// files are fetched only when the visitor chooses or detects that language.
+const translationLoaders: Record<string, () => Promise<TranslationModule>> = {
+  zh: () => import('./locales/zh.json'),
+  ru: () => import('./locales/ru.json'),
+  ja: () => import('./locales/ja.json'),
+  es: () => import('./locales/es.json'),
+  pt: () => import('./locales/pt.json'),
+  ar: () => import('./locales/ar.json'),
+  ko: () => import('./locales/ko.json'),
 };
 
+const pendingLoads = new Map<string, Promise<void>>();
+
+export async function loadLanguageResources(languageCode: string): Promise<void> {
+  const code = languageCode.split('-')[0].toLowerCase();
+  if (code === 'en' || i18n.hasResourceBundle(code, 'translation')) return;
+
+  const existingLoad = pendingLoads.get(code);
+  if (existingLoad) return existingLoad;
+
+  const loader = translationLoaders[code];
+  if (!loader) return;
+
+  const loadPromise = loader()
+    .then(({ default: translation }) => {
+      i18n.addResourceBundle(code, 'translation', translation, true, true);
+    })
+    .catch((error) => {
+      // Keep the English fallback available if a locale chunk cannot be retrieved.
+      console.error(`[i18n] Failed to load ${code} resources`, error);
+    })
+    .finally(() => {
+      pendingLoads.delete(code);
+    });
+
+  pendingLoads.set(code, loadPromise);
+  return loadPromise;
+}
+
 i18n
-  .use(LanguageDetector) // Detect user language
-  .use(initReactI18next) // Pass i18n instance to react-i18next
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
-    resources,
-    fallbackLng: 'zh', // Fallback language (Chinese)
+    resources: { en: { translation: enTranslation } },
+    fallbackLng: 'en',
     debug: false,
-    interpolation: {
-      escapeValue: false, // React already escapes values
-    },
+    interpolation: { escapeValue: false },
     detection: {
-      // Order of language detection - prioritize querystring for testing
       order: ['querystring', 'localStorage', 'navigator', 'htmlTag'],
       caches: ['localStorage'],
       lookupQuerystring: 'lng',
     },
-  });
+  })
+  .then(() => loadLanguageResources(i18n.language));
 
-// Debug: Log i18n state after initialization
-console.log('[i18n] Initialized:', i18n.isInitialized);
-console.log('[i18n] Current language:', i18n.language);
-console.log('[i18n] Resources:', i18n.store.data);
-console.log('[i18n] EN resources:', i18n.store.data.en);
-console.log('[i18n] EN translation:', i18n.store.data.en?.translation);
-console.log('[i18n] EN translation.products:', i18n.store.data.en?.translation?.products);
-console.log('[i18n] Test translation products.title:', i18n.t('products.title'));
+i18n.on('languageChanged', (language) => {
+  void loadLanguageResources(language);
+});
 
 export default i18n;
 
-
-
-
-// Language configurations
 export const languages = [
   { code: 'zh', name: '中文', flag: '🇨🇳', dir: 'ltr' },
   { code: 'en', name: 'English', flag: '🇬🇧', dir: 'ltr' },
@@ -90,15 +79,12 @@ export const languages = [
   { code: 'ko', name: '한국어', flag: '🇰🇷', dir: 'ltr' },
 ];
 
-// Get language name by code
-export function getLanguageName(code: string): string {
-  const lang = languages.find(l => l.code === code);
+export function getLanguageName(code: string) {
+  const lang = languages.find((language) => language.code === code);
   return lang ? lang.name : code;
 }
 
-// Get language direction (for RTL support)
 export function getLanguageDir(code: string): 'ltr' | 'rtl' {
-  const lang = languages.find(l => l.code === code);
+  const lang = languages.find((language) => language.code === code);
   return (lang?.dir as 'ltr' | 'rtl') || 'ltr';
 }
-

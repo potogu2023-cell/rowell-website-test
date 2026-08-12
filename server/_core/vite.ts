@@ -9,6 +9,7 @@ import { getDb } from "../db";
 import { resources, products } from "../../drizzle/schema";
 import { eq } from "drizzle-orm";
 import { ENV } from "./env";
+import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
 
 const SITE_URL = "https://www.rowellhplc.com";
 
@@ -26,6 +27,11 @@ function extractSlugFromPath(urlPath: string): string | null {
  */
 function extractProductSlugFromPath(urlPath: string): string | null {
   const match = urlPath.match(/^\/products\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+
+function extractCategoryLandingSlug(urlPath: string): string | null {
+  const match = urlPath.match(/^\/categories\/([^\/\?]+)/);
   return match ? match[1] : null;
 }
 
@@ -418,10 +424,78 @@ const STATIC_PAGE_SEO: Record<string, { title: string; description: string; head
   },
 };
 
+function injectCategoryLandingSeoMetaTags(template: string, requestPath: string): string {
+  const slug = extractCategoryLandingSlug(requestPath);
+  const profile = slug ? CATEGORY_LANDING_PROFILES[slug] : null;
+  if (!slug || !profile) return template;
+
+  const fullUrl = `${SITE_URL}/categories/${encodeURIComponent(slug)}`;
+  const catalogUrl = `${SITE_URL}/products?category=${encodeURIComponent(profile.catalogSlug)}`;
+  const faqEntities = profile.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  }));
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: profile.heading,
+      description: profile.summary,
+      url: fullUrl,
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", name: "ROWELL", url: SITE_URL },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products` },
+        { "@type": "ListItem", position: 3, name: profile.name, item: fullUrl },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqEntities,
+    },
+  ];
+  const selectionHtml = profile.selectionPoints
+    .map((point) => `<li>${escapeHtml(point)}</li>`)
+    .join("");
+  const faqHtml = profile.faq
+    .map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`)
+    .join("");
+  const metaTags = `
+    <title>${escapeHtml(profile.heading)} | ROWELL</title>
+    <meta name="description" content="${escapeHtml(profile.summary)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(profile.heading)} | ROWELL" />
+    <meta property="og:description" content="${escapeHtml(profile.summary)}" />
+    <meta property="og:site_name" content="ROWELL" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  template = template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(profile.name)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><h2>Selection Considerations</h2><p>${escapeHtml(profile.overview)}</p><ul>${selectionHtml}</ul><p><a href="${catalogUrl}">Browse ${escapeHtml(profile.name)}</a></p><h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
+  );
+  return template;
+}
+
 type DynamicRouteStatus = "active" | "gone" | "missing" | "unavailable";
 
 function isKnownPublicSpaRoute(requestPath: string): boolean {
   if (Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath)) return true;
+  if (requestPath.startsWith("/categories/")) {
+    const slug = extractCategoryLandingSlug(requestPath);
+    return !!slug && CATEGORY_LANDING_SLUGS.includes(slug);
+  }
   return [
     /^\/products\/[^/]+$/,
     /^\/resources\/[^/]+$/,
@@ -543,6 +617,10 @@ function injectStaticPageSeoMetaTags(template: string, requestPath: string): str
 async function injectSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
   // Use overridePath if provided (needed in app.use('*') where req.path is always '/')
   const effectivePath = overridePath || req.path;
+  const categorySlug = extractCategoryLandingSlug(effectivePath);
+  if (categorySlug && CATEGORY_LANDING_SLUGS.includes(categorySlug)) {
+    return injectCategoryLandingSeoMetaTags(template, effectivePath);
+  }
   // Try product pages first
   if (effectivePath.startsWith('/products/')) {
     return injectProductSeoMetaTags(template, req, effectivePath);
@@ -689,6 +767,7 @@ export function serveStatic(app: Express) {
         requestPath.startsWith('/products/') ||
         requestPath.startsWith('/resources/') ||
         requestPath.startsWith('/learning/literature/') ||
+        requestPath.startsWith('/categories/') ||
         Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath);
       
       if (needsMetaInjection) {

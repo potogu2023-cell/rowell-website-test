@@ -1,35 +1,37 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { getLanguageDir } from './i18n/config';
-import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Products from "./pages/Products";
-import About from "./pages/About";
-import USPStandards from "./pages/USPStandards";
-import Contact from "./pages/Contact";
-import LearningCenter from "./pages/LearningCenter";
-import ArticleDetail from "./pages/ArticleDetail";
-import AuthorDetail from "./pages/AuthorDetail";
-import LiteratureDetail from "./pages/LiteratureDetail";
-import AdminSeed from "./pages/AdminSeed";
-
-import TestFilters from "./pages/TestFilters";
-import ProductDetail from "./pages/ProductDetail";
-import AdminMessages from "./pages/AdminMessages";
-import Standards from "./pages/Standards";
-import StandardsCategory from "./pages/StandardsCategory";
-import StandardsProductDetail from "./pages/StandardsProductDetail";
-import StandardsSearch from "./pages/StandardsSearch";
 import WhatsAppButton from "./components/WhatsAppButton";
-import ApplicationsHub from "./pages/ApplicationsHub";
-import IndustryApplication from "./pages/IndustryApplication";
+
+// Route-level code splitting keeps the initial application payload focused on the current page.
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const Home = lazy(() => import("./pages/Home"));
+const Products = lazy(() => import("./pages/Products"));
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+const CategoryLanding = lazy(() => import("./pages/CategoryLanding"));
+const About = lazy(() => import("./pages/About"));
+const USPStandards = lazy(() => import("./pages/USPStandards"));
+const Contact = lazy(() => import("./pages/Contact"));
+const LearningCenter = lazy(() => import("./pages/LearningCenter"));
+const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
+const AuthorDetail = lazy(() => import("./pages/AuthorDetail"));
+const LiteratureDetail = lazy(() => import("./pages/LiteratureDetail"));
+const AdminSeed = lazy(() => import("./pages/AdminSeed"));
+const AdminMessages = lazy(() => import("./pages/AdminMessages"));
+const TestFilters = lazy(() => import("./pages/TestFilters"));
+const Standards = lazy(() => import("./pages/Standards"));
+const StandardsCategory = lazy(() => import("./pages/StandardsCategory"));
+const StandardsProductDetail = lazy(() => import("./pages/StandardsProductDetail"));
+const StandardsSearch = lazy(() => import("./pages/StandardsSearch"));
+const ApplicationsHub = lazy(() => import("./pages/ApplicationsHub"));
+const IndustryApplication = lazy(() => import("./pages/IndustryApplication"));
 
 
 function Router() {
@@ -46,10 +48,12 @@ function Router() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1">
+        <Suspense fallback={<div className="min-h-[40vh]" aria-busy="true" />}>
         <Switch>
           <Route path={"/"} component={Home} />
           <Route path={"/products"} component={Products} />
           <Route path={"/products/:id"} component={ProductDetail} />
+          <Route path={"/categories/:slug"} component={CategoryLanding} />
           
           {/* Learning Center routes (replacing Applications and Resources) */}
           <Route path={"/learning"} component={LearningCenter} />
@@ -77,6 +81,7 @@ function Router() {
           <Route path={"/404"} component={NotFound} />
           <Route component={NotFound} />
         </Switch>
+        </Suspense>
       </main>
       <Footer />
       <WhatsAppButton />
