@@ -344,6 +344,100 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
   }
 }
 
+const STATIC_PAGE_SEO: Record<string, { title: string; description: string; heading: string; type: "WebSite" | "WebPage" }> = {
+  "/": {
+    title: "ROWELL | Global Chromatography Consumables Supplier",
+    description: "ROWELL supplies HPLC and GC columns, chromatography consumables, and technical support to laboratories worldwide.",
+    heading: "Global Chromatography Consumables for Analytical Laboratories",
+    type: "WebSite",
+  },
+  "/products": {
+    title: "HPLC & GC Columns and Chromatography Consumables | ROWELL",
+    description: "Explore ROWELL's catalog of HPLC columns, GC columns, and chromatography consumables from leading laboratory brands.",
+    heading: "Chromatography Columns and Laboratory Consumables",
+    type: "WebPage",
+  },
+  "/resources": {
+    title: "Chromatography Technical Guides & Application Notes | ROWELL",
+    description: "Browse practical chromatography technical guides, application notes, column selection advice, and troubleshooting resources from ROWELL.",
+    heading: "Chromatography Technical Resources",
+    type: "WebPage",
+  },
+  "/learning": {
+    title: "Chromatography Learning Center | ROWELL",
+    description: "Access practical chromatography learning resources, application notes, technical guides, and laboratory troubleshooting advice.",
+    heading: "Chromatography Learning Center",
+    type: "WebPage",
+  },
+  "/applications": {
+    title: "Chromatography Applications by Industry | ROWELL",
+    description: "Explore chromatography applications for pharmaceutical, environmental, food safety, chemical, and analytical laboratory workflows.",
+    heading: "Chromatography Applications by Industry",
+    type: "WebPage",
+  },
+  "/about": {
+    title: "About ROWELL | Global Chromatography Consumables Supplier",
+    description: "Learn about ROWELL's commitment to reliable chromatography consumables, technical expertise, and global laboratory support.",
+    heading: "About ROWELL",
+    type: "WebPage",
+  },
+  "/contact": {
+    title: "Contact ROWELL | Chromatography Consumables Support",
+    description: "Contact ROWELL for product sourcing, chromatography column selection, technical support, and quotation requests.",
+    heading: "Contact ROWELL",
+    type: "WebPage",
+  },
+  "/usp-standards": {
+    title: "USP Chromatography Reference Standards | ROWELL",
+    description: "Explore USP chromatography reference standards and related analytical support for laboratory method development and quality control.",
+    heading: "USP Chromatography Reference Standards",
+    type: "WebPage",
+  },
+};
+
+function injectStaticPageSeoMetaTags(template: string, requestPath: string): string {
+  const canonicalPath = requestPath.split("?")[0].replace(/\/$/, "") || "/";
+  const page = STATIC_PAGE_SEO[canonicalPath];
+  if (!page) return template;
+
+  const fullUrl = `${SITE_URL}${canonicalPath === "/" ? "/" : canonicalPath}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": page.type,
+    "name": page.title,
+    "description": page.description,
+    "url": fullUrl,
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ROWELL",
+      "url": SITE_URL,
+      "logo": { "@type": "ImageObject", "url": `${SITE_URL}/logo.png` }
+    }
+  };
+  const metaTags = `
+    <title>${escapeHtml(page.title)}</title>
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:site_name" content="ROWELL" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  template = template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p></main></div>`
+  );
+  return template;
+}
+
 /**
  * Unified SEO meta tag injection - handles both articles and products
  * @param template - HTML template string
@@ -367,7 +461,7 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
     const literatureSlug = effectivePath.replace('/learning/literature/', '/resources/');
     return injectArticleSeoMetaTags(template, req, literatureSlug);
   }
-  return template;
+  return injectStaticPageSeoMetaTags(template, effectivePath);
 }
 
 export async function setupVite(app: Express, server: Server) {
