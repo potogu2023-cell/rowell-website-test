@@ -533,6 +533,26 @@ export function serveStatic(app: Express) {
     );
   }
 
+  // Core static routes must be intercepted before express.static can serve the
+  // root index.html. Otherwise `/` bypasses route-specific SEO metadata.
+  app.use(async (req, res, next) => {
+    if (req.method !== "GET") return next();
+    const requestPath = req.originalUrl.split("?")[0];
+    if (!Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath)) {
+      return next();
+    }
+
+    try {
+      const indexPath = path.resolve(distPath, "index.html");
+      let template = await fs.promises.readFile(indexPath, "utf-8");
+      template = await injectSeoMetaTags(template, req, requestPath);
+      return res.status(200).set({ "Content-Type": "text/html" }).send(template);
+    } catch (error) {
+      console.error("[SSR] Error injecting static-page SEO metadata:", error);
+      return next();
+    }
+  });
+
   // Do not let express.static serve index.html for `/` before the SSR/SEO
   // middleware below has a chance to inject route-specific metadata.
   app.use(express.static(distPath, { index: false }));
