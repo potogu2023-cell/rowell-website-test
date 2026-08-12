@@ -430,7 +430,8 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
   if (!slug || !profile) return template;
 
   const fullUrl = `${SITE_URL}/categories/${encodeURIComponent(slug)}`;
-  const catalogUrl = `${SITE_URL}/products?category=${encodeURIComponent(profile.catalogSlug)}`;
+  const catalogPath = profile.catalogHref ?? `/products?category=${encodeURIComponent(profile.catalogSlug)}`;
+  const catalogUrl = `${SITE_URL}${catalogPath}`;
   const faqEntities = profile.faq.map((item) => ({
     "@type": "Question",
     name: item.question,

@@ -16,7 +16,7 @@ export default function CategoryLanding() {
     );
   }
 
-  const catalogHref = `/products?category=${encodeURIComponent(profile.catalogSlug)}`;
+  const catalogHref = profile.catalogHref ?? `/products?category=${encodeURIComponent(profile.catalogSlug)}`;
   return (
     <div className="bg-white">
       <section className="border-b bg-gradient-to-b from-blue-50 to-white">

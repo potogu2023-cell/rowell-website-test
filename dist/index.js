@@ -9,11 +9,11 @@ var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __copyProps = (to, from, except, desc3) => {
+var __copyProps = (to, from, except, desc4) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
       if (!__hasOwnProp.call(to, key) && key !== except)
-        __defProp(to, key, { get: () => from[key], enumerable: !(desc3 = __getOwnPropDesc(from, key)) || desc3.enumerable });
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc4 = __getOwnPropDesc(from, key)) || desc4.enumerable });
   }
   return to;
 };
@@ -1207,7 +1207,7 @@ async function sendCustomerMessageNotification(data) {
       <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
         \u65B0${typeLabel}\u901A\u77E5
       </h2>
-      
+
       <div style="background-color: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
         <h3 style="margin-top: 0; color: #374151;">\u5BA2\u6237\u4FE1\u606F</h3>
         <table style="width: 100%; border-collapse: collapse;">
@@ -1264,7 +1264,7 @@ async function sendCustomerMessageNotification(data) {
         <h3 style="margin-top: 0; color: #374151;">${data.type === "inquiry" ? "\u5BA2\u6237\u9700\u6C42" : "\u7559\u8A00\u5185\u5BB9"}</h3>
         <p style="white-space: pre-wrap; line-height: 1.6; color: #4b5563;">${data.message}</p>
       </div>
-      
+
       <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px;">
         <p>\u6B64\u90AE\u4EF6\u7531ROWELL\u7F51\u7AD9\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002</p>
         <p>\u5982\u9700\u56DE\u590D\u5BA2\u6237\uFF0C\u8BF7\u4F7F\u7528\u5BA2\u6237\u63D0\u4F9B\u7684\u90AE\u7BB1\u5730\u5740: <a href="mailto:${data.email}" style="color: #2563eb;">${data.email}</a></p>
@@ -1538,10 +1538,10 @@ async function migrateDatabase() {
   try {
     console.log("[Migration] Starting database migration...");
     const checkColumnQuery = `
-      SELECT COLUMN_NAME 
-      FROM INFORMATION_SCHEMA.COLUMNS 
-      WHERE TABLE_SCHEMA = DATABASE() 
-        AND TABLE_NAME = 'users' 
+      SELECT COLUMN_NAME
+      FROM INFORMATION_SCHEMA.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE()
+        AND TABLE_NAME = 'users'
         AND COLUMN_NAME = 'passwordHash'
     `;
     const result = await db.execute(checkColumnQuery);
@@ -2355,21 +2355,21 @@ function generateInquiryEmailHTML(data) {
     <h1 style="margin: 0; font-size: 24px;">Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3</h1>
     <p style="margin: 10px 0 0 0; font-size: 14px;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546</p>
   </div>
-  
+
   <div style="background-color: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
     <h2 style="color: #2563eb; margin-top: 0;">\u8BE2\u4EF7\u786E\u8BA4</h2>
-    
+
     <p>\u5C0A\u656C\u7684 <strong>${data.userName}</strong>\uFF0C</p>
-    
+
     <p>\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-    
+
     <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2563eb;">
       <p style="margin: 5px 0;"><strong>\u8BE2\u4EF7\u5355\u53F7:</strong> ${data.inquiryNumber}</p>
       <p style="margin: 5px 0;"><strong>\u63D0\u4EA4\u65F6\u95F4:</strong> ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
       ${data.userCompany ? `<p style="margin: 5px 0;"><strong>\u516C\u53F8:</strong> ${data.userCompany}</p>` : ""}
       ${data.userPhone ? `<p style="margin: 5px 0;"><strong>\u7535\u8BDD:</strong> ${data.userPhone}</p>` : ""}
     </div>
-    
+
     <h3 style="color: #2563eb; margin-top: 20px;">\u8BE2\u4EF7\u4EA7\u54C1</h3>
     <table style="width: 100%; border-collapse: collapse; margin: 10px 0; background-color: white;">
       <thead>
@@ -2383,29 +2383,29 @@ function generateInquiryEmailHTML(data) {
         ${productRows}
       </tbody>
     </table>
-    
+
     ${data.userMessage ? `
     <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0;">
       <h3 style="color: #2563eb; margin-top: 0;">\u60A8\u7684\u7559\u8A00</h3>
       <p style="margin: 0; white-space: pre-wrap;">${data.userMessage}</p>
     </div>
     ` : ""}
-    
+
     <div style="background-color: #fef3c7; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #f59e0b;">
       <p style="margin: 0;"><strong>\u23F0 \u54CD\u5E94\u65F6\u95F4:</strong> \u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002</p>
     </div>
-    
+
     <h3 style="color: #2563eb; margin-top: 20px;">\u8054\u7CFB\u6211\u4EEC</h3>
     <p style="margin: 5px 0;">\u{1F4E7} \u90AE\u7BB1: <a href="mailto:sales@rowellhplc.com" style="color: #2563eb;">sales@rowellhplc.com</a></p>
     <p style="margin: 5px 0;">\u{1F4DE} \u7535\u8BDD: +86 XXX-XXXX-XXXX</p>
-    
+
     <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
-    
+
     <p style="color: #6b7280; font-size: 12px; margin: 0;">
       \u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002\u5982\u6709\u95EE\u9898\uFF0C\u8BF7\u901A\u8FC7\u4E0A\u8FF0\u8054\u7CFB\u65B9\u5F0F\u4E0E\u6211\u4EEC\u8054\u7CFB\u3002
     </p>
   </div>
-  
+
   <div style="text-align: center; padding: 20px; color: #6b7280; font-size: 12px;">
     <p style="margin: 5px 0;">\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.</p>
     <p style="margin: 5px 0;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546\uFF0C\u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5206\u6790\u89E3\u51B3\u65B9\u6848</p>
@@ -2562,17 +2562,17 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2, categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15, or: or2 } = await import("drizzle-orm");
+    const { eq: eq14, or: or2 } = await import("drizzle-orm");
     const db = await getDb2();
-    const speCategories = await db.select().from(categories2).where(eq15(categories2.slug, "spe-cartridges"));
+    const speCategories = await db.select().from(categories2).where(eq14(categories2.slug, "spe-cartridges"));
     if (speCategories.length === 0) {
       throw new Error("SPE Cartridges category not found");
     }
     const speCategoryId = speCategories[0].id;
     const existingProducts = await db.select().from(products2).where(
       or2(
-        eq15(products2.partNumber, "WATS-186007239"),
-        eq15(products2.partNumber, "WATS-186007080")
+        eq14(products2.partNumber, "WATS-186007239"),
+        eq14(products2.partNumber, "WATS-186007080")
       )
     );
     const newProducts = [
@@ -2605,7 +2605,7 @@ var adminRouter = router({
           name: product.name,
           categoryId: product.categoryId,
           updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq15(products2.partNumber, product.partNumber));
+        }).where(eq14(products2.partNumber, product.partNumber));
         results.push({ partNumber: product.partNumber, action: "updated" });
       } else {
         await db.insert(products2).values(product);
@@ -2633,17 +2633,17 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15 } = await import("drizzle-orm");
+    const { eq: eq14 } = await import("drizzle-orm");
     const db = await getDb2();
     const results = [];
     for (const update of input.updates) {
       try {
-        const existing = await db.select({ partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq15(products2.partNumber, update.partNumber)).limit(1);
+        const existing = await db.select({ partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq14(products2.partNumber, update.partNumber)).limit(1);
         if (existing.length === 0) {
           results.push({ partNumber: update.partNumber, status: "not_found" });
           continue;
         }
-        await db.update(products2).set({ metaTitle: update.metaTitle, updatedAt: /* @__PURE__ */ new Date() }).where(eq15(products2.partNumber, update.partNumber));
+        await db.update(products2).set({ metaTitle: update.metaTitle, updatedAt: /* @__PURE__ */ new Date() }).where(eq14(products2.partNumber, update.partNumber));
         results.push({
           partNumber: update.partNumber,
           status: "updated",
@@ -2662,7 +2662,9 @@ var adminRouter = router({
       adminKey: z3.string(),
       updates: z3.array(z3.object({
         id: z3.number(),
-        metaTitle: z3.string()
+        metaTitle: z3.string(),
+        metaDescription: z3.string().optional(),
+        detailedDescription: z3.string().optional()
       }))
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2671,17 +2673,24 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15 } = await import("drizzle-orm");
+    const { eq: eq14 } = await import("drizzle-orm");
     const db = await getDb2();
     const results = [];
     for (const update of input.updates) {
       try {
-        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq15(products2.id, update.id)).limit(1);
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq14(products2.id, update.id)).limit(1);
         if (existing.length === 0) {
           results.push({ id: update.id, status: "not_found" });
           continue;
         }
-        await db.update(products2).set({ metaTitle: update.metaTitle }).where(eq15(products2.id, update.id));
+        const setFields = { metaTitle: update.metaTitle };
+        if (update.metaDescription !== void 0) {
+          setFields.metaDescription = update.metaDescription;
+        }
+        if (update.detailedDescription !== void 0) {
+          setFields.detailedDescription = update.detailedDescription;
+        }
+        await db.update(products2).set(setFields).where(eq14(products2.id, update.id));
         results.push({
           id: update.id,
           partNumber: existing[0].partNumber,
@@ -2692,6 +2701,49 @@ var adminRouter = router({
       } catch (err) {
         results.push({ id: update.id, status: "error", error: String(err) });
       }
+    }
+    return { success: true, results };
+  }),
+  // Correct verified product dimensions and display names only; intentionally narrow to prevent broad product edits.
+  batchCorrectProductDimensions: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      updates: z3.array(z3.object({
+        id: z3.number(),
+        name: z3.string().min(3).max(255).optional(),
+        columnLength: z3.string().regex(/^\d+(?:\.\d+)?mm$/),
+        columnLengthNum: z3.number().positive()
+      })).min(1).max(50)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq14 } = await import("drizzle-orm");
+    const db = await getDb2();
+    const results = [];
+    for (const update of input.updates) {
+      const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, name: products2.name, columnLength: products2.columnLength }).from(products2).where(eq14(products2.id, update.id)).limit(1);
+      if (existing.length === 0) {
+        results.push({ id: update.id, status: "not_found" });
+        continue;
+      }
+      await db.update(products2).set({
+        ...update.name ? { name: update.name } : {},
+        columnLength: update.columnLength,
+        columnLengthNum: update.columnLengthNum
+      }).where(eq14(products2.id, update.id));
+      results.push({
+        id: update.id,
+        partNumber: existing[0].partNumber,
+        status: "updated",
+        oldName: existing[0].name,
+        newName: update.name ?? existing[0].name,
+        oldColumnLength: existing[0].columnLength,
+        newColumnLength: update.columnLength
+      });
     }
     return { success: true, results };
   }),
@@ -2706,26 +2758,26 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2, categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15, sql: sql6 } = await import("drizzle-orm");
+    const { eq: eq14, sql: sql6 } = await import("drizzle-orm");
     const db = await getDb2();
     const totalProductsResult = await db.select({ count: sql6`count(*)` }).from(products2);
     const totalProducts = totalProductsResult[0].count;
-    const activeProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq15(products2.status, "active"));
+    const activeProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq14(products2.status, "active"));
     const activeProducts = activeProductsResult[0].count;
     const categoryStats = await db.select({
       categoryId: products2.categoryId,
       categoryName: categories2.nameEn,
       count: sql6`count(*)`
-    }).from(products2).leftJoin(categories2, eq15(products2.categoryId, categories2.id)).groupBy(products2.categoryId, categories2.nameEn);
+    }).from(products2).leftJoin(categories2, eq14(products2.categoryId, categories2.id)).groupBy(products2.categoryId, categories2.nameEn);
     const nullCategoryResult = await db.select({ count: sql6`count(*)` }).from(products2).where(sql6`${products2.categoryId} IS NULL`);
     const nullCategoryCount = nullCategoryResult[0].count;
     const duplicates = await db.execute(sql6`
-        SELECT part_number, COUNT(*) as count 
-        FROM products 
-        GROUP BY part_number 
+        SELECT part_number, COUNT(*) as count
+        FROM products
+        GROUP BY part_number
         HAVING count > 1
       `);
-    const watersProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq15(products2.brand, "Waters"));
+    const watersProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq14(products2.brand, "Waters"));
     const watersProducts = watersProductsResult[0].count;
     return {
       totalProducts,
@@ -2800,9 +2852,9 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15, desc: desc3 } = await import("drizzle-orm");
+    const { eq: eq14, desc: desc4 } = await import("drizzle-orm");
     const db = await getDb2();
-    const items = await db.select({ id: resources2.id, title: resources2.title, slug: resources2.slug, publishedAt: resources2.publishedAt, status: resources2.status }).from(resources2).where(eq15(resources2.status, "draft")).orderBy(desc3(resources2.id)).limit(input.limit || 200);
+    const items = await db.select({ id: resources2.id, title: resources2.title, slug: resources2.slug, publishedAt: resources2.publishedAt, status: resources2.status }).from(resources2).where(eq14(resources2.status, "draft")).orderBy(desc4(resources2.id)).limit(input.limit || 200);
     return { success: true, count: items.length, items };
   }),
   // Batch update publishedAt dates for resources
@@ -2820,17 +2872,52 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15 } = await import("drizzle-orm");
+    const { eq: eq14 } = await import("drizzle-orm");
     const db = await getDb2();
     let updated = 0;
     for (const update of input.updates) {
-      await db.update(resources2).set({ publishedAt: update.publishedAt }).where(eq15(resources2.id, update.id));
+      await db.update(resources2).set({ publishedAt: update.publishedAt }).where(eq14(resources2.id, update.id));
       updated++;
     }
     return { success: true, updated };
   }),
-  // Batch set product status (active/inactive) by product ID list
-  // Used for bulk product discontinuation/reactivation operations
+  // Batch update resource/article content by numeric ID. This is used for
+  // audited editorial updates such as adding topic-relevant internal links.
+  batchUpdateResourceContents: publicProcedure.input((raw) => {
+    return z3.object({
+      adminKey: z3.string(),
+      updates: z3.array(z3.object({
+        id: z3.number(),
+        content: z3.string().min(1)
+      })).min(1).max(150)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq14 } = await import("drizzle-orm");
+    const db = await getDb2();
+    const results = [];
+    const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
+    for (const update of input.updates) {
+      try {
+        await db.update(resources2).set({ content: update.content, updatedAt: now }).where(eq14(resources2.id, update.id));
+        results.push({ id: update.id, status: "updated" });
+      } catch (error) {
+        console.error("[Admin] Failed to update resource content:", update.id, error);
+        results.push({ id: update.id, status: "error" });
+      }
+    }
+    return {
+      success: results.every((result) => result.status === "updated"),
+      totalUpdated: results.filter((result) => result.status === "updated").length,
+      results
+    };
+  }),
+  // Batch set product status (active/inactive) by product ID list.
+  // Used for bulk product discontinuation/reactivation operations.
   batchSetProductStatus: publicProcedure.input((raw) => {
     return z3.object({
       adminKey: z3.string(),
@@ -2989,10 +3076,10 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15 } = await import("drizzle-orm");
+    const { eq: eq14 } = await import("drizzle-orm");
     const db = await getDb2();
     const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
-    const result = await db.update(resources2).set({ status: "published", updatedAt: now }).where(eq15(resources2.status, "draft"));
+    const result = await db.update(resources2).set({ status: "published", updatedAt: now }).where(eq14(resources2.status, "draft"));
     return { success: true, message: "All draft resources have been published." };
   })
 });
@@ -3042,12 +3129,12 @@ var addGlycoWorksSimpleRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15, or: or2 } = await import("drizzle-orm");
+    const { eq: eq14, or: or2 } = await import("drizzle-orm");
     const db = await getDb2();
     const existingProducts = await db.select().from(products2).where(
       or2(
-        eq15(products2.partNumber, "186007239"),
-        eq15(products2.partNumber, "186007080")
+        eq14(products2.partNumber, "186007239"),
+        eq14(products2.partNumber, "186007080")
       )
     );
     const newProducts = [
@@ -3119,7 +3206,7 @@ var updateProductCategoryRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq15, inArray: inArray2, sql: sql6 } = await import("drizzle-orm");
+    const { eq: eq14, inArray: inArray2, sql: sql6 } = await import("drizzle-orm");
     const db = await getDb2();
     const results = [];
     for (const partNumber of input.partNumbers) {
@@ -3437,7 +3524,7 @@ var getOrphanProductsRouter = router({
       const [rows] = await connection.execute(`
           SELECT id, productId, partNumber, brand, productName, category_id, status
           FROM products
-          WHERE status = 'active' 
+          WHERE status = 'active'
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
         `);
@@ -3508,7 +3595,7 @@ var batchFixOrphanProductsRouter = router({
       const [orphanProducts] = await connection.execute(`
           SELECT id, productId, partNumber, brand, productName, category_id, status
           FROM products
-          WHERE status = 'active' 
+          WHERE status = 'active'
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
         `);
@@ -3618,14 +3705,14 @@ var batchFixOrphanPaginatedRouter = router({
       const [countResult] = await connection.execute(`
           SELECT COUNT(*) as total
           FROM products
-          WHERE status = 'active' 
+          WHERE status = 'active'
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
         `);
       const totalOrphans = countResult[0].total;
       const [orphanProducts] = await connection.execute(`
           SELECT id, productId, partNumber, brand, productName, category_id, status
           FROM products
-          WHERE status = 'active' 
+          WHERE status = 'active'
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
           LIMIT ? OFFSET ?
@@ -3710,7 +3797,7 @@ var exportAllProductsRouter = router({
         }
       });
       const [products2] = await connection.execute(`
-        SELECT 
+        SELECT
           p.id,
           p.product_id,
           p.part_number,
@@ -3873,18 +3960,18 @@ var diagnoseDatabaseRouter = router({
         products_columns: []
       };
       const [categories2] = await connection.execute(`
-        SELECT id, name_en, slug 
-        FROM categories 
-        WHERE name_en LIKE '%SPE%' 
-           OR name_en LIKE '%Well%' 
-           OR name_en LIKE '%Plate%' 
+        SELECT id, name_en, slug
+        FROM categories
+        WHERE name_en LIKE '%SPE%'
+           OR name_en LIKE '%Well%'
+           OR name_en LIKE '%Plate%'
            OR name_en LIKE '%Filter%'
         ORDER BY name_en
       `);
       results.categories = categories2;
       const [bondElutProducts] = await connection.execute(`
         SELECT id, productId, name, category_id, status
-        FROM products 
+        FROM products
         WHERE name LIKE '%Bond Elut%'
         LIMIT 5
       `);
@@ -3929,8 +4016,8 @@ var findPlateCategoriesRouter = router({
       });
       const [categories2] = await connection.execute(`
         SELECT id, name_en, slug
-        FROM categories 
-        WHERE LOWER(name_en) LIKE '%plate%' 
+        FROM categories
+        WHERE LOWER(name_en) LIKE '%plate%'
            OR LOWER(name_en) LIKE '%well%'
            OR LOWER(slug) LIKE '%plate%'
            OR LOWER(slug) LIKE '%well%'
@@ -3938,8 +4025,8 @@ var findPlateCategoriesRouter = router({
       `);
       const [products2] = await connection.execute(`
         SELECT id, productId, name, category_id, status
-        FROM products 
-        WHERE name LIKE '%96%Well%' 
+        FROM products
+        WHERE name LIKE '%96%Well%'
            OR name LIKE '%Microplate%'
            OR name LIKE '%96-Well%'
         LIMIT 10
@@ -3973,7 +4060,7 @@ var getAllCategoriesRouter = router({
       });
       const [categories2] = await connection.execute(`
         SELECT id, name_en, slug, parent_id
-        FROM categories 
+        FROM categories
         ORDER BY name_en
       `);
       await connection.end();
@@ -4012,7 +4099,7 @@ var fixProductCategoriesFinalRouter = router({
           UPDATE product_categories pc
           INNER JOIN products p ON pc.product_id = p.id
           SET pc.category_id = 16
-          WHERE (p.name LIKE '%96%Well%' 
+          WHERE (p.name LIKE '%96%Well%'
              OR p.name LIKE '%Microplate%'
              OR p.name LIKE '%96-Well%')
             AND pc.category_id != 16
@@ -4022,7 +4109,7 @@ var fixProductCategoriesFinalRouter = router({
         await connection.execute(`
           UPDATE products
           SET category_id = 16
-          WHERE (name LIKE '%96%Well%' 
+          WHERE (name LIKE '%96%Well%'
              OR name LIKE '%Microplate%'
              OR name LIKE '%96-Well%')
             AND category_id != 16
@@ -4036,7 +4123,7 @@ var fixProductCategoriesFinalRouter = router({
           UPDATE product_categories pc
           INNER JOIN products p ON pc.product_id = p.id
           SET pc.category_id = 18
-          WHERE (p.name LIKE '%Syringe Filter%' 
+          WHERE (p.name LIKE '%Syringe Filter%'
              OR p.productId LIKE 'PHEN-AF%')
             AND pc.category_id != 18
             AND p.status = 'active'
@@ -4045,7 +4132,7 @@ var fixProductCategoriesFinalRouter = router({
         await connection.execute(`
           UPDATE products
           SET category_id = 18
-          WHERE (name LIKE '%Syringe Filter%' 
+          WHERE (name LIKE '%Syringe Filter%'
              OR productId LIKE 'PHEN-AF%')
             AND category_id != 18
             AND status = 'active'
@@ -4089,7 +4176,7 @@ var fixNullCategoriesRouter = router({
         const [wellPlatesResult] = await connection.execute(`
           UPDATE products
           SET category_id = 16
-          WHERE (name LIKE '%96%Well%' 
+          WHERE (name LIKE '%96%Well%'
              OR name LIKE '%Microplate%'
              OR name LIKE '%96-Well%'
              OR name LIKE '%well-plate%')
@@ -4104,7 +4191,7 @@ var fixNullCategoriesRouter = router({
         const [filtersResult] = await connection.execute(`
           UPDATE products
           SET category_id = 18
-          WHERE (name LIKE '%Syringe Filter%' 
+          WHERE (name LIKE '%Syringe Filter%'
              OR productId LIKE 'PHEN-AF%')
             AND category_id != 18
             AND status = 'active'
@@ -4143,7 +4230,7 @@ var checkSyringeFiltersRouter = router({
       const [products2] = await connection.execute(`
         SELECT id, productId, name, category_id, status
         FROM products
-        WHERE (name LIKE '%Syringe Filter%' 
+        WHERE (name LIKE '%Syringe Filter%'
            OR productId LIKE 'PHEN-AF%')
           AND status = 'active'
         ORDER BY category_id, name
@@ -4178,7 +4265,7 @@ var findGcColumnsRouter = router({
       const [products2] = await connection.execute(`
         SELECT id, productId, name, category_id, status
         FROM products
-        WHERE (name LIKE '%GC Column%' 
+        WHERE (name LIKE '%GC Column%'
            OR name LIKE '%GC column%'
            OR name LIKE '%Gas Chromatography%'
            OR name LIKE '% GC %'
@@ -4188,13 +4275,13 @@ var findGcColumnsRouter = router({
         LIMIT 200
       `);
       const [categoryDist] = await connection.execute(`
-        SELECT 
+        SELECT
           p.category_id,
           c.name_en as category_name,
           COUNT(*) as product_count
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.id
-        WHERE (p.name LIKE '%GC Column%' 
+        WHERE (p.name LIKE '%GC Column%'
            OR p.name LIKE '%GC column%'
            OR p.name LIKE '%Gas Chromatography%'
            OR p.name LIKE '% GC %'
@@ -4316,10 +4403,10 @@ var reclassifyGcProductsRouter = router({
       };
       try {
         const [capillaryResult] = await connection.execute(`
-          UPDATE products 
+          UPDATE products
           SET category_id = ?
-          WHERE (name LIKE '%Capillary GC Column%' 
-             OR name LIKE '%GC Cap.%' 
+          WHERE (name LIKE '%Capillary GC Column%'
+             OR name LIKE '%GC Cap.%'
              OR name LIKE '%GC Capillary%'
              OR name LIKE '%GC Metal Capillary%')
           AND name LIKE '%GC%'
@@ -4330,7 +4417,7 @@ var reclassifyGcProductsRouter = router({
       }
       try {
         const [packedResult] = await connection.execute(`
-          UPDATE products 
+          UPDATE products
           SET category_id = ?
           WHERE name LIKE '%Packed GC Column%'
           AND name LIKE '%GC%'
@@ -4341,7 +4428,7 @@ var reclassifyGcProductsRouter = router({
       }
       try {
         const [guardResult] = await connection.execute(`
-          UPDATE products 
+          UPDATE products
           SET category_id = ?
           WHERE name LIKE '%GUARDIAN%'
           AND name LIKE '%GC%'
@@ -4352,7 +4439,7 @@ var reclassifyGcProductsRouter = router({
       }
       try {
         const [otherResult] = await connection.execute(`
-          UPDATE products 
+          UPDATE products
           SET category_id = ?
           WHERE name LIKE '%GC Column%'
           AND category_id NOT IN (?, ?, ?)
@@ -4402,7 +4489,7 @@ var fixRemainingGcRouter = router({
       ];
       const CAPILLARY_GC_CAT_ID = 30002;
       const [result] = await connection.execute(`
-        UPDATE products 
+        UPDATE products
         SET category_id = ?
         WHERE id IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `, [CAPILLARY_GC_CAT_ID, ...productIds]);
@@ -4500,11 +4587,11 @@ var updateYmcTosohRouter = router({
       console.log("[UPDATE] Starting database update...");
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15 } = await import("drizzle-orm");
+      const { eq: eq14 } = await import("drizzle-orm");
       const db = await getDb2();
       for (const row of allData) {
         try {
-          const existingProducts = await db.select().from(products2).where(eq15(products2.partNumber, row.productCode)).limit(1);
+          const existingProducts = await db.select().from(products2).where(eq14(products2.partNumber, row.productCode)).limit(1);
           if (existingProducts.length === 0) {
             console.log(`[UPDATE] Product not found: ${row.productCode}`);
             notFoundCount++;
@@ -4521,7 +4608,7 @@ var updateYmcTosohRouter = router({
             usp: row.usp || null,
             description: row.description || null,
             applications: row.applications || null
-          }).where(eq15(products2.partNumber, row.productCode));
+          }).where(eq14(products2.partNumber, row.productCode));
           updatedCount++;
           if (updatedCount % 20 === 0) {
             console.log(`[UPDATE] Progress: ${updatedCount}/${allData.length} products updated`);
@@ -5289,9 +5376,9 @@ var appRouter = router({
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15 } = await import("drizzle-orm");
+      const { eq: eq14 } = await import("drizzle-orm");
       const db = await getDb2();
-      const result = await db.select().from(products2).where(eq15(products2.slug, input)).limit(1);
+      const result = await db.select().from(products2).where(eq14(products2.slug, input)).limit(1);
       return result[0] || null;
     }),
     getRelated: publicProcedure.input((raw) => {
@@ -5302,9 +5389,9 @@ var appRouter = router({
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15, and: and5, or: or2, ne, sql: sql6 } = await import("drizzle-orm");
+      const { eq: eq14, and: and5, or: or2, ne, sql: sql6 } = await import("drizzle-orm");
       const db = await getDb2();
-      const currentProduct = await db.select().from(products2).where(eq15(products2.productId, input.productId)).limit(1);
+      const currentProduct = await db.select().from(products2).where(eq14(products2.productId, input.productId)).limit(1);
       if (!currentProduct || currentProduct.length === 0) {
         return [];
       }
@@ -5313,14 +5400,14 @@ var appRouter = router({
         and5(
           ne(products2.id, product.id),
           // Exclude current product
-          eq15(products2.status, "active"),
+          eq14(products2.status, "active"),
           // Only active products
           or2(
-            eq15(products2.brand, product.brand),
+            eq14(products2.brand, product.brand),
             // Same brand
-            eq15(products2.phaseType, product.phaseType),
+            eq14(products2.phaseType, product.phaseType),
             // Same phase type
-            eq15(products2.usp, product.usp),
+            eq14(products2.usp, product.usp),
             // Same USP
             // Similar particle size (within 1 µm)
             product.particleSize ? sql6`ABS(${products2.particleSize} - ${product.particleSize}) <= 1` : void 0
@@ -5342,11 +5429,11 @@ var appRouter = router({
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15, desc: desc3, or: or2, sql: sql6, and: and5 } = await import("drizzle-orm");
+      const { eq: eq14, desc: desc4, or: or2, sql: sql6, and: and5 } = await import("drizzle-orm");
       const db = await getDb2();
       const conditions = [];
       if (input.status !== "all") {
-        conditions.push(eq15(customerMessages2.status, input.status));
+        conditions.push(eq14(customerMessages2.status, input.status));
       }
       if (input.search) {
         const searchTerm = `%${input.search}%`;
@@ -5362,7 +5449,7 @@ var appRouter = router({
       const whereClause = conditions.length > 0 ? and5(...conditions) : void 0;
       const countResult = await db.select({ count: sql6`count(*)` }).from(customerMessages2).where(whereClause);
       const total = countResult[0]?.count || 0;
-      const messages = await db.select().from(customerMessages2).where(whereClause).orderBy(desc3(customerMessages2.createdAt)).limit(input.pageSize).offset((input.page - 1) * input.pageSize);
+      const messages = await db.select().from(customerMessages2).where(whereClause).orderBy(desc4(customerMessages2.createdAt)).limit(input.pageSize).offset((input.page - 1) * input.pageSize);
       return {
         messages,
         total,
@@ -5377,15 +5464,15 @@ var appRouter = router({
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15 } = await import("drizzle-orm");
+      const { eq: eq14 } = await import("drizzle-orm");
       const db = await getDb2();
-      await db.update(customerMessages2).set({ status: input.status }).where(eq15(customerMessages2.id, input.id));
+      await db.update(customerMessages2).set({ status: input.status }).where(eq14(customerMessages2.id, input.id));
       return { success: true };
     }),
     getStats: publicProcedure.query(async () => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15, sql: sql6 } = await import("drizzle-orm");
+      const { eq: eq14, sql: sql6 } = await import("drizzle-orm");
       const db = await getDb2();
       const stats = await db.select({
         status: customerMessages2.status,
@@ -5541,7 +5628,7 @@ var appRouter = router({
         return { items: [], total: 0, page, pageSize };
       }
       const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15, like: like2, and: and5, desc: desc3 } = await import("drizzle-orm");
+      const { eq: eq14, like: like2, and: and5, desc: desc4 } = await import("drizzle-orm");
       const conditions = [];
       if (input?.search) {
         conditions.push(
@@ -5549,13 +5636,13 @@ var appRouter = router({
         );
       }
       if (input?.category) {
-        conditions.push(eq15(resources2.category, input.category));
+        conditions.push(eq14(resources2.category, input.category));
       }
       const whereClause = conditions.length > 0 ? and5(...conditions) : void 0;
       const allResources = await db.select().from(resources2).where(whereClause);
       const total = allResources.length;
       const offset = (page - 1) * pageSize;
-      const results = await db.select().from(resources2).where(whereClause).orderBy(desc3(resources2.publishedAt)).limit(pageSize).offset(offset);
+      const results = await db.select().from(resources2).where(whereClause).orderBy(desc4(resources2.publishedAt)).limit(pageSize).offset(offset);
       return {
         items: results,
         total,
@@ -5574,8 +5661,8 @@ var appRouter = router({
         return null;
       }
       const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15 } = await import("drizzle-orm");
-      const results = await db.select().from(resources2).where(eq15(resources2.slug, input.slug)).limit(1);
+      const { eq: eq14 } = await import("drizzle-orm");
+      const results = await db.select().from(resources2).where(eq14(resources2.slug, input.slug)).limit(1);
       return results.length > 0 ? results[0] : null;
     }),
     listCategories: publicProcedure.query(async () => {
@@ -5604,7 +5691,7 @@ var appRouter = router({
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const db = await getDb2();
       const [rows] = await db.execute(`
-          SELECT 
+          SELECT
             c.id,
             c.name,
             c.name_en as nameEn,
@@ -5632,7 +5719,7 @@ var appRouter = router({
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const db = await getDb2();
       const [rows] = await db.execute(`
-          SELECT 
+          SELECT
             brand,
             COUNT(*) as productCount
           FROM products
@@ -5786,7 +5873,105 @@ var vite_config_default = defineConfig({
 // server/_core/vite.ts
 init_db();
 init_schema();
-import { eq as eq9 } from "drizzle-orm";
+import { desc as desc2, eq as eq9 } from "drizzle-orm";
+
+// shared/categoryLandingContent.ts
+var CATEGORY_LANDING_PROFILES = {
+  "c18-columns": {
+    name: "C18 HPLC Columns",
+    catalogSlug: "c18-columns",
+    eyebrow: "Reversed-Phase HPLC Column Selection",
+    heading: "C18 HPLC Columns for Reliable Reversed-Phase Separations",
+    summary: "Browse ROWELL's C18 HPLC column range and use practical selection factors to match stationary phase, dimensions, particle size, and method requirements.",
+    overview: "C18 columns are widely used in reversed-phase HPLC because their octadecyl-bonded stationary phase provides hydrophobic retention for many small-molecule and moderately non-polar analytes. A productive starting point is to align the column chemistry with the analyte and mobile-phase conditions, then refine dimensions and particle size for the required resolution, analysis time, and system pressure.",
+    selectionPoints: [
+      "Start with the analytical goal: screening, method development, routine QC, or a validated transfer.",
+      "Match internal diameter and column length to sample throughput, sensitivity, and instrument configuration.",
+      "Confirm particle size, pore size, and pH operating range against the method conditions before purchase."
+    ],
+    faq: [
+      { question: "When is a C18 column a practical starting point?", answer: "A C18 phase is commonly evaluated first for reversed-phase separations where analytes show useful hydrophobic retention. Final selection should be confirmed during method development with the intended mobile phase and sample matrix." },
+      { question: "Which dimensions should I compare first?", answer: "Compare column length, internal diameter, particle size, and pore size with the existing method and instrument limits. These parameters affect retention, efficiency, solvent consumption, and backpressure." },
+      { question: "How should I protect a C18 analytical column?", answer: "Use appropriate sample preparation and, where compatible with the analytical column, a guard column or guard cartridge. Replace protective components according to method performance rather than a fixed unsupported interval." }
+    ]
+  },
+  "guard-columns": {
+    name: "HPLC Guard Columns",
+    catalogSlug: "guard-columns",
+    eyebrow: "Analytical Column Protection",
+    heading: "HPLC Guard Columns and Guard Cartridges for Method Protection",
+    summary: "Select compatible HPLC guard columns and cartridges to help protect analytical columns from particulates and strongly retained sample components.",
+    overview: "A guard column is placed before an analytical HPLC column to provide a replaceable protection stage. It can help reduce the impact of particulates and matrix components that may otherwise accumulate at the analytical-column inlet. Compatibility matters: the guard format, internal diameter, and stationary-phase chemistry should be considered together with the analytical method.",
+    selectionPoints: [
+      "Use a guard phase that is compatible with the analytical column chemistry and method objective.",
+      "Check the hardware format, connection type, internal diameter, and pressure rating before installation.",
+      "Combine guard-column use with appropriate sample filtration or cleanup for the matrix being analyzed."
+    ],
+    faq: [
+      { question: "Does every HPLC method require a guard column?", answer: "Not every method requires one. A guard column is most useful when the sample matrix or injection history creates a credible risk of contamination at the analytical-column inlet." },
+      { question: "Should the guard chemistry match the analytical column?", answer: "Matching or method-compatible chemistry is generally the safest starting point because it reduces the chance that the guard changes selectivity before the analytical separation." },
+      { question: "When should a guard cartridge be changed?", answer: "Use observed method indicators such as pressure change, peak-shape deterioration, retention shifts, or recovery of performance after replacement. The appropriate interval depends on the sample matrix and workflow." }
+    ]
+  },
+  "gc-columns": {
+    name: "GC Columns",
+    catalogSlug: "gc-columns",
+    eyebrow: "Capillary GC Column Selection",
+    heading: "GC Capillary Columns for Method Development and Routine Analysis",
+    summary: "Explore ROWELL's GC column range and compare stationary-phase polarity, column dimensions, film thickness, and temperature requirements for your analytical method.",
+    overview: "GC column selection begins with the analyte volatility, polarity, matrix, detector, and separation objective. Stationary-phase polarity influences selectivity, while internal diameter, length, and film thickness influence retention, efficiency, sample capacity, and flow requirements. Selecting a column should therefore be a method-level decision rather than a brand-name substitution alone.",
+    selectionPoints: [
+      "Compare stationary-phase polarity with the analytes and the selectivity required by the method.",
+      "Review column length, internal diameter, and film thickness together rather than in isolation.",
+      "Confirm the planned oven program and inlet conditions are compatible with the column temperature limits."
+    ],
+    faq: [
+      { question: "What drives GC column selectivity?", answer: "Stationary-phase chemistry is a central driver of selectivity. Analyte properties, temperature programming, carrier-gas conditions, and sample introduction also affect the observed separation." },
+      { question: "How does film thickness affect a GC method?", answer: "Film thickness can affect retention and sample capacity, especially for volatile analytes. The appropriate choice depends on the method objective and operating conditions." },
+      { question: "Can I transfer a GC method to a different column?", answer: "Method transfer should be evaluated experimentally. Match the phase type and dimensions as closely as possible, then verify retention, resolution, and suitability criteria under the intended conditions." }
+    ]
+  },
+  "kinetex-pfp-columns": {
+    name: "Phenomenex Kinetex PFP Columns",
+    catalogSlug: "kinetex-pfp-columns",
+    catalogHref: "/products?search=PFP",
+    eyebrow: "PFP / USP L43 Reversed-Phase Column Selection",
+    heading: "Phenomenex Kinetex PFP Columns for Reversed-Phase HPLC Method Evaluation",
+    summary: "Explore ROWELL's currently listed Kinetex PFP HPLC columns and compare verified dimensions, particle size, pore size, and PFP (USP L43) chemistry for your method review.",
+    overview: "Kinetex PFP columns use pentafluorophenyl stationary-phase chemistry in reversed-phase HPLC. A PFP option can be evaluated when a method team is reviewing selectivity choices alongside conventional reversed-phase chemistries. Product selection should begin with the analytical objective, sample matrix, and method conditions, then compare the available particle size, internal diameter, and column length with the instrument and method requirements.",
+    selectionPoints: [
+      "Confirm that a PFP selectivity evaluation is appropriate for the analytes and the intended method objective before making a substitution.",
+      "Compare particle size, pore size, internal diameter, and column length with the current method and instrument pressure limits.",
+      "Use the exact part number when reviewing manufacturer documentation, preparing a method evaluation, or requesting a quote."
+    ],
+    faq: [
+      { question: "What is a PFP HPLC stationary phase?", answer: "PFP refers to pentafluorophenyl stationary-phase chemistry. It is used in reversed-phase LC and can be evaluated when method development requires a different selectivity option from a conventional alkyl phase." },
+      { question: "What should be compared when selecting a Kinetex PFP column?", answer: "Compare the intended stationary-phase chemistry, particle size, pore size, internal diameter, and column length with the method objective, sample matrix, and instrument operating limits." },
+      { question: "Can a PFP column replace a C18 column without method work?", answer: "A change of stationary-phase chemistry can change selectivity. Any replacement should be evaluated using the actual method conditions and the method\u2019s suitability criteria." }
+    ]
+  },
+  "spe-cartridges": {
+    name: "SPE Cartridges",
+    catalogSlug: "spe-cartridges",
+    eyebrow: "Solid-Phase Extraction Selection",
+    heading: "SPE Cartridges for Targeted Sample Cleanup and Concentration",
+    summary: "Choose SPE cartridges by considering analyte chemistry, sample matrix, cleanup objective, sorbent selectivity, and elution strategy.",
+    overview: "Solid-phase extraction can be used to reduce matrix interference, concentrate analytes, and prepare samples before chromatographic analysis. A reliable selection process starts by defining the analyte properties and sample matrix, then selecting a sorbent mechanism and workflow that supports the intended retention, wash, and elution steps. Method suitability should be demonstrated with representative samples and recovery checks.",
+    selectionPoints: [
+      "Define the analytes, sample matrix, target concentration range, and required cleanup before choosing sorbent chemistry.",
+      "Compare sorbent mass and cartridge format with expected sample load and the planned loading volume.",
+      "Validate conditioning, loading, wash, and elution steps using recovery and matrix-effect data for the actual method."
+    ],
+    faq: [
+      { question: "How do I choose an SPE sorbent?", answer: "Start with analyte polarity, ionization behavior, and matrix composition. Reversed-phase, normal-phase, ion-exchange, and mixed-mode options should be compared against the intended retention and cleanup mechanism." },
+      { question: "Can one SPE cartridge serve every sample type?", answer: "No. Cartridge selection and workflow conditions should be evaluated for the actual matrix and analyte set, because matrix composition can materially affect retention and recovery." },
+      { question: "What should be checked after selecting an SPE cartridge?", answer: "Confirm recovery, precision, matrix effects, and blank performance under the planned conditioning, loading, wash, and elution steps before routine use." }
+    ]
+  }
+};
+var CATEGORY_LANDING_SLUGS = Object.keys(CATEGORY_LANDING_PROFILES);
+
+// server/_core/vite.ts
 var SITE_URL = "https://www.rowellhplc.com";
 function extractSlugFromPath(urlPath) {
   const match = urlPath.match(/^\/resources\/([^\/\?]+)/);
@@ -5794,6 +5979,10 @@ function extractSlugFromPath(urlPath) {
 }
 function extractProductSlugFromPath(urlPath) {
   const match = urlPath.match(/^\/products\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+function extractCategoryLandingSlug(urlPath) {
+  const match = urlPath.match(/^\/categories\/([^\/\?]+)/);
   return match ? match[1] : null;
 }
 function escapeHtml(text2) {
@@ -5805,6 +5994,13 @@ function escapeHtml(text2) {
     "'": "&#039;"
   };
   return text2.replace(/[&<>"']/g, (m) => map[m]);
+}
+function serializeJsonLd(data) {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
+}
+function toAbsoluteUrl(value) {
+  if (/^https?:\/\//i.test(value)) return value;
+  return `${SITE_URL}${value.startsWith("/") ? "" : "/"}${value}`;
 }
 async function injectArticleSeoMetaTags(template, req, overridePath) {
   const slug = extractSlugFromPath(overridePath || req.path);
@@ -5821,41 +6017,85 @@ async function injectArticleSeoMetaTags(template, req, overridePath) {
       return template;
     }
     const article = articles2[0];
-    const host = req.get("host") || "www.rowellhplc.com";
-    const fullUrl = `https://${host}${req.originalUrl}`;
-    const SITE_TITLE2 = "ROWELL";
-    const SITE_LOGO2 = "https://www.rowellhplc.com/logo.png";
-    const title = article.title || SITE_TITLE2;
+    const canonicalPath = (overridePath || req.originalUrl).split("?")[0];
+    const fullUrl = `${SITE_URL}${canonicalPath}`;
+    const SITE_TITLE = "ROWELL";
+    const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
+    const title = article.title || SITE_TITLE;
     const description = article.metaDescription || article.excerpt || "";
-    const image = article.coverImage || SITE_LOGO2;
+    const image = article.coverImage ? toAbsoluteUrl(article.coverImage) : SITE_LOGO;
+    const articleText = (article.content || description).replace(/```[\s\S]*?```/g, " ").replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/<[^>]*>/g, " ").replace(/[#>*_`]/g, " ").replace(/\s+/g, " ").trim().slice(0, 1800);
+    const internalLinkMatch = (article.content || "").match(
+      /\[([^\]]{1,120})\]\((\/products(?:\?[A-Za-z0-9%=&._-]+)?)\)/
+    );
+    const internalCatalogLink = internalLinkMatch ? { label: internalLinkMatch[1], href: internalLinkMatch[2] } : null;
+    const publishedAt = article.publishedAt ? new Date(article.publishedAt).toISOString() : (/* @__PURE__ */ new Date()).toISOString();
+    const modifiedAt = article.updatedAt ? new Date(article.updatedAt).toISOString() : publishedAt;
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": fullUrl },
+          "headline": title,
+          "description": description,
+          "image": [image],
+          "datePublished": publishedAt,
+          "dateModified": modifiedAt,
+          "author": {
+            "@type": "Organization",
+            "name": article.author || "ROWELL Expert",
+            "url": "https://www.rowellhplc.com/about"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "ROWELL",
+            "logo": { "@type": "ImageObject", "url": SITE_LOGO }
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.rowellhplc.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://www.rowellhplc.com/resources" },
+            { "@type": "ListItem", "position": 3, "name": title, "item": fullUrl }
+          ]
+        }
+      ]
+    };
     const metaTags = `
-    <title>${escapeHtml(title)} | ${SITE_TITLE2}</title>
+    <title>${escapeHtml(title)} | ${SITE_TITLE}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${fullUrl}" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="${fullUrl}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:image" content="${image}" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="${fullUrl}" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
     <meta name="twitter:image" content="${image}" />
-    
+
     <!-- Article metadata -->
     <meta property="article:published_time" content="${article.publishedAt || ""}" />
-    <meta property="article:author" content="${article.author || "ROWELL Team"}" />`;
+    <meta property="article:author" content="${article.author || "ROWELL Team"}" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
     template = template.replace(/<title>.*?<\/title>/i, "");
     template = template.replace(
       /(<head[^>]*>)/i,
       `$1${metaTags}`
     );
-    console.log(`[SEO] Injected article meta tags for: ${article.title}`);
+    template = template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"><article><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p>${articleText ? `<p>${escapeHtml(articleText)}</p>` : ""}${internalCatalogLink ? `<p><a href="${internalCatalogLink.href}">${escapeHtml(internalCatalogLink.label)}</a></p>` : ""}</article></div>`
+    );
+    console.log(`[SEO] Injected article meta tags and content fallback for: ${article.title}`);
     return template;
   } catch (error) {
     console.error("[SEO] Error injecting article meta tags:", error);
@@ -5883,15 +6123,16 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
       return template;
     }
     const product = result[0];
-    const host = req.get("host") || "www.rowellhplc.com";
-    const fullUrl = `https://${host}${req.originalUrl}`;
+    const canonicalPath = (overridePath || req.originalUrl).split("?")[0];
+    const fullUrl = `${SITE_URL}${canonicalPath}`;
     const rawName = product.name || "";
     const brandPrefix = product.brand || "";
     const cleanName = brandPrefix && rawName.toLowerCase().startsWith(brandPrefix.toLowerCase()) ? rawName.slice(brandPrefix.length).replace(/^[\s|,\-]+/, "") : rawName;
     const title = product.metaTitle || `${brandPrefix} ${cleanName} ${product.partNumber || ""} | ROWELL`.trim();
     const description = product.metaDescription || `Buy ${brandPrefix} ${cleanName} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
     const brandFolder = (product.brand || "").replace(/\s+/g, "");
-    const imageUrl = product.imageUrl || `${SITE_URL}/product-images/${brandFolder}/${product.partNumber}.jpg`;
+    const rawImageUrl = product.imageUrl || `/product-images/${brandFolder}/${product.partNumber}.jpg`;
+    const imageUrl = toAbsoluteUrl(rawImageUrl);
     const specsRows = [
       product.particleSize ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : "",
       product.poreSize ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : "",
@@ -5924,67 +6165,32 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
       },
       "image": imageUrl,
       "url": fullUrl,
+      // ROWELL is a request-for-quote B2B catalog. Do not publish a fabricated
+      // retail price, shipping promise, or return policy in structured data.
       "offers": {
         "@type": "Offer",
         "url": fullUrl,
-        "priceCurrency": "USD",
-        "price": "1",
-        "validFrom": (/* @__PURE__ */ new Date()).toISOString().split("T")[0],
-        "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1e3).toISOString().split("T")[0],
         "availability": "https://schema.org/InStock",
         "seller": {
           "@type": "Organization",
           "name": "ROWELL"
-        },
-        "shippingDetails": {
-          "@type": "OfferShippingDetails",
-          "shippingRate": {
-            "@type": "MonetaryAmount",
-            "value": "0",
-            "currency": "USD"
-          },
-          "shippingDestination": [
-            { "@type": "DefinedRegion", "addressCountry": "US" },
-            { "@type": "DefinedRegion", "addressCountry": "GB" },
-            { "@type": "DefinedRegion", "addressCountry": "DE" },
-            { "@type": "DefinedRegion", "addressCountry": "JP" },
-            { "@type": "DefinedRegion", "addressCountry": "AU" },
-            { "@type": "DefinedRegion", "addressCountry": "CA" },
-            { "@type": "DefinedRegion", "addressCountry": "SG" },
-            { "@type": "DefinedRegion", "addressCountry": "KR" },
-            { "@type": "DefinedRegion", "addressCountry": "IN" }
-          ],
-          "deliveryTime": {
-            "@type": "ShippingDeliveryTime",
-            "handlingTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 1,
-              "maxValue": 3,
-              "unitCode": "DAY"
-            },
-            "transitTime": {
-              "@type": "QuantitativeValue",
-              "minValue": 5,
-              "maxValue": 14,
-              "unitCode": "DAY"
-            }
-          }
-        },
-        "hasMerchantReturnPolicy": {
-          "@type": "MerchantReturnPolicy",
-          "applicableCountry": "US",
-          "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-          "merchantReturnDays": 30,
-          "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn"
         }
       }
+    };
+    const productBreadcrumbData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
+        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
+        { "@type": "ListItem", "position": 3, "name": product.name || product.partNumber, "item": fullUrl }
+      ]
     };
     const metaTags = `
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${fullUrl}" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="product" />
     <meta property="og:url" content="${fullUrl}" />
@@ -5992,23 +6198,22 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:image" content="${imageUrl}" />
     <meta property="og:site_name" content="ROWELL" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="${fullUrl}" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
     <meta name="twitter:image" content="${imageUrl}" />
-    
+
     <!-- Product specific -->
     <meta property="product:brand" content="${escapeHtml(product.brand || "")}" />
     <meta property="product:availability" content="in stock" />
     <meta property="product:condition" content="new" />
-    <meta property="product:price:amount" content="1" />
-    <meta property="product:price:currency" content="USD" />
-    
-    <!-- JSON-LD Structured Data for Google Merchant Listings -->
-    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>`;
+
+    <!-- JSON-LD Structured Data for product discovery -->
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>
+    <script type="application/ld+json">${serializeJsonLd(productBreadcrumbData)}</script>`;
     template = template.replace(/<title>.*?<\/title>/i, "");
     template = template.replace(
       /(<head[^>]*>)/i,
@@ -6025,8 +6230,299 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     return template;
   }
 }
+var STATIC_PAGE_SEO = {
+  "/": {
+    title: "ROWELL | Global Chromatography Consumables Supplier",
+    description: "ROWELL supplies HPLC and GC columns, chromatography consumables, and technical support to laboratories worldwide.",
+    heading: "Global Chromatography Consumables for Analytical Laboratories",
+    type: "WebSite"
+  },
+  "/products": {
+    title: "HPLC & GC Columns and Chromatography Consumables | ROWELL",
+    description: "Explore ROWELL's catalog of HPLC columns, GC columns, and chromatography consumables from leading laboratory brands.",
+    heading: "Chromatography Columns and Laboratory Consumables",
+    type: "WebPage"
+  },
+  "/resources": {
+    title: "Chromatography Technical Guides & Application Notes | ROWELL",
+    description: "Browse practical chromatography technical guides, application notes, column selection advice, and troubleshooting resources from ROWELL.",
+    heading: "Chromatography Technical Resources",
+    type: "WebPage"
+  },
+  "/learning": {
+    title: "Chromatography Learning Center | ROWELL",
+    description: "Access practical chromatography learning resources, application notes, technical guides, and laboratory troubleshooting advice.",
+    heading: "Chromatography Learning Center",
+    type: "WebPage"
+  },
+  "/applications": {
+    title: "Chromatography Applications by Industry | ROWELL",
+    description: "Explore chromatography applications for pharmaceutical, environmental, food safety, chemical, and analytical laboratory workflows.",
+    heading: "Chromatography Applications by Industry",
+    type: "WebPage"
+  },
+  "/about": {
+    title: "About ROWELL | Global Chromatography Consumables Supplier",
+    description: "Learn about ROWELL's commitment to reliable chromatography consumables, technical expertise, and global laboratory support.",
+    heading: "About ROWELL",
+    type: "WebPage"
+  },
+  "/contact": {
+    title: "Contact ROWELL | Chromatography Consumables Support",
+    description: "Contact ROWELL for product sourcing, chromatography column selection, technical support, and quotation requests.",
+    heading: "Contact ROWELL",
+    type: "WebPage"
+  },
+  "/usp-standards": {
+    title: "USP Chromatography Reference Standards | ROWELL",
+    description: "Explore USP chromatography reference standards and related analytical support for laboratory method development and quality control.",
+    heading: "USP Chromatography Reference Standards",
+    type: "WebPage"
+  }
+};
+function injectCategoryLandingSeoMetaTags(template, requestPath) {
+  const slug = extractCategoryLandingSlug(requestPath);
+  const profile = slug ? CATEGORY_LANDING_PROFILES[slug] : null;
+  if (!slug || !profile) return template;
+  const fullUrl = `${SITE_URL}/categories/${encodeURIComponent(slug)}`;
+  const catalogPath = profile.catalogHref ?? `/products?category=${encodeURIComponent(profile.catalogSlug)}`;
+  const catalogUrl = `${SITE_URL}${catalogPath}`;
+  const faqEntities = profile.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer }
+  }));
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: profile.heading,
+      description: profile.summary,
+      url: fullUrl,
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", name: "ROWELL", url: SITE_URL }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products` },
+        { "@type": "ListItem", position: 3, name: profile.name, item: fullUrl }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqEntities
+    }
+  ];
+  const selectionHtml = profile.selectionPoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("");
+  const faqHtml = profile.faq.map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`).join("");
+  const metaTags = `
+    <title>${escapeHtml(profile.heading)} | ROWELL</title>
+    <meta name="description" content="${escapeHtml(profile.summary)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(profile.heading)} | ROWELL" />
+    <meta property="og:description" content="${escapeHtml(profile.summary)}" />
+    <meta property="og:site_name" content="ROWELL" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  template = template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(profile.name)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><h2>Selection Considerations</h2><p>${escapeHtml(profile.overview)}</p><ul>${selectionHtml}</ul><p><a href="${catalogUrl}">Browse ${escapeHtml(profile.name)}</a></p><h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
+  );
+  return template;
+}
+function isKnownPublicSpaRoute(requestPath) {
+  if (Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath)) return true;
+  if (requestPath.startsWith("/categories/")) {
+    const slug = extractCategoryLandingSlug(requestPath);
+    return !!slug && CATEGORY_LANDING_SLUGS.includes(slug);
+  }
+  return [
+    /^\/products\/[^/]+$/,
+    /^\/resources\/[^/]+$/,
+    /^\/learning(?:-center)?$/,
+    /^\/learning\/authors\/[^/]+$/,
+    /^\/learning\/literature\/[^/]+$/,
+    /^\/learning\/[^/]+$/,
+    /^\/applications\/[^/]+$/,
+    /^\/standards(?:\/search|\/category\/[^/]+|\/product\/[^/]+)?$/,
+    /^\/admin\/(?:messages|seed)$/,
+    /^\/test-filters$/,
+    /^\/404$/
+  ].some((pattern) => pattern.test(requestPath));
+}
+async function getDynamicRouteStatus(requestPath) {
+  const productSlug = extractProductSlugFromPath(requestPath);
+  const resourceSlug = extractSlugFromPath(requestPath) || (requestPath.match(/^\/learning\/literature\/([^/?]+)/)?.[1] ?? null);
+  if (!productSlug && !resourceSlug) return "active";
+  try {
+    const db = await getDb();
+    if (!db) return "unavailable";
+    if (productSlug) {
+      let records2 = await db.select({ id: products.id, status: products.status }).from(products).where(eq9(products.slug, productSlug)).limit(1);
+      if (records2.length === 0) {
+        records2 = await db.select({ id: products.id, status: products.status }).from(products).where(eq9(products.partNumber, productSlug)).limit(1);
+      }
+      if (records2.length === 0) return "missing";
+      return records2[0].status === "active" ? "active" : "gone";
+    }
+    const records = await db.select({ id: resources.id, status: resources.status }).from(resources).where(eq9(resources.slug, resourceSlug)).limit(1);
+    if (records.length === 0) return "missing";
+    return records[0].status === "published" ? "active" : "gone";
+  } catch (error) {
+    console.error("[SEO] Dynamic route existence check failed:", error);
+    return "unavailable";
+  }
+}
+async function redirectLegacyLearningArticle(req, res, next) {
+  if (req.method !== "GET") return next();
+  const match = req.originalUrl.match(/^\/learning\/([^/?]+)(?:\?[^]*)?$/);
+  if (!match) return next();
+  try {
+    const db = await getDb();
+    if (!db) return next();
+    const resourceRecord = await db.select({ id: resources.id }).from(resources).where(eq9(resources.slug, match[1])).limit(1);
+    if (resourceRecord.length === 0) return next();
+    return res.redirect(301, `/resources/${match[1]}`);
+  } catch (error) {
+    console.error("[SEO] Legacy learning URL check failed:", error);
+    return next();
+  }
+}
+function renderNotFoundTemplate(template, requestPath, statusCode) {
+  const title = statusCode === 410 ? "Content No Longer Available | ROWELL" : "Page Not Found | ROWELL";
+  const heading = statusCode === 410 ? "This content is no longer available" : "Page not found";
+  const description = statusCode === 410 ? "This product or resource is no longer available. Browse current chromatography consumables and technical resources at ROWELL." : "The requested page could not be found. Browse ROWELL's current chromatography consumables and technical resources.";
+  const metaTags = `<title>${title}</title><meta name="description" content="${description}" /><meta name="robots" content="noindex, follow" />`;
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  return template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><h1>${heading}</h1><p>${description}</p><p><a href="/products">Browse products</a> or <a href="/resources">explore technical resources</a>.</p></main></div>`
+  );
+}
+async function injectResourcesIndexSeoMetaTags(template) {
+  const page = STATIC_PAGE_SEO["/resources"];
+  const fullUrl = `${SITE_URL}/resources`;
+  try {
+    const db = await getDb();
+    if (!db) return injectStaticPageSeoMetaTags(template, "/resources");
+    const latestResources = await db.select({
+      title: resources.title,
+      slug: resources.slug,
+      excerpt: resources.excerpt,
+      category: resources.category,
+      publishedAt: resources.publishedAt
+    }).from(resources).where(eq9(resources.status, "published")).orderBy(desc2(resources.publishedAt)).limit(12);
+    const itemList = latestResources.map((article, index2) => ({
+      "@type": "ListItem",
+      position: index2 + 1,
+      name: article.title,
+      url: `${SITE_URL}/resources/${encodeURIComponent(article.slug)}`
+    }));
+    const structuredData = [
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        name: page.heading,
+        description: page.description,
+        url: fullUrl,
+        inLanguage: "en"
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Latest Chromatography Resources",
+        itemListElement: itemList
+      }
+    ];
+    const articleLinks = latestResources.map((article) => {
+      const articleUrl = `/resources/${encodeURIComponent(article.slug)}`;
+      const excerpt = article.excerpt ? `<p>${escapeHtml(article.excerpt)}</p>` : "";
+      const category = article.category ? `<p>${escapeHtml(article.category)}</p>` : "";
+      return `<article><h2><a href="${articleUrl}">${escapeHtml(article.title)}</a></h2>${category}${excerpt}</article>`;
+    }).join("");
+    const metaTags = `
+      <title>${escapeHtml(page.title)}</title>
+      <meta name="description" content="${escapeHtml(page.description)}" />
+      <link rel="canonical" href="${fullUrl}" />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="${fullUrl}" />
+      <meta property="og:title" content="${escapeHtml(page.title)}" />
+      <meta property="og:description" content="${escapeHtml(page.description)}" />
+      <meta property="og:site_name" content="ROWELL" />
+      <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+    template = template.replace(/<title>.*?<\/title>/i, "");
+    template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+    return template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"><main><h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p><section><h2>Latest Technical Resources</h2>${articleLinks}</section></main></div>`
+    );
+  } catch (error) {
+    console.error("[SEO] Failed to render resources index:", error);
+    return injectStaticPageSeoMetaTags(template, "/resources");
+  }
+}
+function injectStaticPageSeoMetaTags(template, requestPath) {
+  const canonicalPath = requestPath.split("?")[0].replace(/\/$/, "") || "/";
+  const page = STATIC_PAGE_SEO[canonicalPath];
+  if (!page) return template;
+  const fullUrl = `${SITE_URL}${canonicalPath === "/" ? "/" : canonicalPath}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": page.type,
+    "name": page.title,
+    "description": page.description,
+    "url": fullUrl,
+    "inLanguage": "en",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ROWELL",
+      "url": SITE_URL,
+      "logo": { "@type": "ImageObject", "url": `${SITE_URL}/logo.png` }
+    }
+  };
+  const metaTags = `
+    <title>${escapeHtml(page.title)}</title>
+    <meta name="description" content="${escapeHtml(page.description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(page.title)}" />
+    <meta property="og:description" content="${escapeHtml(page.description)}" />
+    <meta property="og:site_name" content="ROWELL" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="${escapeHtml(page.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(page.description)}" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  const categoryHubLinks = canonicalPath === "/products" ? `<nav aria-label="Featured product category guides"><ul>${CATEGORY_LANDING_SLUGS.map((slug) => {
+    const profile = CATEGORY_LANDING_PROFILES[slug];
+    return `<li><a href="/categories/${encodeURIComponent(slug)}">${escapeHtml(profile.name)} selection guide</a></li>`;
+  }).join("")}</ul></nav>` : "";
+  template = template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><h1>${escapeHtml(page.heading)}</h1><p>${escapeHtml(page.description)}</p>${categoryHubLinks}</main></div>`
+  );
+  return template;
+}
 async function injectSeoMetaTags(template, req, overridePath) {
   const effectivePath = overridePath || req.path;
+  const categorySlug = extractCategoryLandingSlug(effectivePath);
+  if (categorySlug && CATEGORY_LANDING_SLUGS.includes(categorySlug)) {
+    return injectCategoryLandingSeoMetaTags(template, effectivePath);
+  }
+  if (effectivePath === "/resources") {
+    return injectResourcesIndexSeoMetaTags(template);
+  }
   if (effectivePath.startsWith("/products/")) {
     return injectProductSeoMetaTags(template, req, effectivePath);
   }
@@ -6037,7 +6533,7 @@ async function injectSeoMetaTags(template, req, overridePath) {
     const literatureSlug = effectivePath.replace("/learning/literature/", "/resources/");
     return injectArticleSeoMetaTags(template, req, literatureSlug);
   }
-  return template;
+  return injectStaticPageSeoMetaTags(template, effectivePath);
 }
 async function setupVite(app, server) {
   const serverOptions = {
@@ -6051,6 +6547,7 @@ async function setupVite(app, server) {
     server: serverOptions,
     appType: "custom"
   });
+  app.use(redirectLegacyLearningArticle);
   app.use((req, res, next) => {
     if (req.path === "/sitemap.xml" || req.path === "/robots.txt") {
       return next();
@@ -6090,7 +6587,24 @@ function serveStatic(app) {
       `Could not find the build directory: ${distPath}, make sure to build the client first`
     );
   }
-  app.use(express.static(distPath));
+  app.use(redirectLegacyLearningArticle);
+  app.use(async (req, res, next) => {
+    if (req.method !== "GET") return next();
+    const requestPath = req.originalUrl.split("?")[0];
+    if (!Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath)) {
+      return next();
+    }
+    try {
+      const indexPath = path4.resolve(distPath, "index.html");
+      let template = await fs3.promises.readFile(indexPath, "utf-8");
+      template = await injectSeoMetaTags(template, req, requestPath);
+      return res.status(200).set({ "Content-Type": "text/html" }).send(template);
+    } catch (error) {
+      console.error("[SSR] Error injecting static-page SEO metadata:", error);
+      return next();
+    }
+  });
+  app.use(express.static(distPath, { index: false }));
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
     if (url.startsWith("/api/") || url === "/sitemap.xml" || url === "/robots.txt") {
@@ -6098,8 +6612,20 @@ function serveStatic(app) {
     }
     try {
       const indexPath = path4.resolve(distPath, "index.html");
-      const requestPath = req.originalUrl.split("?")[0];
-      const needsMetaInjection = requestPath.startsWith("/products/") || requestPath.startsWith("/resources/") || requestPath.startsWith("/learning/literature/");
+      const requestPath = req.originalUrl.split("?")[0].replace(/\/+$/, "") || "/";
+      const dynamicRouteStatus = await getDynamicRouteStatus(requestPath);
+      if (dynamicRouteStatus === "missing" || dynamicRouteStatus === "gone") {
+        let template = await fs3.promises.readFile(indexPath, "utf-8");
+        const statusCode = dynamicRouteStatus === "gone" ? 410 : 404;
+        template = renderNotFoundTemplate(template, requestPath, statusCode);
+        return res.status(statusCode).set({ "Content-Type": "text/html" }).send(template);
+      }
+      if (!isKnownPublicSpaRoute(requestPath)) {
+        let template = await fs3.promises.readFile(indexPath, "utf-8");
+        template = renderNotFoundTemplate(template, requestPath, 404);
+        return res.status(404).set({ "Content-Type": "text/html" }).send(template);
+      }
+      const needsMetaInjection = requestPath.startsWith("/products/") || requestPath.startsWith("/resources/") || requestPath.startsWith("/learning/literature/") || requestPath.startsWith("/categories/") || Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath);
       if (needsMetaInjection) {
         let template = await fs3.promises.readFile(indexPath, "utf-8");
         template = await injectSeoMetaTags(template, req, requestPath);
@@ -6122,6 +6648,11 @@ var BASE_URL = "https://www.rowellhplc.com";
 var STATIC_PAGES = [
   { path: "/", priority: 1, changefreq: "daily" },
   { path: "/products", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/c18-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/guard-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/gc-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/kinetex-pfp-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/spe-cartridges", priority: 0.9, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "monthly" },
   { path: "/resources", priority: 0.9, changefreq: "daily" },
   { path: "/usp-standards", priority: 0.7, changefreq: "monthly" },
@@ -6131,6 +6662,9 @@ var STATIC_PAGES = [
 function formatDate(date) {
   const dateObj = typeof date === "string" ? new Date(date) : date;
   return dateObj.toISOString().split("T")[0];
+}
+function escapeXml(value) {
+  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/'/g, "&apos;");
 }
 async function generateSitemap(req, res) {
   try {
@@ -6145,14 +6679,15 @@ async function generateSitemap(req, res) {
     }).from(resources).where(eq10(resources.status, "published"));
     const allProducts = await db.select({
       slug: products.slug,
-      updatedAt: products.updatedAt
-    }).from(products);
+      updatedAt: products.updatedAt,
+      imageUrl: products.imageUrl
+    }).from(products).where(eq10(products.status, "active"));
     const literatureArticles = await db.select({
       slug: articles.slug,
       publishedDate: articles.publishedDate
     }).from(articles).where(eq10(articles.category, "literature-reviews"));
     let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n';
     for (const page of STATIC_PAGES) {
       xml += "  <url>\n";
       xml += `    <loc>${BASE_URL}${page.path}</loc>
@@ -6167,28 +6702,35 @@ async function generateSitemap(req, res) {
     }
     for (const article of resourceArticles) {
       xml += "  <url>\n";
-      xml += `    <loc>${BASE_URL}/resources/${article.slug}</loc>
+      xml += `    <loc>${escapeXml(`${BASE_URL}/resources/${encodeURIComponent(article.slug)}`)}</loc>
 `;
-      xml += `    <lastmod>${formatDate(article.updatedAt)}</lastmod>
+      if (article.updatedAt) {
+        xml += `    <lastmod>${formatDate(article.updatedAt)}</lastmod>
 `;
-      xml += `    <changefreq>monthly</changefreq>
-`;
-      xml += `    <priority>0.8</priority>
-`;
+      }
+      xml += "    <changefreq>monthly</changefreq>\n";
+      xml += "    <priority>0.8</priority>\n";
       xml += "  </url>\n";
     }
     for (const product of allProducts) {
+      if (!product.slug) continue;
+      const productUrl = `${BASE_URL}/products/${encodeURIComponent(product.slug)}`;
       xml += "  <url>\n";
-      xml += `    <loc>${BASE_URL}/products/${product.slug}</loc>
+      xml += `    <loc>${escapeXml(productUrl)}</loc>
 `;
       if (product.updatedAt) {
         xml += `    <lastmod>${formatDate(product.updatedAt)}</lastmod>
 `;
       }
-      xml += `    <changefreq>weekly</changefreq>
+      if (product.imageUrl) {
+        const imageUrl = product.imageUrl.startsWith("http") ? product.imageUrl : `${BASE_URL}${product.imageUrl.startsWith("/") ? "" : "/"}${product.imageUrl}`;
+        xml += "    <image:image>\n";
+        xml += `      <image:loc>${escapeXml(imageUrl)}</image:loc>
 `;
-      xml += `    <priority>0.8</priority>
-`;
+        xml += "    </image:image>\n";
+      }
+      xml += "    <changefreq>weekly</changefreq>\n";
+      xml += "    <priority>0.8</priority>\n";
       xml += "  </url>\n";
     }
     for (const article of literatureArticles) {
@@ -6216,268 +6758,11 @@ async function generateSitemap(req, res) {
   }
 }
 
-// server/seo-meta-injection.ts
-init_db();
-init_schema();
-import { eq as eq11 } from "drizzle-orm";
-import * as fs4 from "fs";
-var SITE_TITLE = "ROWELL";
-var SITE_URL2 = "https://www.rowellhplc.com";
-var SITE_LOGO = "https://www.rowellhplc.com/logo.png";
-function escapeHtml2(text2) {
-  const map = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;"
-  };
-  return text2.replace(/[&<>"']/g, (m) => map[m]);
-}
-function extractResourceSlug(path6) {
-  const match = path6.match(/^\/resources\/([^\/\?]+)/);
-  return match ? match[1] : null;
-}
-function extractProductSlug(path6) {
-  const match = path6.match(/^\/products\/([^\/\?]+)/);
-  return match ? match[1] : null;
-}
-function generateArticleMetaTags(article, fullUrl) {
-  const title = article.title || SITE_TITLE;
-  const description = article.metaDescription || article.excerpt || "";
-  const image = article.coverImage || SITE_LOGO;
-  const fullTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
-  return `
-    <title>${escapeHtml2(fullTitle)}</title>
-    <meta name="description" content="${escapeHtml2(description)}" />
-    <link rel="canonical" href="${fullUrl}" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="${fullUrl}" />
-    <meta property="og:title" content="${escapeHtml2(fullTitle)}" />
-    <meta property="og:description" content="${escapeHtml2(description)}" />
-    <meta property="og:image" content="${image}" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="${fullUrl}" />
-    <meta name="twitter:title" content="${escapeHtml2(fullTitle)}" />
-    <meta name="twitter:description" content="${escapeHtml2(description)}" />
-    <meta name="twitter:image" content="${image}" />
-    
-    <!-- Article metadata -->
-    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ""}" />
-    <meta property="article:author" content="${article.authorName || "ROWELL Team"}" />
-  `.trim();
-}
-function generateProductMetaTags(product, fullUrl) {
-  const title = product.metaTitle || `${product.brand || ""} ${product.name || ""} ${product.partNumber || ""} | ${SITE_TITLE}`.trim();
-  const description = product.metaDescription || `Buy ${product.brand || ""} ${product.name || ""} (${product.partNumber || ""}) at ${SITE_TITLE}. Global shipping available. Request a quote today.`.trim();
-  const brandFolder = (product.brand || "").replace(/\s+/g, "");
-  const imageUrl = product.imageUrl || `${SITE_URL2}/product-images/${brandFolder}/${product.partNumber}.jpg`;
-  const structuredData = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": product.name || product.partNumber,
-    "description": product.description || description,
-    "sku": product.partNumber,
-    "mpn": product.partNumber,
-    "brand": {
-      "@type": "Brand",
-      "name": product.brand || "ROWELL"
-    },
-    "image": imageUrl,
-    "url": fullUrl,
-    "offers": {
-      "@type": "Offer",
-      "url": fullUrl,
-      "priceCurrency": "USD",
-      "price": "1",
-      "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1e3).toISOString().split("T")[0],
-      "availability": "https://schema.org/InStock",
-      "seller": {
-        "@type": "Organization",
-        "name": "ROWELL"
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "USD"
-        },
-        "shippingDestination": [
-          { "@type": "DefinedRegion", "addressCountry": "US" },
-          { "@type": "DefinedRegion", "addressCountry": "GB" },
-          { "@type": "DefinedRegion", "addressCountry": "DE" },
-          { "@type": "DefinedRegion", "addressCountry": "JP" },
-          { "@type": "DefinedRegion", "addressCountry": "AU" },
-          { "@type": "DefinedRegion", "addressCountry": "CA" },
-          { "@type": "DefinedRegion", "addressCountry": "SG" },
-          { "@type": "DefinedRegion", "addressCountry": "KR" },
-          { "@type": "DefinedRegion", "addressCountry": "IN" }
-        ],
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 1,
-            "maxValue": 3,
-            "unitCode": "DAY"
-          },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 5,
-            "maxValue": 14,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
-      }
-    }
-  };
-  return `
-    <title>${escapeHtml2(title)}</title>
-    <meta name="description" content="${escapeHtml2(description)}" />
-    <link rel="canonical" href="${fullUrl}" />
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="product" />
-    <meta property="og:url" content="${fullUrl}" />
-    <meta property="og:title" content="${escapeHtml2(title)}" />
-    <meta property="og:description" content="${escapeHtml2(description)}" />
-    <meta property="og:image" content="${imageUrl}" />
-    <meta property="og:site_name" content="${SITE_TITLE}" />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="${fullUrl}" />
-    <meta name="twitter:title" content="${escapeHtml2(title)}" />
-    <meta name="twitter:description" content="${escapeHtml2(description)}" />
-    <meta name="twitter:image" content="${imageUrl}" />
-    
-    <!-- Product specific -->
-    <meta property="product:brand" content="${escapeHtml2(product.brand || "")}" />
-    <meta property="product:availability" content="in stock" />
-    <meta property="product:condition" content="new" />
-    <meta property="product:price:amount" content="1" />
-    <meta property="product:price:currency" content="USD" />
-    
-    <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
-  `.trim();
-}
-function injectMetaTagsIntoHtml(html, metaTags) {
-  let result = html.replace(/<title>.*?<\/title>/s, "");
-  const injected = result.replace(
-    /(<meta charset="UTF-8" \/>)/,
-    `$1
-    ${metaTags}`
-  );
-  if (injected === result) {
-    return result.replace("</head>", `    ${metaTags}
-  </head>`);
-  }
-  return injected;
-}
-async function seoMetaInjectionMiddleware(req, res, next) {
-  if (req.method !== "GET") {
-    return next();
-  }
-  const path6 = req.path;
-  const productSlug = extractProductSlug(path6);
-  if (productSlug) {
-    try {
-      const db = await getDb();
-      if (!db) {
-        console.warn("[SEO] Database not available, skipping product meta injection");
-        return next();
-      }
-      const result = await db.select().from(products).where(eq11(products.slug, productSlug)).limit(1);
-      if (result.length === 0) {
-        return next();
-      }
-      const product = result[0];
-      const originalSend = res.send.bind(res);
-      res.send = function(data) {
-        const contentType = res.getHeader("Content-Type");
-        if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
-          const host = req.get("host") || "www.rowellhplc.com";
-          const fullUrl = `https://${host}${req.originalUrl}`;
-          const metaTags = generateProductMetaTags(product, fullUrl);
-          data = injectMetaTagsIntoHtml(data, metaTags);
-          console.log(`[SEO] Injected product meta tags: ${product.partNumber}`);
-        }
-        return originalSend(data);
-      };
-      return next();
-    } catch (error) {
-      console.error("[SEO] Error in product meta injection:", error);
-      return next();
-    }
-  }
-  const resourceSlug = extractResourceSlug(path6);
-  if (resourceSlug) {
-    try {
-      const db = await getDb();
-      if (!db) {
-        console.warn("[SEO] Database not available, skipping article meta injection");
-        return next();
-      }
-      const articles2 = await db.select().from(resources).where(eq11(resources.slug, resourceSlug)).limit(1);
-      if (articles2.length === 0) {
-        return next();
-      }
-      const article = articles2[0];
-      if (article.status !== "published") {
-        return next();
-      }
-      const host = req.get("host") || "www.rowellhplc.com";
-      const fullUrl = `https://${host}${req.originalUrl}`;
-      const metaTags = generateArticleMetaTags(article, fullUrl);
-      const originalSend = res.send.bind(res);
-      res.send = function(data) {
-        const contentType = res.getHeader("Content-Type");
-        if (typeof contentType === "string" && contentType.includes("text/html") && typeof data === "string") {
-          data = injectMetaTagsIntoHtml(data, metaTags);
-          console.log(`[SEO] Injected article meta tags (via send): ${article.title}`);
-        }
-        return originalSend(data);
-      };
-      const originalSendFile = res.sendFile.bind(res);
-      res.sendFile = function(filePath, ...args) {
-        fs4.readFile(filePath, "utf-8", (err, data) => {
-          if (err) {
-            console.error(`[SEO] Error reading file for article injection: ${err.message}`);
-            return originalSendFile(filePath, ...args);
-          }
-          const injected = injectMetaTagsIntoHtml(data, metaTags);
-          console.log(`[SEO] Injected article meta tags (via sendFile): ${article.title}`);
-          res.status(200).set({ "Content-Type": "text/html" }).send(injected);
-        });
-      };
-      return next();
-    } catch (error) {
-      console.error("[SEO] Error in article meta injection:", error);
-      return next();
-    }
-  }
-  return next();
-}
-
 // server/learning-center-rest-api.ts
 init_db();
 init_schema();
 import { Router } from "express";
-import { eq as eq12, desc as desc2, and as and4, sql as sql4 } from "drizzle-orm";
+import { eq as eq11, desc as desc3, and as and4, sql as sql4 } from "drizzle-orm";
 var learningCenterRouter2 = Router();
 learningCenterRouter2.get("/articles", async (req, res) => {
   try {
@@ -6498,12 +6783,12 @@ learningCenterRouter2.get("/articles", async (req, res) => {
       applicationArea: articles.applicationArea,
       authorId: articles.authorId,
       authorName: authors.fullName
-    }).from(articles).leftJoin(authors, eq12(articles.authorId, authors.id)).orderBy(desc2(articles.publishedDate)).limit(limit).offset(offset);
+    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).orderBy(desc3(articles.publishedDate)).limit(limit).offset(offset);
     if (category) {
-      query = query.where(eq12(articles.category, category));
+      query = query.where(eq11(articles.category, category));
     }
     if (applicationArea) {
-      query = query.where(eq12(articles.applicationArea, applicationArea));
+      query = query.where(eq11(articles.applicationArea, applicationArea));
     }
     const result = await query;
     const totalResult = await db.select({ count: sql4`count(*)` }).from(articles);
@@ -6543,12 +6828,12 @@ learningCenterRouter2.get("/articles/:slug", async (req, res) => {
       authorTitle: authors.title,
       authorBio: authors.biography,
       authorPhoto: authors.photoUrl
-    }).from(articles).leftJoin(authors, eq12(articles.authorId, authors.id)).where(eq12(articles.slug, slug)).limit(1);
+    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).where(eq11(articles.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Article not found" });
     }
     const article = result[0];
-    await db.update(articles).set({ viewCount: sql4`${articles.viewCount} + 1` }).where(eq12(articles.id, article.id));
+    await db.update(articles).set({ viewCount: sql4`${articles.viewCount} + 1` }).where(eq11(articles.id, article.id));
     res.json(article);
   } catch (error) {
     console.error("Error fetching article:", error);
@@ -6603,7 +6888,7 @@ learningCenterRouter2.get("/authors/:slug", async (req, res) => {
   try {
     const db = await getDb();
     const { slug } = req.params;
-    const result = await db.select().from(authors).where(eq12(authors.slug, slug)).limit(1);
+    const result = await db.select().from(authors).where(eq11(authors.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Author not found" });
     }
@@ -6617,7 +6902,7 @@ learningCenterRouter2.get("/authors/:slug", async (req, res) => {
       viewCount: articles.viewCount,
       category: articles.category,
       applicationArea: articles.applicationArea
-    }).from(articles).where(eq12(articles.authorId, author.id)).orderBy(desc2(articles.publishedDate));
+    }).from(articles).where(eq11(articles.authorId, author.id)).orderBy(desc3(articles.publishedDate));
     res.json({
       ...author,
       articles: authorArticles
@@ -6640,7 +6925,7 @@ learningCenterRouter2.get("/featured", async (req, res) => {
       category: articles.category,
       applicationArea: articles.applicationArea,
       authorName: authors.fullName
-    }).from(articles).leftJoin(authors, eq12(articles.authorId, authors.id)).orderBy(desc2(articles.viewCount)).limit(3);
+    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).orderBy(desc3(articles.viewCount)).limit(3);
     res.json(result);
   } catch (error) {
     console.error("Error fetching featured articles:", error);
@@ -6651,7 +6936,7 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
   try {
     const db = await getDb();
     const { slug } = req.params;
-    const currentArticle = await db.select({ id: articles.id, category: articles.category }).from(articles).where(eq12(articles.slug, slug)).limit(1);
+    const currentArticle = await db.select({ id: articles.id, category: articles.category }).from(articles).where(eq11(articles.slug, slug)).limit(1);
     if (currentArticle.length === 0) {
       return res.status(404).json({ error: "Article not found" });
     }
@@ -6665,10 +6950,10 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
       category: articles.category
     }).from(articles).where(
       and4(
-        eq12(articles.category, currentArticle[0].category),
+        eq11(articles.category, currentArticle[0].category),
         sql4`${articles.id} != ${currentArticle[0].id}`
       )
-    ).orderBy(desc2(articles.publishedDate)).limit(3);
+    ).orderBy(desc3(articles.publishedDate)).limit(3);
     res.json(result);
   } catch (error) {
     console.error("Error fetching related articles:", error);
@@ -6680,14 +6965,14 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
 init_db();
 init_schema();
 import { Router as Router2 } from "express";
-import { eq as eq13 } from "drizzle-orm";
+import { eq as eq12 } from "drizzle-orm";
 var testLiteratureRouter = Router2();
 testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
   try {
     const { slug } = req.params;
     console.log("[Test API] Querying literature with slug:", slug);
     const db = await getDb();
-    const result = await db.select().from(literature).where(eq13(literature.slug, slug)).limit(1);
+    const result = await db.select().from(literature).where(eq12(literature.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Literature not found" });
     }
@@ -6723,11 +7008,11 @@ testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
 // server/article-importer.ts
 init_db();
 init_schema();
-import * as fs5 from "fs/promises";
+import * as fs4 from "fs/promises";
 import * as path5 from "path";
 import { fileURLToPath as fileURLToPath3 } from "url";
 import matter3 from "gray-matter";
-import { eq as eq14 } from "drizzle-orm";
+import { eq as eq13 } from "drizzle-orm";
 var __filename3 = fileURLToPath3(import.meta.url);
 var __dirname3 = path5.dirname(__filename3);
 var ARTICLES_DIR2 = path5.join(__dirname3, "..", "content", "articles");
@@ -6774,7 +7059,7 @@ async function processArticle(filePath, db) {
   try {
     const fileName = path5.basename(filePath);
     console.log(`\u{1F4C4} Processing: ${fileName}`);
-    const fileContent = await fs5.readFile(filePath, "utf-8");
+    const fileContent = await fs4.readFile(filePath, "utf-8");
     const { data: frontmatter, content } = matter3(fileContent);
     const formatValidation = validateFormat2(frontmatter);
     if (!formatValidation.valid) {
@@ -6805,7 +7090,7 @@ ${formatValidation.errors.join("\n")}`;
     }
     console.log("\u2713 Language validation passed (English content confirmed)");
     let authorId;
-    const existingAuthor = await db.select().from(authors).where(eq14(authors.slug, frontmatter.author_slug)).limit(1);
+    const existingAuthor = await db.select().from(authors).where(eq13(authors.slug, frontmatter.author_slug)).limit(1);
     if (existingAuthor.length > 0) {
       authorId = existingAuthor[0].id;
       console.log(`\u2713 Found existing author: ${frontmatter.author_slug} (ID: ${authorId})`);
@@ -6820,7 +7105,7 @@ ${formatValidation.errors.join("\n")}`;
       authorId = newAuthor.insertId;
       console.log(`\u2713 Created new author: ${frontmatter.author_slug} (ID: ${authorId})`);
     }
-    const existingArticle = await db.select().from(articles).where(eq14(articles.slug, frontmatter.slug)).limit(1);
+    const existingArticle = await db.select().from(articles).where(eq13(articles.slug, frontmatter.slug)).limit(1);
     if (existingArticle.length > 0) {
       await db.update(articles).set({
         title: frontmatter.title,
@@ -6831,7 +7116,7 @@ ${formatValidation.errors.join("\n")}`;
         metaDescription: frontmatter.meta_description || null,
         keywords: frontmatter.keywords || null,
         updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq14(articles.id, existingArticle[0].id));
+      }).where(eq13(articles.id, existingArticle[0].id));
       console.log(`\u2705 Updated article: ${frontmatter.title}`);
     } else {
       await db.insert(articles).values({
@@ -6860,15 +7145,15 @@ async function importArticles() {
   console.log(`\u{1F4C1} Articles directory: ${ARTICLES_DIR2}`);
   try {
     try {
-      await fs5.access(ARTICLES_DIR2);
+      await fs4.access(ARTICLES_DIR2);
     } catch {
       console.log(`\u26A0\uFE0F  Articles directory not found: ${ARTICLES_DIR2}`);
       console.log("Creating directory...");
-      await fs5.mkdir(ARTICLES_DIR2, { recursive: true });
+      await fs4.mkdir(ARTICLES_DIR2, { recursive: true });
       console.log("\u2713 Directory created");
       return;
     }
-    const files = await fs5.readdir(ARTICLES_DIR2);
+    const files = await fs4.readdir(ARTICLES_DIR2);
     const mdFiles = files.filter((f) => f.endsWith(".md"));
     if (mdFiles.length === 0) {
       console.log("\u2139\uFE0F  No articles found to import");
@@ -6939,7 +7224,6 @@ async function startServer() {
   app.use(express2.urlencoded({ limit: "50mb", extended: true }));
   app.use(bodyParser.text({ type: "text/csv", limit: "50mb" }));
   app.use(bodyParser.text({ type: "text/plain", limit: "50mb" }));
-  app.use(seoMetaInjectionMiddleware);
   registerOAuthRoutes(app);
   registerImageSyncRoutes(app);
   app.use("/api/learning-center", learningCenterRouter2);
@@ -6947,21 +7231,19 @@ async function startServer() {
   app.get("/sitemap.xml", generateSitemap);
   app.get("/robots.txt", (req, res) => {
     res.setHeader("Content-Type", "text/plain");
-    res.send(`User-agent: *
-Allow: /
-Sitemap: https://${req.get("host")}/sitemap.xml`);
+    res.send("User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /test-filters\nSitemap: https://www.rowellhplc.com/sitemap.xml");
   });
   app.get("/api/debug/article-meta", async (req, res) => {
     try {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { resources: resourcesTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq15 } = await import("drizzle-orm");
+      const { eq: eq14 } = await import("drizzle-orm");
       const db = await getDb2();
       if (!db) {
         return res.json({ error: "DB not available" });
       }
       const slug = req.query.slug || "food-analysis-artificial-sweeteners-beverages";
-      const articles2 = await db.select().from(resourcesTable).where(eq15(resourcesTable.slug, slug)).limit(1);
+      const articles2 = await db.select().from(resourcesTable).where(eq14(resourcesTable.slug, slug)).limit(1);
       if (articles2.length === 0) {
         return res.json({ error: "Article not found", slug });
       }

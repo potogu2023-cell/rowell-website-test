@@ -19,6 +19,7 @@ const STATIC_PAGES = [
   { path: "/categories/c18-columns", priority: 0.9, changefreq: "weekly" },
   { path: "/categories/guard-columns", priority: 0.9, changefreq: "weekly" },
   { path: "/categories/gc-columns", priority: 0.9, changefreq: "weekly" },
+  { path: "/categories/kinetex-pfp-columns", priority: 0.8, changefreq: "weekly" },
   { path: "/categories/spe-cartridges", priority: 0.9, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "monthly" },
   { path: "/resources", priority: 0.9, changefreq: "daily" },

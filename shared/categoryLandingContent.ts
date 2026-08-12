@@ -1,6 +1,7 @@
 export interface CategoryLandingProfile {
   name: string;
   catalogSlug: string;
+  catalogHref?: string;
   eyebrow: string;
   heading: string;
   summary: string;
@@ -62,6 +63,25 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       { question: "What drives GC column selectivity?", answer: "Stationary-phase chemistry is a central driver of selectivity. Analyte properties, temperature programming, carrier-gas conditions, and sample introduction also affect the observed separation." },
       { question: "How does film thickness affect a GC method?", answer: "Film thickness can affect retention and sample capacity, especially for volatile analytes. The appropriate choice depends on the method objective and operating conditions." },
       { question: "Can I transfer a GC method to a different column?", answer: "Method transfer should be evaluated experimentally. Match the phase type and dimensions as closely as possible, then verify retention, resolution, and suitability criteria under the intended conditions." },
+    ],
+  },
+  "kinetex-pfp-columns": {
+    name: "Phenomenex Kinetex PFP Columns",
+    catalogSlug: "kinetex-pfp-columns",
+    catalogHref: "/products?search=PFP",
+    eyebrow: "PFP / USP L43 Reversed-Phase Column Selection",
+    heading: "Phenomenex Kinetex PFP Columns for Reversed-Phase HPLC Method Evaluation",
+    summary: "Explore ROWELL's currently listed Kinetex PFP HPLC columns and compare verified dimensions, particle size, pore size, and PFP (USP L43) chemistry for your method review.",
+    overview: "Kinetex PFP columns use pentafluorophenyl stationary-phase chemistry in reversed-phase HPLC. A PFP option can be evaluated when a method team is reviewing selectivity choices alongside conventional reversed-phase chemistries. Product selection should begin with the analytical objective, sample matrix, and method conditions, then compare the available particle size, internal diameter, and column length with the instrument and method requirements.",
+    selectionPoints: [
+      "Confirm that a PFP selectivity evaluation is appropriate for the analytes and the intended method objective before making a substitution.",
+      "Compare particle size, pore size, internal diameter, and column length with the current method and instrument pressure limits.",
+      "Use the exact part number when reviewing manufacturer documentation, preparing a method evaluation, or requesting a quote.",
+    ],
+    faq: [
+      { question: "What is a PFP HPLC stationary phase?", answer: "PFP refers to pentafluorophenyl stationary-phase chemistry. It is used in reversed-phase LC and can be evaluated when method development requires a different selectivity option from a conventional alkyl phase." },
+      { question: "What should be compared when selecting a Kinetex PFP column?", answer: "Compare the intended stationary-phase chemistry, particle size, pore size, internal diameter, and column length with the method objective, sample matrix, and instrument operating limits." },
+      { question: "Can a PFP column replace a C18 column without method work?", answer: "A change of stationary-phase chemistry can change selectivity. Any replacement should be evaluated using the actual method conditions and the method’s suitability criteria." },
     ],
   },
   "spe-cartridges": {
