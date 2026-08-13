@@ -7,12 +7,26 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CustomerMessageForm from "@/components/CustomerMessageForm";
 import RelatedProducts from "@/components/RelatedProducts";
 import ProductInquiryButton from "@/components/ProductInquiryButton";
 import ProductMessageButton from "@/components/ProductMessageButton";
 import { SEOHead } from "@/components/SEOHead";
+
+function withParticleUnit(value: string) {
+  const normalized = value.trim();
+  return /(?:µm|um)$/i.test(normalized)
+    ? normalized.replace(/um$/i, "µm")
+    : `${normalized} µm`;
+}
+
+function withPoreUnit(value: string) {
+  const normalized = value.trim();
+  return /(?:Å|A)$/i.test(normalized)
+    ? normalized.replace(/(?:Å|A)$/i, " Å")
+    : `${normalized} Å`;
+}
 
 export default function ProductDetail() {
   const { t } = useTranslation();
@@ -23,6 +37,11 @@ export default function ProductDetail() {
   const { data: product, isLoading } = trpc.products.getBySlug.useQuery(slug, {
     enabled: slug.length > 0,
   });
+  const [failedImageUrl, setFailedImageUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    setFailedImageUrl(null);
+  }, [product?.imageUrl]);
 
   // NOTE: Product Schema (JSON-LD) is injected server-side via seo-meta-injection.ts
   // and vite.ts for SSR/pre-rendering. Client-side injection was removed to prevent
@@ -88,14 +107,20 @@ export default function ProductDetail() {
             <Card>
               {/* Product Image */}
               <div className="w-full aspect-video bg-gray-50 flex items-center justify-center overflow-hidden">
-                <img 
-                  src={product.imageUrl || "/images/hplc-column-placeholder.png"}
-                  alt={`${product.brand} ${product.name} ${product.partNumber} HPLC Column - ROWELL`}
-                  className="max-w-full max-h-full object-contain p-8"
-                  onError={(e) => {
-                    e.currentTarget.src = "/images/hplc-column-placeholder.png";
-                  }}
-                />
+                {product.imageUrl && product.imageUrl !== failedImageUrl ? (
+                  <img
+                    src={product.imageUrl}
+                    alt={`${product.brand} ${product.name} (${product.partNumber}) product image`}
+                    className="max-w-full max-h-full object-contain p-8"
+                    decoding="async"
+                    fetchPriority="high"
+                    onError={() => setFailedImageUrl(product.imageUrl)}
+                  />
+                ) : (
+                  <p className="max-w-md px-6 text-center text-sm text-muted-foreground" role="status">
+                    Product image pending verification.
+                  </p>
+                )}
               </div>
               <CardHeader>
                 <div className="flex justify-between items-start gap-4">
@@ -127,13 +152,13 @@ export default function ProductDetail() {
                     {product.particleSize && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.particle_size')}:</span>
-                        <span className="font-medium">{product.particleSize} µm</span>
+                        <span className="font-medium">{withParticleUnit(product.particleSize)}</span>
                       </div>
                     )}
                     {product.poreSize && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.pore_size')}:</span>
-                        <span className="font-medium">{product.poreSize} Å</span>
+                        <span className="font-medium">{withPoreUnit(product.poreSize)}</span>
                       </div>
                     )}
                     {product.columnLength && (
@@ -154,11 +179,11 @@ export default function ProductDetail() {
                         <span className="font-medium">{product.phaseType}</span>
                       </div>
                     )}
-                    {(product.phMin && product.phMax) || product.phRange ? (
+                    {((product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined) || product.phRange) ? (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
                         <span className="font-medium">
-                          {product.phMin && product.phMax ? `${product.phMin} - ${product.phMax}` : product.phRange}
+                          {product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined ? `${product.phMin} - ${product.phMax}` : product.phRange}
                         </span>
                       </div>
                     ) : null}
