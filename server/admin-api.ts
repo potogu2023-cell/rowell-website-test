@@ -276,6 +276,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results: Array<{
         id: number;
         partNumber?: string;
@@ -298,7 +299,7 @@ export const adminRouter = router({
           }
           await db
             .update(products)
-            .set({ imageUrl: update.imageUrl, updatedAt: new Date() })
+            .set({ imageUrl: update.imageUrl, updatedAt: new Date().toISOString() })
             .where(eq(products.id, update.id));
           results.push({
             id: update.id,
@@ -336,6 +337,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results: Array<{ id: number; partNumber?: string; status: 'cleared' | 'not_found' | 'error'; oldImageUrl?: string | null; error?: string }> = [];
 
       for (const id of input.ids) {
@@ -351,7 +353,7 @@ export const adminRouter = router({
           }
           await db
             .update(products)
-            .set({ imageUrl: null, updatedAt: new Date() })
+            .set({ imageUrl: null, updatedAt: new Date().toISOString() })
             .where(eq(products.id, id));
           results.push({
             id,
@@ -411,6 +413,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results: Array<{ id: number; partNumber?: string; status: 'updated' | 'not_found' | 'error'; changedFields?: string[]; error?: string }> = [];
 
       for (const update of input.updates) {
@@ -425,7 +428,7 @@ export const adminRouter = router({
             continue;
           }
 
-          const setFields: Record<string, unknown> = { name: update.name, updatedAt: new Date() };
+          const setFields: Record<string, unknown> = { name: update.name, updatedAt: new Date().toISOString() };
           const optionalFields = [
             'description', 'detailedDescription', 'productType', 'category', 'particleSize', 'poreSize',
             'columnLength', 'innerDiameter', 'phRange', 'maxPressure', 'usp', 'phaseType',

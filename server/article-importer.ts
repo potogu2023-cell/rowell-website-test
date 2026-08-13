@@ -202,9 +202,10 @@ export async function importArticles(): Promise<void> {
       return;
     }
     
-    // Read all .md files
+    // Read article Markdown files only. README is directory documentation, not publishable content;
+    // all other Markdown files continue through the existing strict frontmatter validation.
     const files = await fs.readdir(ARTICLES_DIR);
-    const mdFiles = files.filter(f => f.endsWith('.md'));
+    const mdFiles = files.filter((file) => file.endsWith('.md') && file.toLowerCase() !== 'readme.md');
     
     if (mdFiles.length === 0) {
       console.log('ℹ️  No articles found to import');
