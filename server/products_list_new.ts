@@ -58,9 +58,22 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   // Numeric filters intentionally parse only strict, unit-qualified raw values.
   // The legacy *Num columns are integer fields and are known to lose decimal
   // precision for chromatography specifications; they must not drive results.
-  const particleSizeValue = sql<number>`CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.particleSize})), 'µm', ''), 'um', ''), ' ', '') AS DECIMAL(12,4))`;
-  const poreSizeValue = sql<number>`CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.poreSize})), 'å', ''), 'a', ''), ' ', '') AS DECIMAL(12,4))`;
-  const innerDiameterValue = sql<number>`CAST(REPLACE(LOWER(TRIM(${products.innerDiameter})), 'mm', '') AS DECIMAL(12,4))`;
+  const strictParticleSize = sql`${products.particleSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(µm|um)$'`;
+  const strictPoreSize = sql`${products.poreSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(Å|A)$'`;
+  const strictInnerDiameter = sql`${products.innerDiameter} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'`;
+  const strictColumnLength = sql`LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(mm|m)$'`;
+
+  // CASE prevents TiDB from attempting numeric conversion on values such as N/A,
+  // ranges, or capacity strings. A field must match the exact unit pattern first.
+  const particleSizeValue = sql<number>`CASE WHEN ${strictParticleSize}
+    THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.particleSize})), 'µm', ''), 'um', ''), ' ', '') AS DECIMAL(12,4))
+    ELSE NULL END`;
+  const poreSizeValue = sql<number>`CASE WHEN ${strictPoreSize}
+    THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.poreSize})), 'å', ''), 'a', ''), ' ', '') AS DECIMAL(12,4))
+    ELSE NULL END`;
+  const innerDiameterValue = sql<number>`CASE WHEN ${strictInnerDiameter}
+    THEN CAST(REPLACE(LOWER(TRIM(${products.innerDiameter})), 'mm', '') AS DECIMAL(12,4))
+    ELSE NULL END`;
   const columnLengthValueMm = sql<number>`CASE
     WHEN LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'
       THEN CAST(REPLACE(LOWER(TRIM(${products.columnLength})), 'mm', '') AS DECIMAL(12,4))
@@ -68,11 +81,6 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
       THEN CAST(REPLACE(LOWER(TRIM(${products.columnLength})), 'm', '') AS DECIMAL(12,4)) * 1000
     ELSE NULL
   END`;
-
-  const strictParticleSize = sql`${products.particleSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(µm|um)$'`;
-  const strictPoreSize = sql`${products.poreSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(Å|A)$'`;
-  const strictInnerDiameter = sql`${products.innerDiameter} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'`;
-  const strictColumnLength = sql`LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(mm|m)$'`;
 
   if (input?.particleSizeMin !== undefined) {
     conditions.push(sql`${strictParticleSize} AND ${particleSizeValue} >= ${input.particleSizeMin}`);
