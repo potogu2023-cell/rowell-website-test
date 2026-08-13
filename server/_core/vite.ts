@@ -300,18 +300,10 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
         "name": product.brand || "ROWELL"
       },
       "image": imageUrl,
-      "url": fullUrl,
-      // ROWELL is a request-for-quote B2B catalog. Do not publish a fabricated
-      // retail price, shipping promise, or return policy in structured data.
-      "offers": {
-        "@type": "Offer",
-        "url": fullUrl,
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "Organization",
-          "name": "ROWELL"
-        }
-      }
+      "url": fullUrl
+      // ROWELL is a request-for-quote B2B catalog. No Offer is emitted because
+      // current availability, price, shipping, and return terms are confirmed
+      // only in the context of each inquiry.
     };
     const productBreadcrumbData = {
       "@context": "https://schema.org",

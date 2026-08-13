@@ -109,61 +109,9 @@ function generateProductMetaTags(product: any, fullUrl: string): string {
       "name": product.brand || "ROWELL"
     },
     "image": imageUrl,
-    "url": fullUrl,
-    "offers": {
-      "@type": "Offer",
-      "url": fullUrl,
-      "priceCurrency": "USD",
-      "price": "1",
-      "priceValidUntil": new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      "availability": "https://schema.org/InStock",
-      "seller": {
-        "@type": "Organization",
-        "name": "ROWELL"
-      },
-      "shippingDetails": {
-        "@type": "OfferShippingDetails",
-        "shippingRate": {
-          "@type": "MonetaryAmount",
-          "value": "0",
-          "currency": "USD"
-        },
-        "shippingDestination": [
-          { "@type": "DefinedRegion", "addressCountry": "US" },
-          { "@type": "DefinedRegion", "addressCountry": "GB" },
-          { "@type": "DefinedRegion", "addressCountry": "DE" },
-          { "@type": "DefinedRegion", "addressCountry": "JP" },
-          { "@type": "DefinedRegion", "addressCountry": "AU" },
-          { "@type": "DefinedRegion", "addressCountry": "CA" },
-          { "@type": "DefinedRegion", "addressCountry": "SG" },
-          { "@type": "DefinedRegion", "addressCountry": "KR" },
-          { "@type": "DefinedRegion", "addressCountry": "IN" }
-        ],
-        "deliveryTime": {
-          "@type": "ShippingDeliveryTime",
-          "handlingTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 1,
-            "maxValue": 3,
-            "unitCode": "DAY"
-          },
-          "transitTime": {
-            "@type": "QuantitativeValue",
-            "minValue": 5,
-            "maxValue": 14,
-            "unitCode": "DAY"
-          }
-        }
-      },
-      "hasMerchantReturnPolicy": {
-        "@type": "MerchantReturnPolicy",
-        "applicableCountry": "US",
-        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-        "merchantReturnDays": 30,
-        "returnMethod": "https://schema.org/ReturnByMail",
-        "returnFees": "https://schema.org/FreeReturn"
-      }
-    }
+    "url": fullUrl
+    // This is a request-for-quote catalog. No Offer is emitted because current
+    // availability, price, shipping, and return terms must be confirmed per inquiry.
   };
 
   return `
