@@ -319,6 +319,90 @@ export const adminRouter = router({
       };
     }),
 
+  // Correct verified product identity and raw specifications only. This endpoint intentionally excludes
+  // prices, inventory, fulfillment promises, image URLs, and status to keep evidence-backed corrections narrow.
+  batchCorrectVerifiedProductFacts: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          id: z.number().int().positive(),
+          name: z.string().min(3).max(255),
+          description: z.string().max(3000).nullable().optional(),
+          detailedDescription: z.string().max(12000).nullable().optional(),
+          productType: z.string().max(100).optional(),
+          category: z.string().max(100).optional(),
+          particleSize: z.string().max(50).optional(),
+          poreSize: z.string().max(50).optional(),
+          columnLength: z.string().max(50).optional(),
+          innerDiameter: z.string().max(50).optional(),
+          phRange: z.string().max(50).optional(),
+          maxPressure: z.string().max(50).optional(),
+          usp: z.string().max(50).optional(),
+          phaseType: z.string().max(100).optional(),
+          particleSizeNum: z.number().int().positive().optional(),
+          poreSizeNum: z.number().int().positive().optional(),
+          columnLengthNum: z.number().int().positive().optional(),
+          phMin: z.number().int().optional(),
+          phMax: z.number().int().optional(),
+          catalogUrl: z.string().url().max(500).optional(),
+          metaTitle: z.string().max(70).optional(),
+          metaDescription: z.string().max(155).optional(),
+        })).min(1).max(10),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      const results: Array<{ id: number; partNumber?: string; status: 'updated' | 'not_found' | 'error'; changedFields?: string[]; error?: string }> = [];
+
+      for (const update of input.updates) {
+        try {
+          const existing = await db
+            .select({ id: products.id, partNumber: products.partNumber })
+            .from(products)
+            .where(eq(products.id, update.id))
+            .limit(1);
+          if (existing.length === 0) {
+            results.push({ id: update.id, status: 'not_found' });
+            continue;
+          }
+
+          const setFields: Record<string, unknown> = { name: update.name, updatedAt: new Date() };
+          const optionalFields = [
+            'description', 'detailedDescription', 'productType', 'category', 'particleSize', 'poreSize',
+            'columnLength', 'innerDiameter', 'phRange', 'maxPressure', 'usp', 'phaseType',
+            'particleSizeNum', 'poreSizeNum', 'columnLengthNum', 'phMin', 'phMax',
+            'catalogUrl', 'metaTitle', 'metaDescription',
+          ] as const;
+          for (const field of optionalFields) {
+            if (update[field] !== undefined) setFields[field] = update[field];
+          }
+
+          await db.update(products).set(setFields as any).where(eq(products.id, update.id));
+          results.push({
+            id: update.id,
+            partNumber: existing[0].partNumber,
+            status: 'updated',
+            changedFields: Object.keys(setFields).filter((field) => field !== 'updatedAt'),
+          });
+        } catch (error) {
+          results.push({ id: update.id, status: 'error', error: String(error) });
+        }
+      }
+
+      return {
+        success: results.every((result) => result.status === 'updated'),
+        totalUpdated: results.filter((result) => result.status === 'updated').length,
+        results,
+      };
+    }),
+
   // Correct verified product dimensions and display names only; intentionally narrow to prevent broad product edits.
   batchCorrectProductDimensions: publicProcedure
     .input((raw: unknown) => {
