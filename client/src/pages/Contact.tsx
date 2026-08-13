@@ -86,7 +86,7 @@ export default function Contact() {
           <div>
             <CustomerMessageForm 
               title="Quick Inquiry"
-              description="Send us a message and we'll get back to you as soon as possible"
+              description="Send product or technical inquiry details for review."
             />
           </div>
         </div>

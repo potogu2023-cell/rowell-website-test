@@ -275,7 +275,7 @@ export default function StandardsProductDetail({ params }: StandardsProductDetai
             productId={String(product.id)}
             productName={`${product.part_number} - ${product.name_en}`}
             title={t("standards.request_quote")}
-            description="Please provide your contact information and we will send you a quote within 24 hours."
+            description="Provide the information needed to review your reference-standard inquiry."
           />
         </div>
       </div>

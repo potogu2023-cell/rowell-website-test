@@ -53,7 +53,7 @@ export default function ApplicationsHub() {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="HPLC Applications by Industry | Pharmaceutical, Food Safety, Environmental - ROWELL"
-        description="Expert HPLC chromatography solutions for pharmaceutical, food safety, environmental, and biopharmaceutical industries. Application notes, column selection guides, and global supply from ROWELL."
+        description="Chromatography application information for pharmaceutical, food safety, environmental, and biopharmaceutical workflows. Review application notes, recorded product specifications, and related catalog entries."
         url="/applications"
       />
 
@@ -65,9 +65,7 @@ export default function ApplicationsHub() {
             HPLC Solutions for Every Industry
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From pharmaceutical quality control to environmental monitoring, ROWELL provides
-            expert chromatography solutions tailored to your industry's specific regulatory
-            requirements and analytical challenges.
+            Explore application-focused information, recorded product specifications, and related catalog entries for common analytical workflows.
           </p>
         </div>
       </div>

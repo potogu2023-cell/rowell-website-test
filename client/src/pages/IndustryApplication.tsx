@@ -93,7 +93,7 @@ export default function IndustryApplication() {
   const standards = industryData.standards || [];
 
   const metaTitle = `${title} HPLC Solutions | ROWELL`;
-  const metaDescription = `${title} HPLC chromatography solutions from ROWELL. Expert column selection, application notes, and global supply for ${title.toLowerCase()} labs. Request a quote today.`;
+  const metaDescription = `${title} chromatography information from ROWELL. Review application notes, recorded product specifications, and related catalog entries, then submit an inquiry to confirm current product details.`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -296,13 +296,13 @@ export default function IndustryApplication() {
 
         {/* CTA Section */}
         <section className={`rounded-2xl ${config.bgLight} border ${config.borderColor} p-10 text-center`}>
-          <h2 className="text-2xl font-bold mb-3">Ready to Optimize Your {title} Workflow?</h2>
+          <h2 className="text-2xl font-bold mb-3">Need Product Information for a {title} Workflow?</h2>
           <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-            Our chromatography experts are ready to help you select the right column and method for your specific application. Global shipping available to 50+ countries.
+            Review the related catalog entries and provide your application context in an inquiry to confirm current product details and suitability.
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button size="lg" onClick={() => setLocation("/contact")}>
-              Get Expert Consultation
+              Submit an Inquiry
             </Button>
             <Button size="lg" variant="outline" onClick={() => setLocation(`/products?search=${config.searchQuery}`)}>
               Browse {title} Products

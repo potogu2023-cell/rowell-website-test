@@ -269,13 +269,13 @@ export async function sendCustomerConfirmationEmail(
       text: `
 Dear ${user.name || 'Customer'},
 
-Thank you for your inquiry! We have received your product inquiry and our team will review it shortly.
+Thank you for your inquiry. We have received the information you submitted for review.
 
 Inquiry Number: ${inquiry.inquiryNumber}
 Date: ${new Date(inquiry.createdAt).toLocaleString()}
 Urgency: ${inquiry.urgency.replace('_', ' ').toUpperCase()}
 
-Our sales team will contact you within 24-48 hours with a detailed quotation.
+Current product information and any quotation details are reviewed in relation to the information provided in your inquiry.
 
 If you have any questions, please don't hesitate to contact us at info@rowellhplc.com.
 
@@ -286,7 +286,7 @@ ROWELL HPLC Team
 <h2>Thank You for Your Inquiry!</h2>
 <p>Dear ${user.name || 'Customer'},</p>
 
-<p>We have received your product inquiry and our team will review it shortly.</p>
+<p>We have received the information you submitted for review.</p>
 
 <h3>Inquiry Details</h3>
 <ul>
@@ -295,7 +295,7 @@ ROWELL HPLC Team
   <li><strong>Urgency:</strong> ${inquiry.urgency.replace('_', ' ').toUpperCase()}</li>
 </ul>
 
-<p>Our sales team will contact you within <strong>24-48 hours</strong> with a detailed quotation.</p>
+<p>Current product information and any quotation details are reviewed in relation to the information provided in your inquiry.</p>
 
 <p>If you have any questions, please don't hesitate to contact us at <a href="mailto:info@rowellhplc.com">info@rowellhplc.com</a>.</p>
 

@@ -254,7 +254,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const title = product.metaTitle ||
       `${brandPrefix} ${cleanName} ${product.partNumber || ''} | ROWELL`.trim();
     const description = product.metaDescription ||
-      `Buy ${brandPrefix} ${cleanName} (${product.partNumber || ''}) at ROWELL. Global shipping available. Request a quote today.`.trim();
+      `${brandPrefix} ${cleanName} (${product.partNumber || ''}). Review catalog specifications and submit an inquiry to confirm product details for your application.`.trim();
 
     // Use absolute image URLs for social previews and Product structured data.
     const brandFolder = (product.brand || '').replace(/\s+/g, '');
@@ -284,7 +284,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       ${product.name ? `<p>Product Name: ${escapeHtml(product.name)}</p>` : ''}
       ${product.description ? `<p>${escapeHtml((product.description || '').substring(0, 500))}</p>` : ''}
       ${specsRows ? `<table><tbody>${specsRows}</tbody></table>` : ''}
-      <p>Available at ROWELL. Global shipping. Request a quote for competitive pricing.</p>
+      <p>Use the inquiry form to confirm current product details and suitability for your application.</p>
     </div>`;
 
     // JSON-LD structured data for Google Merchant Listings
@@ -345,7 +345,6 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     
     <!-- Product specific -->
     <meta property="product:brand" content="${escapeHtml(product.brand || '')}" />
-    <meta property="product:availability" content="in stock" />
     <meta property="product:condition" content="new" />
     
     <!-- JSON-LD Structured Data for product discovery -->
@@ -375,9 +374,9 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
 
 const STATIC_PAGE_SEO: Record<string, { title: string; description: string; heading: string; type: "WebSite" | "WebPage" }> = {
   "/": {
-    title: "ROWELL | Global Chromatography Consumables Supplier",
-    description: "ROWELL supplies HPLC and GC columns, chromatography consumables, and technical support to laboratories worldwide.",
-    heading: "Global Chromatography Consumables for Analytical Laboratories",
+    title: "ROWELL | Chromatography Consumables Catalog",
+    description: "Browse HPLC columns, GC columns, and chromatography consumables and submit product inquiries for analytical laboratory applications.",
+    heading: "Chromatography Consumables for Analytical Laboratories",
     type: "WebSite",
   },
   "/products": {

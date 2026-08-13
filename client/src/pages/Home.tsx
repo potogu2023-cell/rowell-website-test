@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Globe, DollarSign, Wrench, Star, Bot, MessageCircle, Lightbulb, Target, Zap, Rocket } from "lucide-react";
+import { Globe, Star, Target, Zap } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { SEOHead } from "@/components/SEOHead";
@@ -18,7 +18,7 @@ export default function Home() {
       "alternateName": "LWMHPLC",
       "url": "https://www.rowellhplc.com",
       "logo": "https://www.rowellhplc.com/logo.png",
-      "description": "Global provider of professional chromatography consumables, including HPLC and GC columns from premium brands.",
+      "description": "Chromatography consumables catalog and product inquiry service for HPLC, GC, and SPE applications.",
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "sales",
@@ -145,22 +145,19 @@ export default function Home() {
     {
       name: t('home.testimonial_1_name'),
       role: t('home.testimonial_1_role'),
-      initials: "JL",
-      rating: 5,
+      initials: "1",
       text: t('home.testimonial_1_text')
     },
     {
       name: t('home.testimonial_2_name'),
       role: t('home.testimonial_2_role'),
-      initials: "MS",
-      rating: 5,
+      initials: "2",
       text: t('home.testimonial_2_text')
     },
     {
       name: t('home.testimonial_3_name'),
       role: t('home.testimonial_3_role'),
-      initials: "SA",
-      rating: 5,
+      initials: "3",
       text: t('home.testimonial_3_text')
     }
   ];
@@ -169,9 +166,9 @@ export default function Home() {
     <div className="flex flex-col">
       {/* SEO Meta Tags */}
       <SEOHead
-        title="ROWELL - Global Chromatography Consumables Solutions | HPLC & GC Columns"
-        description="ROWELL is a global supplier of premium chromatography consumables. Shop 2400+ HPLC/GC columns, SPE cartridges from Waters, Agilent, Phenomenex, Thermo Fisher & 7 more brands. Expert technical support, DDP shipping to 50+ countries."
-        keywords="HPLC columns, GC columns, chromatography consumables, Waters columns, Agilent columns, Phenomenex columns, SPE cartridges, laboratory consumables, global chromatography supplier"
+        title="ROWELL | Chromatography Consumables Catalog | HPLC, GC & SPE"
+        description="Browse HPLC columns, GC columns, SPE consumables, and recorded product specifications. Submit an inquiry to confirm current product details for your application."
+        keywords="HPLC columns, GC columns, chromatography consumables, Waters columns, Agilent columns, Phenomenex columns, SPE cartridges, laboratory consumables"
         url="/"
         type="website"
       />
@@ -218,29 +215,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Global Shipping Trust Banner */}
       <div className="bg-slate-900 text-white py-3">
         <div className="container">
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <Globe className="w-4 h-4 text-blue-400" />
-              <span className="font-medium">Global Shipping to 50+ Countries</span>
+              <span className="font-medium">Catalogued HPLC, GC, and SPE consumables</span>
             </div>
             <div className="hidden md:block w-px h-4 bg-slate-600" />
-            <div className="flex items-center gap-2">
-              <span className="text-blue-400">✈</span>
-              <span>US · EU · UK · JP · AU · SG · KR · IN · CA</span>
-            </div>
+            <span>Search by part number, brand, and recorded specifications</span>
             <div className="hidden md:block w-px h-4 bg-slate-600" />
-            <div className="flex items-center gap-2">
-              <span className="text-green-400">✓</span>
-              <span>DDP Available · Customs Clearance Support</span>
-            </div>
-            <div className="hidden md:block w-px h-4 bg-slate-600" />
-            <div className="flex items-center gap-2">
-              <span className="text-yellow-400">★</span>
-              <span>500+ Labs Served Worldwide</span>
-            </div>
+            <span>Confirm current product details in each inquiry</span>
           </div>
         </div>
       </div>
@@ -253,11 +238,11 @@ export default function Home() {
             <p className="text-muted-foreground">{t('home.why_choose_subtitle')}</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Advantage 1: AI-Powered Technical Support */}
+            {/* Advantage 1: Product information */}
             <Card className="border-2 border-blue-100 hover:border-blue-300 transition-colors">
               <CardHeader>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <Bot className="w-6 h-6 text-blue-600" />
+                  <Target className="w-6 h-6 text-blue-600" />
                 </div>
                 <CardTitle className="text-xl">{t('home.advantage_1_title')}</CardTitle>
               </CardHeader>
@@ -275,7 +260,7 @@ export default function Home() {
                     <span className="font-medium">{t('home.advantage_1_feature_2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Lightbulb className="w-4 h-4 text-blue-600" />
+                    <Target className="w-4 h-4 text-blue-600" />
                     <span className="font-medium">{t('home.advantage_1_feature_3')}</span>
                   </div>
                 </div>
@@ -304,18 +289,18 @@ export default function Home() {
                     <span className="font-medium">{t('home.advantage_2_feature_2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <DollarSign className="w-4 h-4 text-green-600" />
+                    <Target className="w-4 h-4 text-green-600" />
                     <span className="font-medium">{t('home.advantage_2_feature_3')}</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Advantage 3: Professional Service */}
+            {/* Advantage 3: Clear product inquiry */}
             <Card className="border-2 border-purple-100 hover:border-purple-300 transition-colors">
               <CardHeader>
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                  <Rocket className="w-6 h-6 text-purple-600" />
+                  <Target className="w-6 h-6 text-purple-600" />
                 </div>
                 <CardTitle className="text-xl">{t('home.advantage_3_title')}</CardTitle>
               </CardHeader>
@@ -329,11 +314,11 @@ export default function Home() {
                     <span className="font-medium">{t('home.advantage_3_feature_1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Rocket className="w-4 h-4 text-purple-600" />
+                    <Target className="w-4 h-4 text-purple-600" />
                     <span className="font-medium">{t('home.advantage_3_feature_2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Wrench className="w-4 h-4 text-purple-600" />
+                    <Target className="w-4 h-4 text-purple-600" />
                     <span className="font-medium">{t('home.advantage_3_feature_3')}</span>
                   </div>
                 </div>
@@ -366,8 +351,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">{brand.series}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">{brand.count} {t('common.products') || 'products'}</span>
+                  <div className="flex items-center justify-end">
                     <Button variant="link" size="sm" asChild>
                       <Link href={`/products?brand=${brand.name}`}>
                         <a>{t('home.view_products')} →</a>
@@ -473,7 +457,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">{standard.description}</p>
-                  <p className="text-sm font-medium">{standard.count} {t('common.products') || 'products'}</p>
+                  <p className="text-sm font-medium">Browse matching catalog entries</p>
                 </CardContent>
               </Card>
             ))}
@@ -494,28 +478,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">{t('home.testimonials_title')}</h2>
             <p className="text-muted-foreground">{t('home.testimonials_subtitle')}</p>
-            {/* Country flags - global reach indicator */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mt-6">
-              {[
-                { flag: '🇺🇸', country: 'United States' },
-                { flag: '🇬🇧', country: 'United Kingdom' },
-                { flag: '🇩🇪', country: 'Germany' },
-                { flag: '🇯🇵', country: 'Japan' },
-                { flag: '🇦🇺', country: 'Australia' },
-                { flag: '🇨🇦', country: 'Canada' },
-                { flag: '🇸🇬', country: 'Singapore' },
-                { flag: '🇰🇷', country: 'South Korea' },
-                { flag: '🇮🇳', country: 'India' },
-                { flag: '🇫🇷', country: 'France' },
-                { flag: '🇳🇱', country: 'Netherlands' },
-                { flag: '🇧🇷', country: 'Brazil' },
-              ].map(({ flag, country }) => (
-                <span key={country} title={country} className="text-2xl hover:scale-125 transition-transform cursor-default" aria-label={country}>
-                  {flag}
-                </span>
-              ))}
-              <span className="text-sm text-muted-foreground ml-2">+40 more countries</span>
-            </div>
+
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
@@ -530,11 +493,7 @@ export default function Home() {
                       <CardDescription className="text-sm">{testimonial.role}</CardDescription>
                     </div>
                   </div>
-                  <div className="flex gap-1 mt-2">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
+
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{testimonial.text}</p>
@@ -545,21 +504,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-5xl font-bold mb-2">500+</div>
-              <p className="text-lg">{t('home.stats_customers')}</p>
+              <div className="text-2xl font-bold mb-2">Part Number</div>
+              <p className="text-lg">Start with the product identifier when available</p>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">98%</div>
-              <p className="text-lg">{t('home.stats_satisfaction')}</p>
+              <div className="text-2xl font-bold mb-2">Specifications</div>
+              <p className="text-lg">Review recorded dimensions and phase information</p>
             </div>
             <div>
-              <div className="text-5xl font-bold mb-2">50+</div>
-              <p className="text-lg">{t('home.stats_countries')}</p>
+              <div className="text-2xl font-bold mb-2">Inquiry Context</div>
+              <p className="text-lg">Confirm current product details for the intended use</p>
             </div>
           </div>
         </div>

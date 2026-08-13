@@ -13,7 +13,7 @@ interface SEOHeadProps {
 
 export function SEOHead({
   title = "Rowell HPLC - High-Performance Liquid Chromatography Columns & Accessories",
-  description = "Leading supplier of HPLC columns, accessories, and consumables. Offering Agilent, Waters, Shimadzu compatible products with worldwide shipping.",
+  description = "Chromatography consumables catalog with HPLC columns, GC columns, SPE products, and recorded specifications. Submit an inquiry to confirm current product details for your application.",
   keywords = "HPLC columns, chromatography, analytical chemistry, laboratory equipment, Agilent columns, Waters columns",
   image = "https://www.rowellhplc.com/og-image.jpg",
   url,

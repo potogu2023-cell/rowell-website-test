@@ -23,6 +23,7 @@ RESPONSE GUIDELINES:
 6. Always end with contact information for pricing and ordering
 7. Keep responses concise (under 300 words) but technically accurate
 8. Use professional but friendly tone
+9. Treat catalog details as information for review; do not state or infer current availability, authenticity, shipping coverage, or service levels
 
 BRAND PREFERENCES:
 Prioritize products from major brands when available: Agilent, Waters, Phenomenex, Thermo Fisher Scientific, Merck, Avantor (ACE), Restek, Daicel, YMC, Develosil, Shimadzu.
@@ -31,13 +32,12 @@ LIMITATIONS:
 - Do NOT provide specific prices (direct users to contact sales)
 - Do NOT make guarantees about performance results
 - Do NOT provide medical, safety, or regulatory compliance advice
-- Always include disclaimer: "📌 This suggestion is for reference only. Please consult professionals for final decisions."
+- Always include disclaimer: "This suggestion is for reference only. Confirm current product details and suitability through an inquiry."
 
 CONTACT INFORMATION:
 For pricing, ordering, shipping, and customs:
-📧 oscar@rowellhplc.com
-💬 WhatsApp/WeChat: +86 180 1705 0064
-Usually respond within 24 hours
+Email: oscar@rowellhplc.com
+WhatsApp/WeChat: +86 180 1705 0064
 
 IMPORTANT ROUTING RULES:
 When users ask about pricing, costs, quotes, ordering, shipping, delivery, customs, or payment:
@@ -47,7 +47,7 @@ When users ask about pricing, costs, quotes, ordering, shipping, delivery, custo
 
 RESPONSE FORMAT:
 - Use clear paragraphs and bullet points
-- Use emojis sparingly for visual clarity (💡 for tips, 📌 for disclaimers, 📧 for email, 💬 for messaging)
+- Use clear labels rather than emojis
 - Always include the disclaimer at the end
 - Always include contact information when relevant`;
 
@@ -55,7 +55,7 @@ export const GREETING_MESSAGE = `Hello! I'm the ROWELL AI Product Advisor. I can
 
 What can I help you with today?
 
-💡 Examples:
+Examples:
 • "I need a column for peptide separation"
 • "What's the difference between C18 and C8?"
 • "Recommend a column for pharmaceutical analysis"
@@ -63,38 +63,26 @@ What can I help you with today?
 
 export const PRICING_INQUIRY_RESPONSE = `For pricing and bulk orders, please contact Oscar directly:
 
-📧 Email: oscar@rowellhplc.com
-💬 WhatsApp: +86 180 1705 0064
-💬 WeChat: +86 180 1705 0064
+Email: oscar@rowellhplc.com
+WhatsApp: +86 180 1705 0064
+WeChat: +86 180 1705 0064
 
-Oscar will provide you with:
-• Competitive pricing
-• Volume discounts
-• Shipping options
-• Delivery time estimate
-
-Usually respond within 24 hours!`;
+Please include the product part number, quantity, destination, and any relevant application context so the inquiry can be reviewed.`;
 
 export const ERROR_MESSAGE = `I apologize, but I'm having trouble processing your request right now. This could be due to high traffic or a temporary service issue.
 
 Please try again in a moment, or contact Oscar directly for immediate assistance:
 
-📧 oscar@rowellhplc.com
-💬 WhatsApp/WeChat: +86 180 1705 0064`;
+Email: oscar@rowellhplc.com
+WhatsApp/WeChat: +86 180 1705 0064`;
 
 export const TRANSFER_TO_HUMAN_MESSAGE = `For this specific inquiry, I recommend contacting Oscar directly for personalized assistance:
 
-📧 Email: oscar@rowellhplc.com
-💬 WhatsApp: +86 180 1705 0064
-💬 WeChat: +86 180 1705 0064
+Email: oscar@rowellhplc.com
+WhatsApp: +86 180 1705 0064
+WeChat: +86 180 1705 0064
 
-Oscar has over 10 years of experience in chromatography and can provide:
-• Expert technical consultation
-• Customized product recommendations
-• Competitive pricing and quotes
-• Worldwide shipping arrangements
-
-Usually respond within 24 hours!`;
+Include the product part number, quantity, destination, and application context so the request can be reviewed.`;
 
 /**
  * Check if user message is asking about pricing/commercial topics

@@ -89,7 +89,7 @@ function generateProductMetaTags(product: any, fullUrl: string): string {
   const title = product.metaTitle ||
     `${product.brand || ''} ${product.name || ''} ${product.partNumber || ''} | ${SITE_TITLE}`.trim();
   const description = product.metaDescription ||
-    `Buy ${product.brand || ''} ${product.name || ''} (${product.partNumber || ''}) at ${SITE_TITLE}. Global shipping available. Request a quote today.`.trim();
+    `${product.brand || ''} ${product.name || ''} (${product.partNumber || ''}). Review catalog specifications and submit an inquiry to confirm product details for your application.`.trim();
 
   // Build product image URL
   const brandFolder = (product.brand || '').replace(/\s+/g, '');
@@ -188,10 +188,7 @@ function generateProductMetaTags(product: any, fullUrl: string): string {
     
     <!-- Product specific -->
     <meta property="product:brand" content="${escapeHtml(product.brand || '')}" />
-    <meta property="product:availability" content="in stock" />
     <meta property="product:condition" content="new" />
-    <meta property="product:price:amount" content="1" />
-    <meta property="product:price:currency" content="USD" />
     
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">${JSON.stringify(structuredData)}</script>
