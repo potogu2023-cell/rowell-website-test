@@ -210,6 +210,49 @@ export const adminRouter = router({
       return { success: true, results };
     }),
 
+  // Clear public product descriptions only. This endpoint is intentionally
+  // destructive-only: it cannot create or alter product facts, specifications,
+  // status, pricing, or images.
+  batchClearProductDescriptions: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        ids: z.array(z.number().int().positive()).min(1).max(50),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      const results: Array<{ id: number; partNumber?: string; status: 'cleared' | 'not_found' | 'error'; error?: string }> = [];
+
+      for (const id of input.ids) {
+        try {
+          const existing = await db
+            .select({ id: products.id, partNumber: products.partNumber })
+            .from(products)
+            .where(eq(products.id, id))
+            .limit(1);
+          if (existing.length === 0) {
+            results.push({ id, status: 'not_found' });
+            continue;
+          }
+          await db
+            .update(products)
+            .set({ description: null, detailedDescription: null })
+            .where(eq(products.id, id));
+          results.push({ id, partNumber: existing[0].partNumber, status: 'cleared' });
+        } catch (err) {
+          results.push({ id, status: 'error', error: String(err) });
+        }
+      }
+      return { success: true, results };
+    }),
+
   // Bind approved product images by numeric product ID. Restrict image URLs to the
   // controlled Manus CDN to prevent arbitrary external image injection.
   batchUpdateProductImageUrls: publicProcedure
