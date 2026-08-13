@@ -14,13 +14,14 @@ import { AdvancedFilters, AdvancedFiltersState } from "@/components/AdvancedFilt
 import { toast } from "sonner";
 import { useTranslation } from 'react-i18next';
 import { translateCategory } from '@/lib/categoryTranslations';
+import { CATEGORY_LANDING_PROFILES } from '@shared/categoryLandingContent';
 
-const CATEGORY_HUBS = [
-  { slug: "c18-columns", label: "C18 HPLC Columns", description: "Reversed-phase column selection" },
-  { slug: "guard-columns", label: "HPLC Guard Columns", description: "Analytical column protection" },
-  { slug: "gc-columns", label: "GC Columns", description: "Capillary GC column selection" },
-  { slug: "spe-cartridges", label: "SPE Cartridges", description: "Sample preparation selection" },
-];
+// Keep client navigation synchronized with the server-rendered SEO collection pages.
+const CATEGORY_HUBS = Object.entries(CATEGORY_LANDING_PROFILES).map(([slug, profile]) => ({
+  slug,
+  label: profile.name,
+  description: profile.eyebrow,
+}));
 
 export default function Products() {
   const { t, i18n } = useTranslation();
@@ -80,6 +81,14 @@ export default function Products() {
     if (brandParam) {
       setSelectedBrand(brandParam);
     }
+
+    // Read a collection-page search parameter so catalog links such as
+    // /products?search=HILIC return the corresponding active products.
+    const searchParam = params.get('search');
+    if (searchParam) {
+      setSearchTerm(searchParam);
+      setDebouncedSearchTerm(searchParam);
+    }
     
     // Read USP parameter
     const uspParam = params.get('usp');
@@ -113,6 +122,11 @@ export default function Products() {
     // Update brand from URL
     const brandParam = params.get('brand');
     setSelectedBrand(brandParam);
+
+    // Keep catalog search state aligned with collection-page links.
+    const searchParam = params.get('search') || "";
+    setSearchTerm(searchParam);
+    setDebouncedSearchTerm(searchParam);
     
     // Update USP from URL
     const uspParam = params.get('usp');

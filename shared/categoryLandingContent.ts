@@ -84,6 +84,120 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       { question: "Can a PFP column replace a C18 column without method work?", answer: "A change of stationary-phase chemistry can change selectivity. Any replacement should be evaluated using the actual method conditions and the method’s suitability criteria." },
     ],
   },
+  "chiral-hplc-columns": {
+    name: "Chiral HPLC Columns",
+    catalogSlug: "chiral-hplc-columns",
+    catalogHref: "/products?search=chiral",
+    eyebrow: "Chiral Separation Column Selection",
+    heading: "Chiral HPLC Columns for Enantioselective Method Development",
+    summary: "Browse ROWELL's current chiral chromatography column listings and compare manufacturer-stated dimensions, particle size, stationary-phase format, and method compatibility.",
+    overview: "Chiral column selection should begin with the exact analyte, the intended separation mode, and the manufacturer documentation for the selected part number. The active catalog includes chiral column families from multiple brands; use the catalog to compare current listings before requesting a quote or planning a method evaluation.",
+    selectionPoints: [
+      "Use the exact product part number and manufacturer documentation when reviewing a chiral stationary phase.",
+      "Check whether the intended HPLC, normal-phase, reversed-phase, or SFC conditions are supported for the selected column.",
+      "Confirm dimensions, particle size, solvent compatibility, and method suitability with the actual analytical workflow."
+    ],
+    faq: [
+      { question: "How should I start selecting a chiral HPLC column?", answer: "Start with the analyte, the separation objective, and manufacturer guidance for the intended method. Chiral selectivity should be verified experimentally under the planned conditions." },
+      { question: "Can a chiral column be substituted without method work?", answer: "A change of chiral stationary phase, dimensions, or operating conditions can affect selectivity. Any substitution should be evaluated against the method’s suitability criteria." },
+      { question: "Which product details should be confirmed before requesting a quote?", answer: "Confirm the exact part number, dimensions, particle size, technique compatibility, and the manufacturer documentation relevant to the planned method." }
+    ],
+  },
+  "hilic-hplc-columns": {
+    name: "HILIC HPLC Columns",
+    catalogSlug: "hilic-hplc-columns",
+    catalogHref: "/products?search=HILIC",
+    eyebrow: "Polar Analyte Retention Selection",
+    heading: "HILIC HPLC Columns for Polar Compound Method Evaluation",
+    summary: "Browse ROWELL's current HILIC column listings and compare manufacturer-stated stationary phase, dimensions, particle size, and method compatibility for polar-analyte workflows.",
+    overview: "HILIC methods are commonly evaluated when a method requires a different retention mechanism for polar analytes. Product selection should be based on the exact stationary phase, sample chemistry, mobile-phase conditions, and manufacturer documentation for the selected part number.",
+    selectionPoints: [
+      "Review the listed stationary phase and manufacturer method guidance before transferring or developing a HILIC method.",
+      "Compare column dimensions and particle size with instrument pressure limits and the intended method scale.",
+      "Confirm equilibration, sample-solvent, and mobile-phase requirements using the selected manufacturer’s documentation."
+    ],
+    faq: [
+      { question: "When can a HILIC column be evaluated?", answer: "HILIC can be evaluated when a method needs a polar-analyte retention mechanism that differs from conventional reversed-phase conditions. Suitability depends on the analyte and method conditions." },
+      { question: "Can all HILIC columns use the same method conditions?", answer: "No. Stationary-phase chemistry and manufacturer guidance differ by product. Check the exact part number before selecting solvents, additives, or operating conditions." },
+      { question: "What should I compare in the active catalog?", answer: "Compare the listed phase, dimensions, particle size, brand documentation, and method compatibility for the current product listing." }
+    ],
+  },
+  "c8-hplc-columns": {
+    name: "C8 HPLC Columns",
+    catalogSlug: "c8-hplc-columns",
+    catalogHref: "/products?search=C8",
+    eyebrow: "Reversed-Phase Selectivity Selection",
+    heading: "C8 HPLC Columns for Reversed-Phase Method Development",
+    summary: "Explore ROWELL's current C8 HPLC column listings and compare manufacturer-stated dimensions, particle size, pore size, and method compatibility.",
+    overview: "C8 is a reversed-phase stationary-phase family that can be evaluated alongside other alkyl phases during method development. The correct choice depends on the analyte, mobile phase, separation objective, and the documented limits for the exact column part number.",
+    selectionPoints: [
+      "Compare the selected C8 phase with the actual method objective rather than assuming equivalence with another phase.",
+      "Check column length, internal diameter, particle size, and pore size against the current method and instrument limits.",
+      "Use manufacturer documentation to confirm applicable solvent, pH, and pressure guidance for the exact part number."
+    ],
+    faq: [
+      { question: "When might a C8 phase be evaluated?", answer: "A C8 phase can be evaluated as a reversed-phase option when method development requires a different retention profile from the current column. The outcome should be confirmed experimentally." },
+      { question: "Is every C8 column interchangeable?", answer: "No. Bonding chemistry, hardware, dimensions, particle size, and manufacturer limits can differ. Compare the exact products before making a substitution." },
+      { question: "What information is needed for a C8 quote?", answer: "Provide the desired part number where possible, or the required phase, dimensions, particle size, and intended method conditions." }
+    ],
+  },
+  "phenyl-hplc-columns": {
+    name: "Phenyl HPLC Columns",
+    catalogSlug: "phenyl-hplc-columns",
+    catalogHref: "/products?search=phenyl",
+    eyebrow: "Alternative Reversed-Phase Selectivity",
+    heading: "Phenyl HPLC Columns for Alternative Selectivity Evaluation",
+    summary: "Browse ROWELL's current phenyl and phenyl-hexyl HPLC column listings and compare manufacturer-stated chemistry, dimensions, particle size, and method compatibility.",
+    overview: "Phenyl-type stationary phases can be evaluated when a method team is considering an alternative selectivity option. Selection should be based on the exact product chemistry, the analyte and matrix, and manufacturer documentation rather than a general assumption about performance.",
+    selectionPoints: [
+      "Identify the exact phenyl or phenyl-hexyl chemistry listed for the candidate product.",
+      "Compare dimensions and particle size with the method objective and instrument operating limits.",
+      "Verify the selected product’s documented operating conditions before changing a validated method."
+    ],
+    faq: [
+      { question: "Why consider a phenyl HPLC column?", answer: "A phenyl-type phase can be evaluated when method development calls for an alternative selectivity option. The appropriate choice depends on the analyte and actual method data." },
+      { question: "Are phenyl and phenyl-hexyl phases identical?", answer: "No. Product chemistry and manufacturer specifications can differ. Review the exact product documentation before treating any phases as interchangeable." },
+      { question: "How should a phenyl-column change be assessed?", answer: "Evaluate retention, selectivity, resolution, and method suitability using the actual operating conditions and predefined acceptance criteria." }
+    ],
+  },
+  "kinetex-hplc-columns": {
+    name: "Phenomenex Kinetex HPLC Columns",
+    catalogSlug: "kinetex-hplc-columns",
+    catalogHref: "/products?search=Kinetex",
+    eyebrow: "Kinetex Core-Shell LC Column Selection",
+    heading: "Phenomenex Kinetex HPLC Columns for Method Evaluation",
+    summary: "Browse ROWELL's current Phenomenex Kinetex column listings and compare the listed phase, dimensions, particle size, and manufacturer documentation for your method.",
+    overview: "Phenomenex describes the Kinetex family as core-shell LC columns with multiple stationary-phase options. ROWELL's active catalog includes currently listed Kinetex products; review each exact part number and the associated manufacturer documentation before selecting a phase or planning method work.",
+    selectionPoints: [
+      "Use the active catalog to identify the exact Kinetex product and compare its listed phase, dimensions, and particle size.",
+      "Confirm compatibility with the instrument, mobile phase, and validated method before changing columns.",
+      "Treat each stationary phase as a distinct method-development option rather than assuming all Kinetex variants are interchangeable."
+    ],
+    faq: [
+      { question: "What is the Kinetex column family?", answer: "Phenomenex describes Kinetex as a core-shell LC column family with multiple stationary-phase options. Review the exact product documentation for the selected part number." },
+      { question: "Does this page list every Kinetex phase?", answer: "The catalog link shows ROWELL's current active listings. Availability and documented specifications should be checked for each exact part number." },
+      { question: "Can a Kinetex phase be substituted directly for another phase?", answer: "A phase change can alter chromatographic behavior. Evaluate substitutions under the actual method conditions and method-suitability requirements." }
+    ],
+  },
+  "agilent-poroshell-columns": {
+    name: "Agilent InfinityLab Poroshell HPLC Columns",
+    catalogSlug: "agilent-poroshell-columns",
+    catalogHref: "/products?search=Poroshell",
+    eyebrow: "Poroshell Core-Shell Column Selection",
+    heading: "Agilent InfinityLab Poroshell HPLC Columns",
+    summary: "Explore ROWELL's current Agilent InfinityLab Poroshell column listings and compare manufacturer-stated chemistry, dimensions, particle size, and method compatibility.",
+    overview: "Agilent describes the InfinityLab Poroshell 120 family as superficially porous LC columns with multiple chemistries and particle sizes. Use the active catalog to identify current listings, then confirm the exact product documentation before selecting a column for a method.",
+    selectionPoints: [
+      "Compare the exact listed Poroshell chemistry and dimensions with the method objective and existing instrument configuration.",
+      "Review the manufacturer documentation for the selected part number before choosing operating conditions.",
+      "Verify a method transfer or substitution using the method’s own suitability criteria."
+    ],
+    faq: [
+      { question: "What is the InfinityLab Poroshell 120 family?", answer: "Agilent describes Poroshell 120 as a superficially porous LC column family with multiple chemistries and particle sizes. Specifications depend on the exact part number." },
+      { question: "Can Poroshell products support different LC methods?", answer: "The family includes multiple chemistries, but suitability depends on the selected product, analyte, mobile phase, and method requirements." },
+      { question: "How should I compare current Poroshell listings?", answer: "Compare the exact phase, dimensions, particle size, and manufacturer documentation with the existing method and instrument limits." }
+    ],
+  },
   "spe-cartridges": {
     name: "SPE Cartridges",
     catalogSlug: "spe-cartridges",
