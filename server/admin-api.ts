@@ -210,6 +210,72 @@ export const adminRouter = router({
       return { success: true, results };
     }),
 
+  // Bind approved product images by numeric product ID. Restrict image URLs to the
+  // controlled Manus CDN to prevent arbitrary external image injection.
+  batchUpdateProductImageUrls: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          id: z.number().int().positive(),
+          imageUrl: z.string().url().max(500).refine(
+            (url) => url.startsWith('https://files.manuscdn.com/'),
+            'imageUrl must use the controlled files.manuscdn.com domain'
+          ),
+        })).min(1).max(50),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      const results: Array<{
+        id: number;
+        partNumber?: string;
+        status: 'updated' | 'not_found' | 'error';
+        oldImageUrl?: string | null;
+        newImageUrl?: string;
+        error?: string;
+      }> = [];
+
+      for (const update of input.updates) {
+        try {
+          const existing = await db
+            .select({ id: products.id, partNumber: products.partNumber, imageUrl: products.imageUrl })
+            .from(products)
+            .where(eq(products.id, update.id))
+            .limit(1);
+          if (existing.length === 0) {
+            results.push({ id: update.id, status: 'not_found' });
+            continue;
+          }
+          await db
+            .update(products)
+            .set({ imageUrl: update.imageUrl, updatedAt: new Date() })
+            .where(eq(products.id, update.id));
+          results.push({
+            id: update.id,
+            partNumber: existing[0].partNumber,
+            status: 'updated',
+            oldImageUrl: existing[0].imageUrl,
+            newImageUrl: update.imageUrl,
+          });
+        } catch (error) {
+          results.push({ id: update.id, status: 'error', error: String(error) });
+        }
+      }
+
+      return {
+        success: results.every((result) => result.status === 'updated'),
+        totalUpdated: results.filter((result) => result.status === 'updated').length,
+        results,
+      };
+    }),
+
   // Correct verified product dimensions and display names only; intentionally narrow to prevent broad product edits.
   batchCorrectProductDimensions: publicProcedure
     .input((raw: unknown) => {
