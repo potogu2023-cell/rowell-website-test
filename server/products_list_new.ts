@@ -55,69 +55,25 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     conditions.push(eq(products.brand, input.brand));
   }
   
-  // Numeric filters intentionally parse only strict, unit-qualified raw values.
-  // The legacy *Num columns are integer fields and are known to lose decimal
-  // precision for chromatography specifications; they must not drive results.
-  const strictParticleSize = sql`${products.particleSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(µm|um)$'`;
-  const strictPoreSize = sql`${products.poreSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(Å|A)$'`;
-  const strictInnerDiameter = sql`${products.innerDiameter} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'`;
-  const strictColumnLength = sql`LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(mm|m)$'`;
-
-  // CASE prevents TiDB from attempting numeric conversion on values such as N/A,
-  // ranges, or capacity strings. A field must match the exact unit pattern first.
-  const particleSizeValue = sql<number>`CASE WHEN ${strictParticleSize}
-    THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.particleSize})), 'µm', ''), 'um', ''), ' ', '') AS DECIMAL(12,4))
-    ELSE NULL END`;
-  const poreSizeValue = sql<number>`CASE WHEN ${strictPoreSize}
-    THEN CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.poreSize})), 'å', ''), 'a', ''), ' ', '') AS DECIMAL(12,4))
-    ELSE NULL END`;
-  const innerDiameterValue = sql<number>`CASE WHEN ${strictInnerDiameter}
-    THEN CAST(REPLACE(LOWER(TRIM(${products.innerDiameter})), 'mm', '') AS DECIMAL(12,4))
-    ELSE NULL END`;
-  const columnLengthValueMm = sql<number>`CASE
-    WHEN LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'
-      THEN CAST(REPLACE(LOWER(TRIM(${products.columnLength})), 'mm', '') AS DECIMAL(12,4))
-    WHEN LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*m$'
-      THEN CAST(REPLACE(LOWER(TRIM(${products.columnLength})), 'm', '') AS DECIMAL(12,4)) * 1000
-    ELSE NULL
-  END`;
-
-  if (input?.particleSizeMin !== undefined) {
-    conditions.push(sql`${strictParticleSize} AND ${particleSizeValue} >= ${input.particleSizeMin}`);
-  }
-  if (input?.particleSizeMax !== undefined) {
-    conditions.push(sql`${strictParticleSize} AND ${particleSizeValue} <= ${input.particleSizeMax}`);
-  }
-  if (input?.poreSizeMin !== undefined) {
-    conditions.push(sql`${strictPoreSize} AND ${poreSizeValue} >= ${input.poreSizeMin}`);
-  }
-  if (input?.poreSizeMax !== undefined) {
-    conditions.push(sql`${strictPoreSize} AND ${poreSizeValue} <= ${input.poreSizeMax}`);
-  }
-  if (input?.columnLengthMin !== undefined) {
-    conditions.push(sql`${strictColumnLength} AND ${columnLengthValueMm} >= ${input.columnLengthMin}`);
-  }
-  if (input?.columnLengthMax !== undefined) {
-    conditions.push(sql`${strictColumnLength} AND ${columnLengthValueMm} <= ${input.columnLengthMax}`);
-  }
-  if (input?.innerDiameterMin !== undefined) {
-    conditions.push(sql`${strictInnerDiameter} AND ${innerDiameterValue} >= ${input.innerDiameterMin}`);
-  }
-  if (input?.innerDiameterMax !== undefined) {
-    conditions.push(sql`${strictInnerDiameter} AND ${innerDiameterValue} <= ${input.innerDiameterMax}`);
-  }
+  // The legacy *Num columns are integer fields and lose decimal precision.
+  // Numeric specs are therefore parsed strictly in application memory after
+  // SQL applies the inexpensive status/category/brand/text constraints.
+  const hasSpecificationFilters = [
+    input?.particleSizeMin,
+    input?.particleSizeMax,
+    input?.poreSizeMin,
+    input?.poreSizeMax,
+    input?.columnLengthMin,
+    input?.columnLengthMax,
+    input?.innerDiameterMin,
+    input?.innerDiameterMax,
+    input?.phMin,
+    input?.phMax,
+  ].some((value) => value !== undefined);
   
   // Phase types (multiple selection)
   if (input?.phaseTypes && input.phaseTypes.length > 0) {
     conditions.push(inArray(products.phaseType, input.phaseTypes));
-  }
-  
-  // pH range: only products with both independently recorded boundaries can match.
-  if (input?.phMin !== undefined) {
-    conditions.push(sql`${products.phMax} IS NOT NULL AND ${products.phMax} >= ${input.phMin}`);
-  }
-  if (input?.phMax !== undefined) {
-    conditions.push(sql`${products.phMin} IS NOT NULL AND ${products.phMin} <= ${input.phMax}`);
   }
   
   // USP filter (exact match)
@@ -133,58 +89,79 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     );
   }
   
-  // Build query based on category filter
-  let query;
-  let countQuery;
-  
   const whereClause = conditions.length > 0 ? and(...conditions) : undefined;
-  
-  if (input?.categoryId) {
-    // Query with category filter using IN subquery
-    const categoryProductIds = sql`(SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`;
-    const categoryCondition = sql`${products.id} IN ${categoryProductIds}`;
-    const finalCondition = whereClause 
-      ? and(categoryCondition, whereClause)
-      : categoryCondition;
-    
-    query = db
-      .select()
-      .from(products)
-      .where(finalCondition)
-      .limit(pageSize)
-      .offset(offset);
-    
-    countQuery = db
+  const categoryCondition = input?.categoryId
+    ? sql`${products.id} IN (SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`
+    : undefined;
+  const finalCondition = categoryCondition && whereClause
+    ? and(categoryCondition, whereClause)
+    : categoryCondition || whereClause;
+  const baseQuery = db.select().from(products).where(finalCondition);
+
+  // Debug: log the DB-safe prefilter query; specification comparison below is
+  // deterministic application code so malformed raw values can never break SQL.
+  console.log('[products_list_new] categoryId:', input?.categoryId);
+  console.log('[products_list_new] specification filters active:', hasSpecificationFilters);
+  console.log('[products_list_new] base query SQL:', baseQuery.toSQL ? baseQuery.toSQL() : 'no toSQL method');
+
+  const parseStrictUnit = (value: unknown, expression: RegExp, multiplier = 1): number | null => {
+    if (typeof value !== 'string') return null;
+    const match = expression.exec(value.trim());
+    if (!match) return null;
+    const numeric = Number(match[1]);
+    return Number.isFinite(numeric) ? numeric * multiplier : null;
+  };
+  const inRange = (value: number | null, min?: number, max?: number) =>
+    (min === undefined && max === undefined) ||
+    (value !== null && (min === undefined || value >= min) && (max === undefined || value <= max));
+  const parseRecordedNumber = (value: unknown): number | null => {
+    if (value === null || value === undefined || value === '') return null;
+    const numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : null;
+  };
+
+  const matchesSpecificationFilters = (product: any) => {
+    const particleSize = parseStrictUnit(product.particleSize, /^(\d+(?:\.\d+)?)\s*(?:µm|um)$/i);
+    const poreSize = parseStrictUnit(product.poreSize, /^(\d+(?:\.\d+)?)\s*(?:Å|A)$/);
+    const innerDiameter = parseStrictUnit(product.innerDiameter, /^(\d+(?:\.\d+)?)\s*mm$/i);
+    const columnLengthMatch = typeof product.columnLength === 'string'
+      ? /^(\d+(?:\.\d+)?)\s*(mm|m)$/i.exec(product.columnLength.trim())
+      : null;
+    const columnLength = columnLengthMatch
+      ? Number(columnLengthMatch[1]) * (columnLengthMatch[2].toLowerCase() === 'm' ? 1000 : 1)
+      : null;
+    const recordedPhMin = parseRecordedNumber(product.phMin);
+    const recordedPhMax = parseRecordedNumber(product.phMax);
+    const matchesPh = (input?.phMin === undefined && input?.phMax === undefined) ||
+      (recordedPhMin !== null && recordedPhMax !== null &&
+        (input?.phMin === undefined || recordedPhMax >= input.phMin) &&
+        (input?.phMax === undefined || recordedPhMin <= input.phMax));
+
+    return inRange(particleSize, input?.particleSizeMin, input?.particleSizeMax) &&
+      inRange(poreSize, input?.poreSizeMin, input?.poreSizeMax) &&
+      inRange(columnLength, input?.columnLengthMin, input?.columnLengthMax) &&
+      inRange(innerDiameter, input?.innerDiameterMin, input?.innerDiameterMax) &&
+      matchesPh;
+  };
+
+  let productList: any[];
+  let total: number;
+  if (hasSpecificationFilters) {
+    const candidates = await baseQuery;
+    const matchingProducts = candidates.filter(matchesSpecificationFilters);
+    total = matchingProducts.length;
+    productList = matchingProducts.slice(offset, offset + pageSize);
+  } else {
+    const pagedQuery = baseQuery.limit(pageSize).offset(offset);
+    const countQuery = db
       .select({ count: sql<number>`count(*)` })
       .from(products)
       .where(finalCondition);
-  } else {
-    // Query all products with filters
-    query = db
-      .select()
-      .from(products)
-      .where(whereClause)
-      .limit(pageSize)
-      .offset(offset);
-    
-    countQuery = db
-      .select({ count: sql<number>`count(*)` })
-      .from(products)
-      .where(whereClause);
+    const [productResults, countResults] = await Promise.all([pagedQuery, countQuery]);
+    productList = productResults;
+    total = Number(countResults[0]?.count || 0);
   }
-  
-  // Debug: log query
-  console.log('[products_list_new] categoryId:', input?.categoryId);
-  console.log('[products_list_new] query SQL:', query.toSQL ? query.toSQL() : 'no toSQL method');
-  
-  const [productResults, countResults] = await Promise.all([
-    query,
-    countQuery,
-  ]);
-  
-  const productList = productResults;
-  
-  const total = countResults[0]?.count || 0;
+
   const totalPages = Math.ceil(total / pageSize);
   
   return {
