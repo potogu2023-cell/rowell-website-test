@@ -157,11 +157,11 @@ export default function ProductMessageButton({
             />
           </div>
 
-          {/* 友情提示 */}
           <div className="p-3 bg-purple-50 border border-purple-200 rounded-lg">
             <p className="text-xs text-purple-800">
-              <span className="font-medium">💡 {t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
+              <span className="font-medium">{t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
             </p>
+            <p className="mt-1 text-xs text-purple-800">Do not include sensitive personal, payment, or instrument-login information.</p>
           </div>
 
           <div className="flex gap-3">

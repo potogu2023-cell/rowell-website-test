@@ -20,7 +20,7 @@ export default function CustomerMessageForm({
   productId, 
   productName,
   title = "Leave a Message",
-  description = "Have questions? Send us a message and we'll get back to you soon."
+  description = "Use this form to send your product or technical inquiry."
 }: CustomerMessageFormProps) {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -158,11 +158,11 @@ export default function CustomerMessageForm({
             />
           </div>
 
-          {/* 友情提示 */}
           <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
             <p className="text-sm text-blue-800">
-              <span className="font-medium">💡 {t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
+              <span className="font-medium">{t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
             </p>
+            <p className="mt-1 text-xs text-blue-800">Do not include sensitive personal, payment, or instrument-login information.</p>
           </div>
 
           <Button 

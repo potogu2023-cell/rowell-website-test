@@ -22,26 +22,21 @@ export default function ProductInquiryButton({
 }: ProductInquiryButtonProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const createInitialFormData = () => ({
     name: "",
     email: "",
     company: "",
     phone: "",
-    message: "",
+    message: `I would like product information and a quotation for ${productPartNumber || productId}.\n\nQuantity:\nDestination country/region:\nApplication (optional):`,
   });
+  const [formData, setFormData] = useState(createInitialFormData);
 
   const createInquiryMutation = trpc.customerMessage.create.useMutation({
     onSuccess: (data) => {
       toast.success(t('contact.inquiry_success'));
       setOpen(false);
       // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        company: "",
-        phone: "",
-        message: "",
-      });
+      setFormData(createInitialFormData());
     },
     onError: (error) => {
       toast.error(error.message || t('contact.inquiry_error'));
@@ -157,11 +152,11 @@ export default function ProductInquiryButton({
             />
           </div>
 
-          {/* 友情提示 */}
           <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <p className="text-xs text-blue-800">
-              <span className="font-medium">💡 {t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
+              <span className="font-medium">{t('contact.reminder_title')}:</span> {t('contact.reminder_message')}
             </p>
+            <p className="mt-1 text-xs text-blue-800">Do not include sensitive personal, payment, or instrument-login information.</p>
           </div>
 
           <div className="flex gap-3">
