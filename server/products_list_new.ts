@@ -1,6 +1,6 @@
 // New products.list implementation with advanced filters
 import { z } from "zod";
-import { eq, and, gte, lte, inArray, sql } from "drizzle-orm";
+import { eq, and, inArray, sql } from "drizzle-orm";
 
 export const productsListInput = z.object({
   categoryId: z.number().optional(),
@@ -55,36 +55,48 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     conditions.push(eq(products.brand, input.brand));
   }
   
-  // Particle size range
+  // Numeric filters intentionally parse only strict, unit-qualified raw values.
+  // The legacy *Num columns are integer fields and are known to lose decimal
+  // precision for chromatography specifications; they must not drive results.
+  const particleSizeValue = sql<number>`CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.particleSize})), 'µm', ''), 'um', ''), ' ', '') AS DECIMAL(12,4))`;
+  const poreSizeValue = sql<number>`CAST(REPLACE(REPLACE(REPLACE(LOWER(TRIM(${products.poreSize})), 'å', ''), 'a', ''), ' ', '') AS DECIMAL(12,4))`;
+  const innerDiameterValue = sql<number>`CAST(REPLACE(LOWER(TRIM(${products.innerDiameter})), 'mm', '') AS DECIMAL(12,4))`;
+  const columnLengthValueMm = sql<number>`CASE
+    WHEN LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'
+      THEN CAST(REPLACE(LOWER(TRIM(${products.columnLength})), 'mm', '') AS DECIMAL(12,4))
+    WHEN LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*m$'
+      THEN CAST(REPLACE(LOWER(TRIM(${products.columnLength})), 'm', '') AS DECIMAL(12,4)) * 1000
+    ELSE NULL
+  END`;
+
+  const strictParticleSize = sql`${products.particleSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(µm|um)$'`;
+  const strictPoreSize = sql`${products.poreSize} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(Å|A)$'`;
+  const strictInnerDiameter = sql`${products.innerDiameter} REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*mm$'`;
+  const strictColumnLength = sql`LOWER(TRIM(${products.columnLength})) REGEXP '^[0-9]+(\\.[0-9]+)?[[:space:]]*(mm|m)$'`;
+
   if (input?.particleSizeMin !== undefined) {
-    conditions.push(gte(products.particleSizeNum, input.particleSizeMin));
+    conditions.push(sql`${strictParticleSize} AND ${particleSizeValue} >= ${input.particleSizeMin}`);
   }
   if (input?.particleSizeMax !== undefined) {
-    conditions.push(lte(products.particleSizeNum, input.particleSizeMax));
+    conditions.push(sql`${strictParticleSize} AND ${particleSizeValue} <= ${input.particleSizeMax}`);
   }
-  
-  // Pore size range
   if (input?.poreSizeMin !== undefined) {
-    conditions.push(gte(products.poreSizeNum, input.poreSizeMin));
+    conditions.push(sql`${strictPoreSize} AND ${poreSizeValue} >= ${input.poreSizeMin}`);
   }
   if (input?.poreSizeMax !== undefined) {
-    conditions.push(lte(products.poreSizeNum, input.poreSizeMax));
+    conditions.push(sql`${strictPoreSize} AND ${poreSizeValue} <= ${input.poreSizeMax}`);
   }
-  
-  // Column length range
   if (input?.columnLengthMin !== undefined) {
-    conditions.push(gte(products.columnLengthNum, input.columnLengthMin));
+    conditions.push(sql`${strictColumnLength} AND ${columnLengthValueMm} >= ${input.columnLengthMin}`);
   }
   if (input?.columnLengthMax !== undefined) {
-    conditions.push(lte(products.columnLengthNum, input.columnLengthMax));
+    conditions.push(sql`${strictColumnLength} AND ${columnLengthValueMm} <= ${input.columnLengthMax}`);
   }
-  
-  // Inner diameter range
   if (input?.innerDiameterMin !== undefined) {
-    conditions.push(gte(products.innerDiameterNum, input.innerDiameterMin));
+    conditions.push(sql`${strictInnerDiameter} AND ${innerDiameterValue} >= ${input.innerDiameterMin}`);
   }
   if (input?.innerDiameterMax !== undefined) {
-    conditions.push(lte(products.innerDiameterNum, input.innerDiameterMax));
+    conditions.push(sql`${strictInnerDiameter} AND ${innerDiameterValue} <= ${input.innerDiameterMax}`);
   }
   
   // Phase types (multiple selection)
@@ -92,12 +104,12 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     conditions.push(inArray(products.phaseType, input.phaseTypes));
   }
   
-  // pH range
+  // pH range: only products with both independently recorded boundaries can match.
   if (input?.phMin !== undefined) {
-    conditions.push(gte(products.phMax, input.phMin)); // Product's max pH >= filter's min pH
+    conditions.push(sql`${products.phMax} IS NOT NULL AND ${products.phMax} >= ${input.phMin}`);
   }
   if (input?.phMax !== undefined) {
-    conditions.push(lte(products.phMin, input.phMax)); // Product's min pH <= filter's max pH
+    conditions.push(sql`${products.phMin} IS NOT NULL AND ${products.phMin} <= ${input.phMax}`);
   }
   
   // USP filter (exact match)

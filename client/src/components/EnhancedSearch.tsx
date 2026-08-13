@@ -10,10 +10,11 @@ import { useLocation } from "wouter";
 interface EnhancedSearchProps {
   value: string;
   onChange: (value: string) => void;
+  onSearchCommit?: (value: string) => void;
   placeholder?: string;
 }
 
-export default function EnhancedSearch({ value, onChange, placeholder }: EnhancedSearchProps) {
+export default function EnhancedSearch({ value, onChange, onSearchCommit, placeholder }: EnhancedSearchProps) {
   const [, setLocation] = useLocation();
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
@@ -81,15 +82,22 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
     setShowSuggestions(true);
   };
 
-  const handleSelectSuggestion = (term: string) => {
-    onChange(term);
-    saveToHistory(term);
+  const commitSearch = (term: string) => {
+    const normalized = term.trim();
+    if (!normalized) return;
+    onChange(normalized);
+    saveToHistory(normalized);
+    onSearchCommit?.(normalized);
     setShowSuggestions(false);
   };
 
-  const handleSelectProduct = (productId: string) => {
+  const handleSelectSuggestion = (term: string) => {
+    commitSearch(term);
+  };
+
+  const handleSelectProduct = (slug: string) => {
     setShowSuggestions(false);
-    setLocation(`/products/${productId}`);
+    setLocation(`/products/${slug}`);
   };
 
   const handleClearHistory = () => {
@@ -117,8 +125,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
           onFocus={() => setShowSuggestions(true)}
           onKeyDown={(e) => {
             if (e.key === "Enter" && value.trim()) {
-              saveToHistory(value);
-              setShowSuggestions(false);
+              commitSearch(value);
             }
           }}
           className="pl-10"
@@ -201,7 +208,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
                     <div
                       key={product.id}
                       className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer"
-                      onClick={() => handleSelectProduct(product.productId)}
+                      onClick={() => handleSelectProduct(product.slug)}
                     >
                       <img
                         src={product.imageUrl || "/images/hplc-column-placeholder.png"}
@@ -233,8 +240,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
                       variant="ghost"
                       size="sm"
                       onClick={() => {
-                        saveToHistory(value);
-                        setShowSuggestions(false);
+                        commitSearch(value);
                       }}
                     >
                       查看全部 {suggestions.total} 个结果
@@ -247,7 +253,7 @@ export default function EnhancedSearch({ value, onChange, placeholder }: Enhance
             {/* No Results */}
             {value.length >= 2 && suggestions && suggestions.products.length === 0 && (
               <div className="text-center py-4 text-sm text-muted-foreground">
-                未找到匹配的产品
+                No matching active products found. Try a part number, brand, or a broader specification range.
               </div>
             )}
           </div>

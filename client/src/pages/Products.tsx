@@ -23,6 +23,49 @@ const CATEGORY_HUBS = Object.entries(CATEGORY_LANDING_PROFILES).map(([slug, prof
   description: profile.eyebrow,
 }));
 
+const ADVANCED_FILTER_URL_PARAMS: Record<keyof AdvancedFiltersState, string> = {
+  particleSizeMin: 'particleSizeMin',
+  particleSizeMax: 'particleSizeMax',
+  poreSizeMin: 'poreSizeMin',
+  poreSizeMax: 'poreSizeMax',
+  columnLengthMin: 'columnLengthMin',
+  columnLengthMax: 'columnLengthMax',
+  innerDiameterMin: 'innerDiameterMin',
+  innerDiameterMax: 'innerDiameterMax',
+  phaseTypes: 'phaseTypes',
+  phMin: 'phMin',
+  phMax: 'phMax',
+};
+
+function readAdvancedFiltersFromParams(params: URLSearchParams): AdvancedFiltersState {
+  const filters: AdvancedFiltersState = {};
+  for (const [key, param] of Object.entries(ADVANCED_FILTER_URL_PARAMS) as Array<[keyof AdvancedFiltersState, string]>) {
+    const value = params.get(param);
+    if (!value) continue;
+    if (key === 'phaseTypes') {
+      const phaseTypes = value.split(',').map((item) => item.trim()).filter(Boolean);
+      if (phaseTypes.length > 0) filters.phaseTypes = phaseTypes;
+      continue;
+    }
+    const numeric = Number(value);
+    if (Number.isFinite(numeric) && numeric >= 0) {
+      filters[key] = numeric as never;
+    }
+  }
+  return filters;
+}
+
+function syncAdvancedFilterParams(params: URLSearchParams, filters: AdvancedFiltersState) {
+  for (const [key, param] of Object.entries(ADVANCED_FILTER_URL_PARAMS) as Array<[keyof AdvancedFiltersState, string]>) {
+    const value = filters[key];
+    if (Array.isArray(value) ? value.length > 0 : value !== undefined) {
+      params.set(param, Array.isArray(value) ? value.join(',') : String(value));
+    } else {
+      params.delete(param);
+    }
+  }
+}
+
 export default function Products() {
   const { t, i18n } = useTranslation();
   const [location, setLocation] = useLocation();
@@ -95,6 +138,7 @@ export default function Products() {
     if (uspParam) {
       setSelectedUSP(uspParam);
     }
+    setAdvancedFilters(readAdvancedFiltersFromParams(params));
   }, [categories]);
 
   // Debounce search term
@@ -128,9 +172,10 @@ export default function Products() {
     setSearchTerm(searchParam);
     setDebouncedSearchTerm(searchParam);
     
-    // Update USP from URL
+    // Update USP and advanced filters from URL
     const uspParam = params.get('usp');
     setSelectedUSP(uspParam);
+    setAdvancedFilters(readAdvancedFiltersFromParams(params));
     
     // Update category from URL
     const categoryParam = params.get('category');
@@ -201,9 +246,23 @@ export default function Products() {
   const handleAdvancedFiltersChange = (filters: AdvancedFiltersState) => {
     setAdvancedFilters(filters);
     setCurrentPage(1);
-    
-    // Update URL parameter
     const params = new URLSearchParams(window.location.search);
+    syncAdvancedFilterParams(params, filters);
+    params.set('page', '1');
+    window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
+  };
+
+  const handleSearchCommit = (term: string) => {
+    const normalized = term.trim();
+    setSearchTerm(normalized);
+    setDebouncedSearchTerm(normalized);
+    setCurrentPage(1);
+    const params = new URLSearchParams(window.location.search);
+    if (normalized) {
+      params.set('search', normalized);
+    } else {
+      params.delete('search');
+    }
     params.set('page', '1');
     window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
@@ -211,16 +270,20 @@ export default function Products() {
   const handleClearFilters = () => {
     setAdvancedFilters({});
     setSelectedBrand(null);
+    setSelectedUSP(null);
     setSearchTerm("");
+    setDebouncedSearchTerm("");
     setCurrentPage(1);
-    
-    // Update URL parameter
     const params = new URLSearchParams(window.location.search);
+    syncAdvancedFilterParams(params, {});
+    params.delete('brand');
+    params.delete('search');
+    params.delete('usp');
     params.set('page', '1');
     window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
-  const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || searchTerm;
+  const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || selectedUSP || searchTerm;
 
   // Only show full-page loading on initial load
   if (isLoading && !data) {
@@ -301,6 +364,7 @@ export default function Products() {
                 <EnhancedSearch
                   value={searchTerm}
                   onChange={setSearchTerm}
+                  onSearchCommit={handleSearchCommit}
                   placeholder={t('products.search_placeholder')}
                 />
                 <Button
@@ -391,8 +455,20 @@ export default function Products() {
                     variant={selectedBrand === brand ? "default" : "outline"}
                     size="sm"
                     onClick={() => {
-                      setSelectedBrand(selectedBrand === brand ? null : brand);
-                      setSearchTerm(""); // Clear search term when selecting brand
+                      const nextBrand = selectedBrand === brand ? null : brand;
+                      setSelectedBrand(nextBrand);
+                      setSearchTerm("");
+                      setDebouncedSearchTerm("");
+                      setCurrentPage(1);
+                      const params = new URLSearchParams(window.location.search);
+                      if (nextBrand) {
+                        params.set('brand', nextBrand);
+                      } else {
+                        params.delete('brand');
+                      }
+                      params.delete('search');
+                      params.set('page', '1');
+                      window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
                     }}
                   >
                     {brand} ({brandStats?.[brand] || 0})
@@ -543,6 +619,7 @@ export default function Products() {
       {/* Advanced Filters Modal */}
       {showAdvancedFilters && (
         <AdvancedFilters
+          initialFilters={advancedFilters}
           onFiltersChange={handleAdvancedFiltersChange}
           onClose={() => setShowAdvancedFilters(false)}
         />
