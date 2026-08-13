@@ -483,7 +483,20 @@ export default function Products() {
               {selectedCategoryName && ` ${t('products.in_category')} ${translateCategory(selectedCategoryName, i18n.language)}`}
             </div>
 
-            {/* Product Grid */}
+            {/* Product Grid / No-results recovery */}
+            {!isFetching && total === 0 ? (
+              <Card className="mb-8 border-dashed bg-slate-50">
+                <CardContent className="py-12 text-center">
+                  <h2 className="text-xl font-semibold text-slate-900">No matching active products</h2>
+                  <p className="mx-auto mt-2 max-w-xl text-sm text-slate-600">
+                    Try a full part number, a manufacturer name, or a broader verified specification range. Products without a recorded specification are intentionally not included in a specification-filtered result.
+                  </p>
+                  <Button className="mt-5" variant="outline" onClick={handleClearFilters}>
+                    Clear all filters
+                  </Button>
+                </CardContent>
+              </Card>
+            ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
               {filteredProducts.map((product) => (
                 <Card 
@@ -561,6 +574,7 @@ export default function Products() {
                 </Card>
               ))}
             </div>
+            )}
 
             {/* Pagination */}
             {totalPages > 1 && (
