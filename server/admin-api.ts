@@ -319,6 +319,58 @@ export const adminRouter = router({
       };
     }),
 
+  // Remove public images that have been audited as incorrect, branded, or otherwise noncompliant.
+  // This destructive-only endpoint cannot bind a replacement image or modify product facts.
+  batchClearProductImages: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        ids: z.array(z.number().int().positive()).min(1).max(50),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      const results: Array<{ id: number; partNumber?: string; status: 'cleared' | 'not_found' | 'error'; oldImageUrl?: string | null; error?: string }> = [];
+
+      for (const id of input.ids) {
+        try {
+          const existing = await db
+            .select({ id: products.id, partNumber: products.partNumber, imageUrl: products.imageUrl })
+            .from(products)
+            .where(eq(products.id, id))
+            .limit(1);
+          if (existing.length === 0) {
+            results.push({ id, status: 'not_found' });
+            continue;
+          }
+          await db
+            .update(products)
+            .set({ imageUrl: null, updatedAt: new Date() })
+            .where(eq(products.id, id));
+          results.push({
+            id,
+            partNumber: existing[0].partNumber,
+            status: 'cleared',
+            oldImageUrl: existing[0].imageUrl,
+          });
+        } catch (error) {
+          results.push({ id, status: 'error', error: String(error) });
+        }
+      }
+
+      return {
+        success: results.every((result) => result.status === 'cleared'),
+        totalCleared: results.filter((result) => result.status === 'cleared').length,
+        results,
+      };
+    }),
+
   // Correct verified product identity and raw specifications only. This endpoint intentionally excludes
   // prices, inventory, fulfillment promises, image URLs, and status to keep evidence-backed corrections narrow.
   batchCorrectVerifiedProductFacts: publicProcedure
