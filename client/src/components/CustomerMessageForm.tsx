@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -23,6 +23,7 @@ export default function CustomerMessageForm({
   description = "Use this form to send your product or technical inquiry."
 }: CustomerMessageFormProps) {
   const { t } = useTranslation();
+  const formId = useId();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -50,15 +51,11 @@ export default function CustomerMessageForm({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('[CustomerMessageForm] Form submitted', formData);
-    
+
     if (!formData.name || !formData.email || !formData.message) {
-      console.log('[CustomerMessageForm] Validation failed');
       toast.error("Please fill in all required fields");
       return;
     }
-    
-    console.log('[CustomerMessageForm] Validation passed, calling API...');
 
     createMessageMutation.mutate({
       type: 'message',
@@ -98,10 +95,11 @@ export default function CustomerMessageForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="name">{t('contact.name_label')}</Label>
+              <Label htmlFor={`${formId}-name`}>{t('contact.name_label')}</Label>
               <Input
-                id="name"
+                id={`${formId}-name`}
                 type="text"
+                autoComplete="name"
                 placeholder={t('contact.name_placeholder')}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -110,10 +108,11 @@ export default function CustomerMessageForm({
             </div>
 
             <div>
-              <Label htmlFor="email">{t('contact.email_label')}</Label>
+              <Label htmlFor={`${formId}-email`}>{t('contact.email_label')}</Label>
               <Input
-                id="email"
+                id={`${formId}-email`}
                 type="email"
+                autoComplete="email"
                 placeholder={t('contact.email_placeholder')}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -124,10 +123,11 @@ export default function CustomerMessageForm({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="company">{t('contact.company_label')}</Label>
+              <Label htmlFor={`${formId}-company`}>{t('contact.company_label')}</Label>
               <Input
-                id="company"
+                id={`${formId}-company`}
                 type="text"
+                autoComplete="organization"
                 placeholder={t('contact.company_placeholder')}
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -135,10 +135,11 @@ export default function CustomerMessageForm({
             </div>
 
             <div>
-              <Label htmlFor="phone">{t('contact.phone_label')}</Label>
+              <Label htmlFor={`${formId}-phone`}>{t('contact.phone_label')}</Label>
               <Input
-                id="phone"
+                id={`${formId}-phone`}
                 type="tel"
+                autoComplete="tel"
                 placeholder={t('contact.phone_placeholder')}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -147,9 +148,9 @@ export default function CustomerMessageForm({
           </div>
 
           <div>
-            <Label htmlFor="message">{t('contact.message_label')}</Label>
+            <Label htmlFor={`${formId}-message`}>{t('contact.message_label')}</Label>
             <Textarea
-              id="message"
+              id={`${formId}-message`}
               placeholder={t('contact.message_placeholder')}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
