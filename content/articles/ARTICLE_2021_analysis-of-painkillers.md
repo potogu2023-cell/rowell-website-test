@@ -4,7 +4,7 @@ title: "Analysis of Painkillers (Aspirin & Paracetamol)"
 author: "Dr. Evelyn Reed"
 author_slug: "dr-evelyn-reed"
 category: "application-notes"
-area: "pharmaceutical"
+application_area: "pharmaceutical"
 slug: "analysis-of-painkillers"
 year: 2021
 quarter: "Q1"

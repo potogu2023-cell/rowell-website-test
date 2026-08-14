@@ -3,7 +3,7 @@ title: "Introduction to Clinical Diagnostics with HPLC"
 author: "Dr. Sarah Martinez"
 author_slug: "dr-sarah-martinez"
 category: "technical-guides"
-area: "clinical"
+application_area: "clinical"
 slug: "intro-to-clinical-diagnostics-hplc"
 year: 2020
 quarter: "Q4"

@@ -4,7 +4,7 @@ title: "Introduction to Pharmaceutical Analysis"
 author: "Dr. Evelyn Reed"
 author_slug: "dr-evelyn-reed"
 category: "technical-guides"
-area: "pharmaceutical"
+application_area: "pharmaceutical"
 slug: "intro-to-pharmaceutical-analysis"
 year: 2020
 quarter: "Q3"

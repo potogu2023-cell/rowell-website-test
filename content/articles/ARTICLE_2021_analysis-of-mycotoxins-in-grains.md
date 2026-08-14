@@ -3,8 +3,8 @@ number: 16
 title: Analysis of Mycotoxins in Grains
 author: Dr. James Chen
 author_slug: dr-james-chen
-category: application-notes
-area: food-safety
+category: "application-notes"
+application_area: "food-safety"
 slug: analysis-of-mycotoxins-in-grains
 year: 2021
 quarter: Q4

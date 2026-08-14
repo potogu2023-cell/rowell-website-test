@@ -4,7 +4,7 @@ title: "HPLC Basics for Beginners"
 author: "Dr. Michael Zhang"
 author_slug: "dr-michael-zhang"
 category: "technical-guides"
-area: "chemical"
+application_area: "chemical"
 slug: "hplc-basics-for-beginners"
 year: 2020
 quarter: "Q1"

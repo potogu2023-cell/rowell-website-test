@@ -3,8 +3,8 @@ number: 15
 title: Common HPLC Troubleshooting Tips
 author: Dr. Michael Zhang
 author_slug: dr-michael-zhang
-category: technical-guides
-area: chemical
+category: "technical-guides"
+application_area: "chemical"
 slug: common-hplc-troubleshooting-tips
 year: 2021
 quarter: Q4

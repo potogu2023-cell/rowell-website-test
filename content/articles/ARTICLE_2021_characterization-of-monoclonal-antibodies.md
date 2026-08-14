@@ -2,8 +2,8 @@
 title: Characterization of Monoclonal Antibodies (mAbs)
 author: Dr. Sarah Martinez
 author_slug: dr-sarah-martinez
-category: application-notes
-area: biopharmaceutical
+category: "application-notes"
+application_area: "biopharmaceutical"
 slug: characterization-of-monoclonal-antibodies
 year: 2021
 quarter: Q4

@@ -3,8 +3,8 @@ number: 11
 title: Monitoring Pesticides in Drinking Water
 author: Dr. James Chen
 author_slug: dr-james-chen
-category: application-notes
-area: environmental
+category: "application-notes"
+application_area: "environmental"
 slug: monitoring-pesticides-in-drinking-water
 year: 2021
 quarter: Q2

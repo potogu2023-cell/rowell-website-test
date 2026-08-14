@@ -3,8 +3,8 @@ number: 17
 title: Therapeutic Drug Monitoring of Antiepileptics
 author: Dr. Sarah Martinez
 author_slug: dr-sarah-martinez
-category: application-notes
-area: clinical
+category: "application-notes"
+application_area: "clinical"
 slug: tdm-of-antiepileptics
 year: 2021
 quarter: Q4

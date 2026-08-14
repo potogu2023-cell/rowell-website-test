@@ -4,7 +4,7 @@ title: "Understanding Mobile Phase Selection"
 author: "Dr. Michael Zhang"
 author_slug: "dr-michael-zhang"
 category: "technical-guides"
-area: "chemical"
+application_area: "chemical"
 slug: "understanding-mobile-phase-selection"
 year: 2020
 quarter: "Q2"

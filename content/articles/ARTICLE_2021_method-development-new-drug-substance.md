@@ -2,8 +2,8 @@
 title: Method Development for a New Drug Substance
 author: Dr. Evelyn Reed
 author_slug: dr-evelyn-reed
-category: application-notes
-area: pharmaceutical
+category: "application-notes"
+application_area: "pharmaceutical"
 slug: method-development-new-drug-substance
 year: 2021
 quarter: Q3

@@ -2,8 +2,8 @@
 title: Determination of Caffeine in Beverages
 author: Dr. James Chen
 author_slug: dr-james-chen
-category: application-notes
-area: food-safety
+category: "application-notes"
+application_area: "food-safety"
 slug: determination-of-caffeine-in-beverages
 year: 2021
 quarter: Q1
