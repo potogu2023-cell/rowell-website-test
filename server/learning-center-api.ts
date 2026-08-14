@@ -17,6 +17,7 @@ export const learningCenterRouter = router({
       )
       .query(async ({ input }) => {
         const db = await getDb();
+        if (!db) throw new Error('Database unavailable');
         const offset = (input.page - 1) * input.pageSize;
 
         let conditions = [];
@@ -72,6 +73,7 @@ export const learningCenterRouter = router({
       .input(z.object({ slug: z.string() }))
       .query(async ({ input }) => {
         const db = await getDb();
+        if (!db) throw new Error('Database unavailable');
 
         const result = await db
           .select({
@@ -117,6 +119,7 @@ export const learningCenterRouter = router({
       .input(z.string())
       .query(async ({ input }) => {
         const db = await getDb();
+        if (!db) throw new Error('Database unavailable');
 
         const result = await db
           .select({
@@ -162,6 +165,7 @@ export const learningCenterRouter = router({
   authors: router({
     list: publicProcedure.query(async () => {
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
 
       const result = await db
         .select({
@@ -183,6 +187,7 @@ export const learningCenterRouter = router({
       .input(z.string())
       .query(async ({ input }) => {
         const db = await getDb();
+        if (!db) throw new Error('Database unavailable');
 
         const result = await db
           .select()
@@ -230,6 +235,7 @@ export const learningCenterRouter = router({
       )
       .query(async ({ input }) => {
         const db = await getDb();
+        if (!db) throw new Error('Database unavailable');
         const offset = (input.page - 1) * input.pageSize;
 
         let conditions = [];
@@ -280,6 +286,7 @@ export const learningCenterRouter = router({
       .input(z.string())
       .query(async ({ input }) => {
         const db = await getDb();
+        if (!db) throw new Error('Database unavailable');
 
         const result = await db
           .select()
@@ -305,6 +312,7 @@ export const learningCenterRouter = router({
 
   stats: publicProcedure.query(async () => {
     const db = await getDb();
+    if (!db) throw new Error('Database unavailable');
 
     const totalArticles = await db
       .select({ count: sql<number>`count(*)` })
