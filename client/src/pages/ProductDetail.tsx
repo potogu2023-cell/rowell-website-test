@@ -106,13 +106,14 @@ export default function ProductDetail() {
           <div className="lg:col-span-2">
             <Card>
               {/* Product Image */}
-              <div className="w-full aspect-video bg-gray-50 flex items-center justify-center overflow-hidden">
+              <div className="flex min-h-[320px] w-full items-center justify-center overflow-hidden bg-gray-50 sm:min-h-[400px]">
                 {product.imageUrl && product.imageUrl !== failedImageUrl ? (
                   <img
                     src={product.imageUrl}
                     alt={`${product.brand} ${product.name} (${product.partNumber}) product image`}
-                    className="max-w-full max-h-full object-contain p-8"
+                    className="block h-auto max-h-[400px] w-full object-contain p-8"
                     decoding="async"
+                    loading="eager"
                     fetchPriority="high"
                     onError={() => setFailedImageUrl(product.imageUrl)}
                   />
