@@ -1,21 +1,48 @@
-import { Router } from "express";
-import { getDb } from "./db";
-import { articles, authors } from "../drizzle/schema";
-import { eq, desc, and, sql } from "drizzle-orm";
+import { Router } from 'express';
+import { and, desc, eq, isNull, sql, type SQL } from 'drizzle-orm';
+import { getDb } from './db';
+import { articles, authors } from '../drizzle/schema';
 
 export const learningCenterRouter = Router();
 
-// Get all articles with pagination
-learningCenterRouter.get("/articles", async (req, res) => {
-  try {
-    const db = await getDb();
-    const page = parseInt(req.query.page as string) || 1;
-    const limit = parseInt(req.query.limit as string) || 12;
-    const offset = (page - 1) * limit;
-    const category = req.query.category as string;
-    const applicationArea = req.query.applicationArea as string;
+async function requireDb() {
+  const db = await getDb();
+  if (!db) throw new Error('Database not available');
+  return db;
+}
 
-    let query = db
+const articleCategories = ['application-notes', 'technical-guides', 'industry-trends', 'literature-reviews'] as const;
+const applicationAreas = ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical'] as const;
+
+type ArticleCategory = typeof articleCategories[number];
+type ApplicationArea = typeof applicationAreas[number];
+
+function isArticleCategory(value?: string): value is ArticleCategory {
+  return value !== undefined && (articleCategories as readonly string[]).includes(value);
+}
+
+function isApplicationArea(value?: string): value is ApplicationArea {
+  return value !== undefined && (applicationAreas as readonly string[]).includes(value);
+}
+
+function articleFilters(category?: string, applicationArea?: string): SQL[] {
+  const conditions: SQL[] = [];
+  if (isArticleCategory(category)) conditions.push(eq(articles.category, category));
+  if (isApplicationArea(applicationArea)) conditions.push(eq(articles.applicationArea, applicationArea));
+  return conditions;
+}
+
+learningCenterRouter.get('/articles', async (req, res) => {
+  try {
+    const db = await requireDb();
+    const page = Math.max(1, parseInt(req.query.page as string, 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit as string, 10) || 12));
+    const category = typeof req.query.category === 'string' ? req.query.category : undefined;
+    const applicationArea = typeof req.query.applicationArea === 'string' ? req.query.applicationArea : undefined;
+    const conditions = articleFilters(category, applicationArea);
+    const whereClause = conditions.length ? and(...conditions) : undefined;
+
+    const result = await db
       .select({
         id: articles.id,
         title: articles.title,
@@ -30,50 +57,23 @@ learningCenterRouter.get("/articles", async (req, res) => {
       })
       .from(articles)
       .leftJoin(authors, eq(articles.authorId, authors.id))
+      .where(whereClause)
       .orderBy(desc(articles.publishedDate))
       .limit(limit)
-      .offset(offset);
+      .offset((page - 1) * limit);
 
-    // Apply category filter if provided
-    if (category) {
-      query = query.where(eq(articles.category, category as any));
-    }
-
-    // Apply application area filter if provided
-    if (applicationArea) {
-      query = query.where(eq(articles.applicationArea, applicationArea as any));
-    }
-
-    const result = await query;
-
-    // Get total count
-    const totalResult = await db
-      .select({ count: sql<number>`count(*)` })
-      .from(articles);
-
-    const total = Number(totalResult[0].count);
-
-    res.json({
-      articles: result,
-      pagination: {
-        page,
-        limit,
-        total,
-        totalPages: Math.ceil(total / limit),
-      },
-    });
+    const totalResult = await db.select({ count: sql<number>`count(*)` }).from(articles).where(whereClause);
+    const total = Number(totalResult[0]?.count || 0);
+    res.json({ articles: result, pagination: { page, limit, total, totalPages: Math.ceil(total / limit) } });
   } catch (error) {
-    console.error("Error fetching articles:", error);
-    res.status(500).json({ error: "Failed to fetch articles" });
+    console.error('Error fetching articles:', error);
+    res.status(500).json({ error: 'Failed to fetch articles' });
   }
 });
 
-// Get single article by slug
-learningCenterRouter.get("/articles/:slug", async (req, res) => {
+learningCenterRouter.get('/articles/:slug', async (req, res) => {
   try {
-    const db = await getDb();
-    const { slug } = req.params;
-
+    const db = await requireDb();
     const result = await db
       .select({
         id: articles.id,
@@ -95,75 +95,42 @@ learningCenterRouter.get("/articles/:slug", async (req, res) => {
       })
       .from(articles)
       .leftJoin(authors, eq(articles.authorId, authors.id))
-      .where(eq(articles.slug, slug))
+      .where(eq(articles.slug, req.params.slug))
       .limit(1);
-
-    if (result.length === 0) {
-      return res.status(404).json({ error: "Article not found" });
-    }
-
     const article = result[0];
+    if (!article) return res.status(404).json({ error: 'Article not found' });
 
-    // Increment view count
-    await db
-      .update(articles)
-      .set({ viewCount: sql`${articles.viewCount} + 1` })
-      .where(eq(articles.id, article.id));
-
+    await db.update(articles).set({ viewCount: sql`${articles.viewCount} + 1` }).where(eq(articles.id, article.id));
     res.json(article);
   } catch (error) {
-    console.error("Error fetching article:", error);
-    res.status(500).json({ error: "Failed to fetch article" });
+    console.error('Error fetching article:', error);
+    res.status(500).json({ error: 'Failed to fetch article' });
   }
 });
 
-// Get all categories (return enum values)
-learningCenterRouter.get("/categories", async (req, res) => {
+learningCenterRouter.get('/categories', async (_req, res) => {
   try {
-    const db = await getDb();
-    
-    // Get unique categories with article counts
-    const result = await db
-      .select({
-        category: articles.category,
-        count: sql<number>`count(*)`,
-      })
-      .from(articles)
-      .groupBy(articles.category);
-
-    res.json(result);
+    const db = await requireDb();
+    res.json(await db.select({ category: articles.category, count: sql<number>`count(*)` }).from(articles).groupBy(articles.category));
   } catch (error) {
-    console.error("Error fetching categories:", error);
-    res.status(500).json({ error: "Failed to fetch categories" });
+    console.error('Error fetching categories:', error);
+    res.status(500).json({ error: 'Failed to fetch categories' });
   }
 });
 
-// Get all application areas (return enum values)
-learningCenterRouter.get("/application-areas", async (req, res) => {
+learningCenterRouter.get('/application-areas', async (_req, res) => {
   try {
-    const db = await getDb();
-    
-    // Get unique application areas with article counts
-    const result = await db
-      .select({
-        applicationArea: articles.applicationArea,
-        count: sql<number>`count(*)`,
-      })
-      .from(articles)
-      .groupBy(articles.applicationArea);
-
-    res.json(result);
+    const db = await requireDb();
+    res.json(await db.select({ applicationArea: articles.applicationArea, count: sql<number>`count(*)` }).from(articles).groupBy(articles.applicationArea));
   } catch (error) {
-    console.error("Error fetching application areas:", error);
-    res.status(500).json({ error: "Failed to fetch application areas" });
+    console.error('Error fetching application areas:', error);
+    res.status(500).json({ error: 'Failed to fetch application areas' });
   }
 });
 
-// Get all authors
-learningCenterRouter.get("/authors", async (req, res) => {
+learningCenterRouter.get('/authors', async (_req, res) => {
   try {
-    const db = await getDb();
-    
+    const db = await requireDb();
     const result = await db
       .select({
         id: authors.id,
@@ -176,33 +143,20 @@ learningCenterRouter.get("/authors", async (req, res) => {
       })
       .from(authors)
       .orderBy(authors.fullName);
-
     res.json(result);
   } catch (error) {
-    console.error("Error fetching authors:", error);
-    res.status(500).json({ error: "Failed to fetch authors" });
+    console.error('Error fetching authors:', error);
+    res.status(500).json({ error: 'Failed to fetch authors' });
   }
 });
 
-// Get single author by slug
-learningCenterRouter.get("/authors/:slug", async (req, res) => {
+learningCenterRouter.get('/authors/:slug', async (req, res) => {
   try {
-    const db = await getDb();
-    const { slug } = req.params;
-
-    const result = await db
-      .select()
-      .from(authors)
-      .where(eq(authors.slug, slug))
-      .limit(1);
-
-    if (result.length === 0) {
-      return res.status(404).json({ error: "Author not found" });
-    }
-
+    const db = await requireDb();
+    const result = await db.select().from(authors).where(eq(authors.slug, req.params.slug)).limit(1);
     const author = result[0];
+    if (!author) return res.status(404).json({ error: 'Author not found' });
 
-    // Get author's articles
     const authorArticles = await db
       .select({
         id: articles.id,
@@ -217,22 +171,16 @@ learningCenterRouter.get("/authors/:slug", async (req, res) => {
       .from(articles)
       .where(eq(articles.authorId, author.id))
       .orderBy(desc(articles.publishedDate));
-
-    res.json({
-      ...author,
-      articles: authorArticles,
-    });
+    res.json({ ...author, articles: authorArticles });
   } catch (error) {
-    console.error("Error fetching author:", error);
-    res.status(500).json({ error: "Failed to fetch author" });
+    console.error('Error fetching author:', error);
+    res.status(500).json({ error: 'Failed to fetch author' });
   }
 });
 
-// Get featured articles (top 3 by view count)
-learningCenterRouter.get("/featured", async (req, res) => {
+learningCenterRouter.get('/featured', async (_req, res) => {
   try {
-    const db = await getDb();
-    
+    const db = await requireDb();
     const result = await db
       .select({
         id: articles.id,
@@ -249,32 +197,25 @@ learningCenterRouter.get("/featured", async (req, res) => {
       .leftJoin(authors, eq(articles.authorId, authors.id))
       .orderBy(desc(articles.viewCount))
       .limit(3);
-
     res.json(result);
   } catch (error) {
-    console.error("Error fetching featured articles:", error);
-    res.status(500).json({ error: "Failed to fetch featured articles" });
+    console.error('Error fetching featured articles:', error);
+    res.status(500).json({ error: 'Failed to fetch featured articles' });
   }
 });
 
-// Get related articles (same category, exclude current article)
-learningCenterRouter.get("/articles/:slug/related", async (req, res) => {
+learningCenterRouter.get('/articles/:slug/related', async (req, res) => {
   try {
-    const db = await getDb();
-    const { slug } = req.params;
-
-    // First get the current article
+    const db = await requireDb();
     const currentArticle = await db
       .select({ id: articles.id, category: articles.category })
       .from(articles)
-      .where(eq(articles.slug, slug))
+      .where(eq(articles.slug, req.params.slug))
       .limit(1);
+    const current = currentArticle[0];
+    if (!current) return res.status(404).json({ error: 'Article not found' });
 
-    if (currentArticle.length === 0) {
-      return res.status(404).json({ error: "Article not found" });
-    }
-
-    // Get related articles from same category
+    const categoryCondition = current.category ? eq(articles.category, current.category) : isNull(articles.category);
     const result = await db
       .select({
         id: articles.id,
@@ -286,18 +227,12 @@ learningCenterRouter.get("/articles/:slug/related", async (req, res) => {
         category: articles.category,
       })
       .from(articles)
-      .where(
-        and(
-          eq(articles.category, currentArticle[0].category),
-          sql`${articles.id} != ${currentArticle[0].id}`
-        )
-      )
+      .where(and(categoryCondition, sql`${articles.id} != ${current.id}`))
       .orderBy(desc(articles.publishedDate))
       .limit(3);
-
     res.json(result);
   } catch (error) {
-    console.error("Error fetching related articles:", error);
-    res.status(500).json({ error: "Failed to fetch related articles" });
+    console.error('Error fetching related articles:', error);
+    res.status(500).json({ error: 'Failed to fetch related articles' });
   }
 });

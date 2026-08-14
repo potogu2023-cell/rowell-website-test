@@ -4,8 +4,15 @@ import { InsertUser, users } from "../drizzle/schema";
 import { ENV } from './_core/env';
 import mysql from 'mysql2/promise';
 
-let _db: ReturnType<typeof drizzle> | null = null;
+const createDatabase = (pool: mysql.Pool) => drizzle(pool);
+type Database = ReturnType<typeof createDatabase>;
+
+let _db: Database | null = null;
 let _pool: mysql.Pool | null = null;
+
+function toMysqlTimestamp(date: Date): string {
+  return date.toISOString().slice(0, 19).replace('T', ' ');
+}
 
 // Lazily create the drizzle instance so local tooling can run without a DB.
 export async function getDb() {
@@ -75,7 +82,7 @@ export async function getDb() {
         throw testError;
       }
       
-      _db = drizzle(pool);
+      _db = createDatabase(pool);
       console.log('[Database] Drizzle instance created successfully');
     } catch (error) {
       console.error("[Database] Failed to initialize:", error);
@@ -94,6 +101,9 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   if (!user.openId) {
     throw new Error("User openId is required for upsert");
   }
+  if (!user.email) {
+    throw new Error("User email is required for upsert");
+  }
 
   const db = await getDb();
   if (!db) {
@@ -104,10 +114,12 @@ export async function upsertUser(user: InsertUser): Promise<void> {
   try {
     const values: InsertUser = {
       openId: user.openId,
+      email: user.email,
+      lastSignedIn: toMysqlTimestamp(new Date()),
     };
     const updateSet: Record<string, unknown> = {};
 
-    const textFields = ["name", "email", "loginMethod"] as const;
+    const textFields = ["name", "loginMethod"] as const;
     type TextField = (typeof textFields)[number];
 
     const assignNullable = (field: TextField) => {
@@ -133,11 +145,11 @@ export async function upsertUser(user: InsertUser): Promise<void> {
     }
 
     if (!values.lastSignedIn) {
-      values.lastSignedIn = new Date();
+      values.lastSignedIn = toMysqlTimestamp(new Date());
     }
 
     if (Object.keys(updateSet).length === 0) {
-      updateSet.lastSignedIn = new Date();
+      updateSet.lastSignedIn = toMysqlTimestamp(new Date());
     }
 
     await db.insert(users).values(values).onDuplicateKeyUpdate({
@@ -204,10 +216,7 @@ export async function getAllProducts() {
  */
 export async function createInquiry(data: {
   inquiryNumber: string;
-  userName: string;
-  userEmail: string;
-  userCompany?: string;
-  userPhone?: string;
+  userId: number;
   userMessage?: string;
 }) {
   const db = await getDb();
@@ -216,7 +225,13 @@ export async function createInquiry(data: {
   }
 
   const { inquiries } = await import("../drizzle/schema");
-  const result = await db.insert(inquiries).values(data);
+  const result = await db.insert(inquiries).values({
+    inquiryNumber: data.inquiryNumber,
+    userId: data.userId,
+    customerNotes: data.userMessage,
+    status: 'pending',
+    urgency: 'normal',
+  });
   return Number(result[0].insertId);
 }
 
@@ -297,7 +312,7 @@ export async function createUser(data: {
     annualPurchaseVolume: data.annualPurchaseVolume,
     loginMethod: 'password',
     role: 'user',
-    lastSignedIn: new Date(),
+    lastSignedIn: toMysqlTimestamp(new Date()),
   });
 
   return Number(result[0].insertId);
@@ -322,6 +337,6 @@ export async function updateUserLastSignIn(userId: number) {
   }
 
   await db.update(users)
-    .set({ lastSignedIn: new Date() })
+    .set({ lastSignedIn: toMysqlTimestamp(new Date()) })
     .where(eq(users.id, userId));
 }

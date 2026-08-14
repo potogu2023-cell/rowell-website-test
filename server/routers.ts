@@ -1,14 +1,10 @@
 
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
-import { getProductsByIds, createInquiry, createInquiryItems } from './db';
-import { generateInquiryNumber } from './inquiryUtils';
-import { sendInquiryEmail } from './emailService';
+import { getProductsByIds } from './db';
 import { z } from 'zod';
-import { seedRouter } from './seed-api';
 import { adminRouter } from './admin-api';
 import { listCategoriesRouter } from './list-categories-api';
-import { addGlycoWorksSimpleRouter } from './add-glycoworks-simple';
 import { updateProductCategoryRouter } from './update-product-category';
 import { updateGlycoWorksMysql2Router } from './update-glycoworks-mysql2';
 import { cleanupProductCategoriesRouter } from './cleanup-product-categories';
@@ -58,6 +54,31 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) throw new Error('Database not available');
         return await productsListQuery(input, db);
+      }),
+
+    getBrandStats: publicProcedure
+      .input((raw: unknown) => z.object({ categoryId: z.number().optional() }).parse(raw))
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { products } = await import('../drizzle/schema');
+        const { and, eq, sql } = await import('drizzle-orm');
+        const db = await getDb();
+        if (!db) return {} as Record<string, number>;
+
+        const conditions = [eq(products.status, 'active')];
+        if (input.categoryId) {
+          conditions.push(sql`${products.id} IN (SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`);
+        }
+        const rows = await db
+          .select({ brand: products.brand, count: sql<number>`COUNT(*)` })
+          .from(products)
+          .where(and(...conditions))
+          .groupBy(products.brand);
+        return Object.fromEntries(
+          rows
+            .filter((row) => Boolean(row.brand))
+            .map((row) => [row.brand, Number(row.count)])
+        ) as Record<string, number>;
       }),
     
     getByIds: publicProcedure
@@ -331,55 +352,11 @@ export const appRouter = router({
           }),
         }).parse(raw);
       })
-      .mutation(async ({ input }) => {
-        // Generate unique inquiry number
-        const inquiryNumber = generateInquiryNumber();
-        
-        // Get product details
-        const products = await getProductsByIds(input.productIds);
-        if (products.length === 0) {
-          throw new Error('未找到产品信息');
-        }
-        
-        // Create inquiry record
-        const inquiryId = await createInquiry({
-          inquiryNumber,
-          userName: input.userInfo.name,
-          userEmail: input.userInfo.email,
-          userCompany: input.userInfo.company,
-          userPhone: input.userInfo.phone,
-          userMessage: input.userInfo.message,
-        });
-        
-        // Create inquiry items
-        const items = products.map(p => ({
-          productId: p.id,
-          partNumber: p.partNumber,
-          productName: p.name || undefined,
-          brand: p.brand || undefined,
-        }));
-        await createInquiryItems(inquiryId, items);
-        
-        // Send confirmation email
-        const emailSent = await sendInquiryEmail({
-          inquiryNumber,
-          userName: input.userInfo.name,
-          userEmail: input.userInfo.email,
-          userMessage: input.userInfo.message,
-          products: products.map(p => ({
-            name: p.name || p.partNumber,
-            partNumber: p.partNumber,
-          })),
-          createdAt: new Date(),
-        });
-        
-        return {
-          success: true,
-          inquiryNumber,
-          message: emailSent 
-            ? '询价已提交，确认邮件已发送至您的邮箱' 
-            : '询价已提交，但邮件发送失败，请记录您的询价单号',
-        };
+      .mutation(async () => {
+        // The legacy inquiry table requires an authenticated owner (userId).
+        // Public product messages are handled by customerMessages.create, which
+        // stores the minimum necessary contact data without inventing a userId.
+        throw new Error('Direct inquiry creation requires an authenticated account. Use the product inquiry form instead.');
       }),
   }),
 
@@ -584,7 +561,6 @@ export const appRouter = router({
   }),
   
   // Seed APII for importing resources
-  seed: seedRouter,
 
   // Admin API for data management
   admin: adminRouter,
@@ -592,8 +568,6 @@ export const appRouter = router({
   // List categories API
   listCategories: listCategoriesRouter,
 
-  // Add GlycoWorks products (simple version)
-  addGlycoWorksSimple: addGlycoWorksSimpleRouter,
 
   // Update product category
   updateProductCategory: updateProductCategoryRouter,

@@ -9,12 +9,38 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowLeft, ExternalLink, Calendar, Eye, BookOpen, FileText } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 
+type MethodologyDetails = {
+  hplc_system?: string;
+  column?: { type?: string; dimensions?: string; particle_size?: string; temperature?: string };
+  mobile_phase?: { composition?: string; flow_rate?: string; gradient?: string; ph?: string };
+  detection?: { type?: string; wavelength?: string };
+};
+
+function parseMethodologyDetails(value: unknown): MethodologyDetails | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const details = value as Record<string, unknown>;
+  const readText = (candidate: unknown) => typeof candidate === 'string' ? candidate : undefined;
+  const readObject = (candidate: unknown) => candidate && typeof candidate === 'object' && !Array.isArray(candidate)
+    ? candidate as Record<string, unknown>
+    : undefined;
+  const column = readObject(details.column);
+  const mobilePhase = readObject(details.mobile_phase);
+  const detection = readObject(details.detection);
+  return {
+    hplc_system: readText(details.hplc_system),
+    column: column ? { type: readText(column.type), dimensions: readText(column.dimensions), particle_size: readText(column.particle_size), temperature: readText(column.temperature) } : undefined,
+    mobile_phase: mobilePhase ? { composition: readText(mobilePhase.composition), flow_rate: readText(mobilePhase.flow_rate), gradient: readText(mobilePhase.gradient), ph: readText(mobilePhase.ph) } : undefined,
+    detection: detection ? { type: readText(detection.type), wavelength: readText(detection.wavelength) } : undefined,
+  };
+}
+
 export default function LiteratureDetail() {
   const { t } = useTranslation();
   const params = useParams();
   const slug = params.slug as string;
 
   const { data: literature, isLoading } = trpc.learningCenter.literature.bySlug.useQuery(slug);
+  const methodologyDetails = parseMethodologyDetails(literature?.methodologyDetails);
 
   // Debug: Log literature data
   useEffect(() => {
@@ -23,7 +49,7 @@ export default function LiteratureDetail() {
         slug: literature.slug,
         contentEnhanced: literature.contentEnhanced,
         hasExpandedAnalysis: !!literature.expandedAnalysis,
-        hasMethodologyDetails: !!literature.methodologyDetails,
+        hasMethodologyDetails: !!methodologyDetails,
         hasPracticalGuide: !!literature.practicalGuide,
         hasOriginalPaperUrl: !!literature.originalPaperUrl
       });
@@ -188,65 +214,65 @@ export default function LiteratureDetail() {
               )}
 
               {/* Methodology Details */}
-              {literature.methodologyDetails && (
+              {methodologyDetails && (
                 <Card className="mb-8">
                   <CardHeader>
                     <CardTitle>{t('literature.methodologyDetails')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
-                      {literature.methodologyDetails.hplc_system && (
+                      {methodologyDetails.hplc_system && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">HPLC System</h4>
-                          <p className="text-gray-600">{literature.methodologyDetails.hplc_system}</p>
+                          <p className="text-gray-600">{methodologyDetails.hplc_system}</p>
                         </div>
                       )}
-                      {literature.methodologyDetails.column && (
+                      {methodologyDetails.column && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">Column</h4>
                           <dl className="grid grid-cols-2 gap-2 text-sm">
                             <dt className="text-gray-600">Type:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.column.type}</dd>
+                            <dd className="text-gray-800">{methodologyDetails.column.type}</dd>
                             <dt className="text-gray-600">Dimensions:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.column.dimensions}</dd>
+                            <dd className="text-gray-800">{methodologyDetails.column.dimensions}</dd>
                             <dt className="text-gray-600">Particle Size:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.column.particle_size}</dd>
-                            {literature.methodologyDetails.column.temperature && (
+                            <dd className="text-gray-800">{methodologyDetails.column.particle_size}</dd>
+                            {methodologyDetails.column.temperature && (
                               <>
                                 <dt className="text-gray-600">Temperature:</dt>
-                                <dd className="text-gray-800">{literature.methodologyDetails.column.temperature}</dd>
+                                <dd className="text-gray-800">{methodologyDetails.column.temperature}</dd>
                               </>
                             )}
                           </dl>
                         </div>
                       )}
-                      {literature.methodologyDetails.mobile_phase && (
+                      {methodologyDetails.mobile_phase && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">Mobile Phase</h4>
                           <dl className="grid grid-cols-2 gap-2 text-sm">
                             <dt className="text-gray-600">Composition:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.composition}</dd>
+                            <dd className="text-gray-800">{methodologyDetails.mobile_phase.composition}</dd>
                             <dt className="text-gray-600">Flow Rate:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.flow_rate}</dd>
+                            <dd className="text-gray-800">{methodologyDetails.mobile_phase.flow_rate}</dd>
                             <dt className="text-gray-600">Gradient:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.gradient}</dd>
-                            {literature.methodologyDetails.mobile_phase.ph && (
+                            <dd className="text-gray-800">{methodologyDetails.mobile_phase.gradient}</dd>
+                            {methodologyDetails.mobile_phase.ph && (
                               <>
                                 <dt className="text-gray-600">pH:</dt>
-                                <dd className="text-gray-800">{literature.methodologyDetails.mobile_phase.ph}</dd>
+                                <dd className="text-gray-800">{methodologyDetails.mobile_phase.ph}</dd>
                               </>
                             )}
                           </dl>
                         </div>
                       )}
-                      {literature.methodologyDetails.detection && (
+                      {methodologyDetails.detection && (
                         <div>
                           <h4 className="font-semibold text-gray-700 mb-2">Detection</h4>
                           <dl className="grid grid-cols-2 gap-2 text-sm">
                             <dt className="text-gray-600">Type:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.detection.type}</dd>
+                            <dd className="text-gray-800">{methodologyDetails.detection.type}</dd>
                             <dt className="text-gray-600">Wavelength:</dt>
-                            <dd className="text-gray-800">{literature.methodologyDetails.detection.wavelength}</dd>
+                            <dd className="text-gray-800">{methodologyDetails.detection.wavelength}</dd>
                           </dl>
                         </div>
                       )}

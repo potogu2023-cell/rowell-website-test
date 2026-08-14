@@ -156,7 +156,7 @@ export default function Standards() {
                             {t(`standards.categories.${cat.slug}`, { defaultValue: cat.name_en })}
                           </CardTitle>
                           <Badge variant="secondary" className="mt-1 text-xs">
-                            {t("standards.products_count", { count: cat.product_count.toLocaleString() })}
+                            {t("standards.products_count", { count: cat.product_count })}
                           </Badge>
                         </div>
                       </div>

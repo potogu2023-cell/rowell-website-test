@@ -31,15 +31,16 @@ export default function ProductInquiryButton({
   });
   const [formData, setFormData] = useState(createInitialFormData);
 
-  const createInquiryMutation = trpc.customerMessage.create.useMutation({
-    onSuccess: (data) => {
+  const createInquiryMutation = trpc.messages.create.useMutation({
+    onSuccess: () => {
       toast.success(t('contact.inquiry_success'));
       setOpen(false);
       // Reset form
       setFormData(createInitialFormData());
     },
-    onError: (error) => {
-      toast.error(error.message || t('contact.inquiry_error'));
+    onError: (error: unknown) => {
+      const message = error instanceof Error ? error.message : '';
+      toast.error(message || t('contact.inquiry_error'));
     },
   });
 
@@ -59,7 +60,6 @@ export default function ProductInquiryButton({
       phone: formData.phone,
       productId: productId,
       productName: productName,
-      productPartNumber: productPartNumber,
       message: formData.message,
     });
   };

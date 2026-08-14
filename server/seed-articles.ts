@@ -1,202 +1,24 @@
-import { getDb } from './db';
-import { articles, authors } from '../drizzle/schema';
-import * as fs from 'fs';
-import * as path from 'path';
-import matter from 'gray-matter';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-import { eq } from 'drizzle-orm';
+import { importArticles } from './article-importer';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-// Author profiles
-const authorProfiles = [
-  {
-    fullName: 'Dr. Michael Zhang',
-    slug: 'dr-michael-zhang',
-    title: 'Technical Director',
-    yearsOfExperience: 15,
-    education: 'Ph.D. in Analytical Chemistry',
-    biography: 'Dr. Michael Zhang is a seasoned chromatography expert with over 15 years of experience in analytical chemistry. He specializes in HPLC method development and instrumentation, providing practical guidance for laboratories worldwide.',
-    expertise: JSON.stringify(['HPLC', 'Method Development', 'Instrumentation', 'Troubleshooting']),
-    photoUrl: null
-  },
-  {
-    fullName: 'Dr. Evelyn Reed',
-    slug: 'dr-evelyn-reed',
-    title: 'Pharmaceutical Analysis Expert',
-    yearsOfExperience: 12,
-    education: 'Ph.D. in Pharmaceutical Sciences',
-    biography: 'Dr. Evelyn Reed brings extensive pharmaceutical industry experience, specializing in drug development and quality control. Her expertise spans API characterization, impurity profiling, and regulatory compliance.',
-    expertise: JSON.stringify(['Pharmaceutical Analysis', 'Drug Development', 'Quality Control', 'Regulatory Compliance']),
-    photoUrl: null
-  },
-  {
-    fullName: 'Dr. James Chen',
-    slug: 'dr-james-chen',
-    title: 'Environmental & Food Safety Specialist',
-    yearsOfExperience: 10,
-    education: 'Ph.D. in Environmental Chemistry',
-    biography: 'Dr. James Chen focuses on environmental monitoring and food safety testing using chromatographic techniques. He has published numerous papers on pesticide analysis and contaminant detection.',
-    expertise: JSON.stringify(['Environmental Testing', 'Food Safety', 'Pesticide Analysis', 'Contaminant Detection']),
-    photoUrl: null
-  },
-  {
-    fullName: 'Dr. Sarah Martinez',
-    slug: 'dr-sarah-martinez',
-    title: 'Clinical & Biopharmaceutical Specialist',
-    yearsOfExperience: 8,
-    education: 'Ph.D. in Clinical Chemistry',
-    biography: 'Dr. Sarah Martinez specializes in clinical diagnostics and biopharmaceutical analysis. Her work includes therapeutic drug monitoring, biomarker discovery, and monoclonal antibody characterization.',
-    expertise: JSON.stringify(['Clinical Diagnostics', 'Therapeutic Drug Monitoring', 'Biopharmaceuticals', 'Biomarker Analysis']),
-    photoUrl: null
-  }
-];
-
-export async function seedArticles() {
-  console.log('Starting article seeding...');
-  
-  const db = await getDb();
-  
-  if (!db) {
-    console.error('Database connection failed');
-    return { success: false, error: 'Database connection failed' };
-  }
-  
-  // Step 1: Import authors
-  console.log('\n=== Seeding Authors ===');
-  let authorsCreated = 0;
-  let authorsExisted = 0;
-  const authorIdMap = new Map<string, number>(); // slug -> id mapping
-  
-  for (const profile of authorProfiles) {
-    try {
-      const result = await db.insert(authors).values({
-        ...profile,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      });
-      const authorId = Number(result.insertId);
-      authorIdMap.set(profile.slug, authorId);
-      console.log(`✓ Created author: ${profile.fullName} (ID: ${authorId})`);
-      authorsCreated++;
-    } catch (error: any) {
-      if (error.code === 'ER_DUP_ENTRY' || error.message?.includes('Duplicate')) {
-        console.log(`- Author already exists: ${profile.fullName}`);
-        // Fetch existing author ID
-        const existingAuthor = await db.select().from(authors).where(eq(authors.slug, profile.slug)).limit(1);
-        if (existingAuthor.length > 0) {
-          authorIdMap.set(profile.slug, existingAuthor[0].id);
-          console.log(`  Found existing ID: ${existingAuthor[0].id}`);
-        }
-        authorsExisted++;
-      } else {
-        console.error(`✗ Error creating author ${profile.fullName}:`, error.message);
-      }
-    }
-  }
-  
-  // Step 2: Import articles
-  console.log('\n=== Seeding Articles ===');
-  console.log('DEBUG: __dirname =', __dirname);
-  console.log('DEBUG: __filename =', __filename);
-  const articlesDir = path.join(__dirname, '../data/articles');
-  console.log('DEBUG: articlesDir =', articlesDir);
-  
-  if (!fs.existsSync(articlesDir)) {
-    console.error(`Articles directory not found: ${articlesDir}`);
-    return { 
-      success: false, 
-      error: 'Articles directory not found',
-      authorsCreated,
-      authorsExisted
+/**
+ * Compatibility entry point for existing administrator seed controls.
+ * Article ingestion is delegated to the validated content/articles importer,
+ * which performs frontmatter, language, date and schema checks before writing.
+ */
+export async function seedArticles(): Promise<{ success: boolean; message: string; error?: string }> {
+  try {
+    await importArticles();
+    return {
+      success: true,
+      message: 'Validated article import completed',
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'Unknown article import failure';
+    console.error('[seedArticles] Validated import failed:', error);
+    return {
+      success: false,
+      message: 'Validated article import failed',
+      error: message,
     };
   }
-  
-  const articleFiles = fs.readdirSync(articlesDir)
-    .filter(file => file.startsWith('ARTICLE_') && file.endsWith('.md'));
-  console.log('DEBUG: Found', articleFiles.length, 'article files');
-  console.log('DEBUG: First 3 files:', articleFiles.slice(0, 3));
-  
-  let articlesCreated = 0;
-  let articlesExisted = 0;
-  let articlesError = 0;
-  
-  for (const filename of articleFiles) {
-    try {
-      const filePath = path.join(articlesDir, filename);
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data: frontmatter, content } = matter(fileContent);
-      
-      // Extract metadata
-      const {
-        title,
-        author_slug,
-        category,
-        area,
-        slug,
-        published_date,
-        description,
-        keywords
-      } = frontmatter;
-      
-      // Get author ID from slug
-      const authorId = authorIdMap.get(author_slug);
-      
-      if (!authorId) {
-        console.error(`✗ Author not found for slug: ${author_slug} in ${filename}`);
-        articlesError++;
-        continue;
-      }
-      
-      // Insert article
-      await db.insert(articles).values({
-        title,
-        slug,
-        content,
-        excerpt: description,
-        category: category as any,
-        applicationArea: area as any,
-        authorId: authorId,
-        featuredImage: null,
-        tags: keywords ? JSON.stringify(keywords.split(', ')) : null,
-        metaDescription: description,
-        metaKeywords: keywords,
-        publishedAt: new Date(published_date).toISOString(),
-        viewCount: 0,
-        featured: false,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      });
-      
-      console.log(`✓ Created: ${title}`);
-      articlesCreated++;
-    } catch (error: any) {
-      if (error.code === 'ER_DUP_ENTRY' || error.message?.includes('Duplicate')) {
-        console.log(`- Article already exists: ${filename}`);
-        articlesExisted++;
-      } else {
-        console.error(`✗ Error creating ${filename}:`, error.message);
-        articlesError++;
-      }
-    }
-  }
-  
-  const summary = {
-    success: true,
-    authorsCreated,
-    authorsExisted,
-    articlesCreated,
-    articlesExisted,
-    articlesError,
-    totalArticles: articleFiles.length
-  };
-  
-  console.log(`\n=== Seeding Summary ===`);
-  console.log(JSON.stringify(summary, null, 2));
-  
-  return summary;
 }
-
-// Note: This function is called via tRPC router, not directly

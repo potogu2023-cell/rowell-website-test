@@ -1,6 +1,5 @@
 import "dotenv/config";
 import express from "express";
-import bodyParser from "body-parser";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -45,7 +44,8 @@ async function startServer() {
   // Validate production configuration
   try {
     const { validateAllConfigs } = await import('../config-validator');
-    const { db } = await import('../db');
+    const { getDb } = await import('../db');
+    const db = await getDb();
     const configValid = await validateAllConfigs(db);
     if (!configValid) {
       console.error('\n⛔ 服务器启动失败：配置验证未通过！');
@@ -63,8 +63,8 @@ async function startServer() {
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // Add text/csv parser for imageSync API
-  app.use(bodyParser.text({ type: 'text/csv', limit: '50mb' }));
-  app.use(bodyParser.text({ type: 'text/plain', limit: '50mb' }));
+  app.use(express.text({ type: 'text/csv', limit: '50mb' }));
+  app.use(express.text({ type: 'text/plain', limit: '50mb' }));
   // Product and article SEO tags are injected once in serveStatic/setupVite.
   // Do not mount the legacy response-interception middleware here: it duplicates
   // canonical tags and Product JSON-LD in production HTML.
@@ -105,9 +105,7 @@ app.use("/api/learning-center", learningCenterRestRouter);
         slug: article.slug,
         status: article.status,
         title: article.title,
-        hasMetaDescription: !!article.metaDescription,
         hasExcerpt: !!article.excerpt,
-        hasCoverImage: !!article.coverImage,
         reqGet: typeof req.get,
         host: req.get('host'),
         protocol: req.protocol

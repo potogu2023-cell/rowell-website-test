@@ -20,6 +20,7 @@ export const updateProductCategoryRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq, inArray, sql } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database not available');
 
       // Update products using raw SQL to avoid Drizzle field mapping issues
       const results = [];

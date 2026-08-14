@@ -62,6 +62,19 @@ class AIRequestQueue {
 
 const aiQueue = new AIRequestQueue();
 
+function toMysqlTimestamp(date: Date): string {
+  return date.toISOString().slice(0, 19).replace('T', ' ');
+}
+
+function textFromModelContent(content: string | Array<{ type: string; text?: string }>): string {
+  if (typeof content === 'string') return content;
+  return content
+    .filter((part) => part.type === 'text' && typeof part.text === 'string')
+    .map((part) => part.text as string)
+    .join('\n')
+    .trim();
+}
+
 /**
  * Generate unique session ID for conversation
  */
@@ -80,7 +93,7 @@ async function checkCache(question: string): Promise<string | null> {
     if (!db) return null;
 
     const cacheKey = generateCacheKey(question);
-    const now = new Date();
+    const now = toMysqlTimestamp(new Date());
 
     const cached = await db
       .select()
@@ -126,8 +139,9 @@ async function saveToCache(question: string, answer: string): Promise<void> {
 
     const cacheKey = generateCacheKey(question);
     const keywords = extractKeywords(question);
-    const expiresAt = new Date();
-    expiresAt.setDate(expiresAt.getDate() + 30); // 30-day TTL
+    const expiresAtDate = new Date();
+    expiresAtDate.setDate(expiresAtDate.getDate() + 30); // 30-day TTL
+    const expiresAt = toMysqlTimestamp(expiresAtDate);
 
     await db.insert(aiCache).values({
       questionHash: cacheKey,
@@ -248,7 +262,7 @@ async function trackCost(conversationId: number | null, tokenCount: number): Pro
     await db.insert(llmCostTracking).values({
       conversationId,
       tokenCount,
-      cost,
+      cost: cost.toFixed(6),
       model: 'gpt-3.5-turbo',
     });
 
@@ -328,7 +342,9 @@ export async function handleAIChat(
         } else {
           // Create new conversation
           consentMode = user ? (user.consentMode || 'standard') : 'anonymous';
-          const expiresAt = consentMode === 'standard' ? new Date(Date.now() + 120 * 24 * 60 * 60 * 1000) : null; // 120 days
+          const expiresAt = consentMode === 'standard'
+            ? toMysqlTimestamp(new Date(Date.now() + 120 * 24 * 60 * 60 * 1000))
+            : null; // 120 days
 
           const result = await db.insert(aiConversations).values({
             userId: user?.id,
@@ -364,10 +380,12 @@ export async function handleAIChat(
       const response = await invokeLLM({
         messages: messages as any,
         max_tokens: 800,
-        temperature: 0.3,
       });
 
-      const answer = response.choices[0].message.content;
+      const answer = textFromModelContent(response.choices[0].message.content);
+      if (!answer) {
+        throw new Error('AI response did not contain text content');
+      }
       const tokenCount = response.usage?.total_tokens || 0;
 
       // Save assistant message

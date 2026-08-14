@@ -21,7 +21,7 @@ import { Mail, Phone, Building, Package, Calendar, Search, ChevronLeft, ChevronR
 import { toast } from "sonner";
 
 export default function AdminMessages() {
-  const [status, setStatus] = useState<'all' | 'pending' | 'replied' | 'closed'>('all');
+  const [status, setStatus] = useState<'all' | 'new' | 'read' | 'replied' | 'closed'>('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedMessage, setSelectedMessage] = useState<any>(null);
@@ -50,7 +50,7 @@ export default function AdminMessages() {
     },
   });
 
-  const handleStatusChange = (messageId: number, newStatus: 'pending' | 'replied' | 'closed') => {
+  const handleStatusChange = (messageId: number, newStatus: 'new' | 'read' | 'replied' | 'closed') => {
     updateStatusMutation.mutate({ id: messageId, status: newStatus });
   };
 
@@ -61,7 +61,7 @@ export default function AdminMessages() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'pending':
+      case 'new':
         return 'bg-yellow-100 text-yellow-800';
       case 'replied':
         return 'bg-blue-100 text-blue-800';
@@ -74,7 +74,7 @@ export default function AdminMessages() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case 'pending':
+      case 'new':
         return '待处理';
       case 'replied':
         return '已回复';
@@ -129,7 +129,7 @@ export default function AdminMessages() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold text-yellow-600">{stats.pending}</div>
+                <div className="text-2xl font-bold text-yellow-600">{stats.new}</div>
               </CardContent>
             </Card>
             <Card>
@@ -186,7 +186,7 @@ export default function AdminMessages() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">全部状态</SelectItem>
-                  <SelectItem value="pending">待处理</SelectItem>
+                  <SelectItem value="new">待处理</SelectItem>
                   <SelectItem value="replied">已回复</SelectItem>
                   <SelectItem value="closed">已关闭</SelectItem>
                 </SelectContent>
@@ -356,9 +356,9 @@ export default function AdminMessages() {
                 <label className="text-sm font-medium text-muted-foreground mb-2 block">更新状态</label>
                 <div className="flex gap-2">
                   <Button
-                    variant={selectedMessage.status === 'pending' ? 'default' : 'outline'}
+                    variant={selectedMessage.status === 'new' ? 'default' : 'outline'}
                     size="sm"
-                    onClick={() => handleStatusChange(selectedMessage.id, 'pending')}
+                    onClick={() => handleStatusChange(selectedMessage.id, 'new')}
                     disabled={updateStatusMutation.isPending}
                   >
                     待处理

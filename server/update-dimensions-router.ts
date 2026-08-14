@@ -76,6 +76,9 @@ export const updateDimensionsRouter = router({
         console.log(`[DIMENSIONS] Total products to process: ${allData.length}`);
         
         const db = await getDb();
+        if (!db) {
+          throw new Error('Database not available for dimensions update');
+        }
         let updatedCount = 0;
         let notFoundCount = 0;
         let skippedCount = 0;
@@ -107,12 +110,12 @@ export const updateDimensionsRouter = router({
               continue;
             }
             
-            // Update product dimensions
-            const dimensionsValue = `${columnLength} × ${innerDiameter}`;
+            // Preserve source dimensions in their dedicated schema fields.
             await db
               .update(products)
               .set({
-                dimensions: dimensionsValue,
+                columnLength,
+                innerDiameter,
               })
               .where(eq(products.partNumber, row.productCode));
             

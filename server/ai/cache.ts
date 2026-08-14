@@ -109,10 +109,10 @@ export function calculateSimilarity(keywords1: string[], keywords2: string[]): n
   const set2 = new Set(keywords2);
   
   // Calculate intersection
-  const intersection = new Set([...set1].filter(x => set2.has(x)));
+  const intersection = new Set(Array.from(set1).filter(x => set2.has(x)));
   
   // Calculate union
-  const union = new Set([...set1, ...set2]);
+  const union = new Set(Array.from(set1).concat(Array.from(set2)));
   
   // Jaccard similarity = |intersection| / |union|
   if (union.size === 0) return 0;

@@ -118,7 +118,7 @@ export default function StandardsCategory({ params }: StandardsCategoryProps) {
                 <p className="text-muted-foreground max-w-3xl">{category.description}</p>
               )}
               <Badge variant="secondary" className="mt-2">
-                {t("standards.products_count", { count: category.product_count.toLocaleString() })}
+                {t("standards.products_count", { count: category.product_count })}
               </Badge>
             </div>
           </div>

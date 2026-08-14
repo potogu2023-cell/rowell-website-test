@@ -58,6 +58,9 @@ export const updateYmcTosohRouter = router({
         const { products } = await import('../drizzle/schema');
         const { eq } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) {
+          throw new Error('Database not available for YMC/Tosoh update');
+        }
         
         for (const row of allData) {
           try {
@@ -81,8 +84,8 @@ export const updateYmcTosohRouter = router({
               .set({
                 particleSize: row.particleSize || null,
                 poreSize: row.poreSize || null,
-                dimensions: `${row.columnLength} × ${row.innerDiameter}`,
-                status: 'active', // Set status to active
+                columnLength: row.columnLength || null,
+                innerDiameter: row.innerDiameter || null,
                 phRange: row.phRange || null,
                 usp: row.usp || null,
                 description: row.description || null,

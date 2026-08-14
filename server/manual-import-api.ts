@@ -25,8 +25,10 @@ const REQUIRED_FIELDS = [
 ];
 
 // Valid ENUM values
-const VALID_CATEGORIES = ['application-notes', 'technical-guides', 'industry-trends', 'literature-reviews'];
-const VALID_AREAS = ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical'];
+const VALID_CATEGORIES = ['application-notes', 'technical-guides', 'industry-trends', 'literature-reviews'] as const;
+const VALID_AREAS = ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical'] as const;
+type ArticleCategory = (typeof VALID_CATEGORIES)[number];
+type ArticleArea = (typeof VALID_AREAS)[number];
 
 // Language validation - CRITICAL: Prevent Chinese content
 function validateLanguage(text: string): boolean {
@@ -134,15 +136,21 @@ export const manualImportRouter = router({
           // Check if article already exists
           const existingArticle = await db.select().from(articles).where(eq(articles.slug, frontmatter.slug)).limit(1);
           
-          const articleData = {
-            title: frontmatter.title,
-            slug: frontmatter.slug,
+          const parsedPublishedDate = new Date(frontmatter.published_date);
+          if (Number.isNaN(parsedPublishedDate.getTime())) {
+            logs.push(`[ERROR] Invalid published_date: ${frontmatter.published_date}`);
+            results.push({ filename, status: 'error', error: 'Invalid published_date' });
+            continue;
+          }
+          const articleData: typeof articles.$inferInsert = {
+            title: String(frontmatter.title),
+            slug: String(frontmatter.slug),
             content,
-            category: frontmatter.category,
-            applicationArea: frontmatter.application_area,
-            metaDescription: frontmatter.meta_description || '',
-            keywords: frontmatter.keywords || '',
-            publishedDate: new Date(frontmatter.published_date),
+            category: frontmatter.category as ArticleCategory,
+            applicationArea: frontmatter.application_area as ArticleArea,
+            metaDescription: frontmatter.meta_description ? String(frontmatter.meta_description) : '',
+            keywords: frontmatter.keywords ? String(frontmatter.keywords) : '',
+            publishedDate: parsedPublishedDate.toISOString().slice(0, 19).replace('T', ' '),
             authorId,
             viewCount: 0,
           };

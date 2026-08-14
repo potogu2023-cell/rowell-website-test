@@ -14,6 +14,7 @@ export default function Resources() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | undefined>();
   // const { i18n } = useTranslation();
 
   // Get current language code (e.g., 'en', 'zh', 'ru')
@@ -24,6 +25,7 @@ export default function Resources() {
     page,
     pageSize: 12,
     search: search || undefined,
+    category: selectedCategory,
     // Remove language filter to show all languages (en, ru, es, etc.)
     // language: currentLanguage,
   });
@@ -104,9 +106,21 @@ export default function Resources() {
           {categories && categories.length > 0 && (
             <div className="mb-8 flex flex-wrap gap-2">
               <span className="text-sm font-medium text-muted-foreground">Categories:</span>
-              {categories.map((category) => (
-                <Badge key={category.id} variant="outline" className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors">
-                  {category.name}
+              <Badge
+                variant={selectedCategory === undefined ? "secondary" : "outline"}
+                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                onClick={() => { setSelectedCategory(undefined); setPage(1); }}
+              >
+                All
+              </Badge>
+              {categories.filter((category): category is string => typeof category === "string" && category.length > 0).map((category) => (
+                <Badge
+                  key={category}
+                  variant={selectedCategory === category ? "secondary" : "outline"}
+                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                  onClick={() => { setSelectedCategory(category); setPage(1); }}
+                >
+                  {category}
                 </Badge>
               ))}
             </div>
@@ -132,15 +146,6 @@ export default function Resources() {
                   <Link key={article.id} href={`/resources/${article.slug}`}>
                     <a>
                       <Card className="h-full hover:shadow-lg transition-shadow">
-                        {article.coverImage && (
-                          <div className="aspect-video overflow-hidden rounded-t-lg">
-                            <img
-                              src={article.coverImage}
-                              alt={article.title}
-                              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                        )}
                         <CardHeader>
                           <CardTitle className="line-clamp-2">{article.title}</CardTitle>
                           {article.excerpt && (
@@ -159,12 +164,9 @@ export default function Resources() {
                             )}
                             <div className="flex items-center gap-1">
                               <Eye className="h-4 w-4" />
-                              <span>{article.viewCount}</span>
+                              <span>{article.views ?? 0}</span>
                             </div>
                           </div>
-                          {article.featured === 1 && (
-                            <Badge variant="secondary">Featured</Badge>
-                          )}
                         </CardFooter>
                       </Card>
                     </a>
@@ -173,7 +175,7 @@ export default function Resources() {
               </div>
 
               {/* Pagination */}
-              {data.totalPages > 1 && (
+              {Math.ceil(data.total / data.pageSize) > 1 && (
                 <div className="mt-12 flex items-center justify-center gap-2">
                   <Button
                     variant="outline"
@@ -183,12 +185,12 @@ export default function Resources() {
                     Previous
                   </Button>
                   <span className="text-sm text-muted-foreground">
-                    Page {page} of {data.totalPages}
+                    Page {page} of {Math.ceil(data.total / data.pageSize)}
                   </span>
                   <Button
                     variant="outline"
-                    onClick={() => setPage(p => Math.min(data.totalPages, p + 1))}
-                    disabled={page === data.totalPages}
+                    onClick={() => setPage(p => Math.min(Math.ceil(data.total / data.pageSize), p + 1))}
+                    disabled={page === Math.ceil(data.total / data.pageSize)}
                   >
                     Next
                   </Button>

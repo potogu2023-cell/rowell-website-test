@@ -91,7 +91,7 @@ export default function ArticleDetail() {
               {badge.label}
             </Badge>
             <Badge variant="outline" className="ml-2">
-              {article.application_area}
+              {article.applicationArea}
             </Badge>
           </div>
           
@@ -100,7 +100,7 @@ export default function ArticleDetail() {
           </h1>
           
           <p className="text-xl text-gray-600 mb-6">
-            {article.meta_description}
+            {article.metaDescription}
           </p>
 
           {/* Author Info */}
@@ -111,7 +111,7 @@ export default function ArticleDetail() {
                 {article.authorPhoto && (
                   <img
                     src={article.authorPhoto}
-                    alt={article.authorName}
+                    alt={article.authorName || 'Author'}
                     className="w-10 h-10 rounded-full object-cover"
                   />
                 )}
@@ -126,7 +126,7 @@ export default function ArticleDetail() {
               {article.authorPhoto && (
                 <img
                   src={article.authorPhoto}
-                  alt={article.authorName}
+                  alt={article.authorName || 'Author'}
                   className="w-10 h-10 rounded-full object-cover"
                 />
               )}
@@ -139,12 +139,12 @@ export default function ArticleDetail() {
             
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
-              <span>{formatDate(article.published_date)}</span>
+              <span>{formatDate(article.publishedDate)}</span>
             </div>
             
             <div className="flex items-center gap-1">
               <Eye className="w-4 h-4" />
-              <span>{article.view_count} views</span>
+              <span>{article.viewCount} views</span>
             </div>
           </div>
         </div>
@@ -210,18 +210,20 @@ export default function ArticleDetail() {
               {article.authorPhoto && (
                 <img
                   src={article.authorPhoto}
-                  alt={article.authorName}
+                  alt={article.authorName || 'Author'}
                   className="w-20 h-20 rounded-full object-cover"
                 />
               )}
               <div className="flex-1">
                 <h3 className="text-xl font-bold mb-1">{article.authorName}</h3>
                 <p className="text-muted-foreground mb-3">{article.authorTitle}</p>
-                <Link href={`/learning/authors/${article.authorSlug}`}>
-                  <Button variant="outline" size="sm">
-                    View Profile
-                  </Button>
-                </Link>
+                {article.authorSlug && (
+                  <Link href={`/learning/authors/${article.authorSlug}`}>
+                    <Button variant="outline" size="sm">
+                      View Profile
+                    </Button>
+                  </Link>
+                )}
               </div>
             </div>
           </CardHeader>

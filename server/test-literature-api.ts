@@ -13,6 +13,9 @@ testLiteratureRouter.get('/test-literature/:slug', async (req, res) => {
     console.log('[Test API] Querying literature with slug:', slug);
     
     const db = await getDb();
+    if (!db) {
+      return res.status(503).json({ error: 'Database not available' });
+    }
     const result = await db
       .select()
       .from(literature)

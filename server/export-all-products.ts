@@ -1,6 +1,4 @@
 import { publicProcedure, router } from "./_core/trpc";
-import { db } from "../drizzle/db";
-import { sql } from "drizzle-orm";
 import mysql from 'mysql2/promise';
 
 export const exportAllProductsRouter = router({

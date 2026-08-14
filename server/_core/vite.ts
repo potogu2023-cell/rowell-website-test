@@ -92,8 +92,8 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     const SITE_TITLE = "ROWELL";
     const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
     const title = article.title || SITE_TITLE;
-    const description = article.metaDescription || article.excerpt || "";
-    const image = article.coverImage ? toAbsoluteUrl(article.coverImage) : SITE_LOGO;
+    const description = article.excerpt || "";
+    const image = SITE_LOGO;
     // Render a concise, truthful text fallback so non-JavaScript crawlers receive
     // meaningful article content rather than an empty SPA root.
     const articleText = (article.content || description)

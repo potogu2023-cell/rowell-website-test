@@ -72,7 +72,7 @@ export async function verifyAPIKey(authHeader: string | undefined): Promise<{
 
   // Update last used timestamp (fire and forget)
   db.update(apiKeys)
-    .set({ lastUsedAt: new Date() })
+    .set({ lastUsedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') })
     .where(eq(apiKeys.id, key.id))
     .execute()
     .catch((err) => console.error("[API Key] Failed to update lastUsedAt:", err));

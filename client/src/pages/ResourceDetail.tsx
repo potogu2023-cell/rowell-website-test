@@ -182,17 +182,6 @@ export default function ResourceDetail() {
                 </Button>
               </header>
 
-              {/* Cover Image */}
-              {article.coverImage && (
-                <div className="mb-8 rounded-lg overflow-hidden">
-                  <img
-                    src={article.coverImage}
-                    alt={article.title}
-                    className="w-full h-auto"
-                  />
-                </div>
-              )}
-
               {/* Article Content */}
               <div className="prose prose-lg dark:prose-invert max-w-none">
                 <ReactMarkdown
@@ -212,20 +201,14 @@ export default function ResourceDetail() {
                       </div>
                     ),
                     // Custom code block styling
-                    code: ({ node, inline, className, children, ...props }) => {
-                      if (inline) {
-                        return (
-                          <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
-                            {children}
-                          </code>
-                        );
-                      }
-                      return (
-                        <code className={className} {...props}>
-                          {children}
-                        </code>
-                      );
-                    },
+                    code: ({ className, children, ...props }) => (
+                      <code
+                        className={`bg-muted px-1.5 py-0.5 rounded text-sm font-mono ${className || ''}`}
+                        {...props}
+                      >
+                        {children}
+                      </code>
+                    ),
                     // Custom link styling
                     a: ({ node, href, ...props }) => {
                       const isInternalLink = !!href && href.startsWith("/");

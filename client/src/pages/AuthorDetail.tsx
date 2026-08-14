@@ -15,10 +15,6 @@ export default function AuthorDetail() {
     { enabled: !!slug }
   );
 
-  const { data: articlesData, isLoading: articlesLoading } = trpc.learningCenter.articles.list.useQuery(
-    { page: 1, pageSize: 100, authorSlug: slug },
-    { enabled: !!slug }
-  );
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -73,7 +69,7 @@ export default function AuthorDetail() {
     );
   }
 
-  const articles = articlesData?.articles || [];
+  const articles = author.articles || [];
 
   return (
     <div className="min-h-screen bg-background">
@@ -97,25 +93,25 @@ export default function AuthorDetail() {
             <div>
               <Card>
                 <CardHeader className="text-center">
-                  {author.photo_url && (
+                  {author.photoUrl && (
                     <img
-                      src={author.photo_url}
-                      alt={author.full_name}
+                      src={author.photoUrl}
+                      alt={author.fullName}
                       className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                     />
                   )}
-                  <CardTitle className="text-2xl">{author.full_name}</CardTitle>
+                  <CardTitle className="text-2xl">{author.fullName}</CardTitle>
                   <CardDescription className="text-lg">{author.title}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {author.years_of_experience && (
+                    {author.yearsOfExperience && (
                       <div>
                         <div className="text-sm font-semibold text-muted-foreground mb-1">
                           Experience
                         </div>
                         <div className="text-sm">
-                          {author.years_of_experience} years in chromatography
+                          {author.yearsOfExperience} years in chromatography
                         </div>
                       </div>
                     )}
@@ -163,7 +159,7 @@ export default function AuthorDetail() {
             <div className="md:col-span-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>About {author.full_name}</CardTitle>
+                  <CardTitle>About {author.fullName}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   {author.biography ? (
@@ -187,10 +183,10 @@ export default function AuthorDetail() {
       {/* Articles by Author */}
       <div className="container mx-auto px-4 py-12 max-w-6xl">
         <h2 className="text-3xl font-bold mb-8">
-          Articles by {author.full_name}
+          Articles by {author.fullName}
         </h2>
 
-        {articlesLoading ? (
+        {authorLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(3)].map((_, i) => (
               <Card key={i}>
@@ -204,7 +200,7 @@ export default function AuthorDetail() {
           </div>
         ) : articles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(articles as any[]).map((article: any) => {
+            {articles.map((article) => {
               const badge = getCategoryBadge(article.category);
               
               return (
@@ -213,21 +209,21 @@ export default function AuthorDetail() {
                     <CardHeader>
                       <div className="flex items-center gap-2 mb-2">
                         <Badge variant={badge.variant}>{badge.label}</Badge>
-                        <Badge variant="outline">{article.application_area}</Badge>
+                        <Badge variant="outline">{article.applicationArea}</Badge>
                       </div>
                       <CardTitle className="line-clamp-2">{article.title}</CardTitle>
                       <CardDescription className="line-clamp-3">
-                        {article.meta_description}
+                        {article.metaDescription}
                       </CardDescription>
                     </CardHeader>
                     <CardFooter className="flex items-center justify-between text-sm text-muted-foreground">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
-                        <span>{formatDate(article.published_date)}</span>
+                        <span>{formatDate(article.publishedDate)}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Eye className="w-4 h-4" />
-                        <span>{article.view_count}</span>
+                        <span>{article.viewCount}</span>
                       </div>
                     </CardFooter>
                   </Card>

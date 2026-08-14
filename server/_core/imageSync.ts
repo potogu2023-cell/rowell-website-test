@@ -105,7 +105,7 @@ export function registerImageSyncRoutes(app: Express) {
               .update(products)
               .set({ 
                 imageUrl: item.imageUrl,
-                updatedAt: new Date()
+                updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
               })
               .where(eq(products.partNumber, item.partNumber));
             

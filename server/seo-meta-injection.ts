@@ -148,7 +148,7 @@ function generateProductMetaTags(product: any, fullUrl: string): string {
  */
 function injectMetaTagsIntoHtml(html: string, metaTags: string): string {
   // Remove existing title tag
-  let result = html.replace(/<title>.*?<\/title>/s, '');
+  let result = html.replace(/<title>[\s\S]*?<\/title>/, '');
 
   // Inject after charset meta tag
   const injected = result.replace(

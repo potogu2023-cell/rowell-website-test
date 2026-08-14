@@ -71,15 +71,15 @@ export default function LearningCenter() {
             {stats && (
               <div className="grid grid-cols-3 gap-6 max-w-2xl mx-auto mb-8">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">{stats.total_articles}</div>
+                  <div className="text-3xl font-bold text-primary">{stats.totalArticles}</div>
                   <div className="text-sm text-muted-foreground">{t('learningCenter.stats.articles')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">{stats.total_authors}</div>
+                  <div className="text-3xl font-bold text-primary">{stats.totalAuthors}</div>
                   <div className="text-sm text-muted-foreground">{t('learningCenter.stats.expertAuthors')}</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary">{stats.total_views?.toLocaleString()}</div>
+                  <div className="text-3xl font-bold text-primary">{stats.totalViews?.toLocaleString()}</div>
                   <div className="text-sm text-muted-foreground">{t('learningCenter.stats.totalViews')}</div>
                 </div>
               </div>

@@ -30,8 +30,8 @@ export default function ProductMessageButton({
     message: "",
   });
 
-  const createMessageMutation = trpc.customerMessage.create.useMutation({
-    onSuccess: (data) => {
+  const createMessageMutation = trpc.messages.create.useMutation({
+    onSuccess: () => {
       toast.success(t('contact.message_success'));
       setOpen(false);
       // Reset form
@@ -43,8 +43,9 @@ export default function ProductMessageButton({
         message: "",
       });
     },
-    onError: (error) => {
-      toast.error(error.message || t('contact.message_error'));
+    onError: (error: unknown) => {
+      const message = error instanceof Error ? error.message : '';
+      toast.error(message || t('contact.message_error'));
     },
   });
 
@@ -64,7 +65,6 @@ export default function ProductMessageButton({
       phone: formData.phone,
       productId: productId,
       productName: productName,
-      productPartNumber: productPartNumber,
       message: formData.message,
     });
   };

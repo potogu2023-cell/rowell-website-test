@@ -1,10 +1,10 @@
-import chokidar from 'chokidar';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import matter from 'gray-matter';
 import { getDb } from './db';
 import { articles, authors } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
+import chokidar, { type FSWatcher } from 'chokidar';
 
 const HOT_FOLDER = '/home/ubuntu/shared/articles_for_publication/';
 const ARCHIVE_FOLDER = path.join(HOT_FOLDER, 'archive');
@@ -23,6 +23,10 @@ const REQUIRED_FIELDS = [
 // Valid ENUM values
 const VALID_CATEGORIES = ['application-notes', 'technical-guides', 'industry-trends', 'literature-reviews'];
 const VALID_AREAS = ['pharmaceutical', 'environmental', 'food-safety', 'biopharmaceutical', 'clinical', 'chemical'];
+
+function toMysqlTimestamp(date: Date): string {
+  return date.toISOString().slice(0, 19).replace('T', ' ');
+}
 
 // Language validation - CRITICAL: Prevent Chinese content
 function validateLanguage(text: string): boolean {
@@ -99,6 +103,9 @@ async function processArticle(filePath: string) {
     
     // 4. Get or create author
     const db = await getDb();
+    if (!db) {
+      throw new Error('Database not available for article import');
+    }
     let authorId: number;
     
     const existingAuthor = await db.select()
@@ -119,10 +126,10 @@ async function processArticle(filePath: string) {
         yearsOfExperience: 20,
         education: 'Collective expertise in analytical chemistry',
         expertise: JSON.stringify(['HPLC', 'Method Development', 'Troubleshooting']),
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        createdAt: toMysqlTimestamp(new Date()),
+        updatedAt: toMysqlTimestamp(new Date())
       });
-      authorId = Number(result.insertId);
+      authorId = Number(result[0].insertId);
       console.log(`✓ Created default author: ${frontmatter.author_slug} (ID: ${authorId})`);
     }
     
@@ -136,9 +143,9 @@ async function processArticle(filePath: string) {
       authorId: authorId,
       metaDescription: frontmatter.meta_description || null,
       keywords: frontmatter.keywords || null,
-      publishedDate: new Date(frontmatter.published_date).toISOString(),
+      publishedDate: toMysqlTimestamp(new Date(frontmatter.published_date)),
       viewCount: 0,
-      updatedAt: new Date().toISOString()
+      updatedAt: toMysqlTimestamp(new Date())
     };
     
     // 6. Check if exists (update vs create)
@@ -157,7 +164,7 @@ async function processArticle(filePath: string) {
       // Create new article
       await db.insert(articles).values({
         ...articleData,
-        createdAt: new Date().toISOString()
+        createdAt: toMysqlTimestamp(new Date())
       });
       console.log(`✅ Created article: ${frontmatter.title}`);
     }
@@ -241,7 +248,7 @@ export async function startArticleMonitor() {
 }
 
 // Graceful shutdown
-export async function stopArticleMonitor(watcher: chokidar.FSWatcher) {
+export async function stopArticleMonitor(watcher: FSWatcher) {
   console.log('\n⏸️  Stopping Article Monitor Service...');
   await watcher.close();
   console.log('✅ Article Monitor Service stopped');

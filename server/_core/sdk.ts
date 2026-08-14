@@ -267,17 +267,20 @@ class SDKServer {
     }
 
     const sessionUserId = session.openId;
-    const signedInAt = new Date();
+    const signedInAt = new Date().toISOString().slice(0, 19).replace('T', ' ');
     let user = await db.getUserByOpenId(sessionUserId);
 
     // If user not in DB, sync from OAuth server automatically
     if (!user) {
       try {
         const userInfo = await this.getUserInfoWithJwt(sessionCookie ?? "");
+        if (!userInfo.openId || !userInfo.email) {
+          throw ForbiddenError('OAuth user info is missing a required identifier');
+        }
         await db.upsertUser({
           openId: userInfo.openId,
           name: userInfo.name || null,
-          email: userInfo.email ?? null,
+          email: userInfo.email,
           loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
           lastSignedIn: signedInAt,
         });
@@ -294,6 +297,7 @@ class SDKServer {
 
     await db.upsertUser({
       openId: user.openId,
+      email: user.email,
       lastSignedIn: signedInAt,
     });
 

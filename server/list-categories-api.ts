@@ -17,6 +17,7 @@ export const listCategoriesRouter = router({
       const { getDb } = await import('./db');
       const { categories } = await import('../drizzle/schema');
       const db = await getDb();
+      if (!db) throw new Error('Database not available');
 
       const allCategories = await db
         .select()

@@ -35,7 +35,6 @@ export default function StandardsSearch() {
     { query: activeQuery, page, pageSize: PAGE_SIZE },
     { 
       enabled: activeQuery.trim().length > 0,
-      keepPreviousData: true,
     }
   );
 
