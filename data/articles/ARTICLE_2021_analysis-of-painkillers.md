@@ -77,3 +77,12 @@ For Aspirin and Paracetamol, which are often included in pharmacopoeias (e.g., U
 ## Conclusion
 
 HPLC remains an indispensable tool for the quantitative analysis of Aspirin and Paracetamol in pharmaceutical formulations. The development of precise, accurate, and robust HPLC methods, coupled with rigorous validation and adherence to international regulatory guidelines, is fundamental to ensuring the quality, safety, and efficacy of these widely consumed medications. By meticulously optimizing chromatographic conditions, employing appropriate sample preparation techniques, and systematically validating method performance, analytical laboratories can confidently provide reliable data that meets the stringent demands of the pharmaceutical industry and regulatory bodies. The continuous commitment to quality control and regulatory compliance underscores the critical role of analytical science in safeguarding public health.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. FDA — Analytical Procedures and Methods Validation for Drugs and Biologics](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/analytical-procedures-and-methods-validation-drugs-and-biologics)
+[2] [PubMed Central — Chromatographic pharmaceutical analysis review](https://pmc.ncbi.nlm.nih.gov/articles/PMC4237153/)
+[3] [Waters — Acetaminophen USP Monograph HPLC Method Modernization](https://www.waters.com/nextgen/us/en/library/application-notes/2023/modernization-of-the-acetaminophen-usp-monograph-gradient-hplc-method-for-impurities-using-usp-621-guidelines-and-maxpeak-premier-hps-technology.html)

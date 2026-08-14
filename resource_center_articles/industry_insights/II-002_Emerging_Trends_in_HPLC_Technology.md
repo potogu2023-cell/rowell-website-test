@@ -65,3 +65,11 @@ The future of HPLC is bright. Driven by the need for faster, more sensitive, and
 [3] Sandra, P., & Sandra, K. (2024). Recent Advances in Liquid Chromatography–Mass Spectrometry for Pharmaceutical and Biopharmaceutical Analysis. *Molecules*, 29(1), 18.
 
 [4] Kumar, A., et al. (2024). Artificial Intelligence in HPLC Method Development: A Critical Review of Technological Integration, Limitations, and Future Directions. *Critical Reviews in Analytical Chemistry*, 1-17.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [Waters — HPLC Systems](https://www.waters.com/nextgen/us/en/products/chromatography/chromatography-systems/hplc-systems.html)
+[2] [Wiley BioMed Chromatography — Recent liquid chromatography research article](https://analyticalsciencejournals.onlinelibrary.wiley.com/doi/10.1002/bmc.70535)

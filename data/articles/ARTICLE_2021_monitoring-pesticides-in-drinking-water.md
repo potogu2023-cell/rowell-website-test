@@ -49,3 +49,11 @@ Despite significant advancements, pesticide monitoring in drinking water continu
 
 Monitoring pesticides in drinking water is a complex yet indispensable task that safeguards public health and protects environmental integrity. The application of sophisticated analytical techniques such as HPLC and LC-MS/MS, coupled with meticulous sample preparation and adherence to established EPA methods, provides the foundation for robust monitoring programs. As agricultural practices evolve and new chemical compounds are introduced, the field of environmental analytical chemistry must continuously adapt, developing more sensitive, selective, and efficient methods to meet emerging challenges. Through ongoing research, technological innovation, and strict regulatory oversight, we can ensure the continued safety and quality of our most vital resource: drinking water.
 
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. EPA — Approved Drinking Water Methods for Pesticides](https://www.epa.gov/cwa-methods/approved-drinking-water-methods-pesticide-active-ingredients)
+[2] [World Health Organization — Guidelines for Drinking-water Quality](https://www.who.int/publications/i/item/9789240121225)
+[3] [U.S. Geological Survey — Pesticides and Water Quality](https://www.usgs.gov/mission-areas/water-resources/science/pesticides-and-water-quality)

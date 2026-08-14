@@ -59,3 +59,11 @@ Furthermore, the application of artificial intelligence and machine learning alg
 ## Conclusion
 
 HPLC stands as a foundational technology in clinical diagnostics, providing the analytical rigor necessary for accurate and reliable patient care. From monitoring therapeutic drug levels to unraveling the complexities of metabolomic profiles and identifying crucial biomarkers, its role is indispensable. While challenges related to sample preparation and regulatory compliance persist, ongoing advancements in instrumentation, detection technologies, and data analysis continue to enhance its capabilities. As clinical research progresses and the need for precise, individualized diagnostic tools intensifies, HPLC will continue to be a vital instrument in the clinical laboratory, driving forward the frontiers of medical science and ultimately improving human health.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. CDC — LC-MS Biochemical Genetics Laboratory Training](https://www.cdc.gov/lab-training/php/courses/lc-ms-biochemical-genetics-laboratory.html)
+[2] [PubMed Central — Clinical laboratory chromatographic methods (peer-reviewed article)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7250120/)

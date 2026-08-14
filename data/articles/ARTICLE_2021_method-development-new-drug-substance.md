@@ -85,3 +85,12 @@ The development of an HPLC method for a new drug substance is a complex yet crit
 ## Keywords
 
 HPLC, Method Development, New Drug Substance, Pharmaceutical Analysis, Regulatory Compliance, Quality Control, ICH Guidelines, FDA, EMA, Analytical Method Validation, Impurity Profiling, Chromatographic Optimization, Robustness, Selectivity, Resolution, Drug Development.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. FDA — ICH Q14 Analytical Procedure Development](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q14-analytical-procedure-development)
+[2] [European Medicines Agency — ICH Q14](https://www.ema.europa.eu/en/ich-q14-analytical-procedure-development-scientific-guideline)
+[3] [Agilent — Method Development Application Note](https://www.agilent.com/cs/library/applications/5991-7794EN.pdf)

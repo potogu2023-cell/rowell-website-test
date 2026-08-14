@@ -61,3 +61,11 @@ The rise of biopharmaceuticals represents a new era in medicine, offering hope f
 [3] Rogers, R. S., et al. (2015). A view on the importance of "Multi-Attribute Method" for measuring purity of biopharmaceuticals and improving overall control strategy. *AAPS Journal*, 17(5), 1221-1233.
 
 [4] Sandra, K., & Sandra, P. (2018). The role of liquid chromatography in biopharmaceutical analysis. *LCGC Europe*, 31(10), 566-575.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. FDA — Biopharmaceutical analytical procedures guidance](https://www.fda.gov/media/161201/download)
+[2] [PubMed Central — Biopharmaceutical characterization review](https://pmc.ncbi.nlm.nih.gov/articles/PMC7250120/)

@@ -82,3 +82,12 @@ This application note outlines a robust and sensitive HPLC method for the simult
 [3] Palisoc, S. T., et al. (2021). Highly sensitive determination of heavy metals in water samples using metal-organic framework/carbon nanotube composites. *Scientific Reports*, 11(1), 1-11.
 
 [4] World Health Organization (WHO). (2017). *Guidelines for drinking-water quality*. 4th edition.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [PubMed — HPLC metal determination literature record](https://pubmed.ncbi.nlm.nih.gov/12664186/)
+[2] [Royal Society of Chemistry — HPLC metal analysis article record](https://pubs.rsc.org/an/article-abstract/118/5/505/977)
+[3] [ScienceDirect — Water-analysis research article record](https://www.sciencedirect.com/science/article/pii/S0039914019305259)

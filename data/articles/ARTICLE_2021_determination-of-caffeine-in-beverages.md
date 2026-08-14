@@ -70,3 +70,12 @@ High-Performance Liquid Chromatography is an indispensable analytical technique 
 [4] Chen, L., & Wang, Q. (2021). *Advanced Sample Preparation Techniques for HPLC Analysis in Complex Food Matrices*. Food Analytical Methods, 14(5), 987-1002.
 [5] Lee, S. K., & Park, H. J. (2017). *Optimization of Mobile Phase for Reversed-Phase HPLC Separation of Xanthine Derivatives*. Chromatographia, 80(11), 1721-1728.
 [6] International Conference on Harmonisation (ICH). (1996). *ICH Harmonised Tripartite Guideline: Validation of Analytical Procedures: Text and Methodology Q2(R1)*. ICH, Geneva.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [ISO Online Browsing Platform — ISO standard entry for caffeine analysis](https://www.iso.org/obp/ui/fr/#!iso:std:34185:en)
+[2] [Waters — HPLC Analysis of Soft Drinks](https://www.waters.com/nextgen/us/en/library/application-notes/2024/hplc-analysis-of-soft-drinks-using-alliance-is-hplc-system.html)
+[3] [ACS Journal of Chemical Education — Caffeine chromatographic experiment](https://pubs.acs.org/doi/full/10.1021/ed100146s)

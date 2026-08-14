@@ -66,3 +66,11 @@ Despite its benefits, TDM for AEDs faces challenges, including the need for rapi
 ## Conclusion
 
 Therapeutic Drug Monitoring is an indispensable tool in the effective management of epilepsy, offering a data-driven approach to personalize AED therapy. By accurately measuring drug concentrations, TDM helps optimize efficacy, minimize toxicity, identify non-adherence, manage drug interactions, and guide treatment in special populations. The adoption of highly specific and sensitive techniques like LC-MS/MS has significantly improved the reliability of TDM results. As the field progresses, the integration of TDM with pharmacogenomics and biomarker analysis promises to usher in an era of even more precise and individualized epilepsy care, ultimately leading to better outcomes for patients. The continuous evolution of analytical methodologies and clinical understanding will further solidify TDM's role as a cornerstone of modern epilepsy treatment.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [International League Against Epilepsy — Therapeutic Drug Monitoring Position Paper](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1528-1167.2008.01561.x)
+[2] [PubMed Central — Therapeutic Drug Monitoring Review](https://pmc.ncbi.nlm.nih.gov/articles/PMC7508342/)

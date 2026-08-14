@@ -73,3 +73,11 @@ This application note presents a simple, fast, and reliable normal-phase HPLC me
 [3] ASTM International. (2019). *ASTM D6450 - Standard Test Method for Flash Point by Continuously Closed Cup (CCCFP) Tester* (Related standard for gasoline properties).
 
 [4] Wang, J., et al. (2016). Development of an analytical method for determining phenolic antioxidants in fuels. *Journal of Chromatography A*, 1442, 134-141.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [Fuel — Research article record](https://www.sciencedirect.com/science/article/pii/S0016236117313145)
+[2] [ACS Energy & Fuels — Research article record](https://pubs.acs.org/doi/10.1021/ef402144v)

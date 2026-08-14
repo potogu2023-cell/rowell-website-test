@@ -77,3 +77,12 @@ This RP-HPLC method is a robust, reliable, and accurate tool for the quality con
 [3] United States Pharmacopeia (USP). (2023). *Monograph: Turmeric Extract*. USP-NF.
 
 [4] Kotra, V. S. R., et al. (2019). A critical review of analytical methods for determination of curcuminoids in turmeric. *Journal of Food and Drug Analysis*, 27(3), 593-61631-6151615.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [PubMed Central — Curcuminoid analysis and quality-control review](https://pmc.ncbi.nlm.nih.gov/articles/PMC8174018/)
+[2] [ACS Journal of Agricultural and Food Chemistry — Curcuminoid analysis article record](https://pubs.acs.org/doi/abs/10.1021/jf025506a)
+[3] [MilliporeSigma/Supelco — HPLC Analysis of Curcuminoids](https://www.sigmaaldrich.com/SG/en/technical-documents/chromatograms/hplc/usp-hplc-analysis-of-curcuminoids-in-powdered-turmeric-extract/supelco/app545)

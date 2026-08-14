@@ -82,3 +82,12 @@ This HPLC-UV method provides a reliable and accurate means of quantifying 25-hyd
 [3] Alexandridou, A., et al. (2022). Sample preparation techniques for extraction of vitamin D and its metabolites from biological fluids. *Molecules*, 27(11), 3597.
 
 [4] Holick, M. F. (2007). Vitamin D deficiency. *New England Journal of Medicine*, 357(3), 266-281.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. CDC — Vitamin D Reference Laboratory](https://www.cdc.gov/clinical-standardization-programs/php/vitamin-d/vitamin-d-reference-laboratory.html)
+[2] [NIST — Vitamin D Metabolites Quality Assurance Program](https://www.nist.gov/programs-projects/vitamin-d-metabolites-quality-assurance-program-vitdqap)
+[3] [PubMed Central — Vitamin D assay review](https://pmc.ncbi.nlm.nih.gov/articles/PMC8224373/)

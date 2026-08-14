@@ -83,3 +83,12 @@ Compliance with international standards such as ISO 17025 is critical for labora
 The analysis of mycotoxins in grains is a critical component of global food safety strategies. The continuous threat of fungal contamination necessitates the application of advanced and reliable analytical techniques. HPLC, particularly when coupled with mass spectrometry, provides the sensitivity, selectivity, and robustness required to accurately detect and quantify a wide range of mycotoxins, even at trace levels in complex grain matrices. While sample preparation remains a challenging but crucial step, advancements in clean-up technologies, such as immunoaffinity columns and dSPE, have significantly improved method performance. By adhering to rigorous quality control measures and method validation protocols, analytical laboratories can ensure the integrity of their results, thereby safeguarding public health and facilitating compliance with international food safety regulations. The ongoing development of more efficient and comprehensive multi-mycotoxin methods will further enhance our ability to monitor and control these pervasive food contaminants.
 
 ---
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [U.S. FDA — Mycotoxins](https://www.fda.gov/food/natural-toxins-food/mycotoxins)
+[2] [European Food Safety Authority — Mycotoxins Topic](https://www.efsa.europa.eu/en/topics/topic/mycotoxins)
+[3] [PubMed Central — Mycotoxin analysis review](https://pmc.ncbi.nlm.nih.gov/articles/PMC5486318/)

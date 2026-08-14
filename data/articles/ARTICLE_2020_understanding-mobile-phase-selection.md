@@ -64,3 +64,12 @@ For highly complex samples, **2D-LC techniques** offer unparalleled separation p
 ## Conclusion
 
 The mobile phase is far more than just a solvent delivery system in HPLC; it is an active participant in the separation process, profoundly influencing every aspect of chromatographic performance. A comprehensive understanding of solvent strength, pH effects, additive roles, and detector compatibility is fundamental for any chromatographer. As analytical challenges grow in complexity, embracing advanced optimization strategies, including gradient elution, method development software, AI, and 2D-LC, becomes increasingly vital. By mastering the art and science of mobile phase selection, analysts can unlock the full potential of HPLC, ensuring accurate, precise, and robust analytical results for the most demanding applications.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [Agilent — HPLC Fundamentals](https://www.agilent.com/en/product/liquid-chromatography/hplc-fundamentals)
+[2] [Shimadzu — HPLC Basics Knowledge Base](https://www.ssi.shimadzu.com/service-support/faq/liquid-chromatography/knowledge-base/hplc-basics/index.html)
+[3] [Phenomenex — Mobile Phase in Chromatography](https://www.phenomenex.com/resources/knowledge-center/hplc-knowledge-center/mobile-phase-in-chromatography)

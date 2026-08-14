@@ -82,3 +82,12 @@ This application note demonstrates an effective and reliable method for the dete
 [3] Mujahid, M., et al. (2022). Modified matrix solid phase dispersion-HPLC method for determination of pesticide residue in vegetables and their impact on human health: A risk assessment. *Frontiers in Chemistry*, 10, 1084350.
 
 [4] Wahab, S., et al. (2022). Advancement and New Trends in Analysis of Pesticide Residues in Food and Water. *Separations*, 9(5), 110.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [European Commission — Pesticide MRL Guidelines](https://food.ec.europa.eu/document/download/d8f2d862-94ea-412d-a0dd-c037e41898b2_en?filename=pesticides_mrl_guidelines_2020-12830.pdf)
+[2] [World Health Organization — Pesticide Residues Reference](https://www.who.int/publications/i/item/9789240122963)
+[3] [PubMed Central — Pesticide residue analysis review](https://pmc.ncbi.nlm.nih.gov/articles/PMC8004370/)

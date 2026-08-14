@@ -47,3 +47,12 @@ Comprehensive characterization of monoclonal antibodies is an indispensable comp
 
 ## Keywords
 Monoclonal antibodies, mAb characterization, HPLC, biopharmaceutical analysis, critical quality attributes, SEC, IEX, HIC, RP-HPLC, mass spectrometry, glycosylation, aggregation, charge variants, protein therapeutics, quality control.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [European Medicines Agency — ICH Q6B](https://www.ema.europa.eu/en/ich-q6b-specifications-test-procedures-acceptance-criteria-biotechnological-biological-products-scientific-guideline)
+[2] [NIST — Monoclonal Antibody Reference Material 8671](https://www.nist.gov/programs-projects/nist-monoclonal-antibody-reference-material-8671)
+[3] [U.S. FDA — Q6B Guidance](https://www.fda.gov/regulatory-information/search-fda-guidance-documents/q6b-specifications-test-procedures-acceptance-criteria-biotechnologicalbiological-products)

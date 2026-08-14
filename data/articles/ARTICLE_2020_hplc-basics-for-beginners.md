@@ -56,3 +56,12 @@ HPLC remains an indispensable analytical technique, offering unparalleled capabi
 [1] Snyder, L. R., Kirkland, J. J., & Dolan, J. W. (2010). *Introduction to Modern Liquid Chromatography*. John Wiley & Sons.
 [2] Dong, M. W. (2016). *HPLC and UHPLC for Practicing Scientists*. John Wiley & Sons.
 [3] Kazakevich, Y. V., & Lobrutto, R. (2007). *HPLC for Pharmaceutical Scientists*. John Wiley & Sons.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [Agilent — HPLC Fundamentals](https://www.agilent.com/en/product/liquid-chromatography/hplc-fundamentals)
+[2] [Waters — Beginner’s Guide to Liquid Chromatography](https://www.waters.com/nextgen/us/en/education/primers/beginner-s-guide-to-liquid-chromatography.html)
+[3] [Thermo Fisher Scientific — HPLC Basics](https://www.thermofisher.com/us/en/home/industrial/chromatography/chromatography-learning-center/liquid-chromatography-information/hplc-basics.html)

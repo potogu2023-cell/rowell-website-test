@@ -72,3 +72,12 @@ This simple and rapid isocratic HPLC method is perfectly suited for the quality 
 [3] Waters Corporation. (2024). *HPLC Analysis of Soft Drinks Using Alliance™ iS HPLC System*. Application Note 720008148EN.
 
 [4] Székelyhidi, R., et al. (2023). Optimization and validation of HPLC–DAD method for simultaneous determination of sweeteners, preservatives, and caffeine in soft drinks. *European Food Research and Technology*, 249(10), 2611-2620.
+
+
+## Further Reading and Validation Context
+
+> These sources are provided for general technical context. They do not replace laboratory-specific method validation, applicable regulations, or professional review.
+
+[1] [Waters — HPLC Analysis of Soft Drinks](https://www.waters.com/nextgen/us/en/library/application-notes/2024/hplc-analysis-of-soft-drinks-using-alliance-is-hplc-system.html)
+[2] [Agilent — Sugars and Sweeteners Application Note](https://www.agilent.com/cs/library/applications/an-sugars-sweeteners-single-run-5994-5841en-agilent.pdf)
+[3] [PubMed Central — Sweetener analysis review](https://pmc.ncbi.nlm.nih.gov/articles/PMC9354869/)
