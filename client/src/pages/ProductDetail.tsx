@@ -82,6 +82,23 @@ export default function ProductDetail() {
     );
   }
 
+  if (product.status !== 'active') {
+    return (
+      <main id="main-content" className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+        <div className="max-w-xl text-center">
+          <h1 className="text-2xl font-bold mb-4 text-slate-950">Content No Longer Available</h1>
+          <p className="text-muted-foreground mb-6">
+            This catalog record is no longer active. Browse the active catalog for current product information.
+          </p>
+          <Button onClick={() => setLocation('/products')}>
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            {t('productDetail.back_to_products')}
+          </Button>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Dynamic SEO Meta Tags */}
