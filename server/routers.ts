@@ -56,6 +56,7 @@ export const appRouter = router({
         const { getDb } = await import('./db');
         const { productsListQuery } = await import('./products_list_new');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         return await productsListQuery(input, db);
       }),
     
@@ -78,6 +79,7 @@ export const appRouter = router({
         const { products } = await import('../drizzle/schema');
         const { eq } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         // Query product by slug
         const result = await db
@@ -101,6 +103,7 @@ export const appRouter = router({
         const { products } = await import('../drizzle/schema');
         const { eq, and, or, ne, sql } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         // First, get the current product
         const currentProduct = await db
@@ -126,8 +129,8 @@ export const appRouter = router({
               eq(products.status, 'active'), // Only active products
               or(
                 eq(products.brand, product.brand), // Same brand
-                eq(products.phaseType, product.phaseType), // Same phase type
-                eq(products.usp, product.usp), // Same USP
+                product.phaseType ? eq(products.phaseType, product.phaseType) : undefined, // Same phase type
+                product.usp ? eq(products.usp, product.usp) : undefined, // Same USP
                 // Similar particle size (within 1 µm)
                 product.particleSize ? sql`ABS(${products.particleSize} - ${product.particleSize}) <= 1` : undefined,
               )
@@ -155,6 +158,7 @@ export const appRouter = router({
         const { customerMessages } = await import('../drizzle/schema');
         const { eq, desc, or, sql, and } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         const conditions = [];
         
@@ -214,6 +218,7 @@ export const appRouter = router({
         const { customerMessages } = await import('../drizzle/schema');
         const { eq } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         await db
           .update(customerMessages)
@@ -229,6 +234,7 @@ export const appRouter = router({
         const { customerMessages } = await import('../drizzle/schema');
         const { eq, sql } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         const stats = await db
           .select({
@@ -271,6 +277,7 @@ export const appRouter = router({
         const { getDb } = await import('./db');
         const { customerMessages } = await import('../drizzle/schema');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         // Insert message into database
         const result = await db.insert(customerMessages).values({
@@ -348,8 +355,8 @@ export const appRouter = router({
         const items = products.map(p => ({
           productId: p.id,
           partNumber: p.partNumber,
-          productName: p.name,
-          brand: p.brand,
+          productName: p.name || undefined,
+          brand: p.brand || undefined,
         }));
         await createInquiryItems(inquiryId, items);
         
@@ -360,7 +367,7 @@ export const appRouter = router({
           userEmail: input.userInfo.email,
           userMessage: input.userInfo.message,
           products: products.map(p => ({
-            name: p.name,
+            name: p.name || p.partNumber,
             partNumber: p.partNumber,
           })),
           createdAt: new Date(),
@@ -512,6 +519,7 @@ export const appRouter = router({
         const { categories } = await import('../drizzle/schema');
         const { asc } = await import('drizzle-orm');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         const result = await db
           .select()
@@ -525,9 +533,10 @@ export const appRouter = router({
       .query(async () => {
         const { getDb } = await import('./db');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         // Use raw SQL query for now to avoid drizzle issues
-        const [rows] = await db.execute(`
+        const result = await db.execute(`
           SELECT 
             c.id,
             c.name,
@@ -548,33 +557,33 @@ export const appRouter = router({
           ORDER BY c.parent_id, c.display_order
         `);
         
-        return rows as any[];
+        return Array.isArray(result[0]) ? result[0] : [];
       }),
   }),
-
+  
   // Brand routes
   brand: router({
     getWithProductCount: publicProcedure
       .query(async () => {
         const { getDb } = await import('./db');
         const db = await getDb();
+        if (!db) throw new Error('Database not available');
         
         // Use raw SQL query to get brands with product counts
-        const [rows] = await db.execute(`
+        const result = await db.execute(`
           SELECT 
             brand,
             COUNT(*) as productCount
           FROM products
           WHERE brand IS NOT NULL AND brand != '' AND status = 'active'
           GROUP BY brand
-          ORDER BY productCount DESC, brand ASC
-        `);
+          ORDER BY productCount DESC, brand ASC        `);
         
-        return rows as any[];
+        return Array.isArray(result[0]) ? result[0] : [];
       }),
   }),
-
-  // Seed API for importing resources
+  
+  // Seed APII for importing resources
   seed: seedRouter,
 
   // Admin API for data management
