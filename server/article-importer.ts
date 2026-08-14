@@ -54,11 +54,18 @@ function validateFormat(frontmatter: any): { valid: boolean; errors: string[] } 
     errors.push(`Invalid application_area: ${frontmatter.application_area}. Must be one of: ${VALID_AREAS.join(', ')}`);
   }
   
-  // Validate date format
+  // Validate date format - gray-matter may auto-parse YYYY-MM-DD into a Date object
   if (frontmatter.published_date) {
+    const rawDate = frontmatter.published_date;
+    const dateStr = rawDate instanceof Date
+      ? rawDate.toISOString().slice(0, 10)
+      : String(rawDate);
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(frontmatter.published_date)) {
-      errors.push(`Invalid date format: ${frontmatter.published_date}. Must be YYYY-MM-DD`);
+    if (!dateRegex.test(dateStr)) {
+      errors.push(`Invalid date format: ${rawDate}. Must be YYYY-MM-DD`);
+    } else {
+      // Normalise so downstream code always sees a string
+      frontmatter.published_date = dateStr;
     }
   }
   
