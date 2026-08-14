@@ -28,6 +28,12 @@ function withPoreUnit(value: string) {
     : `${normalized} Å`;
 }
 
+function hasCatalogValue(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  const normalized = value.trim();
+  return normalized.length > 0 && !/^(?:n\/?a|n\/|not available|none|null|-)$/i.test(normalized);
+}
+
 export default function ProductDetail() {
   const { t } = useTranslation();
   const params = useParams<{ id: string }>();
@@ -99,6 +105,10 @@ export default function ProductDetail() {
     );
   }
 
+  const isCartridgeVolume = hasCatalogValue(product.columnLength)
+    && /\b(?:spe|cartridge)\b/i.test(`${product.productType || ""} ${product.category || ""} ${product.name || ""}`)
+    && /^\d+(?:\.\d+)?\s*mL$/i.test(product.columnLength.trim());
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Dynamic SEO Meta Tags */}
@@ -168,37 +178,37 @@ export default function ProductDetail() {
                 <div>
                   <h3 className="text-lg font-semibold mb-4">{t('productDetail.technical_specs')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {product.particleSize && (
+                    {hasCatalogValue(product.particleSize) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.particle_size')}:</span>
                         <span className="font-medium">{withParticleUnit(product.particleSize)}</span>
                       </div>
                     )}
-                    {product.poreSize && (
+                    {hasCatalogValue(product.poreSize) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.pore_size')}:</span>
                         <span className="font-medium">{withPoreUnit(product.poreSize)}</span>
                       </div>
                     )}
-                    {product.columnLength && (
+                    {hasCatalogValue(product.columnLength) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">{t('productDetail.column_length')}:</span>
+                        <span className="text-muted-foreground">{isCartridgeVolume ? 'Cartridge volume' : t('productDetail.column_length')}:</span>
                         <span className="font-medium">{product.columnLength}</span>
                       </div>
                     )}
-                    {product.innerDiameter && (
+                    {hasCatalogValue(product.innerDiameter) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.inner_diameter')}:</span>
                         <span className="font-medium">{product.innerDiameter}</span>
                       </div>
                     )}
-                    {product.phaseType && (
+                    {hasCatalogValue(product.phaseType) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.phase_type')}:</span>
                         <span className="font-medium">{product.phaseType}</span>
                       </div>
                     )}
-                    {((product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined) || product.phRange) ? (
+                    {((product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined) || hasCatalogValue(product.phRange)) ? (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
                         <span className="font-medium">
@@ -206,19 +216,19 @@ export default function ProductDetail() {
                         </span>
                       </div>
                     ) : null}
-                    {product.maxPressure && (
+                    {hasCatalogValue(product.maxPressure) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.max_pressure')}:</span>
                         <span className="font-medium">{product.maxPressure}</span>
                       </div>
                     )}
-                    {product.maxTemperature && (
+                    {hasCatalogValue(product.maxTemperature) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.max_temperature')}:</span>
                         <span className="font-medium">{product.maxTemperature}</span>
                       </div>
                     )}
-                    {product.usp && (
+                    {hasCatalogValue(product.usp) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.usp_classification')}:</span>
                         <span className="font-medium">{product.usp}</span>
