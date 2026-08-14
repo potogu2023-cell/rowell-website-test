@@ -111,7 +111,8 @@ export default function ProductDetail() {
                   <img
                     src={product.imageUrl}
                     alt={`${product.brand} ${product.name} (${product.partNumber}) product image`}
-                    className="block h-auto max-h-[400px] w-full object-contain p-8"
+                    className="block object-contain p-8"
+                    style={{ height: 'auto', maxHeight: '400px', maxWidth: '100%', width: 'auto' }}
                     decoding="async"
                     loading="eager"
                     fetchPriority="high"
