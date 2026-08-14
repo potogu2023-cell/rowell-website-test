@@ -19,6 +19,7 @@ export const adminRouter = router({
       const { products, categories } = await import('../drizzle/schema');
       const { eq, or } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
 
       // Get SPE Cartridges category ID (slug: spe-cartridges)
       const speCategories = await db
@@ -47,22 +48,24 @@ export const adminRouter = router({
         {
           partNumber: "WATS-186007239",
           productId: "WATS-186007239",
+          prefix: "WATS",
           name: "GlycoWorks HILIC 1 cc Flangeless Cartridge",
           brand: "Waters",
           categoryId: speCategoryId,
           status: "active" as const,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+          updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
         },
         {
           partNumber: "WATS-186007080",
           productId: "WATS-186007080",
+          prefix: "WATS",
           name: "GlycoWorks HILIC 1 cc Cartridge, 20/pk",
           brand: "Waters",
           categoryId: speCategoryId,
           status: "active" as const,
-          createdAt: new Date(),
-          updatedAt: new Date()
+          createdAt: new Date().toISOString().slice(0, 19).replace('T', ' '),
+          updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
         }
       ];
 
@@ -78,7 +81,7 @@ export const adminRouter = router({
             .set({
               name: product.name,
               categoryId: product.categoryId,
-              updatedAt: new Date()
+              updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ')
             })
             .where(eq(products.partNumber, product.partNumber));
           results.push({ partNumber: product.partNumber, action: 'updated' });
@@ -116,6 +119,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
 
       const results = [];
 
@@ -135,7 +139,7 @@ export const adminRouter = router({
 
           await db
             .update(products)
-            .set({ metaTitle: update.metaTitle, updatedAt: new Date() })
+            .set({ metaTitle: update.metaTitle, updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') })
             .where(eq(products.partNumber, update.partNumber));
 
           results.push({
@@ -173,6 +177,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results = [];
       for (const update of input.updates) {
         try {
@@ -228,6 +233,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results: Array<{ id: number; partNumber?: string; status: 'cleared' | 'not_found' | 'error'; error?: string }> = [];
 
       for (const id of input.ids) {
@@ -299,7 +305,7 @@ export const adminRouter = router({
           }
           await db
             .update(products)
-            .set({ imageUrl: update.imageUrl, updatedAt: new Date().toISOString() })
+            .set({ imageUrl: update.imageUrl, updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') })
             .where(eq(products.id, update.id));
           results.push({
             id: update.id,
@@ -353,7 +359,7 @@ export const adminRouter = router({
           }
           await db
             .update(products)
-            .set({ imageUrl: null, updatedAt: new Date().toISOString() })
+            .set({ imageUrl: null, updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') })
             .where(eq(products.id, id));
           results.push({
             id,
@@ -428,7 +434,7 @@ export const adminRouter = router({
             continue;
           }
 
-          const setFields: Record<string, unknown> = { name: update.name, updatedAt: new Date().toISOString() };
+          const setFields: Record<string, unknown> = { name: update.name, updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') };
           const optionalFields = [
             'description', 'detailedDescription', 'productType', 'category', 'particleSize', 'poreSize',
             'columnLength', 'innerDiameter', 'phRange', 'maxPressure', 'usp', 'phaseType',
@@ -479,6 +485,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results = [];
       for (const update of input.updates) {
         const existing = await db
@@ -527,6 +534,7 @@ export const adminRouter = router({
       const { products, categories } = await import('../drizzle/schema');
       const { eq, sql } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
 
       // Total products
       const totalProductsResult = await db
@@ -579,7 +587,7 @@ export const adminRouter = router({
         activeProducts,
         categoryStats,
         nullCategoryCount,
-        duplicatePartNumbers: duplicates.rows,
+        duplicatePartNumbers: duplicates,
         watersProducts
       };
     }),
@@ -609,6 +617,7 @@ export const adminRouter = router({
       const { getDb } = await import('./db');
       const { resources } = await import('../drizzle/schema');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results = [];
       for (const resource of input.resources) {
         try {
@@ -655,6 +664,7 @@ export const adminRouter = router({
       const { resources } = await import('../drizzle/schema');
       const { eq, desc } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const items = await db
         .select({ id: resources.id, title: resources.title, slug: resources.slug, publishedAt: resources.publishedAt, status: resources.status })
         .from(resources)
@@ -683,6 +693,7 @@ export const adminRouter = router({
       const { resources } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       let updated = 0;
       for (const update of input.updates) {
         await db.update(resources)
@@ -713,6 +724,7 @@ export const adminRouter = router({
       const { resources } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results: { id: number; status: 'updated' | 'error' }[] = [];
       const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
@@ -753,6 +765,7 @@ export const adminRouter = router({
       const { products } = await import('../drizzle/schema');
       const { inArray } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const results: { id: number; status: string }[] = [];
       // Process in batches of 50 to avoid query size limits
       const batchSize = 50;
@@ -906,6 +919,7 @@ export const adminRouter = router({
       const { resources } = await import('../drizzle/schema');
       const { eq } = await import('drizzle-orm');
       const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
       const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
       const result = await db.update(resources)
         .set({ status: 'published', updatedAt: now })
