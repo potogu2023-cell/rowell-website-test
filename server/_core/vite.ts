@@ -266,13 +266,21 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     // Google's soft 404 detection requires actual visible text content in the page body,
     // not just meta tags in <head>. Without this, Google sees an empty <div id="root"> and
     // classifies the page as soft 404, refusing to index it.
+    const hasCatalogValue = (value: unknown): value is string => {
+      if (typeof value !== 'string') return false;
+      const normalized = value.trim();
+      return normalized.length > 0 && !/^(?:n\/?a|n\/|not available|none|null|-)$/i.test(normalized);
+    };
+    const isCartridgeVolume = hasCatalogValue(product.columnLength)
+      && /\b(?:spe|cartridge)\b/i.test(`${product.productType || ''} ${product.category || ''} ${product.name || ''}`)
+      && /^\d+(?:\.\d+)?\s*mL$/i.test(product.columnLength.trim());
     const specsRows = [
-      product.particleSize ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : '',
-      product.poreSize ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : '',
-      product.columnLength ? `<tr><td>Column Length</td><td>${escapeHtml(product.columnLength)}</td></tr>` : '',
-      product.innerDiameter ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : '',
-      product.usp ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : '',
-      product.phaseType ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : '',
+      hasCatalogValue(product.particleSize) ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : '',
+      hasCatalogValue(product.poreSize) ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : '',
+      hasCatalogValue(product.columnLength) ? `<tr><td>${isCartridgeVolume ? 'Cartridge Volume' : 'Column Length'}</td><td>${escapeHtml(product.columnLength)}</td></tr>` : '',
+      hasCatalogValue(product.innerDiameter) ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : '',
+      hasCatalogValue(product.usp) ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : '',
+      hasCatalogValue(product.phaseType) ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : '',
     ].filter(Boolean).join('');
 
     const contentSkeleton = `
