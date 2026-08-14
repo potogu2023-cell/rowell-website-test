@@ -50,7 +50,7 @@ function Router() {
     <div className="flex flex-col min-h-screen">
       <a
         href="#main-content"
-        className="sr-only fixed left-4 top-4 z-[100] rounded-md bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-lg focus:not-sr-only focus:outline-none focus:ring-4 focus:ring-ring"
+        className="skip-link"
       >
         Skip to main content
       </a>
