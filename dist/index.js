@@ -617,6 +617,9 @@ __export(db_exports, {
 import { eq } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
+function toMysqlTimestamp(date) {
+  return date.toISOString().slice(0, 19).replace("T", " ");
+}
 async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
@@ -669,7 +672,7 @@ async function getDb() {
         console.error("[Database] Connection test failed:", testError);
         throw testError;
       }
-      _db = drizzle(pool);
+      _db = createDatabase(pool);
       console.log("[Database] Drizzle instance created successfully");
     } catch (error) {
       console.error("[Database] Failed to initialize:", error);
@@ -686,6 +689,9 @@ async function upsertUser(user) {
   if (!user.openId) {
     throw new Error("User openId is required for upsert");
   }
+  if (!user.email) {
+    throw new Error("User email is required for upsert");
+  }
   const db = await getDb();
   if (!db) {
     console.warn("[Database] Cannot upsert user: database not available");
@@ -693,10 +699,12 @@ async function upsertUser(user) {
   }
   try {
     const values = {
-      openId: user.openId
+      openId: user.openId,
+      email: user.email,
+      lastSignedIn: toMysqlTimestamp(/* @__PURE__ */ new Date())
     };
     const updateSet = {};
-    const textFields = ["name", "email", "loginMethod"];
+    const textFields = ["name", "loginMethod"];
     const assignNullable = (field) => {
       const value = user[field];
       if (value === void 0) return;
@@ -717,10 +725,10 @@ async function upsertUser(user) {
       updateSet.role = "admin";
     }
     if (!values.lastSignedIn) {
-      values.lastSignedIn = /* @__PURE__ */ new Date();
+      values.lastSignedIn = toMysqlTimestamp(/* @__PURE__ */ new Date());
     }
     if (Object.keys(updateSet).length === 0) {
-      updateSet.lastSignedIn = /* @__PURE__ */ new Date();
+      updateSet.lastSignedIn = toMysqlTimestamp(/* @__PURE__ */ new Date());
     }
     await db.insert(users).values(values).onDuplicateKeyUpdate({
       set: updateSet
@@ -774,7 +782,13 @@ async function createInquiry(data) {
     throw new Error("Database not available");
   }
   const { inquiries: inquiries2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-  const result = await db.insert(inquiries2).values(data);
+  const result = await db.insert(inquiries2).values({
+    inquiryNumber: data.inquiryNumber,
+    userId: data.userId,
+    customerNotes: data.userMessage,
+    status: "pending",
+    urgency: "normal"
+  });
   return Number(result[0].insertId);
 }
 async function createInquiryItems(inquiryId, items) {
@@ -828,7 +842,7 @@ async function createUser(data) {
     annualPurchaseVolume: data.annualPurchaseVolume,
     loginMethod: "password",
     role: "user",
-    lastSignedIn: /* @__PURE__ */ new Date()
+    lastSignedIn: toMysqlTimestamp(/* @__PURE__ */ new Date())
   });
   return Number(result[0].insertId);
 }
@@ -847,14 +861,15 @@ async function updateUserLastSignIn(userId) {
     console.warn("[Database] Cannot update user: database not available");
     return;
   }
-  await db.update(users).set({ lastSignedIn: /* @__PURE__ */ new Date() }).where(eq(users.id, userId));
+  await db.update(users).set({ lastSignedIn: toMysqlTimestamp(/* @__PURE__ */ new Date()) }).where(eq(users.id, userId));
 }
-var _db, _pool;
+var createDatabase, _db, _pool;
 var init_db = __esm({
   "server/db.ts"() {
     "use strict";
     init_schema();
     init_env();
+    createDatabase = (pool) => drizzle(pool);
     _db = null;
     _pool = null;
   }
@@ -1054,8 +1069,8 @@ __export(products_list_new_exports, {
   productsListInput: () => productsListInput,
   productsListQuery: () => productsListQuery
 });
-import { z as z15 } from "zod";
-import { eq as eq7, and as and2, gte, lte, inArray, sql as sql2 } from "drizzle-orm";
+import { z as z13 } from "zod";
+import { eq as eq7, and as and2, inArray, sql as sql2 } from "drizzle-orm";
 async function productsListQuery(input, db) {
   if (!db) return { products: [], total: 0, page: 1, pageSize: 24, totalPages: 0 };
   const { products: products2, productCategories: productCategories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
@@ -1078,38 +1093,20 @@ async function productsListQuery(input, db) {
   if (input?.brand) {
     conditions.push(eq7(products2.brand, input.brand));
   }
-  if (input?.particleSizeMin !== void 0) {
-    conditions.push(gte(products2.particleSizeNum, input.particleSizeMin));
-  }
-  if (input?.particleSizeMax !== void 0) {
-    conditions.push(lte(products2.particleSizeNum, input.particleSizeMax));
-  }
-  if (input?.poreSizeMin !== void 0) {
-    conditions.push(gte(products2.poreSizeNum, input.poreSizeMin));
-  }
-  if (input?.poreSizeMax !== void 0) {
-    conditions.push(lte(products2.poreSizeNum, input.poreSizeMax));
-  }
-  if (input?.columnLengthMin !== void 0) {
-    conditions.push(gte(products2.columnLengthNum, input.columnLengthMin));
-  }
-  if (input?.columnLengthMax !== void 0) {
-    conditions.push(lte(products2.columnLengthNum, input.columnLengthMax));
-  }
-  if (input?.innerDiameterMin !== void 0) {
-    conditions.push(gte(products2.innerDiameterNum, input.innerDiameterMin));
-  }
-  if (input?.innerDiameterMax !== void 0) {
-    conditions.push(lte(products2.innerDiameterNum, input.innerDiameterMax));
-  }
+  const hasSpecificationFilters = [
+    input?.particleSizeMin,
+    input?.particleSizeMax,
+    input?.poreSizeMin,
+    input?.poreSizeMax,
+    input?.columnLengthMin,
+    input?.columnLengthMax,
+    input?.innerDiameterMin,
+    input?.innerDiameterMax,
+    input?.phMin,
+    input?.phMax
+  ].some((value) => value !== void 0);
   if (input?.phaseTypes && input.phaseTypes.length > 0) {
     conditions.push(inArray(products2.phaseType, input.phaseTypes));
-  }
-  if (input?.phMin !== void 0) {
-    conditions.push(gte(products2.phMax, input.phMin));
-  }
-  if (input?.phMax !== void 0) {
-    conditions.push(lte(products2.phMin, input.phMax));
   }
   if (input?.usp) {
     const { or: or2, like: like2 } = await import("drizzle-orm");
@@ -1126,27 +1123,51 @@ async function productsListQuery(input, db) {
       )
     );
   }
-  let query;
-  let countQuery;
   const whereClause = conditions.length > 0 ? and2(...conditions) : void 0;
-  if (input?.categoryId) {
-    const categoryProductIds = sql2`(SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`;
-    const categoryCondition = sql2`${products2.id} IN ${categoryProductIds}`;
-    const finalCondition = whereClause ? and2(categoryCondition, whereClause) : categoryCondition;
-    query = db.select().from(products2).where(finalCondition).limit(pageSize).offset(offset);
-    countQuery = db.select({ count: sql2`count(*)` }).from(products2).where(finalCondition);
-  } else {
-    query = db.select().from(products2).where(whereClause).limit(pageSize).offset(offset);
-    countQuery = db.select({ count: sql2`count(*)` }).from(products2).where(whereClause);
-  }
+  const categoryCondition = input?.categoryId ? sql2`${products2.id} IN (SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})` : void 0;
+  const finalCondition = categoryCondition && whereClause ? and2(categoryCondition, whereClause) : categoryCondition || whereClause;
+  const baseQuery = db.select().from(products2).where(finalCondition);
   console.log("[products_list_new] categoryId:", input?.categoryId);
-  console.log("[products_list_new] query SQL:", query.toSQL ? query.toSQL() : "no toSQL method");
-  const [productResults, countResults] = await Promise.all([
-    query,
-    countQuery
-  ]);
-  const productList = productResults;
-  const total = countResults[0]?.count || 0;
+  console.log("[products_list_new] specification filters active:", hasSpecificationFilters);
+  console.log("[products_list_new] base query SQL:", baseQuery.toSQL ? baseQuery.toSQL() : "no toSQL method");
+  const parseStrictUnit = (value, expression, multiplier = 1) => {
+    if (typeof value !== "string") return null;
+    const match = expression.exec(value.trim());
+    if (!match) return null;
+    const numeric = Number(match[1]);
+    return Number.isFinite(numeric) ? numeric * multiplier : null;
+  };
+  const inRange = (value, min, max) => min === void 0 && max === void 0 || value !== null && (min === void 0 || value >= min) && (max === void 0 || value <= max);
+  const parseRecordedNumber = (value) => {
+    if (value === null || value === void 0 || value === "") return null;
+    const numeric = Number(value);
+    return Number.isFinite(numeric) ? numeric : null;
+  };
+  const matchesSpecificationFilters = (product) => {
+    const particleSize = parseStrictUnit(product.particleSize, /^(\d+(?:\.\d+)?)\s*(?:µm|um)$/i);
+    const poreSize = parseStrictUnit(product.poreSize, /^(\d+(?:\.\d+)?)\s*(?:Å|A)$/);
+    const innerDiameter = parseStrictUnit(product.innerDiameter, /^(\d+(?:\.\d+)?)\s*mm$/i);
+    const columnLengthMatch = typeof product.columnLength === "string" ? /^(\d+(?:\.\d+)?)\s*(mm|m)$/i.exec(product.columnLength.trim()) : null;
+    const columnLength = columnLengthMatch ? Number(columnLengthMatch[1]) * (columnLengthMatch[2].toLowerCase() === "m" ? 1e3 : 1) : null;
+    const recordedPhMin = parseRecordedNumber(product.phMin);
+    const recordedPhMax = parseRecordedNumber(product.phMax);
+    const matchesPh = input?.phMin === void 0 && input?.phMax === void 0 || recordedPhMin !== null && recordedPhMax !== null && (input?.phMin === void 0 || recordedPhMax >= input.phMin) && (input?.phMax === void 0 || recordedPhMin <= input.phMax);
+    return inRange(particleSize, input?.particleSizeMin, input?.particleSizeMax) && inRange(poreSize, input?.poreSizeMin, input?.poreSizeMax) && inRange(columnLength, input?.columnLengthMin, input?.columnLengthMax) && inRange(innerDiameter, input?.innerDiameterMin, input?.innerDiameterMax) && matchesPh;
+  };
+  let productList;
+  let total;
+  if (hasSpecificationFilters) {
+    const candidates = await baseQuery;
+    const matchingProducts = candidates.filter(matchesSpecificationFilters);
+    total = matchingProducts.length;
+    productList = matchingProducts.slice(offset, offset + pageSize);
+  } else {
+    const pagedQuery = baseQuery.limit(pageSize).offset(offset);
+    const countQuery = db.select({ count: sql2`count(*)` }).from(products2).where(finalCondition);
+    const [productResults, countResults] = await Promise.all([pagedQuery, countQuery]);
+    productList = productResults;
+    total = Number(countResults[0]?.count || 0);
+  }
   const totalPages = Math.ceil(total / pageSize);
   return {
     products: productList,
@@ -1160,25 +1181,25 @@ var productsListInput;
 var init_products_list_new = __esm({
   "server/products_list_new.ts"() {
     "use strict";
-    productsListInput = z15.object({
-      categoryId: z15.number().optional(),
-      brand: z15.string().optional(),
-      search: z15.string().optional(),
+    productsListInput = z13.object({
+      categoryId: z13.number().optional(),
+      brand: z13.string().optional(),
+      search: z13.string().optional(),
       // Advanced filters
-      particleSizeMin: z15.number().optional(),
-      particleSizeMax: z15.number().optional(),
-      poreSizeMin: z15.number().optional(),
-      poreSizeMax: z15.number().optional(),
-      columnLengthMin: z15.number().optional(),
-      columnLengthMax: z15.number().optional(),
-      innerDiameterMin: z15.number().optional(),
-      innerDiameterMax: z15.number().optional(),
-      phaseTypes: z15.array(z15.string()).optional(),
-      phMin: z15.number().optional(),
-      phMax: z15.number().optional(),
-      usp: z15.string().optional(),
-      page: z15.number().min(1).default(1),
-      pageSize: z15.number().min(1).max(100).default(24)
+      particleSizeMin: z13.number().optional(),
+      particleSizeMax: z13.number().optional(),
+      poreSizeMin: z13.number().optional(),
+      poreSizeMax: z13.number().optional(),
+      columnLengthMin: z13.number().optional(),
+      columnLengthMax: z13.number().optional(),
+      innerDiameterMin: z13.number().optional(),
+      innerDiameterMax: z13.number().optional(),
+      phaseTypes: z13.array(z13.string()).optional(),
+      phMin: z13.number().optional(),
+      phMax: z13.number().optional(),
+      usp: z13.string().optional(),
+      page: z13.number().min(1).default(1),
+      pageSize: z13.number().min(1).max(100).default(24)
     }).optional();
   }
 });
@@ -1188,10 +1209,10 @@ var email_notification_exports = {};
 __export(email_notification_exports, {
   sendCustomerMessageNotification: () => sendCustomerMessageNotification
 });
-import nodemailer2 from "nodemailer";
+import nodemailer from "nodemailer";
 async function sendCustomerMessageNotification(data) {
-  const transporter2 = createTransporter();
-  if (!transporter2) {
+  const transporter = createTransporter();
+  if (!transporter) {
     console.error("Email transporter not configured");
     return { success: false, error: "Email service not configured" };
   }
@@ -1207,7 +1228,7 @@ async function sendCustomerMessageNotification(data) {
       <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
         \u65B0${typeLabel}\u901A\u77E5
       </h2>
-
+      
       <div style="background-color: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
         <h3 style="margin-top: 0; color: #374151;">\u5BA2\u6237\u4FE1\u606F</h3>
         <table style="width: 100%; border-collapse: collapse;">
@@ -1264,7 +1285,7 @@ async function sendCustomerMessageNotification(data) {
         <h3 style="margin-top: 0; color: #374151;">${data.type === "inquiry" ? "\u5BA2\u6237\u9700\u6C42" : "\u7559\u8A00\u5185\u5BB9"}</h3>
         <p style="white-space: pre-wrap; line-height: 1.6; color: #4b5563;">${data.message}</p>
       </div>
-
+      
       <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px;">
         <p>\u6B64\u90AE\u4EF6\u7531ROWELL\u7F51\u7AD9\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002</p>
         <p>\u5982\u9700\u56DE\u590D\u5BA2\u6237\uFF0C\u8BF7\u4F7F\u7528\u5BA2\u6237\u63D0\u4F9B\u7684\u90AE\u7BB1\u5730\u5740: <a href="mailto:${data.email}" style="color: #2563eb;">${data.email}</a></p>
@@ -1272,7 +1293,7 @@ async function sendCustomerMessageNotification(data) {
     </div>
   `;
   try {
-    const info = await transporter2.sendMail({
+    const info = await transporter.sendMail({
       from: `"ROWELL\u7F51\u7AD9" <${EMAIL_CONFIG.auth.user}>`,
       to: RECIPIENT_EMAIL,
       subject,
@@ -1304,7 +1325,7 @@ var init_email_notification = __esm({
     RECIPIENT_EMAIL = "oscar@rowellhplc.com";
     createTransporter = () => {
       try {
-        return nodemailer2.createTransport(EMAIL_CONFIG);
+        return nodemailer.createTransport(EMAIL_CONFIG);
       } catch (error) {
         console.error("Failed to create email transporter:", error);
         return null;
@@ -1323,12 +1344,12 @@ __export(db_usp_exports, {
   getUSPStandardByCode: () => getUSPStandardByCode,
   getUSPStandardWithProducts: () => getUSPStandardWithProducts
 });
-import { eq as eq8, like, and as and3, or, sql as sql3 } from "drizzle-orm";
+import { and as and3, eq as eq8, like, or, sql as sql3 } from "drizzle-orm";
 async function getAllUSPStandards() {
   try {
     const db = await getDb();
-    const standards = await db.select().from(uspStandards).orderBy(uspStandards.code);
-    return standards;
+    if (!db) throw new Error("Database not available");
+    return await db.select().from(uspStandards).orderBy(uspStandards.code);
   } catch (error) {
     console.error("Error fetching USP standards:", error);
     throw new Error("Failed to fetch USP standards");
@@ -1337,11 +1358,9 @@ async function getAllUSPStandards() {
 async function getUSPStandardByCode(code) {
   try {
     const db = await getDb();
+    if (!db) throw new Error("Database not available");
     const standard = await db.select().from(uspStandards).where(eq8(uspStandards.code, code)).limit(1);
-    if (standard.length === 0) {
-      return null;
-    }
-    return standard[0];
+    return standard[0] || null;
   } catch (error) {
     console.error(`Error fetching USP standard ${code}:`, error);
     throw new Error(`Failed to fetch USP standard ${code}`);
@@ -1350,171 +1369,53 @@ async function getUSPStandardByCode(code) {
 async function getProductsByUSPStandard(uspCode, limit = 50) {
   try {
     const db = await getDb();
-    const matchedProducts = await db.select().from(products).where(
-      and3(
-        or(
-          eq8(products.usp, uspCode),
-          // "L1"
-          like(products.usp, `${uspCode},%`),
-          // "L1,..."
-          like(products.usp, `%,${uspCode}`),
-          // "...,L1"
-          like(products.usp, `%,${uspCode},%`)
-          // "...,L1,..."
-        ),
-        // 只返回active状态的产品
-        eq8(products.status, "active")
-      )
-    ).orderBy(products.brand, products.name).limit(limit);
-    return matchedProducts;
+    if (!db) throw new Error("Database not available");
+    return await db.select().from(products).where(and3(
+      or(
+        eq8(products.usp, uspCode),
+        like(products.usp, `${uspCode},%`),
+        like(products.usp, `%,${uspCode}`),
+        like(products.usp, `%,${uspCode},%`)
+      ),
+      eq8(products.status, "active")
+    )).orderBy(products.brand, products.name).limit(limit);
   } catch (error) {
     console.error(`Error fetching products for USP ${uspCode}:`, error);
     throw new Error(`Failed to fetch products for USP ${uspCode}`);
   }
 }
 async function getUSPStandardWithProducts(uspCode, productLimit = 50) {
-  try {
-    const standard = await getUSPStandardByCode(uspCode);
-    if (!standard) {
-      return null;
-    }
-    const matchedProducts = await getProductsByUSPStandard(uspCode, productLimit);
-    return {
-      standard,
-      products: matchedProducts,
-      productCount: matchedProducts.length
-    };
-  } catch (error) {
-    console.error(`Error fetching USP standard with products for ${uspCode}:`, error);
-    throw new Error(`Failed to fetch USP standard with products for ${uspCode}`);
-  }
+  const standard = await getUSPStandardByCode(uspCode);
+  if (!standard) return null;
+  const matchedProducts = await getProductsByUSPStandard(uspCode, productLimit);
+  return { standard, products: matchedProducts, productCount: matchedProducts.length };
 }
 async function getAllUSPStandardsWithProductCount() {
   try {
     const db = await getDb();
+    if (!db) throw new Error("Database not available");
     const standards = await getAllUSPStandards();
-    const standardsWithCount = await Promise.all(
-      standards.map(async (standard) => {
-        const countResult = await db.select({
-          count: sql3`COUNT(*)`
-        }).from(products).where(
-          and3(
-            or(
-              eq8(products.usp, standard.code),
-              like(products.usp, `${standard.code},%`),
-              like(products.usp, `%,${standard.code}`),
-              like(products.usp, `%,${standard.code},%`)
-            ),
-            eq8(products.status, "active")
-          )
-        );
-        return {
-          ...standard,
-          productCount: Number(countResult[0]?.count || 0)
-        };
-      })
-    );
-    return standardsWithCount;
+    return await Promise.all(standards.map(async (standard) => {
+      const countResult = await db.select({ count: sql3`COUNT(*)` }).from(products).where(and3(
+        or(
+          eq8(products.usp, standard.code),
+          like(products.usp, `${standard.code},%`),
+          like(products.usp, `%,${standard.code}`),
+          like(products.usp, `%,${standard.code},%`)
+        ),
+        eq8(products.status, "active")
+      ));
+      return { ...standard, productCount: Number(countResult[0]?.count || 0) };
+    }));
   } catch (error) {
     console.error("Error fetching USP standards with product count:", error);
     throw new Error("Failed to fetch USP standards with product count");
   }
 }
 async function fillProductUSPData() {
-  try {
-    const db = await getDb();
-    const updates = [];
-    updates.push(
-      db.update(products).set({ usp: "L1" }).where(
-        and3(
-          or(
-            like(products.name, "%C18%"),
-            like(products.name, "%Octadecyl%"),
-            like(products.name, "%ODS%")
-          ),
-          or(
-            eq8(products.usp, null),
-            eq8(products.usp, "")
-          )
-        )
-      )
-    );
-    updates.push(
-      db.update(products).set({ usp: "L7" }).where(
-        and3(
-          or(
-            like(products.name, "%C8%"),
-            like(products.name, "%Octyl%")
-          ),
-          or(
-            eq8(products.usp, null),
-            eq8(products.usp, "")
-          )
-        )
-      )
-    );
-    updates.push(
-      db.update(products).set({ usp: "L11" }).where(
-        and3(
-          like(products.name, "%Phenyl%"),
-          or(
-            eq8(products.usp, null),
-            eq8(products.usp, "")
-          )
-        )
-      )
-    );
-    updates.push(
-      db.update(products).set({ usp: "L60" }).where(
-        and3(
-          like(products.name, "%HILIC%"),
-          or(
-            eq8(products.usp, null),
-            eq8(products.usp, "")
-          )
-        )
-      )
-    );
-    updates.push(
-      db.update(products).set({ usp: "L10" }).where(
-        and3(
-          or(
-            like(products.name, "%Nitrile%"),
-            like(products.name, "%Cyano%"),
-            like(products.name, "%CN%")
-          ),
-          or(
-            eq8(products.usp, null),
-            eq8(products.usp, "")
-          )
-        )
-      )
-    );
-    updates.push(
-      db.update(products).set({ usp: "L3" }).where(
-        and3(
-          or(
-            like(products.name, "%Silica%"),
-            like(products.name, "%SiO2%")
-          ),
-          or(
-            eq8(products.usp, null),
-            eq8(products.usp, "")
-          )
-        )
-      )
-    );
-    const results = await Promise.all(updates);
-    const totalUpdated = results.reduce((sum, result) => sum + (result.rowsAffected || 0), 0);
-    return {
-      success: true,
-      totalUpdated,
-      message: `Successfully filled USP data for ${totalUpdated} products`
-    };
-  } catch (error) {
-    console.error("Error filling product USP data:", error);
-    throw new Error("Failed to fill product USP data");
-  }
+  throw new Error(
+    "Automatic USP classification is disabled. Use an evidence-backed product-data update instead."
+  );
 }
 var init_db_usp = __esm({
   "server/db-usp.ts"() {
@@ -1538,10 +1439,10 @@ async function migrateDatabase() {
   try {
     console.log("[Migration] Starting database migration...");
     const checkColumnQuery = `
-      SELECT COLUMN_NAME
-      FROM INFORMATION_SCHEMA.COLUMNS
-      WHERE TABLE_SCHEMA = DATABASE()
-        AND TABLE_NAME = 'users'
+      SELECT COLUMN_NAME 
+      FROM INFORMATION_SCHEMA.COLUMNS 
+      WHERE TABLE_SCHEMA = DATABASE() 
+        AND TABLE_NAME = 'users' 
         AND COLUMN_NAME = 'passwordHash'
     `;
     const result = await db.execute(checkColumnQuery);
@@ -1691,7 +1592,6 @@ var init_config_validator = __esm({
 // server/_core/index.ts
 import "dotenv/config";
 import express2 from "express";
-import bodyParser from "body-parser";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -1922,15 +1822,18 @@ var SDKServer = class {
       throw ForbiddenError("Invalid session cookie");
     }
     const sessionUserId = session.openId;
-    const signedInAt = /* @__PURE__ */ new Date();
+    const signedInAt = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
     let user = await getUserByOpenId(sessionUserId);
     if (!user) {
       try {
         const userInfo = await this.getUserInfoWithJwt(sessionCookie ?? "");
+        if (!userInfo.openId || !userInfo.email) {
+          throw ForbiddenError("OAuth user info is missing a required identifier");
+        }
         await upsertUser({
           openId: userInfo.openId,
           name: userInfo.name || null,
-          email: userInfo.email ?? null,
+          email: userInfo.email,
           loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
           lastSignedIn: signedInAt
         });
@@ -1945,6 +1848,7 @@ var SDKServer = class {
     }
     await upsertUser({
       openId: user.openId,
+      email: user.email,
       lastSignedIn: signedInAt
     });
     return user;
@@ -1968,16 +1872,16 @@ function registerOAuthRoutes(app) {
     try {
       const tokenResponse = await sdk.exchangeCodeForToken(code, state);
       const userInfo = await sdk.getUserInfo(tokenResponse.accessToken);
-      if (!userInfo.openId) {
-        res.status(400).json({ error: "openId missing from user info" });
+      if (!userInfo.openId || !userInfo.email) {
+        res.status(400).json({ error: "openId and email are required from user info" });
         return;
       }
       await upsertUser({
         openId: userInfo.openId,
         name: userInfo.name || null,
-        email: userInfo.email ?? null,
+        email: userInfo.email,
         loginMethod: userInfo.loginMethod ?? userInfo.platform ?? null,
-        lastSignedIn: /* @__PURE__ */ new Date()
+        lastSignedIn: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
       });
       const sessionToken = await sdk.createSessionToken(userInfo.openId, {
         name: userInfo.name || "",
@@ -2060,7 +1964,7 @@ function registerImageSyncRoutes(app) {
           if (existingProduct.length > 0) {
             await db.update(products2).set({
               imageUrl: item.imageUrl,
-              updatedAt: /* @__PURE__ */ new Date()
+              updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
             }).where(eq2(products2.partNumber, item.partNumber));
             successCount++;
           } else {
@@ -2275,286 +2179,15 @@ var systemRouter = router({
 
 // server/routers.ts
 init_db();
-
-// server/inquiryUtils.ts
-function generateInquiryNumber() {
-  const now = /* @__PURE__ */ new Date();
-  const year = now.getFullYear();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  const random = Math.floor(Math.random() * 900) + 100;
-  return `INQ-${year}${month}${day}-${random}`;
-}
-
-// server/emailService.ts
-import nodemailer from "nodemailer";
-function getSMTPConfig() {
-  const host = process.env.SMTP_HOST;
-  const port2 = process.env.SMTP_PORT;
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
-  const from = process.env.SMTP_FROM;
-  if (!host || !port2 || !user || !pass || !from) {
-    console.warn("[Email Service] SMTP not configured. Email sending is disabled.");
-    console.warn("[Email Service] Required environment variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM");
-    return null;
-  }
-  return {
-    host,
-    port: parseInt(port2, 10),
-    secure: parseInt(port2, 10) === 465,
-    // true for 465, false for other ports
-    auth: {
-      user,
-      pass
-    },
-    from
-  };
-}
-var transporter = null;
-function getTransporter() {
-  if (transporter) {
-    return transporter;
-  }
-  const config = getSMTPConfig();
-  if (!config) {
-    return null;
-  }
-  try {
-    transporter = nodemailer.createTransport({
-      host: config.host,
-      port: config.port,
-      secure: config.secure,
-      auth: config.auth
-    });
-    console.log("[Email Service] SMTP transporter created successfully");
-    return transporter;
-  } catch (error) {
-    console.error("[Email Service] Failed to create SMTP transporter:", error);
-    return null;
-  }
-}
-function generateInquiryEmailHTML(data) {
-  const productRows = data.products.map((p, index2) => `
-      <tr>
-        <td style="padding: 8px; border: 1px solid #ddd;">${index2 + 1}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${p.name}</td>
-        <td style="padding: 8px; border: 1px solid #ddd;">${p.partNumber}</td>
-      </tr>
-    `).join("");
-  return `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>\u8BE2\u4EF7\u786E\u8BA4</title>
-</head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-  <div style="background-color: #2563eb; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-    <h1 style="margin: 0; font-size: 24px;">Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3</h1>
-    <p style="margin: 10px 0 0 0; font-size: 14px;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546</p>
-  </div>
-
-  <div style="background-color: #f9fafb; padding: 20px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-    <h2 style="color: #2563eb; margin-top: 0;">\u8BE2\u4EF7\u786E\u8BA4</h2>
-
-    <p>\u5C0A\u656C\u7684 <strong>${data.userName}</strong>\uFF0C</p>
-
-    <p>\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-
-    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #2563eb;">
-      <p style="margin: 5px 0;"><strong>\u8BE2\u4EF7\u5355\u53F7:</strong> ${data.inquiryNumber}</p>
-      <p style="margin: 5px 0;"><strong>\u63D0\u4EA4\u65F6\u95F4:</strong> ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}</p>
-      ${data.userCompany ? `<p style="margin: 5px 0;"><strong>\u516C\u53F8:</strong> ${data.userCompany}</p>` : ""}
-      ${data.userPhone ? `<p style="margin: 5px 0;"><strong>\u7535\u8BDD:</strong> ${data.userPhone}</p>` : ""}
-    </div>
-
-    <h3 style="color: #2563eb; margin-top: 20px;">\u8BE2\u4EF7\u4EA7\u54C1</h3>
-    <table style="width: 100%; border-collapse: collapse; margin: 10px 0; background-color: white;">
-      <thead>
-        <tr style="background-color: #f3f4f6;">
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left; width: 50px;">#</th>
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u4EA7\u54C1\u540D\u79F0</th>
-          <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">\u8D27\u53F7</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${productRows}
-      </tbody>
-    </table>
-
-    ${data.userMessage ? `
-    <div style="background-color: white; padding: 15px; border-radius: 6px; margin: 20px 0;">
-      <h3 style="color: #2563eb; margin-top: 0;">\u60A8\u7684\u7559\u8A00</h3>
-      <p style="margin: 0; white-space: pre-wrap;">${data.userMessage}</p>
-    </div>
-    ` : ""}
-
-    <div style="background-color: #fef3c7; padding: 15px; border-radius: 6px; margin: 20px 0; border-left: 4px solid #f59e0b;">
-      <p style="margin: 0;"><strong>\u23F0 \u54CD\u5E94\u65F6\u95F4:</strong> \u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002</p>
-    </div>
-
-    <h3 style="color: #2563eb; margin-top: 20px;">\u8054\u7CFB\u6211\u4EEC</h3>
-    <p style="margin: 5px 0;">\u{1F4E7} \u90AE\u7BB1: <a href="mailto:sales@rowellhplc.com" style="color: #2563eb;">sales@rowellhplc.com</a></p>
-    <p style="margin: 5px 0;">\u{1F4DE} \u7535\u8BDD: +86 XXX-XXXX-XXXX</p>
-
-    <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
-
-    <p style="color: #6b7280; font-size: 12px; margin: 0;">
-      \u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002\u5982\u6709\u95EE\u9898\uFF0C\u8BF7\u901A\u8FC7\u4E0A\u8FF0\u8054\u7CFB\u65B9\u5F0F\u4E0E\u6211\u4EEC\u8054\u7CFB\u3002
-    </p>
-  </div>
-
-  <div style="text-align: center; padding: 20px; color: #6b7280; font-size: 12px;">
-    <p style="margin: 5px 0;">\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.</p>
-    <p style="margin: 5px 0;">\u4E13\u4E1A\u7684 HPLC \u8272\u8C31\u67F1\u4F9B\u5E94\u5546\uFF0C\u63D0\u4F9B\u9AD8\u8D28\u91CF\u7684\u5206\u6790\u89E3\u51B3\u65B9\u6848</p>
-  </div>
-</body>
-</html>
-  `.trim();
-}
-function generateInquiryEmailText(data) {
-  const productList = data.products.map((p, index2) => `${index2 + 1}. ${p.name} (\u8D27\u53F7: ${p.partNumber})`).join("\n");
-  return `
-\u5C0A\u656C\u7684 ${data.userName}\uFF0C
-
-\u611F\u8C22\u60A8\u5BF9 Rowell HPLC \u7684\u5173\u6CE8\uFF01
-
-\u60A8\u7684\u8BE2\u4EF7\u5DF2\u6210\u529F\u63D0\u4EA4\uFF0C\u6211\u4EEC\u5C06\u5C3D\u5FEB\u4E0E\u60A8\u8054\u7CFB\u3002
-
-\u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}
-\u63D0\u4EA4\u65F6\u95F4: ${data.createdAt.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" })}
-${data.userCompany ? `\u516C\u53F8: ${data.userCompany}
-` : ""}${data.userPhone ? `\u7535\u8BDD: ${data.userPhone}
-` : ""}
-\u8BE2\u4EF7\u4EA7\u54C1:
-${productList}
-
-${data.userMessage ? `\u60A8\u7684\u7559\u8A00:
-${data.userMessage}
-
-` : ""}\u6211\u4EEC\u7684\u9500\u552E\u56E2\u961F\u5C06\u5728 1-2 \u4E2A\u5DE5\u4F5C\u65E5\u5185\u4E0E\u60A8\u8054\u7CFB\u3002
-
-\u5982\u6709\u4EFB\u4F55\u95EE\u9898\uFF0C\u8BF7\u968F\u65F6\u8054\u7CFB\u6211\u4EEC\uFF1A
-\u90AE\u7BB1: sales@rowellhplc.com
-\u7535\u8BDD: +86 XXX-XXXX-XXXX
-
-\u795D\u597D\uFF01
-Rowell HPLC \u56E2\u961F
-
----
-\u6B64\u90AE\u4EF6\u7531\u7CFB\u7EDF\u81EA\u52A8\u53D1\u9001\uFF0C\u8BF7\u52FF\u76F4\u63A5\u56DE\u590D\u3002
-\xA9 2026 Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3. All rights reserved.
-  `.trim();
-}
-async function sendInquiryEmail(data) {
-  try {
-    const transporter2 = getTransporter();
-    if (!transporter2) {
-      console.log("[Email Service] SMTP not configured. Email content logged below:");
-      console.log("To:", data.userEmail);
-      console.log("Subject:", `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`);
-      console.log("Content (Text):", generateInquiryEmailText(data));
-      console.log("[Email Service] To enable real email sending, configure SMTP environment variables.");
-      return true;
-    }
-    const config = getSMTPConfig();
-    if (!config) {
-      return false;
-    }
-    const info = await transporter2.sendMail({
-      from: `"Rowell HPLC \u4EA7\u54C1\u4E2D\u5FC3" <${config.from}>`,
-      to: data.userEmail,
-      subject: `\u60A8\u7684\u8BE2\u4EF7\u5DF2\u63D0\u4EA4 - \u8BE2\u4EF7\u5355\u53F7: ${data.inquiryNumber}`,
-      text: generateInquiryEmailText(data),
-      html: generateInquiryEmailHTML(data)
-    });
-    console.log("[Email Service] Email sent successfully:", info.messageId);
-    console.log("[Email Service] Preview URL:", nodemailer.getTestMessageUrl(info));
-    return true;
-  } catch (error) {
-    console.error("[Email Service] Failed to send inquiry email:", error);
-    return false;
-  }
-}
-
-// server/routers.ts
-import { z as z16 } from "zod";
-
-// server/seed-api.ts
-import { readFileSync, readdirSync } from "fs";
-import { join } from "path";
-import { z as z2 } from "zod";
-var seedRouter = router({
-  importResources: publicProcedure.input(z2.object({ secret: z2.string().optional() }).optional()).mutation(async ({ input }) => {
-    const SECRET_KEY = process.env.SEED_SECRET || "rowell-seed-2025";
-    if (input?.secret && input.secret !== SECRET_KEY) {
-      throw new Error("Invalid secret key");
-    }
-    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const db = await getDb2();
-    const articlesDir = join(process.cwd(), "resource_center_articles");
-    const categories2 = ["technical_guides", "application_notes", "industry_insights"];
-    let importedCount = 0;
-    const results = [];
-    for (const category of categories2) {
-      const categoryDir = join(articlesDir, category);
-      try {
-        const files = readdirSync(categoryDir).filter((f) => f.endsWith(".md"));
-        for (const file of files) {
-          const filePath = join(categoryDir, file);
-          const content = readFileSync(filePath, "utf-8");
-          const titleMatch = content.match(/^#\s+(.+)$/m);
-          const title = titleMatch ? titleMatch[1] : file.replace(".md", "");
-          const excerptMatch = content.match(/\n\n(.+?)\n\n/);
-          const excerpt = excerptMatch ? excerptMatch[1].substring(0, 200) : "";
-          let categoryLabel = "Technical Guide";
-          if (category === "application_notes") categoryLabel = "Application Note";
-          if (category === "industry_insights") categoryLabel = "Industry Insight";
-          const slug = file.replace(".md", "").toLowerCase();
-          const daysAgo = Math.floor(Math.random() * 365);
-          const publishedAt = /* @__PURE__ */ new Date();
-          publishedAt.setDate(publishedAt.getDate() - daysAgo);
-          await db.insert(resources2).values({
-            title,
-            slug,
-            excerpt,
-            content,
-            category: categoryLabel,
-            author: "Rowell HPLC Team",
-            publishedAt,
-            featured: Math.random() > 0.7
-            // 30% chance of being featured
-          });
-          importedCount++;
-          results.push({ title, category: categoryLabel, status: "success" });
-        }
-      } catch (error) {
-        results.push({
-          category,
-          status: "error",
-          message: error instanceof Error ? error.message : "Unknown error"
-        });
-      }
-    }
-    return {
-      success: true,
-      imported: importedCount,
-      results,
-      message: `Successfully imported ${importedCount} articles!`
-    };
-  })
-});
+import { z as z14 } from "zod";
 
 // server/admin-api.ts
-import { z as z3 } from "zod";
+import { z as z2 } from "zod";
 var adminRouter = router({
   // Add GlycoWorks products
   addGlycoWorksProducts: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string()
+    return z2.object({
+      adminKey: z2.string()
     }).parse(raw);
   }).mutation(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -2562,39 +2195,42 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2, categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14, or: or2 } = await import("drizzle-orm");
+    const { eq: eq13, or: or2 } = await import("drizzle-orm");
     const db = await getDb2();
-    const speCategories = await db.select().from(categories2).where(eq14(categories2.slug, "spe-cartridges"));
+    if (!db) throw new Error("Database unavailable");
+    const speCategories = await db.select().from(categories2).where(eq13(categories2.slug, "spe-cartridges"));
     if (speCategories.length === 0) {
       throw new Error("SPE Cartridges category not found");
     }
     const speCategoryId = speCategories[0].id;
     const existingProducts = await db.select().from(products2).where(
       or2(
-        eq14(products2.partNumber, "WATS-186007239"),
-        eq14(products2.partNumber, "WATS-186007080")
+        eq13(products2.partNumber, "WATS-186007239"),
+        eq13(products2.partNumber, "WATS-186007080")
       )
     );
     const newProducts = [
       {
         partNumber: "WATS-186007239",
         productId: "WATS-186007239",
+        prefix: "WATS",
         name: "GlycoWorks HILIC 1 cc Flangeless Cartridge",
         brand: "Waters",
         categoryId: speCategoryId,
         status: "active",
-        createdAt: /* @__PURE__ */ new Date(),
-        updatedAt: /* @__PURE__ */ new Date()
+        createdAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " "),
+        updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
       },
       {
         partNumber: "WATS-186007080",
         productId: "WATS-186007080",
+        prefix: "WATS",
         name: "GlycoWorks HILIC 1 cc Cartridge, 20/pk",
         brand: "Waters",
         categoryId: speCategoryId,
         status: "active",
-        createdAt: /* @__PURE__ */ new Date(),
-        updatedAt: /* @__PURE__ */ new Date()
+        createdAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " "),
+        updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
       }
     ];
     const results = [];
@@ -2604,8 +2240,8 @@ var adminRouter = router({
         await db.update(products2).set({
           name: product.name,
           categoryId: product.categoryId,
-          updatedAt: /* @__PURE__ */ new Date()
-        }).where(eq14(products2.partNumber, product.partNumber));
+          updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ")
+        }).where(eq13(products2.partNumber, product.partNumber));
         results.push({ partNumber: product.partNumber, action: "updated" });
       } else {
         await db.insert(products2).values(product);
@@ -2620,11 +2256,11 @@ var adminRouter = router({
   }),
   // Batch update metaTitles for high-impression zero-click products
   batchUpdateMetaTitles: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      updates: z3.array(z3.object({
-        partNumber: z3.string(),
-        metaTitle: z3.string()
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        partNumber: z2.string(),
+        metaTitle: z2.string()
       }))
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2633,17 +2269,18 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14 } = await import("drizzle-orm");
+    const { eq: eq13 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const results = [];
     for (const update of input.updates) {
       try {
-        const existing = await db.select({ partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq14(products2.partNumber, update.partNumber)).limit(1);
+        const existing = await db.select({ partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq13(products2.partNumber, update.partNumber)).limit(1);
         if (existing.length === 0) {
           results.push({ partNumber: update.partNumber, status: "not_found" });
           continue;
         }
-        await db.update(products2).set({ metaTitle: update.metaTitle, updatedAt: /* @__PURE__ */ new Date() }).where(eq14(products2.partNumber, update.partNumber));
+        await db.update(products2).set({ metaTitle: update.metaTitle, updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ") }).where(eq13(products2.partNumber, update.partNumber));
         results.push({
           partNumber: update.partNumber,
           status: "updated",
@@ -2658,13 +2295,13 @@ var adminRouter = router({
   }),
   // Batch update metaTitles by product ID (for products where partNumber-based update fails)
   batchUpdateMetaTitlesById: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      updates: z3.array(z3.object({
-        id: z3.number(),
-        metaTitle: z3.string(),
-        metaDescription: z3.string().optional(),
-        detailedDescription: z3.string().optional()
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number(),
+        metaTitle: z2.string(),
+        metaDescription: z2.string().optional(),
+        detailedDescription: z2.string().optional()
       }))
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2673,12 +2310,13 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14 } = await import("drizzle-orm");
+    const { eq: eq13 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const results = [];
     for (const update of input.updates) {
       try {
-        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq14(products2.id, update.id)).limit(1);
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, metaTitle: products2.metaTitle }).from(products2).where(eq13(products2.id, update.id)).limit(1);
         if (existing.length === 0) {
           results.push({ id: update.id, status: "not_found" });
           continue;
@@ -2690,7 +2328,7 @@ var adminRouter = router({
         if (update.detailedDescription !== void 0) {
           setFields.detailedDescription = update.detailedDescription;
         }
-        await db.update(products2).set(setFields).where(eq14(products2.id, update.id));
+        await db.update(products2).set(setFields).where(eq13(products2.id, update.id));
         results.push({
           id: update.id,
           partNumber: existing[0].partNumber,
@@ -2704,15 +2342,50 @@ var adminRouter = router({
     }
     return { success: true, results };
   }),
-  // Correct verified product dimensions and display names only; intentionally narrow to prevent broad product edits.
-  batchCorrectProductDimensions: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      updates: z3.array(z3.object({
-        id: z3.number(),
-        name: z3.string().min(3).max(255).optional(),
-        columnLength: z3.string().regex(/^\d+(?:\.\d+)?mm$/),
-        columnLengthNum: z3.number().positive()
+  // Clear public product descriptions only. This endpoint is intentionally
+  // destructive-only: it cannot create or alter product facts, specifications,
+  // status, pricing, or images.
+  batchClearProductDescriptions: publicProcedure.input((raw) => {
+    return z2.object({
+      adminKey: z2.string(),
+      ids: z2.array(z2.number().int().positive()).min(1).max(50)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq13 } = await import("drizzle-orm");
+    const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
+    const results = [];
+    for (const id of input.ids) {
+      try {
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber }).from(products2).where(eq13(products2.id, id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id, status: "not_found" });
+          continue;
+        }
+        await db.update(products2).set({ description: null, detailedDescription: null }).where(eq13(products2.id, id));
+        results.push({ id, partNumber: existing[0].partNumber, status: "cleared" });
+      } catch (err) {
+        results.push({ id, status: "error", error: String(err) });
+      }
+    }
+    return { success: true, results };
+  }),
+  // Bind approved product images by numeric product ID. Restrict image URLs to the
+  // controlled Manus CDN to prevent arbitrary external image injection.
+  batchUpdateProductImageUrls: publicProcedure.input((raw) => {
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number().int().positive(),
+        imageUrl: z2.string().url().max(500).refine(
+          (url) => url.startsWith("https://files.manuscdn.com/"),
+          "imageUrl must use the controlled files.manuscdn.com domain"
+        )
       })).min(1).max(50)
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2721,11 +2394,189 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14 } = await import("drizzle-orm");
+    const { eq: eq13 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const results = [];
     for (const update of input.updates) {
-      const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, name: products2.name, columnLength: products2.columnLength }).from(products2).where(eq14(products2.id, update.id)).limit(1);
+      try {
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, imageUrl: products2.imageUrl }).from(products2).where(eq13(products2.id, update.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: update.id, status: "not_found" });
+          continue;
+        }
+        await db.update(products2).set({ imageUrl: update.imageUrl, updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ") }).where(eq13(products2.id, update.id));
+        results.push({
+          id: update.id,
+          partNumber: existing[0].partNumber,
+          status: "updated",
+          oldImageUrl: existing[0].imageUrl,
+          newImageUrl: update.imageUrl
+        });
+      } catch (error) {
+        results.push({ id: update.id, status: "error", error: String(error) });
+      }
+    }
+    return {
+      success: results.every((result) => result.status === "updated"),
+      totalUpdated: results.filter((result) => result.status === "updated").length,
+      results
+    };
+  }),
+  // Remove public images that have been audited as incorrect, branded, or otherwise noncompliant.
+  // This destructive-only endpoint cannot bind a replacement image or modify product facts.
+  batchClearProductImages: publicProcedure.input((raw) => {
+    return z2.object({
+      adminKey: z2.string(),
+      ids: z2.array(z2.number().int().positive()).min(1).max(50)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq13 } = await import("drizzle-orm");
+    const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
+    const results = [];
+    for (const id of input.ids) {
+      try {
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, imageUrl: products2.imageUrl }).from(products2).where(eq13(products2.id, id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id, status: "not_found" });
+          continue;
+        }
+        await db.update(products2).set({ imageUrl: null, updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ") }).where(eq13(products2.id, id));
+        results.push({
+          id,
+          partNumber: existing[0].partNumber,
+          status: "cleared",
+          oldImageUrl: existing[0].imageUrl
+        });
+      } catch (error) {
+        results.push({ id, status: "error", error: String(error) });
+      }
+    }
+    return {
+      success: results.every((result) => result.status === "cleared"),
+      totalCleared: results.filter((result) => result.status === "cleared").length,
+      results
+    };
+  }),
+  // Correct verified product identity and raw specifications only. This endpoint intentionally excludes
+  // prices, inventory, fulfillment promises, image URLs, and status to keep evidence-backed corrections narrow.
+  batchCorrectVerifiedProductFacts: publicProcedure.input((raw) => {
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number().int().positive(),
+        name: z2.string().min(3).max(255),
+        description: z2.string().max(3e3).nullable().optional(),
+        detailedDescription: z2.string().max(12e3).nullable().optional(),
+        productType: z2.string().max(100).optional(),
+        category: z2.string().max(100).optional(),
+        particleSize: z2.string().max(50).optional(),
+        poreSize: z2.string().max(50).optional(),
+        columnLength: z2.string().max(50).optional(),
+        innerDiameter: z2.string().max(50).optional(),
+        phRange: z2.string().max(50).optional(),
+        maxPressure: z2.string().max(50).optional(),
+        usp: z2.string().max(50).optional(),
+        phaseType: z2.string().max(100).optional(),
+        particleSizeNum: z2.number().int().positive().optional(),
+        poreSizeNum: z2.number().int().positive().optional(),
+        columnLengthNum: z2.number().int().positive().optional(),
+        phMin: z2.number().int().optional(),
+        phMax: z2.number().int().optional(),
+        catalogUrl: z2.string().url().max(500).optional(),
+        metaTitle: z2.string().max(70).optional(),
+        metaDescription: z2.string().max(155).optional()
+      })).min(1).max(10)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq13 } = await import("drizzle-orm");
+    const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
+    const results = [];
+    for (const update of input.updates) {
+      try {
+        const existing = await db.select({ id: products2.id, partNumber: products2.partNumber }).from(products2).where(eq13(products2.id, update.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: update.id, status: "not_found" });
+          continue;
+        }
+        const setFields = { name: update.name, updatedAt: (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ") };
+        const optionalFields = [
+          "description",
+          "detailedDescription",
+          "productType",
+          "category",
+          "particleSize",
+          "poreSize",
+          "columnLength",
+          "innerDiameter",
+          "phRange",
+          "maxPressure",
+          "usp",
+          "phaseType",
+          "particleSizeNum",
+          "poreSizeNum",
+          "columnLengthNum",
+          "phMin",
+          "phMax",
+          "catalogUrl",
+          "metaTitle",
+          "metaDescription"
+        ];
+        for (const field of optionalFields) {
+          if (update[field] !== void 0) setFields[field] = update[field];
+        }
+        await db.update(products2).set(setFields).where(eq13(products2.id, update.id));
+        results.push({
+          id: update.id,
+          partNumber: existing[0].partNumber,
+          status: "updated",
+          changedFields: Object.keys(setFields).filter((field) => field !== "updatedAt")
+        });
+      } catch (error) {
+        results.push({ id: update.id, status: "error", error: String(error) });
+      }
+    }
+    return {
+      success: results.every((result) => result.status === "updated"),
+      totalUpdated: results.filter((result) => result.status === "updated").length,
+      results
+    };
+  }),
+  // Correct verified product dimensions and display names only; intentionally narrow to prevent broad product edits.
+  batchCorrectProductDimensions: publicProcedure.input((raw) => {
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number(),
+        name: z2.string().min(3).max(255).optional(),
+        columnLength: z2.string().regex(/^\d+(?:\.\d+)?mm$/),
+        columnLengthNum: z2.number().positive()
+      })).min(1).max(50)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq13 } = await import("drizzle-orm");
+    const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
+    const results = [];
+    for (const update of input.updates) {
+      const existing = await db.select({ id: products2.id, partNumber: products2.partNumber, name: products2.name, columnLength: products2.columnLength }).from(products2).where(eq13(products2.id, update.id)).limit(1);
       if (existing.length === 0) {
         results.push({ id: update.id, status: "not_found" });
         continue;
@@ -2734,7 +2585,7 @@ var adminRouter = router({
         ...update.name ? { name: update.name } : {},
         columnLength: update.columnLength,
         columnLengthNum: update.columnLengthNum
-      }).where(eq14(products2.id, update.id));
+      }).where(eq13(products2.id, update.id));
       results.push({
         id: update.id,
         partNumber: existing[0].partNumber,
@@ -2749,8 +2600,8 @@ var adminRouter = router({
   }),
   // Check data consistency
   checkDataConsistency: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string()
+    return z2.object({
+      adminKey: z2.string()
     }).parse(raw);
   }).query(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -2758,50 +2609,51 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2, categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14, sql: sql6 } = await import("drizzle-orm");
+    const { eq: eq13, sql: sql6 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const totalProductsResult = await db.select({ count: sql6`count(*)` }).from(products2);
     const totalProducts = totalProductsResult[0].count;
-    const activeProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq14(products2.status, "active"));
+    const activeProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq13(products2.status, "active"));
     const activeProducts = activeProductsResult[0].count;
     const categoryStats = await db.select({
       categoryId: products2.categoryId,
       categoryName: categories2.nameEn,
       count: sql6`count(*)`
-    }).from(products2).leftJoin(categories2, eq14(products2.categoryId, categories2.id)).groupBy(products2.categoryId, categories2.nameEn);
+    }).from(products2).leftJoin(categories2, eq13(products2.categoryId, categories2.id)).groupBy(products2.categoryId, categories2.nameEn);
     const nullCategoryResult = await db.select({ count: sql6`count(*)` }).from(products2).where(sql6`${products2.categoryId} IS NULL`);
     const nullCategoryCount = nullCategoryResult[0].count;
     const duplicates = await db.execute(sql6`
-        SELECT part_number, COUNT(*) as count
-        FROM products
-        GROUP BY part_number
+        SELECT part_number, COUNT(*) as count 
+        FROM products 
+        GROUP BY part_number 
         HAVING count > 1
       `);
-    const watersProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq14(products2.brand, "Waters"));
+    const watersProductsResult = await db.select({ count: sql6`count(*)` }).from(products2).where(eq13(products2.brand, "Waters"));
     const watersProducts = watersProductsResult[0].count;
     return {
       totalProducts,
       activeProducts,
       categoryStats,
       nullCategoryCount,
-      duplicatePartNumbers: duplicates.rows,
+      duplicatePartNumbers: duplicates,
       watersProducts
     };
   }),
   // Batch create resources/articles
   createResources: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      resources: z3.array(z3.object({
-        title: z3.string(),
-        slug: z3.string(),
-        content: z3.string(),
-        excerpt: z3.string().optional(),
-        category: z3.string().optional(),
-        author: z3.string().optional(),
-        tags: z3.array(z3.string()).optional(),
-        publishedAt: z3.string().optional(),
-        status: z3.string().optional()
+    return z2.object({
+      adminKey: z2.string(),
+      resources: z2.array(z2.object({
+        title: z2.string(),
+        slug: z2.string(),
+        content: z2.string(),
+        excerpt: z2.string().optional(),
+        category: z2.string().optional(),
+        author: z2.string().optional(),
+        tags: z2.array(z2.string()).optional(),
+        publishedAt: z2.string().optional(),
+        status: z2.string().optional()
       }))
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2811,6 +2663,7 @@ var adminRouter = router({
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const results = [];
     for (const resource of input.resources) {
       try {
@@ -2842,9 +2695,9 @@ var adminRouter = router({
   }),
   // List all draft resources (for date update)
   listDraftResources: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      limit: z3.number().optional()
+    return z2.object({
+      adminKey: z2.string(),
+      limit: z2.number().optional()
     }).parse(raw);
   }).query(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -2852,18 +2705,19 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14, desc: desc4 } = await import("drizzle-orm");
+    const { eq: eq13, desc: desc4 } = await import("drizzle-orm");
     const db = await getDb2();
-    const items = await db.select({ id: resources2.id, title: resources2.title, slug: resources2.slug, publishedAt: resources2.publishedAt, status: resources2.status }).from(resources2).where(eq14(resources2.status, "draft")).orderBy(desc4(resources2.id)).limit(input.limit || 200);
+    if (!db) throw new Error("Database unavailable");
+    const items = await db.select({ id: resources2.id, title: resources2.title, slug: resources2.slug, publishedAt: resources2.publishedAt, status: resources2.status }).from(resources2).where(eq13(resources2.status, "draft")).orderBy(desc4(resources2.id)).limit(input.limit || 200);
     return { success: true, count: items.length, items };
   }),
   // Batch update publishedAt dates for resources
   updateResourcesDates: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      updates: z3.array(z3.object({
-        id: z3.number(),
-        publishedAt: z3.string()
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number(),
+        publishedAt: z2.string()
       }))
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2872,11 +2726,12 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14 } = await import("drizzle-orm");
+    const { eq: eq13 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     let updated = 0;
     for (const update of input.updates) {
-      await db.update(resources2).set({ publishedAt: update.publishedAt }).where(eq14(resources2.id, update.id));
+      await db.update(resources2).set({ publishedAt: update.publishedAt }).where(eq13(resources2.id, update.id));
       updated++;
     }
     return { success: true, updated };
@@ -2884,11 +2739,11 @@ var adminRouter = router({
   // Batch update resource/article content by numeric ID. This is used for
   // audited editorial updates such as adding topic-relevant internal links.
   batchUpdateResourceContents: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      updates: z3.array(z3.object({
-        id: z3.number(),
-        content: z3.string().min(1)
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number(),
+        content: z2.string().min(1)
       })).min(1).max(150)
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -2897,13 +2752,14 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14 } = await import("drizzle-orm");
+    const { eq: eq13 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const results = [];
     const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
     for (const update of input.updates) {
       try {
-        await db.update(resources2).set({ content: update.content, updatedAt: now }).where(eq14(resources2.id, update.id));
+        await db.update(resources2).set({ content: update.content, updatedAt: now }).where(eq13(resources2.id, update.id));
         results.push({ id: update.id, status: "updated" });
       } catch (error) {
         console.error("[Admin] Failed to update resource content:", update.id, error);
@@ -2916,13 +2772,53 @@ var adminRouter = router({
       results
     };
   }),
+  // Batch update article content by numeric ID. This is intentionally restricted to
+  // audited editorial syncs and does not expose article metadata, author, status, or product fields.
+  batchUpdateArticleContents: publicProcedure.input((raw) => {
+    return z2.object({
+      adminKey: z2.string(),
+      updates: z2.array(z2.object({
+        id: z2.number().int().positive(),
+        content: z2.string().min(1).max(6e4)
+      })).min(1).max(25)
+    }).parse(raw);
+  }).mutation(async ({ input }) => {
+    if (input.adminKey !== "temp-admin-2024") {
+      throw new Error("Unauthorized");
+    }
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { articles: articles2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+    const { eq: eq13 } = await import("drizzle-orm");
+    const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
+    const results = [];
+    const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
+    for (const update of input.updates) {
+      try {
+        const existing = await db.select({ id: articles2.id }).from(articles2).where(eq13(articles2.id, update.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: update.id, status: "not_found" });
+          continue;
+        }
+        await db.update(articles2).set({ content: update.content, updatedAt: now }).where(eq13(articles2.id, update.id));
+        results.push({ id: update.id, status: "updated" });
+      } catch (error) {
+        results.push({ id: update.id, status: "error", error: String(error) });
+      }
+    }
+    return {
+      success: results.every((result) => result.status === "updated"),
+      totalUpdated: results.filter((result) => result.status === "updated").length,
+      results
+    };
+  }),
   // Batch set product status (active/inactive) by product ID list.
   // Used for bulk product discontinuation/reactivation operations.
   batchSetProductStatus: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      productIds: z3.array(z3.number()),
-      status: z3.enum(["active", "inactive"])
+    return z2.object({
+      adminKey: z2.string(),
+      productIds: z2.array(z2.number()),
+      status: z2.enum(["active", "inactive"])
     }).parse(raw);
   }).mutation(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -2932,6 +2828,7 @@ var adminRouter = router({
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const { inArray: inArray2 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const results = [];
     const batchSize = 50;
     let totalUpdated = 0;
@@ -2949,21 +2846,21 @@ var adminRouter = router({
   }),
   // Batch import new products from CSV data (SUBTASK-005)
   batchImportProducts: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string(),
-      products: z3.array(z3.object({
-        brand: z3.string(),
-        partNumber: z3.string(),
-        name: z3.string(),
-        productType: z3.string(),
-        description: z3.string().optional(),
-        detailedDescription: z3.string().optional(),
-        particleSize: z3.string().optional(),
-        poreSize: z3.string().optional(),
-        columnLength: z3.string().optional(),
-        innerDiameter: z3.string().optional(),
-        phaseType: z3.string().optional(),
-        applications: z3.string().optional()
+    return z2.object({
+      adminKey: z2.string(),
+      products: z2.array(z2.object({
+        brand: z2.string(),
+        partNumber: z2.string(),
+        name: z2.string(),
+        productType: z2.string(),
+        description: z2.string().optional(),
+        detailedDescription: z2.string().optional(),
+        particleSize: z2.string().optional(),
+        poreSize: z2.string().optional(),
+        columnLength: z2.string().optional(),
+        innerDiameter: z2.string().optional(),
+        phaseType: z2.string().optional(),
+        applications: z2.string().optional()
       }))
     }).parse(raw);
   }).mutation(async ({ input }) => {
@@ -3067,8 +2964,8 @@ var adminRouter = router({
   }),
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure.input((raw) => {
-    return z3.object({
-      adminKey: z3.string()
+    return z2.object({
+      adminKey: z2.string()
     }).parse(raw);
   }).mutation(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3076,21 +2973,22 @@ var adminRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14 } = await import("drizzle-orm");
+    const { eq: eq13 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database unavailable");
     const now = (/* @__PURE__ */ new Date()).toISOString().slice(0, 19).replace("T", " ");
-    const result = await db.update(resources2).set({ status: "published", updatedAt: now }).where(eq14(resources2.status, "draft"));
+    const result = await db.update(resources2).set({ status: "published", updatedAt: now }).where(eq13(resources2.status, "draft"));
     return { success: true, message: "All draft resources have been published." };
   })
 });
 
 // server/list-categories-api.ts
-import { z as z4 } from "zod";
+import { z as z3 } from "zod";
 var listCategoriesRouter = router({
   // List all categories
   listAll: publicProcedure.input((raw) => {
-    return z4.object({
-      adminKey: z4.string()
+    return z3.object({
+      adminKey: z3.string()
     }).parse(raw);
   }).query(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3099,6 +2997,7 @@ var listCategoriesRouter = router({
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
     const db = await getDb2();
+    if (!db) throw new Error("Database not available");
     const allCategories = await db.select().from(categories2);
     return {
       success: true,
@@ -3114,91 +3013,15 @@ var listCategoriesRouter = router({
   })
 });
 
-// server/add-glycoworks-simple.ts
-import { z as z5 } from "zod";
-var addGlycoWorksSimpleRouter = router({
-  // Add products with hardcoded category ID
-  addWithCategoryId: publicProcedure.input((raw) => {
-    return z5.object({
-      adminKey: z5.string(),
-      categoryId: z5.number()
-    }).parse(raw);
-  }).mutation(async ({ input }) => {
-    if (input.adminKey !== "temp-admin-2024") {
-      throw new Error("Unauthorized");
-    }
-    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
-    const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14, or: or2 } = await import("drizzle-orm");
-    const db = await getDb2();
-    const existingProducts = await db.select().from(products2).where(
-      or2(
-        eq14(products2.partNumber, "186007239"),
-        eq14(products2.partNumber, "186007080")
-      )
-    );
-    const newProducts = [
-      {
-        partNumber: "186007239",
-        productId: "WATS-186007239",
-        name: "GlycoWorks HILIC 1 cc Flangeless Cartridge",
-        brand: "Waters",
-        categoryId: input.categoryId,
-        status: "active",
-        productType: "SPE Cartridge",
-        createdAt: /* @__PURE__ */ new Date(),
-        updatedAt: /* @__PURE__ */ new Date()
-      },
-      {
-        partNumber: "186007080",
-        productId: "WATS-186007080",
-        name: "GlycoWorks HILIC 1 cc Cartridge, 20/pk",
-        brand: "Waters",
-        categoryId: input.categoryId,
-        status: "active",
-        productType: "SPE Cartridge",
-        createdAt: /* @__PURE__ */ new Date(),
-        updatedAt: /* @__PURE__ */ new Date()
-      }
-    ];
-    const results = [];
-    if (existingProducts.length > 0) {
-      return {
-        success: false,
-        message: "Products already exist",
-        existing: existingProducts.map((p) => ({
-          id: p.id,
-          partNumber: p.partNumber,
-          name: p.name,
-          categoryId: p.categoryId
-        }))
-      };
-    }
-    for (const product of newProducts) {
-      const result = await db.insert(products2).values(product);
-      results.push({
-        partNumber: product.partNumber,
-        action: "added",
-        id: result[0].insertId
-      });
-    }
-    return {
-      success: true,
-      results,
-      categoryId: input.categoryId
-    };
-  })
-});
-
 // server/update-product-category.ts
-import { z as z6 } from "zod";
+import { z as z4 } from "zod";
 var updateProductCategoryRouter = router({
   // Update product category by part numbers
   updateByPartNumbers: publicProcedure.input((raw) => {
-    return z6.object({
-      adminKey: z6.string(),
-      partNumbers: z6.array(z6.string()),
-      categoryId: z6.number()
+    return z4.object({
+      adminKey: z4.string(),
+      partNumbers: z4.array(z4.string()),
+      categoryId: z4.number()
     }).parse(raw);
   }).mutation(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3206,8 +3029,9 @@ var updateProductCategoryRouter = router({
     }
     const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
     const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-    const { eq: eq14, inArray: inArray2, sql: sql6 } = await import("drizzle-orm");
+    const { eq: eq13, inArray: inArray2, sql: sql6 } = await import("drizzle-orm");
     const db = await getDb2();
+    if (!db) throw new Error("Database not available");
     const results = [];
     for (const partNumber of input.partNumbers) {
       await db.execute(sql6`UPDATE products SET category_id = ${input.categoryId}, updatedAt = NOW() WHERE partNumber = ${partNumber}`);
@@ -3222,12 +3046,12 @@ var updateProductCategoryRouter = router({
 });
 
 // server/update-glycoworks-mysql2.ts
-import { z as z7 } from "zod";
+import { z as z5 } from "zod";
 import mysql2 from "mysql2/promise";
 var updateGlycoWorksMysql2Router = router({
   updateDirect: publicProcedure.input((raw) => {
-    return z7.object({
-      adminKey: z7.string()
+    return z5.object({
+      adminKey: z5.string()
     }).parse(raw);
   }).mutation(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3280,12 +3104,12 @@ var updateGlycoWorksMysql2Router = router({
 });
 
 // server/cleanup-product-categories.ts
-import { z as z8 } from "zod";
+import { z as z6 } from "zod";
 import mysql3 from "mysql2/promise";
 var cleanupProductCategoriesRouter = router({
   removeOldCategories: publicProcedure.input((raw) => {
-    return z8.object({
-      adminKey: z8.string()
+    return z6.object({
+      adminKey: z6.string()
     }).parse(raw);
   }).mutation(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3318,12 +3142,12 @@ var cleanupProductCategoriesRouter = router({
 });
 
 // server/check-data-consistency.ts
-import { z as z9 } from "zod";
+import { z as z7 } from "zod";
 import mysql4 from "mysql2/promise";
 var checkDataConsistencyRouter = router({
   getStats: publicProcedure.input((raw) => {
-    return z9.object({
-      adminKey: z9.string()
+    return z7.object({
+      adminKey: z7.string()
     }).parse(raw);
   }).query(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3369,12 +3193,12 @@ var checkDataConsistencyRouter = router({
 });
 
 // server/describe-products-table.ts
-import { z as z10 } from "zod";
+import { z as z8 } from "zod";
 import mysql5 from "mysql2/promise";
 var describeProductsTableRouter = router({
   getSchema: publicProcedure.input((raw) => {
-    return z10.object({
-      adminKey: z10.string()
+    return z8.object({
+      adminKey: z8.string()
     }).parse(raw);
   }).query(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3399,13 +3223,13 @@ var describeProductsTableRouter = router({
 });
 
 // server/query-categories.ts
-import { z as z11 } from "zod";
+import { z as z9 } from "zod";
 import mysql6 from "mysql2/promise";
 var queryCategoriesRouter = router({
   // Query all categories
   listAll: publicProcedure.input((raw) => {
-    return z11.object({
-      adminKey: z11.string()
+    return z9.object({
+      adminKey: z9.string()
     }).parse(raw);
   }).query(async ({ input }) => {
     if (input.adminKey !== "temp-admin-2024") {
@@ -3524,7 +3348,7 @@ var getOrphanProductsRouter = router({
       const [rows] = await connection.execute(`
           SELECT id, productId, partNumber, brand, productName, category_id, status
           FROM products
-          WHERE status = 'active'
+          WHERE status = 'active' 
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
         `);
@@ -3595,7 +3419,7 @@ var batchFixOrphanProductsRouter = router({
       const [orphanProducts] = await connection.execute(`
           SELECT id, productId, partNumber, brand, productName, category_id, status
           FROM products
-          WHERE status = 'active'
+          WHERE status = 'active' 
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
         `);
@@ -3650,7 +3474,7 @@ var batchFixOrphanProductsRouter = router({
 });
 
 // server/batch-fix-orphan-paginated.ts
-import { z as z12 } from "zod";
+import { z as z10 } from "zod";
 import mysql10 from "mysql2/promise";
 function classifyProduct2(productName, brand) {
   const name = productName.toLowerCase();
@@ -3691,9 +3515,9 @@ function classifyProduct2(productName, brand) {
   return 15;
 }
 var batchFixOrphanPaginatedRouter = router({
-  execute: publicProcedure.input(z12.object({
-    offset: z12.number().default(0),
-    limit: z12.number().default(100)
+  execute: publicProcedure.input(z10.object({
+    offset: z10.number().default(0),
+    limit: z10.number().default(100)
   }).optional()).query(async ({ input }) => {
     const offset = input?.offset ?? 0;
     const limit = input?.limit ?? 100;
@@ -3705,14 +3529,14 @@ var batchFixOrphanPaginatedRouter = router({
       const [countResult] = await connection.execute(`
           SELECT COUNT(*) as total
           FROM products
-          WHERE status = 'active'
+          WHERE status = 'active' 
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
         `);
       const totalOrphans = countResult[0].total;
       const [orphanProducts] = await connection.execute(`
           SELECT id, productId, partNumber, brand, productName, category_id, status
           FROM products
-          WHERE status = 'active'
+          WHERE status = 'active' 
             AND id NOT IN (SELECT DISTINCT product_id FROM product_categories)
           ORDER BY brand, productName
           LIMIT ? OFFSET ?
@@ -3797,7 +3621,7 @@ var exportAllProductsRouter = router({
         }
       });
       const [products2] = await connection.execute(`
-        SELECT
+        SELECT 
           p.id,
           p.product_id,
           p.part_number,
@@ -3960,18 +3784,18 @@ var diagnoseDatabaseRouter = router({
         products_columns: []
       };
       const [categories2] = await connection.execute(`
-        SELECT id, name_en, slug
-        FROM categories
-        WHERE name_en LIKE '%SPE%'
-           OR name_en LIKE '%Well%'
-           OR name_en LIKE '%Plate%'
+        SELECT id, name_en, slug 
+        FROM categories 
+        WHERE name_en LIKE '%SPE%' 
+           OR name_en LIKE '%Well%' 
+           OR name_en LIKE '%Plate%' 
            OR name_en LIKE '%Filter%'
         ORDER BY name_en
       `);
       results.categories = categories2;
       const [bondElutProducts] = await connection.execute(`
         SELECT id, productId, name, category_id, status
-        FROM products
+        FROM products 
         WHERE name LIKE '%Bond Elut%'
         LIMIT 5
       `);
@@ -4016,8 +3840,8 @@ var findPlateCategoriesRouter = router({
       });
       const [categories2] = await connection.execute(`
         SELECT id, name_en, slug
-        FROM categories
-        WHERE LOWER(name_en) LIKE '%plate%'
+        FROM categories 
+        WHERE LOWER(name_en) LIKE '%plate%' 
            OR LOWER(name_en) LIKE '%well%'
            OR LOWER(slug) LIKE '%plate%'
            OR LOWER(slug) LIKE '%well%'
@@ -4025,8 +3849,8 @@ var findPlateCategoriesRouter = router({
       `);
       const [products2] = await connection.execute(`
         SELECT id, productId, name, category_id, status
-        FROM products
-        WHERE name LIKE '%96%Well%'
+        FROM products 
+        WHERE name LIKE '%96%Well%' 
            OR name LIKE '%Microplate%'
            OR name LIKE '%96-Well%'
         LIMIT 10
@@ -4060,7 +3884,7 @@ var getAllCategoriesRouter = router({
       });
       const [categories2] = await connection.execute(`
         SELECT id, name_en, slug, parent_id
-        FROM categories
+        FROM categories 
         ORDER BY name_en
       `);
       await connection.end();
@@ -4099,7 +3923,7 @@ var fixProductCategoriesFinalRouter = router({
           UPDATE product_categories pc
           INNER JOIN products p ON pc.product_id = p.id
           SET pc.category_id = 16
-          WHERE (p.name LIKE '%96%Well%'
+          WHERE (p.name LIKE '%96%Well%' 
              OR p.name LIKE '%Microplate%'
              OR p.name LIKE '%96-Well%')
             AND pc.category_id != 16
@@ -4109,7 +3933,7 @@ var fixProductCategoriesFinalRouter = router({
         await connection.execute(`
           UPDATE products
           SET category_id = 16
-          WHERE (name LIKE '%96%Well%'
+          WHERE (name LIKE '%96%Well%' 
              OR name LIKE '%Microplate%'
              OR name LIKE '%96-Well%')
             AND category_id != 16
@@ -4123,7 +3947,7 @@ var fixProductCategoriesFinalRouter = router({
           UPDATE product_categories pc
           INNER JOIN products p ON pc.product_id = p.id
           SET pc.category_id = 18
-          WHERE (p.name LIKE '%Syringe Filter%'
+          WHERE (p.name LIKE '%Syringe Filter%' 
              OR p.productId LIKE 'PHEN-AF%')
             AND pc.category_id != 18
             AND p.status = 'active'
@@ -4132,7 +3956,7 @@ var fixProductCategoriesFinalRouter = router({
         await connection.execute(`
           UPDATE products
           SET category_id = 18
-          WHERE (name LIKE '%Syringe Filter%'
+          WHERE (name LIKE '%Syringe Filter%' 
              OR productId LIKE 'PHEN-AF%')
             AND category_id != 18
             AND status = 'active'
@@ -4176,7 +4000,7 @@ var fixNullCategoriesRouter = router({
         const [wellPlatesResult] = await connection.execute(`
           UPDATE products
           SET category_id = 16
-          WHERE (name LIKE '%96%Well%'
+          WHERE (name LIKE '%96%Well%' 
              OR name LIKE '%Microplate%'
              OR name LIKE '%96-Well%'
              OR name LIKE '%well-plate%')
@@ -4191,7 +4015,7 @@ var fixNullCategoriesRouter = router({
         const [filtersResult] = await connection.execute(`
           UPDATE products
           SET category_id = 18
-          WHERE (name LIKE '%Syringe Filter%'
+          WHERE (name LIKE '%Syringe Filter%' 
              OR productId LIKE 'PHEN-AF%')
             AND category_id != 18
             AND status = 'active'
@@ -4230,7 +4054,7 @@ var checkSyringeFiltersRouter = router({
       const [products2] = await connection.execute(`
         SELECT id, productId, name, category_id, status
         FROM products
-        WHERE (name LIKE '%Syringe Filter%'
+        WHERE (name LIKE '%Syringe Filter%' 
            OR productId LIKE 'PHEN-AF%')
           AND status = 'active'
         ORDER BY category_id, name
@@ -4265,7 +4089,7 @@ var findGcColumnsRouter = router({
       const [products2] = await connection.execute(`
         SELECT id, productId, name, category_id, status
         FROM products
-        WHERE (name LIKE '%GC Column%'
+        WHERE (name LIKE '%GC Column%' 
            OR name LIKE '%GC column%'
            OR name LIKE '%Gas Chromatography%'
            OR name LIKE '% GC %'
@@ -4275,13 +4099,13 @@ var findGcColumnsRouter = router({
         LIMIT 200
       `);
       const [categoryDist] = await connection.execute(`
-        SELECT
+        SELECT 
           p.category_id,
           c.name_en as category_name,
           COUNT(*) as product_count
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.id
-        WHERE (p.name LIKE '%GC Column%'
+        WHERE (p.name LIKE '%GC Column%' 
            OR p.name LIKE '%GC column%'
            OR p.name LIKE '%Gas Chromatography%'
            OR p.name LIKE '% GC %'
@@ -4403,10 +4227,10 @@ var reclassifyGcProductsRouter = router({
       };
       try {
         const [capillaryResult] = await connection.execute(`
-          UPDATE products
+          UPDATE products 
           SET category_id = ?
-          WHERE (name LIKE '%Capillary GC Column%'
-             OR name LIKE '%GC Cap.%'
+          WHERE (name LIKE '%Capillary GC Column%' 
+             OR name LIKE '%GC Cap.%' 
              OR name LIKE '%GC Capillary%'
              OR name LIKE '%GC Metal Capillary%')
           AND name LIKE '%GC%'
@@ -4417,7 +4241,7 @@ var reclassifyGcProductsRouter = router({
       }
       try {
         const [packedResult] = await connection.execute(`
-          UPDATE products
+          UPDATE products 
           SET category_id = ?
           WHERE name LIKE '%Packed GC Column%'
           AND name LIKE '%GC%'
@@ -4428,7 +4252,7 @@ var reclassifyGcProductsRouter = router({
       }
       try {
         const [guardResult] = await connection.execute(`
-          UPDATE products
+          UPDATE products 
           SET category_id = ?
           WHERE name LIKE '%GUARDIAN%'
           AND name LIKE '%GC%'
@@ -4439,7 +4263,7 @@ var reclassifyGcProductsRouter = router({
       }
       try {
         const [otherResult] = await connection.execute(`
-          UPDATE products
+          UPDATE products 
           SET category_id = ?
           WHERE name LIKE '%GC Column%'
           AND category_id NOT IN (?, ?, ?)
@@ -4489,7 +4313,7 @@ var fixRemainingGcRouter = router({
       ];
       const CAPILLARY_GC_CAT_ID = 30002;
       const [result] = await connection.execute(`
-        UPDATE products
+        UPDATE products 
         SET category_id = ?
         WHERE id IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `, [CAPILLARY_GC_CAT_ID, ...productIds]);
@@ -4587,11 +4411,14 @@ var updateYmcTosohRouter = router({
       console.log("[UPDATE] Starting database update...");
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14 } = await import("drizzle-orm");
+      const { eq: eq13 } = await import("drizzle-orm");
       const db = await getDb2();
+      if (!db) {
+        throw new Error("Database not available for YMC/Tosoh update");
+      }
       for (const row of allData) {
         try {
-          const existingProducts = await db.select().from(products2).where(eq14(products2.partNumber, row.productCode)).limit(1);
+          const existingProducts = await db.select().from(products2).where(eq13(products2.partNumber, row.productCode)).limit(1);
           if (existingProducts.length === 0) {
             console.log(`[UPDATE] Product not found: ${row.productCode}`);
             notFoundCount++;
@@ -4601,14 +4428,13 @@ var updateYmcTosohRouter = router({
           await db.update(products2).set({
             particleSize: row.particleSize || null,
             poreSize: row.poreSize || null,
-            dimensions: `${row.columnLength} \xD7 ${row.innerDiameter}`,
-            status: "active",
-            // Set status to active
+            columnLength: row.columnLength || null,
+            innerDiameter: row.innerDiameter || null,
             phRange: row.phRange || null,
             usp: row.usp || null,
             description: row.description || null,
             applications: row.applications || null
-          }).where(eq14(products2.partNumber, row.productCode));
+          }).where(eq13(products2.partNumber, row.productCode));
           updatedCount++;
           if (updatedCount % 20 === 0) {
             console.log(`[UPDATE] Progress: ${updatedCount}/${allData.length} products updated`);
@@ -4700,6 +4526,9 @@ var updateDimensionsRouter = router({
       const allData = [...ymcData, ...tosohData];
       console.log(`[DIMENSIONS] Total products to process: ${allData.length}`);
       const db = await getDb();
+      if (!db) {
+        throw new Error("Database not available for dimensions update");
+      }
       let updatedCount = 0;
       let notFoundCount = 0;
       let skippedCount = 0;
@@ -4720,9 +4549,9 @@ var updateDimensionsRouter = router({
             skippedCount++;
             continue;
           }
-          const dimensionsValue = `${columnLength} \xD7 ${innerDiameter}`;
           await db.update(products).set({
-            dimensions: dimensionsValue
+            columnLength,
+            innerDiameter
           }).where(eq3(products.partNumber, row.productCode));
           updatedCount++;
           if (updatedCount % 20 === 0) {
@@ -4759,19 +4588,20 @@ var updateDimensionsRouter = router({
 // server/learning-center-api.ts
 init_db();
 init_schema();
-import { z as z13 } from "zod";
+import { z as z11 } from "zod";
 import { eq as eq4, desc, and, sql } from "drizzle-orm";
 var learningCenterRouter = router({
   articles: router({
     list: publicProcedure.input(
-      z13.object({
-        page: z13.number().optional().default(1),
-        pageSize: z13.number().optional().default(12),
-        category: z13.string().optional(),
-        area: z13.string().optional()
+      z11.object({
+        page: z11.number().optional().default(1),
+        pageSize: z11.number().optional().default(12),
+        category: z11.string().optional(),
+        area: z11.string().optional()
       })
     ).query(async ({ input }) => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const offset = (input.page - 1) * input.pageSize;
       let conditions = [];
       if (input.category) {
@@ -4806,8 +4636,9 @@ var learningCenterRouter = router({
         }
       };
     }),
-    bySlug: publicProcedure.input(z13.object({ slug: z13.string() })).query(async ({ input }) => {
+    bySlug: publicProcedure.input(z11.object({ slug: z11.string() })).query(async ({ input }) => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const result = await db.select({
         id: articles.id,
         title: articles.title,
@@ -4834,8 +4665,9 @@ var learningCenterRouter = router({
       await db.update(articles).set({ viewCount: sql`${articles.viewCount} + 1` }).where(eq4(articles.id, article.id));
       return article;
     }),
-    getBySlug: publicProcedure.input(z13.string()).query(async ({ input }) => {
+    getBySlug: publicProcedure.input(z11.string()).query(async ({ input }) => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const result = await db.select({
         id: articles.id,
         title: articles.title,
@@ -4866,6 +4698,7 @@ var learningCenterRouter = router({
   authors: router({
     list: publicProcedure.query(async () => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const result = await db.select({
         id: authors.id,
         name: authors.fullName,
@@ -4877,8 +4710,9 @@ var learningCenterRouter = router({
       }).from(authors).orderBy(authors.fullName);
       return result;
     }),
-    getBySlug: publicProcedure.input(z13.string()).query(async ({ input }) => {
+    getBySlug: publicProcedure.input(z11.string()).query(async ({ input }) => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const result = await db.select().from(authors).where(eq4(authors.slug, input)).limit(1);
       if (result.length === 0) {
         throw new Error("Author not found");
@@ -4902,13 +4736,14 @@ var learningCenterRouter = router({
   }),
   literature: router({
     list: publicProcedure.input(
-      z13.object({
-        page: z13.number().optional().default(1),
-        pageSize: z13.number().optional().default(12),
-        area: z13.string().optional()
+      z11.object({
+        page: z11.number().optional().default(1),
+        pageSize: z11.number().optional().default(12),
+        area: z11.string().optional()
       })
     ).query(async ({ input }) => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const offset = (input.page - 1) * input.pageSize;
       let conditions = [];
       if (input.area) {
@@ -4939,8 +4774,9 @@ var learningCenterRouter = router({
         }
       };
     }),
-    bySlug: publicProcedure.input(z13.string()).query(async ({ input }) => {
+    bySlug: publicProcedure.input(z11.string()).query(async ({ input }) => {
       const db = await getDb();
+      if (!db) throw new Error("Database unavailable");
       const result = await db.select().from(literature).where(eq4(literature.slug, input)).limit(1);
       if (result.length === 0) {
         throw new Error("Literature not found");
@@ -4952,6 +4788,7 @@ var learningCenterRouter = router({
   }),
   stats: publicProcedure.query(async () => {
     const db = await getDb();
+    if (!db) throw new Error("Database unavailable");
     const totalArticles = await db.select({ count: sql`count(*)` }).from(articles);
     const totalLiterature = await db.select({ count: sql`count(*)` }).from(literature);
     const totalAuthors = await db.select({ count: sql`count(*)` }).from(authors);
@@ -4965,206 +4802,17 @@ var learningCenterRouter = router({
   })
 });
 
-// server/seed-articles.ts
+// server/article-importer.ts
 init_db();
 init_schema();
-import * as fs from "fs";
+import * as fs from "fs/promises";
 import * as path from "path";
-import matter from "gray-matter";
 import { fileURLToPath } from "url";
-import { dirname } from "path";
+import matter from "gray-matter";
 import { eq as eq5 } from "drizzle-orm";
 var __filename = fileURLToPath(import.meta.url);
-var __dirname = dirname(__filename);
-var authorProfiles = [
-  {
-    fullName: "Dr. Michael Zhang",
-    slug: "dr-michael-zhang",
-    title: "Technical Director",
-    yearsOfExperience: 15,
-    education: "Ph.D. in Analytical Chemistry",
-    biography: "Dr. Michael Zhang is a seasoned chromatography expert with over 15 years of experience in analytical chemistry. He specializes in HPLC method development and instrumentation, providing practical guidance for laboratories worldwide.",
-    expertise: JSON.stringify(["HPLC", "Method Development", "Instrumentation", "Troubleshooting"]),
-    photoUrl: null
-  },
-  {
-    fullName: "Dr. Evelyn Reed",
-    slug: "dr-evelyn-reed",
-    title: "Pharmaceutical Analysis Expert",
-    yearsOfExperience: 12,
-    education: "Ph.D. in Pharmaceutical Sciences",
-    biography: "Dr. Evelyn Reed brings extensive pharmaceutical industry experience, specializing in drug development and quality control. Her expertise spans API characterization, impurity profiling, and regulatory compliance.",
-    expertise: JSON.stringify(["Pharmaceutical Analysis", "Drug Development", "Quality Control", "Regulatory Compliance"]),
-    photoUrl: null
-  },
-  {
-    fullName: "Dr. James Chen",
-    slug: "dr-james-chen",
-    title: "Environmental & Food Safety Specialist",
-    yearsOfExperience: 10,
-    education: "Ph.D. in Environmental Chemistry",
-    biography: "Dr. James Chen focuses on environmental monitoring and food safety testing using chromatographic techniques. He has published numerous papers on pesticide analysis and contaminant detection.",
-    expertise: JSON.stringify(["Environmental Testing", "Food Safety", "Pesticide Analysis", "Contaminant Detection"]),
-    photoUrl: null
-  },
-  {
-    fullName: "Dr. Sarah Martinez",
-    slug: "dr-sarah-martinez",
-    title: "Clinical & Biopharmaceutical Specialist",
-    yearsOfExperience: 8,
-    education: "Ph.D. in Clinical Chemistry",
-    biography: "Dr. Sarah Martinez specializes in clinical diagnostics and biopharmaceutical analysis. Her work includes therapeutic drug monitoring, biomarker discovery, and monoclonal antibody characterization.",
-    expertise: JSON.stringify(["Clinical Diagnostics", "Therapeutic Drug Monitoring", "Biopharmaceuticals", "Biomarker Analysis"]),
-    photoUrl: null
-  }
-];
-async function seedArticles() {
-  console.log("Starting article seeding...");
-  const db = await getDb();
-  if (!db) {
-    console.error("Database connection failed");
-    return { success: false, error: "Database connection failed" };
-  }
-  console.log("\n=== Seeding Authors ===");
-  let authorsCreated = 0;
-  let authorsExisted = 0;
-  const authorIdMap = /* @__PURE__ */ new Map();
-  for (const profile of authorProfiles) {
-    try {
-      const result = await db.insert(authors).values({
-        ...profile,
-        createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-        updatedAt: (/* @__PURE__ */ new Date()).toISOString()
-      });
-      const authorId = Number(result.insertId);
-      authorIdMap.set(profile.slug, authorId);
-      console.log(`\u2713 Created author: ${profile.fullName} (ID: ${authorId})`);
-      authorsCreated++;
-    } catch (error) {
-      if (error.code === "ER_DUP_ENTRY" || error.message?.includes("Duplicate")) {
-        console.log(`- Author already exists: ${profile.fullName}`);
-        const existingAuthor = await db.select().from(authors).where(eq5(authors.slug, profile.slug)).limit(1);
-        if (existingAuthor.length > 0) {
-          authorIdMap.set(profile.slug, existingAuthor[0].id);
-          console.log(`  Found existing ID: ${existingAuthor[0].id}`);
-        }
-        authorsExisted++;
-      } else {
-        console.error(`\u2717 Error creating author ${profile.fullName}:`, error.message);
-      }
-    }
-  }
-  console.log("\n=== Seeding Articles ===");
-  console.log("DEBUG: __dirname =", __dirname);
-  console.log("DEBUG: __filename =", __filename);
-  const articlesDir = path.join(__dirname, "../data/articles");
-  console.log("DEBUG: articlesDir =", articlesDir);
-  if (!fs.existsSync(articlesDir)) {
-    console.error(`Articles directory not found: ${articlesDir}`);
-    return {
-      success: false,
-      error: "Articles directory not found",
-      authorsCreated,
-      authorsExisted
-    };
-  }
-  const articleFiles = fs.readdirSync(articlesDir).filter((file) => file.startsWith("ARTICLE_") && file.endsWith(".md"));
-  console.log("DEBUG: Found", articleFiles.length, "article files");
-  console.log("DEBUG: First 3 files:", articleFiles.slice(0, 3));
-  let articlesCreated = 0;
-  let articlesExisted = 0;
-  let articlesError = 0;
-  for (const filename of articleFiles) {
-    try {
-      const filePath = path.join(articlesDir, filename);
-      const fileContent = fs.readFileSync(filePath, "utf-8");
-      const { data: frontmatter, content } = matter(fileContent);
-      const {
-        title,
-        author_slug,
-        category,
-        area,
-        slug,
-        published_date,
-        description,
-        keywords
-      } = frontmatter;
-      const authorId = authorIdMap.get(author_slug);
-      if (!authorId) {
-        console.error(`\u2717 Author not found for slug: ${author_slug} in ${filename}`);
-        articlesError++;
-        continue;
-      }
-      await db.insert(articles).values({
-        title,
-        slug,
-        content,
-        excerpt: description,
-        category,
-        applicationArea: area,
-        authorId,
-        featuredImage: null,
-        tags: keywords ? JSON.stringify(keywords.split(", ")) : null,
-        metaDescription: description,
-        metaKeywords: keywords,
-        publishedAt: new Date(published_date).toISOString(),
-        viewCount: 0,
-        featured: false,
-        createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-        updatedAt: (/* @__PURE__ */ new Date()).toISOString()
-      });
-      console.log(`\u2713 Created: ${title}`);
-      articlesCreated++;
-    } catch (error) {
-      if (error.code === "ER_DUP_ENTRY" || error.message?.includes("Duplicate")) {
-        console.log(`- Article already exists: ${filename}`);
-        articlesExisted++;
-      } else {
-        console.error(`\u2717 Error creating ${filename}:`, error.message);
-        articlesError++;
-      }
-    }
-  }
-  const summary = {
-    success: true,
-    authorsCreated,
-    authorsExisted,
-    articlesCreated,
-    articlesExisted,
-    articlesError,
-    totalArticles: articleFiles.length
-  };
-  console.log(`
-=== Seeding Summary ===`);
-  console.log(JSON.stringify(summary, null, 2));
-  return summary;
-}
-
-// server/seed-articles-router.ts
-var seedArticlesRouter = router({
-  execute: publicProcedure.mutation(async () => {
-    try {
-      console.log("Executing article seeding...");
-      const result = await seedArticles();
-      return result;
-    } catch (error) {
-      console.error("Seeding failed:", error);
-      throw new Error(`Seeding failed: ${String(error)}`);
-    }
-  })
-});
-
-// server/manual-import-api.ts
-init_db();
-init_schema();
-import * as fs2 from "fs";
-import * as path2 from "path";
-import { fileURLToPath as fileURLToPath2 } from "url";
-import matter2 from "gray-matter";
-import { eq as eq6 } from "drizzle-orm";
-var __filename2 = fileURLToPath2(import.meta.url);
-var __dirname2 = path2.dirname(__filename2);
-var ARTICLES_DIR = path2.join(__dirname2, "..", "content", "articles");
+var __dirname = path.dirname(__filename);
+var ARTICLES_DIR = path.join(__dirname, "..", "content", "articles");
 var REQUIRED_FIELDS = [
   "title",
   "author_slug",
@@ -5193,6 +4841,219 @@ function validateFormat(frontmatter) {
   if (frontmatter.application_area && !VALID_AREAS.includes(frontmatter.application_area)) {
     errors.push(`Invalid application_area: ${frontmatter.application_area}. Must be one of: ${VALID_AREAS.join(", ")}`);
   }
+  if (frontmatter.published_date) {
+    const rawDate = frontmatter.published_date;
+    const dateStr = rawDate instanceof Date ? rawDate.toISOString().slice(0, 10) : String(rawDate);
+    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+    if (!dateRegex.test(dateStr)) {
+      errors.push(`Invalid date format: ${rawDate}. Must be YYYY-MM-DD`);
+    } else {
+      frontmatter.published_date = dateStr;
+    }
+  }
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+async function processArticle(filePath, db) {
+  try {
+    const fileName = path.basename(filePath);
+    console.log(`\u{1F4C4} Processing: ${fileName}`);
+    const fileContent = await fs.readFile(filePath, "utf-8");
+    const { data: frontmatter, content } = matter(fileContent);
+    const formatValidation = validateFormat(frontmatter);
+    if (!formatValidation.valid) {
+      const error = `Format validation failed:
+${formatValidation.errors.join("\n")}`;
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage(frontmatter.title)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in title";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage(content)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in content";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage(frontmatter.meta_description)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in meta_description";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    if (!validateLanguage(frontmatter.keywords)) {
+      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in keywords";
+      console.error(`\u274C ${error}`);
+      return { success: false, error };
+    }
+    console.log("\u2713 Language validation passed (English content confirmed)");
+    let authorId;
+    const existingAuthor = await db.select().from(authors).where(eq5(authors.slug, frontmatter.author_slug)).limit(1);
+    if (existingAuthor.length > 0) {
+      authorId = existingAuthor[0].id;
+      console.log(`\u2713 Found existing author: ${frontmatter.author_slug} (ID: ${authorId})`);
+    } else {
+      const [newAuthor] = await db.insert(authors).values({
+        name: frontmatter.author_slug.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase()),
+        slug: frontmatter.author_slug,
+        bio: "Chromatography expert at ROWELL HPLC",
+        expertise: frontmatter.application_area,
+        avatar: "/images/authors/default.jpg"
+      });
+      authorId = newAuthor.insertId;
+      console.log(`\u2713 Created new author: ${frontmatter.author_slug} (ID: ${authorId})`);
+    }
+    const existingArticle = await db.select().from(articles).where(eq5(articles.slug, frontmatter.slug)).limit(1);
+    if (existingArticle.length > 0) {
+      await db.update(articles).set({
+        title: frontmatter.title,
+        content,
+        category: frontmatter.category,
+        applicationArea: frontmatter.application_area,
+        publishedDate: new Date(frontmatter.published_date),
+        metaDescription: frontmatter.meta_description || null,
+        keywords: frontmatter.keywords || null,
+        updatedAt: /* @__PURE__ */ new Date()
+      }).where(eq5(articles.id, existingArticle[0].id));
+      console.log(`\u2705 Updated article: ${frontmatter.title}`);
+    } else {
+      await db.insert(articles).values({
+        title: frontmatter.title,
+        slug: frontmatter.slug,
+        content,
+        authorId,
+        category: frontmatter.category,
+        applicationArea: frontmatter.application_area,
+        publishedDate: new Date(frontmatter.published_date),
+        metaDescription: frontmatter.meta_description || null,
+        keywords: frontmatter.keywords || null,
+        createdAt: /* @__PURE__ */ new Date(),
+        updatedAt: /* @__PURE__ */ new Date()
+      });
+      console.log(`\u2705 Created article: ${frontmatter.title}`);
+    }
+    return { success: true };
+  } catch (error) {
+    console.error(`\u274C Error processing ${filePath}:`, error.message);
+    return { success: false, error: error.message };
+  }
+}
+async function importArticles() {
+  console.log("\n\u{1F680} Starting article import...");
+  console.log(`\u{1F4C1} Articles directory: ${ARTICLES_DIR}`);
+  try {
+    try {
+      await fs.access(ARTICLES_DIR);
+    } catch {
+      console.log(`\u26A0\uFE0F  Articles directory not found: ${ARTICLES_DIR}`);
+      console.log("Creating directory...");
+      await fs.mkdir(ARTICLES_DIR, { recursive: true });
+      console.log("\u2713 Directory created");
+      return;
+    }
+    const files = await fs.readdir(ARTICLES_DIR);
+    const mdFiles = files.filter((file) => file.endsWith(".md") && file.toLowerCase() !== "readme.md");
+    if (mdFiles.length === 0) {
+      console.log("\u2139\uFE0F  No articles found to import");
+      return;
+    }
+    console.log(`\u{1F4DA} Found ${mdFiles.length} article(s) to process`);
+    const db = await getDb();
+    let successCount = 0;
+    let errorCount = 0;
+    for (const file of mdFiles) {
+      const filePath = path.join(ARTICLES_DIR, file);
+      const result = await processArticle(filePath, db);
+      if (result.success) {
+        successCount++;
+      } else {
+        errorCount++;
+      }
+    }
+    console.log("\n\u{1F4CA} Import Summary:");
+    console.log(`\u2705 Success: ${successCount}`);
+    console.log(`\u274C Errors: ${errorCount}`);
+    console.log("\u{1F3C1} Article import completed\n");
+  } catch (error) {
+    console.error("\u274C Fatal error during article import:", error.message);
+  }
+}
+
+// server/seed-articles.ts
+async function seedArticles() {
+  try {
+    await importArticles();
+    return {
+      success: true,
+      message: "Validated article import completed"
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown article import failure";
+    console.error("[seedArticles] Validated import failed:", error);
+    return {
+      success: false,
+      message: "Validated article import failed",
+      error: message
+    };
+  }
+}
+
+// server/seed-articles-router.ts
+var seedArticlesRouter = router({
+  execute: publicProcedure.mutation(async () => {
+    try {
+      console.log("Executing article seeding...");
+      const result = await seedArticles();
+      return result;
+    } catch (error) {
+      console.error("Seeding failed:", error);
+      throw new Error(`Seeding failed: ${String(error)}`);
+    }
+  })
+});
+
+// server/manual-import-api.ts
+init_db();
+init_schema();
+import * as fs2 from "fs";
+import * as path2 from "path";
+import { fileURLToPath as fileURLToPath2 } from "url";
+import matter2 from "gray-matter";
+import { eq as eq6 } from "drizzle-orm";
+var __filename2 = fileURLToPath2(import.meta.url);
+var __dirname2 = path2.dirname(__filename2);
+var ARTICLES_DIR2 = path2.join(__dirname2, "..", "content", "articles");
+var REQUIRED_FIELDS2 = [
+  "title",
+  "author_slug",
+  "category",
+  "application_area",
+  "slug",
+  "published_date"
+];
+var VALID_CATEGORIES2 = ["application-notes", "technical-guides", "industry-trends", "literature-reviews"];
+var VALID_AREAS2 = ["pharmaceutical", "environmental", "food-safety", "biopharmaceutical", "clinical", "chemical"];
+function validateLanguage2(text2) {
+  if (!text2) return true;
+  const chineseRegex = /[\u4e00-\u9fa5]/;
+  return !chineseRegex.test(text2);
+}
+function validateFormat2(frontmatter) {
+  const errors = [];
+  for (const field of REQUIRED_FIELDS2) {
+    if (!frontmatter[field]) {
+      errors.push(`Missing required field: ${field}`);
+    }
+  }
+  if (frontmatter.category && !VALID_CATEGORIES2.includes(frontmatter.category)) {
+    errors.push(`Invalid category: ${frontmatter.category}. Must be one of: ${VALID_CATEGORIES2.join(", ")}`);
+  }
+  if (frontmatter.application_area && !VALID_AREAS2.includes(frontmatter.application_area)) {
+    errors.push(`Invalid application_area: ${frontmatter.application_area}. Must be one of: ${VALID_AREAS2.join(", ")}`);
+  }
   return { valid: errors.length === 0, errors };
 }
 var manualImportRouter = router({
@@ -5200,16 +5061,16 @@ var manualImportRouter = router({
     const results = [];
     const logs = [];
     try {
-      logs.push(`[INFO] Articles directory: ${ARTICLES_DIR}`);
-      logs.push(`[INFO] Directory exists: ${fs2.existsSync(ARTICLES_DIR)}`);
-      if (!fs2.existsSync(ARTICLES_DIR)) {
+      logs.push(`[INFO] Articles directory: ${ARTICLES_DIR2}`);
+      logs.push(`[INFO] Directory exists: ${fs2.existsSync(ARTICLES_DIR2)}`);
+      if (!fs2.existsSync(ARTICLES_DIR2)) {
         return {
           success: false,
-          error: `Articles directory not found: ${ARTICLES_DIR}`,
+          error: `Articles directory not found: ${ARTICLES_DIR2}`,
           logs
         };
       }
-      const files = fs2.readdirSync(ARTICLES_DIR).filter((f) => f.endsWith(".md") && f !== "README.md");
+      const files = fs2.readdirSync(ARTICLES_DIR2).filter((f) => f.endsWith(".md") && f !== "README.md");
       logs.push(`[INFO] Found ${files.length} markdown files`);
       const db = await getDb();
       if (!db) {
@@ -5220,13 +5081,13 @@ var manualImportRouter = router({
         };
       }
       for (const filename of files) {
-        const filePath = path2.join(ARTICLES_DIR, filename);
+        const filePath = path2.join(ARTICLES_DIR2, filename);
         logs.push(`
 [INFO] Processing: ${filename}`);
         try {
           const fileContent = fs2.readFileSync(filePath, "utf-8");
           const { data: frontmatter, content } = matter2(fileContent);
-          const formatValidation = validateFormat(frontmatter);
+          const formatValidation = validateFormat2(frontmatter);
           if (!formatValidation.valid) {
             logs.push(`[ERROR] Format validation failed: ${formatValidation.errors.join(", ")}`);
             results.push({ filename, status: "error", error: formatValidation.errors.join(", ") });
@@ -5239,7 +5100,7 @@ var manualImportRouter = router({
             frontmatter.keywords
           ];
           for (const text2 of textsToCheck) {
-            if (text2 && !validateLanguage(text2)) {
+            if (text2 && !validateLanguage2(text2)) {
               logs.push(`[ERROR] Chinese content detected - REJECTED`);
               results.push({ filename, status: "error", error: "Chinese content detected" });
               continue;
@@ -5254,15 +5115,21 @@ var manualImportRouter = router({
           const authorId = authorResult[0].id;
           logs.push(`[INFO] Found author ID: ${authorId}`);
           const existingArticle = await db.select().from(articles).where(eq6(articles.slug, frontmatter.slug)).limit(1);
+          const parsedPublishedDate = new Date(frontmatter.published_date);
+          if (Number.isNaN(parsedPublishedDate.getTime())) {
+            logs.push(`[ERROR] Invalid published_date: ${frontmatter.published_date}`);
+            results.push({ filename, status: "error", error: "Invalid published_date" });
+            continue;
+          }
           const articleData = {
-            title: frontmatter.title,
-            slug: frontmatter.slug,
+            title: String(frontmatter.title),
+            slug: String(frontmatter.slug),
             content,
             category: frontmatter.category,
             applicationArea: frontmatter.application_area,
-            metaDescription: frontmatter.meta_description || "",
-            keywords: frontmatter.keywords || "",
-            publishedDate: new Date(frontmatter.published_date),
+            metaDescription: frontmatter.meta_description ? String(frontmatter.meta_description) : "",
+            keywords: frontmatter.keywords ? String(frontmatter.keywords) : "",
+            publishedDate: parsedPublishedDate.toISOString().slice(0, 19).replace("T", " "),
             authorId,
             viewCount: 0
           };
@@ -5297,7 +5164,7 @@ var manualImportRouter = router({
 });
 
 // server/standards-api.ts
-import { z as z14 } from "zod";
+import { z as z12 } from "zod";
 var standardsRouter = router({
   // 获取所有分类
   listCategories: publicProcedure.query(async () => {
@@ -5305,39 +5172,39 @@ var standardsRouter = router({
     return await getAllStandardsCategories2();
   }),
   // 获取单个分类详情
-  getCategoryBySlug: publicProcedure.input((raw) => z14.string().parse(raw)).query(async ({ input }) => {
+  getCategoryBySlug: publicProcedure.input((raw) => z12.string().parse(raw)).query(async ({ input }) => {
     const { getStandardsCategoryBySlug: getStandardsCategoryBySlug2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
     return await getStandardsCategoryBySlug2(input);
   }),
   // 获取分类下的产品列表
-  listByCategory: publicProcedure.input((raw) => z14.object({
-    categorySlug: z14.string(),
-    page: z14.number().min(1).optional().default(1),
-    pageSize: z14.number().min(1).max(100).optional().default(20)
+  listByCategory: publicProcedure.input((raw) => z12.object({
+    categorySlug: z12.string(),
+    page: z12.number().min(1).optional().default(1),
+    pageSize: z12.number().min(1).max(100).optional().default(20)
   }).parse(raw)).query(async ({ input }) => {
     const { getStandardsByCategory: getStandardsByCategory2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
     return await getStandardsByCategory2(input.categorySlug, input.page, input.pageSize);
   }),
   // 搜索产品
-  search: publicProcedure.input((raw) => z14.object({
-    query: z14.string().min(1),
-    page: z14.number().min(1).optional().default(1),
-    pageSize: z14.number().min(1).max(100).optional().default(20),
-    categorySlug: z14.string().optional()
+  search: publicProcedure.input((raw) => z12.object({
+    query: z12.string().min(1),
+    page: z12.number().min(1).optional().default(1),
+    pageSize: z12.number().min(1).max(100).optional().default(20),
+    categorySlug: z12.string().optional()
   }).parse(raw)).query(async ({ input }) => {
     const { searchStandardsProducts: searchStandardsProducts2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
     return await searchStandardsProducts2(input.query, input.page, input.pageSize, input.categorySlug);
   }),
   // 获取产品详情（by slug）
-  getBySlug: publicProcedure.input((raw) => z14.string().parse(raw)).query(async ({ input }) => {
+  getBySlug: publicProcedure.input((raw) => z12.string().parse(raw)).query(async ({ input }) => {
     const { getStandardsProductBySlug: getStandardsProductBySlug2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
     return await getStandardsProductBySlug2(input);
   }),
   // 获取相关产品
-  getRelated: publicProcedure.input((raw) => z14.object({
-    categorySlug: z14.string(),
-    excludeId: z14.number(),
-    limit: z14.number().optional().default(6)
+  getRelated: publicProcedure.input((raw) => z12.object({
+    categorySlug: z12.string(),
+    excludeId: z12.number(),
+    limit: z12.number().optional().default(6)
   }).parse(raw)).query(async ({ input }) => {
     const { getRelatedStandardsProducts: getRelatedStandardsProducts2 } = await Promise.resolve().then(() => (init_db_standards(), db_standards_exports));
     return await getRelatedStandardsProducts2(input.categorySlug, input.excludeId, input.limit);
@@ -5362,36 +5229,54 @@ var appRouter = router({
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { productsListQuery: productsListQuery2 } = await Promise.resolve().then(() => (init_products_list_new(), products_list_new_exports));
       const db = await getDb2();
+      if (!db) throw new Error("Database not available");
       return await productsListQuery2(input, db);
     }),
+    getBrandStats: publicProcedure.input((raw) => z14.object({ categoryId: z14.number().optional() }).parse(raw)).query(async ({ input }) => {
+      const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+      const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
+      const { and: and5, eq: eq13, sql: sql6 } = await import("drizzle-orm");
+      const db = await getDb2();
+      if (!db) return {};
+      const conditions = [eq13(products2.status, "active")];
+      if (input.categoryId) {
+        conditions.push(sql6`${products2.id} IN (SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`);
+      }
+      const rows = await db.select({ brand: products2.brand, count: sql6`COUNT(*)` }).from(products2).where(and5(...conditions)).groupBy(products2.brand);
+      return Object.fromEntries(
+        rows.filter((row) => Boolean(row.brand)).map((row) => [row.brand, Number(row.count)])
+      );
+    }),
     getByIds: publicProcedure.input((raw) => {
-      return z16.object({
-        productIds: z16.array(z16.number())
+      return z14.object({
+        productIds: z14.array(z14.number())
       }).parse(raw);
     }).query(async ({ input }) => {
       return await getProductsByIds(input.productIds);
     }),
     getBySlug: publicProcedure.input((raw) => {
-      return z16.string().parse(raw);
+      return z14.string().parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14 } = await import("drizzle-orm");
+      const { eq: eq13 } = await import("drizzle-orm");
       const db = await getDb2();
-      const result = await db.select().from(products2).where(eq14(products2.slug, input)).limit(1);
+      if (!db) throw new Error("Database not available");
+      const result = await db.select().from(products2).where(eq13(products2.slug, input)).limit(1);
       return result[0] || null;
     }),
     getRelated: publicProcedure.input((raw) => {
-      return z16.object({
-        productId: z16.string(),
-        limit: z16.number().optional().default(6)
+      return z14.object({
+        productId: z14.string(),
+        limit: z14.number().optional().default(6)
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { products: products2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14, and: and5, or: or2, ne, sql: sql6 } = await import("drizzle-orm");
+      const { eq: eq13, and: and5, or: or2, ne, sql: sql6 } = await import("drizzle-orm");
       const db = await getDb2();
-      const currentProduct = await db.select().from(products2).where(eq14(products2.productId, input.productId)).limit(1);
+      if (!db) throw new Error("Database not available");
+      const currentProduct = await db.select().from(products2).where(eq13(products2.productId, input.productId)).limit(1);
       if (!currentProduct || currentProduct.length === 0) {
         return [];
       }
@@ -5400,14 +5285,14 @@ var appRouter = router({
         and5(
           ne(products2.id, product.id),
           // Exclude current product
-          eq14(products2.status, "active"),
+          eq13(products2.status, "active"),
           // Only active products
           or2(
-            eq14(products2.brand, product.brand),
+            eq13(products2.brand, product.brand),
             // Same brand
-            eq14(products2.phaseType, product.phaseType),
+            product.phaseType ? eq13(products2.phaseType, product.phaseType) : void 0,
             // Same phase type
-            eq14(products2.usp, product.usp),
+            product.usp ? eq13(products2.usp, product.usp) : void 0,
             // Same USP
             // Similar particle size (within 1 µm)
             product.particleSize ? sql6`ABS(${products2.particleSize} - ${product.particleSize}) <= 1` : void 0
@@ -5420,20 +5305,21 @@ var appRouter = router({
   // Customer messages routes
   messages: router({
     list: publicProcedure.input((raw) => {
-      return z16.object({
-        status: z16.enum(["new", "read", "replied", "closed", "all"]).optional().default("all"),
-        page: z16.number().optional().default(1),
-        pageSize: z16.number().optional().default(20),
-        search: z16.string().optional()
+      return z14.object({
+        status: z14.enum(["new", "read", "replied", "closed", "all"]).optional().default("all"),
+        page: z14.number().optional().default(1),
+        pageSize: z14.number().optional().default(20),
+        search: z14.string().optional()
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14, desc: desc4, or: or2, sql: sql6, and: and5 } = await import("drizzle-orm");
+      const { eq: eq13, desc: desc4, or: or2, sql: sql6, and: and5 } = await import("drizzle-orm");
       const db = await getDb2();
+      if (!db) throw new Error("Database not available");
       const conditions = [];
       if (input.status !== "all") {
-        conditions.push(eq14(customerMessages2.status, input.status));
+        conditions.push(eq13(customerMessages2.status, input.status));
       }
       if (input.search) {
         const searchTerm = `%${input.search}%`;
@@ -5457,23 +5343,25 @@ var appRouter = router({
       };
     }),
     updateStatus: publicProcedure.input((raw) => {
-      return z16.object({
-        id: z16.number(),
-        status: z16.enum(["new", "read", "replied", "closed"])
+      return z14.object({
+        id: z14.number(),
+        status: z14.enum(["new", "read", "replied", "closed"])
       }).parse(raw);
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14 } = await import("drizzle-orm");
+      const { eq: eq13 } = await import("drizzle-orm");
       const db = await getDb2();
-      await db.update(customerMessages2).set({ status: input.status }).where(eq14(customerMessages2.id, input.id));
+      if (!db) throw new Error("Database not available");
+      await db.update(customerMessages2).set({ status: input.status }).where(eq13(customerMessages2.id, input.id));
       return { success: true };
     }),
     getStats: publicProcedure.query(async () => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14, sql: sql6 } = await import("drizzle-orm");
+      const { eq: eq13, sql: sql6 } = await import("drizzle-orm");
       const db = await getDb2();
+      if (!db) throw new Error("Database not available");
       const stats = await db.select({
         status: customerMessages2.status,
         count: sql6`count(*)`
@@ -5492,20 +5380,21 @@ var appRouter = router({
       return statsMap;
     }),
     create: publicProcedure.input((raw) => {
-      return z16.object({
-        type: z16.enum(["inquiry", "message", "quote_request"]).default("message"),
-        name: z16.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
-        email: z16.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
-        company: z16.string().optional(),
-        phone: z16.string().optional(),
-        productId: z16.string().optional(),
-        productName: z16.string().optional(),
-        message: z16.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
+      return z14.object({
+        type: z14.enum(["inquiry", "message", "quote_request"]).default("message"),
+        name: z14.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(100, "\u59D3\u540D\u6700\u591A 100 \u4E2A\u5B57\u7B26"),
+        email: z14.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+        company: z14.string().optional(),
+        phone: z14.string().optional(),
+        productId: z14.string().optional(),
+        productName: z14.string().optional(),
+        message: z14.string().min(10, "\u7559\u8A00\u81F3\u5C11 10 \u4E2A\u5B57\u7B26").max(1e3, "\u7559\u8A00\u6700\u591A 1000 \u4E2A\u5B57\u7B26")
       }).parse(raw);
     }).mutation(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { customerMessages: customerMessages2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const db = await getDb2();
+      if (!db) throw new Error("Database not available");
       const result = await db.insert(customerMessages2).values({
         type: input.type || "message",
         name: input.name,
@@ -5541,53 +5430,18 @@ var appRouter = router({
   // Inquiry routes
   inquiries: router({
     create: publicProcedure.input((raw) => {
-      return z16.object({
-        productIds: z16.array(z16.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
-        userInfo: z16.object({
-          name: z16.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(50, "\u59D3\u540D\u6700\u591A 50 \u4E2A\u5B57\u7B26"),
-          email: z16.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
-          company: z16.string().optional(),
-          phone: z16.string().optional(),
-          message: z16.string().max(500, "\u7559\u8A00\u6700\u591A 500 \u4E2A\u5B57\u7B26").optional()
+      return z14.object({
+        productIds: z14.array(z14.number()).min(1, "\u8BF7\u9009\u62E9\u81F3\u5C11\u4E00\u4E2A\u4EA7\u54C1"),
+        userInfo: z14.object({
+          name: z14.string().min(2, "\u59D3\u540D\u81F3\u5C11 2 \u4E2A\u5B57\u7B26").max(50, "\u59D3\u540D\u6700\u591A 50 \u4E2A\u5B57\u7B26"),
+          email: z14.string().email("\u8BF7\u8F93\u5165\u6709\u6548\u7684\u90AE\u7BB1\u5730\u5740"),
+          company: z14.string().optional(),
+          phone: z14.string().optional(),
+          message: z14.string().max(500, "\u7559\u8A00\u6700\u591A 500 \u4E2A\u5B57\u7B26").optional()
         })
       }).parse(raw);
-    }).mutation(async ({ input }) => {
-      const inquiryNumber = generateInquiryNumber();
-      const products2 = await getProductsByIds(input.productIds);
-      if (products2.length === 0) {
-        throw new Error("\u672A\u627E\u5230\u4EA7\u54C1\u4FE1\u606F");
-      }
-      const inquiryId = await createInquiry({
-        inquiryNumber,
-        userName: input.userInfo.name,
-        userEmail: input.userInfo.email,
-        userCompany: input.userInfo.company,
-        userPhone: input.userInfo.phone,
-        userMessage: input.userInfo.message
-      });
-      const items = products2.map((p) => ({
-        productId: p.id,
-        partNumber: p.partNumber,
-        productName: p.name,
-        brand: p.brand
-      }));
-      await createInquiryItems(inquiryId, items);
-      const emailSent = await sendInquiryEmail({
-        inquiryNumber,
-        userName: input.userInfo.name,
-        userEmail: input.userInfo.email,
-        userMessage: input.userInfo.message,
-        products: products2.map((p) => ({
-          name: p.name,
-          partNumber: p.partNumber
-        })),
-        createdAt: /* @__PURE__ */ new Date()
-      });
-      return {
-        success: true,
-        inquiryNumber,
-        message: emailSent ? "\u8BE2\u4EF7\u5DF2\u63D0\u4EA4\uFF0C\u786E\u8BA4\u90AE\u4EF6\u5DF2\u53D1\u9001\u81F3\u60A8\u7684\u90AE\u7BB1" : "\u8BE2\u4EF7\u5DF2\u63D0\u4EA4\uFF0C\u4F46\u90AE\u4EF6\u53D1\u9001\u5931\u8D25\uFF0C\u8BF7\u8BB0\u5F55\u60A8\u7684\u8BE2\u4EF7\u5355\u53F7"
-      };
+    }).mutation(async () => {
+      throw new Error("Direct inquiry creation requires an authenticated account. Use the product inquiry form instead.");
     })
   }),
   // USP Standards routes
@@ -5597,9 +5451,9 @@ var appRouter = router({
       return await getAllUSPStandardsWithProductCount2();
     }),
     getByCode: publicProcedure.input((raw) => {
-      return z16.object({
-        code: z16.string(),
-        productLimit: z16.number().optional().default(50)
+      return z14.object({
+        code: z14.string(),
+        productLimit: z14.number().optional().default(50)
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getUSPStandardWithProducts: getUSPStandardWithProducts2 } = await Promise.resolve().then(() => (init_db_usp(), db_usp_exports));
@@ -5613,11 +5467,11 @@ var appRouter = router({
   // Resources routes
   resources: router({
     list: publicProcedure.input((raw) => {
-      return z16.object({
-        page: z16.number().min(1).optional(),
-        pageSize: z16.number().min(1).max(100).optional(),
-        search: z16.string().optional(),
-        category: z16.string().optional()
+      return z14.object({
+        page: z14.number().min(1).optional(),
+        pageSize: z14.number().min(1).max(100).optional(),
+        search: z14.string().optional(),
+        category: z14.string().optional()
       }).optional().parse(raw);
     }).query(async ({ input }) => {
       const page = input?.page || 1;
@@ -5628,7 +5482,7 @@ var appRouter = router({
         return { items: [], total: 0, page, pageSize };
       }
       const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14, like: like2, and: and5, desc: desc4 } = await import("drizzle-orm");
+      const { eq: eq13, like: like2, and: and5, desc: desc4 } = await import("drizzle-orm");
       const conditions = [];
       if (input?.search) {
         conditions.push(
@@ -5636,7 +5490,7 @@ var appRouter = router({
         );
       }
       if (input?.category) {
-        conditions.push(eq14(resources2.category, input.category));
+        conditions.push(eq13(resources2.category, input.category));
       }
       const whereClause = conditions.length > 0 ? and5(...conditions) : void 0;
       const allResources = await db.select().from(resources2).where(whereClause);
@@ -5651,8 +5505,8 @@ var appRouter = router({
       };
     }),
     getBySlug: publicProcedure.input((raw) => {
-      return z16.object({
-        slug: z16.string()
+      return z14.object({
+        slug: z14.string()
       }).parse(raw);
     }).query(async ({ input }) => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
@@ -5661,8 +5515,8 @@ var appRouter = router({
         return null;
       }
       const { resources: resources2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14 } = await import("drizzle-orm");
-      const results = await db.select().from(resources2).where(eq14(resources2.slug, input.slug)).limit(1);
+      const { eq: eq13 } = await import("drizzle-orm");
+      const results = await db.select().from(resources2).where(eq13(resources2.slug, input.slug)).limit(1);
       return results.length > 0 ? results[0] : null;
     }),
     listCategories: publicProcedure.query(async () => {
@@ -5684,14 +5538,16 @@ var appRouter = router({
       const { categories: categories2 } = await Promise.resolve().then(() => (init_schema(), schema_exports));
       const { asc } = await import("drizzle-orm");
       const db = await getDb2();
+      if (!db) throw new Error("Database not available");
       const result = await db.select().from(categories2).orderBy(asc(categories2.parentId), asc(categories2.displayOrder));
       return result;
     }),
     getWithProductCount: publicProcedure.query(async () => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const db = await getDb2();
-      const [rows] = await db.execute(`
-          SELECT
+      if (!db) throw new Error("Database not available");
+      const result = await db.execute(`
+          SELECT 
             c.id,
             c.name,
             c.name_en as nameEn,
@@ -5710,7 +5566,7 @@ var appRouter = router({
           GROUP BY c.id, c.name, c.name_en, c.slug, c.parent_id, c.level, c.display_order, c.is_visible, c.description, c.icon, c.created_at, c.updated_at
           ORDER BY c.parent_id, c.display_order
         `);
-      return rows;
+      return Array.isArray(result[0]) ? result[0] : [];
     })
   }),
   // Brand routes
@@ -5718,26 +5574,23 @@ var appRouter = router({
     getWithProductCount: publicProcedure.query(async () => {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const db = await getDb2();
-      const [rows] = await db.execute(`
-          SELECT
+      if (!db) throw new Error("Database not available");
+      const result = await db.execute(`
+          SELECT 
             brand,
             COUNT(*) as productCount
           FROM products
           WHERE brand IS NOT NULL AND brand != '' AND status = 'active'
           GROUP BY brand
-          ORDER BY productCount DESC, brand ASC
-        `);
-      return rows;
+          ORDER BY productCount DESC, brand ASC        `);
+      return Array.isArray(result[0]) ? result[0] : [];
     })
   }),
-  // Seed API for importing resources
-  seed: seedRouter,
+  // Seed APII for importing resources
   // Admin API for data management
   admin: adminRouter,
   // List categories API
   listCategories: listCategoriesRouter,
-  // Add GlycoWorks products (simple version)
-  addGlycoWorksSimple: addGlycoWorksSimpleRouter,
   // Update product category
   updateProductCategory: updateProductCategoryRouter,
   // Update GlycoWorks using mysql2
@@ -5932,22 +5785,136 @@ var CATEGORY_LANDING_PROFILES = {
     ]
   },
   "kinetex-pfp-columns": {
-    name: "Phenomenex Kinetex PFP Columns",
+    name: "Phenomenex Kinetex F5 / PFP (USP L43) Columns",
     catalogSlug: "kinetex-pfp-columns",
     catalogHref: "/products?search=PFP",
-    eyebrow: "PFP / USP L43 Reversed-Phase Column Selection",
-    heading: "Phenomenex Kinetex PFP Columns for Reversed-Phase HPLC Method Evaluation",
-    summary: "Explore ROWELL's currently listed Kinetex PFP HPLC columns and compare verified dimensions, particle size, pore size, and PFP (USP L43) chemistry for your method review.",
-    overview: "Kinetex PFP columns use pentafluorophenyl stationary-phase chemistry in reversed-phase HPLC. A PFP option can be evaluated when a method team is reviewing selectivity choices alongside conventional reversed-phase chemistries. Product selection should begin with the analytical objective, sample matrix, and method conditions, then compare the available particle size, internal diameter, and column length with the instrument and method requirements.",
+    eyebrow: "Kinetex F5 / PFP (USP L43) Column Selection",
+    heading: "Phenomenex Kinetex F5 / PFP (USP L43) Columns for HPLC Method Evaluation",
+    summary: "Explore ROWELL's currently listed Kinetex F5 / PFP HPLC columns and compare listed dimensions, particle size, pore size, and pentafluorophenyl-propyl (USP L43) chemistry for method review.",
+    overview: "Phenomenex identifies Kinetex F5 as a pentafluorophenyl-propyl, USP L43 core-shell HPLC column family. It can be considered when a method team is reviewing stationary-phase selectivity alongside conventional reversed-phase chemistries. Product selection should begin with the analytical objective, sample matrix, and method conditions, then compare the listed particle size, internal diameter, and column length with instrument and method requirements.",
     selectionPoints: [
-      "Confirm that a PFP selectivity evaluation is appropriate for the analytes and the intended method objective before making a substitution.",
+      "Confirm that a Kinetex F5 / PFP (USP L43) selectivity evaluation is appropriate for the analytes and intended method objective before making a substitution.",
       "Compare particle size, pore size, internal diameter, and column length with the current method and instrument pressure limits.",
       "Use the exact part number when reviewing manufacturer documentation, preparing a method evaluation, or requesting a quote."
     ],
     faq: [
       { question: "What is a PFP HPLC stationary phase?", answer: "PFP refers to pentafluorophenyl stationary-phase chemistry. It is used in reversed-phase LC and can be evaluated when method development requires a different selectivity option from a conventional alkyl phase." },
-      { question: "What should be compared when selecting a Kinetex PFP column?", answer: "Compare the intended stationary-phase chemistry, particle size, pore size, internal diameter, and column length with the method objective, sample matrix, and instrument operating limits." },
+      { question: "What should be compared when selecting a Kinetex F5 / PFP column?", answer: "Compare the intended stationary-phase chemistry, particle size, pore size, internal diameter, and column length with the method objective, sample matrix, and instrument operating limits." },
       { question: "Can a PFP column replace a C18 column without method work?", answer: "A change of stationary-phase chemistry can change selectivity. Any replacement should be evaluated using the actual method conditions and the method\u2019s suitability criteria." }
+    ]
+  },
+  "chiral-hplc-columns": {
+    name: "Chiral HPLC Columns",
+    catalogSlug: "chiral-hplc-columns",
+    catalogHref: "/products?search=chiral",
+    eyebrow: "Chiral Separation Column Selection",
+    heading: "Chiral HPLC Columns for Enantioselective Method Development",
+    summary: "Browse ROWELL's current chiral chromatography column listings and compare manufacturer-stated dimensions, particle size, stationary-phase format, and method compatibility.",
+    overview: "Chiral column selection should begin with the exact analyte, the intended separation mode, and the manufacturer documentation for the selected part number. The active catalog includes chiral column families from multiple brands; use the catalog to compare current listings before requesting a quote or planning a method evaluation.",
+    selectionPoints: [
+      "Use the exact product part number and manufacturer documentation when reviewing a chiral stationary phase.",
+      "Check whether the intended HPLC, normal-phase, reversed-phase, or SFC conditions are supported for the selected column.",
+      "Confirm dimensions, particle size, solvent compatibility, and method suitability with the actual analytical workflow."
+    ],
+    faq: [
+      { question: "How should I start selecting a chiral HPLC column?", answer: "Start with the analyte, the separation objective, and manufacturer guidance for the intended method. Chiral selectivity should be verified experimentally under the planned conditions." },
+      { question: "Can a chiral column be substituted without method work?", answer: "A change of chiral stationary phase, dimensions, or operating conditions can affect selectivity. Any substitution should be evaluated against the method\u2019s suitability criteria." },
+      { question: "Which product details should be confirmed before requesting a quote?", answer: "Confirm the exact part number, dimensions, particle size, technique compatibility, and the manufacturer documentation relevant to the planned method." }
+    ]
+  },
+  "hilic-hplc-columns": {
+    name: "HILIC HPLC Columns",
+    catalogSlug: "hilic-hplc-columns",
+    catalogHref: "/products?search=HILIC",
+    eyebrow: "Polar Analyte Retention Selection",
+    heading: "HILIC HPLC Columns for Polar Compound Method Evaluation",
+    summary: "Browse ROWELL's current HILIC column listings and compare manufacturer-stated stationary phase, dimensions, particle size, and method compatibility for polar-analyte workflows.",
+    overview: "HILIC methods are commonly evaluated when a method requires a different retention mechanism for polar analytes. Product selection should be based on the exact stationary phase, sample chemistry, mobile-phase conditions, and manufacturer documentation for the selected part number.",
+    selectionPoints: [
+      "Review the listed stationary phase and manufacturer method guidance before transferring or developing a HILIC method.",
+      "Compare column dimensions and particle size with instrument pressure limits and the intended method scale.",
+      "Confirm equilibration, sample-solvent, and mobile-phase requirements using the selected manufacturer\u2019s documentation."
+    ],
+    faq: [
+      { question: "When can a HILIC column be evaluated?", answer: "HILIC can be evaluated when a method needs a polar-analyte retention mechanism that differs from conventional reversed-phase conditions. Suitability depends on the analyte and method conditions." },
+      { question: "Can all HILIC columns use the same method conditions?", answer: "No. Stationary-phase chemistry and manufacturer guidance differ by product. Check the exact part number before selecting solvents, additives, or operating conditions." },
+      { question: "What should I compare in the active catalog?", answer: "Compare the listed phase, dimensions, particle size, brand documentation, and method compatibility for the current product listing." }
+    ]
+  },
+  "c8-hplc-columns": {
+    name: "C8 HPLC Columns",
+    catalogSlug: "c8-hplc-columns",
+    catalogHref: "/products?search=C8",
+    eyebrow: "Reversed-Phase Selectivity Selection",
+    heading: "C8 HPLC Columns for Reversed-Phase Method Development",
+    summary: "Explore ROWELL's current C8 HPLC column listings and compare manufacturer-stated dimensions, particle size, pore size, and method compatibility.",
+    overview: "C8 is a reversed-phase stationary-phase family that can be evaluated alongside other alkyl phases during method development. The correct choice depends on the analyte, mobile phase, separation objective, and the documented limits for the exact column part number.",
+    selectionPoints: [
+      "Compare the selected C8 phase with the actual method objective rather than assuming equivalence with another phase.",
+      "Check column length, internal diameter, particle size, and pore size against the current method and instrument limits.",
+      "Use manufacturer documentation to confirm applicable solvent, pH, and pressure guidance for the exact part number."
+    ],
+    faq: [
+      { question: "When might a C8 phase be evaluated?", answer: "A C8 phase can be evaluated as a reversed-phase option when method development requires a different retention profile from the current column. The outcome should be confirmed experimentally." },
+      { question: "Is every C8 column interchangeable?", answer: "No. Bonding chemistry, hardware, dimensions, particle size, and manufacturer limits can differ. Compare the exact products before making a substitution." },
+      { question: "What information is needed for a C8 quote?", answer: "Provide the desired part number where possible, or the required phase, dimensions, particle size, and intended method conditions." }
+    ]
+  },
+  "phenyl-hplc-columns": {
+    name: "Phenyl HPLC Columns",
+    catalogSlug: "phenyl-hplc-columns",
+    catalogHref: "/products?search=phenyl",
+    eyebrow: "Alternative Reversed-Phase Selectivity",
+    heading: "Phenyl HPLC Columns for Alternative Selectivity Evaluation",
+    summary: "Browse ROWELL's current phenyl and phenyl-hexyl HPLC column listings and compare manufacturer-stated chemistry, dimensions, particle size, and method compatibility.",
+    overview: "Phenyl-type stationary phases can be evaluated when a method team is considering an alternative selectivity option. Selection should be based on the exact product chemistry, the analyte and matrix, and manufacturer documentation rather than a general assumption about performance.",
+    selectionPoints: [
+      "Identify the exact phenyl or phenyl-hexyl chemistry listed for the candidate product.",
+      "Compare dimensions and particle size with the method objective and instrument operating limits.",
+      "Verify the selected product\u2019s documented operating conditions before changing a validated method."
+    ],
+    faq: [
+      { question: "Why consider a phenyl HPLC column?", answer: "A phenyl-type phase can be evaluated when method development calls for an alternative selectivity option. The appropriate choice depends on the analyte and actual method data." },
+      { question: "Are phenyl and phenyl-hexyl phases identical?", answer: "No. Product chemistry and manufacturer specifications can differ. Review the exact product documentation before treating any phases as interchangeable." },
+      { question: "How should a phenyl-column change be assessed?", answer: "Evaluate retention, selectivity, resolution, and method suitability using the actual operating conditions and predefined acceptance criteria." }
+    ]
+  },
+  "kinetex-hplc-columns": {
+    name: "Phenomenex Kinetex HPLC Columns",
+    catalogSlug: "kinetex-hplc-columns",
+    catalogHref: "/products?search=Kinetex",
+    eyebrow: "Kinetex Core-Shell LC Column Selection",
+    heading: "Phenomenex Kinetex HPLC Columns for Method Evaluation",
+    summary: "Browse ROWELL's current Phenomenex Kinetex column listings and compare the listed phase, dimensions, particle size, and manufacturer documentation for your method.",
+    overview: "Phenomenex describes the Kinetex family as core-shell LC columns with multiple stationary-phase options. ROWELL's active catalog includes currently listed Kinetex products; review each exact part number and the associated manufacturer documentation before selecting a phase or planning method work.",
+    selectionPoints: [
+      "Use the active catalog to identify the exact Kinetex product and compare its listed phase, dimensions, and particle size.",
+      "Confirm compatibility with the instrument, mobile phase, and validated method before changing columns.",
+      "Treat each stationary phase as a distinct method-development option rather than assuming all Kinetex variants are interchangeable."
+    ],
+    faq: [
+      { question: "What is the Kinetex column family?", answer: "Phenomenex describes Kinetex as a core-shell LC column family with multiple stationary-phase options. Review the exact product documentation for the selected part number." },
+      { question: "Does this page list every Kinetex phase?", answer: "The catalog link shows ROWELL's current active listings. Availability and documented specifications should be checked for each exact part number." },
+      { question: "Can a Kinetex phase be substituted directly for another phase?", answer: "A phase change can alter chromatographic behavior. Evaluate substitutions under the actual method conditions and method-suitability requirements." }
+    ]
+  },
+  "agilent-poroshell-columns": {
+    name: "Agilent InfinityLab Poroshell HPLC Columns",
+    catalogSlug: "agilent-poroshell-columns",
+    catalogHref: "/products?search=Poroshell",
+    eyebrow: "Poroshell Core-Shell Column Selection",
+    heading: "Agilent InfinityLab Poroshell HPLC Columns",
+    summary: "Explore ROWELL's current Agilent InfinityLab Poroshell column listings and compare manufacturer-stated chemistry, dimensions, particle size, and method compatibility.",
+    overview: "Agilent describes the InfinityLab Poroshell 120 family as superficially porous LC columns with multiple chemistries and particle sizes. Use the active catalog to identify current listings, then confirm the exact product documentation before selecting a column for a method.",
+    selectionPoints: [
+      "Compare the exact listed Poroshell chemistry and dimensions with the method objective and existing instrument configuration.",
+      "Review the manufacturer documentation for the selected part number before choosing operating conditions.",
+      "Verify a method transfer or substitution using the method\u2019s own suitability criteria."
+    ],
+    faq: [
+      { question: "What is the InfinityLab Poroshell 120 family?", answer: "Agilent describes Poroshell 120 as a superficially porous LC column family with multiple chemistries and particle sizes. Specifications depend on the exact part number." },
+      { question: "Can Poroshell products support different LC methods?", answer: "The family includes multiple chemistries, but suitability depends on the selected product, analyte, mobile phase, and method requirements." },
+      { question: "How should I compare current Poroshell listings?", answer: "Compare the exact phase, dimensions, particle size, and manufacturer documentation with the existing method and instrument limits." }
     ]
   },
   "spe-cartridges": {
@@ -6022,8 +5989,8 @@ async function injectArticleSeoMetaTags(template, req, overridePath) {
     const SITE_TITLE = "ROWELL";
     const SITE_LOGO = "https://www.rowellhplc.com/logo.png";
     const title = article.title || SITE_TITLE;
-    const description = article.metaDescription || article.excerpt || "";
-    const image = article.coverImage ? toAbsoluteUrl(article.coverImage) : SITE_LOGO;
+    const description = article.excerpt || "";
+    const image = SITE_LOGO;
     const articleText = (article.content || description).replace(/```[\s\S]*?```/g, " ").replace(/!\[[^\]]*\]\([^)]*\)/g, " ").replace(/\[([^\]]+)\]\([^)]*\)/g, "$1").replace(/<[^>]*>/g, " ").replace(/[#>*_`]/g, " ").replace(/\s+/g, " ").trim().slice(0, 1800);
     const internalLinkMatch = (article.content || "").match(
       /\[([^\]]{1,120})\]\((\/products(?:\?[A-Za-z0-9%=&._-]+)?)\)/
@@ -6067,21 +6034,21 @@ async function injectArticleSeoMetaTags(template, req, overridePath) {
     <title>${escapeHtml(title)} | ${SITE_TITLE}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${fullUrl}" />
-
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="${fullUrl}" />
     <meta property="og:title" content="${escapeHtml(title)}" />
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:image" content="${image}" />
-
+    
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="${fullUrl}" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
     <meta name="twitter:image" content="${image}" />
-
+    
     <!-- Article metadata -->
     <meta property="article:published_time" content="${article.publishedAt || ""}" />
     <meta property="article:author" content="${article.author || "ROWELL Team"}" />
@@ -6129,17 +6096,24 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     const brandPrefix = product.brand || "";
     const cleanName = brandPrefix && rawName.toLowerCase().startsWith(brandPrefix.toLowerCase()) ? rawName.slice(brandPrefix.length).replace(/^[\s|,\-]+/, "") : rawName;
     const title = product.metaTitle || `${brandPrefix} ${cleanName} ${product.partNumber || ""} | ROWELL`.trim();
-    const description = product.metaDescription || `Buy ${brandPrefix} ${cleanName} (${product.partNumber || ""}) at ROWELL. Global shipping available. Request a quote today.`.trim();
+    const description = product.metaDescription || `${brandPrefix} ${cleanName} (${product.partNumber || ""}). Review catalog specifications and submit an inquiry to confirm product details for your application.`.trim();
     const brandFolder = (product.brand || "").replace(/\s+/g, "");
     const rawImageUrl = product.imageUrl || `/product-images/${brandFolder}/${product.partNumber}.jpg`;
     const imageUrl = toAbsoluteUrl(rawImageUrl);
+    const hasCatalogValue = (value) => {
+      if (typeof value !== "string") return false;
+      const normalized = value.trim();
+      return normalized.length > 0 && !/^(?:n\/?a|n\/|not available|none|null|-)$/i.test(normalized);
+    };
+    const isCartridgeVolume = hasCatalogValue(product.columnLength) && /\b(?:spe|cartridge)\b/i.test(`${product.productType || ""} ${product.category || ""} ${product.name || ""}`) && /^\d+(?:\.\d+)?\s*mL$/i.test(product.columnLength.trim());
+    const isGcCapillary = hasCatalogValue(product.columnLength) && /^G\d+$/i.test(String(product.usp || "").trim()) && /^\d+(?:\.\d+)?\s*m$/i.test(product.columnLength.trim());
     const specsRows = [
-      product.particleSize ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : "",
-      product.poreSize ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : "",
-      product.columnLength ? `<tr><td>Column Length</td><td>${escapeHtml(product.columnLength)}</td></tr>` : "",
-      product.innerDiameter ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : "",
-      product.usp ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : "",
-      product.phaseType ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : ""
+      hasCatalogValue(product.particleSize) ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : "",
+      hasCatalogValue(product.poreSize) ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : "",
+      hasCatalogValue(product.columnLength) ? `<tr><td>${isCartridgeVolume ? "Cartridge Volume" : isGcCapillary ? "GC Capillary Length" : "Column Length"}</td><td>${escapeHtml(product.columnLength)}</td></tr>` : "",
+      hasCatalogValue(product.innerDiameter) ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : "",
+      hasCatalogValue(product.usp) ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : "",
+      hasCatalogValue(product.phaseType) ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : ""
     ].filter(Boolean).join("");
     const contentSkeleton = `
     <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
@@ -6150,7 +6124,7 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
       ${product.name ? `<p>Product Name: ${escapeHtml(product.name)}</p>` : ""}
       ${product.description ? `<p>${escapeHtml((product.description || "").substring(0, 500))}</p>` : ""}
       ${specsRows ? `<table><tbody>${specsRows}</tbody></table>` : ""}
-      <p>Available at ROWELL. Global shipping. Request a quote for competitive pricing.</p>
+      <p>Use the inquiry form to confirm current product details and suitability for your application.</p>
     </div>`;
     const structuredData = {
       "@context": "https://schema.org/",
@@ -6164,18 +6138,10 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
         "name": product.brand || "ROWELL"
       },
       "image": imageUrl,
-      "url": fullUrl,
-      // ROWELL is a request-for-quote B2B catalog. Do not publish a fabricated
-      // retail price, shipping promise, or return policy in structured data.
-      "offers": {
-        "@type": "Offer",
-        "url": fullUrl,
-        "availability": "https://schema.org/InStock",
-        "seller": {
-          "@type": "Organization",
-          "name": "ROWELL"
-        }
-      }
+      "url": fullUrl
+      // ROWELL is a request-for-quote B2B catalog. No Offer is emitted because
+      // current availability, price, shipping, and return terms are confirmed
+      // only in the context of each inquiry.
     };
     const productBreadcrumbData = {
       "@context": "https://schema.org",
@@ -6190,7 +6156,7 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     <title>${escapeHtml(title)}</title>
     <meta name="description" content="${escapeHtml(description)}" />
     <link rel="canonical" href="${fullUrl}" />
-
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="product" />
     <meta property="og:url" content="${fullUrl}" />
@@ -6198,19 +6164,18 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
     <meta property="og:description" content="${escapeHtml(description)}" />
     <meta property="og:image" content="${imageUrl}" />
     <meta property="og:site_name" content="ROWELL" />
-
+    
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="${fullUrl}" />
     <meta name="twitter:title" content="${escapeHtml(title)}" />
     <meta name="twitter:description" content="${escapeHtml(description)}" />
     <meta name="twitter:image" content="${imageUrl}" />
-
+    
     <!-- Product specific -->
     <meta property="product:brand" content="${escapeHtml(product.brand || "")}" />
-    <meta property="product:availability" content="in stock" />
     <meta property="product:condition" content="new" />
-
+    
     <!-- JSON-LD Structured Data for product discovery -->
     <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>
     <script type="application/ld+json">${serializeJsonLd(productBreadcrumbData)}</script>`;
@@ -6232,9 +6197,9 @@ async function injectProductSeoMetaTags(template, req, overridePath) {
 }
 var STATIC_PAGE_SEO = {
   "/": {
-    title: "ROWELL | Global Chromatography Consumables Supplier",
-    description: "ROWELL supplies HPLC and GC columns, chromatography consumables, and technical support to laboratories worldwide.",
-    heading: "Global Chromatography Consumables for Analytical Laboratories",
+    title: "ROWELL | Chromatography Consumables Catalog",
+    description: "Browse HPLC columns, GC columns, and chromatography consumables and submit product inquiries for analytical laboratory applications.",
+    heading: "Chromatography Consumables for Analytical Laboratories",
     type: "WebSite"
   },
   "/products": {
@@ -6652,6 +6617,12 @@ var STATIC_PAGES = [
   { path: "/categories/guard-columns", priority: 0.9, changefreq: "weekly" },
   { path: "/categories/gc-columns", priority: 0.9, changefreq: "weekly" },
   { path: "/categories/kinetex-pfp-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/chiral-hplc-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/hilic-hplc-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/c8-hplc-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/phenyl-hplc-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/kinetex-hplc-columns", priority: 0.8, changefreq: "weekly" },
+  { path: "/categories/agilent-poroshell-columns", priority: 0.8, changefreq: "weekly" },
   { path: "/categories/spe-cartridges", priority: 0.9, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "monthly" },
   { path: "/resources", priority: 0.9, changefreq: "daily" },
@@ -6762,17 +6733,37 @@ async function generateSitemap(req, res) {
 init_db();
 init_schema();
 import { Router } from "express";
-import { eq as eq11, desc as desc3, and as and4, sql as sql4 } from "drizzle-orm";
+import { and as and4, desc as desc3, eq as eq11, isNull, sql as sql4 } from "drizzle-orm";
 var learningCenterRouter2 = Router();
+async function requireDb() {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db;
+}
+var articleCategories = ["application-notes", "technical-guides", "industry-trends", "literature-reviews"];
+var applicationAreas = ["pharmaceutical", "environmental", "food-safety", "biopharmaceutical", "clinical", "chemical"];
+function isArticleCategory(value) {
+  return value !== void 0 && articleCategories.includes(value);
+}
+function isApplicationArea(value) {
+  return value !== void 0 && applicationAreas.includes(value);
+}
+function articleFilters(category, applicationArea) {
+  const conditions = [];
+  if (isArticleCategory(category)) conditions.push(eq11(articles.category, category));
+  if (isApplicationArea(applicationArea)) conditions.push(eq11(articles.applicationArea, applicationArea));
+  return conditions;
+}
 learningCenterRouter2.get("/articles", async (req, res) => {
   try {
-    const db = await getDb();
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 12;
-    const offset = (page - 1) * limit;
-    const category = req.query.category;
-    const applicationArea = req.query.applicationArea;
-    let query = db.select({
+    const db = await requireDb();
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(req.query.limit, 10) || 12));
+    const category = typeof req.query.category === "string" ? req.query.category : void 0;
+    const applicationArea = typeof req.query.applicationArea === "string" ? req.query.applicationArea : void 0;
+    const conditions = articleFilters(category, applicationArea);
+    const whereClause = conditions.length ? and4(...conditions) : void 0;
+    const result = await db.select({
       id: articles.id,
       title: articles.title,
       slug: articles.slug,
@@ -6783,25 +6774,10 @@ learningCenterRouter2.get("/articles", async (req, res) => {
       applicationArea: articles.applicationArea,
       authorId: articles.authorId,
       authorName: authors.fullName
-    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).orderBy(desc3(articles.publishedDate)).limit(limit).offset(offset);
-    if (category) {
-      query = query.where(eq11(articles.category, category));
-    }
-    if (applicationArea) {
-      query = query.where(eq11(articles.applicationArea, applicationArea));
-    }
-    const result = await query;
-    const totalResult = await db.select({ count: sql4`count(*)` }).from(articles);
-    const total = Number(totalResult[0].count);
-    res.json({
-      articles: result,
-      pagination: {
-        page,
-        limit,
-        total,
-        totalPages: Math.ceil(total / limit)
-      }
-    });
+    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).where(whereClause).orderBy(desc3(articles.publishedDate)).limit(limit).offset((page - 1) * limit);
+    const totalResult = await db.select({ count: sql4`count(*)` }).from(articles).where(whereClause);
+    const total = Number(totalResult[0]?.count || 0);
+    res.json({ articles: result, pagination: { page, limit, total, totalPages: Math.ceil(total / limit) } });
   } catch (error) {
     console.error("Error fetching articles:", error);
     res.status(500).json({ error: "Failed to fetch articles" });
@@ -6809,8 +6785,7 @@ learningCenterRouter2.get("/articles", async (req, res) => {
 });
 learningCenterRouter2.get("/articles/:slug", async (req, res) => {
   try {
-    const db = await getDb();
-    const { slug } = req.params;
+    const db = await requireDb();
     const result = await db.select({
       id: articles.id,
       title: articles.title,
@@ -6828,11 +6803,9 @@ learningCenterRouter2.get("/articles/:slug", async (req, res) => {
       authorTitle: authors.title,
       authorBio: authors.biography,
       authorPhoto: authors.photoUrl
-    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).where(eq11(articles.slug, slug)).limit(1);
-    if (result.length === 0) {
-      return res.status(404).json({ error: "Article not found" });
-    }
+    }).from(articles).leftJoin(authors, eq11(articles.authorId, authors.id)).where(eq11(articles.slug, req.params.slug)).limit(1);
     const article = result[0];
+    if (!article) return res.status(404).json({ error: "Article not found" });
     await db.update(articles).set({ viewCount: sql4`${articles.viewCount} + 1` }).where(eq11(articles.id, article.id));
     res.json(article);
   } catch (error) {
@@ -6840,35 +6813,27 @@ learningCenterRouter2.get("/articles/:slug", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch article" });
   }
 });
-learningCenterRouter2.get("/categories", async (req, res) => {
+learningCenterRouter2.get("/categories", async (_req, res) => {
   try {
-    const db = await getDb();
-    const result = await db.select({
-      category: articles.category,
-      count: sql4`count(*)`
-    }).from(articles).groupBy(articles.category);
-    res.json(result);
+    const db = await requireDb();
+    res.json(await db.select({ category: articles.category, count: sql4`count(*)` }).from(articles).groupBy(articles.category));
   } catch (error) {
     console.error("Error fetching categories:", error);
     res.status(500).json({ error: "Failed to fetch categories" });
   }
 });
-learningCenterRouter2.get("/application-areas", async (req, res) => {
+learningCenterRouter2.get("/application-areas", async (_req, res) => {
   try {
-    const db = await getDb();
-    const result = await db.select({
-      applicationArea: articles.applicationArea,
-      count: sql4`count(*)`
-    }).from(articles).groupBy(articles.applicationArea);
-    res.json(result);
+    const db = await requireDb();
+    res.json(await db.select({ applicationArea: articles.applicationArea, count: sql4`count(*)` }).from(articles).groupBy(articles.applicationArea));
   } catch (error) {
     console.error("Error fetching application areas:", error);
     res.status(500).json({ error: "Failed to fetch application areas" });
   }
 });
-learningCenterRouter2.get("/authors", async (req, res) => {
+learningCenterRouter2.get("/authors", async (_req, res) => {
   try {
-    const db = await getDb();
+    const db = await requireDb();
     const result = await db.select({
       id: authors.id,
       name: authors.fullName,
@@ -6886,13 +6851,10 @@ learningCenterRouter2.get("/authors", async (req, res) => {
 });
 learningCenterRouter2.get("/authors/:slug", async (req, res) => {
   try {
-    const db = await getDb();
-    const { slug } = req.params;
-    const result = await db.select().from(authors).where(eq11(authors.slug, slug)).limit(1);
-    if (result.length === 0) {
-      return res.status(404).json({ error: "Author not found" });
-    }
+    const db = await requireDb();
+    const result = await db.select().from(authors).where(eq11(authors.slug, req.params.slug)).limit(1);
     const author = result[0];
+    if (!author) return res.status(404).json({ error: "Author not found" });
     const authorArticles = await db.select({
       id: articles.id,
       title: articles.title,
@@ -6903,18 +6865,15 @@ learningCenterRouter2.get("/authors/:slug", async (req, res) => {
       category: articles.category,
       applicationArea: articles.applicationArea
     }).from(articles).where(eq11(articles.authorId, author.id)).orderBy(desc3(articles.publishedDate));
-    res.json({
-      ...author,
-      articles: authorArticles
-    });
+    res.json({ ...author, articles: authorArticles });
   } catch (error) {
     console.error("Error fetching author:", error);
     res.status(500).json({ error: "Failed to fetch author" });
   }
 });
-learningCenterRouter2.get("/featured", async (req, res) => {
+learningCenterRouter2.get("/featured", async (_req, res) => {
   try {
-    const db = await getDb();
+    const db = await requireDb();
     const result = await db.select({
       id: articles.id,
       title: articles.title,
@@ -6934,12 +6893,11 @@ learningCenterRouter2.get("/featured", async (req, res) => {
 });
 learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
   try {
-    const db = await getDb();
-    const { slug } = req.params;
-    const currentArticle = await db.select({ id: articles.id, category: articles.category }).from(articles).where(eq11(articles.slug, slug)).limit(1);
-    if (currentArticle.length === 0) {
-      return res.status(404).json({ error: "Article not found" });
-    }
+    const db = await requireDb();
+    const currentArticle = await db.select({ id: articles.id, category: articles.category }).from(articles).where(eq11(articles.slug, req.params.slug)).limit(1);
+    const current = currentArticle[0];
+    if (!current) return res.status(404).json({ error: "Article not found" });
+    const categoryCondition = current.category ? eq11(articles.category, current.category) : isNull(articles.category);
     const result = await db.select({
       id: articles.id,
       title: articles.title,
@@ -6948,12 +6906,7 @@ learningCenterRouter2.get("/articles/:slug/related", async (req, res) => {
       publishedDate: articles.publishedDate,
       viewCount: articles.viewCount,
       category: articles.category
-    }).from(articles).where(
-      and4(
-        eq11(articles.category, currentArticle[0].category),
-        sql4`${articles.id} != ${currentArticle[0].id}`
-      )
-    ).orderBy(desc3(articles.publishedDate)).limit(3);
+    }).from(articles).where(and4(categoryCondition, sql4`${articles.id} != ${current.id}`)).orderBy(desc3(articles.publishedDate)).limit(3);
     res.json(result);
   } catch (error) {
     console.error("Error fetching related articles:", error);
@@ -6972,6 +6925,9 @@ testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
     const { slug } = req.params;
     console.log("[Test API] Querying literature with slug:", slug);
     const db = await getDb();
+    if (!db) {
+      return res.status(503).json({ error: "Database not available" });
+    }
     const result = await db.select().from(literature).where(eq12(literature.slug, slug)).limit(1);
     if (result.length === 0) {
       return res.status(404).json({ error: "Literature not found" });
@@ -7005,182 +6961,6 @@ testLiteratureRouter.get("/test-literature/:slug", async (req, res) => {
   }
 });
 
-// server/article-importer.ts
-init_db();
-init_schema();
-import * as fs4 from "fs/promises";
-import * as path5 from "path";
-import { fileURLToPath as fileURLToPath3 } from "url";
-import matter3 from "gray-matter";
-import { eq as eq13 } from "drizzle-orm";
-var __filename3 = fileURLToPath3(import.meta.url);
-var __dirname3 = path5.dirname(__filename3);
-var ARTICLES_DIR2 = path5.join(__dirname3, "..", "content", "articles");
-var REQUIRED_FIELDS2 = [
-  "title",
-  "author_slug",
-  "category",
-  "application_area",
-  "slug",
-  "published_date"
-];
-var VALID_CATEGORIES2 = ["application-notes", "technical-guides", "industry-trends", "literature-reviews"];
-var VALID_AREAS2 = ["pharmaceutical", "environmental", "food-safety", "biopharmaceutical", "clinical", "chemical"];
-function validateLanguage2(text2) {
-  if (!text2) return true;
-  const chineseRegex = /[\u4e00-\u9fa5]/;
-  return !chineseRegex.test(text2);
-}
-function validateFormat2(frontmatter) {
-  const errors = [];
-  for (const field of REQUIRED_FIELDS2) {
-    if (!frontmatter[field]) {
-      errors.push(`Missing required field: ${field}`);
-    }
-  }
-  if (frontmatter.category && !VALID_CATEGORIES2.includes(frontmatter.category)) {
-    errors.push(`Invalid category: ${frontmatter.category}. Must be one of: ${VALID_CATEGORIES2.join(", ")}`);
-  }
-  if (frontmatter.application_area && !VALID_AREAS2.includes(frontmatter.application_area)) {
-    errors.push(`Invalid application_area: ${frontmatter.application_area}. Must be one of: ${VALID_AREAS2.join(", ")}`);
-  }
-  if (frontmatter.published_date) {
-    const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dateRegex.test(frontmatter.published_date)) {
-      errors.push(`Invalid date format: ${frontmatter.published_date}. Must be YYYY-MM-DD`);
-    }
-  }
-  return {
-    valid: errors.length === 0,
-    errors
-  };
-}
-async function processArticle(filePath, db) {
-  try {
-    const fileName = path5.basename(filePath);
-    console.log(`\u{1F4C4} Processing: ${fileName}`);
-    const fileContent = await fs4.readFile(filePath, "utf-8");
-    const { data: frontmatter, content } = matter3(fileContent);
-    const formatValidation = validateFormat2(frontmatter);
-    if (!formatValidation.valid) {
-      const error = `Format validation failed:
-${formatValidation.errors.join("\n")}`;
-      console.error(`\u274C ${error}`);
-      return { success: false, error };
-    }
-    if (!validateLanguage2(frontmatter.title)) {
-      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in title";
-      console.error(`\u274C ${error}`);
-      return { success: false, error };
-    }
-    if (!validateLanguage2(content)) {
-      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in content";
-      console.error(`\u274C ${error}`);
-      return { success: false, error };
-    }
-    if (!validateLanguage2(frontmatter.meta_description)) {
-      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in meta_description";
-      console.error(`\u274C ${error}`);
-      return { success: false, error };
-    }
-    if (!validateLanguage2(frontmatter.keywords)) {
-      const error = "\u{1F6A8} LANGUAGE_VIOLATION: Chinese characters detected in keywords";
-      console.error(`\u274C ${error}`);
-      return { success: false, error };
-    }
-    console.log("\u2713 Language validation passed (English content confirmed)");
-    let authorId;
-    const existingAuthor = await db.select().from(authors).where(eq13(authors.slug, frontmatter.author_slug)).limit(1);
-    if (existingAuthor.length > 0) {
-      authorId = existingAuthor[0].id;
-      console.log(`\u2713 Found existing author: ${frontmatter.author_slug} (ID: ${authorId})`);
-    } else {
-      const [newAuthor] = await db.insert(authors).values({
-        name: frontmatter.author_slug.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase()),
-        slug: frontmatter.author_slug,
-        bio: "Chromatography expert at ROWELL HPLC",
-        expertise: frontmatter.application_area,
-        avatar: "/images/authors/default.jpg"
-      });
-      authorId = newAuthor.insertId;
-      console.log(`\u2713 Created new author: ${frontmatter.author_slug} (ID: ${authorId})`);
-    }
-    const existingArticle = await db.select().from(articles).where(eq13(articles.slug, frontmatter.slug)).limit(1);
-    if (existingArticle.length > 0) {
-      await db.update(articles).set({
-        title: frontmatter.title,
-        content,
-        category: frontmatter.category,
-        applicationArea: frontmatter.application_area,
-        publishedDate: new Date(frontmatter.published_date),
-        metaDescription: frontmatter.meta_description || null,
-        keywords: frontmatter.keywords || null,
-        updatedAt: /* @__PURE__ */ new Date()
-      }).where(eq13(articles.id, existingArticle[0].id));
-      console.log(`\u2705 Updated article: ${frontmatter.title}`);
-    } else {
-      await db.insert(articles).values({
-        title: frontmatter.title,
-        slug: frontmatter.slug,
-        content,
-        authorId,
-        category: frontmatter.category,
-        applicationArea: frontmatter.application_area,
-        publishedDate: new Date(frontmatter.published_date),
-        metaDescription: frontmatter.meta_description || null,
-        keywords: frontmatter.keywords || null,
-        createdAt: /* @__PURE__ */ new Date(),
-        updatedAt: /* @__PURE__ */ new Date()
-      });
-      console.log(`\u2705 Created article: ${frontmatter.title}`);
-    }
-    return { success: true };
-  } catch (error) {
-    console.error(`\u274C Error processing ${filePath}:`, error.message);
-    return { success: false, error: error.message };
-  }
-}
-async function importArticles() {
-  console.log("\n\u{1F680} Starting article import...");
-  console.log(`\u{1F4C1} Articles directory: ${ARTICLES_DIR2}`);
-  try {
-    try {
-      await fs4.access(ARTICLES_DIR2);
-    } catch {
-      console.log(`\u26A0\uFE0F  Articles directory not found: ${ARTICLES_DIR2}`);
-      console.log("Creating directory...");
-      await fs4.mkdir(ARTICLES_DIR2, { recursive: true });
-      console.log("\u2713 Directory created");
-      return;
-    }
-    const files = await fs4.readdir(ARTICLES_DIR2);
-    const mdFiles = files.filter((f) => f.endsWith(".md"));
-    if (mdFiles.length === 0) {
-      console.log("\u2139\uFE0F  No articles found to import");
-      return;
-    }
-    console.log(`\u{1F4DA} Found ${mdFiles.length} article(s) to process`);
-    const db = await getDb();
-    let successCount = 0;
-    let errorCount = 0;
-    for (const file of mdFiles) {
-      const filePath = path5.join(ARTICLES_DIR2, file);
-      const result = await processArticle(filePath, db);
-      if (result.success) {
-        successCount++;
-      } else {
-        errorCount++;
-      }
-    }
-    console.log("\n\u{1F4CA} Import Summary:");
-    console.log(`\u2705 Success: ${successCount}`);
-    console.log(`\u274C Errors: ${errorCount}`);
-    console.log("\u{1F3C1} Article import completed\n");
-  } catch (error) {
-    console.error("\u274C Fatal error during article import:", error.message);
-  }
-}
-
 // server/_core/index.ts
 function isPortAvailable(port2) {
   return new Promise((resolve) => {
@@ -7208,7 +6988,8 @@ async function startServer() {
   }
   try {
     const { validateAllConfigs: validateAllConfigs2 } = await Promise.resolve().then(() => (init_config_validator(), config_validator_exports));
-    const { db } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
+    const db = await getDb2();
     const configValid = await validateAllConfigs2(db);
     if (!configValid) {
       console.error("\n\u26D4 \u670D\u52A1\u5668\u542F\u52A8\u5931\u8D25\uFF1A\u914D\u7F6E\u9A8C\u8BC1\u672A\u901A\u8FC7\uFF01");
@@ -7222,8 +7003,8 @@ async function startServer() {
   const server = createServer(app);
   app.use(express2.json({ limit: "50mb" }));
   app.use(express2.urlencoded({ limit: "50mb", extended: true }));
-  app.use(bodyParser.text({ type: "text/csv", limit: "50mb" }));
-  app.use(bodyParser.text({ type: "text/plain", limit: "50mb" }));
+  app.use(express2.text({ type: "text/csv", limit: "50mb" }));
+  app.use(express2.text({ type: "text/plain", limit: "50mb" }));
   registerOAuthRoutes(app);
   registerImageSyncRoutes(app);
   app.use("/api/learning-center", learningCenterRouter2);
@@ -7237,13 +7018,13 @@ async function startServer() {
     try {
       const { getDb: getDb2 } = await Promise.resolve().then(() => (init_db(), db_exports));
       const { resources: resourcesTable } = await Promise.resolve().then(() => (init_schema(), schema_exports));
-      const { eq: eq14 } = await import("drizzle-orm");
+      const { eq: eq13 } = await import("drizzle-orm");
       const db = await getDb2();
       if (!db) {
         return res.json({ error: "DB not available" });
       }
       const slug = req.query.slug || "food-analysis-artificial-sweeteners-beverages";
-      const articles2 = await db.select().from(resourcesTable).where(eq14(resourcesTable.slug, slug)).limit(1);
+      const articles2 = await db.select().from(resourcesTable).where(eq13(resourcesTable.slug, slug)).limit(1);
       if (articles2.length === 0) {
         return res.json({ error: "Article not found", slug });
       }
@@ -7253,9 +7034,7 @@ async function startServer() {
         slug: article.slug,
         status: article.status,
         title: article.title,
-        hasMetaDescription: !!article.metaDescription,
         hasExcerpt: !!article.excerpt,
-        hasCoverImage: !!article.coverImage,
         reqGet: typeof req.get,
         host: req.get("host"),
         protocol: req.protocol
@@ -7267,10 +7046,10 @@ async function startServer() {
   app.get("/api/debug/version", async (req, res) => {
     try {
       const { createHash } = await import("crypto");
-      const { readFileSync: readFileSync4 } = await import("fs");
+      const { readFileSync: readFileSync2 } = await import("fs");
       const { resolve } = await import("path");
       const indexPath = resolve(import.meta.dirname, "index.js");
-      const content = readFileSync4(indexPath, "utf-8");
+      const content = readFileSync2(indexPath, "utf-8");
       const hash = createHash("md5").update(content).digest("hex");
       const hasSendFileInterception = content.includes("originalSendFile");
       const hasResourcesCheck = content.includes('startsWith("/resources/")');
