@@ -107,6 +107,9 @@ export default function ProductDetail() {
   const isCartridgeVolume = hasCatalogValue(product.columnLength)
     && /\b(?:spe|cartridge)\b/i.test(`${product.productType || ""} ${product.category || ""} ${product.name || ""}`)
     && /^\d+(?:\.\d+)?\s*mL$/i.test(product.columnLength.trim());
+  const isGcCapillary = hasCatalogValue(product.columnLength)
+    && /^G\d+$/i.test(String(product.usp || '').trim())
+    && /^\d+(?:\.\d+)?\s*m$/i.test(product.columnLength.trim());
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -191,7 +194,7 @@ export default function ProductDetail() {
                     )}
                     {hasCatalogValue(product.columnLength) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
-                        <span className="text-muted-foreground">{isCartridgeVolume ? 'Cartridge volume' : t('productDetail.column_length')}:</span>
+                        <span className="text-muted-foreground">{isCartridgeVolume ? 'Cartridge volume' : isGcCapillary ? 'GC capillary length' : t('productDetail.column_length')}:</span>
                         <span className="font-medium">{product.columnLength}</span>
                       </div>
                     )}
