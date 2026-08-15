@@ -274,10 +274,13 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const isCartridgeVolume = hasCatalogValue(product.columnLength)
       && /\b(?:spe|cartridge)\b/i.test(`${product.productType || ''} ${product.category || ''} ${product.name || ''}`)
       && /^\d+(?:\.\d+)?\s*mL$/i.test(product.columnLength.trim());
+    const isGcCapillary = hasCatalogValue(product.columnLength)
+      && /^G\d+$/i.test(String(product.usp || '').trim())
+      && /^\d+(?:\.\d+)?\s*m$/i.test(product.columnLength.trim());
     const specsRows = [
       hasCatalogValue(product.particleSize) ? `<tr><td>Particle Size</td><td>${escapeHtml(product.particleSize)}</td></tr>` : '',
       hasCatalogValue(product.poreSize) ? `<tr><td>Pore Size</td><td>${escapeHtml(product.poreSize)}</td></tr>` : '',
-      hasCatalogValue(product.columnLength) ? `<tr><td>${isCartridgeVolume ? 'Cartridge Volume' : 'Column Length'}</td><td>${escapeHtml(product.columnLength)}</td></tr>` : '',
+      hasCatalogValue(product.columnLength) ? `<tr><td>${isCartridgeVolume ? 'Cartridge Volume' : isGcCapillary ? 'GC Capillary Length' : 'Column Length'}</td><td>${escapeHtml(product.columnLength)}</td></tr>` : '',
       hasCatalogValue(product.innerDiameter) ? `<tr><td>Inner Diameter</td><td>${escapeHtml(product.innerDiameter)}</td></tr>` : '',
       hasCatalogValue(product.usp) ? `<tr><td>USP Designation</td><td>${escapeHtml(product.usp)}</td></tr>` : '',
       hasCatalogValue(product.phaseType) ? `<tr><td>Phase Type</td><td>${escapeHtml(product.phaseType)}</td></tr>` : '',
