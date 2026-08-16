@@ -392,6 +392,7 @@ export const adminRouter = router({
           detailedDescription: z.string().max(12000).nullable().optional(),
           productType: z.string().max(100).optional(),
           category: z.string().max(100).optional(),
+          applications: z.string().max(1000).nullable().optional(),
           particleSize: z.string().max(50).optional(),
           poreSize: z.string().max(50).optional(),
           columnLength: z.string().max(50).optional(),
@@ -436,7 +437,7 @@ export const adminRouter = router({
 
           const setFields: Record<string, unknown> = { name: update.name, updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') };
           const optionalFields = [
-            'description', 'detailedDescription', 'productType', 'category', 'particleSize', 'poreSize',
+            'description', 'detailedDescription', 'productType', 'category', 'applications', 'particleSize', 'poreSize',
             'columnLength', 'innerDiameter', 'phRange', 'maxPressure', 'usp', 'phaseType',
             'particleSizeNum', 'poreSizeNum', 'columnLengthNum', 'phMin', 'phMax',
             'catalogUrl', 'metaTitle', 'metaDescription',
