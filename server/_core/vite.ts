@@ -7,7 +7,7 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getDb } from "../db";
 import { resources, products } from "../../drizzle/schema";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
 import { USP_LANDING_PROFILES, USP_LANDING_CODES } from "../../shared/uspLandingContent";
@@ -223,7 +223,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     let result = await db
       .select()
       .from(products)
-      .where(eq(products.slug, slug))
+      .where(and(eq(products.slug, slug), eq(products.status, 'active')))
       .limit(1);
 
     // P1 FIX: Fallback query by partNumber if slug lookup fails
@@ -233,7 +233,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       result = await db
         .select()
         .from(products)
-        .where(eq(products.partNumber, slug))
+        .where(and(eq(products.partNumber, slug), eq(products.status, 'active')))
         .limit(1);
       if (result.length > 0) {
         console.log(`[SEO] Slug '${slug}' not found, matched by partNumber fallback`);
