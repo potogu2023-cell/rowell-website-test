@@ -10,6 +10,7 @@ import { resources, products } from "../../drizzle/schema";
 import { desc, eq } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
+import { USP_LANDING_PROFILES, USP_LANDING_CODES } from "../../shared/uspLandingContent";
 
 const SITE_URL = "https://www.rowellhplc.com";
 
@@ -33,6 +34,11 @@ function extractProductSlugFromPath(urlPath: string): string | null {
 function extractCategoryLandingSlug(urlPath: string): string | null {
   const match = urlPath.match(/^\/categories\/([^\/\?]+)/);
   return match ? match[1] : null;
+}
+
+function extractUSPLandingCode(urlPath: string): string | null {
+  const match = urlPath.match(/^\/usp\/([^\/\?]+)/i);
+  return match ? match[1].toLowerCase() : null;
 }
 
 /**
@@ -422,9 +428,9 @@ const STATIC_PAGE_SEO: Record<string, { title: string; description: string; head
     type: "WebPage",
   },
   "/usp-standards": {
-    title: "USP Chromatography Reference Standards | ROWELL",
-    description: "Explore USP chromatography reference standards and related analytical support for laboratory method development and quality control.",
-    heading: "USP Chromatography Reference Standards",
+    title: "USP Column Classification (L-Codes) | ROWELL",
+    description: "Browse chromatography catalog products by recorded USP stationary-phase classification (L-codes) and compare exact product specifications for method evaluation.",
+    heading: "USP Column Classification (L-Codes)",
     type: "WebPage",
   },
 };
@@ -494,10 +500,73 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
   return template;
 }
 
+function injectUSPLandingSeoMetaTags(template: string, requestPath: string): string {
+  const code = extractUSPLandingCode(requestPath);
+  const profile = code ? USP_LANDING_PROFILES[code] : null;
+  if (!code || !profile) return template;
+
+  const fullUrl = `${SITE_URL}/usp/${encodeURIComponent(code)}`;
+  const catalogUrl = `${SITE_URL}/products?usp=${encodeURIComponent(profile.code)}`;
+  const faqEntities = profile.faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: { "@type": "Answer", text: item.answer },
+  }));
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: profile.heading,
+      description: profile.summary,
+      url: fullUrl,
+      inLanguage: "en",
+      isPartOf: { "@type": "WebSite", name: "ROWELL", url: SITE_URL },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "USP Column Classification", item: `${SITE_URL}/usp-standards` },
+        { "@type": "ListItem", position: 3, name: profile.code, item: fullUrl },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqEntities,
+    },
+  ];
+  const selectionHtml = profile.selectionPoints.map((point) => `<li>${escapeHtml(point)}</li>`).join("");
+  const faqHtml = profile.faq.map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`).join("");
+  const metaTags = `
+    <title>${escapeHtml(profile.heading)} | ROWELL</title>
+    <meta name="description" content="${escapeHtml(profile.summary)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(profile.heading)} | ROWELL" />
+    <meta property="og:description" content="${escapeHtml(profile.summary)}" />
+    <meta property="og:site_name" content="ROWELL" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  return template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/usp-standards">USP Column Classification</a> / ${escapeHtml(profile.code)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><p>${escapeHtml(profile.overview)}</p><h2>Selection Considerations</h2><ul>${selectionHtml}</ul><p><a href="${catalogUrl}">Browse products recorded with ${escapeHtml(profile.code)}</a></p><p>USP L-codes identify stationary-phase classifications. They do not establish product certification, approval, endorsement, or automatic method replacement.</p><h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
+  );
+}
+
 type DynamicRouteStatus = "active" | "gone" | "missing" | "unavailable";
 
 function isKnownPublicSpaRoute(requestPath: string): boolean {
   if (Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath)) return true;
+  if (requestPath.startsWith("/usp/")) {
+    const code = extractUSPLandingCode(requestPath);
+    return !!code && USP_LANDING_CODES.includes(code);
+  }
   if (requestPath.startsWith("/categories/")) {
     const slug = extractCategoryLandingSlug(requestPath);
     return !!slug && CATEGORY_LANDING_SLUGS.includes(slug);
@@ -719,6 +788,10 @@ function injectStaticPageSeoMetaTags(template: string, requestPath: string): str
 async function injectSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
   // Use overridePath if provided (needed in app.use('*') where req.path is always '/')
   const effectivePath = overridePath || req.path;
+  const uspCode = extractUSPLandingCode(effectivePath);
+  if (uspCode && USP_LANDING_CODES.includes(uspCode)) {
+    return injectUSPLandingSeoMetaTags(template, effectivePath);
+  }
   const categorySlug = extractCategoryLandingSlug(effectivePath);
   if (categorySlug && CATEGORY_LANDING_SLUGS.includes(categorySlug)) {
     return injectCategoryLandingSeoMetaTags(template, effectivePath);
@@ -791,9 +864,17 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`
       );
       
-      // Inject SEO meta tags for product and article pages
-      template = await injectSeoMetaTags(template, req);
-      
+      const requestPath = req.originalUrl.split('?')[0].replace(/\/+$/, '') || '/';
+      const dynamicRouteStatus = await getDynamicRouteStatus(requestPath);
+      if (dynamicRouteStatus === "missing" || dynamicRouteStatus === "gone" || !isKnownPublicSpaRoute(requestPath)) {
+        const statusCode = dynamicRouteStatus === "gone" ? 410 : 404;
+        template = renderNotFoundTemplate(template, requestPath, statusCode);
+        const page = await vite.transformIndexHtml(url, template);
+        return res.status(statusCode).set({ "Content-Type": "text/html" }).end(page);
+      }
+
+      // Inject SEO metadata and visible server-side content for every known public route.
+      template = await injectSeoMetaTags(template, req, requestPath);
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -879,6 +960,7 @@ export function serveStatic(app: Express) {
         requestPath.startsWith('/resources/') ||
         requestPath.startsWith('/learning/literature/') ||
         requestPath.startsWith('/categories/') ||
+        requestPath.startsWith('/usp/') ||
         Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath);
       
       if (needsMetaInjection) {

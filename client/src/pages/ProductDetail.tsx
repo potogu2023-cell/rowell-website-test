@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "wouter";
+import { Link, useParams, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,6 +12,7 @@ import RelatedProducts from "@/components/RelatedProducts";
 import ProductInquiryButton from "@/components/ProductInquiryButton";
 import ProductMessageButton from "@/components/ProductMessageButton";
 import { SEOHead } from "@/components/SEOHead";
+import { USP_LANDING_PROFILES } from "@shared/uspLandingContent";
 
 function withParticleUnit(value: string) {
   const normalized = value.trim();
@@ -113,6 +114,9 @@ export default function ProductDetail() {
   const isGcLiner = hasCatalogValue(product.columnLength)
     && /\b(?:gc\s*)?liner\b/i.test(`${product.productType || ''} ${product.category || ''} ${product.name || ''}`)
     && /^\d+(?:\.\d+)?\s*mm$/i.test(product.columnLength.trim());
+  const publishedUspCodes = hasCatalogValue(product.usp)
+    ? product.usp.split(',').map((code) => code.trim().toLowerCase()).filter((code) => Boolean(USP_LANDING_PROFILES[code]))
+    : [];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -234,9 +238,16 @@ export default function ProductDetail() {
                       </div>
                     )}
                     {hasCatalogValue(product.usp) && (
-                      <div className="flex justify-between p-3 bg-gray-50 rounded">
+                      <div className="flex justify-between gap-4 p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.usp_classification')}:</span>
-                        <span className="font-medium">{product.usp}</span>
+                        <span className="text-right font-medium">
+                          {publishedUspCodes.length > 0 ? publishedUspCodes.map((code, index) => (
+                            <span key={code}>
+                              {index > 0 && ', '}
+                              <Link href={`/usp/${code}`} className="text-primary hover:underline">{USP_LANDING_PROFILES[code].code}</Link>
+                            </span>
+                          )) : product.usp}
+                        </span>
                       </div>
                     )}
                   </div>
@@ -288,6 +299,18 @@ export default function ProductDetail() {
                     </div>
                   </div>
                 </div>
+
+                {publishedUspCodes.length > 0 && (
+                  <div className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-sm text-slate-700">
+                    <h4 className="font-semibold text-slate-900">USP classification guide</h4>
+                    <p className="mt-2 leading-6">This product is recorded with a USP stationary-phase classification. Use the guide to compare catalog options, then verify the exact method and product requirements before use.</p>
+                    <div className="mt-3 flex flex-wrap gap-x-3 gap-y-2">
+                      {publishedUspCodes.map((code) => (
+                        <Link key={code} href={`/usp/${code}`} className="font-medium text-primary hover:underline">View {USP_LANDING_PROFILES[code].code} guide</Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <div className="pt-4 border-t">
                   <h4 className="font-semibold mb-2">{t('productDetail.need_help')}</h4>

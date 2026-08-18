@@ -29,7 +29,12 @@ const STATIC_PAGES = [
   { path: "/categories/spe-cartridges", priority: 0.9, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "monthly" },
   { path: "/resources", priority: 0.9, changefreq: "daily" },
-  { path: "/usp-standards", priority: 0.7, changefreq: "monthly" },
+  { path: "/usp-standards", priority: 0.8, changefreq: "monthly" },
+  { path: "/usp/l1", priority: 0.8, changefreq: "monthly" },
+  { path: "/usp/l7", priority: 0.8, changefreq: "monthly" },
+  { path: "/usp/l11", priority: 0.8, changefreq: "monthly" },
+  { path: "/usp/l43", priority: 0.8, changefreq: "monthly" },
+  { path: "/usp/l60", priority: 0.8, changefreq: "monthly" },
   { path: "/applications", priority: 0.7, changefreq: "monthly" },
   { path: "/contact", priority: 0.6, changefreq: "monthly" },
 ];

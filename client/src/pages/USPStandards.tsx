@@ -1,15 +1,13 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useTranslation } from 'react-i18next';
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, AlertTriangle, Loader2 } from "lucide-react";
+import { USP_LANDING_CODES } from "@shared/uspLandingContent";
 
 export default function USPStandards() {
-  const { t } = useTranslation();
-  
-  // 从API获取USP标准及产品数量
+  // The catalog only reads existing, audited USP fields; it never infers a classification from a product name.
   const { data: uspStandards, isLoading, error } = trpc.usp.listWithProductCount.useQuery();
 
   return (
@@ -17,9 +15,10 @@ export default function USPStandards() {
       {/* Hero Section */}
       <div className="bg-gradient-to-b from-blue-50 to-white py-12">
         <div className="container">
-          <h1 className="text-4xl font-bold mb-4">{t('usp.title')}</h1>
-          <p className="text-lg text-muted-foreground">
-            {t('usp.subtitle')}
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Chromatography method discovery</p>
+          <h1 className="mt-3 text-4xl font-bold">USP Column Classification (L-Codes)</h1>
+          <p className="mt-4 max-w-3xl text-lg text-muted-foreground">
+            Browse catalog products by recorded USP stationary-phase classification and compare exact product specifications before method evaluation.
           </p>
         </div>
       </div>
@@ -27,9 +26,13 @@ export default function USPStandards() {
       {/* Content Section */}
       <div className="container py-12">
         <div className="mb-8">
-          <p className="text-muted-foreground">
-            {t('usp.intro')}
+          <p className="max-w-4xl text-muted-foreground">
+            Use L-codes as a stationary-phase classification and catalog-discovery aid. Each product must still be reviewed by exact part number, product format, dimensions, operating limits, and method requirements.
           </p>
+          <div className="mt-5 flex gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-6 text-slate-700">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-700" aria-hidden="true" />
+            <p>USP L-codes do not mean USP approval, endorsement, certification, or automatic suitability as a method replacement. Confirm the complete method and system-suitability requirements before use.</p>
+          </div>
         </div>
 
         {/* Loading State */}
@@ -105,9 +108,9 @@ export default function USPStandards() {
                       </div>
                       
                       {usp.productCount > 0 && (
-                        <Link href={`/products?usp=${usp.code}`}>
+                        <Link href={USP_LANDING_CODES.includes(usp.code.toLowerCase()) ? `/usp/${usp.code.toLowerCase()}` : `/products?usp=${usp.code}`}>
                           <Button variant="ghost" size="sm" className="group">
-                            View Products
+                            {USP_LANDING_CODES.includes(usp.code.toLowerCase()) ? "View Guide" : "View Products"}
                             <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Button>
                         </Link>
