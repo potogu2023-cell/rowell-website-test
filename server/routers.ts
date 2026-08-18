@@ -98,15 +98,15 @@ export const appRouter = router({
       .query(async ({ input }) => {
         const { getDb } = await import('./db');
         const { products } = await import('../drizzle/schema');
-        const { eq } = await import('drizzle-orm');
+        const { and, eq } = await import('drizzle-orm');
         const db = await getDb();
         if (!db) throw new Error('Database not available');
         
-        // Query product by slug
+        // Public detail lookups must mirror the active-only catalog policy.
         const result = await db
           .select()
           .from(products)
-          .where(eq(products.slug, input))
+          .where(and(eq(products.slug, input), eq(products.status, 'active')))
           .limit(1);
         
         return result[0] || null;
