@@ -996,6 +996,10 @@ export const adminRouter = router({
         Restek: ['restek.com'],
       };
       const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      // Production's legacy products table requires a non-null taskId. This new,
+      // batch-specific identifier preserves provenance instead of reusing an
+      // unrelated historical import task.
+      const importTaskId = 'manual-verified-consumables-20260819';
       const results: Array<{ partNumber: string; status: 'inserted' | 'skipped' | 'error'; id?: number; slug?: string; error?: string }> = [];
 
       for (const row of input.products) {
@@ -1033,12 +1037,12 @@ export const adminRouter = router({
 
           const [insertResult] = await connection.execute(
             `INSERT INTO products
-              (productId, partNumber, brand, prefix, name, description, detailedDescription,
+              (taskId, productId, partNumber, brand, prefix, name, description, detailedDescription,
                specifications, imageUrl, catalogUrl, productType, slug, category, category_id,
                status, createdAt, updatedAt)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, 'active', ?, ?)`,
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, 'active', ?, ?)`,
             [
-              productId, row.partNumber, row.brand, prefixes[row.brand], row.name,
+              importTaskId, productId, row.partNumber, row.brand, prefixes[row.brand], row.name,
               row.description, row.detailedDescription, JSON.stringify(row.specifications),
               row.catalogUrl, row.productType, slug, row.category, row.categoryId, now, now,
             ]
