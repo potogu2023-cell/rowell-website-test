@@ -833,6 +833,78 @@ export const adminRouter = router({
       return { success: true, totalUpdated, results };
     }),
 
+  // Narrow, evidence-gated discontinuation route for the first 2026-08-19 fact-verification tranche.
+  // It deliberately accepts only the two exact Thermo Fisher records whose official
+  // product pages explicitly state that the SKUs are discontinued. No other record,
+  // field, status transition, or brand can be changed through this route.
+  deactivateAuditedDiscontinuedProducts: publicProcedure
+    .input((raw: unknown) => z.object({
+      adminKey: z.string(),
+      updates: z.array(z.object({
+        id: z.number().int().positive(),
+        expectedPartNumber: z.string().min(1).max(100),
+        expectedBrand: z.string().min(1).max(100),
+        evidenceUrl: z.string().url(),
+      })).min(1).max(2),
+    }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+
+      const allowedEvidence = new Map<number, { partNumber: string; brand: string; evidenceUrl: string }>([
+        [150001, {
+          partNumber: '037042',
+          brand: 'Thermo Fisher',
+          evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/037042',
+        }],
+        [150002, {
+          partNumber: '043182',
+          brand: 'Thermo Fisher',
+          evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/043182',
+        }],
+      ]);
+      const ids = input.updates.map((update) => update.id);
+      if (new Set(ids).size !== ids.length) throw new Error('Duplicate product IDs are not allowed');
+      for (const update of input.updates) {
+        const allowed = allowedEvidence.get(update.id);
+        if (!allowed ||
+          update.expectedPartNumber !== allowed.partNumber ||
+          update.expectedBrand !== allowed.brand ||
+          update.evidenceUrl !== allowed.evidenceUrl) {
+          throw new Error(`Update is not eligible for evidence-gated deactivation: ${update.id}`);
+        }
+      }
+
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq, inArray } = await import('drizzle-orm');
+      const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
+      const currentProducts = await db.select().from(products).where(inArray(products.id, ids));
+      if (currentProducts.length !== ids.length) throw new Error('One or more audited products no longer exist');
+      for (const update of input.updates) {
+        const current = currentProducts.find((product: any) => product.id === update.id);
+        if (!current || current.partNumber !== update.expectedPartNumber || current.brand !== update.expectedBrand) {
+          throw new Error(`Current database identity does not match audited evidence: ${update.id}`);
+        }
+      }
+
+      await db.transaction(async (tx: any) => {
+        for (const update of input.updates) {
+          await tx.update(products).set({ status: 'inactive' }).where(eq(products.id, update.id));
+        }
+      });
+
+      return {
+        success: true,
+        deactivated: input.updates.map((update) => ({
+          id: update.id,
+          partNumber: update.expectedPartNumber,
+          brand: update.expectedBrand,
+          status: 'inactive',
+        })),
+      };
+    }),
+
   // Batch import new products from CSV data (SUBTASK-005)
   batchImportProducts: publicProcedure
     .input((raw: unknown) => {
