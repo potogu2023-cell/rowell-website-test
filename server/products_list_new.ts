@@ -37,15 +37,26 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   // Always filter by active status
   conditions.push(eq(products.status, 'active'));
   
-  // Search filter (search in productId, name, partNumber, brand)
+  // Search active products by identifier, name, manufacturer, or recorded category.
+  // Users frequently paste catalog numbers with spaces, hyphens, or slashes omitted,
+  // so identifier matching also compares a punctuation-normalized representation.
   if (input?.search && input.search.trim().length > 0) {
     const searchTerm = input.search.trim().toLowerCase();
+    const normalizedIdentifier = searchTerm.replace(/[^a-z0-9]/g, '');
+    const identifierClause = normalizedIdentifier.length >= 2
+      ? sql`
+          OR LOWER(REPLACE(REPLACE(REPLACE(${products.productId}, '-', ''), ' ', ''), '/', '')) LIKE ${`%${normalizedIdentifier}%`}
+          OR LOWER(REPLACE(REPLACE(REPLACE(${products.partNumber}, '-', ''), ' ', ''), '/', '')) LIKE ${`%${normalizedIdentifier}%`}
+        `
+      : sql``;
     conditions.push(
       sql`(
         LOWER(${products.productId}) LIKE ${`%${searchTerm}%`} OR
         LOWER(${products.name}) LIKE ${`%${searchTerm}%`} OR
         LOWER(${products.partNumber}) LIKE ${`%${searchTerm}%`} OR
-        LOWER(${products.brand}) LIKE ${`%${searchTerm}%`}
+        LOWER(${products.brand}) LIKE ${`%${searchTerm}%`} OR
+        LOWER(${products.category}) LIKE ${`%${searchTerm}%`}
+        ${identifierClause}
       )`
     );
   }

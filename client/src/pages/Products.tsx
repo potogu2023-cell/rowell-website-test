@@ -508,7 +508,7 @@ export default function Products() {
                   <div className="aspect-square w-full overflow-hidden bg-gray-50">
                     <img 
                       src={product.imageUrl || "/images/hplc-column-placeholder.png"}
-                      alt={`${product.brand} ${product.name} ${product.partNumber} HPLC Column - ROWELL`}
+                      alt={`${product.brand} ${product.name} ${product.partNumber} | ROWELL`}
                       className="w-full h-full object-contain p-4"
                       loading="lazy"
                       onError={(e) => {
@@ -527,30 +527,32 @@ export default function Products() {
                   <CardContent>
                     <h3 className="font-semibold mb-3 line-clamp-2">{product.name}</h3>
                     
-                    {/* Technical Specifications */}
+                    {/* Show only product facts that are actually recorded for the SKU. */}
                     <div className="space-y-2 mb-4 text-sm">
-                      {/* Always show Particle Size for HPLC products */}
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">{t('products.particle_size')}:</span>
-                        <span className="font-medium">{product.particleSize || 'N/A'}</span>
+                      <div className="flex justify-between gap-4">
+                        <span className="text-muted-foreground">Category:</span>
+                        <span className="font-medium text-right">{product.category || product.productType || 'Chromatography consumable'}</span>
                       </div>
-                      
-                      {/* Always show Pore Size for HPLC products */}
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">{t('products.pore_size')}:</span>
-                        <span className="font-medium">{product.poreSize || 'N/A'}</span>
-                      </div>
-                      
-                      {/* Always show Dimensions */}
-                      <div className="flex justify-between">
-                        <span className="text-muted-foreground">{t('products.dimensions')}:</span>
-                        <span className="font-medium">
-                          {(product.columnLength && product.innerDiameter) 
-                            ? `${product.columnLength} × ${product.innerDiameter}`
-                            : 'N/A'
-                          }
-                        </span>
-                      </div>
+                      {product.particleSize && (
+                        <div className="flex justify-between gap-4">
+                          <span className="text-muted-foreground">{t('products.particle_size')}:</span>
+                          <span className="font-medium text-right">{product.particleSize}</span>
+                        </div>
+                      )}
+                      {product.poreSize && (
+                        <div className="flex justify-between gap-4">
+                          <span className="text-muted-foreground">{t('products.pore_size')}:</span>
+                          <span className="font-medium text-right">{product.poreSize}</span>
+                        </div>
+                      )}
+                      {(product.columnLength || product.innerDiameter) && (
+                        <div className="flex justify-between gap-4">
+                          <span className="text-muted-foreground">{t('products.dimensions')}:</span>
+                          <span className="font-medium text-right">
+                            {[product.columnLength, product.innerDiameter].filter(Boolean).join(' × ')}
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Detailed Description */}

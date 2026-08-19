@@ -22,7 +22,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
   const searchRef = useRef<HTMLDivElement>(null);
 
   // Popular searches (could be fetched from backend in the future)
-  const popularSearches = ["Agilent", "Waters", "C18", "HILIC", "Phenomenex", "2.7 µm"];
+  const popularSearches = ["Waters", "Vials", "Caps & Septa", "Syringes", "PEEK tubing", "C18", "HILIC"];
 
   // Load search history from localStorage
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
   const saveToHistory = (term: string) => {
     if (!term.trim()) return;
     
-    const newHistory = [term, ...searchHistory.filter(h => h !== term)].slice(0, 5);
+    const newHistory = [term, ...searchHistory.filter((item) => item.toLowerCase() !== term.toLowerCase())].slice(0, 5);
     setSearchHistory(newHistory);
     localStorage.setItem("searchHistory", JSON.stringify(newHistory));
   };
@@ -123,9 +123,16 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
           value={value}
           onChange={(e) => handleInputChange(e.target.value)}
           onFocus={() => setShowSuggestions(true)}
+          role="combobox"
+          aria-expanded={showSuggestions}
+          aria-controls="catalog-search-suggestions"
+          aria-autocomplete="list"
           onKeyDown={(e) => {
             if (e.key === "Enter" && value.trim()) {
               commitSearch(value);
+            }
+            if (e.key === "Escape") {
+              setShowSuggestions(false);
             }
           }}
           className="pl-10"
@@ -134,7 +141,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
 
       {/* Suggestions Dropdown */}
       {showSuggestions && (
-        <Card className="absolute top-full mt-2 w-full z-50 max-h-96 overflow-y-auto shadow-lg">
+        <Card id="catalog-search-suggestions" role="listbox" className="absolute top-full mt-2 w-full z-50 max-h-96 overflow-y-auto shadow-lg">
           <div className="p-4 space-y-4">
             {/* Search History */}
             {searchHistory.length > 0 && !value && (
@@ -142,7 +149,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
                     <Clock className="w-4 h-4" />
-                    最近搜索
+                    Recent searches
                   </div>
                   <Button
                     variant="ghost"
@@ -150,7 +157,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
                     onClick={handleClearHistory}
                     className="h-6 text-xs"
                   >
-                    清除
+                    Clear
                   </Button>
                 </div>
                 <div className="space-y-1">
@@ -180,7 +187,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
               <div>
                 <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground mb-2">
                   <TrendingUp className="w-4 h-4" />
-                  热门搜索
+                  Quick searches
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {popularSearches.map((term, index) => (
@@ -201,7 +208,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
             {value.length >= 2 && suggestions && suggestions.products.length > 0 && (
               <div>
                 <div className="text-sm font-medium text-muted-foreground mb-2">
-                  产品建议 ({suggestions.total} 个结果)
+                  Product suggestions ({suggestions.total})
                 </div>
                 <div className="space-y-1">
                   {suggestions.products.map((product) => (
@@ -224,11 +231,11 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
                             {product.brand}
                           </Badge>
                           <span className="text-sm font-medium truncate">
-                            {product.productId}
+                            {product.partNumber || product.productId}
                           </span>
                         </div>
                         <p className="text-xs text-muted-foreground truncate">
-                          {product.name}
+                          {product.name}{product.category ? ` · ${product.category}` : ''}
                         </p>
                       </div>
                     </div>
@@ -243,7 +250,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
                         commitSearch(value);
                       }}
                     >
-                      查看全部 {suggestions.total} 个结果
+                      View all {suggestions.total} matches
                     </Button>
                   </div>
                 )}
@@ -253,7 +260,7 @@ export default function EnhancedSearch({ value, onChange, onSearchCommit, placeh
             {/* No Results */}
             {value.length >= 2 && suggestions && suggestions.products.length === 0 && (
               <div className="text-center py-4 text-sm text-muted-foreground">
-                No matching active products found. Try a part number, brand, or a broader specification range.
+                No matching active products found. Try a full or punctuation-free part number, a manufacturer, a category such as Vials, or a broader verified specification range.
               </div>
             )}
           </div>
