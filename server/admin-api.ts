@@ -960,7 +960,7 @@ export const adminRouter = router({
       return z.object({
         adminKey: z.string(),
         products: z.array(z.object({
-          brand: z.enum(['Thermo Fisher', 'Restek']),
+          brand: z.enum(['Thermo Fisher', 'Restek', 'Waters']),
           partNumber: z.string().min(1).max(128),
           name: z.string().min(3).max(255),
           productType: z.string().min(3).max(100),
@@ -987,13 +987,15 @@ export const adminRouter = router({
         21: 'Syringes',
         22: 'Fittings & Tubing',
       };
-      const prefixes: Record<'Thermo Fisher' | 'Restek', string> = {
+      const prefixes: Record<'Thermo Fisher' | 'Restek' | 'Waters', string> = {
         'Thermo Fisher': 'THER',
         Restek: 'RESTEK',
+        Waters: 'WATERS',
       };
-      const allowedHosts: Record<'Thermo Fisher' | 'Restek', string[]> = {
+      const allowedHosts: Record<'Thermo Fisher' | 'Restek' | 'Waters', string[]> = {
         'Thermo Fisher': ['thermofisher.com'],
         Restek: ['restek.com'],
+        Waters: ['waters.com'],
       };
       // Production's legacy products table requires a non-null taskId. This new,
       // batch-specific identifier preserves provenance instead of reusing an
@@ -1019,7 +1021,11 @@ export const adminRouter = router({
         }
 
         const partSlug = row.partNumber.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-        const slug = row.brand === 'Restek' ? `restek-${partSlug}` : partSlug;
+        const slug = row.brand === 'Restek'
+          ? `restek-${partSlug}`
+          : row.brand === 'Waters'
+            ? `waters-${partSlug}`
+            : partSlug;
         const productId = `${prefixes[row.brand]}-${row.partNumber}`;
         const connection = await pool.getConnection();
         try {
