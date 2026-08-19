@@ -111,6 +111,7 @@ export function formatProductRecommendation(product: {
   productId: string;
   partNumber: string;
   brand: string;
+  slug?: string | null;
   specifications?: string;
   reason?: string;
 }): string {
@@ -124,7 +125,10 @@ export function formatProductRecommendation(product: {
     text += `- ${product.reason}\n`;
   }
   
-  text += `[View Product](/products/${product.productId}) [Add to Inquiry Cart]\n`;
+  const detailPath = product.slug?.trim()
+    ? `/products/${encodeURIComponent(product.slug)}`
+    : "/products";
+  text += `[View Product](${detailPath}) [Add to Inquiry Cart]\n`;
   
   return text;
 }

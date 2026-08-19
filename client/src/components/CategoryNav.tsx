@@ -33,8 +33,13 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
   
   const { data: allCategories, isLoading } = trpc.category.getWithProductCount.useQuery();
   
-  // Get top level categories from all categories
-  const topCategories = allCategories?.filter((cat: Category) => cat.parentId === null);
+  const hasActiveProducts = (category: Category) => Number(category.productCount || 0) > 0;
+
+  // Do not expose empty browse endpoints. Parent totals are supplied by the
+  // server as the active product count across descendants.
+  const topCategories = allCategories?.filter(
+    (cat: Category) => cat.parentId === null && cat.isVisible === 1 && hasActiveProducts(cat)
+  );
 
   if (isLoading) {
     return (
@@ -60,7 +65,9 @@ export default function CategoryNav({ onCategorySelect, selectedCategoryId }: Ca
 
   const getChildCategories = (parentId: number): Category[] => {
     if (!allCategories) return [];
-    return allCategories.filter((cat: Category) => cat.parentId === parentId);
+    return allCategories.filter(
+      (cat: Category) => cat.parentId === parentId && cat.isVisible === 1 && hasActiveProducts(cat)
+    );
   };
 
   const renderCategory = (category: Category, level: number = 0) => {

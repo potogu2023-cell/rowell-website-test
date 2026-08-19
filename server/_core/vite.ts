@@ -7,7 +7,7 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getDb } from "../db";
 import { resources, products } from "../../drizzle/schema";
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, or } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
 import { USP_LANDING_PROFILES, USP_LANDING_CODES } from "../../shared/uspLandingContent";
@@ -658,7 +658,7 @@ async function redirectLegacyProductUrl(req: any, res: any, next: () => void): P
     const legacyKey = decodeURIComponent(match[1]);
     const productRecord = await db.select({ slug: products.slug, status: products.status })
       .from(products)
-      .where(eq(products.partNumber, legacyKey))
+      .where(or(eq(products.partNumber, legacyKey), eq(products.productId, legacyKey)))
       .limit(1);
     const product = productRecord[0];
     if (!product || product.status !== "active" || !product.slug || product.slug === legacyKey) {

@@ -11,6 +11,12 @@ interface RelatedProductsProps {
   limit?: number;
 }
 
+function productDetailPath(product: { slug?: string | null }): string {
+  return product.slug?.trim()
+    ? `/products/${encodeURIComponent(product.slug)}`
+    : "/products";
+}
+
 export default function RelatedProducts({ productId, limit = 6 }: RelatedProductsProps) {
   const { t } = useTranslation();
   const [, setLocation] = useLocation();
@@ -61,7 +67,7 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
           <Card
             key={product.id}
             className="group hover:shadow-lg transition-all duration-300 cursor-pointer"
-            onClick={() => setLocation(`/products/${product.productId}`)}
+            onClick={() => setLocation(productDetailPath(product))}
           >
             {/* Product Image */}
             <div className="w-full aspect-video bg-gray-50 flex items-center justify-center overflow-hidden">
@@ -118,7 +124,7 @@ export default function RelatedProducts({ productId, limit = 6 }: RelatedProduct
                 className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setLocation(`/products/${product.productId}`);
+                  setLocation(productDetailPath(product));
                 }}
               >
                 {t('inquiry.view_details')}

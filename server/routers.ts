@@ -512,9 +512,26 @@ export const appRouter = router({
         const db = await getDb();
         if (!db) throw new Error('Database not available');
         
-        // Use raw SQL query for now to avoid drizzle issues
+        // Count only active public products and roll each child count into its
+        // ancestors. The catalog navigation shows parent nodes such as Sample
+        // Preparation, so a direct-only join incorrectly rendered those nodes as 0.
         const result = await db.execute(`
-          SELECT 
+          WITH RECURSIVE category_tree AS (
+            SELECT id AS ancestor_id, id AS descendant_id
+            FROM categories
+            UNION ALL
+            SELECT tree.ancestor_id, child.id AS descendant_id
+            FROM category_tree tree
+            INNER JOIN categories child ON child.parent_id = tree.descendant_id
+          ), category_counts AS (
+            SELECT tree.ancestor_id AS category_id,
+                   COUNT(DISTINCT pc.product_id) AS productCount
+            FROM category_tree tree
+            INNER JOIN product_categories pc ON pc.category_id = tree.descendant_id
+            INNER JOIN products p ON p.id = pc.product_id AND p.status = 'active'
+            GROUP BY tree.ancestor_id
+          )
+          SELECT
             c.id,
             c.name,
             c.name_en as nameEn,
@@ -527,10 +544,9 @@ export const appRouter = router({
             c.icon,
             c.created_at as createdAt,
             c.updated_at as updatedAt,
-            COUNT(DISTINCT pc.product_id) as productCount
+            COALESCE(counts.productCount, 0) as productCount
           FROM categories c
-          LEFT JOIN product_categories pc ON c.id = pc.category_id
-          GROUP BY c.id, c.name, c.name_en, c.slug, c.parent_id, c.level, c.display_order, c.is_visible, c.description, c.icon, c.created_at, c.updated_at
+          LEFT JOIN category_counts counts ON counts.category_id = c.id
           ORDER BY c.parent_id, c.display_order
         `);
         
