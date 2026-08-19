@@ -952,6 +952,118 @@ export const adminRouter = router({
       };
     }),
 
+  // Insert first-party-verified consumables without modifying any existing product.
+  // This route is intentionally narrow: it only supports the four Accessories leaf
+  // categories and only the brands for which a first-party SKU page was audited.
+  batchInsertVerifiedConsumables: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        products: z.array(z.object({
+          brand: z.enum(['Thermo Fisher', 'Restek']),
+          partNumber: z.string().min(1).max(128),
+          name: z.string().min(3).max(255),
+          productType: z.string().min(3).max(100),
+          categoryId: z.number().int().refine((id) => [19, 20, 21, 22].includes(id)),
+          category: z.enum(['Vials', 'Caps & Septa', 'Syringes', 'Fittings & Tubing']),
+          description: z.string().min(10).max(2000),
+          detailedDescription: z.string().min(20).max(5000),
+          specifications: z.record(z.string(), z.unknown()),
+          catalogUrl: z.string().url().max(500),
+        })).min(1).max(20),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+
+      const categoryNames: Record<number, string> = {
+        19: 'Vials',
+        20: 'Caps & Septa',
+        21: 'Syringes',
+        22: 'Fittings & Tubing',
+      };
+      const prefixes: Record<'Thermo Fisher' | 'Restek', string> = {
+        'Thermo Fisher': 'THER',
+        Restek: 'RESTEK',
+      };
+      const allowedHosts: Record<'Thermo Fisher' | 'Restek', string[]> = {
+        'Thermo Fisher': ['thermofisher.com'],
+        Restek: ['restek.com'],
+      };
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const results: Array<{ partNumber: string; status: 'inserted' | 'skipped' | 'error'; id?: number; slug?: string; error?: string }> = [];
+
+      for (const row of input.products) {
+        if (categoryNames[row.categoryId] !== row.category) {
+          results.push({ partNumber: row.partNumber, status: 'error', error: 'categoryId/category mismatch' });
+          continue;
+        }
+        let catalogHost = '';
+        try {
+          catalogHost = new URL(row.catalogUrl).hostname.toLowerCase();
+        } catch {
+          results.push({ partNumber: row.partNumber, status: 'error', error: 'invalid catalog URL' });
+          continue;
+        }
+        if (!allowedHosts[row.brand].some((host) => catalogHost === host || catalogHost.endsWith(`.${host}`))) {
+          results.push({ partNumber: row.partNumber, status: 'error', error: 'catalog URL host does not match brand' });
+          continue;
+        }
+
+        const partSlug = row.partNumber.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+        const slug = row.brand === 'Restek' ? `restek-${partSlug}` : partSlug;
+        const productId = `${prefixes[row.brand]}-${row.partNumber}`;
+        const connection = await pool.getConnection();
+        try {
+          await connection.beginTransaction();
+          const [existingRows] = await connection.execute(
+            'SELECT id FROM products WHERE partNumber = ? OR productId = ? OR slug = ? LIMIT 1',
+            [row.partNumber, productId, slug]
+          ) as any;
+          if (existingRows.length > 0) {
+            await connection.rollback();
+            results.push({ partNumber: row.partNumber, status: 'skipped', error: 'partNumber, productId, or slug already exists' });
+            continue;
+          }
+
+          const [insertResult] = await connection.execute(
+            `INSERT INTO products
+              (productId, partNumber, brand, prefix, name, description, detailedDescription,
+               specifications, imageUrl, catalogUrl, productType, slug, category, category_id,
+               status, createdAt, updatedAt)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, 'active', ?, ?)`,
+            [
+              productId, row.partNumber, row.brand, prefixes[row.brand], row.name,
+              row.description, row.detailedDescription, JSON.stringify(row.specifications),
+              row.catalogUrl, row.productType, slug, row.category, row.categoryId, now, now,
+            ]
+          ) as any;
+          const insertedId = Number(insertResult.insertId);
+          await connection.execute(
+            'INSERT INTO product_categories (product_id, category_id, is_primary, createdAt) VALUES (?, ?, 1, ?)',
+            [insertedId, row.categoryId, now]
+          );
+          await connection.commit();
+          results.push({ partNumber: row.partNumber, status: 'inserted', id: insertedId, slug });
+        } catch (err: any) {
+          await connection.rollback();
+          results.push({ partNumber: row.partNumber, status: 'error', error: String(err?.sqlMessage || err?.message || err) });
+        } finally {
+          connection.release();
+        }
+      }
+
+      const inserted = results.filter((result) => result.status === 'inserted').length;
+      const skipped = results.filter((result) => result.status === 'skipped').length;
+      const errors = results.filter((result) => result.status === 'error').length;
+      return { success: errors === 0, summary: { inserted, skipped, errors, total: results.length }, results };
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
