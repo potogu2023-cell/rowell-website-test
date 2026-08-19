@@ -995,7 +995,6 @@ export const adminRouter = router({
         'Thermo Fisher': ['thermofisher.com'],
         Restek: ['restek.com'],
       };
-      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
       // Production's legacy products table requires a non-null taskId. This new,
       // batch-specific identifier preserves provenance instead of reusing an
       // unrelated historical import task.
@@ -1039,18 +1038,18 @@ export const adminRouter = router({
             `INSERT INTO products
               (taskId, productId, partNumber, brand, prefix, name, description, detailedDescription,
                specifications, imageUrl, catalogUrl, productType, slug, category, category_id,
-               status, createdAt, updatedAt)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, 'active', ?, ?)`,
+               status)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, 'active')`,
             [
               importTaskId, productId, row.partNumber, row.brand, prefixes[row.brand], row.name,
               row.description, row.detailedDescription, JSON.stringify(row.specifications),
-              row.catalogUrl, row.productType, slug, row.category, row.categoryId, now, now,
+              row.catalogUrl, row.productType, slug, row.category, row.categoryId,
             ]
           ) as any;
           const insertedId = Number(insertResult.insertId);
           await connection.execute(
-            'INSERT INTO product_categories (product_id, category_id, is_primary, createdAt) VALUES (?, ?, 1, ?)',
-            [insertedId, row.categoryId, now]
+            'INSERT INTO product_categories (product_id, category_id, is_primary) VALUES (?, ?, 1)',
+            [insertedId, row.categoryId]
           );
           await connection.commit();
           results.push({ partNumber: row.partNumber, status: 'inserted', id: insertedId, slug });
