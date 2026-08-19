@@ -647,6 +647,30 @@ async function redirectLegacyLearningArticle(req: any, res: any, next: () => voi
   }
 }
 
+async function redirectLegacyProductUrl(req: any, res: any, next: () => void): Promise<void> {
+  if (req.method !== "GET") return next();
+  const match = req.originalUrl.match(/^\/products\/([^/?]+)(?:\?[^]*)?$/);
+  if (!match) return next();
+
+  try {
+    const db = await getDb();
+    if (!db) return next();
+    const legacyKey = decodeURIComponent(match[1]);
+    const productRecord = await db.select({ slug: products.slug, status: products.status })
+      .from(products)
+      .where(eq(products.partNumber, legacyKey))
+      .limit(1);
+    const product = productRecord[0];
+    if (!product || product.status !== "active" || !product.slug || product.slug === legacyKey) {
+      return next();
+    }
+    return res.redirect(301, `/products/${encodeURIComponent(product.slug)}`);
+  } catch (error) {
+    console.error("[SEO] Legacy product URL check failed:", error);
+    return next();
+  }
+}
+
 function renderNotFoundTemplate(template: string, requestPath: string, statusCode: 404 | 410): string {
   const title = statusCode === 410 ? "Content No Longer Available | ROWELL" : "Page Not Found | ROWELL";
   const heading = statusCode === 410 ? "This content is no longer available" : "Page not found";
@@ -830,8 +854,9 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
-  // Canonicalize legacy article URLs before Vite serves the application shell.
+  // Canonicalize legacy article and product URLs before Vite serves the application shell.
   app.use(redirectLegacyLearningArticle);
+  app.use(redirectLegacyProductUrl);
 
   // Use Vite middleware but exclude sitemap.xml and robots.txt
   app.use((req, res, next) => {
@@ -896,8 +921,9 @@ export function serveStatic(app: Express) {
     );
   }
 
-  // Canonicalize legacy article URLs before static serving or SEO injection.
+  // Canonicalize legacy article and product URLs before static serving or SEO injection.
   app.use(redirectLegacyLearningArticle);
+  app.use(redirectLegacyProductUrl);
 
   // Core static routes must be intercepted before express.static can serve the
   // root index.html. Otherwise `/` bypasses route-specific SEO metadata.
