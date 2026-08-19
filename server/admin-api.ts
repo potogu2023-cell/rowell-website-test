@@ -1170,6 +1170,51 @@ export const adminRouter = router({
       return { success: errors === 0 && skipped === 0, summary: { updated, skipped, errors, total: results.length }, results };
     }),
 
+  // Restore the explicit product_categories relation for three independently
+  // verified Restek tubing records that remain active and publicly addressable
+  // but are absent from the Fittings & Tubing collection query.
+  restoreVerifiedRestekFittingsCategoryLinks: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedPartNumbers = ['27767', '27795', '27804'] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; status: 'updated' }> = [];
+        for (const partNumber of verifiedPartNumbers) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand FROM products WHERE partNumber = ? LIMIT 1',
+            [partNumber]
+          ) as any;
+          const product = rows[0];
+          if (!product || product.partNumber !== partNumber || product.brand !== 'Restek') {
+            throw new Error(`Verified Restek identity did not match for ${partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET category_id = 22, category = ?, updatedAt = NOW() WHERE id = ?',
+            ['Fittings & Tubing', product.id]
+          );
+          await connection.execute('DELETE FROM product_categories WHERE product_id = ?', [product.id]);
+          await connection.execute(
+            'INSERT INTO product_categories (product_id, category_id, is_primary) VALUES (?, 22, 1)',
+            [product.id]
+          );
+          results.push({ id: product.id, partNumber, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, categoryId: 22, category: 'Fittings & Tubing', results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
