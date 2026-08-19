@@ -216,6 +216,82 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       { question: "What should be checked after selecting an SPE cartridge?", answer: "Confirm recovery, precision, matrix effects, and blank performance under the planned conditioning, loading, wash, and elution steps before routine use." },
     ],
   },
+  "vials": {
+    name: "Chromatography Vials",
+    catalogSlug: "vials",
+    catalogHref: "/products?category=19",
+    eyebrow: "Chromatography Sample Vial Selection",
+    heading: "Chromatography Vials for HPLC, UHPLC and GC Sample Handling",
+    summary: "Browse chromatography vials for HPLC, UHPLC and GC workflows, and compare listed capacity, glass type, neck finish, dimensions, closure format and package quantity.",
+    overview: "A chromatography vial is selected around the sample volume, autosampler format, closure system and chemical compatibility required by the method. Compare the listed vial capacity, glass type, neck finish and dimensions with the autosampler documentation and intended sample workflow. Where a vial, cap and septum are offered separately, confirm compatible dimensions and closure formats.",
+    selectionPoints: [
+      "Match vial capacity and recovery format to the expected injection volume, remaining sample volume and method workflow.",
+      "Compare neck finish, vial dimensions and closure style with the intended autosampler and selected cap or septum.",
+      "Review listed clear or amber glass format, package quantity and the exact part number before requesting sourcing support.",
+    ],
+    faq: [
+      { question: "How should I choose chromatography vial capacity?", answer: "Start with the sample volume, required injection volume and autosampler format. Compare the listed vial capacity and dimensions with the actual workflow and instrument documentation." },
+      { question: "Are screw-neck and snap-neck vials interchangeable?", answer: "No. Vial neck finish and closure format must be compatible. Confirm the exact vial, cap and septum specifications before assembling a sample container." },
+      { question: "When should amber glass vials be considered?", answer: "Amber glass can be evaluated when the method or sample-handling procedure calls for reduced light exposure. Confirm material suitability using the sample and method requirements." },
+    ],
+  },
+  "caps-septa": {
+    name: "Vial Caps & Septa",
+    catalogSlug: "caps-septa",
+    catalogHref: "/products?category=20",
+    eyebrow: "Vial Closure and Septum Selection",
+    heading: "Vial Caps and Septa for Chromatography Sample Handling",
+    summary: "Compare chromatography vial caps and septa by closure format, dimensions, septum material, slit design, cap color and package quantity for your sample-handling workflow.",
+    overview: "Caps and septa complete the vial closure system and should be selected with the exact vial neck finish, autosampler needle configuration and sample-handling requirements in mind. Use the exact part number to confirm that the cap and septum are compatible with the vial and intended method conditions.",
+    selectionPoints: [
+      "Match cap diameter and closure format to the selected screw-neck, snap-neck or crimp-neck vial.",
+      "Compare listed septum material and slit design with the sample, needle type and injection workflow.",
+      "Verify package quantity and whether the listing contains a cap, a septum or an assembled cap-and-septum set.",
+    ],
+    faq: [
+      { question: "How do I match a cap and septum to a vial?", answer: "Match the vial neck finish, closure style and listed dimensions first. Then confirm the cap-and-septum configuration against the autosampler and sample-handling requirements." },
+      { question: "What does a preslit septum mean?", answer: "A preslit septum has a manufacturer-provided opening. Whether it is appropriate depends on the needle, sample volatility and method workflow, so check the exact product specifications." },
+      { question: "Should cap color be used as the only selection criterion?", answer: "No. Color can identify a product configuration, but closure format, dimensions, septum material and the exact part number are the key compatibility checks." },
+    ],
+  },
+  "chromatography-syringes": {
+    name: "Chromatography Syringes",
+    catalogSlug: "chromatography-syringes",
+    catalogHref: "/products?category=21",
+    eyebrow: "GC and Chromatography Syringe Selection",
+    heading: "Chromatography Syringes for GC and Laboratory Sample Introduction",
+    summary: "Browse chromatography syringes and compare listed volume, needle gauge, needle length, needle configuration, intended use and package format before selecting a part number.",
+    overview: "Chromatography syringe selection depends on the injection technique, required volume, needle configuration and relevant instrument or manual workflow. Compare manufacturer-listed capacity, needle gauge, needle length and fixed or removable needle format with the actual method and instrument documentation.",
+    selectionPoints: [
+      "Match listed syringe volume with the injection volume and precision requirements of the intended workflow.",
+      "Compare needle gauge, length and fixed or removable configuration with the injector, inlet or manual procedure.",
+      "Review whether the manufacturer lists the product for reusable or single-use handling and confirm the exact package format.",
+    ],
+    faq: [
+      { question: "Which syringe volume should I select for a chromatography method?", answer: "Use the method's injection requirement as the starting point, then compare the listed syringe capacity and configuration with the injector or manual procedure." },
+      { question: "Why does needle configuration matter?", answer: "Needle gauge, length and fixed or removable construction affect physical compatibility with the intended injection workflow. Verify the exact product requirements before use." },
+      { question: "Can a syringe be selected from volume alone?", answer: "No. Volume is only one parameter. Check listed needle details, intended use, product format and method or instrument documentation as well." },
+    ],
+  },
+  "hplc-fittings-tubing": {
+    name: "HPLC Fittings & Tubing",
+    catalogSlug: "hplc-fittings-tubing",
+    catalogHref: "/products?category=22",
+    eyebrow: "HPLC Fluidic Connection Selection",
+    heading: "HPLC Fittings and Tubing for Chromatography Fluidic Connections",
+    summary: "Explore HPLC fittings and tubing, including listed PEEK and stainless-steel components, and compare connection format, tubing dimensions, material, pressure rating and package quantity.",
+    overview: "HPLC fittings and tubing connect components in the chromatographic flow path. Selection should start with the existing port and thread format, tubing outer and inner diameter, material compatibility and documented pressure requirements. Review the exact part number and system documentation before changing a fluidic connection.",
+    selectionPoints: [
+      "Confirm the port or thread format and match it with listed fitting and tubing outer-diameter requirements.",
+      "Compare tubing inner diameter, material, length and stated pressure rating with the intended flow path and system conditions.",
+      "Use the exact part number to review package quantity and avoid assuming that fittings, ferrules or tubing are included unless listed.",
+    ],
+    faq: [
+      { question: "What should be checked before selecting HPLC tubing?", answer: "Check listed tubing outer and inner diameter, material, length, pressure rating and the connection requirements of the existing system." },
+      { question: "Are PEEK and stainless-steel fittings interchangeable?", answer: "Material and connection suitability depend on the method, solvent exposure, pressure requirement and hardware configuration. Compare the exact listed component with system documentation before installation." },
+      { question: "Why is tubing inner diameter important?", answer: "Inner diameter influences the physical flow path and dead volume. Use the intended method and system configuration to determine the appropriate listed tubing dimensions." },
+    ],
+  },
 };
 
 export const CATEGORY_LANDING_SLUGS = Object.keys(CATEGORY_LANDING_PROFILES);
