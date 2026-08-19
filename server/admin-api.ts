@@ -1073,6 +1073,103 @@ export const adminRouter = router({
       return { success: errors === 0, summary: { inserted, skipped, errors, total: results.length }, results };
     }),
 
+  // Correct an audited Waters consumable collision atomically. This narrow route
+  // preserves identifier/slug/status fields, accepts only a matching existing
+  // Waters part number, and replaces just the evidence-backed facts, category
+  // relation and noncompliant image binding.
+  correctVerifiedWatersConsumableConflict: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          id: z.number().int().positive(),
+          expectedPartNumber: z.string().min(1).max(128),
+          name: z.string().min(3).max(255),
+          description: z.string().min(10).max(2000),
+          detailedDescription: z.string().min(20).max(5000),
+          productType: z.literal('Caps & Septa'),
+          categoryId: z.literal(20),
+          category: z.literal('Caps & Septa'),
+          specifications: z.record(z.string(), z.unknown()),
+          catalogUrl: z.string().url().max(500),
+          metaTitle: z.string().min(3).max(70),
+          metaDescription: z.string().min(10).max(155),
+        })).min(1).max(10),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const results: Array<{ id: number; partNumber: string; status: 'updated' | 'skipped' | 'error'; error?: string }> = [];
+
+      for (const update of input.updates) {
+        let catalogHost = '';
+        try {
+          catalogHost = new URL(update.catalogUrl).hostname.toLowerCase();
+        } catch {
+          results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'error', error: 'invalid catalog URL' });
+          continue;
+        }
+        if (!(catalogHost === 'waters.com' || catalogHost.endsWith('.waters.com'))) {
+          results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'error', error: 'catalog URL host does not match Waters' });
+          continue;
+        }
+
+        const connection = await pool.getConnection();
+        try {
+          await connection.beginTransaction();
+          const [existingRows] = await connection.execute(
+            'SELECT id, partNumber, brand, productId, slug FROM products WHERE id = ? LIMIT 1',
+            [update.id]
+          ) as any;
+          const existing = existingRows[0];
+          if (!existing || existing.partNumber !== update.expectedPartNumber || existing.brand !== 'Waters') {
+            await connection.rollback();
+            results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'skipped', error: 'existing product identity did not match guarded Waters part number' });
+            continue;
+          }
+
+          await connection.execute(
+            `UPDATE products SET
+              prefix = 'WATERS', name = ?, description = ?, detailedDescription = ?, specifications = ?,
+              imageUrl = NULL, catalogUrl = ?, productType = ?, category = ?, category_id = ?,
+              applications = NULL, particleSize = NULL, poreSize = NULL, columnLength = NULL,
+              innerDiameter = NULL, phRange = NULL, maxPressure = NULL, maxTemperature = NULL,
+              usp = NULL, phaseType = NULL, particleSizeNum = NULL, poreSizeNum = NULL,
+              columnLengthNum = NULL, innerDiameterNum = NULL, phMin = NULL, phMax = NULL,
+              metaTitle = ?, metaDescription = ?, updatedAt = NOW()
+             WHERE id = ?`,
+            [
+              update.name, update.description, update.detailedDescription, JSON.stringify(update.specifications),
+              update.catalogUrl, update.productType, update.category, update.categoryId,
+              update.metaTitle, update.metaDescription, update.id,
+            ]
+          );
+          await connection.execute('DELETE FROM product_categories WHERE product_id = ?', [update.id]);
+          await connection.execute(
+            'INSERT INTO product_categories (product_id, category_id, is_primary) VALUES (?, ?, 1)',
+            [update.id, update.categoryId]
+          );
+          await connection.commit();
+          results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'updated' });
+        } catch (error: any) {
+          await connection.rollback();
+          results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'error', error: String(error?.sqlMessage || error?.message || error) });
+        } finally {
+          connection.release();
+        }
+      }
+
+      const updated = results.filter((result) => result.status === 'updated').length;
+      const skipped = results.filter((result) => result.status === 'skipped').length;
+      const errors = results.filter((result) => result.status === 'error').length;
+      return { success: errors === 0 && skipped === 0, summary: { updated, skipped, errors, total: results.length }, results };
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
