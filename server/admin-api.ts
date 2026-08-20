@@ -1777,6 +1777,26 @@ export const adminRouter = router({
       } catch(error:any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
     }),
 
+  // Normalize exactly 10 verified Merck capillary GC records in continuous batch six.
+  correctVerifiedMerckCapillaryGcTypesRound6: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts=[
+        { id: 151333, partNumber: '25345-U' },
+        { id: 151334, partNumber: '25347' },
+        { id: 151335, partNumber: '25351' },
+        { id: 151336, partNumber: '25353' },
+        { id: 151337, partNumber: '25358' },
+        { id: 151338, partNumber: '25375-U' },
+        { id: 151339, partNumber: '25376' },
+        { id: 151340, partNumber: '25381' },
+        { id: 151341, partNumber: '25391' },
+        { id: 151342, partNumber: '25396' },
+      ] as const; const { getPool }=await import('./db'); const pool=await getPool(); if(!pool) throw new Error('Database pool not available'); const connection=await pool.getConnection();
+      try { await connection.beginTransaction(); const results=[]; for(const expected of verifiedProducts) { const [rows]=await connection.execute('SELECT id,partNumber,brand,category_id AS categoryId,productType,status FROM products WHERE id=? LIMIT 1',[expected.id]) as any; const product=rows[0]; if(!product||product.id!==expected.id||product.partNumber!==expected.partNumber||product.brand!=='Merck'||product.categoryId!==30001||![null,''].includes(product.productType)||product.status!=='active') throw new Error(`Verified capillary GC identity mismatch for ${expected.partNumber}`); await connection.execute("UPDATE products SET productType='Capillary GC Column',updatedAt=NOW() WHERE id=?",[product.id]); results.push({id:product.id,partNumber:product.partNumber,status:'updated'}); } await connection.commit(); return {success:true,productType:'Capillary GC Column',results}; } catch(error:any) {await connection.rollback();throw new Error(String(error?.sqlMessage||error?.message||error));} finally {connection.release();}
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
