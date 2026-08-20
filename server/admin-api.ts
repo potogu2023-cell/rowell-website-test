@@ -1452,6 +1452,80 @@ export const adminRouter = router({
       }
     }),
 
+  // Set the normalized GC Column product type for exactly 30 active records
+  // that have a blank current type, category_id=30001, and an exact original-manufacturer model page.
+  correctVerifiedGcColumnProductTypes: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150520, partNumber: '121-1012', brand: 'Agilent' },
+        { id: 150521, partNumber: '121-1012E', brand: 'Agilent' },
+        { id: 150522, partNumber: '121-1012LTM', brand: 'Agilent' },
+        { id: 150523, partNumber: '121-1013', brand: 'Agilent' },
+        { id: 150524, partNumber: '121-1013LTM', brand: 'Agilent' },
+        { id: 150525, partNumber: '121-101A', brand: 'Agilent' },
+        { id: 150526, partNumber: '121-101ALTM', brand: 'Agilent' },
+        { id: 150550, partNumber: '122-1011', brand: 'Agilent' },
+        { id: 150551, partNumber: '122-1012', brand: 'Agilent' },
+        { id: 150552, partNumber: '122-1012E', brand: 'Agilent' },
+        { id: 151283, partNumber: '23399-U', brand: 'Merck' },
+        { id: 151284, partNumber: '24028', brand: 'Merck' },
+        { id: 151285, partNumber: '24034', brand: 'Merck' },
+        { id: 151286, partNumber: '24044', brand: 'Merck' },
+        { id: 151287, partNumber: '24045-U', brand: 'Merck' },
+        { id: 151288, partNumber: '24047', brand: 'Merck' },
+        { id: 151289, partNumber: '24048', brand: 'Merck' },
+        { id: 151290, partNumber: '24079', brand: 'Merck' },
+        { id: 151291, partNumber: '24080-U', brand: 'Merck' },
+        { id: 151292, partNumber: '24081', brand: 'Merck' },
+        { id: 151420, partNumber: '10180', brand: 'Restek' },
+        { id: 151421, partNumber: '10221', brand: 'Restek' },
+        { id: 151422, partNumber: '10254-125', brand: 'Restek' },
+        { id: 151423, partNumber: '10427', brand: 'Restek' },
+        { id: 151424, partNumber: '10535', brand: 'Restek' },
+        { id: 151425, partNumber: '10640', brand: 'Restek' },
+        { id: 151426, partNumber: '10641', brand: 'Restek' },
+        { id: 151427, partNumber: '10655-126', brand: 'Restek' },
+        { id: 151428, partNumber: '10820', brand: 'Restek' },
+        { id: 151429, partNumber: '10921', brand: 'Restek' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+            product.brand !== expected.brand || product.categoryId !== 30001 ||
+            ![null, ''].includes(product.productType) || product.status !== 'active'
+          ) {
+            throw new Error(`Verified GC product identity did not match for ${expected.partNumber}`);
+          }
+          await connection.execute(
+            "UPDATE products SET productType = 'GC Column', updatedAt = NOW() WHERE id = ?",
+            [product.id]
+          );
+          results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, productType: 'GC Column', categoryId: 30001, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
