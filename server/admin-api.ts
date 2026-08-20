@@ -1580,6 +1580,70 @@ export const adminRouter = router({
       }
     }),
 
+  // Normalize the GC Column product type for exactly 20 active records
+  // with a blank type, category_id=30001, and exact original-manufacturer model evidence.
+  correctVerifiedGcColumnProductTypesRound3: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150576, partNumber: '123-1014', brand: 'Agilent' },
+        { id: 150577, partNumber: '123-1015', brand: 'Agilent' },
+        { id: 150578, partNumber: '123-1015E', brand: 'Agilent' },
+        { id: 150579, partNumber: '123-1015LTM', brand: 'Agilent' },
+        { id: 150580, partNumber: '125-1011', brand: 'Agilent' },
+        { id: 150581, partNumber: '125-1011E', brand: 'Agilent' },
+        { id: 150582, partNumber: '125-1012', brand: 'Agilent' },
+        { id: 150583, partNumber: '125-1012E', brand: 'Agilent' },
+        { id: 150584, partNumber: '125-1012LTM', brand: 'Agilent' },
+        { id: 150585, partNumber: '125-1014', brand: 'Agilent' },
+        { id: 151303, partNumber: '24155', brand: 'Merck' },
+        { id: 151304, partNumber: '24156', brand: 'Merck' },
+        { id: 151305, partNumber: '24157', brand: 'Merck' },
+        { id: 151306, partNumber: '24158', brand: 'Merck' },
+        { id: 151307, partNumber: '24160-U', brand: 'Merck' },
+        { id: 151308, partNumber: '24166', brand: 'Merck' },
+        { id: 151309, partNumber: '24181', brand: 'Merck' },
+        { id: 151310, partNumber: '24196-U', brand: 'Merck' },
+        { id: 151311, partNumber: '24205-U', brand: 'Merck' },
+        { id: 151312, partNumber: '24211', brand: 'Merck' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+            product.brand !== expected.brand || product.categoryId !== 30001 ||
+            ![null, ''].includes(product.productType) || product.status !== 'active'
+          ) {
+            throw new Error(`Verified GC identity did not match for ${expected.partNumber}`);
+          }
+          await connection.execute(
+            "UPDATE products SET productType = 'GC Column', updatedAt = NOW() WHERE id = ?",
+            [product.id]
+          );
+          results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, productType: 'GC Column', categoryId: 30001, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
