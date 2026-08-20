@@ -117,6 +117,22 @@ export default function ProductDetail() {
   const publishedUspCodes = hasCatalogValue(product.usp)
     ? product.usp.split(',').map((code) => code.trim().toLowerCase()).filter((code) => Boolean(USP_LANDING_PROFILES[code]))
     : [];
+  const productContext = `${product.name || ''} ${product.phaseType || ''} ${product.productType || ''}`;
+  const catalogContextLinks: Array<{ href: string; label: string; description: string }> = [];
+  if (product.productType === 'HPLC Column' && /\bc18\b/i.test(productContext)) {
+    catalogContextLinks.push({
+      href: '/categories/c18-columns',
+      label: 'Explore C18 columns',
+      description: 'Compare active C18 column options by dimensions, particle size, and listed phase details.',
+    });
+  }
+  if (product.productType === 'GC Column') {
+    catalogContextLinks.push({
+      href: '/categories/gc-columns',
+      label: 'Explore GC columns',
+      description: 'Browse active GC column options and compare the listed phase and dimensional specifications.',
+    });
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -309,6 +325,18 @@ export default function ProductDetail() {
                         <Link key={code} href={`/usp/${code}`} className="font-medium text-primary hover:underline">View {USP_LANDING_PROFILES[code].code} guide</Link>
                       ))}
                     </div>
+                  </div>
+                )}
+
+                {catalogContextLinks.length > 0 && (
+                  <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-sm text-slate-700">
+                    <h4 className="font-semibold text-slate-900">Explore related catalog options</h4>
+                    {catalogContextLinks.map((link) => (
+                      <div key={link.href} className="mt-2">
+                        <Link href={link.href} className="font-medium text-primary hover:underline">{link.label}</Link>
+                        <p className="mt-1 leading-6">{link.description}</p>
+                      </div>
+                    ))}
                   </div>
                 )}
 
