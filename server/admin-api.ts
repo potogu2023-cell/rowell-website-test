@@ -1400,6 +1400,58 @@ export const adminRouter = router({
       }
     }),
 
+  // Move only three Shimadzu GC column records whose exact official model pages
+  // were independently verified. Series-page-only SKUs remain outside this route.
+  correctVerifiedShimadzuGcCategoryRelations: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 90075, partNumber: '221-75895-60' },
+        { id: 90076, partNumber: '221-75896-30' },
+        { id: 90077, partNumber: '221-75896-50' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, category, productType, status FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+            product.brand !== 'Shimadzu' || product.categoryId !== 1 || product.category !== 'Other' ||
+            product.productType !== 'GC Column' || product.status !== 'active'
+          ) {
+            throw new Error(`Verified Shimadzu GC identity did not match for ${expected.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET category_id = 30001, updatedAt = NOW() WHERE id = ?',
+            [product.id]
+          );
+          await connection.execute('DELETE FROM product_categories WHERE product_id = ?', [product.id]);
+          await connection.execute(
+            'INSERT INTO product_categories (product_id, category_id, is_primary) VALUES (?, 30001, 1)',
+            [product.id]
+          );
+          results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, categoryId: 30001, category: 'GC Columns', results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
