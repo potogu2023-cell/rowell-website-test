@@ -379,6 +379,67 @@ export const adminRouter = router({
       };
     }),
 
+  // Correct only the nine HyperSep SPE records independently verified on Thermo Fisher model pages.
+  // The server owns the allowed identity and target value so this route cannot be repurposed for broad product edits.
+  correctVerifiedHyperSepSpeProductTypes: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({
+        adminKey: z.string(),
+        updates: z.array(z.object({
+          id: z.number().int().positive(),
+          expectedPartNumber: z.string().min(1),
+          expectedBrand: z.literal('Thermo Fisher'),
+          evidenceUrl: z.string().url(),
+        })).min(1).max(9),
+      }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const approved = new Map<string, { id: number; evidenceUrl: string }>([
+        ['60108-301', { id: 31479, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-301' }],
+        ['60108-302', { id: 31473, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-302' }],
+        ['60108-303', { id: 31475, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-303' }],
+        ['60108-304', { id: 31476, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-304' }],
+        ['60108-305', { id: 31477, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-305' }],
+        ['60108-376', { id: 31471, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-376' }],
+        ['60108-390', { id: 31472, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-390' }],
+        ['60108-701', { id: 31481, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-701' }],
+        ['60108-702', { id: 31483, evidenceUrl: 'https://www.thermofisher.com/order/catalog/product/60108-702' }],
+      ]);
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
+      const results: Array<{ id: number; partNumber: string; status: 'updated' | 'already_correct' | 'identity_mismatch' | 'not_found' | 'not_approved' }> = [];
+      for (const update of input.updates) {
+        const approvedRecord = approved.get(update.expectedPartNumber);
+        if (!approvedRecord || approvedRecord.id !== update.id || approvedRecord.evidenceUrl !== update.evidenceUrl) {
+          results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'not_approved' });
+          continue;
+        }
+        const existing = await db.select({ id: products.id, partNumber: products.partNumber, brand: products.brand, productType: products.productType })
+          .from(products).where(eq(products.id, update.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: update.id, partNumber: update.expectedPartNumber, status: 'not_found' });
+          continue;
+        }
+        if (existing[0].partNumber !== update.expectedPartNumber || existing[0].brand !== update.expectedBrand) {
+          results.push({ id: update.id, partNumber: existing[0].partNumber, status: 'identity_mismatch' });
+          continue;
+        }
+        if (existing[0].productType === 'Solid Phase Extraction Cartridge') {
+          results.push({ id: update.id, partNumber: existing[0].partNumber, status: 'already_correct' });
+          continue;
+        }
+        await db.update(products).set({ productType: 'Solid Phase Extraction Cartridge', updatedAt: new Date().toISOString().slice(0, 19).replace('T', ' ') }).where(eq(products.id, update.id));
+        results.push({ id: update.id, partNumber: existing[0].partNumber, status: 'updated' });
+      }
+      return { success: results.every((result) => result.status === 'updated' || result.status === 'already_correct'), results };
+    }),
+
   // Correct verified product identity and raw specifications only. This endpoint intentionally excludes
   // prices, inventory, fulfillment promises, image URLs, and status to keep evidence-backed corrections narrow.
   batchCorrectVerifiedProductFacts: publicProcedure
