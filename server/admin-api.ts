@@ -1797,6 +1797,25 @@ export const adminRouter = router({
       try { await connection.beginTransaction(); const results=[]; for(const expected of verifiedProducts) { const [rows]=await connection.execute('SELECT id,partNumber,brand,category_id AS categoryId,productType,status FROM products WHERE id=? LIMIT 1',[expected.id]) as any; const product=rows[0]; if(!product||product.id!==expected.id||product.partNumber!==expected.partNumber||product.brand!=='Merck'||product.categoryId!==30001||![null,''].includes(product.productType)||product.status!=='active') throw new Error(`Verified capillary GC identity mismatch for ${expected.partNumber}`); await connection.execute("UPDATE products SET productType='Capillary GC Column',updatedAt=NOW() WHERE id=?",[product.id]); results.push({id:product.id,partNumber:product.partNumber,status:'updated'}); } await connection.commit(); return {success:true,productType:'Capillary GC Column',results}; } catch(error:any) {await connection.rollback();throw new Error(String(error?.sqlMessage||error?.message||error));} finally {connection.release();}
     }),
 
+  correctVerifiedAgilentGcCategoryRelationsRound7: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts=[
+        { id: 60141, partNumber: '122-5532' },
+        { id: 60142, partNumber: '122-5562' },
+        { id: 60147, partNumber: '122-7032' },
+        { id: 60148, partNumber: '122-7062' },
+        { id: 60149, partNumber: '123-1334' },
+        { id: 60150, partNumber: '123-1364' },
+        { id: 60155, partNumber: '19091J-413' },
+        { id: 60145, partNumber: '19091S-433' },
+        { id: 60146, partNumber: '19091S-436' },
+        { id: 60156, partNumber: '19091Z-413' },
+      ] as const; const { getPool }=await import('./db'); const pool=await getPool(); if(!pool) throw new Error('Database pool not available'); const connection=await pool.getConnection();
+      try {await connection.beginTransaction(); const results=[]; for(const expected of verifiedProducts) {const [rows]=await connection.execute('SELECT id,partNumber,brand,category_id AS categoryId,category,productType,status FROM products WHERE id=? LIMIT 1',[expected.id]) as any; const product=rows[0]; if(!product||product.id!==expected.id||product.partNumber!==expected.partNumber||product.brand!=='Agilent'||product.categoryId!==1||product.category!=='HPLC Column'||product.productType!=='GC Capillary Column'||product.status!=='active') throw new Error(`Verified round-seven GC identity mismatch for ${expected.partNumber}`); await connection.execute('UPDATE products SET category_id=30001,updatedAt=NOW() WHERE id=?',[product.id]); await connection.execute('DELETE FROM product_categories WHERE product_id=?',[product.id]); await connection.execute('INSERT INTO product_categories (product_id,category_id,is_primary) VALUES (?,30001,1)',[product.id]); results.push({id:product.id,partNumber:product.partNumber,status:'updated'}); } await connection.commit();return {success:true,categoryId:30001,results};}catch(error:any){await connection.rollback();throw new Error(String(error?.sqlMessage||error?.message||error));}finally{connection.release();}
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
