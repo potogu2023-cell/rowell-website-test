@@ -768,6 +768,58 @@ export const adminRouter = router({
       return { success: true, updated };
     }),
 
+  // Correct only two audited C18 resource catalog links. The server owns the exact IDs, slugs,
+  // old fragments, and replacements so this endpoint cannot update unrelated editorial content.
+  correctAuditedC18ResourceCatalogLinks: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const audited = [
+        {
+          id: 90001,
+          slug: 'hplc-c18-column-selection-guide',
+          oldFragment: 'For the workflows discussed in this guide, browse ROWELL\'s [HPLC column catalog](/products?category=1) to compare stationary phases, dimensions, and manufacturer options.',
+          newFragment: 'For the workflows discussed in this guide, browse ROWELL\'s [C18 HPLC column collection](/categories/c18-columns) to compare current listings, then review [HPLC guard-column considerations](/categories/guard-columns) where protection is method-compatible.',
+        },
+        {
+          id: 90036,
+          slug: 'c18-vs-c8-hplc-column-selection-guide',
+          oldFragment: 'For the workflows discussed in this guide, browse ROWELL\'s [HPLC column catalog](/products?category=1) to compare stationary phases, dimensions, and manufacturer options.',
+          newFragment: 'For the workflows discussed in this guide, browse ROWELL\'s [C18 HPLC column collection](/categories/c18-columns) and [C8 HPLC column collection](/categories/c8-hplc-columns) to compare current listings for a method evaluation.',
+        },
+      ] as const;
+      const { getDb } = await import('./db');
+      const { resources } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const results: Array<{ id: number; slug: string; status: 'updated' | 'already_correct' | 'identity_mismatch' | 'fragment_mismatch' | 'not_found' }> = [];
+      for (const item of audited) {
+        const existing = await db.select({ id: resources.id, slug: resources.slug, content: resources.content }).from(resources).where(eq(resources.id, item.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: item.id, slug: item.slug, status: 'not_found' });
+          continue;
+        }
+        if (existing[0].slug !== item.slug) {
+          results.push({ id: item.id, slug: existing[0].slug, status: 'identity_mismatch' });
+          continue;
+        }
+        const content = existing[0].content || '';
+        if (content.includes(item.newFragment)) {
+          results.push({ id: item.id, slug: item.slug, status: 'already_correct' });
+          continue;
+        }
+        if (!content.includes(item.oldFragment)) {
+          results.push({ id: item.id, slug: item.slug, status: 'fragment_mismatch' });
+          continue;
+        }
+        await db.update(resources).set({ content: content.replace(item.oldFragment, item.newFragment), updatedAt: now }).where(eq(resources.id, item.id));
+        results.push({ id: item.id, slug: item.slug, status: 'updated' });
+      }
+      return { success: results.every((result) => result.status === 'updated' || result.status === 'already_correct'), results };
+    }),
+
   // Batch update resource/article content by numeric ID. This is used for
   // audited editorial updates such as adding topic-relevant internal links.
   batchUpdateResourceContents: publicProcedure
