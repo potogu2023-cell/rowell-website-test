@@ -1526,6 +1526,60 @@ export const adminRouter = router({
       }
     }),
 
+  // Normalize the GC Column product type for exactly 10 active Restek records
+  // with a blank type, category_id=30001, and exact original-manufacturer model evidence.
+  correctVerifiedRestekGcColumnProductTypesRound2: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 151430, partNumber: '10968' },
+        { id: 151431, partNumber: '11051' },
+        { id: 151432, partNumber: '11062' },
+        { id: 151437, partNumber: '13373' },
+        { id: 151438, partNumber: '13481' },
+        { id: 151439, partNumber: '13623' },
+        { id: 151440, partNumber: '13868' },
+        { id: 151441, partNumber: '13876' },
+        { id: 151442, partNumber: '15059' },
+        { id: 151443, partNumber: '16620' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+            product.brand !== 'Restek' || product.categoryId !== 30001 ||
+            ![null, ''].includes(product.productType) || product.status !== 'active'
+          ) {
+            throw new Error(`Verified Restek GC identity did not match for ${expected.partNumber}`);
+          }
+          await connection.execute(
+            "UPDATE products SET productType = 'GC Column', updatedAt = NOW() WHERE id = ?",
+            [product.id]
+          );
+          results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, productType: 'GC Column', categoryId: 30001, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
