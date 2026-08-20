@@ -1885,6 +1885,29 @@ export const adminRouter = router({
       } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
     }),
 
+  correctVerifiedAgilentSpeProductTypesRound12: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150620, partNumber: '14256021' },
+        { id: 150621, partNumber: '14256023' },
+        { id: 150622, partNumber: '14256027' },
+        { id: 150623, partNumber: '14256029' },
+        { id: 150624, partNumber: '14256031' },
+        { id: 150625, partNumber: '14256035' },
+        { id: 150626, partNumber: '22102001' },
+        { id: 150627, partNumber: '22102017' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1', [expected.id]) as any; const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.brand !== 'Agilent' || product.categoryId !== 16 || product.productType !== null || product.status !== 'active') throw new Error(`Verified round-twelve SPE identity mismatch for ${expected.partNumber}`);
+          await connection.execute("UPDATE products SET productType = 'SPE Cartridge', updatedAt = NOW() WHERE id = ?", [product.id]); results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' }); }
+        await connection.commit(); return { success: true, productType: 'SPE Cartridge', categoryId: 16, results };
+      } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
