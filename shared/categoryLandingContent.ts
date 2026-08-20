@@ -7,6 +7,7 @@ export interface CategoryLandingProfile {
   summary: string;
   overview: string;
   selectionPoints: string[];
+  relatedLinks?: Array<{ href: string; label: string; description: string }>;
   faq: Array<{ question: string; answer: string }>;
 }
 
@@ -22,6 +23,23 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Start with the analytical goal: screening, method development, routine QC, or a validated transfer.",
       "Match internal diameter and column length to sample throughput, sensitivity, and instrument configuration.",
       "Confirm particle size, pore size, and pH operating range against the method conditions before purchase.",
+    ],
+    relatedLinks: [
+      {
+        href: "/resources/hplc-c18-column-selection-guide",
+        label: "Read the C18 column selection guide",
+        description: "Review the existing technical guide before comparing current catalog listings for a method evaluation.",
+      },
+      {
+        href: "/resources/c18-vs-c8-hplc-column-selection-guide",
+        label: "Compare C18 and C8 stationary phases",
+        description: "Use the existing C18-versus-C8 guide when method development requires a documented selectivity comparison.",
+      },
+      {
+        href: "/categories/guard-columns",
+        label: "Review HPLC guard-column considerations",
+        description: "Compare compatible guard-column options alongside the analytical-column workflow.",
+      },
     ],
     faq: [
       { question: "When is a C18 column a practical starting point?", answer: "A C18 phase is commonly evaluated first for reversed-phase separations where analytes show useful hydrophobic retention. Final selection should be confirmed during method development with the intended mobile phase and sample matrix." },

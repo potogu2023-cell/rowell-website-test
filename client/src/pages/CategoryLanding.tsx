@@ -45,10 +45,25 @@ export default function CategoryLanding() {
             ))}
           </ul>
         </article>
-        <aside className="rounded-xl border border-slate-200 bg-slate-50 p-7">
-          <h2 className="text-xl font-semibold text-slate-950">Find Compatible Products</h2>
-          <p className="mt-3 text-sm leading-6 text-slate-600">Use the catalog to review current products, compare available specifications, and request sourcing support for your method.</p>
-          <Link href={catalogHref} className="mt-6 inline-flex items-center gap-2 font-medium text-primary hover:underline">Open {profile.name} catalog <ArrowRight className="h-4 w-4" /></Link>
+        <aside className="space-y-6">
+          <div className="rounded-xl border border-slate-200 bg-slate-50 p-7">
+            <h2 className="text-xl font-semibold text-slate-950">Find Compatible Products</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-600">Use the catalog to review current products, compare available specifications, and request sourcing support for your method.</p>
+            <Link href={catalogHref} className="mt-6 inline-flex items-center gap-2 font-medium text-primary hover:underline">Open {profile.name} catalog <ArrowRight className="h-4 w-4" /></Link>
+          </div>
+          {profile.relatedLinks && profile.relatedLinks.length > 0 && (
+            <div className="rounded-xl border border-slate-200 bg-white p-7">
+              <h2 className="text-xl font-semibold text-slate-950">Related Method Resources</h2>
+              <ul className="mt-4 space-y-4">
+                {profile.relatedLinks.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href} className="font-medium text-primary hover:underline">{item.label}</Link>
+                    <p className="mt-1 text-sm leading-6 text-slate-600">{item.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </aside>
       </main>
 
