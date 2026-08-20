@@ -1644,6 +1644,103 @@ export const adminRouter = router({
       }
     }),
 
+  // Normalize the GC Column product type for exactly 22 active records with blank type,
+  // category_id=30001, and exact original-manufacturer model evidence from the fourth continuous-governance batch.
+  correctVerifiedGcColumnProductTypesRound4: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150586, partNumber: '125-1015', brand: 'Agilent' },
+        { id: 150587, partNumber: '125-1015E', brand: 'Agilent' },
+        { id: 150588, partNumber: '125-1017', brand: 'Agilent' },
+        { id: 150589, partNumber: '125-101J', brand: 'Agilent' },
+        { id: 150590, partNumber: '125-101K', brand: 'Agilent' },
+        { id: 150591, partNumber: '125-10B5', brand: 'Agilent' },
+        { id: 150592, partNumber: '125-10H5', brand: 'Agilent' },
+        { id: 150593, partNumber: '125-10HB', brand: 'Agilent' },
+        { id: 150594, partNumber: '125-10HBE', brand: 'Agilent' },
+        { id: 150595, partNumber: '126-1012', brand: 'Agilent' },
+        { id: 151313, partNumber: '24212', brand: 'Merck' },
+        { id: 151314, partNumber: '24217-U', brand: 'Merck' },
+        { id: 151315, partNumber: '24218-U', brand: 'Merck' },
+        { id: 151316, partNumber: '24251', brand: 'Merck' },
+        { id: 151317, partNumber: '24255', brand: 'Merck' },
+        { id: 151318, partNumber: '24256', brand: 'Merck' },
+        { id: 151319, partNumber: '24277', brand: 'Merck' },
+        { id: 151320, partNumber: '24284', brand: 'Merck' },
+        { id: 151321, partNumber: '24343', brand: 'Merck' },
+        { id: 151322, partNumber: '25003', brand: 'Merck' },
+        { id: 151469, partNumber: '80480-800', brand: 'Restek' },
+        { id: 151470, partNumber: '88000-875', brand: 'Restek' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+              product.brand !== expected.brand || product.categoryId !== 30001 ||
+              ![null, ''].includes(product.productType) || product.status !== 'active') {
+            throw new Error(`Verified fourth-batch GC identity did not match for ${expected.partNumber}`);
+          }
+          await connection.execute("UPDATE products SET productType = 'GC Column', updatedAt = NOW() WHERE id = ?", [product.id]);
+          results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, productType: 'GC Column', categoryId: 30001, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally { connection.release(); }
+    }),
+
+  // Add exact Restek model-level catalog URLs for exactly two active GC records that currently lack URLs.
+  correctVerifiedRestekGcCatalogUrlsRound4: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 151469, partNumber: '80480-800', catalogUrl: 'https://www.restek.com/p/80480-800' },
+        { id: 151470, partNumber: '88000-875', catalogUrl: 'https://www.restek.com/p/88000-875' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; catalogUrl: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, catalogUrl, status FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+              product.brand !== 'Restek' || product.categoryId !== 30001 ||
+              product.catalogUrl !== null || product.status !== 'active') {
+            throw new Error(`Verified fourth-batch Restek URL identity did not match for ${expected.partNumber}`);
+          }
+          await connection.execute('UPDATE products SET catalogUrl = ?, updatedAt = NOW() WHERE id = ?', [expected.catalogUrl, product.id]);
+          results.push({ id: product.id, partNumber: product.partNumber, catalogUrl: expected.catalogUrl, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
