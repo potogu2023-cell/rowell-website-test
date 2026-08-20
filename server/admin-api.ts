@@ -1933,6 +1933,31 @@ export const adminRouter = router({
       } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
     }),
 
+  correctVerifiedAgilentSyringeFilterProductTypesRound14: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150640, partNumber: '5190-5096' },
+        { id: 150641, partNumber: '5190-5097' },
+        { id: 150642, partNumber: '5190-5098' },
+        { id: 150643, partNumber: '5190-5099' },
+        { id: 150644, partNumber: '5190-5108' },
+        { id: 150645, partNumber: '5190-5116' },
+        { id: 150646, partNumber: '5190-5117' },
+        { id: 150647, partNumber: '5190-5120' },
+        { id: 150648, partNumber: '5190-5122' },
+        { id: 150649, partNumber: '5190-5127' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1', [expected.id]) as any; const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.brand !== 'Agilent' || product.categoryId !== 1 || product.productType !== null || product.status !== 'active') throw new Error(`Verified round-fourteen syringe-filter identity mismatch for ${expected.partNumber}`);
+          await connection.execute("UPDATE products SET productType = 'Syringe Filter', updatedAt = NOW() WHERE id = ?", [product.id]); results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' }); }
+        await connection.commit(); return { success: true, productType: 'Syringe Filter', categoryId: 1, results };
+      } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
