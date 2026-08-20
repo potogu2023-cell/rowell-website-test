@@ -139,8 +139,11 @@ export const appRouter = router({
         
         const product = currentProduct[0];
         
-        // Build recommendation query based on similarity
-        // Priority: same brand > similar specs > same phase type > same USP
+        // When a product type is recorded, preserve it as a hard compatibility
+        // boundary. This prevents a GC column from being recommended alongside
+        // unrelated HPLC columns or SPE cartridges merely because the brand matches.
+        const normalizedProductType = product.productType?.trim();
+        // Within that boundary, prioritize same brand, listed phase, USP, and dimensions.
         const relatedProducts = await db
           .select()
           .from(products)
@@ -148,6 +151,7 @@ export const appRouter = router({
             and(
               ne(products.id, product.id), // Exclude current product
               eq(products.status, 'active'), // Only active products
+              normalizedProductType ? eq(products.productType, normalizedProductType) : undefined,
               or(
                 eq(products.brand, product.brand), // Same brand
                 product.phaseType ? eq(products.phaseType, product.phaseType) : undefined, // Same phase type
