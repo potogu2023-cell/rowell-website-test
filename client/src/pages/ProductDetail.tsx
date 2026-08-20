@@ -23,8 +23,12 @@ function withParticleUnit(value: string) {
 
 function withPoreUnit(value: string) {
   const normalized = value.trim();
-  return /(?:Å|A)$/i.test(normalized)
-    ? normalized.replace(/(?:Å|A)$/i, " Å")
+  // Some verified source records express pore size as a compound value such as
+  // "13nm (130Å)". Keep an existing angstrom unit intact rather than appending
+  // a duplicate unit after the closing parenthesis.
+  if (normalized.includes('Å')) return normalized;
+  return /\d\s*A$/i.test(normalized)
+    ? normalized.replace(/\s*A$/i, ' Å')
     : `${normalized} Å`;
 }
 
