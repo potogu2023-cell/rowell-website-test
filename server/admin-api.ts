@@ -1741,6 +1741,42 @@ export const adminRouter = router({
       } finally { connection.release(); }
     }),
 
+  // Apply exact original-manufacturer GC type facts for exactly 20 active records in continuous batch five.
+  correctVerifiedGcProductTypesRound5: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150596, partNumber: '126-1013', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150597, partNumber: '127-1012', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150598, partNumber: '127-1012E', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150599, partNumber: '127-1013', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150600, partNumber: '127-1013E', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150601, partNumber: '127-1013LTM', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150602, partNumber: '127-1022', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150603, partNumber: '127-1022E', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150604, partNumber: '128-1012', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 150605, partNumber: '12A-1015', brand: 'Agilent', currentProductType: null, targetProductType: 'GC Column' },
+        { id: 151323, partNumber: '25301-U', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151324, partNumber: '25303', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151325, partNumber: '25305-U', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151326, partNumber: '25312', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151327, partNumber: '25317', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151328, partNumber: '25320-U', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151329, partNumber: '25325', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151330, partNumber: '25326', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151331, partNumber: '25327', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+        { id: 151332, partNumber: '25341-U', brand: 'Merck', currentProductType: null, targetProductType: 'Capillary GC Column' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results: Array<{ id: number; partNumber: string; productType: string; status: 'updated' }> = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1',[expected.id]) as any; const product=rows[0];
+          if (!product || product.id!==expected.id || product.partNumber!==expected.partNumber || product.brand!==expected.brand || product.categoryId!==30001 || product.productType!==expected.currentProductType || product.status!=='active') throw new Error(`Verified fifth-batch GC identity did not match for ${expected.partNumber}`);
+          await connection.execute('UPDATE products SET productType = ?, updatedAt = NOW() WHERE id = ?',[expected.targetProductType,product.id]); results.push({id:product.id,partNumber:product.partNumber,productType:expected.targetProductType,status:'updated'}); }
+        await connection.commit(); return {success:true,results};
+      } catch(error:any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
