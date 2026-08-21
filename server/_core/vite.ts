@@ -311,6 +311,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const structuredData = {
       "@context": "https://schema.org/",
       "@type": "Product",
+      "@id": `${fullUrl}#product`,
       "name": product.name || product.partNumber,
       "description": product.description || description,
       "sku": product.partNumber,
@@ -320,7 +321,8 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
         "name": product.brand || "ROWELL"
       },
       "image": imageUrl,
-      "url": fullUrl
+      "url": fullUrl,
+      "mainEntityOfPage": fullUrl
       // ROWELL is a request-for-quote B2B catalog. No Offer is emitted because
       // current availability, price, shipping, and return terms are confirmed
       // only in the context of each inquiry.
@@ -328,6 +330,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     const productBreadcrumbData = {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": `${SITE_URL}/` },
         { "@type": "ListItem", "position": 2, "name": "Products", "item": `${SITE_URL}/products` },
@@ -452,6 +455,7 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
+      "@id": `${fullUrl}#collection`,
       name: profile.heading,
       description: profile.summary,
       url: fullUrl,
@@ -461,6 +465,7 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         { "@type": "ListItem", position: 2, name: "Products", item: `${SITE_URL}/products` },
@@ -470,6 +475,7 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": `${fullUrl}#faq`,
       mainEntity: faqEntities,
     },
   ];
@@ -516,6 +522,7 @@ function injectUSPLandingSeoMetaTags(template: string, requestPath: string): str
     {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
+      "@id": `${fullUrl}#collection`,
       name: profile.heading,
       description: profile.summary,
       url: fullUrl,
@@ -525,6 +532,7 @@ function injectUSPLandingSeoMetaTags(template: string, requestPath: string): str
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         { "@type": "ListItem", position: 2, name: "USP Column Classification", item: `${SITE_URL}/usp-standards` },
@@ -534,6 +542,7 @@ function injectUSPLandingSeoMetaTags(template: string, requestPath: string): str
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": `${fullUrl}#faq`,
       mainEntity: faqEntities,
     },
   ];
@@ -714,6 +723,7 @@ async function injectResourcesIndexSeoMetaTags(template: string): Promise<string
       {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
+        "@id": `${fullUrl}#collection`,
         name: page.heading,
         description: page.description,
         url: fullUrl,
@@ -722,8 +732,18 @@ async function injectResourcesIndexSeoMetaTags(template: string): Promise<string
       {
         "@context": "https://schema.org",
         "@type": "ItemList",
+        "@id": `${fullUrl}#latest-resources`,
         name: "Latest Chromatography Resources",
         itemListElement: itemList,
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": `${fullUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Resources", item: fullUrl },
+        ],
       },
     ];
     const articleLinks = latestResources.map((article) => {
