@@ -2107,6 +2107,31 @@ export const adminRouter = router({
       } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
     }),
 
+  correctVerifiedAgilentCatalogUrlsRound21: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150710, partNumber: '699768-901K', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699768-901K/699768-901K' },
+        { id: 150711, partNumber: '699768-901T', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699768-901T/699768-901T' },
+        { id: 150712, partNumber: '699775-742', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699775-742/699775-742' },
+        { id: 150713, partNumber: '699775-942', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699775-942/699775-942' },
+        { id: 150714, partNumber: '699968-301', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699968-301/699968-301' },
+        { id: 150715, partNumber: '699968-301K', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699968-301K/699968-301K' },
+        { id: 150716, partNumber: '699968-301T', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699968-301T/699968-301T' },
+        { id: 150717, partNumber: '699968-901', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699968-901/699968-901' },
+        { id: 150718, partNumber: '699968-901K', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699968-901K/699968-901K' },
+        { id: 150719, partNumber: '699968-901T', catalogUrl: 'https://www.agilent.com/store/en_US/Prod-699968-901T/699968-901T' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, catalogUrl, status FROM products WHERE id = ? LIMIT 1', [expected.id]) as any; const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.brand !== 'Agilent' || product.catalogUrl !== null || product.status !== 'active') throw new Error(`Verified round-twenty-one catalog URL identity mismatch for ${expected.partNumber}`);
+          await connection.execute('UPDATE products SET catalogUrl = ?, updatedAt = NOW() WHERE id = ?', [expected.catalogUrl, product.id]); results.push({ id: product.id, partNumber: product.partNumber, catalogUrl: expected.catalogUrl, status: 'updated' }); }
+        await connection.commit(); return { success: true, results };
+      } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
