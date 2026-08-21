@@ -22,12 +22,13 @@ export default function ProductInquiryButton({
 }: ProductInquiryButtonProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const [destinationCountry, setDestinationCountry] = useState("");
   const createInitialFormData = () => ({
     name: "",
     email: "",
     company: "",
     phone: "",
-    message: `I would like product information and a quotation for ${productPartNumber || productId}.\n\nQuantity:\nDestination country/region:\nApplication (optional):`,
+    message: `I would like product information and a quotation for ${productPartNumber || productId}.\n\nQuantity:\nApplication (optional):`,
   });
   const [formData, setFormData] = useState(createInitialFormData);
 
@@ -37,6 +38,7 @@ export default function ProductInquiryButton({
       setOpen(false);
       // Reset form
       setFormData(createInitialFormData());
+      setDestinationCountry("");
     },
     onError: (error: unknown) => {
       const message = error instanceof Error ? error.message : '';
@@ -47,8 +49,14 @@ export default function ProductInquiryButton({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.message || !destinationCountry.trim()) {
       toast.error(t('contact.required_fields'));
+      return;
+    }
+    const normalizedDestination = destinationCountry.trim().toLowerCase().replace(/\s+/g, ' ');
+    const mainlandChinaDestinations = new Set(['china', 'mainland china', "people's republic of china", 'prc', '中国', '中国大陆']);
+    if (mainlandChinaDestinations.has(normalizedDestination)) {
+      toast.error('ROWELL does not serve mainland China.');
       return;
     }
 
@@ -60,14 +68,14 @@ export default function ProductInquiryButton({
       phone: formData.phone,
       productId: productId,
       productName: productName,
-      message: formData.message,
+      message: `${formData.message}\n\nDestination country/region: ${destinationCountry.trim()}`,
     });
   };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="default" className="w-full">
+        <Button variant="default" className="w-full" data-conversion-action="product_quote_open">
           <DollarSign className="w-4 h-4 mr-2" />
           {t('productInquiry.request_quote')}
         </Button>
@@ -141,6 +149,18 @@ export default function ProductInquiryButton({
           </div>
 
           <div>
+            <Label htmlFor="inquiry-destination">Destination country/region *</Label>
+            <Input
+              id="inquiry-destination"
+              type="text"
+              placeholder="Country or region where the products will be used"
+              value={destinationCountry}
+              onChange={(e) => setDestinationCountry(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
             <Label htmlFor="inquiry-message">{t('productInquiry.inquiry_message_label')}</Label>
             <Textarea
               id="inquiry-message"
@@ -172,6 +192,7 @@ export default function ProductInquiryButton({
               type="submit" 
               className="flex-1"
               disabled={createInquiryMutation.isPending}
+              data-conversion-action="product_quote_submit"
             >
               <Send className="w-4 h-4 mr-2" />
               {createInquiryMutation.isPending ? t('contact.sending') : t('contact.send_button')}
