@@ -2,6 +2,29 @@
 import { z } from "zod";
 import { eq, and, inArray, sql } from "drizzle-orm";
 
+// Query-expansion is deliberately limited to equivalent catalog family terms.
+// It never alters product fields, filters, or manufacturer terminology.
+const SEARCH_EQUIVALENTS: Record<string, string> = {
+  "vial": "vials",
+  "vials": "vial",
+  "cap": "caps",
+  "caps": "cap",
+  "septa": "septum",
+  "septum": "septa",
+  "syringe": "syringes",
+  "syringes": "syringe",
+  "fitting": "fittings",
+  "fittings": "fitting",
+  "tube": "tubing",
+  "tubing": "tube",
+  "gc": "gas chromatography",
+  "gas chromatography": "gc",
+  "hplc": "liquid chromatography",
+  "liquid chromatography": "hplc",
+  "spe": "solid phase extraction",
+  "solid phase extraction": "spe",
+};
+
 export const productsListInput = z.object({
   categoryId: z.number().optional(),
   brand: z.string().optional(),
@@ -43,6 +66,13 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
   if (input?.search && input.search.trim().length > 0) {
     const searchTerm = input.search.trim().toLowerCase();
     const normalizedIdentifier = searchTerm.replace(/[^a-z0-9]/g, '');
+    const equivalentTerm = SEARCH_EQUIVALENTS[searchTerm];
+    const equivalentClause = equivalentTerm
+      ? sql`
+          OR LOWER(${products.name}) LIKE ${`%${equivalentTerm}%`}
+          OR LOWER(${products.category}) LIKE ${`%${equivalentTerm}%`}
+        `
+      : sql``;
     const identifierClause = normalizedIdentifier.length >= 2
       ? sql`
           OR LOWER(REPLACE(REPLACE(REPLACE(${products.productId}, '-', ''), ' ', ''), '/', '')) LIKE ${`%${normalizedIdentifier}%`}
@@ -56,6 +86,7 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
         LOWER(${products.partNumber}) LIKE ${`%${searchTerm}%`} OR
         LOWER(${products.brand}) LIKE ${`%${searchTerm}%`} OR
         LOWER(${products.category}) LIKE ${`%${searchTerm}%`}
+        ${equivalentClause}
         ${identifierClause}
       )`
     );
