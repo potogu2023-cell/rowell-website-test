@@ -2063,6 +2063,29 @@ export const adminRouter = router({
       } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
     }),
 
+  correctVerifiedPhenomenexSyringeFilterProductTypesRound19: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150868, partNumber: 'AF0-1102-12' },
+        { id: 150869, partNumber: 'AF0-1107-12' },
+        { id: 150870, partNumber: 'AF0-1207-12' },
+        { id: 150871, partNumber: 'AF0-1A47-12' },
+        { id: 150872, partNumber: 'AF0-1A47-52' },
+        { id: 150873, partNumber: 'AF0-2102-12' },
+        { id: 150874, partNumber: 'AF0-2102-52' },
+        { id: 150875, partNumber: 'AF0-2103-12' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1', [expected.id]) as any; const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.brand !== 'Phenomenex' || product.categoryId !== 18 || product.productType !== null || product.status !== 'active') throw new Error(`Verified round-nineteen syringe-filter identity mismatch for ${expected.partNumber}`);
+          await connection.execute("UPDATE products SET productType = 'Syringe Filter', updatedAt = NOW() WHERE id = ?", [product.id]); results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' }); }
+        await connection.commit(); return { success: true, productType: 'Syringe Filter', categoryId: 18, results };
+      } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
