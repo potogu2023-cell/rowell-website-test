@@ -2023,6 +2023,46 @@ export const adminRouter = router({
       } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
     }),
 
+  correctVerifiedAgilentSyringeFilterProductTypesRound17: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150670, partNumber: '5190-5277' },
+        { id: 150671, partNumber: '5190-5278' },
+        { id: 150672, partNumber: '5190-5279' },
+        { id: 150673, partNumber: '5190-5280' },
+        { id: 150674, partNumber: '5190-5307' },
+        { id: 150675, partNumber: '5190-5308' },
+        { id: 150676, partNumber: '5190-5309' },
+        { id: 150677, partNumber: '5190-5310' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1', [expected.id]) as any; const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.brand !== 'Agilent' || product.categoryId !== 1 || product.productType !== null || product.status !== 'active') throw new Error(`Verified round-seventeen syringe-filter identity mismatch for ${expected.partNumber}`);
+          await connection.execute("UPDATE products SET productType = 'Syringe Filter', updatedAt = NOW() WHERE id = ?", [product.id]); results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' }); }
+        await connection.commit(); return { success: true, productType: 'Syringe Filter', categoryId: 1, results };
+      } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
+  correctVerifiedAgilentSpeCartridgeProductTypesRound17: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedProducts = [
+        { id: 150678, partNumber: '52102001' },
+        { id: 150679, partNumber: '52102024' },
+      ] as const;
+      const { getPool } = await import('./db'); const pool = await getPool(); if (!pool) throw new Error('Database pool not available'); const connection = await pool.getConnection();
+      try { await connection.beginTransaction(); const results = [];
+        for (const expected of verifiedProducts) { const [rows] = await connection.execute('SELECT id, partNumber, brand, category_id AS categoryId, productType, status FROM products WHERE id = ? LIMIT 1', [expected.id]) as any; const product = rows[0];
+          if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.brand !== 'Agilent' || product.categoryId !== 16 || product.productType !== null || product.status !== 'active') throw new Error(`Verified round-seventeen SPE-cartridge identity mismatch for ${expected.partNumber}`);
+          await connection.execute("UPDATE products SET productType = 'SPE Cartridge', updatedAt = NOW() WHERE id = ?", [product.id]); results.push({ id: product.id, partNumber: product.partNumber, status: 'updated' }); }
+        await connection.commit(); return { success: true, productType: 'SPE Cartridge', categoryId: 16, results };
+      } catch (error: any) { await connection.rollback(); throw new Error(String(error?.sqlMessage || error?.message || error)); } finally { connection.release(); }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
