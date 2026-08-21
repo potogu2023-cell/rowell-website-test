@@ -77,6 +77,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Review column length, internal diameter, and film thickness together rather than in isolation.",
       "Confirm the planned oven program and inlet conditions are compatible with the column temperature limits.",
     ],
+    relatedLinks: [
+      { href: "/resources/gc-capillary-column-environmental-analysis", label: "Read the GC capillary-column guide", description: "Use the existing guide to frame stationary-phase and dimension comparisons before reviewing listings." },
+      { href: "/resources/gc-troubleshooting-guide", label: "Review GC troubleshooting considerations", description: "Use the recorded troubleshooting resource when evaluating method or inlet-related performance questions." },
+    ],
     faq: [
       { question: "What drives GC column selectivity?", answer: "Stationary-phase chemistry is a central driver of selectivity. Analyte properties, temperature programming, carrier-gas conditions, and sample introduction also affect the observed separation." },
       { question: "How does film thickness affect a GC method?", answer: "Film thickness can affect retention and sample capacity, especially for volatile analytes. The appropriate choice depends on the method objective and operating conditions." },
@@ -228,6 +232,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Compare sorbent mass and cartridge format with expected sample load and the planned loading volume.",
       "Validate conditioning, loading, wash, and elution steps using recovery and matrix-effect data for the actual method.",
     ],
+    relatedLinks: [
+      { href: "/resources/spe-vs-lle-sample-extraction-efficiency", label: "Compare SPE and liquid-liquid extraction", description: "Use the existing comparison guide to frame sample-preparation options before selecting a listed cartridge." },
+      { href: "/resources/hplc-sample-preparation-sop-filtration", label: "Review sample filtration guidance", description: "Use the recorded sample-preparation resource when planning the workflow around an SPE cleanup step." },
+    ],
     faq: [
       { question: "How do I choose an SPE sorbent?", answer: "Start with analyte polarity, ionization behavior, and matrix composition. Reversed-phase, normal-phase, ion-exchange, and mixed-mode options should be compared against the intended retention and cleanup mechanism." },
       { question: "Can one SPE cartridge serve every sample type?", answer: "No. Cartridge selection and workflow conditions should be evaluated for the actual matrix and analyte set, because matrix composition can materially affect retention and recovery." },
@@ -246,6 +254,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Match vial capacity and recovery format to the expected injection volume, remaining sample volume and method workflow.",
       "Compare neck finish, vial dimensions and closure style with the intended autosampler and selected cap or septum.",
       "Review listed clear or amber glass format, package quantity and the exact part number before requesting sourcing support.",
+    ],
+    relatedLinks: [
+      { href: "/categories/caps-septa", label: "Compare compatible vial caps and septa", description: "Review closure formats alongside the vial neck finish and autosampler workflow." },
+      { href: "/resources/vial-selection-and-sample-integrity-in-chromatographic-analysis", label: "Read the vial selection guide", description: "Use the existing technical resource to compare sample-handling factors before selecting a part number." },
     ],
     faq: [
       { question: "How should I choose chromatography vial capacity?", answer: "Start with the sample volume, required injection volume and autosampler format. Compare the listed vial capacity and dimensions with the actual workflow and instrument documentation." },
@@ -266,6 +278,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Compare listed septum material and slit design with the sample, needle type and injection workflow.",
       "Verify package quantity and whether the listing contains a cap, a septum or an assembled cap-and-septum set.",
     ],
+    relatedLinks: [
+      { href: "/categories/vials", label: "Review compatible chromatography vials", description: "Match caps and septa with the listed vial neck finish and closure format." },
+      { href: "/resources/vial-selection-and-sample-integrity-in-chromatographic-analysis", label: "Read the vial and closure guide", description: "Use the existing resource to review sample-container compatibility before requesting a part number." },
+    ],
     faq: [
       { question: "How do I match a cap and septum to a vial?", answer: "Match the vial neck finish, closure style and listed dimensions first. Then confirm the cap-and-septum configuration against the autosampler and sample-handling requirements." },
       { question: "What does a preslit septum mean?", answer: "A preslit septum has a manufacturer-provided opening. Whether it is appropriate depends on the needle, sample volatility and method workflow, so check the exact product specifications." },
@@ -285,6 +301,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Compare needle gauge, length and fixed or removable configuration with the injector, inlet or manual procedure.",
       "Review whether the manufacturer lists the product for reusable or single-use handling and confirm the exact package format.",
     ],
+    relatedLinks: [
+      { href: "/resources/chromatography-syringe-selection-volume-needle-termination", label: "Read the chromatography syringe guide", description: "Use the existing resource to compare volume, needle configuration and intended workflow." },
+      { href: "/categories/vials", label: "Review related sample-handling consumables", description: "Compare syringes with the recorded vial and sample-preparation workflow requirements." },
+    ],
     faq: [
       { question: "Which syringe volume should I select for a chromatography method?", answer: "Use the method's injection requirement as the starting point, then compare the listed syringe capacity and configuration with the injector or manual procedure." },
       { question: "Why does needle configuration matter?", answer: "Needle gauge, length and fixed or removable construction affect physical compatibility with the intended injection workflow. Verify the exact product requirements before use." },
@@ -303,6 +323,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Confirm the port or thread format and match it with listed fitting and tubing outer-diameter requirements.",
       "Compare tubing inner diameter, material, length and stated pressure rating with the intended flow path and system conditions.",
       "Use the exact part number to review package quantity and avoid assuming that fittings, ferrules or tubing are included unless listed.",
+    ],
+    relatedLinks: [
+      { href: "/resources/peek-tubing-fittings-hplc-selection-guide", label: "Read the PEEK tubing and fittings guide", description: "Use the existing resource to compare materials, dimensions and connection requirements." },
+      { href: "/resources/hplc-system-maintenance-guide", label: "Review HPLC system maintenance guidance", description: "Use the maintenance resource when evaluating a fluidic-connection change in the wider instrument workflow." },
     ],
     faq: [
       { question: "What should be checked before selecting HPLC tubing?", answer: "Check listed tubing outer and inner diameter, material, length, pressure rating and the connection requirements of the existing system." },

@@ -485,6 +485,10 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
   const faqHtml = profile.faq
     .map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`)
     .join("");
+  const relatedLinksHtml = (profile.relatedLinks ?? [])
+    .map((item) => `<li><a href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><p>${escapeHtml(item.description)}</p></li>`)
+    .join("");
+  const relatedSectionHtml = relatedLinksHtml ? `<section><h2>Related Method Resources</h2><ul>${relatedLinksHtml}</ul></section>` : "";
   const metaTags = `
     <title>${escapeHtml(profile.heading)} | ROWELL</title>
     <meta name="description" content="${escapeHtml(profile.summary)}" />
@@ -501,7 +505,7 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
   template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
   template = template.replace(
     /<div id="root"><\/div>/,
-    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(profile.name)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><h2>Selection Considerations</h2><p>${escapeHtml(profile.overview)}</p><ul>${selectionHtml}</ul><p><a href="${catalogUrl}">Browse ${escapeHtml(profile.name)}</a></p><h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
+    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(profile.name)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><h2>Selection Considerations</h2><p>${escapeHtml(profile.overview)}</p><ul>${selectionHtml}</ul><p><a href="${catalogUrl}">Browse ${escapeHtml(profile.name)}</a></p>${relatedSectionHtml}<h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
   );
   return template;
 }
