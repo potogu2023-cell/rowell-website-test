@@ -2787,6 +2787,51 @@ export const adminRouter = router({
       }
     }),
 
+  // Bind only the reviewed, unbranded AI images for the verified Tosoh round-1 columns.
+  // Names, type, specifications, categories, content and metadata remain untouched.
+  bindVerifiedTosohRound1AiImages: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const corrections = [
+        { id: 90305, partNumber: '0021462', brand: 'Tosoh', categoryId: 4, productType: 'HPLC Column', name: 'TSKgel ODS-100Z 5um 4.6x250mm', oldImageUrl: '/product-images/Tosoh/0021462.jpg', newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/xiTeKwiAytJrfAEV.png' },
+        { id: 90374, partNumber: '0018341', brand: 'Tosoh', categoryId: 1, productType: 'HPLC Column', name: 'TSKgel Alpha-4000', oldImageUrl: '/product-images/Tosoh/0018341.jpg', newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/bAgEPTCHajgDxXgh.png' },
+        { id: 90375, partNumber: '0018342', brand: 'Tosoh', categoryId: 1, productType: 'HPLC Column', name: 'TSKgel Alpha-5000', oldImageUrl: '/product-images/Tosoh/0018342.jpg', newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/QIAYAkMwfQYScNwR.png' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const expected of corrections) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, imageUrl FROM products WHERE id = ? LIMIT 1',
+            [expected.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+            product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+            product.productType !== expected.productType || product.name !== expected.name || product.imageUrl !== expected.oldImageUrl
+          ) {
+            throw new Error(`Tosoh image identity precondition did not match for ${expected.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET imageUrl = ?, updatedAt = NOW() WHERE id = ?',
+            [expected.newImageUrl, expected.id]
+          );
+        }
+        await connection.commit();
+        return { success: true, updatedField: 'imageUrl' as const, products: corrections.map(({ id, partNumber, newImageUrl }) => ({ id, partNumber, newImageUrl })) };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
