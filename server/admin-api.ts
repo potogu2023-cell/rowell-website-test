@@ -2353,6 +2353,48 @@ export const adminRouter = router({
       }
     }),
 
+  // Bind second-batch AI images only after the independent length correction has passed.
+  // This route deliberately updates imageUrl only after fixed identity verification.
+  bindVerifiedHighVisibilityAiImagesRound2: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedImages = [
+        { id: 60101, partNumber: '00F-4495-E0', brand: 'Phenomenex', categoryId: 1, productType: 'HPLC Column', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/SSELfeqmyEAiMtbd.png' },
+        { id: 60088, partNumber: '00F-4723-E0', brand: 'Phenomenex', categoryId: 1, productType: 'HPLC Column', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/cbZewYTePlApkKLv.png' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; oldImageUrl: string | null; newImageUrl: string; status: 'updated' }> = [];
+        for (const update of verifiedImages) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, imageUrl FROM products WHERE id = ? LIMIT 1',
+            [update.id]
+          ) as any;
+          const product = rows[0];
+          if (!product || product.id !== update.id || product.partNumber !== update.partNumber || product.brand !== update.brand || Number(product.categoryId) !== update.categoryId || product.productType !== update.productType) {
+            throw new Error(`Round2 AI image identity did not match for ${update.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET imageUrl = ?, updatedAt = NOW() WHERE id = ?',
+            [update.imageUrl, update.id]
+          );
+          results.push({ id: update.id, partNumber: update.partNumber, oldImageUrl: product.imageUrl ?? null, newImageUrl: update.imageUrl, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, totalUpdated: results.length, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
