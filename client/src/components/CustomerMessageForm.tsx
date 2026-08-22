@@ -29,6 +29,7 @@ export default function CustomerMessageForm({
     email: "",
     company: "",
     phone: "",
+    destinationCountry: "",
     message: "",
   });
 
@@ -41,6 +42,7 @@ export default function CustomerMessageForm({
         email: "",
         company: "",
         phone: "",
+        destinationCountry: "",
         message: "",
       });
     },
@@ -52,8 +54,15 @@ export default function CustomerMessageForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!formData.name || !formData.email || !formData.destinationCountry.trim() || !formData.message) {
       toast.error("Please fill in all required fields");
+      return;
+    }
+
+    const normalizedDestination = formData.destinationCountry.trim().toLowerCase().replace(/\s+/g, " ");
+    const mainlandChinaDestinations = new Set(["china", "mainland china", "people's republic of china", "prc", "中国", "中国大陆"]);
+    if (mainlandChinaDestinations.has(normalizedDestination)) {
+      toast.error("ROWELL does not serve mainland China.");
       return;
     }
 
@@ -65,7 +74,7 @@ export default function CustomerMessageForm({
       phone: formData.phone,
       productId: productId,
       productName: productName,
-      message: formData.message,
+      message: `${formData.message}\n\nDestination country/region: ${formData.destinationCountry.trim()}`,
     });
   };
 
@@ -148,6 +157,19 @@ export default function CustomerMessageForm({
           </div>
 
           <div>
+            <Label htmlFor={`${formId}-destination`}>Destination country/region *</Label>
+            <Input
+              id={`${formId}-destination`}
+              type="text"
+              autoComplete="country-name"
+              placeholder="Country or region where the products will be used"
+              value={formData.destinationCountry}
+              onChange={(e) => setFormData({ ...formData, destinationCountry: e.target.value })}
+              required
+            />
+          </div>
+
+          <div>
             <Label htmlFor={`${formId}-message`}>{t('contact.message_label')}</Label>
             <Textarea
               id={`${formId}-message`}
@@ -170,6 +192,7 @@ export default function CustomerMessageForm({
             type="submit" 
             className="w-full"
             disabled={createMessageMutation.isPending}
+            data-conversion-action="general_inquiry_submit"
           >
             <Send className="w-4 h-4 mr-2" />
             {createMessageMutation.isPending ? t('contact.sending') : t('contact.send_button')}
