@@ -2531,6 +2531,55 @@ export const adminRouter = router({
       }
     }),
 
+  // Correct only the verified stationary-phase field for ACE-123-2546.
+  // Name, USP, descriptions, metadata, category, type, and imageUrl remain untouched.
+  correctVerifiedAce1232546PhaseType: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90158,
+        partNumber: 'ACE-123-2546',
+        brand: 'Avantor',
+        categoryId: 6,
+        productType: 'HPLC Column',
+        expectedName: 'ACE 5 C4, 250 x 4.6 mm',
+        oldPhaseType: null,
+        newPhaseType: 'C4',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.expectedName ||
+          product.phaseType !== expected.oldPhaseType
+        ) {
+          throw new Error('ACE-123-2546 phaseType identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET phaseType = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newPhaseType, expected.id]
+        );
+        await connection.commit();
+        return { success: true, id: expected.id, partNumber: expected.partNumber, oldPhaseType: expected.oldPhaseType, newPhaseType: expected.newPhaseType, updatedField: 'phaseType' as const };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
