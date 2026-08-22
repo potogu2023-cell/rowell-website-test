@@ -2484,6 +2484,53 @@ export const adminRouter = router({
       }
     }),
 
+  // Correct only the verified product name for ACE-123-2546. Technical phase,
+  // USP classification, descriptions, metadata, and imageUrl remain untouched.
+  correctVerifiedAce1232546Name: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90158,
+        partNumber: 'ACE-123-2546',
+        brand: 'Avantor',
+        categoryId: 6,
+        productType: 'HPLC Column',
+        oldName: 'ACE 5 SIL, 250 x 4.6 mm',
+        newName: 'ACE 5 C4, 250 x 4.6 mm',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.oldName
+        ) {
+          throw new Error('ACE-123-2546 name identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET name = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newName, expected.id]
+        );
+        await connection.commit();
+        return { success: true, id: expected.id, partNumber: expected.partNumber, oldName: expected.oldName, newName: expected.newName, updatedField: 'name' as const };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
