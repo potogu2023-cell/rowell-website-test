@@ -2426,6 +2426,64 @@ export const adminRouter = router({
       }
     }),
 
+  // Bind nine evidence-qualified Avantor ACE images only when the complete
+  // fixed identity and legacy-image precondition remain unchanged. This route
+  // deliberately updates imageUrl only and excludes ACE-123-2546, whose phase
+  // conflict must be resolved through a separate atomic fact-correction route.
+  bindVerifiedAvantorAceAiImagesRound1: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const verifiedImages = [
+        { id: 90149, partNumber: 'ACE-121-2546', brand: 'Avantor', categoryId: 4, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-121-2546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/uJwCxZCQSsjCSsOW.png' },
+        { id: 90150, partNumber: 'ACE-121-1546', brand: 'Avantor', categoryId: 4, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-121-1546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/lqDgBwUOZamWwQEt.png' },
+        { id: 90151, partNumber: 'ACE-121-1046', brand: 'Avantor', categoryId: 4, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-121-1046.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/oCPdIazBzNjtxlEW.png' },
+        { id: 90152, partNumber: 'ACE-121-0546', brand: 'Avantor', categoryId: 4, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-121-0546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/njmdhSZqIofWXoHf.png' },
+        { id: 90156, partNumber: 'ACE-125-2546', brand: 'Avantor', categoryId: 7, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-125-2546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/vbEsCcLiOCwvtLbG.png' },
+        { id: 90157, partNumber: 'ACE-125-1546', brand: 'Avantor', categoryId: 7, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-125-1546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/lQYTcDOsCEqNMFLD.png' },
+        { id: 90159, partNumber: 'ACE-126-2546', brand: 'Avantor', categoryId: 1, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-126-2546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/jPrvXLzGzosedjeL.png' },
+        { id: 90160, partNumber: 'ACE-122-2546', brand: 'Avantor', categoryId: 5, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-122-2546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/qChZdyxtvSFFmfWv.png' },
+        { id: 90161, partNumber: 'ACE-124-2546', brand: 'Avantor', categoryId: 9, productType: 'HPLC Column', expectedImageUrl: '/product-images/Avantor/ACE-124-2546.jpg', imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/tDoThwratqlBoSDX.png' },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const results: Array<{ id: number; partNumber: string; oldImageUrl: string | null; newImageUrl: string; status: 'updated' }> = [];
+        for (const update of verifiedImages) {
+          if (!update.imageUrl.startsWith('https://files.manuscdn.com/')) {
+            throw new Error(`Uncontrolled CDN image rejected for ${update.partNumber}`);
+          }
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, imageUrl FROM products WHERE id = ? LIMIT 1',
+            [update.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== update.id || product.partNumber !== update.partNumber ||
+            product.brand !== update.brand || Number(product.categoryId) !== update.categoryId ||
+            product.productType !== update.productType || product.imageUrl !== update.expectedImageUrl
+          ) {
+            throw new Error(`Avantor ACE AI image identity or legacy-path precondition did not match for ${update.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET imageUrl = ?, updatedAt = NOW() WHERE id = ?',
+            [update.imageUrl, update.id]
+          );
+          results.push({ id: update.id, partNumber: update.partNumber, oldImageUrl: product.imageUrl ?? null, newImageUrl: update.imageUrl, status: 'updated' });
+        }
+        await connection.commit();
+        return { success: true, totalUpdated: results.length, results };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
