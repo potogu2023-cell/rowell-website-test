@@ -2832,6 +2832,56 @@ export const adminRouter = router({
       }
     }),
 
+  // Correct only the verified display name for Waters SKU 186003768.
+  // Product type, specifications, content, metadata, category and image remain untouched.
+  correctVerifiedWaters186003768Name: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 120040,
+        partNumber: '186003768',
+        brand: 'Waters',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        usp: 'L1',
+        oldName: 'Atlantis T3 Column, 100Å, 10 µm, 19 mm X 150 mm, 1/pk',
+        newName: 'XBridge BEH C18 Method Validation Kit, 130Å, 3.5 µm, 3 mm X 150 mm, 3/pk',
+        imageUrl: '/product-images/Waters/186003768.jpg',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, usp, name, imageUrl FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.usp !== expected.usp ||
+          product.name !== expected.oldName || product.imageUrl !== expected.imageUrl
+        ) {
+          throw new Error('Waters 186003768 name identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET name = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newName, expected.id]
+        );
+        await connection.commit();
+        return { success: true, id: expected.id, partNumber: expected.partNumber, oldName: expected.oldName, newName: expected.newName, updatedField: 'name' as const };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
