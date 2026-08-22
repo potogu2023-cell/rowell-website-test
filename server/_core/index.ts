@@ -169,11 +169,17 @@ app.use("/api/learning-center", learningCenterRestRouter);
     console.log(`Server running on http://localhost:${port}/`);
   });
 
-  // Import articles from content directory
-  try {
-    await importArticles();
-  } catch (error) {
-    console.error('[Server] Failed to import articles:', error);
+  // Importing content during every production restart can silently overwrite
+  // reviewed articles. Keep this exceptional maintenance operation opt-in only.
+  if (process.env.RUN_STARTUP_ARTICLE_IMPORT === 'true') {
+    console.warn('[Server] Explicit startup article import enabled.');
+    try {
+      await importArticles();
+    } catch (error) {
+      console.error('[Server] Failed to import articles:', error);
+    }
+  } else {
+    console.log('[Server] Startup article import skipped; use a controlled import workflow when needed.');
   }
 }
 
