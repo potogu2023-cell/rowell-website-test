@@ -760,6 +760,54 @@ export const adminRouter = router({
       };
     }),
 
+  // Replace only the content fields for the same two audited literature records
+  // with original ROWELL technical guidance. Slugs and view counts are preserved.
+  restoreVerifiedHighVisibilityLiteratureContent: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({ adminKey: z.string() }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { literature } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const { VERIFIED_HIGH_VISIBILITY_LITERATURE_RECOVERY } = await import('./verified-literature-recovery');
+      const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
+
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const results: Array<{ slug: string; status: 'updated' | 'missing_skipped' }> = [];
+      for (const entry of VERIFIED_HIGH_VISIBILITY_LITERATURE_RECOVERY) {
+        const existing = await db
+          .select({ id: literature.id })
+          .from(literature)
+          .where(eq(literature.slug, entry.slug))
+          .limit(1);
+        if (existing.length === 0) {
+          results.push({ slug: entry.slug, status: 'missing_skipped' });
+          continue;
+        }
+        const { slug: _slug, ...content } = entry;
+        await db.update(literature)
+          .set({
+            ...content,
+            contentEnhanced: 1,
+            enhancedAt: now,
+            updatedAt: now,
+          })
+          .where(eq(literature.id, existing[0].id));
+        results.push({ slug: entry.slug, status: 'updated' });
+      }
+      return {
+        success: true,
+        updated: results.filter((item) => item.status === 'updated').length,
+        missing: results.filter((item) => item.status === 'missing_skipped').length,
+        results,
+      };
+    }),
+
   // List all draft resources (for date update)
   listDraftResources: publicProcedure
     .input((raw: unknown) => {
