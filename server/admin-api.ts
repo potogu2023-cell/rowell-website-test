@@ -2951,6 +2951,75 @@ export const adminRouter = router({
       }
     }),
 
+  // Correct only narrative content and SERP metadata for Waters SKU 186003768.
+  // Product identity, type, specifications, category, source URL and image remain untouched.
+  correctVerifiedWaters186003768Content: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 120040,
+        partNumber: '186003768',
+        brand: 'Waters',
+        categoryId: 1,
+        name: 'XBridge BEH C18 Method Validation Kit, 130Å, 3.5 µm, 3 mm X 150 mm, 3/pk',
+        productType: 'HPLC Column',
+        usp: 'L1',
+        phaseType: 'C18',
+        particleSize: '3.5µm',
+        poreSize: '130Å',
+        innerDiameter: '3mm',
+        columnLength: '150mm',
+        imageUrl: '/product-images/Waters/186003768.jpg',
+        metaTitle: 'Waters XBridge BEH C18 Method Validation Kit 186003768 | ROWELL',
+        metaDescription: 'Waters XBridge BEH C18 Method Validation Kit, 130Å, 3.5 µm, 3 mm × 150 mm, 3/pk. Review specifications and request a quote from ROWELL.',
+        description: 'Waters XBridge BEH C18 Method Validation Kit contains three 3 mm × 150 mm HPLC columns with 3.5 µm, 130 Å C18 packing. This SKU supports method-validation workflows where users need a consistent, clearly identified column set.',
+        detailedDescription: 'The Waters XBridge BEH C18 Method Validation Kit, part number 186003768, is a three-column HPLC kit built around C18 chemistry. The listed columns have a 3 mm internal diameter, 150 mm length, 3.5 µm particles and 130 Å pore size.\n\nROWELL presents this item with its published C18 and USP L1 classification to help laboratories confirm the part number and core format before requesting a quotation. Method suitability, operating conditions and validation remain the responsibility of the laboratory using the product.\n\nFor a product enquiry, include the part number, intended application and destination country or region so ROWELL can review availability and support requirements.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, name, productType, usp, phaseType, particleSize, poreSize, innerDiameter, columnLength, imageUrl, description, detailedDescription, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.name !== expected.name || product.productType !== expected.productType || product.usp !== expected.usp ||
+          product.phaseType !== expected.phaseType || product.particleSize !== expected.particleSize ||
+          product.poreSize !== expected.poreSize || product.innerDiameter !== expected.innerDiameter ||
+          product.columnLength !== expected.columnLength || product.imageUrl !== expected.imageUrl ||
+          !String(product.description || '').includes('Atlantis T3') ||
+          !String(product.detailedDescription || '').includes('Atlantis T3') ||
+          !String(product.metaTitle || '').includes('Atlantis T3') ||
+          !String(product.metaDescription || '').includes('Atlantis T3')
+        ) {
+          throw new Error('Waters 186003768 content identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET description = ?, detailedDescription = ?, metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.description, expected.detailedDescription, expected.metaTitle, expected.metaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          id: expected.id,
+          partNumber: expected.partNumber,
+          updatedFields: ['description', 'detailedDescription', 'metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
