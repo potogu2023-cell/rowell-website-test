@@ -2630,6 +2630,65 @@ export const adminRouter = router({
       }
     }),
 
+  // Correct only the factual narrative and SERP metadata for ACE-123-2546 after
+  // name, phase and USP fields were independently verified and corrected.
+  correctVerifiedAce1232546Content: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90158,
+        partNumber: 'ACE-123-2546',
+        brand: 'Avantor',
+        categoryId: 6,
+        productType: 'HPLC Column',
+        name: 'ACE 5 C4, 250 x 4.6 mm',
+        phaseType: 'C4',
+        usp: 'L26',
+      } as const;
+      const corrected = {
+        description: 'The Avantor ACE C4 is a 5 µm analytical HPLC column with a C4 stationary phase in a 250 x 4.6 mm stainless-steel format. Confirm suitability through local method development and validation.',
+        detailedDescription: '## Product overview\n\nACE-123-2546 is an Avantor ACE C4 analytical HPLC column with 5 µm particles, a 250 mm length, and a 4.6 mm internal diameter. The official ACE C4 product family identifies this SKU as a stainless-steel C4 column and classifies the family under USP L26.\n\n## Method-development considerations\n\nSelect and qualify the column against the actual sample matrix, critical separation, system pressure, and applicable quality requirements. The listed dimensions and stationary phase support method screening, but local feasibility, system suitability, and validation evidence remain necessary before routine use.',
+        metaTitle: 'Avantor ACE 5 C4, 250 x 4.6 mm (ACE-123-2546) | ROWELL',
+        metaDescription: 'Avantor ACE C4 HPLC column, 5 µm, 250 x 4.6 mm (ACE-123-2546), USP L26. Review listed specifications and request availability from ROWELL.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType, usp, description, detailedDescription, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.phaseType !== expected.phaseType || product.usp !== expected.usp ||
+          !String(product.description || '').includes('ACE C18') ||
+          !String(product.detailedDescription || '').includes('ACE 5 SIL') ||
+          product.metaTitle !== 'Avantor ACE 5 SIL, 250 x 4.6 mm ACE-123-2546 | ROWELL' ||
+          product.metaDescription !== 'Avantor ACE 5 SIL, 250 x 4.6 mm (ACE-123-2546) at ROWELL. Review listed specifications and request availability or a quote.'
+        ) {
+          throw new Error('ACE-123-2546 content identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET description = ?, detailedDescription = ?, metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [corrected.description, corrected.detailedDescription, corrected.metaTitle, corrected.metaDescription, expected.id]
+        );
+        await connection.commit();
+        return { success: true, id: expected.id, partNumber: expected.partNumber, updatedFields: ['description', 'detailedDescription', 'metaTitle', 'metaDescription'] as const };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
