@@ -6,7 +6,7 @@
  */
 import { Request, Response, NextFunction } from "express";
 import { getDb } from "./db";
-import { resources, products } from "../drizzle/schema";
+import { resources, products, literature } from "../drizzle/schema";
 import { eq } from "drizzle-orm";
 import * as fs from "fs";
 
@@ -38,6 +38,15 @@ function extractResourceSlug(path: string): string | null {
 }
 
 /**
+ * Extract slug from an established literature URL.
+ * /learning/literature/article-slug-here -> article-slug-here
+ */
+function extractLiteratureSlug(path: string): string | null {
+  const match = path.match(/^\/learning\/literature\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+
+/**
  * Extract slug from product URL
  * /products/695775-742 -> 695775-742
  */
@@ -54,6 +63,11 @@ function generateArticleMetaTags(article: any, fullUrl: string): string {
   const description = article.metaDescription || article.excerpt || "";
   const image = article.coverImage || SITE_LOGO;
   const fullTitle = title.includes(SITE_TITLE) ? title : `${title} | ${SITE_TITLE}`;
+  const publishedTime = article.publishedAt
+    ? (article.publishedAt instanceof Date
+      ? article.publishedAt.toISOString()
+      : new Date(article.publishedAt).toISOString())
+    : '';
 
   return `
     <title>${escapeHtml(fullTitle)}</title>
@@ -75,7 +89,7 @@ function generateArticleMetaTags(article: any, fullUrl: string): string {
     <meta name="twitter:image" content="${image}" />
     
     <!-- Article metadata -->
-    <meta property="article:published_time" content="${article.publishedAt?.toISOString() || ''}" />
+    <meta property="article:published_time" content="${publishedTime}" />
     <meta property="article:author" content="${article.authorName || 'ROWELL Team'}" />
   `.trim();
 }
@@ -232,9 +246,10 @@ export async function seoMetaInjectionMiddleware(
     }
   }
 
-  // ── 2. Article pages (/resources/:slug) ─────────────────────────────────
+  // ── 2. Article and literature pages (/resources/:slug, /learning/literature/:slug) ──
   const resourceSlug = extractResourceSlug(path);
-  if (resourceSlug) {
+  const literatureSlug = extractLiteratureSlug(path);
+  if (resourceSlug || literatureSlug) {
     try {
       const db = await getDb();
       if (!db) {
@@ -242,19 +257,34 @@ export async function seoMetaInjectionMiddleware(
         return next();
       }
 
-      const articles = await db
-        .select()
-        .from(resources)
-        .where(eq(resources.slug, resourceSlug))
-        .limit(1);
-
-      if (articles.length === 0) {
-        return next();
-      }
-
-      const article = articles[0];
-      if (article.status !== "published") {
-        return next();
+      let article: any;
+      if (literatureSlug) {
+        const records = await db
+          .select()
+          .from(literature)
+          .where(eq(literature.slug, literatureSlug))
+          .limit(1);
+        if (records.length === 0) {
+          return next();
+        }
+        const record = records[0];
+        article = {
+          ...record,
+          metaDescription: record.summary,
+          excerpt: record.summary,
+          authorName: record.authors,
+          publishedAt: record.addedDate,
+        };
+      } else {
+        const records = await db
+          .select()
+          .from(resources)
+          .where(eq(resources.slug, resourceSlug!))
+          .limit(1);
+        if (records.length === 0 || records[0].status !== "published") {
+          return next();
+        }
+        article = records[0];
       }
 
       // Always use HTTPS for canonical URLs to ensure consistent indexing

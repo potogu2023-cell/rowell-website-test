@@ -712,6 +712,54 @@ export const adminRouter = router({
       return { success: true, results };
     }),
 
+  // Restore only two audited high-impression literature URLs with original,
+  // source-attributed technical guides. Existing rows are never altered.
+  createVerifiedHighVisibilityLiteratureRecoveryEntries: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({ adminKey: z.string() }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { literature } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const { VERIFIED_HIGH_VISIBILITY_LITERATURE_RECOVERY } = await import('./verified-literature-recovery');
+      const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
+
+      const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      const results: Array<{ slug: string; status: 'created' | 'existing_skipped' }> = [];
+      for (const entry of VERIFIED_HIGH_VISIBILITY_LITERATURE_RECOVERY) {
+        const existing = await db
+          .select({ id: literature.id })
+          .from(literature)
+          .where(eq(literature.slug, entry.slug))
+          .limit(1);
+        if (existing.length > 0) {
+          results.push({ slug: entry.slug, status: 'existing_skipped' });
+          continue;
+        }
+        await db.insert(literature).values({
+          ...entry,
+          addedDate: now,
+          createdAt: now,
+          updatedAt: now,
+          viewCount: 0,
+          contentEnhanced: 1,
+          enhancedAt: now,
+        });
+        results.push({ slug: entry.slug, status: 'created' });
+      }
+      return {
+        success: true,
+        created: results.filter((item) => item.status === 'created').length,
+        skipped: results.filter((item) => item.status === 'existing_skipped').length,
+        results,
+      };
+    }),
+
   // List all draft resources (for date update)
   listDraftResources: publicProcedure
     .input((raw: unknown) => {
