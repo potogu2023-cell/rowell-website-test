@@ -2882,6 +2882,75 @@ export const adminRouter = router({
       }
     }),
 
+  // Correct only the verified technical specifications for Waters SKU 186003768.
+  // Name, product type, category, narrative content, metadata and image remain untouched.
+  correctVerifiedWaters186003768TechnicalSpecs: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 120040,
+        partNumber: '186003768',
+        brand: 'Waters',
+        categoryId: 1,
+        name: 'XBridge BEH C18 Method Validation Kit, 130Å, 3.5 µm, 3 mm X 150 mm, 3/pk',
+        productType: 'HPLC Column',
+        usp: 'L1',
+        oldPhaseType: null,
+        oldParticleSize: '10um',
+        oldParticleSizeNum: 100,
+        oldPoreSize: '100A',
+        oldPoreSizeNum: 100,
+        oldInnerDiameter: '19mm',
+        oldInnerDiameterNum: 190,
+        newPhaseType: 'C18',
+        newParticleSize: '3.5µm',
+        newPoreSize: '130Å',
+        newPoreSizeNum: 130,
+        newInnerDiameter: '3mm',
+        newInnerDiameterNum: 3,
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, name, productType, usp, phaseType, particleSize, particleSizeNum, poreSize, poreSizeNum, innerDiameter, innerDiameterNum FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.name !== expected.name || product.productType !== expected.productType || product.usp !== expected.usp ||
+          product.phaseType !== expected.oldPhaseType || product.particleSize !== expected.oldParticleSize ||
+          Number(product.particleSizeNum) !== expected.oldParticleSizeNum || product.poreSize !== expected.oldPoreSize ||
+          Number(product.poreSizeNum) !== expected.oldPoreSizeNum || product.innerDiameter !== expected.oldInnerDiameter ||
+          Number(product.innerDiameterNum) !== expected.oldInnerDiameterNum
+        ) {
+          throw new Error('Waters 186003768 technical specification identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET phaseType = ?, particleSize = ?, particleSizeNum = NULL, poreSize = ?, poreSizeNum = ?, innerDiameter = ?, innerDiameterNum = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newPhaseType, expected.newParticleSize, expected.newPoreSize, expected.newPoreSizeNum, expected.newInnerDiameter, expected.newInnerDiameterNum, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          id: expected.id,
+          partNumber: expected.partNumber,
+          updatedFields: ['phaseType', 'particleSize', 'particleSizeNum', 'poreSize', 'poreSizeNum', 'innerDiameter', 'innerDiameterNum'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
