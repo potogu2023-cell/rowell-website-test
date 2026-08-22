@@ -582,6 +582,68 @@ export const adminRouter = router({
       return { success: true, results };
     }),
 
+  // Correct only the verified column-length fields for two audited Phenomenex SKUs.
+  // This fixed-identity channel intentionally cannot update names, images, types, categories, or other specifications.
+  correctVerifiedPhenomenexColumnLengthsRound1: publicProcedure
+    .input((raw: unknown) => {
+      return z.object({ adminKey: z.string() }).parse(raw);
+    })
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') {
+        throw new Error('Unauthorized');
+      }
+      const { getDb } = await import('./db');
+      const { products } = await import('../drizzle/schema');
+      const { eq } = await import('drizzle-orm');
+      const db = await getDb();
+      if (!db) throw new Error('Database unavailable');
+
+      const verifiedUpdates = [
+        { id: 60101, partNumber: '00F-4495-E0', columnLength: '150mm', columnLengthNum: 150 },
+        { id: 60088, partNumber: '00F-4723-E0', columnLength: '150mm', columnLengthNum: 150 },
+      ] as const;
+      const results: Array<Record<string, unknown>> = [];
+      for (const update of verifiedUpdates) {
+        const existing = await db.select({
+          id: products.id,
+          partNumber: products.partNumber,
+          columnLength: products.columnLength,
+          columnLengthNum: products.columnLengthNum,
+        }).from(products).where(eq(products.id, update.id)).limit(1);
+        if (existing.length === 0) {
+          results.push({ id: update.id, partNumber: update.partNumber, status: 'not_found' });
+          continue;
+        }
+        if (existing[0].partNumber !== update.partNumber) {
+          results.push({
+            id: update.id,
+            expectedPartNumber: update.partNumber,
+            actualPartNumber: existing[0].partNumber,
+            status: 'identity_mismatch',
+          });
+          continue;
+        }
+        await db.update(products).set({
+          columnLength: update.columnLength,
+          columnLengthNum: update.columnLengthNum,
+        }).where(eq(products.id, update.id));
+        results.push({
+          id: update.id,
+          partNumber: update.partNumber,
+          status: 'updated',
+          oldColumnLength: existing[0].columnLength,
+          oldColumnLengthNum: existing[0].columnLengthNum,
+          newColumnLength: update.columnLength,
+          newColumnLengthNum: update.columnLengthNum,
+        });
+      }
+      return {
+        success: results.every((item) => item.status === 'updated'),
+        totalUpdated: results.filter((item) => item.status === 'updated').length,
+        results,
+      };
+    }),
+
   // Check data consistency
   checkDataConsistency: publicProcedure
     .input((raw: unknown) => {
