@@ -6,7 +6,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getDb } from "../db";
-import { resources, products } from "../../drizzle/schema";
+import { resources, products, literature } from "../../drizzle/schema";
 import { and, desc, eq, or } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
@@ -19,6 +19,11 @@ const SITE_URL = "https://www.rowellhplc.com";
  */
 function extractSlugFromPath(urlPath: string): string | null {
   const match = urlPath.match(/^\/resources\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+
+function extractLiteratureSlugFromPath(urlPath: string): string | null {
+  const match = urlPath.match(/^\/learning\/literature\/([^\/\?]+)/);
   return match ? match[1] : null;
 }
 
@@ -69,8 +74,10 @@ function toAbsoluteUrl(value: string): string {
  * Inject SEO meta tags into HTML template for article pages
  */
 async function injectArticleSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
-  const slug = extractSlugFromPath(overridePath || req.path);
-  if (!slug) {
+  const requestPath = overridePath || req.path;
+  const resourceSlug = extractSlugFromPath(requestPath);
+  const literatureSlug = extractLiteratureSlugFromPath(requestPath);
+  if (!resourceSlug && !literatureSlug) {
     return template;
   }
 
@@ -80,17 +87,35 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
       return template;
     }
 
-    const articles = await db
-      .select()
-      .from(resources)
-      .where(eq(resources.slug, slug))
-      .limit(1);
-
-    if (articles.length === 0 || articles[0].status !== "published") {
-      return template;
+    let article: any;
+    if (literatureSlug) {
+      const records = await db
+        .select()
+        .from(literature)
+        .where(eq(literature.slug, literatureSlug))
+        .limit(1);
+      if (records.length === 0) {
+        return template;
+      }
+      const record = records[0];
+      article = {
+        ...record,
+        excerpt: record.summary,
+        content: [record.summary, record.expandedAnalysis, record.practicalGuide].filter(Boolean).join('\n\n'),
+        author: record.authors,
+        publishedAt: record.addedDate,
+      };
+    } else {
+      const records = await db
+        .select()
+        .from(resources)
+        .where(eq(resources.slug, resourceSlug!))
+        .limit(1);
+      if (records.length === 0 || records[0].status !== "published") {
+        return template;
+      }
+      article = records[0];
     }
-
-    const article = articles[0];
     // Canonical URLs must not inherit tracking/query parameters or alternate hosts.
     const canonicalPath = (overridePath || req.originalUrl).split('?')[0];
     const fullUrl = `${SITE_URL}${canonicalPath}`;
@@ -601,10 +626,10 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
 
 async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteStatus> {
   const productSlug = extractProductSlugFromPath(requestPath);
-  const resourceSlug = extractSlugFromPath(requestPath) ||
-    (requestPath.match(/^\/learning\/literature\/([^/?]+)/)?.[1] ?? null);
+  const resourceSlug = extractSlugFromPath(requestPath);
+  const literatureSlug = extractLiteratureSlugFromPath(requestPath);
 
-  if (!productSlug && !resourceSlug) return "active";
+  if (!productSlug && !resourceSlug && !literatureSlug) return "active";
 
   try {
     const db = await getDb();
@@ -624,6 +649,14 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
       }
       if (records.length === 0) return "missing";
       return records[0].status === "active" ? "active" : "gone";
+    }
+
+    if (literatureSlug) {
+      const records = await db.select({ id: literature.id })
+        .from(literature)
+        .where(eq(literature.slug, literatureSlug))
+        .limit(1);
+      return records.length === 0 ? "missing" : "active";
     }
 
     const records = await db.select({ id: resources.id, status: resources.status })
@@ -855,11 +888,9 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
   if (effectivePath.startsWith('/resources/')) {
     return injectArticleSeoMetaTags(template, req, effectivePath);
   }
-  // Literature pages share the same resources table (category-based)
+  // Literature pages use the dedicated literature table.
   if (effectivePath.startsWith('/learning/literature/')) {
-    // Map /learning/literature/slug to /resources/slug for DB lookup
-    const literatureSlug = effectivePath.replace('/learning/literature/', '/resources/');
-    return injectArticleSeoMetaTags(template, req, literatureSlug);
+    return injectArticleSeoMetaTags(template, req, effectivePath);
   }
   return injectStaticPageSeoMetaTags(template, effectivePath);
 }
