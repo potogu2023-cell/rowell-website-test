@@ -1268,7 +1268,7 @@ export const adminRouter = router({
                particleSize, particleSizeNum, poreSize, poreSizeNum,
                columnLength, columnLengthNum, innerDiameter, innerDiameterNum,
                phaseType, applications, imageUrl, category_id, status, createdAt, updatedAt)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, 'active', ?, ?)`,
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, 'draft', ?, ?)`,
             [
               productId, row.partNumber, row.brand, prefix, row.name, row.productType,
               row.description || null, row.detailedDescription || null,
@@ -1312,7 +1312,14 @@ export const adminRouter = router({
           description: z.string().min(10).max(2000),
           detailedDescription: z.string().min(20).max(5000),
           specifications: z.record(z.string(), z.unknown()),
+          // The exact first-party model-level evidence URL; it is stored as catalogUrl.
           catalogUrl: z.string().url().max(500),
+          // Product images must already have completed the separate AI generation and visual-QA workflow.
+          imageUrl: z.string().url().max(1000).refine((url) => url.startsWith('https://files.manuscdn.com/'), {
+            message: 'imageUrl must use the controlled files.manuscdn.com CDN',
+          }),
+          metaTitle: z.string().min(10).max(255),
+          metaDescription: z.string().min(50).max(320),
         })).min(1).max(20),
       }).parse(raw);
     })
@@ -1340,6 +1347,13 @@ export const adminRouter = router({
         Restek: ['restek.com'],
         Waters: ['waters.com'],
       };
+      // Only the controlled accessory types mapped to their public category are eligible for publication.
+      const controlledProductTypes: Record<number, string> = {
+        19: 'Vials',
+        20: 'Caps & Septa',
+        21: 'Syringes',
+        22: 'Fittings & Tubing',
+      };
       // Production's legacy products table requires a non-null taskId. This new,
       // batch-specific identifier preserves provenance instead of reusing an
       // unrelated historical import task.
@@ -1360,6 +1374,22 @@ export const adminRouter = router({
         }
         if (!allowedHosts[row.brand].some((host) => catalogHost === host || catalogHost.endsWith(`.${host}`))) {
           results.push({ partNumber: row.partNumber, status: 'error', error: 'catalog URL host does not match brand' });
+          continue;
+        }
+        const normalizedPartNumber = row.partNumber.toLowerCase().replace(/[^a-z0-9]/g, '');
+        const normalizedEvidencePath = new URL(row.catalogUrl).pathname.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (!normalizedPartNumber || !normalizedEvidencePath.includes(normalizedPartNumber)) {
+          results.push({ partNumber: row.partNumber, status: 'error', error: 'catalog URL is not a model-level part-number evidence path' });
+          continue;
+        }
+        if (controlledProductTypes[row.categoryId] !== row.productType) {
+          results.push({ partNumber: row.partNumber, status: 'error', error: 'productType is not the controlled type for category' });
+          continue;
+        }
+        const nonemptySpecificationEntries = Object.entries(row.specifications)
+          .filter(([key, value]) => key.trim().length > 0 && value !== null && String(value).trim().length > 0);
+        if (nonemptySpecificationEntries.length === 0) {
+          results.push({ partNumber: row.partNumber, status: 'error', error: 'at least one nonempty technical specification is required' });
           continue;
         }
 
@@ -1387,12 +1417,13 @@ export const adminRouter = router({
             `INSERT INTO products
               (taskId, productId, partNumber, brand, prefix, name, description, detailedDescription,
                specifications, imageUrl, catalogUrl, productType, slug, category, category_id,
-               status)
-             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?, ?, ?, ?, 'active')`,
+               metaTitle, metaDescription, status)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'active')`,
             [
               importTaskId, productId, row.partNumber, row.brand, prefixes[row.brand], row.name,
               row.description, row.detailedDescription, JSON.stringify(row.specifications),
-              row.catalogUrl, row.productType, slug, row.category, row.categoryId,
+              row.imageUrl, row.catalogUrl, row.productType, slug, row.category, row.categoryId,
+              row.metaTitle, row.metaDescription,
             ]
           ) as any;
           const insertedId = Number(insertResult.insertId);
