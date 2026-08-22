@@ -2426,6 +2426,47 @@ export const adminRouter = router({
       }
     }),
 
+  // Delete the single accidental publication-gate validation probe created before the new gate reached production.
+  // This is a one-record, fixed-identity cleanup path and cannot target any customer-facing SKU.
+  removePublicationGateValidationProbe: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 300001,
+        partNumber: 'GATE-TEST-DO-NOT-INSERT',
+        productId: 'WATERS-GATE-TEST-DO-NOT-INSERT',
+        slug: 'waters-gate-test-do-not-insert',
+        brand: 'Waters',
+        name: 'Gate validation probe only',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, productId, slug, brand, name FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (!product || product.id !== expected.id || product.partNumber !== expected.partNumber || product.productId !== expected.productId || product.slug !== expected.slug || product.brand !== expected.brand || product.name !== expected.name) {
+          throw new Error('Publication-gate validation probe identity did not match');
+        }
+        await connection.execute('DELETE FROM product_categories WHERE product_id = ?', [expected.id]);
+        const [result] = await connection.execute('DELETE FROM products WHERE id = ?', [expected.id]) as any;
+        if (Number(result.affectedRows) !== 1) throw new Error('Validation probe delete did not affect exactly one row');
+        await connection.commit();
+        return { success: true, deleted: expected };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
