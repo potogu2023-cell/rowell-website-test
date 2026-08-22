@@ -2689,6 +2689,58 @@ export const adminRouter = router({
       }
     }),
 
+  // Bind only the reviewed, unbranded AI image for ACE-123-2546.
+  // Product facts, content, category, type and all other fields remain untouched.
+  bindVerifiedAce1232546AiImage: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90158,
+        partNumber: 'ACE-123-2546',
+        brand: 'Avantor',
+        categoryId: 6,
+        productType: 'HPLC Column',
+        name: 'ACE 5 C4, 250 x 4.6 mm',
+        phaseType: 'C4',
+        usp: 'L26',
+        oldImageUrl: '/product-images/Avantor/ACE-123-2546.jpg',
+        newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/DLXKjLhCUzRfSZmX.png',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType, usp, imageUrl FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.phaseType !== expected.phaseType || product.usp !== expected.usp ||
+          product.imageUrl !== expected.oldImageUrl
+        ) {
+          throw new Error('ACE-123-2546 image identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET imageUrl = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newImageUrl, expected.id]
+        );
+        await connection.commit();
+        return { success: true, id: expected.id, partNumber: expected.partNumber, oldImageUrl: expected.oldImageUrl, newImageUrl: expected.newImageUrl, updatedField: 'imageUrl' as const };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
