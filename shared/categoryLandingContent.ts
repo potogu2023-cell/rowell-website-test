@@ -365,6 +365,28 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Compare sorbent mass and cartridge format with expected sample load and the planned loading volume.",
       "Validate conditioning, loading, wash, and elution steps using recovery and matrix-effect data for the actual method.",
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the analyte, matrix and cleanup objective",
+        body: "Start with analyte polarity, ionization behavior, concentration range and the constituents of the sample matrix. State whether the workflow needs concentration, removal of a particular interference, fractionation or broad cleanup before selecting a cartridge format or sorbent mechanism.",
+      },
+      {
+        heading: "2. Match the sorbent mechanism to the retention plan",
+        body: "Compare reversed-phase, normal-phase, ion-exchange or mixed-mode retention mechanisms with the analyte and matrix under the intended conditions. The appropriate choice depends on the actual sample and method: a sorbent family name is not evidence that retention or selectivity will be adequate.",
+      },
+      {
+        heading: "3. Set cartridge format and sorbent mass from the sample load",
+        body: "Evaluate the cartridge bed mass, reservoir format and expected loading volume together with analyte concentration and matrix burden. Confirm the listed product format and part number before specifying a workflow, because capacity and practical handling can vary across products.",
+      },
+      {
+        heading: "4. Build conditioning, loading, wash and elution around the method",
+        body: "An SPE workflow should be designed as a sequence of conditioning, sample loading, washing and elution steps. Select solvents and volumes by the analyte, matrix and the exact sorbent documentation, then use representative samples to test recovery and cleanup performance.",
+      },
+      {
+        heading: "5. Verify recovery and matrix effects before routine use",
+        body: "Before adopting an SPE cartridge for a routine method, assess recovery, repeatability, blank performance and matrix effects under planned conditions. Method validation or suitability criteria should be defined by the laboratory and workflow rather than inferred from a generic cartridge category.",
+      },
+    ],
     relatedLinks: [
       { href: "/resources/spe-vs-lle-sample-extraction-efficiency", label: "Compare SPE and liquid-liquid extraction", description: "Use the existing comparison guide to frame sample-preparation options before selecting a listed cartridge." },
       { href: "/resources/hplc-sample-preparation-sop-filtration", label: "Review sample filtration guidance", description: "Use the recorded sample-preparation resource when planning the workflow around an SPE cleanup step." },
@@ -373,6 +395,8 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       { question: "How do I choose an SPE sorbent?", answer: "Start with analyte polarity, ionization behavior, and matrix composition. Reversed-phase, normal-phase, ion-exchange, and mixed-mode options should be compared against the intended retention and cleanup mechanism." },
       { question: "Can one SPE cartridge serve every sample type?", answer: "No. Cartridge selection and workflow conditions should be evaluated for the actual matrix and analyte set, because matrix composition can materially affect retention and recovery." },
       { question: "What should be checked after selecting an SPE cartridge?", answer: "Confirm recovery, precision, matrix effects, and blank performance under the planned conditioning, loading, wash, and elution steps before routine use." },
+      { question: "How should SPE cartridge bed mass be compared?", answer: "Compare the listed sorbent mass and cartridge format with expected sample load, loading volume, analyte concentration and matrix burden. Capacity and handling should be confirmed for the exact part number." },
+      { question: "Can an SPE workflow be selected from sorbent name alone?", answer: "No. The analyte, matrix, intended retention mechanism and the conditioning, loading, wash and elution steps all affect performance. Verify recovery and cleanup using representative samples." },
     ],
   },
   "vials": {
