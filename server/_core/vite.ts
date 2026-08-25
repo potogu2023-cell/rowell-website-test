@@ -986,6 +986,16 @@ export function serveStatic(app: Express) {
   app.use(redirectLegacyLearningArticle);
   app.use(redirectLegacyProductUrl);
 
+  // Administrative interfaces are functional application routes, not public search landing pages.
+  // Prevent indexing and avoid reusing a stale administrative shell in shared caches.
+  app.use((req, res, next) => {
+    if (req.path === '/admin' || req.path.startsWith('/admin/')) {
+      res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive');
+      res.setHeader('Cache-Control', 'no-store, private, max-age=0, must-revalidate');
+    }
+    next();
+  });
+
   // Core static routes must be intercepted before express.static can serve the
   // root index.html. Otherwise `/` bypasses route-specific SEO metadata.
   app.use(async (req, res, next) => {
