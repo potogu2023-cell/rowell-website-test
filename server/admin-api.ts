@@ -3684,6 +3684,61 @@ export const adminRouter = router({
       }
     }),
 
+  // Fixed-identity, name-only correction after the independently verified length correction.
+  applyVerifiedPhenomenex00F4622E0NameCorrection: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 60047,
+        partNumber: '00F-4622-E0',
+        brand: 'Phenomenex',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        oldName: 'Kinetex 2.6 µm Biphenyl 100 Å, LC Column 250 x 4.6 mm',
+        columnLength: '150mm',
+        columnLengthNum: 150,
+        particleSize: '2.6um',
+        poreSize: '100A',
+        innerDiameter: '4.6mm',
+        newName: 'Kinetex 2.6 µm Biphenyl 100 Å, LC Column 150 x 4.6 mm',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, columnLength, columnLengthNum, particleSize, poreSize, innerDiameter FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.oldName ||
+          product.columnLength !== expected.columnLength || Number(product.columnLengthNum) !== expected.columnLengthNum ||
+          product.particleSize !== expected.particleSize || product.poreSize !== expected.poreSize ||
+          product.innerDiameter !== expected.innerDiameter
+        ) {
+          throw new Error(`Phenomenex name identity precondition did not match for ${expected.partNumber}`);
+        }
+        await connection.execute('UPDATE products SET name = ?, updatedAt = NOW() WHERE id = ?', [expected.newName, expected.id]);
+        await connection.commit();
+        return {
+          success: true,
+          updated: [{ id: expected.id, partNumber: expected.partNumber, name: expected.newName }],
+          updatedFields: ['name'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
