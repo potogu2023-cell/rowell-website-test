@@ -143,13 +143,54 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
     overview: "Chiral column selection should begin with the exact analyte, the intended separation mode, and the manufacturer documentation for the selected part number. The active catalog includes chiral column families from multiple brands; use the catalog to compare current listings before requesting a quote or planning a method evaluation.",
     selectionPoints: [
       "Use the exact product part number and manufacturer documentation when reviewing a chiral stationary phase.",
-      "Check whether the intended HPLC, normal-phase, reversed-phase, or SFC conditions are supported for the selected column.",
+      "Check whether the intended HPLC, normal-phase, reversed-phase, polar-organic, or SFC conditions are supported for the selected column.",
       "Confirm dimensions, particle size, solvent compatibility, and method suitability with the actual analytical workflow."
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the enantioselective separation objective",
+        body: "Begin with the analyte, matrix, expected enantiomeric relationship, detector and method objective. A chiral column is selected for a method evaluation, not merely by a familiar brand or a nominal column size. State whether the work is exploratory, routine QC, impurity assessment, preparative separation or a validated transfer before narrowing the catalog.",
+      },
+      {
+        heading: "2. Establish the intended separation mode",
+        body: "Check the planned solvent system and technique before comparing a chiral stationary phase. Normal-phase, reversed-phase, polar-organic and SFC workflows can place different demands on solvent compatibility and operating conditions. Confirm the exact product documentation rather than inferring compatibility from a family name.",
+      },
+      {
+        heading: "3. Compare stationary-phase options without assuming interchangeability",
+        body: "Chiral selectivity depends on the interaction between the analyte, stationary phase and mobile phase. Columns described as chiral can differ in selector chemistry, support format and documented operating guidance. Treat a new part number as a method-development candidate and verify resolution, retention and selectivity under the intended conditions.",
+      },
+      {
+        heading: "4. Match geometry and particle size to the workflow",
+        body: "Review length, internal diameter, particle size and hardware format alongside the analytical or preparative workflow. These parameters can affect pressure, loading, sensitivity, solvent use and run time. Compare them with the current method and the instrument's documented operating range before a transfer or scale change.",
+      },
+      {
+        heading: "5. Confirm method suitability before routine use",
+        body: "Before adopting a listed product, use the exact manufacturer documentation and evaluate the relevant method criteria under planned conditions. For an enantioselective method, verify the observed separation, repeatability and system-suitability requirements rather than assuming that a category match establishes equivalence.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/products?search=chiral",
+        label: "Browse current chiral column listings",
+        description: "Compare active catalog records by exact part number and listed product attributes before requesting a quote.",
+      },
+      {
+        href: "/learning",
+        label: "Explore the chromatography learning center",
+        description: "Use the learning center to review general method-development resources alongside manufacturer documentation.",
+      },
+      {
+        href: "/contact",
+        label: "Request a quote with method context",
+        description: "Provide the part number where known, intended technique and key workflow requirements for an accurate inquiry.",
+      },
+    ],
     faq: [
-      { question: "How should I start selecting a chiral HPLC column?", answer: "Start with the analyte, the separation objective, and manufacturer guidance for the intended method. Chiral selectivity should be verified experimentally under the planned conditions." },
-      { question: "Can a chiral column be substituted without method work?", answer: "A change of chiral stationary phase, dimensions, or operating conditions can affect selectivity. Any substitution should be evaluated against the method’s suitability criteria." },
-      { question: "Which product details should be confirmed before requesting a quote?", answer: "Confirm the exact part number, dimensions, particle size, technique compatibility, and the manufacturer documentation relevant to the planned method." }
+      { question: "How should I start selecting a chiral HPLC column?", answer: "Start with the analyte, separation objective, intended technique and manufacturer guidance for the exact part number. Chiral selectivity should be verified experimentally under the planned conditions." },
+      { question: "Which separation modes should be checked for a chiral column?", answer: "Confirm whether the exact product documentation supports the intended HPLC, normal-phase, reversed-phase, polar-organic or SFC conditions. Do not infer solvent compatibility from a family name alone." },
+      { question: "Can a chiral column be substituted without method work?", answer: "A change of chiral stationary phase, dimensions or operating conditions can affect selectivity. Any substitution should be evaluated using the actual method conditions and the method’s suitability criteria." },
+      { question: "Which dimensions matter when comparing chiral HPLC columns?", answer: "Compare length, internal diameter, particle size and hardware format with the method objective, available instrument configuration, pressure capability, sample load and run-time requirements." },
+      { question: "Which product details should be confirmed before requesting a quote?", answer: "Confirm the exact part number, dimensions, particle size, technique compatibility and manufacturer documentation relevant to the planned method." }
     ],
   },
   "hilic-hplc-columns": {
