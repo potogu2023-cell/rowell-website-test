@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
+import { getLoginUrl } from "@/const";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -28,7 +29,7 @@ export default function AdminMessages() {
   const pageSize = 20;
 
   // Fetch messages
-  const { data, isLoading, refetch } = trpc.messages.list.useQuery({
+  const { data, isLoading, isError, error, refetch } = trpc.messages.list.useQuery({
     status,
     page: currentPage,
     pageSize,
@@ -92,6 +93,29 @@ export default function AdminMessages() {
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-muted-foreground">加载中...</p>
         </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <Card className="w-full max-w-lg">
+          <CardHeader>
+            <CardTitle>需要管理员权限</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <p className="text-sm text-muted-foreground">
+              客户留言包含联系信息，仅限已授权管理员查看和更新。当前会话无法访问这些数据，未显示任何留言内容。
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {error.message || "请以已授权管理员身份登录后重试。"}
+            </p>
+            <Button onClick={() => { window.location.href = getLoginUrl(); }}>
+              管理员登录
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     );
   }
