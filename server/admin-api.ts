@@ -3222,6 +3222,77 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled CTR experiment for the verified high-impression Kinetex PFP page.
+  // Only SERP narrative fields are updated; product facts, content and image remain unchanged.
+  applyVerifiedKinetexPfpCtrExperiment: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 60069,
+        partNumber: '00D-4476-AN',
+        brand: 'Phenomenex',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        name: 'Kinetex 1.7 µm PFP 100 Å, LC Column 100 × 2.1 mm',
+        phaseType: 'PFP',
+        particleSize: '1.7um',
+        poreSize: '100A',
+        columnLength: '100mm',
+        innerDiameter: '2.1mm',
+        usp: 'L43',
+        imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/vpWAilCfNChUfpCl.webp',
+        oldMetaTitle: 'Phenomenex Kinetex PFP 100 x 2.1 mm 00D-4476-AN | ROWELL',
+        oldMetaDescription: 'Phenomenex Kinetex PFP 100 Å LC column, 100 x 2.1 mm, 1.7 µm (00D-4476-AN). Review listed specifications and request a quote.',
+        newMetaTitle: 'Phenomenex Kinetex PFP USP L43 HPLC Column 100 × 2.1 mm | ROWELL',
+        newMetaDescription: 'Phenomenex Kinetex PFP HPLC column, 1.7 µm, 100 Å, 100 × 2.1 mm (00D-4476-AN), USP L43. View specifications and request a quote from ROWELL.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType, particleSize, poreSize, columnLength, innerDiameter, usp, imageUrl, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.phaseType !== expected.phaseType || product.particleSize !== expected.particleSize ||
+          product.poreSize !== expected.poreSize || product.columnLength !== expected.columnLength ||
+          product.innerDiameter !== expected.innerDiameter || product.usp !== expected.usp ||
+          product.imageUrl !== expected.imageUrl || product.metaTitle !== expected.oldMetaTitle ||
+          product.metaDescription !== expected.oldMetaDescription
+        ) {
+          throw new Error('Kinetex PFP CTR experiment identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newMetaTitle, expected.newMetaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          id: expected.id,
+          partNumber: expected.partNumber,
+          oldMetaTitle: expected.oldMetaTitle,
+          newMetaTitle: expected.newMetaTitle,
+          oldMetaDescription: expected.oldMetaDescription,
+          newMetaDescription: expected.newMetaDescription,
+          updatedFields: ['metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
