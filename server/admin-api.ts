@@ -3417,6 +3417,81 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled technical-specification correction for two Tosoh HPLC columns.
+  // It intentionally updates only display specification fields and never writes integer numeric helper columns.
+  applyVerifiedTosohTechnicalSpecificationCorrections: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = [
+        {
+          id: 90373, partNumber: '0018339', brand: 'Tosoh', categoryId: 1,
+          productType: 'HPLC Column', name: 'TSKgel Alpha-2500',
+          oldParticleSize: '5um', oldPoreSize: 'N/A', oldColumnLength: '300mm', oldInnerDiameter: '7.8mm',
+          newParticleSize: '7um', newPoreSize: '2.5nm', newColumnLength: '300mm', newInnerDiameter: '7.8mm',
+        },
+        {
+          id: 90378, partNumber: '0008029', brand: 'Tosoh', categoryId: 1,
+          productType: 'HPLC Column', name: 'TSKgel G2500PW',
+          oldParticleSize: '5um', oldPoreSize: 'N/A', oldColumnLength: '300mm', oldInnerDiameter: '7.8mm',
+          newParticleSize: '12um', newPoreSize: '15nm', newColumnLength: '600mm', newInnerDiameter: '7.5mm',
+        },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const item of expected) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, particleSize, poreSize, columnLength, innerDiameter FROM products WHERE id = ? LIMIT 1',
+            [item.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== item.id || product.partNumber !== item.partNumber ||
+            product.brand !== item.brand || Number(product.categoryId) !== item.categoryId ||
+            product.productType !== item.productType || product.name !== item.name ||
+            product.particleSize !== item.oldParticleSize || product.poreSize !== item.oldPoreSize ||
+            product.columnLength !== item.oldColumnLength || product.innerDiameter !== item.oldInnerDiameter
+          ) {
+            throw new Error(`Tosoh technical specification identity precondition did not match for ${item.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET particleSize = ?, poreSize = ?, columnLength = ?, innerDiameter = ?, updatedAt = NOW() WHERE id = ?',
+            [item.newParticleSize, item.newPoreSize, item.newColumnLength, item.newInnerDiameter, item.id]
+          );
+        }
+        await connection.commit();
+        return {
+          success: true,
+          updated: expected.map((item) => ({
+            id: item.id,
+            partNumber: item.partNumber,
+            old: {
+              particleSize: item.oldParticleSize,
+              poreSize: item.oldPoreSize,
+              columnLength: item.oldColumnLength,
+              innerDiameter: item.oldInnerDiameter,
+            },
+            updated: {
+              particleSize: item.newParticleSize,
+              poreSize: item.newPoreSize,
+              columnLength: item.newColumnLength,
+              innerDiameter: item.newInnerDiameter,
+            },
+          })),
+          updatedFields: ['particleSize', 'poreSize', 'columnLength', 'innerDiameter'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
