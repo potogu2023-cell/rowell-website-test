@@ -3417,6 +3417,67 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled SERP-metadata correction for the verified Tosoh 0018004 reference column.
+  // This route intentionally never updates product facts, descriptions, images, categories, or product type.
+  applyVerifiedTosoh0018004SerpMetadataCorrection: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90319,
+        partNumber: '0018004',
+        brand: 'Tosoh',
+        categoryId: 1,
+        name: 'TSKgel SuperH-RC Reference Column',
+        oldMetaTitle: 'Tosoh TSKgel SuperH-RC 0018004 | ROWELL',
+        oldMetaDescription: 'Tosoh TSKgel SuperH-RC (0018004) at ROWELL. Review listed specifications and request availability or a quote.',
+        newMetaTitle: 'Tosoh TSKgel SuperH-RC Reference Column 0018004 | ROWELL',
+        newMetaDescription: 'Tosoh TSKgel SuperH-RC Reference Column (0018004) for GPC systems. Review listed information and request availability or a quote from ROWELL.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, name, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.name !== expected.name || product.metaTitle !== expected.oldMetaTitle ||
+          product.metaDescription !== expected.oldMetaDescription
+        ) {
+          throw new Error('Tosoh 0018004 SERP metadata identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newMetaTitle, expected.newMetaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          updated: {
+            id: expected.id,
+            partNumber: expected.partNumber,
+            oldMetaTitle: expected.oldMetaTitle,
+            newMetaTitle: expected.newMetaTitle,
+            oldMetaDescription: expected.oldMetaDescription,
+            newMetaDescription: expected.newMetaDescription,
+          },
+          updatedFields: ['metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Controlled name-only correction for the verified Tosoh 0018004 reference column.
   // This route intentionally never updates product type, specifications, content, metadata, or image fields.
   applyVerifiedTosoh0018004NameCorrection: publicProcedure
