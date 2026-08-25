@@ -314,10 +314,34 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Check column length, internal diameter, particle size, and pore size against the current method and instrument limits.",
       "Use manufacturer documentation to confirm applicable solvent, pH, and pressure guidance for the exact part number."
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the reversed-phase separation objective",
+        body: "Start with the analytes, matrix, mobile-phase conditions, detector and required separation objective. A C8 phase can be evaluated as one reversed-phase option, but the appropriate selection depends on the actual method rather than a generic phase label.",
+      },
+      {
+        heading: "2. Compare C8 selectivity with the current method",
+        body: "Review the exact C8 product chemistry and the intended retention/selectivity objective before changing a method. A C8 description does not establish equivalence with a different C8 product or with another alkyl phase; observed method behavior should be verified under planned conditions.",
+      },
+      {
+        heading: "3. Set dimensions and particle size for the workflow",
+        body: "Compare column length, internal diameter, particle size and pore size with the current method, injection volume, sensitivity requirement, solvent use, run-time target and instrument pressure capability. Evaluate these factors together rather than replacing only one dimension.",
+      },
+      {
+        heading: "4. Confirm documented operating conditions",
+        body: "Use the exact manufacturer documentation to confirm applicable mobile-phase, solvent, pH, temperature and pressure guidance. These limits can vary by product design and should be checked before method development, transfer or routine use.",
+      },
+      {
+        heading: "5. Validate a new selection or method transfer",
+        body: "Before adopting a C8 column in a routine or validated workflow, evaluate retention, selectivity, resolution, peak shape and system-suitability criteria using the actual analytes and planned operating conditions. Product similarity alone does not prove method equivalence.",
+      },
+    ],
     faq: [
       { question: "When might a C8 phase be evaluated?", answer: "A C8 phase can be evaluated as a reversed-phase option when method development requires a different retention profile from the current column. The outcome should be confirmed experimentally." },
       { question: "Is every C8 column interchangeable?", answer: "No. Bonding chemistry, hardware, dimensions, particle size, and manufacturer limits can differ. Compare the exact products before making a substitution." },
-      { question: "What information is needed for a C8 quote?", answer: "Provide the desired part number where possible, or the required phase, dimensions, particle size, and intended method conditions." }
+      { question: "What information is needed for a C8 quote?", answer: "Provide the desired part number where possible, or the required phase, dimensions, particle size, and intended method conditions." },
+      { question: "How should C8 dimensions be compared for a method?", answer: "Compare the exact column length, internal diameter, particle size and pore size with the current method, injection volume, instrument pressure capability, sensitivity requirement and run-time objective." },
+      { question: "Can C8 and C18 columns be exchanged without method work?", answer: "No. A stationary-phase change can alter retention and selectivity. Any substitution should be evaluated with the actual analytes, operating conditions and method-suitability criteria before routine use." }
     ],
   },
   "phenyl-hplc-columns": {
