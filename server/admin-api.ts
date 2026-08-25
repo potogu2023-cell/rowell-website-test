@@ -3806,6 +3806,62 @@ export const adminRouter = router({
       }
     }),
 
+  // Fixed-identity, image-only binding after independent fact and narrative corrections.
+  applyVerifiedPhenomenex00F4622E0AiImageBinding: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 60047,
+        partNumber: '00F-4622-E0',
+        brand: 'Phenomenex',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        name: 'Kinetex 2.6 µm Biphenyl 100 Å, LC Column 150 x 4.6 mm',
+        particleSize: '2.6um',
+        poreSize: '100A',
+        columnLength: '150mm',
+        columnLengthNum: 150,
+        innerDiameter: '4.6mm',
+        oldImageUrl: '/product-images/Phenomenex/00F-4622-E0.jpg',
+        newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/TJcDVDCPbZdlbPGV.png',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, particleSize, poreSize, columnLength, columnLengthNum, innerDiameter, imageUrl FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.particleSize !== expected.particleSize || product.poreSize !== expected.poreSize ||
+          product.columnLength !== expected.columnLength || Number(product.columnLengthNum) !== expected.columnLengthNum ||
+          product.innerDiameter !== expected.innerDiameter || product.imageUrl !== expected.oldImageUrl
+        ) {
+          throw new Error(`Phenomenex image binding identity precondition did not match for ${expected.partNumber}`);
+        }
+        await connection.execute('UPDATE products SET imageUrl = ?, updatedAt = NOW() WHERE id = ?', [expected.newImageUrl, expected.id]);
+        await connection.commit();
+        return {
+          success: true,
+          updated: [{ id: expected.id, partNumber: expected.partNumber, oldImageUrl: expected.oldImageUrl, imageUrl: expected.newImageUrl }],
+          updatedFields: ['imageUrl'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
