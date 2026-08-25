@@ -400,10 +400,39 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Confirm compatibility with the instrument, mobile phase, and validated method before changing columns.",
       "Treat each stationary phase as a distinct method-development option rather than assuming all Kinetex variants are interchangeable."
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the analytical objective before choosing a series member",
+        body: "Start with the analytes, sample matrix, mobile phase, detector and separation objective. A Kinetex listing is a starting point for method evaluation, not evidence that a particular phase will meet a new or transferred method without testing under the intended conditions.",
+      },
+      {
+        heading: "2. Compare stationary-phase chemistry at the exact product level",
+        body: "The Kinetex family includes multiple stationary-phase options. Compare the exact stated chemistry, particle size, pore size and product documentation with the selectivity question in the method. A shared family name does not establish equivalent retention or selectivity between phases.",
+      },
+      {
+        heading: "3. Match geometry and particle size to the workflow",
+        body: "Review column length, internal diameter and particle size with the current method, injection volume, sensitivity requirement, solvent use, run-time target and instrument pressure capability. Geometry or particle-size changes should be assessed together rather than treated as a simple part-number substitution.",
+      },
+      {
+        heading: "4. Confirm operating boundaries from manufacturer documentation",
+        body: "Use the documentation for the exact selected part number to confirm applicable mobile-phase, solvent, pH, temperature and pressure guidance. Do not infer operating limits from a related Kinetex phase or a similarly sized column.",
+      },
+      {
+        heading: "5. Verify method suitability before routine use or transfer",
+        body: "For method development, a replacement or a regulated transfer, evaluate retention, selectivity, resolution, peak shape and relevant system-suitability criteria using the actual method conditions. A catalog match is a candidate for evaluation, not proof of method equivalence.",
+      },
+    ],
+    relatedLinks: [
+      { href: "/products?search=Kinetex", label: "Browse current Kinetex listings", description: "Compare active catalog records by exact part number, listed phase and dimensions before requesting a quote." },
+      { href: "/categories/kinetex-pfp-columns", label: "Review Kinetex F5 / PFP considerations", description: "Compare PFP (USP L43) product listings and method-evaluation boundaries when the selectivity question calls for that chemistry." },
+      { href: "/learning", label: "Explore chromatography learning resources", description: "Use the learning center alongside manufacturer documentation when framing a method-development or transfer evaluation." },
+    ],
     faq: [
       { question: "What is the Kinetex column family?", answer: "Phenomenex describes Kinetex as a core-shell LC column family with multiple stationary-phase options. Review the exact product documentation for the selected part number." },
+      { question: "How should I compare Kinetex phases?", answer: "Start with the method's selectivity objective, then compare the exact stated stationary-phase chemistry, dimensions, particle size, pore size and manufacturer documentation. A common Kinetex family name does not make different phases interchangeable." },
+      { question: "Which dimensions should be checked for a Kinetex column?", answer: "Compare column length, internal diameter and particle size with the current method, injection volume, pressure capability, sensitivity requirement, solvent use and run-time objective. Evaluate the complete method before a transfer." },
       { question: "Does this page list every Kinetex phase?", answer: "The catalog link shows ROWELL's current active listings. Availability and documented specifications should be checked for each exact part number." },
-      { question: "Can a Kinetex phase be substituted directly for another phase?", answer: "A phase change can alter chromatographic behavior. Evaluate substitutions under the actual method conditions and method-suitability requirements." }
+      { question: "Can a Kinetex phase be substituted directly for another phase?", answer: "No. A phase, geometry or particle-size change can alter chromatographic behavior. Evaluate substitutions under the actual method conditions and method-suitability requirements." }
     ],
   },
   "agilent-poroshell-columns": {
