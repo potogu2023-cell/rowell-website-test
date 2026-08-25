@@ -3417,6 +3417,61 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled name-only correction for the verified Tosoh 0018004 reference column.
+  // This route intentionally never updates product type, specifications, content, metadata, or image fields.
+  applyVerifiedTosoh0018004NameCorrection: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90319,
+        partNumber: '0018004',
+        brand: 'Tosoh',
+        categoryId: 1,
+        oldName: 'TSKgel SuperH-RC',
+        newName: 'TSKgel SuperH-RC Reference Column',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, name FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.name !== expected.oldName
+        ) {
+          throw new Error('Tosoh 0018004 name correction identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET name = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newName, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          updated: {
+            id: expected.id,
+            partNumber: expected.partNumber,
+            oldName: expected.oldName,
+            newName: expected.newName,
+          },
+          updatedFields: ['name'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Controlled technical-specification correction for two Tosoh HPLC columns.
   // It intentionally updates only display specification fields and never writes integer numeric helper columns.
   applyVerifiedTosohTechnicalSpecificationCorrections: publicProcedure
