@@ -3151,6 +3151,77 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled CTR experiment for the verified high-impression Tosoh G3000SWxl page.
+  // Only SERP narrative fields are updated; product facts, content and image remain unchanged.
+  applyVerifiedTosohG3000SwxlCtrExperiment: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 90301,
+        partNumber: '0008541',
+        brand: 'Tosoh',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        name: 'TSKgel G3000SWxl Aqueous SEC/GFC Column, 7.8 mm × 300 mm, 5 µm',
+        phaseType: 'Silica-based aqueous SEC/GFC phase',
+        particleSize: '5µm',
+        poreSize: '25nm',
+        columnLength: '300mm',
+        innerDiameter: '7.8mm',
+        usp: null,
+        imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/IcDHYSxoVKmfQbdC.png',
+        oldMetaTitle: 'Tosoh G3000SWxl GFC 7.8x300 mm 0008541 | ROWELL',
+        oldMetaDescription: 'Tosoh TSKgel G3000SWxl aqueous SEC/GFC column, 7.8 mm x 300 mm, 5 µm (0008541). Review listed specifications and request a quote.',
+        newMetaTitle: 'Tosoh TSKgel G3000SWxl SEC/GFC Column 7.8 × 300 mm | ROWELL',
+        newMetaDescription: 'Tosoh TSKgel G3000SWxl aqueous SEC/GFC column, 7.8 × 300 mm, 5 µm, 25 nm (0008541). View listed specifications and request a quote from ROWELL.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType, particleSize, poreSize, columnLength, innerDiameter, usp, imageUrl, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.phaseType !== expected.phaseType || product.particleSize !== expected.particleSize ||
+          product.poreSize !== expected.poreSize || product.columnLength !== expected.columnLength ||
+          product.innerDiameter !== expected.innerDiameter || product.usp !== expected.usp ||
+          product.imageUrl !== expected.imageUrl || product.metaTitle !== expected.oldMetaTitle ||
+          product.metaDescription !== expected.oldMetaDescription
+        ) {
+          throw new Error('Tosoh G3000SWxl CTR experiment identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newMetaTitle, expected.newMetaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          id: expected.id,
+          partNumber: expected.partNumber,
+          oldMetaTitle: expected.oldMetaTitle,
+          newMetaTitle: expected.newMetaTitle,
+          oldMetaDescription: expected.oldMetaDescription,
+          newMetaDescription: expected.newMetaDescription,
+          updatedFields: ['metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
