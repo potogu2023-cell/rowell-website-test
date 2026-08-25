@@ -3566,6 +3566,65 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled image-only binding for two independently verified Tosoh HPLC columns.
+  applyVerifiedTosohRound2AiImageBindings: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = [
+        {
+          id: 90373, partNumber: '0018339', brand: 'Tosoh', categoryId: 1,
+          productType: 'HPLC Column', name: 'TSKgel Alpha-2500',
+          particleSize: '7um', poreSize: '2.5nm', columnLength: '300mm', innerDiameter: '7.8mm',
+          oldImageUrl: '/product-images/Tosoh/0018339.jpg',
+          newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/IlXJoBoaMwAXstdI.png',
+        },
+        {
+          id: 90378, partNumber: '0008029', brand: 'Tosoh', categoryId: 1,
+          productType: 'HPLC Column', name: 'TSKgel G2500PW',
+          particleSize: '12um', poreSize: '15nm', columnLength: '600mm', innerDiameter: '7.5mm',
+          oldImageUrl: '/product-images/Tosoh/0008029.jpg',
+          newImageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/WNMKzJUrJaSVhuef.png',
+        },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const item of expected) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, particleSize, poreSize, columnLength, innerDiameter, imageUrl FROM products WHERE id = ? LIMIT 1',
+            [item.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== item.id || product.partNumber !== item.partNumber ||
+            product.brand !== item.brand || Number(product.categoryId) !== item.categoryId ||
+            product.productType !== item.productType || product.name !== item.name ||
+            product.particleSize !== item.particleSize || product.poreSize !== item.poreSize ||
+            product.columnLength !== item.columnLength || product.innerDiameter !== item.innerDiameter ||
+            product.imageUrl !== item.oldImageUrl
+          ) {
+            throw new Error(`Tosoh image binding identity precondition did not match for ${item.partNumber}`);
+          }
+          await connection.execute('UPDATE products SET imageUrl = ?, updatedAt = NOW() WHERE id = ?', [item.newImageUrl, item.id]);
+        }
+        await connection.commit();
+        return {
+          success: true,
+          updated: expected.map((item) => ({ id: item.id, partNumber: item.partNumber, oldImageUrl: item.oldImageUrl, imageUrl: item.newImageUrl })),
+          updatedFields: ['imageUrl'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
