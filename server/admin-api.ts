@@ -3739,6 +3739,73 @@ export const adminRouter = router({
       }
     }),
 
+  // Fixed-identity, narrative-only correction after independent fact corrections.
+  applyVerifiedPhenomenex00F4622E0ContentCorrection: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 60047,
+        partNumber: '00F-4622-E0',
+        brand: 'Phenomenex',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        name: 'Kinetex 2.6 µm Biphenyl 100 Å, LC Column 150 x 4.6 mm',
+        particleSize: '2.6um',
+        poreSize: '100A',
+        columnLength: '150mm',
+        columnLengthNum: 150,
+        innerDiameter: '4.6mm',
+        oldDescription: 'Unique selectivity for aromatic and polar compounds.',
+        oldDetailNeedle: 'LC Column 250 x 4.6 mm',
+        oldMetaTitle: 'Phenomenex Kinetex 2.6 µm Biphenyl 100 Å, LC 00F-4622-E0 | ROWELL',
+        oldMetaDescription: 'Phenomenex Kinetex 2.6 µm Biphenyl 100 Å, LC Column 250 x 4.6 mm (00F-4622-E0) at ROWELL. Review listed specifications and request availability or a quote.',
+        newDescription: 'Reversed-phase HPLC column: Kinetex 2.6 µm Biphenyl 100 Å, 150 × 4.6 mm.',
+        newDetailedDescription: `### Product Overview\n\nThe **Phenomenex Kinetex 2.6 µm Biphenyl 100 Å** (Part No. **00F-4622-E0**) is a reversed-phase HPLC column with a Biphenyl phase. The manufacturer’s exact model page identifies this column as **150 mm × 4.6 mm**.\n\n### Verified Specifications\n\n- **Technique:** HPLC\n- **Separation mode:** Reversed phase\n- **Phase:** Biphenyl\n- **Particle size:** 2.6 µm\n- **Pore size:** 100 Å\n- **Column dimensions:** 150 mm × 4.6 mm\n- **Part number:** 00F-4622-E0\n\n### Method Considerations\n\nReview the exact manufacturer documentation and evaluate the intended analytes, mobile phase, operating conditions and system-suitability criteria before a new method, transfer or substitution. Product identity and listed specifications do not by themselves establish method equivalence.`,
+        newMetaTitle: 'Phenomenex Kinetex Biphenyl HPLC Column 150 × 4.6 mm | ROWELL',
+        newMetaDescription: 'Phenomenex Kinetex 2.6 µm Biphenyl 100 Å HPLC column, 150 × 4.6 mm (00F-4622-E0). Review verified specifications and request a quote.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, particleSize, poreSize, columnLength, columnLengthNum, innerDiameter, description, detailedDescription, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.particleSize !== expected.particleSize || product.poreSize !== expected.poreSize ||
+          product.columnLength !== expected.columnLength || Number(product.columnLengthNum) !== expected.columnLengthNum ||
+          product.innerDiameter !== expected.innerDiameter || product.description !== expected.oldDescription ||
+          product.metaTitle !== expected.oldMetaTitle || product.metaDescription !== expected.oldMetaDescription ||
+          !String(product.detailedDescription || '').includes(expected.oldDetailNeedle)
+        ) {
+          throw new Error(`Phenomenex content identity precondition did not match for ${expected.partNumber}`);
+        }
+        await connection.execute(
+          'UPDATE products SET description = ?, detailedDescription = ?, metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newDescription, expected.newDetailedDescription, expected.newMetaTitle, expected.newMetaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          updated: [{ id: expected.id, partNumber: expected.partNumber, metaTitle: expected.newMetaTitle, metaDescription: expected.newMetaDescription }],
+          updatedFields: ['description', 'detailedDescription', 'metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
