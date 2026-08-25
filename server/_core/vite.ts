@@ -36,6 +36,11 @@ function extractProductSlugFromPath(urlPath: string): string | null {
   return match ? match[1] : null;
 }
 
+function extractStandardsProductSlug(urlPath: string): string | null {
+  const match = urlPath.match(/^\/standards\/product\/([^\/\?]+)/);
+  return match ? match[1] : null;
+}
+
 function extractCategoryLandingSlug(urlPath: string): string | null {
   const match = urlPath.match(/^\/categories\/([^\/\?]+)/);
   return match ? match[1] : null;
@@ -412,6 +417,67 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
   }
 }
 
+/**
+ * Inject indexable SSR metadata and a factual fallback for reference-standard detail pages.
+ * These pages are data-backed but previously returned the generic SPA title and no canonical link
+ * to non-JavaScript crawlers, causing Google to treat them as non-canonical duplicates.
+ */
+async function injectStandardsProductSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
+  const requestPath = overridePath || req.path;
+  const requestedSlug = extractStandardsProductSlug(requestPath);
+  if (!requestedSlug) return template;
+
+  try {
+    const { getStandardsProductBySlug } = await import("../db-standards");
+    const standard = await getStandardsProductBySlug(requestedSlug);
+    if (!standard) return template;
+
+    const canonicalKey = standard.slug || standard.part_number;
+    const fullUrl = `${SITE_URL}/standards/product/${encodeURIComponent(canonicalKey)}`;
+    const title = `${standard.name_en} ${standard.part_number} Reference Standard | ROWELL`;
+    const detailParts = [
+      standard.specification ? `Specification: ${standard.specification}.` : "",
+      standard.cas_number ? `CAS: ${standard.cas_number}.` : "",
+    ].filter(Boolean).join(" ");
+    const description = `${standard.name_en} reference standard from ${standard.brand}. ${detailParts} Submit an inquiry to confirm current availability and suitability for your laboratory.`.replace(/\s+/g, " ").trim();
+    const categoryUrl = standard.category_slug ? `${SITE_URL}/standards/category/${encodeURIComponent(standard.category_slug)}` : `${SITE_URL}/standards`;
+    const fallback = `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/standards">Reference Standards</a>${standard.category_slug ? ` / <a href="/standards/category/${encodeURIComponent(standard.category_slug)}">${escapeHtml(standard.category_slug)}</a>` : ""}</nav><h1>${escapeHtml(standard.name_en)}</h1><p>${escapeHtml(description)}</p><dl><dt>Catalog Number</dt><dd>${escapeHtml(standard.part_number)}</dd>${standard.cas_number ? `<dt>CAS Number</dt><dd>${escapeHtml(standard.cas_number)}</dd>` : ""}${standard.specification ? `<dt>Specification</dt><dd>${escapeHtml(standard.specification)}</dd>` : ""}<dt>Brand</dt><dd>${escapeHtml(standard.brand)}</dd></dl><p><a href="${categoryUrl}">Browse related reference standards</a></p><p>Reference-standard selection and use must follow the applicable analytical procedure and laboratory quality system.</p></div>`;
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "@id": `${fullUrl}#product`,
+      name: standard.name_en,
+      description,
+      sku: standard.part_number,
+      mpn: standard.part_number,
+      brand: { "@type": "Brand", name: standard.brand },
+      url: fullUrl,
+      mainEntityOfPage: fullUrl,
+    };
+    const breadcrumbData = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Reference Standards", item: `${SITE_URL}/standards` },
+        ...(standard.category_slug ? [{ "@type": "ListItem", position: 3, name: standard.category_slug, item: categoryUrl }] : []),
+        { "@type": "ListItem", position: standard.category_slug ? 4 : 3, name: standard.name_en, item: fullUrl },
+      ],
+    };
+    const metaTags = `<title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}" /><link rel="canonical" href="${fullUrl}" /><meta property="og:type" content="product" /><meta property="og:url" content="${fullUrl}" /><meta property="og:title" content="${escapeHtml(title)}" /><meta property="og:description" content="${escapeHtml(description)}" /><meta property="og:site_name" content="ROWELL" /><script type="application/ld+json">${serializeJsonLd(structuredData)}</script><script type="application/ld+json">${serializeJsonLd(breadcrumbData)}</script>`;
+
+    template = template.replace(/<title>.*?<\/title>/i, "");
+    template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+    template = template.replace(/<div id="root"><\/div>/, `<div id="root"></div>${fallback}`);
+    console.log(`[SEO] Injected standards product SSR metadata and fallback for: ${standard.part_number}`);
+    return template;
+  } catch (error) {
+    console.error("[SEO] Error injecting standards product SEO metadata:", error);
+    return template;
+  }
+}
+
 const STATIC_PAGE_SEO: Record<string, { title: string; description: string; heading: string; type: "WebSite" | "WebPage" }> = {
   "/": {
     title: "ROWELL | Chromatography Consumables Catalog",
@@ -632,10 +698,11 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
 
 async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteStatus> {
   const productSlug = extractProductSlugFromPath(requestPath);
+  const standardsProductSlug = extractStandardsProductSlug(requestPath);
   const resourceSlug = extractSlugFromPath(requestPath);
   const literatureSlug = extractLiteratureSlugFromPath(requestPath);
 
-  if (!productSlug && !resourceSlug && !literatureSlug) return "active";
+  if (!productSlug && !standardsProductSlug && !resourceSlug && !literatureSlug) return "active";
 
   try {
     const db = await getDb();
@@ -655,6 +722,12 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
       }
       if (records.length === 0) return "missing";
       return records[0].status === "active" ? "active" : "gone";
+    }
+
+    if (standardsProductSlug) {
+      const { getStandardsProductBySlug } = await import("../db-standards");
+      const standard = await getStandardsProductBySlug(standardsProductSlug);
+      return standard ? "active" : "missing";
     }
 
     if (literatureSlug) {
@@ -886,7 +959,10 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
   if (effectivePath === "/resources") {
     return injectResourcesIndexSeoMetaTags(template);
   }
-  // Try product pages first
+  // Try standard and catalog product pages before generic article/static routes.
+  if (effectivePath.startsWith('/standards/product/')) {
+    return injectStandardsProductSeoMetaTags(template, req, effectivePath);
+  }
   if (effectivePath.startsWith('/products/')) {
     return injectProductSeoMetaTags(template, req, effectivePath);
   }

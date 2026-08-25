@@ -200,9 +200,10 @@ export async function getStandardsProductBySlug(slug: string): Promise<Standards
     SELECT id, part_number, name_en, name_cn, specification, cas_number,
            category_slug, brand, price_cny, price_usd, slug, status
     FROM standards_products
-    WHERE slug = ? AND status = 'active'
+    WHERE status = 'active' AND (slug = ? OR part_number = ?)
+    ORDER BY CASE WHEN slug = ? THEN 0 ELSE 1 END
     LIMIT 1
-  `, [slug]);
+  `, [slug, slug, slug]);
   if (!rows || rows.length === 0) return null;
   return mapProduct(rows[0]);
 }
