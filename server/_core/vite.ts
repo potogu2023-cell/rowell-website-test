@@ -507,6 +507,12 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
   const selectionHtml = profile.selectionPoints
     .map((point) => `<li>${escapeHtml(point)}</li>`)
     .join("");
+  const selectionFrameworkHtml = (profile.selectionFramework ?? [])
+    .map((item) => `<section><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></section>`)
+    .join("");
+  const selectionFrameworkSectionHtml = selectionFrameworkHtml
+    ? `<section><h2>C18 Column Selection Framework</h2><p>Use this framework to organize a method-level comparison before reviewing exact product listings. It is a selection aid, not a substitute for product-specific manufacturer documentation or method-suitability testing.</p>${selectionFrameworkHtml}</section>`
+    : "";
   const faqHtml = profile.faq
     .map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`)
     .join("");
@@ -530,7 +536,7 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
   template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
   template = template.replace(
     /<div id="root"><\/div>/,
-    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(profile.name)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><h2>Selection Considerations</h2><p>${escapeHtml(profile.overview)}</p><ul>${selectionHtml}</ul><p><a href="${catalogUrl}">Browse ${escapeHtml(profile.name)}</a></p>${relatedSectionHtml}<h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
+    `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(profile.name)}</nav><h1>${escapeHtml(profile.heading)}</h1><p>${escapeHtml(profile.summary)}</p><h2>Selection Considerations</h2><p>${escapeHtml(profile.overview)}</p><ul>${selectionHtml}</ul>${selectionFrameworkSectionHtml}<p><a href="${catalogUrl}">Browse ${escapeHtml(profile.name)}</a></p>${relatedSectionHtml}<h2>Frequently Asked Questions</h2>${faqHtml}</main></div>`
   );
   return template;
 }

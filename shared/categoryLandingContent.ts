@@ -7,6 +7,7 @@ export interface CategoryLandingProfile {
   summary: string;
   overview: string;
   selectionPoints: string[];
+  selectionFramework?: Array<{ heading: string; body: string }>;
   relatedLinks?: Array<{ href: string; label: string; description: string }>;
   faq: Array<{ question: string; answer: string }>;
 }
@@ -18,11 +19,35 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
     eyebrow: "Reversed-Phase HPLC Column Selection",
     heading: "C18 HPLC Columns for Reliable Reversed-Phase Separations",
     summary: "Browse ROWELL's C18 HPLC column range and use practical selection factors to match stationary phase, dimensions, particle size, and method requirements.",
-    overview: "C18 columns are widely used in reversed-phase HPLC because their octadecyl-bonded stationary phase provides hydrophobic retention for many small-molecule and moderately non-polar analytes. A productive starting point is to align the column chemistry with the analyte and mobile-phase conditions, then refine dimensions and particle size for the required resolution, analysis time, and system pressure.",
+    overview: "C18 columns are widely used in reversed-phase HPLC because their octadecyl-bonded stationary phase provides hydrophobic retention for many small-molecule and moderately non-polar analytes. A useful selection process starts with the analytical objective and current method, then compares stationary-phase format, dimensions, particle size, pore size and documented operating limits for the exact part number. C18 is a chemistry family rather than a guarantee of interchangeability: bonding, endcapping, particle technology and hardware can differ between products.",
     selectionPoints: [
       "Start with the analytical goal: screening, method development, routine QC, or a validated transfer.",
-      "Match internal diameter and column length to sample throughput, sensitivity, and instrument configuration.",
-      "Confirm particle size, pore size, and pH operating range against the method conditions before purchase.",
+      "Match internal diameter and column length to sample throughput, sensitivity, injection volume, solvent use, and instrument configuration.",
+      "Compare particle size with the method objective and the system's documented pressure capability; a change in particle size can change efficiency and backpressure together.",
+      "Confirm pore size, pH operating range, mobile-phase compatibility and temperature guidance against the exact manufacturer documentation before purchase or method transfer.",
+      "Use the exact part number when comparing a listed product with a current method, pharmacopeial procedure, or existing column hardware.",
+    ],
+    selectionFramework: [
+      {
+        heading: "1. Begin with method intent and retention mechanism",
+        body: "Define the analyte set, matrix, separation goal and mobile-phase conditions before choosing a column. A C18 phase is often evaluated for hydrophobic retention in reversed-phase work, but the selected product should be assessed against the actual method rather than treated as an automatic replacement.",
+      },
+      {
+        heading: "2. Set the column geometry from the workflow",
+        body: "Compare internal diameter and column length with the established method, detector sensitivity, injection volume, run-time target and available instrument configuration. Geometry changes can affect retention, efficiency, solvent consumption and the conditions required for a comparable transfer.",
+      },
+      {
+        heading: "3. Balance particle size with system capability",
+        body: "Particle size is one part of the efficiency and pressure trade-off. Confirm the selected product's listed particle size and the instrument's documented operating range before changing a validated method or setting a new method-development starting point.",
+      },
+      {
+        heading: "4. Check pore size and operating limits",
+        body: "Pore size should be compared with analyte size and the method objective. Use the exact product documentation to confirm pH, solvent, temperature and pressure guidance; these limits can differ between C18 families and are not established by the C18 label alone.",
+      },
+      {
+        heading: "5. Verify compatibility before method transfer",
+        body: "For routine methods or regulated workflows, compare the exact stationary phase, dimensions, particle size and documented limits with the existing column. Evaluate retention, selectivity, resolution and system-suitability criteria under the intended conditions before adopting a substitute.",
+      },
     ],
     relatedLinks: [
       {
@@ -43,8 +68,10 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
     ],
     faq: [
       { question: "When is a C18 column a practical starting point?", answer: "A C18 phase is commonly evaluated first for reversed-phase separations where analytes show useful hydrophobic retention. Final selection should be confirmed during method development with the intended mobile phase and sample matrix." },
-      { question: "Which dimensions should I compare first?", answer: "Compare column length, internal diameter, particle size, and pore size with the existing method and instrument limits. These parameters affect retention, efficiency, solvent consumption, and backpressure." },
+      { question: "Which C18 dimensions should I compare first?", answer: "Compare column length, internal diameter, particle size and pore size with the existing method, injection volume, instrument configuration and documented operating limits. These parameters can influence retention, efficiency, solvent consumption and backpressure together." },
+      { question: "Are all C18 HPLC columns interchangeable?", answer: "No. C18 describes an alkyl stationary-phase family, but bonding, endcapping, particle technology, dimensions, hardware and documented operating limits can differ. Confirm the exact part number and verify method suitability before treating one C18 product as a substitute for another." },
       { question: "How should I protect a C18 analytical column?", answer: "Use appropriate sample preparation and, where compatible with the analytical column, a guard column or guard cartridge. Replace protective components according to method performance rather than a fixed unsupported interval." },
+      { question: "What should be checked before transferring a C18 method?", answer: "Compare the exact phase, dimensions, particle size and documented operating limits with the current method, then evaluate retention, selectivity, resolution and system-suitability criteria under the intended conditions." },
     ],
   },
   "guard-columns": {
