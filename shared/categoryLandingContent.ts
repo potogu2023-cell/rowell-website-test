@@ -206,10 +206,51 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Compare column dimensions and particle size with instrument pressure limits and the intended method scale.",
       "Confirm equilibration, sample-solvent, and mobile-phase requirements using the selected manufacturer’s documentation."
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the polar-analyte separation objective",
+        body: "Start with the analyte properties, sample matrix, detector and analytical objective. HILIC is often evaluated when conventional reversed-phase retention is not the desired starting point for a polar-analyte workflow, but the appropriate choice must be confirmed under the actual method conditions.",
+      },
+      {
+        heading: "2. Compare the exact stationary-phase format",
+        body: "HILIC columns can differ in stationary-phase chemistry, support technology and manufacturer guidance. Compare the exact part number and listed phase with the intended method rather than treating every HILIC listing as interchangeable. A category label does not establish selectivity or solvent compatibility for a specific product.",
+      },
+      {
+        heading: "3. Plan mobile phase, sample solvent and equilibration carefully",
+        body: "Use the exact product documentation when designing or reviewing mobile-phase composition, additives, sample solvent and equilibration steps. These practical conditions can affect retention, peak shape and repeatability, so they should be set through the intended workflow rather than copied from an unrelated column family.",
+      },
+      {
+        heading: "4. Match column geometry and particle size to the system",
+        body: "Review internal diameter, column length, particle size and hardware format alongside the required sensitivity, injection volume, sample load, pressure capability and run-time target. Geometry or particle changes can change operating behavior and should be evaluated before a method transfer.",
+      },
+      {
+        heading: "5. Verify suitability under the intended method",
+        body: "Before routine use or substitution, evaluate the selected column with the actual analytes, matrix and system-suitability criteria. Confirm retention, selectivity, resolution, repeatability and documented operating limits under planned conditions rather than assuming that a HILIC category match proves equivalence.",
+      },
+    ],
+    relatedLinks: [
+      {
+        href: "/products?search=HILIC",
+        label: "Browse current HILIC column listings",
+        description: "Compare active catalog records by exact part number, listed phase and product attributes before requesting a quote.",
+      },
+      {
+        href: "/learning",
+        label: "Explore the chromatography learning center",
+        description: "Use the learning center to review general method-development resources alongside manufacturer documentation.",
+      },
+      {
+        href: "/contact",
+        label: "Request a quote with method context",
+        description: "Provide the part number where known, intended technique and key workflow requirements for an accurate inquiry.",
+      },
+    ],
     faq: [
       { question: "When can a HILIC column be evaluated?", answer: "HILIC can be evaluated when a method needs a polar-analyte retention mechanism that differs from conventional reversed-phase conditions. Suitability depends on the analyte and method conditions." },
-      { question: "Can all HILIC columns use the same method conditions?", answer: "No. Stationary-phase chemistry and manufacturer guidance differ by product. Check the exact part number before selecting solvents, additives, or operating conditions." },
-      { question: "What should I compare in the active catalog?", answer: "Compare the listed phase, dimensions, particle size, brand documentation, and method compatibility for the current product listing." }
+      { question: "What should be checked for polar compounds in a HILIC method?", answer: "Start with the analyte, sample matrix and intended separation objective, then use the exact product documentation to evaluate stationary phase, mobile-phase conditions, sample solvent and equilibration requirements." },
+      { question: "Can all HILIC columns use the same method conditions?", answer: "No. Stationary-phase chemistry and manufacturer guidance differ by product. Check the exact part number before selecting solvents, additives or operating conditions." },
+      { question: "Which dimensions should be compared for a HILIC column?", answer: "Compare column length, internal diameter, particle size and hardware format with the method objective, injection volume, system pressure capability, sensitivity and run-time requirements." },
+      { question: "What should I compare in the active catalog?", answer: "Compare the listed phase, dimensions, particle size, manufacturer documentation and method compatibility for the current product listing." }
     ],
   },
   "c8-hplc-columns": {
