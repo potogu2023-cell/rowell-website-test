@@ -49,10 +49,14 @@ const trpcClient = trpc.createClient({
     httpBatchLink({
       url: "/api/trpc",
       transformer: superjson,
+      headers() {
+        return { "Cache-Control": "no-store, no-cache, max-age=0" };
+      },
       fetch(input, init) {
         return globalThis.fetch(input, {
           ...(init ?? {}),
           credentials: "include",
+          cache: "no-store",
         });
       },
     }),

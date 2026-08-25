@@ -143,9 +143,16 @@ app.use("/api/learning-center", learningCenterRestRouter);
     }
   });
 
-  // tRPC API
+  // tRPC API responses may contain authenticated or operational data. Never permit browser or edge caching.
   app.use(
     "/api/trpc",
+    (_req, res, next) => {
+      res.setHeader("Cache-Control", "no-store, private, max-age=0, must-revalidate");
+      res.setHeader("CDN-Cache-Control", "no-store");
+      res.setHeader("Pragma", "no-cache");
+      res.setHeader("Expires", "0");
+      next();
+    },
     createExpressMiddleware({
       router: appRouter,
       createContext,
