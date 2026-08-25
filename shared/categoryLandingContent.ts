@@ -357,10 +357,34 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Compare dimensions and particle size with the method objective and instrument operating limits.",
       "Verify the selected product’s documented operating conditions before changing a validated method."
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the selectivity question in the method",
+        body: "Start with the analytes, matrix, mobile phase, detector and separation objective. A phenyl-type phase can be evaluated when a method requires a particular selectivity comparison, but the selection should be made against the actual method need rather than a general preference for a phase name.",
+      },
+      {
+        heading: "2. Identify the exact phenyl-phase chemistry",
+        body: "Phenyl and phenyl-hexyl descriptions can refer to different stationary-phase designs. Compare the precise chemistry stated for the candidate product and its manufacturer documentation before assuming similar retention or selectivity behavior across listings.",
+      },
+      {
+        heading: "3. Set dimensions and particle size for the workflow",
+        body: "Review column length, internal diameter, particle size and pore size with the method's pressure capability, injection volume, sensitivity requirement, solvent use and run-time objective. Match these parameters to the complete workflow rather than selecting by phase label alone.",
+      },
+      {
+        heading: "4. Confirm operating conditions from the exact product documentation",
+        body: "Check the selected product's documented mobile-phase, solvent, pH, temperature and pressure guidance before a new method or transfer. Operating limits and hardware details can vary among phenyl-type products and should not be inferred from category membership.",
+      },
+      {
+        heading: "5. Verify suitability under planned method conditions",
+        body: "Evaluate retention, selectivity, resolution, peak shape and relevant system-suitability criteria using the intended analytes, matrix and operating conditions. A category-level chemistry match is a starting point for method work, not evidence of direct substitution or equivalent performance.",
+      },
+    ],
     faq: [
       { question: "Why consider a phenyl HPLC column?", answer: "A phenyl-type phase can be evaluated when method development calls for an alternative selectivity option. The appropriate choice depends on the analyte and actual method data." },
       { question: "Are phenyl and phenyl-hexyl phases identical?", answer: "No. Product chemistry and manufacturer specifications can differ. Review the exact product documentation before treating any phases as interchangeable." },
-      { question: "How should a phenyl-column change be assessed?", answer: "Evaluate retention, selectivity, resolution, and method suitability using the actual operating conditions and predefined acceptance criteria." }
+      { question: "How should a phenyl-column change be assessed?", answer: "Evaluate retention, selectivity, resolution, and method suitability using the actual operating conditions and predefined acceptance criteria." },
+      { question: "What should be compared for a phenyl-hexyl column?", answer: "Compare the exact stated chemistry, dimensions, particle size, pore size and documented operating conditions with the analytes, matrix and current method before treating it as a candidate." },
+      { question: "Can a phenyl-type column replace another phase without method work?", answer: "No. A change in stationary-phase chemistry can alter retention and selectivity. Any replacement should be evaluated under the actual method conditions and predefined suitability criteria." }
     ],
   },
   "kinetex-hplc-columns": {
