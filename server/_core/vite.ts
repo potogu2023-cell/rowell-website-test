@@ -511,7 +511,7 @@ function injectCategoryLandingSeoMetaTags(template: string, requestPath: string)
     .map((item) => `<section><h3>${escapeHtml(item.heading)}</h3><p>${escapeHtml(item.body)}</p></section>`)
     .join("");
   const selectionFrameworkSectionHtml = selectionFrameworkHtml
-    ? `<section><h2>C18 Column Selection Framework</h2><p>Use this framework to organize a method-level comparison before reviewing exact product listings. It is a selection aid, not a substitute for product-specific manufacturer documentation or method-suitability testing.</p>${selectionFrameworkHtml}</section>`
+    ? `<section><h2>${escapeHtml(profile.name)} Selection Framework</h2><p>Use this framework to organize a method-level comparison before reviewing exact product listings. It is a selection aid, not a substitute for product-specific manufacturer documentation or method-suitability testing.</p>${selectionFrameworkHtml}</section>`
     : "";
   const faqHtml = profile.faq
     .map((item) => `<section><h3>${escapeHtml(item.question)}</h3><p>${escapeHtml(item.answer)}</p></section>`)
