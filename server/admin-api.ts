@@ -3293,6 +3293,77 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled CTR experiment for the verified high-impression Waters XBridge BEH C18 page.
+  // Only SERP narrative fields are updated; product facts, content and image remain unchanged.
+  applyVerifiedWatersXbridgeCtrExperiment: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 120012,
+        partNumber: '186003117',
+        brand: 'Waters',
+        categoryId: 4,
+        productType: 'HPLC Column',
+        name: 'XBridge BEH C18 Column, 130Å, 5µm, 4.6mm × 250mm',
+        phaseType: 'BEH C18 reversed-phase hybrid',
+        particleSize: '5µm',
+        poreSize: '13nm (130Å)',
+        columnLength: '250mm',
+        innerDiameter: '4.6mm',
+        usp: 'L1',
+        imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/MRKsQHrMsOwfvrFo.webp',
+        oldMetaTitle: 'Waters XBridge BEH C18 4.6x250mm 5µm 186003117 | ROWELL',
+        oldMetaDescription: 'Waters XBridge BEH C18 column, 130 Å, 5µm, 4.6mm x 250mm (186003117). Review listed specifications and request a quote.',
+        newMetaTitle: 'Waters XBridge BEH C18 USP L1 HPLC Column 4.6 × 250 mm | ROWELL',
+        newMetaDescription: 'Waters XBridge BEH C18 HPLC column, 130 Å, 5 µm, 4.6 × 250 mm (186003117), USP L1. Review listed specifications and request a quote from ROWELL.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType, particleSize, poreSize, columnLength, innerDiameter, usp, imageUrl, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.phaseType !== expected.phaseType || product.particleSize !== expected.particleSize ||
+          product.poreSize !== expected.poreSize || product.columnLength !== expected.columnLength ||
+          product.innerDiameter !== expected.innerDiameter || product.usp !== expected.usp ||
+          product.imageUrl !== expected.imageUrl || product.metaTitle !== expected.oldMetaTitle ||
+          product.metaDescription !== expected.oldMetaDescription
+        ) {
+          throw new Error('Waters XBridge CTR experiment identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newMetaTitle, expected.newMetaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          id: expected.id,
+          partNumber: expected.partNumber,
+          oldMetaTitle: expected.oldMetaTitle,
+          newMetaTitle: expected.newMetaTitle,
+          oldMetaDescription: expected.oldMetaDescription,
+          newMetaDescription: expected.newMetaDescription,
+          updatedFields: ['metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
