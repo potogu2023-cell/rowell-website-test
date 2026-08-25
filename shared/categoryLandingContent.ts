@@ -167,8 +167,8 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
     catalogSlug: "kinetex-pfp-columns",
     catalogHref: "/products?search=PFP",
     eyebrow: "Kinetex F5 / PFP (USP L43) Column Selection",
-    heading: "Phenomenex Kinetex F5 / PFP (USP L43) Columns for HPLC Method Evaluation",
-    summary: "Explore ROWELL's currently listed Kinetex F5 / PFP HPLC columns and compare listed dimensions, particle size, pore size, and pentafluorophenyl-propyl (USP L43) chemistry for method review.",
+    heading: "Phenomenex Kinetex F5 / PFP USP L43 HPLC Columns",
+    summary: "Browse currently listed Phenomenex Kinetex F5 / PFP (USP L43) HPLC columns. Compare listed specifications and request a quote from ROWELL.",
     overview: "Phenomenex identifies Kinetex F5 as a pentafluorophenyl-propyl, USP L43 core-shell HPLC column family. It can be considered when a method team is reviewing stationary-phase selectivity alongside conventional reversed-phase chemistries. Product selection should begin with the analytical objective, sample matrix, and method conditions, then compare the listed particle size, internal diameter, and column length with instrument and method requirements.",
     selectionPoints: [
       "Confirm that a Kinetex F5 / PFP (USP L43) selectivity evaluation is appropriate for the analytes and intended method objective before making a substitution.",
