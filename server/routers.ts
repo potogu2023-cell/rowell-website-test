@@ -1,6 +1,6 @@
 
 import { systemRouter } from "./_core/systemRouter";
-import { publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { getProductsByIds } from './db';
 import { z } from 'zod';
 import { adminRouter } from './admin-api';
@@ -167,9 +167,9 @@ export const appRouter = router({
       }),
   }),
 
-  // Customer messages routes
+  // Customer messages contain personal contact details and are restricted to authenticated administrators.
   messages: router({
-    list: publicProcedure
+    list: adminProcedure
       .input((raw: unknown) => {
         return z.object({
           status: z.enum(['new', 'read', 'replied', 'closed', 'all']).optional().default('all'),
@@ -231,7 +231,7 @@ export const appRouter = router({
         };
       }),
     
-    updateStatus: publicProcedure
+    updateStatus: adminProcedure
       .input((raw: unknown) => {
         return z.object({
           id: z.number(),
@@ -253,7 +253,7 @@ export const appRouter = router({
         return { success: true };
       }),
     
-    getStats: publicProcedure
+    getStats: adminProcedure
       .query(async () => {
         const { getDb } = await import('./db');
         const { customerMessages } = await import('../drizzle/schema');
