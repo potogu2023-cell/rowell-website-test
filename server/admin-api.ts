@@ -3364,6 +3364,59 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled product-type completion for two Tosoh records with public model-level evidence.
+  // This route is intentionally limited to productType; technical specifications, content and images remain isolated.
+  applyVerifiedTosohHplcColumnTypeCompletion: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = [
+        { id: 90373, partNumber: '0018339', brand: 'Tosoh', categoryId: 1, name: 'TSKgel Alpha-2500', oldProductType: null },
+        { id: 90378, partNumber: '0008029', brand: 'Tosoh', categoryId: 1, name: 'TSKgel G2500PW', oldProductType: null },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const item of expected) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, name, productType FROM products WHERE id = ? LIMIT 1',
+            [item.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== item.id || product.partNumber !== item.partNumber ||
+            product.brand !== item.brand || Number(product.categoryId) !== item.categoryId ||
+            product.name !== item.name || product.productType !== item.oldProductType
+          ) {
+            throw new Error(`Tosoh productType identity precondition did not match for ${item.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET productType = ?, updatedAt = NOW() WHERE id = ?',
+            ['HPLC Column', item.id]
+          );
+        }
+        await connection.commit();
+        return {
+          success: true,
+          updated: expected.map((item) => ({
+            id: item.id,
+            partNumber: item.partNumber,
+            oldProductType: item.oldProductType,
+            newProductType: 'HPLC Column' as const,
+          })),
+          updatedFields: ['productType'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
