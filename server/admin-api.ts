@@ -3492,6 +3492,80 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled narrative and SERP correction for two Tosoh records after independent technical-field verification.
+  // This route does not alter product facts, classifications, or images.
+  applyVerifiedTosohNarrativeContentCorrections: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = [
+        {
+          id: 90373, partNumber: '0018339', brand: 'Tosoh', categoryId: 1,
+          productType: 'HPLC Column', name: 'TSKgel Alpha-2500', particleSize: '7um', poreSize: '2.5nm', columnLength: '300mm', innerDiameter: '7.8mm',
+          oldDescription: 'High-performance GPC column: TSKgel Alpha-2500',
+          oldMetaTitle: 'Tosoh TSKgel Alpha-2500 0018339 | ROWELL',
+          oldMetaDescription: 'Tosoh TSKgel Alpha-2500 (0018339) at ROWELL. Review listed specifications and request availability or a quote.',
+          oldDetailNeedle: 'a 5 µm packing',
+          newDescription: 'Organic SEC/GPC HPLC column: TSKgel Alpha-2500',
+          newDetailedDescription: `### Product Overview\n\nThe **Tosoh TSKgel Alpha-2500** (Part No. **0018339**) is an HPLC column for organic size-exclusion chromatography (SEC/GPC). According to the manufacturer, it uses rigid porous polymer beads engineered for operation in polar organic solvents.\n\n### Verified Specifications\n\n- **Product category:** HPLC column\n- **Separation mode:** Organic size-exclusion — GPC\n- **Column dimensions:** 7.8 mm i.d. × 300 mm\n- **Particle size:** 7 µm\n- **Pore size:** 2.5 nm\n- **Housing:** Stainless steel\n\n### Application Scope\n\nThe manufacturer describes this column for polymer analyses in polar organic solvents, including workflows involving polymers soluble in solvents such as methanol, acetonitrile, DMSO, isopropanol, THF or HFIP. Method conditions, solvent compatibility, calibration and detector selection should be verified against the current manufacturer documentation for the specific sample and laboratory method.`,
+          newMetaTitle: 'Tosoh TSKgel Alpha-2500 GPC HPLC Column 7.8 × 300 mm | ROWELL',
+          newMetaDescription: 'Tosoh TSKgel Alpha-2500 organic SEC/GPC HPLC column, 7.8 × 300 mm, 7 µm, 2.5 nm (0018339). Review specifications and request a quote.',
+        },
+        {
+          id: 90378, partNumber: '0008029', brand: 'Tosoh', categoryId: 1,
+          productType: 'HPLC Column', name: 'TSKgel G2500PW', particleSize: '12um', poreSize: '15nm', columnLength: '600mm', innerDiameter: '7.5mm',
+          oldDescription: 'High-performance GPC column: TSKgel G2500PW',
+          oldMetaTitle: 'Tosoh TSKgel G2500PW 0008029 | ROWELL',
+          oldMetaDescription: 'Tosoh TSKgel G2500PW (0008029) at ROWELL. Review listed specifications and request availability or a quote.',
+          oldDetailNeedle: 'This 300 mm × 7.8 mm i.d. analytical column with a 5 µm particle bed',
+          newDescription: 'Aqueous SEC/GFC HPLC column: TSKgel G2500PW',
+          newDetailedDescription: `### Product Overview\n\nThe **Tosoh TSKgel G2500PW** (Part No. **0008029**) is an HPLC column for aqueous size-exclusion chromatography (SEC/GFC). The manufacturer describes G2500PW columns as suited to water-soluble polymers with molecular weights below 3,000 Da and as packed with spherical hydrophilic polymethacrylate beads.\n\n### Verified Specifications\n\n- **Product category:** HPLC column\n- **Separation mode:** Aqueous size-exclusion — GFC\n- **Column dimensions:** 7.5 mm i.d. × 600 mm\n- **Particle size:** 12 µm\n- **Pore size:** 15 nm\n- **Housing:** Stainless steel\n\n### Application Scope\n\nThe manufacturer identifies applications involving water-soluble polymers, including celluloses, acrylamides, glycols, dextrans, polyvinyl alcohol and oligosaccharides. Manufacturer-published operating boundaries state pH 2–12, aqueous or buffered mobile phases with up to 20% methanol, and temperatures up to 80 °C. Confirm method suitability, operating conditions and calibration with current manufacturer documentation before use.`,
+          newMetaTitle: 'Tosoh TSKgel G2500PW Aqueous SEC/GFC Column 7.5 × 600 mm | ROWELL',
+          newMetaDescription: 'Tosoh TSKgel G2500PW aqueous SEC/GFC HPLC column, 7.5 × 600 mm, 12 µm, 15 nm (0008029). Review listed specifications and request a quote.',
+        },
+      ] as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const item of expected) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, particleSize, poreSize, columnLength, innerDiameter, description, detailedDescription, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+            [item.id]
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== item.id || product.partNumber !== item.partNumber ||
+            product.brand !== item.brand || Number(product.categoryId) !== item.categoryId ||
+            product.productType !== item.productType || product.name !== item.name ||
+            product.particleSize !== item.particleSize || product.poreSize !== item.poreSize ||
+            product.columnLength !== item.columnLength || product.innerDiameter !== item.innerDiameter ||
+            product.description !== item.oldDescription || product.metaTitle !== item.oldMetaTitle ||
+            product.metaDescription !== item.oldMetaDescription || !String(product.detailedDescription || '').includes(item.oldDetailNeedle)
+          ) {
+            throw new Error(`Tosoh narrative content identity precondition did not match for ${item.partNumber}`);
+          }
+          await connection.execute(
+            'UPDATE products SET description = ?, detailedDescription = ?, metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+            [item.newDescription, item.newDetailedDescription, item.newMetaTitle, item.newMetaDescription, item.id]
+          );
+        }
+        await connection.commit();
+        return {
+          success: true,
+          updated: expected.map((item) => ({ id: item.id, partNumber: item.partNumber, metaTitle: item.newMetaTitle, metaDescription: item.newMetaDescription })),
+          updatedFields: ['description', 'detailedDescription', 'metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
