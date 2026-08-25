@@ -104,6 +104,28 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Review column length, internal diameter, and film thickness together rather than in isolation.",
       "Confirm the planned oven program and inlet conditions are compatible with the column temperature limits.",
     ],
+    selectionFramework: [
+      {
+        heading: "1. Start with the separation objective and sample profile",
+        body: "Define the analytes, expected concentration range, matrix, detector, injection approach and required separation before selecting a GC column. A column should be treated as one component of the full method; inlet conditions, oven program and detector configuration also influence the observed result.",
+      },
+      {
+        heading: "2. Compare stationary-phase selectivity deliberately",
+        body: "Stationary-phase chemistry is a primary selectivity decision in capillary GC. Compare the phase polarity and documented application guidance for the exact part number with the analyte class and separation objective. Do not assume that a familiar phase label establishes equivalence between products or methods.",
+      },
+      {
+        heading: "3. Select length, internal diameter and film thickness together",
+        body: "Column length, internal diameter and film thickness work together to influence efficiency, retention, sample capacity, flow requirements and run time. Compare all three dimensions with the established method and the available instrument configuration rather than changing one parameter in isolation.",
+      },
+      {
+        heading: "4. Check operating boundaries before installation",
+        body: "Confirm the exact column's documented temperature limits, inlet compatibility, carrier-gas conditions and hardware format before use. The intended oven program, sample introduction conditions and detector setup should remain within the manufacturer guidance for the selected product.",
+      },
+      {
+        heading: "5. Verify method suitability before routine use or transfer",
+        body: "For a new method, replacement or transfer, evaluate retention, selectivity, resolution, peak shape and relevant system-suitability criteria using the actual method conditions. A phase or dimension match is a starting point for evaluation, not evidence that two columns will perform identically.",
+      },
+    ],
     relatedLinks: [
       { href: "/resources/gc-capillary-column-environmental-analysis", label: "Read the GC capillary-column guide", description: "Use the existing guide to frame stationary-phase and dimension comparisons before reviewing listings." },
       { href: "/resources/gc-troubleshooting-guide", label: "Review GC troubleshooting considerations", description: "Use the recorded troubleshooting resource when evaluating method or inlet-related performance questions." },
@@ -112,6 +134,8 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       { question: "What drives GC column selectivity?", answer: "Stationary-phase chemistry is a central driver of selectivity. Analyte properties, temperature programming, carrier-gas conditions, and sample introduction also affect the observed separation." },
       { question: "How does film thickness affect a GC method?", answer: "Film thickness can affect retention and sample capacity, especially for volatile analytes. The appropriate choice depends on the method objective and operating conditions." },
       { question: "Can I transfer a GC method to a different column?", answer: "Method transfer should be evaluated experimentally. Match the phase type and dimensions as closely as possible, then verify retention, resolution, and suitability criteria under the intended conditions." },
+      { question: "What are the main factors when comparing capillary GC columns?", answer: "Compare the exact stationary phase, length, internal diameter, film thickness, temperature limits and hardware format with the analytes, oven program, inlet configuration and required separation objective." },
+      { question: "Does a longer GC column always provide a better method?", answer: "A longer column can change efficiency and run time, but the appropriate choice depends on the phase, dimensions, analytes, instrument conditions and method criteria. Evaluate the complete method rather than selecting by length alone." },
     ],
   },
   "kinetex-pfp-columns": {
