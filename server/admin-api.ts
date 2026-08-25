@@ -3080,6 +3080,77 @@ export const adminRouter = router({
       }
     }),
 
+  // Controlled CTR experiment for the verified high-impression Kinetex F5 page.
+  // Only SERP narrative fields are updated; product facts, content and image remain unchanged.
+  applyVerifiedKinetexF5CtrExperiment: publicProcedure
+    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const expected = {
+        id: 60083,
+        partNumber: '00D-4723-E0',
+        brand: 'Phenomenex',
+        categoryId: 1,
+        productType: 'HPLC Column',
+        name: 'Phenomenex Kinetex F5 LC Column, 100 × 4.6mm',
+        phaseType: 'F5 core-shell pentafluorophenyl propyl',
+        particleSize: '2.6µm',
+        poreSize: '10nm (100Å)',
+        columnLength: '100mm',
+        innerDiameter: '4.6mm',
+        usp: 'L43',
+        imageUrl: 'https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/YuwHStkUZrUyCpCH.webp',
+        oldMetaTitle: 'Kinetex F5 2.6µm 4.6×100mm 00D-4723-E0',
+        oldMetaDescription: 'Phenomenex Kinetex F5 LC column, 2.6µm, 100Å, 4.6×100mm (00D-4723-E0). USP L43; request a quote.',
+        newMetaTitle: 'Phenomenex Kinetex F5 USP L43 HPLC Column 100 × 4.6 mm | ROWELL',
+        newMetaDescription: 'Phenomenex Kinetex F5 HPLC column, 2.6 µm, 100 Å, 100 × 4.6 mm (00D-4723-E0), USP L43. View specifications and request a quote from ROWELL.',
+      } as const;
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        const [rows] = await connection.execute(
+          'SELECT id, partNumber, brand, category_id AS categoryId, productType, name, phaseType, particleSize, poreSize, columnLength, innerDiameter, usp, imageUrl, metaTitle, metaDescription FROM products WHERE id = ? LIMIT 1',
+          [expected.id]
+        ) as any;
+        const product = rows[0];
+        if (
+          !product || product.id !== expected.id || product.partNumber !== expected.partNumber ||
+          product.brand !== expected.brand || Number(product.categoryId) !== expected.categoryId ||
+          product.productType !== expected.productType || product.name !== expected.name ||
+          product.phaseType !== expected.phaseType || product.particleSize !== expected.particleSize ||
+          product.poreSize !== expected.poreSize || product.columnLength !== expected.columnLength ||
+          product.innerDiameter !== expected.innerDiameter || product.usp !== expected.usp ||
+          product.imageUrl !== expected.imageUrl || product.metaTitle !== expected.oldMetaTitle ||
+          product.metaDescription !== expected.oldMetaDescription
+        ) {
+          throw new Error('Kinetex F5 CTR experiment identity precondition did not match');
+        }
+        await connection.execute(
+          'UPDATE products SET metaTitle = ?, metaDescription = ?, updatedAt = NOW() WHERE id = ?',
+          [expected.newMetaTitle, expected.newMetaDescription, expected.id]
+        );
+        await connection.commit();
+        return {
+          success: true,
+          id: expected.id,
+          partNumber: expected.partNumber,
+          oldMetaTitle: expected.oldMetaTitle,
+          newMetaTitle: expected.newMetaTitle,
+          oldMetaDescription: expected.oldMetaDescription,
+          newMetaDescription: expected.newMetaDescription,
+          updatedFields: ['metaTitle', 'metaDescription'] as const,
+        };
+      } catch (error: any) {
+        await connection.rollback();
+        throw new Error(String(error?.sqlMessage || error?.message || error));
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
