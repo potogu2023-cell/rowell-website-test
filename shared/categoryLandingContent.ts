@@ -86,10 +86,34 @@ export const CATEGORY_LANDING_PROFILES: Record<string, CategoryLandingProfile> =
       "Check the hardware format, connection type, internal diameter, and pressure rating before installation.",
       "Combine guard-column use with appropriate sample filtration or cleanup for the matrix being analyzed.",
     ],
+    selectionFramework: [
+      {
+        heading: "1. Define the source of column protection risk",
+        body: "Consider the sample matrix, injection history and signs of inlet contamination before selecting a protection strategy. Particulates and strongly retained material can affect an analytical-column inlet, but a guard component should be evaluated as part of the sample-preparation and method workflow rather than as a universal remedy.",
+      },
+      {
+        heading: "2. Match stationary phase compatibility to the analytical method",
+        body: "A guard phase should be compatible with the analytical column chemistry and the intended separation. Compare the exact phase and product guidance with the method before installation, because a mismatched protection component can affect retention or selectivity before the analytical column.",
+      },
+      {
+        heading: "3. Confirm cartridge, holder and connection format",
+        body: "Guard columns and guard cartridges can differ in hardware geometry, connection style, internal diameter and pressure capability. Check the exact part number, holder requirement and documented compatibility with the analytical column and instrument before ordering or assembling a system.",
+      },
+      {
+        heading: "4. Pair protection with sample preparation",
+        body: "A guard component does not replace appropriate filtration, cleanup or other sample-preparation steps. Select the complete workflow around the sample matrix and verify that the chosen preparation and guard configuration preserve the intended analytical method performance.",
+      },
+      {
+        heading: "5. Use observed method indicators to manage replacement",
+        body: "Evaluate pressure behavior, retention, peak shape, recovery and system suitability under the actual method. Replace a guard component according to documented method performance indicators rather than a fixed interval that has not been validated for the sample matrix and workflow.",
+      },
+    ],
     faq: [
       { question: "Does every HPLC method require a guard column?", answer: "Not every method requires one. A guard column is most useful when the sample matrix or injection history creates a credible risk of contamination at the analytical-column inlet." },
       { question: "Should the guard chemistry match the analytical column?", answer: "Matching or method-compatible chemistry is generally the safest starting point because it reduces the chance that the guard changes selectivity before the analytical separation." },
       { question: "When should a guard cartridge be changed?", answer: "Use observed method indicators such as pressure change, peak-shape deterioration, retention shifts, or recovery of performance after replacement. The appropriate interval depends on the sample matrix and workflow." },
+      { question: "How is a guard cartridge matched to an analytical column?", answer: "Check the exact phase, holder or hardware format, connection style, internal diameter and documented compatibility with the analytical-column method before installation." },
+      { question: "Can a guard column replace sample filtration or cleanup?", answer: "No. A guard component is a protection stage, not a substitute for appropriate sample preparation. Choose filtration or cleanup according to the matrix and verify the complete workflow with the intended method." },
     ],
   },
   "gc-columns": {
