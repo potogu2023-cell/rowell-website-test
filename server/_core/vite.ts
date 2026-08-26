@@ -690,7 +690,7 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
     /^\/learning\/[^/]+$/,
     /^\/applications\/[^/]+$/,
     /^\/standards(?:\/search|\/category\/[^/]+|\/product\/[^/]+)?$/,
-    /^\/admin\/(?:messages|seed)$/,
+    /^\/admin\/(?:login|messages|seed)$/,
     /^\/test-filters$/,
     /^\/404$/,
   ].some((pattern) => pattern.test(requestPath));
