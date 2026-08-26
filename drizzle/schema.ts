@@ -413,6 +413,28 @@ export const customerMessages = mysqlTable("customer_messages", {
 export type CustomerMessage = typeof customerMessages.$inferSelect;
 export type InsertCustomerMessage = typeof customerMessages.$inferInsert;
 
+// Notification events intentionally store no customer contact details or message body.
+// They provide a durable audit trail for delivery, limited retries, and SLA escalation.
+export const inquiryNotificationEvents = mysqlTable("inquiry_notification_events", {
+  id: int().autoincrement().notNull().primaryKey(),
+  messageId: int("message_id"),
+  eventType: mysqlEnum("event_type", ["new_message", "daily_summary", "sla24", "sla48"]).notNull(),
+  dedupeKey: varchar("dedupe_key", { length: 191 }).notNull(),
+  status: mysqlEnum("status", ["pending", "retry", "sent", "failed"]).default("pending").notNull(),
+  attemptCount: int("attempt_count").default(0).notNull(),
+  nextAttemptAt: timestamp("next_attempt_at", { mode: "string" }).notNull(),
+  sentAt: timestamp("sent_at", { mode: "string" }),
+  lastErrorCode: varchar("last_error_code", { length: 64 }),
+  createdAt: timestamp("created_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+  updatedAt: timestamp("updated_at", { mode: "string" }).defaultNow().onUpdateNow().notNull(),
+},
+(table) => [
+  index("idx_inquiry_notification_events_message_id").on(table.messageId),
+  index("idx_inquiry_notification_events_status_due").on(table.status, table.nextAttemptAt),
+  index("idx_inquiry_notification_events_dedupe_key").on(table.dedupeKey),
+]);
+
+export type InquiryNotificationEvent = typeof inquiryNotificationEvents.$inferSelect;
 
 // ============================================
 // Learning Center Tables

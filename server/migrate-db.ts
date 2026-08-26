@@ -22,6 +22,28 @@ async function ensureAdminAccessLoginTokenTable(db: any) {
   `);
 }
 
+async function ensureInquiryNotificationEventTable(db: any) {
+  // No message body, contact information, SMTP response, or token is stored here.
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS inquiry_notification_events (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      message_id INT NULL,
+      event_type ENUM('new_message','daily_summary','sla24','sla48') NOT NULL,
+      dedupe_key VARCHAR(191) NOT NULL,
+      status ENUM('pending','retry','sent','failed') NOT NULL DEFAULT 'pending',
+      attempt_count INT NOT NULL DEFAULT 0,
+      next_attempt_at TIMESTAMP NOT NULL,
+      sent_at TIMESTAMP NULL,
+      last_error_code VARCHAR(64) NULL,
+      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      UNIQUE KEY inquiry_notification_events_dedupe_unique (dedupe_key),
+      KEY idx_inquiry_notification_events_message_id (message_id),
+      KEY idx_inquiry_notification_events_status_due (status, next_attempt_at)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  `);
+}
+
 export async function migrateDatabase() {
   const db = await getDb();
   if (!db) {
@@ -46,7 +68,8 @@ export async function migrateDatabase() {
     if (Array.isArray(result) && result.length > 0) {
       console.log('[Migration] passwordHash column already exists, skipping migration');
       await ensureAdminAccessLoginTokenTable(db);
-      console.log('[Migration] ✓ Ensured administrator access token table');
+      await ensureInquiryNotificationEventTable(db);
+      console.log('[Migration] ✓ Ensured administrator access and notification event tables');
       return;
     }
 
@@ -95,10 +118,11 @@ export async function migrateDatabase() {
     }
 
     await ensureAdminAccessLoginTokenTable(db);
-    console.log('[Migration] ✓ Ensured administrator access token table');
+    await ensureInquiryNotificationEventTable(db);
+    console.log('[Migration] ✓ Ensured administrator access and notification event tables');
     console.log('[Migration] ✅ Database migration completed successfully!');
-  } catch (error) {
-    console.error('[Migration] ❌ Migration failed:', error);
+  } catch {
+    console.error('[Migration] Database migration failed');
     // Don't throw error - allow app to start even if migration fails
   }
 }

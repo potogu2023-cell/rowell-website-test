@@ -107,7 +107,9 @@ export async function sendCustomerMessageNotification(data: {
   productName?: string;
   productPartNumber?: string;
 }) {
-  const transporter = createTransporter();
+  // Inquiry operations use the independently configured system sender rather
+  // than the legacy mail path, which keeps alert delivery isolated and auditable.
+  const transporter = createAdminTransporter();
   if (!transporter) {
     console.error("[Email] Inquiry notification is not configured");
     return { success: false, error: "Email service is not configured" };
@@ -141,7 +143,7 @@ export async function sendCustomerMessageNotification(data: {
 
   try {
     const info = await transporter.sendMail({
-      from: senderAddress(),
+      from: adminSenderAddress(),
       to: PRIMARY_INQUIRY_RECIPIENT,
       cc:
         BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
@@ -170,6 +172,54 @@ export async function sendCustomerMessageNotification(data: {
     return { success: true, messageId: info.messageId };
   } catch {
     console.error("[Email] Failed to send inquiry notification");
+    return { success: false, error: "Email delivery failed" };
+  }
+}
+
+/** Sends operational counts only; customer contact details and message content are never included. */
+export async function sendInquiryOperationsSummary(data: {
+  kind: "daily_summary" | "sla24" | "sla48";
+  newCount?: number;
+  overdueCount?: number;
+}): Promise<{ success: boolean; error?: string }> {
+  const transporter = createAdminTransporter();
+  if (!transporter) {
+    console.error("[Email] Inquiry operations notification is not configured");
+    return { success: false, error: "Email service is not configured" };
+  }
+
+  const labels = {
+    daily_summary: "Daily inquiry summary",
+    sla24: "24-hour inquiry SLA alert",
+    sla48: "48-hour inquiry SLA escalation",
+  } as const;
+  const label = labels[data.kind];
+  const countLine = data.kind === "daily_summary"
+    ? `New inquiries today: ${data.newCount || 0}`
+    : `Open inquiries beyond the SLA threshold: ${data.overdueCount || 0}`;
+
+  try {
+    await transporter.sendMail({
+      from: adminSenderAddress(),
+      to: PRIMARY_INQUIRY_RECIPIENT,
+      cc:
+        BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
+          ? BACKUP_INQUIRY_RECIPIENT
+          : undefined,
+      subject: `[ROWELL Website] ${label}`,
+      text: `${label}\n${countLine}\n\nOpen the protected administrator dashboard to review customer details. This operations alert intentionally contains no customer contact details or message content.`,
+      html: `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+          <h2 style="color:#1e40af">${label}</h2>
+          <p><strong>${escapeHtml(countLine)}</strong></p>
+          <p>This operations alert intentionally contains no customer contact details or message content.</p>
+          <p><a href="https://www.rowellhplc.com/admin/messages" style="display:inline-block;padding:10px 14px;background:#1d4ed8;color:#fff;text-decoration:none;border-radius:4px">Open protected dashboard</a></p>
+        </div>`,
+    });
+    console.log("[Email] Inquiry operations notification accepted by SMTP");
+    return { success: true };
+  } catch {
+    console.error("[Email] Failed to send inquiry operations notification");
     return { success: false, error: "Email delivery failed" };
   }
 }

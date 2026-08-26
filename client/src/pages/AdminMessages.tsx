@@ -85,6 +85,34 @@ export default function AdminMessages() {
     }
   };
 
+  const getNotificationText = (status?: string) => {
+    switch (status) {
+      case 'sent':
+        return '通知已投递';
+      case 'pending':
+        return '通知待投递';
+      case 'retry':
+        return '通知重试中';
+      case 'failed':
+        return '通知失败';
+      default:
+        return '通知未记录';
+    }
+  };
+
+  const getNotificationColor = (status?: string) => {
+    switch (status) {
+      case 'sent':
+        return 'bg-green-100 text-green-800';
+      case 'retry':
+        return 'bg-orange-100 text-orange-800';
+      case 'failed':
+        return 'bg-red-100 text-red-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -138,7 +166,7 @@ export default function AdminMessages() {
 
         {/* Stats Cards */}
         {stats && (
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
             <Card>
               <CardHeader className="pb-3">
                 <CardTitle className="text-sm font-medium text-muted-foreground">
@@ -177,6 +205,20 @@ export default function AdminMessages() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold text-gray-600">{stats.closed}</div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader className="pb-3">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                  通知健康
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <div>待投递：{stats.notification?.pending || 0}</div>
+                  <div>重试中：{stats.notification?.retry || 0}</div>
+                  <div className={(stats.notification?.failed || 0) > 0 ? "text-red-700 font-medium" : ""}>失败：{stats.notification?.failed || 0}</div>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -250,6 +292,9 @@ export default function AdminMessages() {
                       <div className="flex items-center gap-2">
                         <Badge className={getStatusColor(message.status)}>
                           {getStatusText(message.status)}
+                        </Badge>
+                        <Badge className={getNotificationColor(message.notification?.status)}>
+                          {getNotificationText(message.notification?.status)}
                         </Badge>
                         <span className="text-xs text-muted-foreground">
                           {new Date(message.createdAt).toLocaleDateString('zh-CN')}

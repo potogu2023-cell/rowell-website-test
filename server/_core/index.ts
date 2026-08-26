@@ -38,8 +38,8 @@ async function startServer() {
   try {
     const { migrateDatabase } = await import('../migrate-db');
     await migrateDatabase();
-  } catch (error) {
-    console.error('[Server] Failed to run database migration:', error);
+  } catch {
+    console.error('[Server] Failed to run database migration');
   }
 
   // Validate production configuration
@@ -53,8 +53,8 @@ async function startServer() {
       console.error('请检查 PRODUCTION_CONFIG.md 文件获取正确配置。\n');
       process.exit(1);
     }
-  } catch (error) {
-    console.error('[Server] Failed to validate configuration:', error);
+  } catch {
+    console.error('[Server] Failed to validate configuration');
     // Don't exit on validation error in case it's a dev environment
   }
 
@@ -177,6 +177,15 @@ app.use("/api/learning-center", learningCenterRestRouter);
   server.listen(port, () => {
     console.log(`Server running on http://localhost:${port}/`);
   });
+
+  // Delivery events are persisted in MySQL; the in-process worker safely resumes
+  // due work after a deploy or restart without storing customer details in logs.
+  try {
+    const { startInquiryNotificationWorker } = await import('../inquiry-notification-worker');
+    startInquiryNotificationWorker();
+  } catch {
+    console.error('[InquiryNotifications] Worker could not start');
+  }
 
   // Importing content during every production restart can silently overwrite
   // reviewed articles. Keep this exceptional maintenance operation opt-in only.

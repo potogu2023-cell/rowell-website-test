@@ -180,8 +180,8 @@ export const appRouter = router({
       })
       .query(async ({ input }) => {
         const { getDb } = await import('./db');
-        const { customerMessages } = await import('../drizzle/schema');
-        const { eq, desc, or, sql, and } = await import('drizzle-orm');
+        const { customerMessages, inquiryNotificationEvents } = await import('../drizzle/schema');
+        const { eq, desc, or, sql, and, inArray } = await import('drizzle-orm');
         const db = await getDb();
         if (!db) throw new Error('Database not available');
         
@@ -223,9 +223,35 @@ export const appRouter = router({
           .orderBy(desc(customerMessages.createdAt))
           .limit(input.pageSize)
           .offset((input.page - 1) * input.pageSize);
+
+        const messageIds = messages.map((message) => message.id);
+        const notificationRows = messageIds.length > 0
+          ? await db
+              .select({
+                messageId: inquiryNotificationEvents.messageId,
+                status: inquiryNotificationEvents.status,
+                attemptCount: inquiryNotificationEvents.attemptCount,
+              })
+              .from(inquiryNotificationEvents)
+              .where(and(
+                eq(inquiryNotificationEvents.eventType, "new_message"),
+                inArray(inquiryNotificationEvents.messageId, messageIds),
+              ))
+          : [];
+        const notificationByMessageId = new Map(
+          notificationRows
+            .filter((row) => row.messageId !== null)
+            .map((row) => [row.messageId as number, {
+              status: row.status,
+              attemptCount: row.attemptCount,
+            }]),
+        );
         
         return {
-          messages,
+          messages: messages.map((message) => ({
+            ...message,
+            notification: notificationByMessageId.get(message.id) || null,
+          })),
           total,
           totalPages: Math.ceil(total / input.pageSize),
         };
@@ -256,7 +282,7 @@ export const appRouter = router({
     getStats: adminProcedure
       .query(async () => {
         const { getDb } = await import('./db');
-        const { customerMessages } = await import('../drizzle/schema');
+        const { customerMessages, inquiryNotificationEvents } = await import('../drizzle/schema');
         const { eq, sql } = await import('drizzle-orm');
         const db = await getDb();
         if (!db) throw new Error('Database not available');
@@ -281,8 +307,22 @@ export const appRouter = router({
           statsMap[stat.status as keyof typeof statsMap] = stat.count;
           statsMap.total += stat.count;
         });
+
+        const notificationRows = await db
+          .select({
+            status: inquiryNotificationEvents.status,
+            count: sql<number>`count(*)`,
+          })
+          .from(inquiryNotificationEvents)
+          .groupBy(inquiryNotificationEvents.status);
+        const notification = { pending: 0, retry: 0, failed: 0 };
+        notificationRows.forEach((row) => {
+          if (row.status in notification) {
+            notification[row.status as keyof typeof notification] = Number(row.count || 0);
+          }
+        });
         
-        return statsMap;
+        return { ...statsMap, notification };
       }),
     
     create: publicProcedure
@@ -317,26 +357,20 @@ export const appRouter = router({
           status: 'new',
         });
         
-        // Send notification email (optional)
+        // Persist a delivery event after the customer record exists. The event worker
+        // applies bounded retries, so SMTP errors never roll back a valid submission.
+        const messageId = result[0].insertId;
         try {
-          const { sendCustomerMessageNotification } = await import('./email_notification');
-          await sendCustomerMessageNotification({
-            type: input.type || 'message',
-            name: input.name,
-            email: input.email,
-            phone: input.phone,
-            company: input.company,
-            message: input.message,
-            productId: input.productId,
-            productName: input.productName,
-          });
-        } catch (emailError) {
-          console.error('Failed to send notification email:', emailError);
+          const { enqueueInquiryNotification } = await import('./inquiry-notification-worker');
+          await enqueueInquiryNotification(messageId);
+        } catch {
+          // The submission is intentionally successful even if queueing is temporarily unavailable.
+          console.error('[InquiryNotifications] Could not enqueue delivery event');
         }
         
         return {
           success: true,
-          messageId: result[0].insertId,
+          messageId,
         };
       }),
   }),
