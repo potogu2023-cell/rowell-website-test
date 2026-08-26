@@ -6,6 +6,22 @@
 
 import { getDb } from './db';
 
+async function ensureAdminAccessLoginTokenTable(db: any) {
+  // Store only a SHA-256 hash of each short-lived email login token.
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS admin_access_login_tokens (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      token_hash VARCHAR(64) NOT NULL,
+      email VARCHAR(320) NOT NULL,
+      expires_at TIMESTAMP NOT NULL,
+      used_at TIMESTAMP NULL,
+      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE KEY admin_access_login_tokens_token_hash_unique (token_hash),
+      KEY idx_admin_access_login_tokens_expires_at (expires_at)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  `);
+}
+
 export async function migrateDatabase() {
   const db = await getDb();
   if (!db) {
@@ -29,6 +45,8 @@ export async function migrateDatabase() {
     
     if (Array.isArray(result) && result.length > 0) {
       console.log('[Migration] passwordHash column already exists, skipping migration');
+      await ensureAdminAccessLoginTokenTable(db);
+      console.log('[Migration] ✓ Ensured administrator access token table');
       return;
     }
 
@@ -76,6 +94,8 @@ export async function migrateDatabase() {
       }
     }
 
+    await ensureAdminAccessLoginTokenTable(db);
+    console.log('[Migration] ✓ Ensured administrator access token table');
     console.log('[Migration] ✅ Database migration completed successfully!');
   } catch (error) {
     console.error('[Migration] ❌ Migration failed:', error);

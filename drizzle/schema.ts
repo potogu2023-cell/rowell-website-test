@@ -334,6 +334,20 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
+// 独立的管理员邮件登录令牌。仅存储不可逆哈希，原始令牌绝不写入数据库。
+export const adminAccessLoginTokens = mysqlTable("admin_access_login_tokens", {
+	id: int().autoincrement().notNull().primaryKey(),
+	tokenHash: varchar("token_hash", { length: 64 }).notNull(),
+	email: varchar({ length: 320 }).notNull(),
+	expiresAt: timestamp("expires_at", { mode: "string" }).notNull(),
+	usedAt: timestamp("used_at", { mode: "string" }),
+	createdAt: timestamp("created_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+},
+(table) => [
+	index("admin_access_login_tokens_token_hash_unique").on(table.tokenHash),
+	index("idx_admin_access_login_tokens_expires_at").on(table.expiresAt),
+]);
+
 // USP Standards table
 export const uspStandards = mysqlTable("usp_standards", {
 	id: int().autoincrement().notNull(),
