@@ -11,6 +11,19 @@ const EMAIL_CONFIG = {
   },
 };
 
+// Administrator access emails use a dedicated sender configuration so inquiry
+// notifications retain their existing delivery path and recipient controls.
+const adminPort = parseInt(process.env.ADMIN_SMTP_PORT || "587", 10);
+const ADMIN_EMAIL_CONFIG = {
+  host: process.env.ADMIN_SMTP_HOST || "smtp.gmail.com",
+  port: adminPort,
+  secure: adminPort === 465,
+  auth: {
+    user: process.env.ADMIN_SMTP_USER,
+    pass: process.env.ADMIN_SMTP_PASS,
+  },
+};
+
 const PRIMARY_INQUIRY_RECIPIENT =
   process.env.INQUIRY_NOTIFICATION_PRIMARY?.trim() || "oscar@rowellhplc.com";
 const BACKUP_INQUIRY_RECIPIENT =
@@ -34,8 +47,21 @@ function createTransporter() {
   }
 }
 
+function createAdminTransporter() {
+  try {
+    return nodemailer.createTransport(ADMIN_EMAIL_CONFIG);
+  } catch {
+    console.error("[Email] Failed to create administrator SMTP transporter");
+    return null;
+  }
+}
+
 function senderAddress(): string {
   return `"ROWELL Website" <${EMAIL_CONFIG.auth.user}>`;
+}
+
+function adminSenderAddress(): string {
+  return `"ROWELL Website" <${ADMIN_EMAIL_CONFIG.auth.user}>`;
 }
 
 /** Sends a short-lived administrator sign-in link only to a configured allowlisted address. */
@@ -43,15 +69,15 @@ export async function sendAdminAccessLink(data: {
   email: string;
   loginUrl: string;
 }): Promise<{ success: boolean; messageId?: string; error?: string }> {
-  const transporter = createTransporter();
+  const transporter = createAdminTransporter();
   if (!transporter) {
-    return { success: false, error: "Email service is not configured" };
+    return { success: false, error: "Administrator email service is not configured" };
   }
 
   const safeUrl = escapeHtml(data.loginUrl);
   try {
     const info = await transporter.sendMail({
-      from: senderAddress(),
+      from: adminSenderAddress(),
       to: data.email,
       subject: "ROWELL administrator sign-in link",
       text: `Use this one-time link to sign in to the ROWELL inquiry dashboard. It expires in 15 minutes: ${data.loginUrl}`,
