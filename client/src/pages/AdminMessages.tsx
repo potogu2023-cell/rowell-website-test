@@ -28,7 +28,7 @@ export default function AdminMessages() {
   const pageSize = 20;
 
   // Fetch messages
-  const { data, isLoading, isError, error, refetch } = trpc.messages.list.useQuery({
+  const { data, isLoading, isFetching, isError, error, refetch } = trpc.messages.list.useQuery({
     status,
     page: currentPage,
     pageSize,
@@ -96,7 +96,11 @@ export default function AdminMessages() {
     );
   }
 
-  if (isError) {
+  // Never render an empty inquiry list when the protected API supplied no data.
+  // This prevents an authorization failure from being misrepresented as “0 messages”.
+  const accessUnavailable = isError || (!isFetching && !data);
+
+  if (accessUnavailable) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <Card className="w-full max-w-lg">
@@ -108,7 +112,7 @@ export default function AdminMessages() {
               客户留言包含联系信息，仅限已授权管理员查看和更新。当前会话无法访问这些数据，未显示任何留言内容。
             </p>
             <p className="text-xs text-muted-foreground">
-              {error.message || "请以已授权管理员身份登录后重试。"}
+              {error?.message || "请以已授权管理员身份登录后重试。"}
             </p>
             <Button onClick={() => { window.location.href = "/admin/login"; }}>
               安全管理员登录
