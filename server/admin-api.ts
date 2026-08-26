@@ -3978,6 +3978,69 @@ export const adminRouter = router({
       }
     }),
 
+  // Fixed-identity productType-only governance. It refuses inactive records, any
+  // non-empty existing productType, and any identity mismatch before one atomic write.
+  applyGuardedProductTypeBackfill: publicProcedure
+    .input((raw: unknown) => z.object({
+      adminKey: z.string(),
+      updates: z.array(z.object({
+        id: z.number().int().positive(),
+        partNumber: z.string().min(1).max(128),
+        brand: z.string().min(1).max(128),
+        name: z.string().min(1).max(255),
+        proposedProductType: z.enum([
+          'HPLC Column',
+          'GC Column',
+          'SPE Cartridge',
+          'HPLC Guard Column',
+          'Guard Cartridge',
+          'Chromatography Syringe',
+          'Chromatography Fitting and Tubing',
+        ]),
+      })).min(1).max(500),
+    }).parse(raw))
+    .mutation(async ({ input }) => {
+      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      const { getPool } = await import('./db');
+      const pool = await getPool();
+      if (!pool) throw new Error('Database pool not available');
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const update of input.updates) {
+          const [rows] = await connection.execute(
+            'SELECT id, partNumber, brand, name, productType, status FROM products WHERE id = ? LIMIT 1',
+            [update.id],
+          ) as any;
+          const product = rows[0];
+          if (
+            !product || product.id !== update.id || product.partNumber !== update.partNumber ||
+            product.brand !== update.brand || product.name !== update.name || product.status !== 'active' ||
+            String(product.productType || '').trim() !== ''
+          ) {
+            throw new Error('productType governance identity precondition failed');
+          }
+        }
+        for (const update of input.updates) {
+          await connection.execute(
+            'UPDATE products SET productType = ?, updatedAt = NOW() WHERE id = ?',
+            [update.proposedProductType, update.id],
+          );
+        }
+        await connection.commit();
+        return {
+          success: true,
+          updatedFields: ['productType'] as const,
+          updated: input.updates.map(({ id, partNumber, proposedProductType }) => ({ id, partNumber, productType: proposedProductType })),
+        };
+      } catch {
+        await connection.rollback();
+        throw new Error('productType governance update was not applied');
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Publish all draft resources (for scheduled task on 2026-06-10)
   publishDraftResources: publicProcedure
     .input((raw: unknown) => {
