@@ -47,14 +47,7 @@ export async function getDb() {
         }
       }
       
-      console.log('[Database] Connecting with config:', {
-        host,
-        port,
-        user,
-        database,
-        hasPassword: !!password,
-        sslEnabled: !!sslConfig
-      });
+      console.log('[Database] Initializing configured connection');
       
       const poolConfig: any = {
         host,
@@ -77,15 +70,15 @@ export async function getDb() {
         const connection = await pool.getConnection();
         console.log('[Database] Connection test successful');
         connection.release();
-      } catch (testError) {
-        console.error('[Database] Connection test failed:', testError);
-        throw testError;
+      } catch {
+        console.error('[Database] Connection test failed');
+        throw new Error('Database connection test failed');
       }
       
       _db = createDatabase(pool);
-      console.log('[Database] Drizzle instance created successfully');
-    } catch (error) {
-      console.error("[Database] Failed to initialize:", error);
+      console.log('[Database] Database access initialized');
+    } catch {
+      console.error("[Database] Failed to initialize");
       _db = null;
     }
   }
