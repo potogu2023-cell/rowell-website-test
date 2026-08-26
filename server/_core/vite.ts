@@ -1129,6 +1129,7 @@ export function serveStatic(app: Express) {
       }
 
       const needsMetaInjection =
+        requestPath.startsWith('/standards/product/') ||
         requestPath.startsWith('/products/') ||
         requestPath.startsWith('/resources/') ||
         requestPath.startsWith('/learning/literature/') ||
