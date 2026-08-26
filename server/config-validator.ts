@@ -25,25 +25,18 @@ export function validateDatabaseConfig(): boolean {
   // 2. 检查数据库名称
   const expectedDbName = 'rowell_workflow';
   if (!dbUrl.includes(expectedDbName)) {
-    console.error('❌ 错误：数据库配置错误！');
-    console.error(`   预期数据库：${expectedDbName}`);
-    console.error(`   当前配置：${dbUrl.replace(/:[^:@]+@/, ':****@')}`);
-    console.error('\n⚠️  警告：当前配置可能导致产品数据丢失！');
-    console.error('   请检查 PRODUCTION_CONFIG.md 文件获取正确配置。\n');
+    console.error('❌ 错误：数据库配置不满足生产环境要求！');
+    console.error('\n⚠️  警告：当前配置可能导致产品数据丢失，请通过受控配置渠道检查。\n');
     return false;
   }
 
   // 3. 检查区域
   const expectedRegion = 'ap-northeast-1';
   if (!dbUrl.includes(expectedRegion)) {
-    console.warn('⚠️  警告：数据库区域可能不正确！');
-    console.warn(`   预期区域：${expectedRegion}`);
-    console.warn(`   当前配置：${dbUrl.replace(/:[^:@]+@/, ':****@')}`);
+    console.warn('⚠️  警告：数据库区域不满足预期生产策略。');
   }
 
-  console.log('✅ 数据库配置验证通过');
-  console.log(`   数据库名称：${expectedDbName}`);
-  console.log(`   区域：${expectedRegion}\n`);
+  console.log('✅ 数据库配置验证通过\n');
   
   return true;
 }
@@ -77,21 +70,16 @@ export async function validateProductData(db: any): Promise<boolean> {
     const minExpectedCount = 1000;
     
     if (productCount < minExpectedCount) {
-      console.error('❌ 错误：产品数据异常！');
-      console.error(`   当前产品数量：${productCount}`);
-      console.error(`   预期产品数量：>${minExpectedCount}`);
-      console.error('\n⚠️  警告：可能连接到了错误的数据库！');
-      console.error('   请立即检查DATABASE_URL配置。\n');
+      console.error('❌ 错误：产品数据完整性检查未通过！');
+      console.error('\n⚠️  警告：可能连接到了错误的数据库，请通过受控配置渠道检查。\n');
       return false;
     }
     
-    console.log('✅ 产品数据验证通过');
-    console.log(`   产品数量：${productCount}\n`);
+    console.log('✅ 产品数据验证通过\n');
     
     return true;
-  } catch (error) {
+  } catch {
     console.error('❌ 错误：无法验证产品数据');
-    console.error('   ', error);
     // 允许在数据库连接失败时继续启动
     console.warn('⚠️  将继续启动服务器,但数据库功能可能不可用');
     return true;
