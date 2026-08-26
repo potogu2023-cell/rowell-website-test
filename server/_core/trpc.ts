@@ -1,4 +1,4 @@
-import { NOT_ADMIN_ERR_MSG, UNAUTHED_ERR_MSG } from '@shared/const';
+import { NOT_ADMIN_ERR_MSG, UNAUTHED_ERR_MSG } from "@shared/const";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import type { TrpcContext } from "./context";
@@ -12,17 +12,10 @@ export const publicProcedure = t.procedure;
 
 const requireUser = t.middleware(async opts => {
   const { ctx, next } = opts;
-
   if (!ctx.user) {
     throw new TRPCError({ code: "UNAUTHORIZED", message: UNAUTHED_ERR_MSG });
   }
-
-  return next({
-    ctx: {
-      ...ctx,
-      user: ctx.user,
-    },
-  });
+  return next({ ctx: { ...ctx, user: ctx.user } });
 });
 
 export const protectedProcedure = t.procedure.use(requireUser);
@@ -30,8 +23,10 @@ export const protectedProcedure = t.procedure.use(requireUser);
 export const adminProcedure = t.procedure.use(
   t.middleware(async opts => {
     const { ctx, next } = opts;
+    const oauthAdministrator = ctx.user?.role === "admin";
+    const emailLinkAdministrator = Boolean(ctx.adminSession);
 
-    if (!ctx.user || ctx.user.role !== 'admin') {
+    if (!oauthAdministrator && !emailLinkAdministrator) {
       throw new TRPCError({ code: "FORBIDDEN", message: NOT_ADMIN_ERR_MSG });
     }
 
@@ -39,6 +34,7 @@ export const adminProcedure = t.procedure.use(
       ctx: {
         ...ctx,
         user: ctx.user,
+        adminSession: ctx.adminSession,
       },
     });
   }),

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { trpc } from "@/lib/trpc";
-import { getLoginUrl } from "@/const";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -111,8 +110,8 @@ export default function AdminMessages() {
             <p className="text-xs text-muted-foreground">
               {error.message || "请以已授权管理员身份登录后重试。"}
             </p>
-            <Button onClick={() => { window.location.href = getLoginUrl(); }}>
-              管理员登录
+            <Button onClick={() => { window.location.href = "/admin/login"; }}>
+              安全管理员登录
             </Button>
           </CardContent>
         </Card>

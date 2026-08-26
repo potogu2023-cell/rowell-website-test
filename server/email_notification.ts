@@ -1,34 +1,77 @@
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
-// 邮件配置
-const port = parseInt(process.env.SMTP_PORT || '587');
+const port = parseInt(process.env.SMTP_PORT || "587", 10);
 const EMAIL_CONFIG = {
-  // 使用环境变量配置SMTP
-  host: process.env.SMTP_HOST || 'smtp.gmail.com',
-  port: port,
-  secure: port === 465, // true for 465, false for other ports
+  host: process.env.SMTP_HOST || "smtp.gmail.com",
+  port,
+  secure: port === 465,
   auth: {
     user: process.env.SMTP_USER,
     pass: process.env.SMTP_PASS,
   },
 };
 
-// 收件人邮箱
-const RECIPIENT_EMAIL = 'oscar@rowellhplc.com';
+const PRIMARY_INQUIRY_RECIPIENT =
+  process.env.INQUIRY_NOTIFICATION_PRIMARY?.trim() || "oscar@rowellhplc.com";
+const BACKUP_INQUIRY_RECIPIENT =
+  process.env.INQUIRY_NOTIFICATION_BACKUP?.trim() || "sofia@rowellhplc.com";
 
-// 创建邮件传输器
-const createTransporter = () => {
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function createTransporter() {
   try {
     return nodemailer.createTransport(EMAIL_CONFIG);
   } catch (error) {
-    console.error('Failed to create email transporter:', error);
+    console.error("[Email] Failed to create SMTP transporter", error);
     return null;
   }
-};
+}
 
-// 发送客户留言/询价通知邮件
+function senderAddress(): string {
+  return `"ROWELL Website" <${EMAIL_CONFIG.auth.user}>`;
+}
+
+/** Sends a short-lived administrator sign-in link only to a configured allowlisted address. */
+export async function sendAdminAccessLink(data: {
+  email: string;
+  loginUrl: string;
+}): Promise<{ success: boolean; messageId?: string; error?: string }> {
+  const transporter = createTransporter();
+  if (!transporter) {
+    return { success: false, error: "Email service is not configured" };
+  }
+
+  const safeUrl = escapeHtml(data.loginUrl);
+  try {
+    const info = await transporter.sendMail({
+      from: senderAddress(),
+      to: data.email,
+      subject: "ROWELL administrator sign-in link",
+      text: `Use this one-time link to sign in to the ROWELL inquiry dashboard. It expires in 15 minutes: ${data.loginUrl}`,
+      html: `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+          <h2>ROWELL administrator access</h2>
+          <p>Use the following one-time link to access the protected inquiry dashboard. The link expires in 15 minutes.</p>
+          <p><a href="${safeUrl}" style="display:inline-block;padding:12px 18px;background:#1d4ed8;color:#fff;text-decoration:none;border-radius:4px">Open inquiry dashboard</a></p>
+          <p style="color:#6b7280;font-size:12px">If you did not request this link, you can safely ignore this email.</p>
+        </div>`,
+    });
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.error("[Email] Failed to send administrator access link", error);
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
 export async function sendCustomerMessageNotification(data: {
-  type: 'inquiry' | 'message' | 'quote_request';
+  type: "inquiry" | "message" | "quote_request";
   name: string;
   email: string;
   phone?: string;
@@ -39,110 +82,68 @@ export async function sendCustomerMessageNotification(data: {
   productPartNumber?: string;
 }) {
   const transporter = createTransporter();
-  
   if (!transporter) {
-    console.error('Email transporter not configured');
-    return { success: false, error: 'Email service not configured' };
+    console.error("[Email] Inquiry notification is not configured");
+    return { success: false, error: "Email service is not configured" };
   }
 
-  // 根据类型确定邮件主题
   const typeLabels = {
-    inquiry: '产品询价',
-    message: '客户留言',
-    quote_request: '报价请求',
+    inquiry: "Product Inquiry",
+    message: "Customer Message",
+    quote_request: "Quote Request",
   };
-  
-  const typeLabel = typeLabels[data.type] || '客户消息';
-  
-  // 构建邮件内容
-  const subject = `[ROWELL网站] 新${typeLabel} - ${data.name}`;
-  
-  let htmlContent = `
-    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">
-        新${typeLabel}通知
-      </h2>
-      
-      <div style="background-color: #f3f4f6; padding: 15px; border-radius: 5px; margin: 20px 0;">
-        <h3 style="margin-top: 0; color: #374151;">客户信息</h3>
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280; width: 100px;"><strong>姓名:</strong></td>
-            <td style="padding: 8px 0;">${data.name}</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280;"><strong>邮箱:</strong></td>
-            <td style="padding: 8px 0;"><a href="mailto:${data.email}" style="color: #2563eb;">${data.email}</a></td>
-          </tr>
-          ${data.phone ? `
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280;"><strong>电话:</strong></td>
-            <td style="padding: 8px 0;">${data.phone}</td>
-          </tr>
-          ` : ''}
-          ${data.company ? `
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280;"><strong>公司:</strong></td>
-            <td style="padding: 8px 0;">${data.company}</td>
-          </tr>
-          ` : ''}
-        </table>
-      </div>
-  `;
+  const typeLabel = typeLabels[data.type] || "Customer Message";
+  const safeName = escapeHtml(data.name);
+  const safeEmail = escapeHtml(data.email);
+  const safePhone = data.phone ? escapeHtml(data.phone) : "";
+  const safeCompany = data.company ? escapeHtml(data.company) : "";
+  const safeMessage = escapeHtml(data.message);
+  const safeProductId = data.productId ? escapeHtml(data.productId) : "";
+  const safeProductName = data.productName ? escapeHtml(data.productName) : "";
+  const safePartNumber = data.productPartNumber ? escapeHtml(data.productPartNumber) : "";
 
-  // 如果是产品相关的消息，添加产品信息
-  if (data.productId) {
-    htmlContent += `
-      <div style="background-color: #eff6ff; padding: 15px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #2563eb;">
-        <h3 style="margin-top: 0; color: #1e40af;">产品信息</h3>
-        <table style="width: 100%; border-collapse: collapse;">
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280; width: 100px;"><strong>产品ID:</strong></td>
-            <td style="padding: 8px 0;">${data.productId}</td>
-          </tr>
-          ${data.productPartNumber ? `
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280;"><strong>Part Number:</strong></td>
-            <td style="padding: 8px 0;">${data.productPartNumber}</td>
-          </tr>
-          ` : ''}
-          ${data.productName ? `
-          <tr>
-            <td style="padding: 8px 0; color: #6b7280;"><strong>产品名称:</strong></td>
-            <td style="padding: 8px 0;">${data.productName}</td>
-          </tr>
-          ` : ''}
-        </table>
-      </div>
-    `;
-  }
-
-  // 添加留言内容
-  htmlContent += `
-      <div style="background-color: #ffffff; padding: 15px; border: 1px solid #e5e7eb; border-radius: 5px; margin: 20px 0;">
-        <h3 style="margin-top: 0; color: #374151;">${data.type === 'inquiry' ? '客户需求' : '留言内容'}</h3>
-        <p style="white-space: pre-wrap; line-height: 1.6; color: #4b5563;">${data.message}</p>
-      </div>
-      
-      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 12px;">
-        <p>此邮件由ROWELL网站自动发送，请勿直接回复。</p>
-        <p>如需回复客户，请使用客户提供的邮箱地址: <a href="mailto:${data.email}" style="color: #2563eb;">${data.email}</a></p>
-      </div>
-    </div>
-  `;
+  const subject = `[ROWELL Website] New ${typeLabel} – ${data.name}`;
+  const productBlock = data.productId
+    ? `
+      <div style="background:#eff6ff;padding:15px;border-radius:5px;margin:20px 0;border-left:4px solid #2563eb">
+        <h3 style="margin-top:0;color:#1e40af">Product</h3>
+        <p><strong>ID:</strong> ${safeProductId}</p>
+        ${data.productPartNumber ? `<p><strong>Part number:</strong> ${safePartNumber}</p>` : ""}
+        ${data.productName ? `<p><strong>Name:</strong> ${safeProductName}</p>` : ""}
+      </div>`
+    : "";
 
   try {
     const info = await transporter.sendMail({
-      from: `"ROWELL网站" <${EMAIL_CONFIG.auth.user}>`,
-      to: RECIPIENT_EMAIL,
-      subject: subject,
-      html: htmlContent,
+      from: senderAddress(),
+      to: PRIMARY_INQUIRY_RECIPIENT,
+      cc:
+        BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
+          ? BACKUP_INQUIRY_RECIPIENT
+          : undefined,
+      subject,
+      text: `New ${typeLabel}\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || ""}\nPhone: ${data.phone || ""}\nMessage: ${data.message}`,
+      html: `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+          <h2 style="color:#2563eb">New ${typeLabel}</h2>
+          <div style="background:#f3f4f6;padding:15px;border-radius:5px;margin:20px 0">
+            <p><strong>Name:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> <a href="mailto:${safeEmail}">${safeEmail}</a></p>
+            ${data.phone ? `<p><strong>Phone:</strong> ${safePhone}</p>` : ""}
+            ${data.company ? `<p><strong>Company:</strong> ${safeCompany}</p>` : ""}
+          </div>
+          ${productBlock}
+          <div style="background:#fff;padding:15px;border:1px solid #e5e7eb;border-radius:5px;margin:20px 0">
+            <h3 style="margin-top:0">Customer request</h3>
+            <p style="white-space:pre-wrap;line-height:1.6">${safeMessage}</p>
+          </div>
+          <p style="color:#6b7280;font-size:12px">This notification is sent by the ROWELL website. Reply using the customer email address above.</p>
+        </div>`,
     });
-
-    console.log('Email sent successfully:', info.messageId);
+    console.log("[Email] Inquiry notification sent", { messageId: info.messageId });
     return { success: true, messageId: info.messageId };
   } catch (error) {
-    console.error('Failed to send email:', error);
+    console.error("[Email] Failed to send inquiry notification", error);
     return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }

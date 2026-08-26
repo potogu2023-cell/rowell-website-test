@@ -28,6 +28,7 @@ const AuthorDetail = lazy(() => import("./pages/AuthorDetail"));
 const LiteratureDetail = lazy(() => import("./pages/LiteratureDetail"));
 const AdminSeed = lazy(() => import("./pages/AdminSeed"));
 const AdminMessages = lazy(() => import("./pages/AdminMessages"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const TestFilters = lazy(() => import("./pages/TestFilters"));
 const Standards = lazy(() => import("./pages/Standards"));
 const StandardsCategory = lazy(() => import("./pages/StandardsCategory"));
@@ -79,6 +80,7 @@ function Router() {
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/usp/:code"} component={USPClassificationDetail} />
           <Route path={"/contact"} component={Contact} />
+          <Route path={"/admin/login"} component={AdminLogin} />
           <Route path={"/admin/messages"} component={AdminMessages} />
           <Route path={"/admin/seed"} component={AdminSeed} />
 

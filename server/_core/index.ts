@@ -4,6 +4,7 @@ import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
+import { registerAdminAccessRoutes } from "./admin-access";
 import { registerImageSyncRoutes } from "./imageSync";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
@@ -68,8 +69,9 @@ async function startServer() {
   // Product and article SEO tags are injected once in serveStatic/setupVite.
   // Do not mount the legacy response-interception middleware here: it duplicates
   // canonical tags and Product JSON-LD in production HTML.
-  // OAuth callback under /api/oauth/callback
+  // Legacy OAuth callback and independent email-based administrator access.
   registerOAuthRoutes(app);
+  registerAdminAccessRoutes(app);
   // ImageSync REST API for CSV uploads
   registerImageSyncRoutes(app)  // Learning Center API
 app.use("/api/learning-center", learningCenterRestRouter);
