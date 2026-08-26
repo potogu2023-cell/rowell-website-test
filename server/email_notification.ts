@@ -28,8 +28,8 @@ function escapeHtml(value: string): string {
 function createTransporter() {
   try {
     return nodemailer.createTransport(EMAIL_CONFIG);
-  } catch (error) {
-    console.error("[Email] Failed to create SMTP transporter", error);
+  } catch {
+    console.error("[Email] Failed to create SMTP transporter");
     return null;
   }
 }
@@ -64,9 +64,9 @@ export async function sendAdminAccessLink(data: {
         </div>`,
     });
     return { success: true, messageId: info.messageId };
-  } catch (error) {
-    console.error("[Email] Failed to send administrator access link", error);
-    return { success: false, error: error instanceof Error ? error.message : String(error) };
+  } catch {
+    console.error("[Email] Failed to send administrator access link");
+    return { success: false, error: "Email delivery failed" };
   }
 }
 
@@ -140,10 +140,10 @@ export async function sendCustomerMessageNotification(data: {
           <p style="color:#6b7280;font-size:12px">This notification is sent by the ROWELL website. Reply using the customer email address above.</p>
         </div>`,
     });
-    console.log("[Email] Inquiry notification sent", { messageId: info.messageId });
+    console.log("[Email] Inquiry notification accepted by SMTP");
     return { success: true, messageId: info.messageId };
-  } catch (error) {
-    console.error("[Email] Failed to send inquiry notification", error);
-    return { success: false, error: error instanceof Error ? error.message : String(error) };
+  } catch {
+    console.error("[Email] Failed to send inquiry notification");
+    return { success: false, error: "Email delivery failed" };
   }
 }
