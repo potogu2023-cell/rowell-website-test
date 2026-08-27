@@ -33,6 +33,7 @@ const ADVANCED_FILTER_URL_PARAMS: Record<keyof AdvancedFiltersState, string> = {
   innerDiameterMin: 'innerDiameterMin',
   innerDiameterMax: 'innerDiameterMax',
   phaseTypes: 'phaseTypes',
+  productTypes: 'productTypes',
   phMin: 'phMin',
   phMax: 'phMax',
 };
@@ -42,9 +43,9 @@ function readAdvancedFiltersFromParams(params: URLSearchParams): AdvancedFilters
   for (const [key, param] of Object.entries(ADVANCED_FILTER_URL_PARAMS) as Array<[keyof AdvancedFiltersState, string]>) {
     const value = params.get(param);
     if (!value) continue;
-    if (key === 'phaseTypes') {
-      const phaseTypes = value.split(',').map((item) => item.trim()).filter(Boolean);
-      if (phaseTypes.length > 0) filters.phaseTypes = phaseTypes;
+    if (key === 'phaseTypes' || key === 'productTypes') {
+      const values = value.split(',').map((item) => item.trim()).filter(Boolean);
+      if (values.length > 0) filters[key] = values as never;
       continue;
     }
     const numeric = Number(value);
@@ -220,6 +221,9 @@ export default function Products() {
   const { data: brandStats } = trpc.products.getBrandStats.useQuery({
     categoryId: selectedCategoryId || undefined,
   }) as { data: Record<string, number> | undefined };
+  const { data: filterOptions } = trpc.products.getFilterOptions.useQuery({
+    categoryId: selectedCategoryId || undefined,
+  });
 
   const handleContactWhatsApp = (productId: string) => {
     const message = encodeURIComponent(`Hi, I'm interested in product: ${productId}`);
@@ -271,6 +275,8 @@ export default function Products() {
     setAdvancedFilters({});
     setSelectedBrand(null);
     setSelectedUSP(null);
+    setSelectedCategoryId(null);
+    setSelectedCategoryName(null);
     setSearchTerm("");
     setDebouncedSearchTerm("");
     setCurrentPage(1);
@@ -279,11 +285,12 @@ export default function Products() {
     params.delete('brand');
     params.delete('search');
     params.delete('usp');
+    params.delete('category');
     params.set('page', '1');
     window.history.pushState({}, '', `${window.location.pathname}?${params.toString()}`);
   };
 
-  const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || selectedUSP || searchTerm;
+  const hasActiveFilters = Object.keys(advancedFilters).length > 0 || selectedBrand || selectedUSP || selectedCategoryId !== null || searchTerm;
 
   // Only show full-page loading on initial load
   if (isLoading && !data) {
@@ -636,6 +643,8 @@ export default function Products() {
       {showAdvancedFilters && (
         <AdvancedFilters
           initialFilters={advancedFilters}
+          productTypeOptions={filterOptions?.productTypes}
+          phaseTypeOptions={filterOptions?.phaseTypes}
           onFiltersChange={handleAdvancedFiltersChange}
           onClose={() => setShowAdvancedFilters(false)}
         />

@@ -80,6 +80,37 @@ export const appRouter = router({
             .map((row) => [row.brand, Number(row.count)])
         ) as Record<string, number>;
       }),
+
+    getFilterOptions: publicProcedure
+      .input((raw: unknown) => z.object({ categoryId: z.number().optional() }).parse(raw))
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { products } = await import('../drizzle/schema');
+        const { and, eq, sql } = await import('drizzle-orm');
+        const db = await getDb();
+        if (!db) return { productTypes: [], phaseTypes: [] };
+
+        const conditions: any[] = [eq(products.status, 'active')];
+        if (input.categoryId) {
+          conditions.push(sql`${products.id} IN (SELECT product_id FROM product_categories WHERE category_id = ${input.categoryId})`);
+        }
+        const whereClause = and(...conditions);
+        const [productTypeRows, phaseTypeRows] = await Promise.all([
+          db.select({ value: products.productType, count: sql<number>`COUNT(*)` })
+            .from(products)
+            .where(whereClause)
+            .groupBy(products.productType),
+          db.select({ value: products.phaseType, count: sql<number>`COUNT(*)` })
+            .from(products)
+            .where(whereClause)
+            .groupBy(products.phaseType),
+        ]);
+        const normalize = (rows: Array<{ value: string | null; count: number }>) => rows
+          .filter((row) => Boolean(row.value?.trim()))
+          .map((row) => ({ value: row.value!.trim(), count: Number(row.count || 0) }))
+          .sort((left, right) => left.value.localeCompare(right.value));
+        return { productTypes: normalize(productTypeRows), phaseTypes: normalize(phaseTypeRows) };
+      }),
     
     getByIds: publicProcedure
       .input((raw: unknown) => {

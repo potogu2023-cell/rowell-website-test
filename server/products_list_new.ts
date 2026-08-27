@@ -39,6 +39,7 @@ export const productsListInput = z.object({
   innerDiameterMin: z.number().optional(),
   innerDiameterMax: z.number().optional(),
   phaseTypes: z.array(z.string()).optional(),
+  productTypes: z.array(z.string()).optional(),
   phMin: z.number().optional(),
   phMax: z.number().optional(),
   usp: z.string().optional(),
@@ -118,6 +119,11 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     conditions.push(inArray(products.phaseType, input.phaseTypes));
   }
   
+  // Product type filter only uses the product's recorded, normalized type.
+  if (input?.productTypes && input.productTypes.length > 0) {
+    conditions.push(inArray(products.productType, input.productTypes));
+  }
+
   // USP filter (exact match)
   if (input?.usp) {
     const { or, like } = await import('drizzle-orm');
@@ -139,12 +145,6 @@ export async function productsListQuery(input: z.infer<typeof productsListInput>
     ? and(categoryCondition, whereClause)
     : categoryCondition || whereClause;
   const baseQuery = db.select().from(products).where(finalCondition);
-
-  // Debug: log the DB-safe prefilter query; specification comparison below is
-  // deterministic application code so malformed raw values can never break SQL.
-  console.log('[products_list_new] categoryId:', input?.categoryId);
-  console.log('[products_list_new] specification filters active:', hasSpecificationFilters);
-  console.log('[products_list_new] base query SQL:', baseQuery.toSQL ? baseQuery.toSQL() : 'no toSQL method');
 
   const parseStrictUnit = (value: unknown, expression: RegExp, multiplier = 1): number | null => {
     if (typeof value !== 'string') return null;

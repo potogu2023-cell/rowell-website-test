@@ -11,12 +11,20 @@ export interface AdvancedFiltersState {
   innerDiameterMin?: number;
   innerDiameterMax?: number;
   phaseTypes?: string[];
+  productTypes?: string[];
   phMin?: number;
   phMax?: number;
 }
 
+interface FilterOption {
+  value: string;
+  count: number;
+}
+
 interface AdvancedFiltersProps {
   initialFilters?: AdvancedFiltersState;
+  productTypeOptions?: FilterOption[];
+  phaseTypeOptions?: FilterOption[];
   onFiltersChange: (filters: AdvancedFiltersState) => void;
   onClose: () => void;
 }
@@ -26,7 +34,13 @@ const COMMON_PORE_SIZES = [60, 80, 100, 120, 200, 300];
 const COMMON_COLUMN_LENGTHS = [30, 50, 75, 100, 150, 250];
 const COMMON_INNER_DIAMETERS = [1.0, 2.1, 3.0, 4.6];
 
-export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose }: AdvancedFiltersProps) {
+export function AdvancedFilters({
+  initialFilters = {},
+  productTypeOptions = [],
+  phaseTypeOptions = [],
+  onFiltersChange,
+  onClose,
+}: AdvancedFiltersProps) {
   const { t } = useTranslation();
   // 使用单独的状态变量而不是一个大对象
   const [particleSizeMin, setParticleSizeMin] = useState<string>(initialFilters.particleSizeMin?.toString() || '');
@@ -39,6 +53,8 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
   const [innerDiameterMax, setInnerDiameterMax] = useState<string>(initialFilters.innerDiameterMax?.toString() || '');
   const [phMin, setPhMin] = useState<string>(initialFilters.phMin?.toString() || '');
   const [phMax, setPhMax] = useState<string>(initialFilters.phMax?.toString() || '');
+  const [productTypes, setProductTypes] = useState<string[]>(initialFilters.productTypes || []);
+  const [phaseTypes, setPhaseTypes] = useState<string[]>(initialFilters.phaseTypes || []);
   const [validationError, setValidationError] = useState<string>('');
   
   const applyButtonRef = useRef<HTMLButtonElement>(null);
@@ -74,6 +90,8 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
     if (innerDiameterMax) filters.innerDiameterMax = Number(innerDiameterMax);
     if (phMin) filters.phMin = Number(phMin);
     if (phMax) filters.phMax = Number(phMax);
+    if (productTypes.length > 0) filters.productTypes = productTypes;
+    if (phaseTypes.length > 0) filters.phaseTypes = phaseTypes;
 
     onFiltersChange(filters);
     onClose();
@@ -90,6 +108,8 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
     setInnerDiameterMax('');
     setPhMin('');
     setPhMax('');
+    setProductTypes([]);
+    setPhaseTypes([]);
     setValidationError('');
   };
 
@@ -107,6 +127,46 @@ export function AdvancedFilters({ initialFilters = {}, onFiltersChange, onClose 
         </div>
 
         <div className="p-6 space-y-6">
+          {productTypeOptions.length > 0 && (
+            <fieldset>
+              <legend className="block text-sm font-medium text-gray-700 mb-2">Product Type</legend>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {productTypeOptions.map((option) => (
+                  <label key={option.value} className="flex items-center gap-2 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={productTypes.includes(option.value)}
+                      onChange={(event) => setProductTypes((current) => event.target.checked
+                        ? [...current, option.value]
+                        : current.filter((value) => value !== option.value))}
+                    />
+                    <span>{option.value} ({option.count})</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
+
+          {phaseTypeOptions.length > 0 && (
+            <fieldset>
+              <legend className="block text-sm font-medium text-gray-700 mb-2">Stationary Phase</legend>
+              <div className="grid gap-2 sm:grid-cols-2">
+                {phaseTypeOptions.map((option) => (
+                  <label key={option.value} className="flex items-center gap-2 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700">
+                    <input
+                      type="checkbox"
+                      checked={phaseTypes.includes(option.value)}
+                      onChange={(event) => setPhaseTypes((current) => event.target.checked
+                        ? [...current, option.value]
+                        : current.filter((value) => value !== option.value))}
+                    />
+                    <span>{option.value} ({option.count})</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          )}
+
           {/* Particle Size */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
