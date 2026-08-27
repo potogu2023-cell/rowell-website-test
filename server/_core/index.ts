@@ -187,6 +187,15 @@ app.use("/api/learning-center", learningCenterRestRouter);
     console.error('[InquiryNotifications] Worker could not start');
   }
 
+  // Enabled only through SEO_MONITOR_ENABLED=true. This worker performs public
+  // technical checks and never fetches private Search Console data or modifies pages.
+  try {
+    const { startSeoTechnicalMonitoringWorker } = await import('../seo-monitoring-worker');
+    startSeoTechnicalMonitoringWorker();
+  } catch {
+    console.error('[SeoMonitoring] Worker could not start');
+  }
+
   // Importing content during every production restart can silently overwrite
   // reviewed articles. Keep this exceptional maintenance operation opt-in only.
   if (process.env.RUN_STARTUP_ARTICLE_IMPORT === 'true') {

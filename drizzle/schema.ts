@@ -436,6 +436,44 @@ export const inquiryNotificationEvents = mysqlTable("inquiry_notification_events
 
 export type InquiryNotificationEvent = typeof inquiryNotificationEvents.$inferSelect;
 
+// Public technical SEO monitoring stores only URL-level availability and markup health.
+// It intentionally contains no Search Console credentials, visitor data, search metrics, or customer data.
+export const seoMonitoringRuns = mysqlTable("seo_monitoring_runs", {
+  id: int().autoincrement().notNull().primaryKey(),
+  status: mysqlEnum("status", ["running", "completed", "failed"]).default("running").notNull(),
+  targetCount: int("target_count").notNull(),
+  healthyCount: int("healthy_count").default(0).notNull(),
+  unhealthyCount: int("unhealthy_count").default(0).notNull(),
+  alertSent: int("alert_sent").default(0).notNull(),
+  startedAt: timestamp("started_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+  completedAt: timestamp("completed_at", { mode: "string" }),
+},
+(table) => [
+  index("idx_seo_monitoring_runs_started_at").on(table.startedAt),
+]);
+
+export const seoMonitoringUrlResults = mysqlTable("seo_monitoring_url_results", {
+  id: int().autoincrement().notNull().primaryKey(),
+  runId: int("run_id").notNull().references(() => seoMonitoringRuns.id, { onDelete: "cascade" }),
+  targetKey: varchar("target_key", { length: 32 }).notNull(),
+  url: varchar({ length: 500 }).notNull(),
+  httpStatus: int("http_status"),
+  canonicalValid: int("canonical_valid").default(0).notNull(),
+  robotsIndexable: int("robots_indexable").default(0).notNull(),
+  ssrContentPresent: int("ssr_content_present").default(0).notNull(),
+  structuredDataValid: int("structured_data_valid").default(0).notNull(),
+  imageAccessible: int("image_accessible"),
+  failureCode: varchar("failure_code", { length: 64 }),
+  createdAt: timestamp("created_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+},
+(table) => [
+  index("idx_seo_monitoring_url_results_run_id").on(table.runId),
+  index("idx_seo_monitoring_url_results_target_key").on(table.targetKey, table.createdAt),
+]);
+
+export type SeoMonitoringRun = typeof seoMonitoringRuns.$inferSelect;
+export type SeoMonitoringUrlResult = typeof seoMonitoringUrlResults.$inferSelect;
+
 // ============================================
 // Learning Center Tables
 // ============================================

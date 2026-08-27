@@ -22,6 +22,43 @@ async function ensureAdminAccessLoginTokenTable(db: any) {
   `);
 }
 
+async function ensureSeoMonitoringTables(db: any) {
+  // Store only public URL-level technical health. No search traffic, credentials, or personal data.
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS seo_monitoring_runs (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      status ENUM('running','completed','failed') NOT NULL DEFAULT 'running',
+      target_count INT NOT NULL,
+      healthy_count INT NOT NULL DEFAULT 0,
+      unhealthy_count INT NOT NULL DEFAULT 0,
+      alert_sent TINYINT NOT NULL DEFAULT 0,
+      started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      completed_at TIMESTAMP NULL,
+      KEY idx_seo_monitoring_runs_started_at (started_at)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  `);
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS seo_monitoring_url_results (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      run_id INT NOT NULL,
+      target_key VARCHAR(32) NOT NULL,
+      url VARCHAR(500) NOT NULL,
+      http_status INT NULL,
+      canonical_valid TINYINT NOT NULL DEFAULT 0,
+      robots_indexable TINYINT NOT NULL DEFAULT 0,
+      ssr_content_present TINYINT NOT NULL DEFAULT 0,
+      structured_data_valid TINYINT NOT NULL DEFAULT 0,
+      image_accessible TINYINT NULL,
+      failure_code VARCHAR(64) NULL,
+      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      KEY idx_seo_monitoring_url_results_run_id (run_id),
+      KEY idx_seo_monitoring_url_results_target_key (target_key, created_at),
+      CONSTRAINT fk_seo_monitoring_url_results_run FOREIGN KEY (run_id)
+        REFERENCES seo_monitoring_runs(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  `);
+}
+
 async function ensureInquiryNotificationEventTable(db: any) {
   // No message body, contact information, SMTP response, or token is stored here.
   await db.execute(`
@@ -69,7 +106,8 @@ export async function migrateDatabase() {
       console.log('[Migration] passwordHash column already exists, skipping migration');
       await ensureAdminAccessLoginTokenTable(db);
       await ensureInquiryNotificationEventTable(db);
-      console.log('[Migration] ✓ Ensured administrator access and notification event tables');
+      await ensureSeoMonitoringTables(db);
+      console.log('[Migration] ✓ Ensured administrator access, notification, and SEO monitoring tables');
       return;
     }
 

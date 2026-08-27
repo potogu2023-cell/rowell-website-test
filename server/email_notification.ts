@@ -223,3 +223,44 @@ export async function sendInquiryOperationsSummary(data: {
     return { success: false, error: "Email delivery failed" };
   }
 }
+
+/** Sends a technical availability alert without customer data, URLs, credentials, or search metrics. */
+export async function sendSeoTechnicalHealthAlert(data: {
+  failedTargetCodes: string[];
+  targetCount: number;
+  healthyCount: number;
+}): Promise<{ success: boolean; error?: string }> {
+  const transporter = createAdminTransporter();
+  if (!transporter) {
+    console.error("[Email] SEO technical monitoring notification is not configured");
+    return { success: false, error: "Email service is not configured" };
+  }
+
+  const safeCodes = data.failedTargetCodes.map(escapeHtml).join(", ");
+  const subject = "[ROWELL Website] SEO technical health alert";
+  try {
+    await transporter.sendMail({
+      from: adminSenderAddress(),
+      to: PRIMARY_INQUIRY_RECIPIENT,
+      cc:
+        BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
+          ? BACKUP_INQUIRY_RECIPIENT
+          : undefined,
+      subject,
+      text: `A monitored public SEO technical check has failed in consecutive runs. Healthy targets: ${data.healthyCount}/${data.targetCount}. Affected check codes: ${data.failedTargetCodes.join(", ")}. Open the internal SEO monitoring report for the exact public URLs and diagnostic context. This alert contains no customer data, credentials, or search-performance metrics.`,
+      html: `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+          <h2 style="color:#b91c1c">SEO technical health alert</h2>
+          <p>A monitored public technical check has failed in consecutive runs.</p>
+          <p><strong>Healthy targets:</strong> ${data.healthyCount}/${data.targetCount}</p>
+          <p><strong>Affected check codes:</strong> ${safeCodes}</p>
+          <p style="color:#6b7280;font-size:12px">This alert contains no customer data, credentials, page content, or search-performance metrics. Review the internal SEO monitoring report before making any change.</p>
+        </div>`,
+    });
+    console.log("[Email] SEO technical monitoring notification accepted by SMTP");
+    return { success: true };
+  } catch {
+    console.error("[Email] Failed to send SEO technical monitoring notification");
+    return { success: false, error: "Email delivery failed" };
+  }
+}
