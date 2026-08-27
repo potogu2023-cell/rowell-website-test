@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Calendar, Eye, ArrowLeft, Share2 } from "lucide-react";
-import { APP_TITLE } from "@/const";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
@@ -84,36 +83,6 @@ export default function ResourceDetail() {
     <>
       {/* SEO meta tags removed - use document.title instead */}
       <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <a className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-                {APP_TITLE}
-              </a>
-            </Link>
-            <nav className="flex items-center gap-6">
-              <Link href="/products">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Products
-                </a>
-              </Link>
-              <Link href="/resources">
-                <a className="text-sm font-medium text-foreground">
-                  Resources
-                </a>
-              </Link>
-              <Link href="/contact">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Contact
-                </a>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* Main Content */}
       <article className="py-12">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -251,16 +220,12 @@ export default function ResourceDetail() {
                   Our team of chromatography experts is here to help you find the right solution for your application.
                 </p>
                 <div className="flex gap-4">
-                  <Link href="/contact">
-                    <a>
-                      <Button>Contact Us</Button>
-                    </a>
-                  </Link>
-                  <Link href="/products">
-                    <a>
-                      <Button variant="outline">Browse Products</Button>
-                    </a>
-                  </Link>
+                  <Button asChild>
+                    <Link href="/contact">Contact Us</Link>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <Link href="/products">Browse Products</Link>
+                  </Button>
                 </div>
               </div>
             </>
@@ -268,12 +233,6 @@ export default function ResourceDetail() {
         </div>
       </article>
 
-      {/* Footer */}
-      <footer className="border-t mt-16 py-8">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} {APP_TITLE}. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
     </>
   );

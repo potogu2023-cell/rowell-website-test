@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Search, Calendar, Eye } from "lucide-react";
-import { APP_TITLE } from "@/const";
 // import { useTranslation } from "react-i18next";
 
 export default function Resources() {
@@ -40,36 +39,6 @@ export default function Resources() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/">
-              <a className="text-2xl font-bold text-primary hover:text-primary/80 transition-colors">
-                {APP_TITLE}
-              </a>
-            </Link>
-            <nav className="flex items-center gap-6">
-              <Link href="/products">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Products
-                </a>
-              </Link>
-              <Link href="/resources">
-                <a className="text-sm font-medium text-foreground">
-                  Resources
-                </a>
-              </Link>
-              <Link href="/contact">
-                <a className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                  Contact
-                </a>
-              </Link>
-            </nav>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-16">
         <div className="container mx-auto px-4">
@@ -143,33 +112,31 @@ export default function Resources() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {data.items.map((article) => (
-                  <Link key={article.id} href={`/resources/${article.slug}`}>
-                    <a>
-                      <Card className="h-full hover:shadow-lg transition-shadow">
-                        <CardHeader>
-                          <CardTitle className="line-clamp-2">{article.title}</CardTitle>
-                          {article.excerpt && (
-                            <CardDescription className="line-clamp-3">
-                              {article.excerpt}
-                            </CardDescription>
-                          )}
-                        </CardHeader>
-                        <CardFooter className="flex items-center justify-between text-sm text-muted-foreground">
-                          <div className="flex items-center gap-4">
-                            {article.publishedAt && (
-                              <div className="flex items-center gap-1">
-                                <Calendar className="h-4 w-4" />
-                                <span>{new Date(article.publishedAt).toLocaleDateString()}</span>
-                              </div>
-                            )}
+                  <Link key={article.id} href={`/resources/${article.slug}`} className="block h-full">
+                    <Card className="h-full transition-shadow hover:shadow-lg">
+                      <CardHeader>
+                        <CardTitle className="line-clamp-2">{article.title}</CardTitle>
+                        {article.excerpt && (
+                          <CardDescription className="line-clamp-3">
+                            {article.excerpt}
+                          </CardDescription>
+                        )}
+                      </CardHeader>
+                      <CardFooter className="flex items-center justify-between text-sm text-muted-foreground">
+                        <div className="flex items-center gap-4">
+                          {article.publishedAt && (
                             <div className="flex items-center gap-1">
-                              <Eye className="h-4 w-4" />
-                              <span>{article.views ?? 0}</span>
+                              <Calendar className="h-4 w-4" />
+                              <span>{new Date(article.publishedAt).toLocaleDateString()}</span>
                             </div>
+                          )}
+                          <div className="flex items-center gap-1">
+                            <Eye className="h-4 w-4" />
+                            <span>{article.views ?? 0}</span>
                           </div>
-                        </CardFooter>
-                      </Card>
-                    </a>
+                        </div>
+                      </CardFooter>
+                    </Card>
                   </Link>
                 ))}
               </div>
@@ -207,12 +174,6 @@ export default function Resources() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t mt-16 py-8">
-        <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} {APP_TITLE}. All rights reserved.</p>
-        </div>
-      </footer>
     </div>
   );
 }
