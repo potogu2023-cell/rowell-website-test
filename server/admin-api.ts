@@ -4103,7 +4103,7 @@ export const adminRouter = router({
       const connection = await pool.getConnection();
       try {
         await connection.beginTransaction();
-        const [categoryRows] = await connection.execute('SELECT id, nameEn FROM categories WHERE id = ? LIMIT 1', [20]) as any;
+        const [categoryRows] = await connection.execute('SELECT id, name_en AS nameEn FROM categories WHERE id = ? LIMIT 1', [20]) as any;
         if (!categoryRows[0] || categoryRows[0].nameEn !== 'Caps & Septa') throw new Error('category precondition failed');
         for (const product of expected) {
           const [existingRows] = await connection.execute(
