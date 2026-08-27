@@ -9,6 +9,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSanitize from "rehype-sanitize";
 import remarkGfm from "remark-gfm";
+import { getResourceCatalogLinks } from "@/lib/resourceCatalogLinks";
 // import { Helmet } from "react-helmet-async";
 
 function normalizeTagLabels(value: unknown): string[] {
@@ -37,6 +38,7 @@ export default function ResourceDetail() {
   );
 
   const tagLabels = normalizeTagLabels(article?.tags);
+  const catalogLinks = getResourceCatalogLinks(tagLabels);
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -226,6 +228,21 @@ export default function ResourceDetail() {
                   {article.content}
                 </ReactMarkdown>
               </div>
+
+              {catalogLinks.length > 0 && (
+                <aside aria-label="Related catalog collections" className="mt-12 rounded-lg border border-emerald-100 bg-emerald-50 p-6">
+                  <h2 className="text-xl font-bold text-slate-900">Explore related catalog collections</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-700">These links are based on this article’s recorded technical tags. Confirm the listed product facts and suitability for your application before inquiry.</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {catalogLinks.map((link) => (
+                      <Link key={link.href} href={link.href} className="rounded-md border border-emerald-200 bg-white p-4 transition-colors hover:border-emerald-400 hover:bg-emerald-50">
+                        <span className="block font-semibold text-primary">{link.label}</span>
+                        <span className="mt-1 block text-sm leading-5 text-slate-600">{link.description}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </aside>
+              )}
 
               {/* Call to Action */}
               <div className="mt-12 p-6 bg-primary/5 rounded-lg border border-primary/10">
