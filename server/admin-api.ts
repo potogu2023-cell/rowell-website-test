@@ -4097,6 +4097,7 @@ export const adminRouter = router({
           metaDescription: 'Restek 24485: blue preassembled 9 mm screw cap with PTFE/silicone septum for 2.0 mL vials, 100-pk. Request a quote from ROWELL.',
         },
       ] as const;
+      const importTaskId = 'manual-verified-caps-septa-20260827';
       const { getPool } = await import('./db');
       const pool = await getPool();
       if (!pool) throw new Error('Database pool not available');
@@ -4129,8 +4130,8 @@ export const adminRouter = router({
         stage = 'insert';
         for (const product of expected) {
           await connection.execute(
-            'INSERT INTO products (productId, partNumber, brand, prefix, name, description, status, detailedDescription, specifications, imageUrl, catalogUrl, productType, descriptionQuality, slug, category, category_id, metaTitle, metaDescription, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, \'active\', ?, ?, ?, ?, ?, \'high\', ?, ?, ?, ?, ?, NOW(), NOW())',
-            [product.productId, product.partNumber, product.brand, product.prefix, product.name, product.description, product.detailedDescription, JSON.stringify(product.specifications), product.imageUrl, product.catalogUrl, product.productType, product.slug, product.category, product.categoryId, product.metaTitle, product.metaDescription],
+            'INSERT INTO products (taskId, productId, partNumber, brand, prefix, name, description, status, detailedDescription, specifications, imageUrl, catalogUrl, productType, descriptionQuality, slug, category, category_id, metaTitle, metaDescription, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, \'active\', ?, ?, ?, ?, ?, \'high\', ?, ?, ?, ?, ?, NOW(), NOW())',
+            [importTaskId, product.productId, product.partNumber, product.brand, product.prefix, product.name, product.description, product.detailedDescription, JSON.stringify(product.specifications), product.imageUrl, product.catalogUrl, product.productType, product.slug, product.category, product.categoryId, product.metaTitle, product.metaDescription],
           );
         }
         await connection.commit();
