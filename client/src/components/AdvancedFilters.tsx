@@ -149,21 +149,23 @@ export function AdvancedFilters({
 
           {phaseTypeOptions.length > 0 && (
             <fieldset>
-              <legend className="block text-sm font-medium text-gray-700 mb-2">Stationary Phase</legend>
-              <div className="grid gap-2 sm:grid-cols-2">
-                {phaseTypeOptions.map((option) => (
-                  <label key={option.value} className="flex items-center gap-2 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700">
-                    <input
-                      type="checkbox"
-                      checked={phaseTypes.includes(option.value)}
-                      onChange={(event) => setPhaseTypes((current) => event.target.checked
-                        ? [...current, option.value]
-                        : current.filter((value) => value !== option.value))}
-                    />
-                    <span>{option.value} ({option.count})</span>
-                  </label>
-                ))}
-              </div>
+              <details>
+                <summary className="cursor-pointer text-sm font-medium text-gray-700">Stationary Phase ({phaseTypeOptions.length})</summary>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {phaseTypeOptions.map((option) => (
+                    <label key={option.value} className="flex items-center gap-2 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700">
+                      <input
+                        type="checkbox"
+                        checked={phaseTypes.includes(option.value)}
+                        onChange={(event) => setPhaseTypes((current) => event.target.checked
+                          ? [...current, option.value]
+                          : current.filter((value) => value !== option.value))}
+                      />
+                      <span>{option.value} ({option.count})</span>
+                    </label>
+                  ))}
+                </div>
+              </details>
             </fieldset>
           )}
 

@@ -441,6 +441,9 @@ export default function Products() {
                     {advancedFilters.innerDiameterMax && (
                       <Badge variant="secondary">{t('products.inner_diameter_max')} {advancedFilters.innerDiameterMax} mm</Badge>
                     )}
+                    {advancedFilters.productTypes && advancedFilters.productTypes.length > 0 && (
+                      <Badge variant="secondary">Product type: {advancedFilters.productTypes.join(', ')}</Badge>
+                    )}
                     {advancedFilters.phaseTypes && advancedFilters.phaseTypes.length > 0 && (
                       <Badge variant="secondary">{t('products.phase_types')}: {advancedFilters.phaseTypes.join(', ')}</Badge>
                     )}
