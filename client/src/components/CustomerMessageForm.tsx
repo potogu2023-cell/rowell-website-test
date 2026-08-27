@@ -92,7 +92,7 @@ export default function CustomerMessageForm({
         </div>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4" aria-busy={createMessageMutation.isPending}>
           {productId && (
             <div className="p-3 bg-blue-50 rounded-md text-sm">
               <span className="font-medium">Product: </span>
@@ -105,10 +105,12 @@ export default function CustomerMessageForm({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor={`${formId}-name`}>{t('contact.name_label')}</Label>
-              <Input
-                id={`${formId}-name`}
-                type="text"
-                autoComplete="name"
+                <Input
+                  id={`${formId}-name`}
+                  type="text"
+                  autoComplete="name"
+                  minLength={2}
+                  maxLength={100}
                 placeholder={t('contact.name_placeholder')}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -133,10 +135,11 @@ export default function CustomerMessageForm({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor={`${formId}-company`}>{t('contact.company_label')}</Label>
-              <Input
-                id={`${formId}-company`}
-                type="text"
-                autoComplete="organization"
+                <Input
+                  id={`${formId}-company`}
+                  type="text"
+                  autoComplete="organization"
+                  maxLength={255}
                 placeholder={t('contact.company_placeholder')}
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -145,10 +148,12 @@ export default function CustomerMessageForm({
 
             <div>
               <Label htmlFor={`${formId}-phone`}>{t('contact.phone_label')}</Label>
-              <Input
-                id={`${formId}-phone`}
-                type="tel"
-                autoComplete="tel"
+                <Input
+                  id={`${formId}-phone`}
+                  type="tel"
+                  autoComplete="tel"
+                  inputMode="tel"
+                  maxLength={50}
                 placeholder={t('contact.phone_placeholder')}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -162,6 +167,7 @@ export default function CustomerMessageForm({
               id={`${formId}-destination`}
               type="text"
               autoComplete="country-name"
+              maxLength={100}
               placeholder="Country or region where the products will be used"
               value={formData.destinationCountry}
               onChange={(e) => setFormData({ ...formData, destinationCountry: e.target.value })}
@@ -177,6 +183,8 @@ export default function CustomerMessageForm({
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={5}
+              minLength={10}
+              maxLength={1000}
               required
             />
           </div>

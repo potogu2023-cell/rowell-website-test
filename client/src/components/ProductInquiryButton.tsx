@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -21,6 +21,7 @@ export default function ProductInquiryButton({
   productPartNumber 
 }: ProductInquiryButtonProps) {
   const { t } = useTranslation();
+  const formId = useId();
   const [open, setOpen] = useState(false);
   const [destinationCountry, setDestinationCountry] = useState("");
   const createInitialFormData = () => ({
@@ -88,7 +89,7 @@ export default function ProductInquiryButton({
           </DialogDescription>
         </DialogHeader>
         
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-4 mt-4" aria-busy={createInquiryMutation.isPending}>
           {/* 产品信息显示 */}
           <div className="p-3 bg-blue-50 rounded-md text-sm">
             <div className="font-medium text-blue-900 mb-1">{t('productInquiry.product_info')}:</div>
@@ -100,10 +101,13 @@ export default function ProductInquiryButton({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="inquiry-name">{t('contact.name_label')}</Label>
+              <Label htmlFor={`${formId}-name`}>{t('contact.name_label')}</Label>
               <Input
-                id="inquiry-name"
+                id={`${formId}-name`}
                 type="text"
+                autoComplete="name"
+                minLength={2}
+                maxLength={100}
                 placeholder={t('contact.name_placeholder')}
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -112,10 +116,11 @@ export default function ProductInquiryButton({
             </div>
 
             <div>
-              <Label htmlFor="inquiry-email">{t('contact.email_label')}</Label>
+              <Label htmlFor={`${formId}-email`}>{t('contact.email_label')}</Label>
               <Input
-                id="inquiry-email"
+                id={`${formId}-email`}
                 type="email"
+                autoComplete="email"
                 placeholder={t('contact.email_placeholder')}
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -126,10 +131,12 @@ export default function ProductInquiryButton({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="inquiry-company">{t('contact.company_label')}</Label>
+              <Label htmlFor={`${formId}-company`}>{t('contact.company_label')}</Label>
               <Input
-                id="inquiry-company"
+                id={`${formId}-company`}
                 type="text"
+                autoComplete="organization"
+                maxLength={255}
                 placeholder={t('contact.company_placeholder')}
                 value={formData.company}
                 onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -137,10 +144,13 @@ export default function ProductInquiryButton({
             </div>
 
             <div>
-              <Label htmlFor="inquiry-phone">{t('contact.phone_label')}</Label>
+              <Label htmlFor={`${formId}-phone`}>{t('contact.phone_label')}</Label>
               <Input
-                id="inquiry-phone"
+                id={`${formId}-phone`}
                 type="tel"
+                autoComplete="tel"
+                inputMode="tel"
+                maxLength={50}
                 placeholder={t('contact.phone_placeholder')}
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -149,10 +159,12 @@ export default function ProductInquiryButton({
           </div>
 
           <div>
-            <Label htmlFor="inquiry-destination">Destination country/region *</Label>
+            <Label htmlFor={`${formId}-destination`}>Destination country/region *</Label>
             <Input
-              id="inquiry-destination"
+              id={`${formId}-destination`}
               type="text"
+              autoComplete="country-name"
+              maxLength={100}
               placeholder="Country or region where the products will be used"
               value={destinationCountry}
               onChange={(e) => setDestinationCountry(e.target.value)}
@@ -161,9 +173,11 @@ export default function ProductInquiryButton({
           </div>
 
           <div>
-            <Label htmlFor="inquiry-message">{t('productInquiry.inquiry_message_label')}</Label>
+            <Label htmlFor={`${formId}-message`}>{t('productInquiry.inquiry_message_label')}</Label>
             <Textarea
-              id="inquiry-message"
+              id={`${formId}-message`}
+              minLength={10}
+              maxLength={1000}
               placeholder={t('productInquiry.inquiry_message_placeholder')}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
