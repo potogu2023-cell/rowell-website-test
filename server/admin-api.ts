@@ -4128,9 +4128,12 @@ export const adminRouter = router({
         }
         await connection.commit();
         return { success: true, insertedFields: ['productId', 'partNumber', 'brand', 'name', 'description', 'detailedDescription', 'specifications', 'imageUrl', 'catalogUrl', 'productType', 'category', 'metaTitle', 'metaDescription'] as const, inserted: expected.map(({ productId, partNumber }) => ({ productId, partNumber })) };
-      } catch {
+      } catch (error: unknown) {
         try { await connection.rollback(); } catch { /* preserve original safe stage */ }
-        return { success: false, stage };
+        const code = typeof error === 'object' && error && 'code' in error && typeof (error as { code?: unknown }).code === 'string'
+          ? (error as { code: string }).code
+          : 'UNKNOWN';
+        return { success: false, stage, code };
       } finally {
         connection.release();
       }
