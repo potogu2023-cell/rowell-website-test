@@ -4044,7 +4044,7 @@ export const adminRouter = router({
   // Fixed, source-verified consumables additions. This route contains only records
   // that passed official exact-model evidence and public alias-based duplicate checks.
   addVerifiedCapsAndSeptaCandidates: publicProcedure
-    .input((raw: unknown) => z.object({ adminKey: z.string(), mode: z.enum(['preflight', 'apply']).default('apply') }).parse(raw))
+    .input((raw: unknown) => z.object({ adminKey: z.string(), mode: z.enum(['preflight', 'schema', 'apply']).default('apply') }).parse(raw))
     .mutation(async ({ input }) => {
       if (input.adminKey !== 'temp-admin-2024') return { success: false, stage: 'authorization' as const };
       const expected = [
@@ -4103,6 +4103,13 @@ export const adminRouter = router({
       const connection = await pool.getConnection();
       let stage: 'category_precondition' | 'duplicate_precondition' | 'preflight' | 'insert' | 'database' = 'database';
       try {
+        if (input.mode === 'schema') {
+          const [columns] = await connection.query('SHOW COLUMNS FROM products') as any;
+          const requiredColumns = columns
+            .filter((column: { Null: string; Default: unknown; Extra: string }) => column.Null === 'NO' && column.Default === null && !String(column.Extra || '').includes('auto_increment'))
+            .map((column: { Field: string }) => column.Field);
+          return { success: true, mode: 'schema' as const, requiredColumns };
+        }
         await connection.beginTransaction();
         stage = 'category_precondition';
         const [categoryRows] = await connection.execute('SELECT id, name_en AS nameEn FROM categories WHERE id = ? LIMIT 1', [20]) as any;
