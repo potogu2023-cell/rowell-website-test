@@ -4044,9 +4044,9 @@ export const adminRouter = router({
   // Fixed, source-verified consumables additions. This route contains only records
   // that passed official exact-model evidence and public alias-based duplicate checks.
   addVerifiedCapsAndSeptaCandidates: publicProcedure
-    .input((raw: unknown) => z.object({ adminKey: z.string() }).parse(raw))
+    .input((raw: unknown) => z.object({ adminKey: z.string(), mode: z.enum(['preflight', 'apply']).default('apply') }).parse(raw))
     .mutation(async ({ input }) => {
-      if (input.adminKey !== 'temp-admin-2024') throw new Error('Unauthorized');
+      if (input.adminKey !== 'temp-admin-2024') return { success: false, stage: 'authorization' as const };
       const expected = [
         {
           productId: 'WATERS-186002128', partNumber: '186002128', brand: 'Waters', prefix: 'WATERS',
@@ -4101,10 +4101,13 @@ export const adminRouter = router({
       const pool = await getPool();
       if (!pool) throw new Error('Database pool not available');
       const connection = await pool.getConnection();
+      let stage: 'category_precondition' | 'duplicate_precondition' | 'preflight' | 'insert' | 'database' = 'database';
       try {
         await connection.beginTransaction();
+        stage = 'category_precondition';
         const [categoryRows] = await connection.execute('SELECT id, name_en AS nameEn FROM categories WHERE id = ? LIMIT 1', [20]) as any;
         if (!categoryRows[0] || categoryRows[0].nameEn !== 'Caps & Septa') throw new Error('category precondition failed');
+        stage = 'duplicate_precondition';
         for (const product of expected) {
           const [existingRows] = await connection.execute(
             'SELECT id FROM products WHERE productId = ? OR (partNumber = ? AND brand = ?) LIMIT 1',
@@ -4112,6 +4115,11 @@ export const adminRouter = router({
           ) as any;
           if (existingRows.length) throw new Error('duplicate precondition failed');
         }
+        if (input.mode === 'preflight') {
+          await connection.rollback();
+          return { success: true, mode: 'preflight' as const, readyCount: expected.length };
+        }
+        stage = 'insert';
         for (const product of expected) {
           await connection.execute(
             'INSERT INTO products (productId, partNumber, brand, prefix, name, description, status, detailedDescription, specifications, imageUrl, catalogUrl, productType, descriptionQuality, slug, category, category_id, metaTitle, metaDescription, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, \'active\', ?, ?, ?, ?, ?, \'high\', ?, ?, ?, ?, ?, NOW(), NOW())',
@@ -4121,8 +4129,8 @@ export const adminRouter = router({
         await connection.commit();
         return { success: true, insertedFields: ['productId', 'partNumber', 'brand', 'name', 'description', 'detailedDescription', 'specifications', 'imageUrl', 'catalogUrl', 'productType', 'category', 'metaTitle', 'metaDescription'] as const, inserted: expected.map(({ productId, partNumber }) => ({ productId, partNumber })) };
       } catch {
-        await connection.rollback();
-        throw new Error('verified consumables insertion was not applied');
+        try { await connection.rollback(); } catch { /* preserve original safe stage */ }
+        return { success: false, stage };
       } finally {
         connection.release();
       }
