@@ -537,7 +537,9 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">{t('home.contact_email_desc')}</p>
-                <p className="text-sm font-medium">info@rowellhplc.com</p>
+                <a href="mailto:sofia@rowellhplc.com" className="text-sm font-medium text-primary hover:underline">
+                  sofia@rowellhplc.com
+                </a>
               </CardContent>
             </Card>
             <Card>

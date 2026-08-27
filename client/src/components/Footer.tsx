@@ -87,7 +87,10 @@ export default function Footer() {
             <h4 className="text-sm font-semibold mb-4">{t('footer.contact_us')}</h4>
             <ul className="space-y-2">
               <li className="text-sm text-muted-foreground">
-                {t('footer.email')}: info@rowellhplc.com
+                {t('footer.email')}: {" "}
+                <a href="mailto:sofia@rowellhplc.com" className="hover:text-primary hover:underline">
+                  sofia@rowellhplc.com
+                </a>
               </li>
               <li className="text-sm text-muted-foreground">
                 {t('footer.phone')}: +86 021 57852663

@@ -34,8 +34,8 @@ export default function Contact() {
                 <CardDescription>{t('home.contact_email_desc')}</CardDescription>
               </CardHeader>
               <CardContent>
-                <a href="mailto:info@rowellhplc.com" className="text-primary font-medium hover:underline">
-                  info@rowellhplc.com
+                <a href="mailto:sofia@rowellhplc.com" className="text-primary font-medium hover:underline">
+                  sofia@rowellhplc.com
                 </a>
               </CardContent>
             </Card>
