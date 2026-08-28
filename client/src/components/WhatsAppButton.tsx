@@ -1,5 +1,6 @@
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { WHATSAPP_CHAT_URL, WHATSAPP_QR_CODE_SRC } from "@/lib/whatsapp";
 import {
   Dialog,
   DialogContent,
@@ -10,11 +11,6 @@ import {
 } from "@/components/ui/dialog";
 
 export default function WhatsAppButton() {
-  // WhatsApp number - you can configure this
-  const whatsappNumber = "+8618930539593"; // Replace with actual WhatsApp number
-  const defaultMessage = "Hello! I'm interested in your HPLC products and would like to get a quote.";
-  
-  const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(defaultMessage)}`;
 
   return (
     <>
@@ -39,7 +35,7 @@ export default function WhatsAppButton() {
           <div className="flex flex-col items-center space-y-4 py-4">
             {/* WhatsApp QR Code */}
             <img
-              src="/images/gw-wa.png"
+              src={WHATSAPP_QR_CODE_SRC}
               alt="WhatsApp QR Code"
               className="w-64 h-64 object-contain"
             />
@@ -47,7 +43,7 @@ export default function WhatsAppButton() {
               Scan this QR code with your phone to chat with us on WhatsApp
             </p>
             <Button
-              onClick={() => window.open(whatsappUrl, '_blank')}
+              onClick={() => window.open(WHATSAPP_CHAT_URL, '_blank', 'noopener,noreferrer')}
               className="w-full bg-green-500 hover:bg-green-600"
             >
               <MessageCircle className="mr-2 h-4 w-4" />

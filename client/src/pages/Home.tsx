@@ -5,6 +5,7 @@ import { Globe, Star, Target, Zap } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useEffect } from 'react';
 import { SEOHead } from "@/components/SEOHead";
+import { WHATSAPP_CHAT_URL, WHATSAPP_QR_CODE_SRC } from "@/lib/whatsapp";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -556,8 +557,25 @@ export default function Home() {
                 <CardTitle>{t('home.contact_whatsapp_title')}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground mb-4">{t('home.contact_whatsapp_desc')}</p>
-                <p className="text-sm font-medium">QR Code</p>
+                <div className="space-y-3">
+                  <p className="text-sm text-muted-foreground">{t('home.contact_whatsapp_desc')}</p>
+                  <img
+                    src={WHATSAPP_QR_CODE_SRC}
+                    alt="WhatsApp contact QR code"
+                    width={112}
+                    height={112}
+                    loading="lazy"
+                    className="h-28 w-28 rounded-md border border-slate-200 bg-white p-1"
+                  />
+                  <a
+                    href={WHATSAPP_CHAT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex text-sm font-medium text-primary hover:underline"
+                  >
+                    Open WhatsApp chat
+                  </a>
+                </div>
               </CardContent>
             </Card>
             <Card>

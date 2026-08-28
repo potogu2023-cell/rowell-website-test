@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, MessageSquare } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import CustomerMessageForm from "@/components/CustomerMessageForm";
+import { WHATSAPP_CHAT_URL, WHATSAPP_QR_CODE_SRC } from "@/lib/whatsapp";
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -64,7 +65,25 @@ export default function Contact() {
                 <CardDescription>{t('home.contact_whatsapp_desc')}</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-sm">{t('contact.whatsapp_instruction')}</p>
+                <div className="space-y-4">
+                  <p className="text-muted-foreground text-sm">{t('contact.whatsapp_instruction')}</p>
+                  <img
+                    src={WHATSAPP_QR_CODE_SRC}
+                    alt="WhatsApp contact QR code"
+                    width={160}
+                    height={160}
+                    loading="lazy"
+                    className="h-40 w-40 rounded-md border border-slate-200 bg-white p-2"
+                  />
+                  <a
+                    href={WHATSAPP_CHAT_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex text-sm font-medium text-primary hover:underline"
+                  >
+                    Open WhatsApp chat
+                  </a>
+                </div>
               </CardContent>
             </Card>
 
