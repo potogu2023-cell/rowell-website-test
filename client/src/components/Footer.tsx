@@ -30,54 +30,34 @@ export default function Footer() {
             <h4 className="text-sm font-semibold mb-4">{t('footer.quick_links')}</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/about">
-                  <a className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {t('nav.about')}
-                  </a>
+                <Link href="/about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.about')}
                 </Link>
               </li>
               <li>
-                <Link href="/products">
-                  <a className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {t('nav.products')}
-                  </a>
+                <Link href="/products" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.products')}
                 </Link>
               </li>
               <li>
-                <Link href="/usp-standards">
-                  <a className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {t('nav.usp_standards')}
-                  </a>
+                <Link href="/usp-standards" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.usp_standards')}
                 </Link>
               </li>
               <li>
-                <Link href="/applications">
-                  <a className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {t('nav.applications')}
-                  </a>
+                <Link href="/applications" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t('nav.applications')}
                 </Link>
               </li>
               <li>
-                <a 
-                  href="https://catalog.rowellhplc.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-                >
+                <Link href="/products" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t('nav.catalog', 'Product Catalog')}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                </a>
+                </Link>
               </li>
               <li>
-                <a 
-                  href="https://rowellcatalogmigration.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
-                >
+                <Link href="/standards" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t('nav.standards_catalog', 'Standards Catalog')}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

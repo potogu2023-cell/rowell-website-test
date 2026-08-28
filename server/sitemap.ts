@@ -152,7 +152,8 @@ export async function generateSitemap(req: Request, res: Response) {
     // Add literature pages
     for (const article of literatureArticles) {
       xml += "  <url>\n";
-      xml += `    <loc>${BASE_URL}/learning/literature/${article.slug}</loc>\n`;
+      const literatureUrl = `${BASE_URL}/learning/literature/${encodeURIComponent(article.slug)}`;
+      xml += `    <loc>${escapeXml(literatureUrl)}</loc>\n`;
       if (article.publishedDate) {
         xml += `    <lastmod>${formatDate(article.publishedDate)}</lastmod>\n`;
       }

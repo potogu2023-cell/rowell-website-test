@@ -46,7 +46,7 @@ export default function CategoryLanding() {
           </ul>
           {profile.selectionFramework && profile.selectionFramework.length > 0 && (
             <section className="mt-12 border-t border-slate-200 pt-10">
-              <h2 className="text-2xl font-semibold text-slate-950">C18 Column Selection Framework</h2>
+              <h2 className="text-2xl font-semibold text-slate-950">{profile.name} Selection Framework</h2>
               <p className="mt-4 leading-8 text-slate-700">Use this framework to organize a method-level comparison before reviewing exact product listings. It is a selection aid, not a substitute for product-specific manufacturer documentation or method-suitability testing.</p>
               <div className="mt-7 space-y-6">
                 {profile.selectionFramework.map((item) => (

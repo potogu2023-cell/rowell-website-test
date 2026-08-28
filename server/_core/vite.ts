@@ -6,7 +6,7 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { getDb } from "../db";
-import { resources, products, literature } from "../../drizzle/schema";
+import { resources, products, articles, literature } from "../../drizzle/schema";
 import { and, desc, eq, or } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
@@ -25,6 +25,14 @@ function extractSlugFromPath(urlPath: string): string | null {
 function extractLiteratureSlugFromPath(urlPath: string): string | null {
   const match = urlPath.match(/^\/learning\/literature\/([^\/\?]+)/);
   return match ? match[1] : null;
+}
+
+function decodePathSegment(value: string): string {
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
 }
 
 /**
@@ -731,9 +739,10 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
     }
 
     if (literatureSlug) {
-      const records = await db.select({ id: literature.id })
-        .from(literature)
-        .where(eq(literature.slug, literatureSlug))
+      const decodedSlug = decodePathSegment(literatureSlug);
+      const records = await db.select({ id: articles.id })
+        .from(articles)
+        .where(and(eq(articles.slug, decodedSlug), eq(articles.category, "literature-reviews")))
         .limit(1);
       return records.length === 0 ? "missing" : "active";
     }
@@ -748,6 +757,13 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
     console.error("[SEO] Dynamic route existence check failed:", error);
     return "unavailable";
   }
+}
+
+function redirectLegacyUspIndex(req: any, res: any, next: () => void): void {
+  if (req.method !== "GET") return next();
+  const requestPath = req.originalUrl.split("?")[0].replace(/\/+$/, "") || "/";
+  if (requestPath !== "/usp") return next();
+  res.redirect(301, "/usp-standards");
 }
 
 async function redirectLegacyLearningArticle(req: any, res: any, next: () => void): Promise<void> {
@@ -992,6 +1008,7 @@ export async function setupVite(app: Express, server: Server) {
   });
 
   // Canonicalize legacy article and product URLs before Vite serves the application shell.
+  app.use(redirectLegacyUspIndex);
   app.use(redirectLegacyLearningArticle);
   app.use(redirectLegacyProductUrl);
 
@@ -1059,6 +1076,7 @@ export function serveStatic(app: Express) {
   }
 
   // Canonicalize legacy article and product URLs before static serving or SEO injection.
+  app.use(redirectLegacyUspIndex);
   app.use(redirectLegacyLearningArticle);
   app.use(redirectLegacyProductUrl);
 
