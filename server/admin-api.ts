@@ -1,7 +1,144 @@
-import { publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { z } from 'zod';
 
 export const adminRouter = router({
+  // One-time, fixed-scope PDP metadata deployment for the approved 2026-09-14
+  // GSC exact-match batch. This endpoint is administrator-session protected,
+  // accepts no product fields from the caller, and writes only two metadata
+  // fields after all five current product identities match exactly.
+  applyApprovedPdpMetadata20260914: adminProcedure
+    .input((raw: unknown) => z.object({ approvalId: z.literal("2026-09-14-gsc-exact-match-a2") }).parse(raw))
+    .mutation(async () => {
+      const approved = [
+        {
+          id: 120006,
+          slug: "186002350",
+          partNumber: "186002350",
+          brand: "Waters",
+          name: "ACQUITY UPLC BEH C18 Column, 130Å, 1.7µm, 2.1mm × 50mm",
+          productType: "UPLC Column",
+          imageUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/KjnimLqxUkFSqMEU.webp",
+          oldMetaTitle: "Waters ACQUITY BEH C18 2.1mm x 50mm 1.7µm 186002350 | ROWELL",
+          oldMetaDescription: "Waters ACQUITY UPLC BEH C18 column, 130 Å, 1.7µm, 2.1mm x 50mm (186002350). Review listed specifications and request a quote.",
+          metaTitle: "Waters 186002350 HPLC Column - RFQ | ROWELL",
+          metaDescription: "Review Waters 186002350 chromatography column specifications. Submit an RFQ to ROWELL for product information and a quotation for laboratory requirements.",
+        },
+        {
+          id: 60127,
+          slug: "880975-902",
+          partNumber: "880975-902",
+          brand: "Agilent",
+          name: "ZORBAX StableBond C18, 4.6 × 250 mm, 5 µm",
+          productType: "HPLC Column",
+          imageUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/eyrmGkevmilzsdJe.webp",
+          oldMetaTitle: "Agilent ZORBAX StableBond C18, 5 µm 880975-902 | ROWELL",
+          oldMetaDescription: "Agilent ZORBAX StableBond C18, 5 µm, 4.6 x 250 mm (880975-902). Review listed specifications and request a quote.",
+          metaTitle: "Agilent 880975-902 ZORBAX Column - RFQ | ROWELL",
+          metaDescription: "Submit an RFQ for Agilent 880975-902 ZORBAX column. Review listed specifications and request product information from ROWELL for laboratory needs.",
+        },
+        {
+          id: 60121,
+          slug: "959993-902",
+          partNumber: "959993-902",
+          brand: "Agilent",
+          name: "ZORBAX Eclipse Plus C18, 4.6 × 150 mm, 5 µm",
+          productType: "HPLC Column",
+          imageUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/oTrnAkoKLEEwpsxq.webp",
+          oldMetaTitle: "Agilent ZORBAX Eclipse Plus C18, 5 um, 4.6 x 150 959993-902 | ROWELL",
+          oldMetaDescription: "Agilent ZORBAX Eclipse Plus C18, 5 um, 4.6 x 150 mm (959993-902) at ROWELL. Review listed specifications and request availability or a quote.",
+          metaTitle: "Agilent 959993-902 HPLC Column - RFQ | ROWELL",
+          metaDescription: "Inquire about Agilent 959993-902 HPLC column details. Review listed specifications and submit an RFQ to ROWELL for laboratory product information.",
+        },
+        {
+          id: 60033,
+          slug: "00g-4601-e0",
+          partNumber: "00G-4601-E0",
+          brand: "Phenomenex",
+          name: "Kinetex 5 µm C18 100 Å, LC Column 250 x 4.6 mm",
+          productType: "HPLC Column",
+          imageUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/RhAFHkkTqgGIdwjB.png",
+          oldMetaTitle: "Phenomenex Kinetex 5 µm C18 100 Å, LC Column 00G-4601-E0 | ROWELL",
+          oldMetaDescription: "Phenomenex Kinetex 5 µm C18 100 Å, LC Column 250 x 4.6 mm (00G-4601-E0) at ROWELL. Review listed specifications and request availability or a quote.",
+          metaTitle: "Phenomenex 00G-4601-E0 Column - RFQ | ROWELL",
+          metaDescription: "Request product information for Phenomenex 00G-4601-E0 LC column. Review listed specifications and submit an RFQ to ROWELL for laboratory requirements.",
+        },
+        {
+          id: 90236,
+          slug: "ta12s03-1546wt",
+          partNumber: "TA12S03-1546WT",
+          brand: "YMC",
+          name: "YMC-Triart C18 Column, 120Å, 3µm, 4.6mm × 150mm",
+          productType: "HPLC Column",
+          imageUrl: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663031980410/fMMujJlVNRuiJOGU.webp",
+          oldMetaTitle: "YMC Triart C18 4.6x150mm 3µm TA12S03-1546WT",
+          oldMetaDescription: "YMC-Triart C18, 120 Å, 3µm, 4.6mm x 150mm (TA12S03-1546WT). Review listed specifications and request a quote.",
+          metaTitle: "YMC TA12S03-1546WT HPLC Column - RFQ | ROWELL",
+          metaDescription: "Explore listed technical parameters for YMC TA12S03-1546WT chromatography column. Submit an RFQ to ROWELL for product information and a quotation.",
+        },
+      ] as const;
+
+      const { getPool } = await import("./db");
+      const pool = await getPool();
+      if (!pool) throw new Error("PDP metadata deployment is unavailable");
+      const connection = await pool.getConnection();
+      try {
+        await connection.beginTransaction();
+        for (const update of approved) {
+          const [rows] = await connection.execute(
+            "SELECT id, slug, partNumber, brand, name, productType, status, imageUrl, metaTitle, metaDescription FROM products WHERE id = ? FOR UPDATE",
+            [update.id],
+          ) as any;
+          const product = rows[0];
+          const matches = product &&
+            product.id === update.id &&
+            product.slug === update.slug &&
+            product.partNumber === update.partNumber &&
+            product.brand === update.brand &&
+            product.name === update.name &&
+            product.productType === update.productType &&
+            product.status === "active" &&
+            product.imageUrl === update.imageUrl &&
+            product.metaTitle === update.oldMetaTitle &&
+            product.metaDescription === update.oldMetaDescription;
+          if (!matches) {
+            throw new Error("PDP metadata precondition did not match; no changes were written");
+          }
+        }
+
+        for (const update of approved) {
+          const [result] = await connection.execute(
+            "UPDATE products SET metaTitle = ?, metaDescription = ? WHERE id = ? AND slug = ? AND partNumber = ? AND brand = ? AND status = 'active' AND metaTitle <=> ? AND metaDescription <=> ?",
+            [
+              update.metaTitle,
+              update.metaDescription,
+              update.id,
+              update.slug,
+              update.partNumber,
+              update.brand,
+              update.oldMetaTitle,
+              update.oldMetaDescription,
+            ],
+          ) as any;
+          if (Number(result?.affectedRows || 0) !== 1) {
+            throw new Error("PDP metadata update was not applied; all changes were rolled back");
+          }
+        }
+
+        await connection.commit();
+        return {
+          success: true,
+          scope: "2026-09-14-gsc-exact-match-non-experiment-batch",
+          updated: approved.map((item) => ({ id: item.id, slug: item.slug, partNumber: item.partNumber })),
+          updatedFields: ["metaTitle", "metaDescription"] as const,
+        };
+      } catch (error) {
+        await connection.rollback();
+        throw error;
+      } finally {
+        connection.release();
+      }
+    }),
+
   // Add GlycoWorks products
   addGlycoWorksProducts: publicProcedure
     .input((raw: unknown) => {
