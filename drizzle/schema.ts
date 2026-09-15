@@ -474,6 +474,63 @@ export const seoMonitoringUrlResults = mysqlTable("seo_monitoring_url_results", 
 export type SeoMonitoringRun = typeof seoMonitoringRuns.$inferSelect;
 export type SeoMonitoringUrlResult = typeof seoMonitoringUrlResults.$inferSelect;
 
+// SEO draft automation stores only product metadata drafts and minimal GSC metrics.
+// The scheduled worker never updates products; publication occurs only through a guarded admin transaction.
+export const seoDraftRuns = mysqlTable("seo_draft_runs", {
+  id: int().autoincrement().notNull().primaryKey(),
+  status: mysqlEnum("status", ["running", "completed", "failed", "blocked"]).default("running").notNull(),
+  windowStart: varchar("window_start", { length: 10 }),
+  windowEnd: varchar("window_end", { length: 10 }),
+  scannedRowCount: int("scanned_row_count").default(0).notNull(),
+  candidateCount: int("candidate_count").default(0).notNull(),
+  draftCount: int("draft_count").default(0).notNull(),
+  rejectedCount: int("rejected_count").default(0).notNull(),
+  blockedReasonCode: varchar("blocked_reason_code", { length: 64 }),
+  startedAt: timestamp("started_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+  completedAt: timestamp("completed_at", { mode: "string" }),
+},
+(table) => [
+  index("idx_seo_draft_runs_started_at").on(table.startedAt),
+]);
+
+export const seoMetadataDrafts = mysqlTable("seo_metadata_drafts", {
+  id: int().autoincrement().notNull().primaryKey(),
+  runId: int("run_id").notNull().references(() => seoDraftRuns.id, { onDelete: "cascade" }),
+  productId: int("product_id").notNull().references(() => products.id, { onDelete: "cascade" }),
+  status: mysqlEnum("status", ["pending_review", "approved", "rejected", "published", "blocked", "stale"]).default("pending_review").notNull(),
+  canonicalUrl: varchar("canonical_url", { length: 500 }).notNull(),
+  slug: varchar({ length: 128 }).notNull(),
+  brand: varchar({ length: 64 }).notNull(),
+  partNumber: varchar("part_number", { length: 128 }).notNull(),
+  productType: varchar("product_type", { length: 100 }),
+  sourceQuery: varchar("source_query", { length: 512 }).notNull(),
+  gscClicks: decimal("gsc_clicks", { precision: 14, scale: 3 }).default("0").notNull(),
+  gscImpressions: decimal("gsc_impressions", { precision: 14, scale: 3 }).default("0").notNull(),
+  gscCtr: decimal("gsc_ctr", { precision: 12, scale: 8 }).default("0").notNull(),
+  gscPosition: decimal("gsc_position", { precision: 12, scale: 4 }).default("0").notNull(),
+  currentMetaTitle: varchar("current_meta_title", { length: 70 }),
+  currentMetaDescription: varchar("current_meta_description", { length: 160 }),
+  draftMetaTitle: varchar("draft_meta_title", { length: 70 }),
+  draftMetaDescription: varchar("draft_meta_description", { length: 160 }),
+  evidenceJson: json("evidence_json"),
+  qaJson: json("qa_json"),
+  modelName: varchar("model_name", { length: 100 }),
+  rejectionCode: varchar("rejection_code", { length: 64 }),
+  reviewedAt: timestamp("reviewed_at", { mode: "string" }),
+  publishedAt: timestamp("published_at", { mode: "string" }),
+  createdAt: timestamp("created_at", { mode: "string" }).default("CURRENT_TIMESTAMP").notNull(),
+  updatedAt: timestamp("updated_at", { mode: "string" }).defaultNow().onUpdateNow().notNull(),
+},
+(table) => [
+  index("idx_seo_metadata_drafts_run_id").on(table.runId),
+  index("idx_seo_metadata_drafts_product_id").on(table.productId),
+  index("idx_seo_metadata_drafts_status_updated_at").on(table.status, table.updatedAt),
+  index("idx_seo_metadata_drafts_slug").on(table.slug),
+]);
+
+export type SeoDraftRun = typeof seoDraftRuns.$inferSelect;
+export type SeoMetadataDraft = typeof seoMetadataDrafts.$inferSelect;
+
 // ============================================
 // Learning Center Tables
 // ============================================

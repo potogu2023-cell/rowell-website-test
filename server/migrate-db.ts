@@ -59,6 +59,64 @@ async function ensureSeoMonitoringTables(db: any) {
   `);
 }
 
+async function ensureSeoDraftPipelineTables(db: any) {
+  // The scheduled job creates editorial drafts only. It never writes products directly.
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS seo_draft_runs (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      status ENUM('running','completed','failed','blocked') NOT NULL DEFAULT 'running',
+      window_start VARCHAR(10) NULL,
+      window_end VARCHAR(10) NULL,
+      scanned_row_count INT NOT NULL DEFAULT 0,
+      candidate_count INT NOT NULL DEFAULT 0,
+      draft_count INT NOT NULL DEFAULT 0,
+      rejected_count INT NOT NULL DEFAULT 0,
+      blocked_reason_code VARCHAR(64) NULL,
+      started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      completed_at TIMESTAMP NULL,
+      KEY idx_seo_draft_runs_started_at (started_at)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  `);
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS seo_metadata_drafts (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      run_id INT NOT NULL,
+      product_id INT NOT NULL,
+      status ENUM('pending_review','approved','rejected','published','blocked','stale') NOT NULL DEFAULT 'pending_review',
+      canonical_url VARCHAR(500) NOT NULL,
+      slug VARCHAR(128) NOT NULL,
+      brand VARCHAR(64) NOT NULL,
+      part_number VARCHAR(128) NOT NULL,
+      product_type VARCHAR(100) NULL,
+      source_query VARCHAR(512) NOT NULL,
+      gsc_clicks DECIMAL(14,3) NOT NULL DEFAULT 0,
+      gsc_impressions DECIMAL(14,3) NOT NULL DEFAULT 0,
+      gsc_ctr DECIMAL(12,8) NOT NULL DEFAULT 0,
+      gsc_position DECIMAL(12,4) NOT NULL DEFAULT 0,
+      current_meta_title VARCHAR(70) NULL,
+      current_meta_description VARCHAR(160) NULL,
+      draft_meta_title VARCHAR(70) NULL,
+      draft_meta_description VARCHAR(160) NULL,
+      evidence_json JSON NULL,
+      qa_json JSON NULL,
+      model_name VARCHAR(100) NULL,
+      rejection_code VARCHAR(64) NULL,
+      reviewed_at TIMESTAMP NULL,
+      published_at TIMESTAMP NULL,
+      created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+      KEY idx_seo_metadata_drafts_run_id (run_id),
+      KEY idx_seo_metadata_drafts_product_id (product_id),
+      KEY idx_seo_metadata_drafts_status_updated_at (status, updated_at),
+      KEY idx_seo_metadata_drafts_slug (slug),
+      CONSTRAINT fk_seo_metadata_drafts_run FOREIGN KEY (run_id)
+        REFERENCES seo_draft_runs(id) ON DELETE CASCADE,
+      CONSTRAINT fk_seo_metadata_drafts_product FOREIGN KEY (product_id)
+        REFERENCES products(id) ON DELETE CASCADE
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+  `);
+}
+
 async function ensureInquiryNotificationEventTable(db: any) {
   // No message body, contact information, SMTP response, or token is stored here.
   await db.execute(`
@@ -107,7 +165,8 @@ export async function migrateDatabase() {
       await ensureAdminAccessLoginTokenTable(db);
       await ensureInquiryNotificationEventTable(db);
       await ensureSeoMonitoringTables(db);
-      console.log('[Migration] ✓ Ensured administrator access, notification, and SEO monitoring tables');
+      await ensureSeoDraftPipelineTables(db);
+      console.log('[Migration] ✓ Ensured administrator access, notification, monitoring, and SEO draft tables');
       return;
     }
 
@@ -157,7 +216,9 @@ export async function migrateDatabase() {
 
     await ensureAdminAccessLoginTokenTable(db);
     await ensureInquiryNotificationEventTable(db);
-    console.log('[Migration] ✓ Ensured administrator access and notification event tables');
+    await ensureSeoMonitoringTables(db);
+    await ensureSeoDraftPipelineTables(db);
+    console.log('[Migration] ✓ Ensured administrator access, notification, monitoring, and SEO draft tables');
     console.log('[Migration] ✅ Database migration completed successfully!');
   } catch {
     console.error('[Migration] Database migration failed');
