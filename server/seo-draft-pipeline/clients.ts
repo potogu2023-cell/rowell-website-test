@@ -185,3 +185,53 @@ export async function generateGeminiProductMetadataDraft(input: GeminiProductDra
   }
   return SeoDraftResponseSchema.parse(parsed);
 }
+
+/**
+ * Validates only Gemini credential and structured-output capability. This is deliberately
+ * separate from product drafting: no ROWELL record, GSC query, customer content, or system
+ * prompt is sent, and the one-field reply is discarded immediately after validation.
+ */
+export async function probeGeminiStructuredOutput(): Promise<void> {
+  const apiKey = requiredEnv("GEMINI_API_KEY");
+  const model = process.env.GEMINI_MODEL?.trim() || "gemini-2.5-flash";
+  const response = await fetch(
+    `${GEMINI_ENDPOINT}/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{
+          role: "user",
+          parts: [{ text: "Return exactly the requested JSON object." }],
+        }],
+        generationConfig: {
+          temperature: 0,
+          responseMimeType: "application/json",
+          responseJsonSchema: {
+            type: "object",
+            properties: { status: { type: "string", enum: ["ok"] } },
+            required: ["status"],
+            additionalProperties: false,
+          },
+        },
+      }),
+      signal: AbortSignal.timeout(30_000),
+    },
+  );
+
+  if (!response.ok) throw new Error(`gemini_probe_failed_${response.status}`);
+  const payload = await response.json() as {
+    candidates?: Array<{ content?: { parts?: Array<{ text?: string }> } }>;
+  };
+  const text = payload.candidates?.[0]?.content?.parts?.map((part) => part.text ?? "").join("").trim();
+  if (!text) throw new Error("gemini_probe_empty_response");
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    throw new Error("gemini_probe_invalid_json");
+  }
+  if (!parsed || typeof parsed !== "object" || (parsed as { status?: unknown }).status !== "ok") {
+    throw new Error("gemini_probe_schema_mismatch");
+  }
+}
