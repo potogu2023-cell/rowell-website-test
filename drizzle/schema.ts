@@ -243,9 +243,9 @@ export const products = mysqlTable("products", {
 	categoryId: int('category_id').references(() => categories.id, { onDelete: "set null" }),
 	metaTitle: varchar({ length: 70 }),
 	metaDescription: varchar({ length: 160 }),
-	manufacturerPartNumber: varchar('manufacturer_part_number', { length: 128 }),
-	carbonLoad: varchar('carbon_load', { length: 50 }),
-	uspCode: varchar('usp_code', { length: 50 }),
+	manufacturerPartNumber: varchar('manufacturer_part_number', { length: 255 }),
+	carbonLoad: varchar('carbon_load', { length: 64 }),
+	uspCode: varchar('usp_code', { length: 64 }),
 },
 (table) => [
 	index("products_productId_unique").on(table.productId),
