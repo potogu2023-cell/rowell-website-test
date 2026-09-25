@@ -5,7 +5,11 @@ const batchPath = new URL("./product-evidence-batch-2026-09-25.json", import.met
 const batch = JSON.parse(await fs.readFile(batchPath, "utf8"));
 const records = batch.records;
 
-if (batch.namespace !== "products" || batch.excluded_namespaces.includes("standards_products")) {
+if (
+  batch.namespace !== "products" ||
+  !Array.isArray(batch.excluded_namespaces) ||
+  !batch.excluded_namespaces.includes("standards_products")
+) {
   throw new Error("batch_scope_invalid");
 }
 if (records.length !== 59 || batch.approved_record_count !== 59) {
