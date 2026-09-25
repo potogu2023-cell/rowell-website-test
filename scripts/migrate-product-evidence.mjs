@@ -12,7 +12,7 @@ if (
 ) {
   throw new Error("batch_scope_invalid");
 }
-if (records.length !== 59 || batch.approved_record_count !== 59) {
+if (records.length !== 49 || batch.approved_record_count !== 49) {
   throw new Error(`batch_record_count_invalid:${records.length}`);
 }
 if (new Set(records.map((record) => record.slug)).size !== records.length) {
@@ -95,7 +95,7 @@ try {
     }
     locked.push({ record, row: rows[0] });
   }
-  if (locked.length !== 59) throw new Error(`locked_record_count_invalid:${locked.length}`);
+  if (locked.length !== 49) throw new Error(`locked_record_count_invalid:${locked.length}`);
 
   for (const { record, row } of locked) {
     const value = record.values;

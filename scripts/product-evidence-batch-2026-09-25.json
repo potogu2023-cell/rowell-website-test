@@ -1,778 +1,649 @@
 {
-  "approved_record_count": 59,
-  "batch_id": "rowell-products-evidence-2026-09-25-batch-01",
+  "approved_record_count": 49,
+  "batch_id": "rowell-products-evidence-2026-09-25-batch-02",
   "excluded_namespaces": [
     "standards_products"
   ],
   "namespace": "products",
+  "source_dry_run": "/home/ubuntu/rowell-wave2-dryrun-2026-09-25/rowell-wave2-102-dry-run-diff.csv",
+  "source_sha256": "66781dcf03c9daf836f1f7edd6885e7b5f2de0016fd2062e3f471606e44c518d",
   "records": [
     {
       "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-773450-902/773450-902",
-      "part_number": "773450-902",
-      "slug": "773450-902",
+      "evidence_url": "https://www.agilent.com/store/en_US/Prod-693975-702/693975-702",
+      "part_number": "693975-702",
+      "slug": "693975-702",
       "values": {
-        "carbon_load": "12.5 %",
-        "manufacturer_part_number": "773450-902",
-        "ph_range": "2-11.5",
-        "pore_size": "80 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-863750-902/863750-902",
-      "part_number": "863750-902",
-      "slug": "863750-902",
-      "values": {
+        "manufacturer_part_number": "693975-702",
+        "pore_size": "100 Å",
         "carbon_load": null,
-        "manufacturer_part_number": "863750-902",
-        "ph_range": "1-8",
-        "pore_size": "300 Å",
+        "ph_range": "2-11",
         "usp_code": null
       }
     },
     {
       "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-880975-902/880975-902",
-      "part_number": "880975-902",
-      "slug": "880975-902",
+      "evidence_url": "https://www.agilent.com/store/en_US/Prod-693975-742/693975-742",
+      "part_number": "693975-742",
+      "slug": "693975-742",
       "values": {
-        "carbon_load": "10 %",
-        "manufacturer_part_number": "880975-902",
-        "ph_range": "0.8-8",
-        "pore_size": "80 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-883668-901/883668-901",
-      "part_number": "883668-901",
-      "slug": "883668-901",
-      "values": {
-        "carbon_load": "9.5 %",
-        "manufacturer_part_number": "883668-901",
-        "ph_range": "2-9",
-        "pore_size": "80 Å",
-        "usp_code": "L60"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "http://www.antlab.com.tr/Files/File/lc_catalog.pdf",
-      "part_number": "883952-708",
-      "slug": "883952-708",
-      "values": {
-        "carbon_load": "4 %",
-        "manufacturer_part_number": "883952-708",
-        "ph_range": "2.0-7.0",
-        "pore_size": "70 Å",
-        "usp_code": "L8"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-883975-902/883975-902",
-      "part_number": "883975-902",
-      "slug": "883975-902",
-      "values": {
-        "carbon_load": "10 %",
-        "manufacturer_part_number": "883975-902",
-        "ph_range": "0.8-8",
-        "pore_size": "80 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-883975-912/883975-912",
-      "part_number": "883975-912",
-      "slug": "883975-912",
-      "values": {
-        "carbon_load": "5.5 %",
-        "manufacturer_part_number": "883975-912",
+        "manufacturer_part_number": "693975-742",
+        "pore_size": "120 Å",
+        "carbon_load": null,
         "ph_range": "1-8",
-        "pore_size": "80 Å",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Agilent",
+      "evidence_url": "https://www.agilent.com/store/en_US/Prod-693975-912/693975-912",
+      "part_number": "693975-912",
+      "slug": "693975-912",
+      "values": {
+        "manufacturer_part_number": "693975-912",
+        "pore_size": "120 Å",
+        "carbon_load": "8 %",
+        "ph_range": "2-8",
         "usp_code": null
       }
     },
     {
       "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-883975-914/883975-914",
-      "part_number": "883975-914",
-      "slug": "883975-914",
+      "evidence_url": "https://www.agilent.com/store/en_US/Prod-695675-902/695675-902",
+      "part_number": "695675-902",
+      "slug": "695675-902",
       "values": {
-        "carbon_load": null,
-        "manufacturer_part_number": "883975-914",
-        "ph_range": "1-8",
-        "pore_size": "80A",
-        "usp_code": "L96"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959741-902/959741-902",
-      "part_number": "959741-902",
-      "slug": "959741-902",
-      "values": {
-        "carbon_load": "9 %",
-        "manufacturer_part_number": "959741-902",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959961-902/959961-902",
-      "part_number": "959961-902",
-      "slug": "959961-902",
-      "values": {
-        "carbon_load": "9 %",
-        "manufacturer_part_number": "959961-902",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959961-906/959961-906",
-      "part_number": "959961-906",
-      "slug": "959961-906",
-      "values": {
-        "carbon_load": "7 %",
-        "manufacturer_part_number": "959961-906",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L7"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959963-902/959963-902",
-      "part_number": "959963-902",
-      "slug": "959963-902",
-      "values": {
-        "carbon_load": "9 %",
-        "manufacturer_part_number": "959963-902",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959990-902/959990-902",
-      "part_number": "959990-902",
-      "slug": "959990-902",
-      "values": {
-        "carbon_load": "9 %",
-        "manufacturer_part_number": "959990-902",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959993-902/959993-902",
-      "part_number": "959993-902",
-      "slug": "959993-902",
-      "values": {
-        "carbon_load": "9 %",
-        "manufacturer_part_number": "959993-902",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-959993-906/959993-906",
-      "part_number": "959993-906",
-      "slug": "959993-906",
-      "values": {
-        "carbon_load": "7 %",
-        "manufacturer_part_number": "959993-906",
-        "ph_range": "2-9",
-        "pore_size": "95 Å",
-        "usp_code": "L7"
-      }
-    },
-    {
-      "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-990967-902/990967-902",
-      "part_number": "990967-902",
-      "slug": "990967-902",
-      "values": {
+        "manufacturer_part_number": "695675-902",
+        "pore_size": "120 Å",
         "carbon_load": "10 %",
-        "manufacturer_part_number": "990967-902",
-        "ph_range": "2-9",
-        "pore_size": "80 Å",
+        "ph_range": "2-8",
         "usp_code": "L1"
       }
     },
     {
       "brand": "Agilent",
-      "evidence_url": "https://www.agilent.com/store/en_US/Prod-993967-902/993967-902",
-      "part_number": "993967-902",
-      "slug": "993967-902",
+      "evidence_url": "https://www.agilent.com/store/en_US/Prod-695975-702/695975-702",
+      "part_number": "695975-702",
+      "slug": "695975-702",
       "values": {
-        "carbon_load": "10 %",
-        "manufacturer_part_number": "993967-902",
-        "ph_range": "2-9",
-        "pore_size": "80 Å",
-        "usp_code": "L1"
+        "manufacturer_part_number": "695975-702",
+        "pore_size": "100 Å",
+        "carbon_load": "Proprietary",
+        "ph_range": "2.0–11.0",
+        "usp_code": null
+      }
+    },
+    {
+      "brand": "Agilent",
+      "evidence_url": "https://www.agilent.com/store/en_US/Prod-695975-912/695975-912",
+      "part_number": "695975-912",
+      "slug": "695975-912",
+      "values": {
+        "manufacturer_part_number": "695975-912",
+        "pore_size": "120 Å",
+        "carbon_load": "8 %",
+        "ph_range": "2-8",
+        "usp_code": null
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/global/p/9304212",
-      "part_number": "9304212",
-      "slug": "RES-9304212",
+      "evidence_url": "https://www.restek.com/p/9304A1E-T",
+      "part_number": "9304A1E-T",
+      "slug": "restek-9304a1et",
       "values": {
-        "carbon_load": "9%",
-        "manufacturer_part_number": "9304212",
-        "ph_range": "2.0–8.0",
+        "manufacturer_part_number": "9304A1E-T",
         "pore_size": "90 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/930421E",
-      "part_number": "930421E",
-      "slug": "RES-930421E",
-      "values": {
-        "carbon_load": "9%",
-        "manufacturer_part_number": "930421E",
+        "carbon_load": "7% (2.7 µm)",
         "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
         "usp_code": "L1"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304252",
-      "part_number": "9304252",
-      "slug": "RES-9304252",
+      "evidence_url": "https://www.restek.com/p/9304A62-T",
+      "part_number": "9304A62-T",
+      "slug": "restek-9304a62t",
       "values": {
-        "carbon_load": "9% (1.8 µm)",
-        "manufacturer_part_number": "9304252",
+        "manufacturer_part_number": "9304A62-T",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (2.7 µm)",
         "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
         "usp_code": "L1"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/930425E",
-      "part_number": "930425E",
-      "slug": "RES-930425E",
+      "evidence_url": "https://www.restek.com/p/9309252-T",
+      "part_number": "9309252-T",
+      "slug": "restek-9309252t",
       "values": {
-        "carbon_load": "9% (1.8 µm)",
-        "manufacturer_part_number": "930425E",
-        "ph_range": "2.0–8.0",
+        "manufacturer_part_number": "9309252-T",
         "pore_size": "90 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304262",
-      "part_number": "9304262",
-      "slug": "RES-9304262",
-      "values": {
-        "carbon_load": "9%",
-        "manufacturer_part_number": "9304262",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304A12",
-      "part_number": "9304A12",
-      "slug": "RES-9304A12",
-      "values": {
         "carbon_load": "7%",
-        "manufacturer_part_number": "9304A12",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L1"
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304A15",
-      "part_number": "9304A15",
-      "slug": "RES-9304A15",
+      "evidence_url": "https://www.restek.com/p/930925E-T",
+      "part_number": "930925E-T",
+      "slug": "restek-930925et",
       "values": {
+        "manufacturer_part_number": "930925E-T",
+        "pore_size": "90 Å",
         "carbon_load": "7%",
-        "manufacturer_part_number": "9304A15",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L1"
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304A52",
-      "part_number": "9304A52",
-      "slug": "RES-9304A52",
+      "evidence_url": "https://www.restek.com/p/9309512-T",
+      "part_number": "9309512-T",
+      "slug": "restek-9309512t",
       "values": {
+        "manufacturer_part_number": "9309512-T",
+        "pore_size": "90 Å",
+        "carbon_load": "5% (5 µm)",
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9309A12",
+      "part_number": "9309A12",
+      "slug": "restek-9309a12",
+      "values": {
+        "manufacturer_part_number": "9309A12",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (2.7 µm)",
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9309A12-T",
+      "part_number": "9309A12-T",
+      "slug": "restek-9309a12t",
+      "values": {
+        "manufacturer_part_number": "9309A12-T",
+        "pore_size": "90 Å",
         "carbon_load": "7%",
-        "manufacturer_part_number": "9304A52",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L1"
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304A62",
-      "part_number": "9304A62",
-      "slug": "RES-9304A62",
+      "evidence_url": "https://www.restek.com/p/9309A15-T",
+      "part_number": "9309A15-T",
+      "slug": "restek-9309a15t",
       "values": {
+        "manufacturer_part_number": "9309A15-T",
+        "pore_size": "90 Å",
         "carbon_load": "7%",
-        "manufacturer_part_number": "9304A62",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L1"
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9304A65",
-      "part_number": "9304A65",
-      "slug": "RES-9304A65",
+      "evidence_url": "https://www.restek.com/p/9309A52",
+      "part_number": "9309A52",
+      "slug": "restek-9309a52",
       "values": {
+        "manufacturer_part_number": "9309A52",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (2.7 µm)",
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9309A5E",
+      "part_number": "9309A5E",
+      "slug": "restek-9309a5e",
+      "values": {
+        "manufacturer_part_number": "9309A5E",
+        "pore_size": "90 Å",
         "carbon_load": "7% (2.7 μm)",
-        "manufacturer_part_number": "9304A65",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L1"
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9178312",
-      "part_number": "9178312",
-      "slug": "restek-9178312",
+      "evidence_url": "https://www.restek.com/p/9309A6E-T",
+      "part_number": "9309A6E-T",
+      "slug": "restek-9309a6et",
       "values": {
+        "manufacturer_part_number": "9309A6E-T",
+        "pore_size": "90 Å",
+        "carbon_load": "7%",
+        "ph_range": "2.0 to 8.0",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9319212-T",
+      "part_number": "9319212-T",
+      "slug": "restek-9319212t",
+      "values": {
+        "manufacturer_part_number": "9319212-T",
+        "pore_size": "90 Å",
+        "carbon_load": "4% (1.8 µm)",
+        "ph_range": "2.0–8.0",
+        "usp_code": "L43"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9319A1E-T",
+      "part_number": "9319A1E-T",
+      "slug": "restek-9319a1et",
+      "values": {
+        "manufacturer_part_number": "9319A1E-T",
+        "pore_size": "90 Å",
+        "carbon_load": "4% (2.7 µm)",
+        "ph_range": "2.0–8.0",
+        "usp_code": "L43"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9629212-T",
+      "part_number": "9629212-T",
+      "slug": "restek-9629212t",
+      "values": {
+        "manufacturer_part_number": "9629212-T",
+        "pore_size": "100 Å",
         "carbon_load": "15%",
-        "manufacturer_part_number": "9178312",
-        "ph_range": "2.5 to 8",
+        "ph_range": "2.0–8.0",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/962931E",
+      "part_number": "962931E",
+      "slug": "restek-962931e",
+      "values": {
+        "manufacturer_part_number": "962931E",
         "pore_size": "100 Å",
-        "usp_code": "L1"
+        "carbon_load": "15%",
+        "ph_range": "2.0–8.0",
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9303A12",
-      "part_number": "9303A12",
-      "slug": "restek-9303a12",
+      "evidence_url": "https://www.restek.com/p/9629332",
+      "part_number": "9629332",
+      "slug": "restek-9629332",
       "values": {
-        "carbon_load": "4.6%",
-        "manufacturer_part_number": "9303A12",
+        "manufacturer_part_number": "9629332",
+        "pore_size": "100 Å",
+        "carbon_load": "15%",
         "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L7"
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9303A15",
-      "part_number": "9303A15",
-      "slug": "restek-9303a15",
+      "evidence_url": "https://www.restek.com/p/9629352",
+      "part_number": "9629352",
+      "slug": "restek-9629352",
       "values": {
-        "carbon_load": "4.6%",
-        "manufacturer_part_number": "9303A15",
+        "manufacturer_part_number": "9629352",
+        "pore_size": "100 Å",
+        "carbon_load": "15%",
         "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L7"
+        "usp_code": "L11"
       }
     },
     {
       "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9303A52",
-      "part_number": "9303A52",
-      "slug": "restek-9303a52",
+      "evidence_url": "https://www.restek.com/p/9634252-T",
+      "part_number": "9634252-T",
+      "slug": "restek-9634252t",
       "values": {
-        "carbon_load": "4.6%",
-        "manufacturer_part_number": "9303A52",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L7"
-      }
-    },
-    {
-      "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9303A5E",
-      "part_number": "9303A5E",
-      "slug": "restek-9303a5e",
-      "values": {
-        "carbon_load": "4.6%",
-        "manufacturer_part_number": "9303A5E",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L7"
-      }
-    },
-    {
-      "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9303A62",
-      "part_number": "9303A62",
-      "slug": "restek-9303a62",
-      "values": {
-        "carbon_load": "4.6%",
-        "manufacturer_part_number": "9303A62",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L7"
-      }
-    },
-    {
-      "brand": "Restek",
-      "evidence_url": "https://www.restek.com/p/9303A65",
-      "part_number": "9303A65",
-      "slug": "restek-9303a65",
-      "values": {
-        "carbon_load": "4.6%",
-        "manufacturer_part_number": "9303A65",
-        "ph_range": "2.0–8.0",
-        "pore_size": "90 Å",
-        "usp_code": "L7"
-      }
-    },
-    {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-31001-01",
-      "part_number": "227-31001-01",
-      "slug": "227-31001-01",
-      "values": {
-        "carbon_load": null,
-        "manufacturer_part_number": "227-31001-01",
-        "ph_range": "2 - 12",
-        "pore_size": null,
-        "usp_code": null
-      }
-    },
-    {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-31001-02",
-      "part_number": "227-31001-02",
-      "slug": "227-31001-02",
-      "values": {
-        "carbon_load": null,
-        "manufacturer_part_number": "227-31001-02",
-        "ph_range": "2 - 12",
-        "pore_size": null,
-        "usp_code": null
-      }
-    },
-    {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-31001-03",
-      "part_number": "227-31001-03",
-      "slug": "227-31001-03",
-      "values": {
-        "carbon_load": null,
-        "manufacturer_part_number": "227-31001-03",
-        "ph_range": "2-12",
-        "pore_size": null,
-        "usp_code": null
-      }
-    },
-    {
-      "brand": "Shimadzu",
-      "evidence_url": "https://uvison.com/chromatography-supplies/shimadzu-consumables-parts/shimadzu-consumables-parts-by-category/shimadzu-columns/shimadzu-liquid-chromatography-lc-columns/shimadzu-hplc-uhplc-columns/shimadzu-shim-pack-scepter-series/shimadzu-shim-pack-scepter-c18/shim-pack-scepter-c18-120-columns/shimadzu-shim-pack-scepter-c18-120-analytical-column-1.9-mm-120-a-2.1-x-20-mm-1-pk-227-31012-01",
-      "part_number": "227-31012-01",
-      "slug": "227-31012-01",
-      "values": {
+        "manufacturer_part_number": "9634252-T",
+        "pore_size": "100 Å",
         "carbon_load": "20%",
-        "manufacturer_part_number": "227-31012-01",
-        "ph_range": "1-12",
-        "pore_size": "12 nm",
+        "ph_range": "2.0–8.0",
         "usp_code": "L1"
       }
     },
     {
-      "brand": "Shimadzu",
-      "evidence_url": "https://uvison.com/chromatography-supplies/shimadzu-consumables-parts/shimadzu-consumables-parts-by-category/shimadzu-columns/shimadzu-liquid-chromatography-lc-columns/shimadzu-hplc-uhplc-columns/shimadzu-shim-pack-scepter-series/shimadzu-shim-pack-scepter-c18/shim-pack-scepter-c18-120-columns/shimadzu-shim-pack-scepter-c18-120-analytical-column-1.9-mm-120-a-2.1-x-30-mm-1-pk-227-31012-02",
-      "part_number": "227-31012-02",
-      "slug": "227-31012-02",
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9634312",
+      "part_number": "9634312",
+      "slug": "restek-9634312",
       "values": {
+        "manufacturer_part_number": "9634312",
+        "pore_size": "100 Å",
         "carbon_load": "20%",
-        "manufacturer_part_number": "227-31012-02",
-        "ph_range": "1-12",
-        "pore_size": "12nm",
+        "ph_range": "2.0–8.0",
         "usp_code": "L1"
       }
     },
     {
-      "brand": "Shimadzu",
-      "evidence_url": "https://uvison.com/chromatography-supplies/shimadzu-consumables-parts/shimadzu-consumables-parts-by-category/shimadzu-columns/shimadzu-liquid-chromatography-lc-columns/shimadzu-hplc-uhplc-columns/shimadzu-shim-pack-scepter-series/shimadzu-shim-pack-scepter-c18-columns/shim-pack-scepter-c18-120-columns/shimadzu-shim-pack-scepter-c18-120-analytical-column-5-mm-120-a-4.6-x-33-mm-1-pk-227-31020-01",
-      "part_number": "227-31020-01",
-      "slug": "227-31020-01",
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/963431E-T",
+      "part_number": "963431E-T",
+      "slug": "restek-963431et",
       "values": {
+        "manufacturer_part_number": "963431E-T",
+        "pore_size": "100 Å",
         "carbon_load": "20%",
-        "manufacturer_part_number": "227-31020-01",
-        "ph_range": "1-12",
-        "pore_size": "12 nm",
+        "ph_range": "2.0–8.0",
         "usp_code": "L1"
       }
     },
     {
-      "brand": "Shimadzu",
-      "evidence_url": "https://uvison.com/chromatography-supplies/shimadzu-consumables-parts/shimadzu-consumables-parts-by-category/shimadzu-columns/shimadzu-liquid-chromatography-lc-columns/shimadzu-hplc-uhplc-columns/shimadzu-shim-pack-scepter-series/shimadzu-shim-pack-scepter-c18-columns/shim-pack-scepter-c18-120-columns/shimadzu-shim-pack-scepter-c18-120-analytical-column-5-mm-120-a-4.6-x-50-mm-1-pk-227-31020-02",
-      "part_number": "227-31020-02",
-      "slug": "227-31020-02",
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/9634352-T",
+      "part_number": "9634352-T",
+      "slug": "restek-9634352t",
       "values": {
+        "manufacturer_part_number": "9634352-T",
+        "pore_size": "100 Å",
         "carbon_load": "20%",
-        "manufacturer_part_number": "227-31020-02",
+        "ph_range": "2.0–8.0",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Restek",
+      "evidence_url": "https://www.restek.com/p/963931E-T",
+      "part_number": "963931E-T",
+      "slug": "restek-963931et",
+      "values": {
+        "manufacturer_part_number": "963931E-T",
+        "pore_size": "100 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–8.0",
+        "usp_code": "L43"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002732-sunfire-c8-column-100a-35--m-46-mm-x-150-mm-1-pk.html",
+      "part_number": "186002732",
+      "slug": "186002732",
+      "values": {
+        "manufacturer_part_number": "186002732",
+        "pore_size": "100 Å",
+        "carbon_load": "12 %",
+        "ph_range": "2–8",
+        "usp_code": "L7"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002737-sunfire-c8-column-100a-5--m-46-mm-x-150-mm-1-pk.html",
+      "part_number": "186002737",
+      "slug": "186002737",
+      "values": {
+        "manufacturer_part_number": "186002737",
+        "pore_size": "100 Å",
+        "carbon_load": "12 %",
+        "ph_range": "2–8",
+        "usp_code": "L7"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002738-sunfire-c8-column-100a-5--m-46-mm-x-250-mm-1-pk.html",
+      "part_number": "186002738",
+      "slug": "186002738",
+      "values": {
+        "manufacturer_part_number": "186002738",
+        "pore_size": "100 Å",
+        "carbon_load": "12 %",
+        "ph_range": "2-8",
+        "usp_code": "L7"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002854-acquity-uplc-beh-shield-rp18-column-130a-17--m-21-mm-x-100-mm-1-.html",
+      "part_number": "186002854",
+      "slug": "186002854",
+      "values": {
+        "manufacturer_part_number": "186002854",
+        "pore_size": "130 Å",
+        "carbon_load": "17 %",
+        "ph_range": "2–11",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002878-acquity-uplc-beh-c8-column-130a-17--m-21-mm-x-100-mm-1-pk.html",
+      "part_number": "186002878",
+      "slug": "186002878",
+      "values": {
+        "manufacturer_part_number": "186002878",
+        "pore_size": "130 Å",
+        "carbon_load": "13 %",
         "ph_range": "1-12",
-        "pore_size": "12 nm",
+        "usp_code": "L7"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002885-acquity-uplc-beh-phenyl-column-130a-17--m-21-mm-x-100-mm-1-pk.html",
+      "part_number": "186002885",
+      "slug": "186002885",
+      "values": {
+        "manufacturer_part_number": "186002885",
+        "pore_size": "130 Å",
+        "carbon_load": "15 %",
+        "ph_range": "pH 1–12",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003010-xbridge-beh-shield-rp18-column-130a-5--m-46-mm-x-250-mm-1-pk.html",
+      "part_number": "186003010",
+      "slug": "186003010",
+      "values": {
+        "manufacturer_part_number": "186003010",
+        "pore_size": "130 Å",
+        "carbon_load": "17 %",
+        "ph_range": "2–11",
         "usp_code": "L1"
       }
     },
     {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-32001-01",
-      "part_number": "227-32001-01",
-      "slug": "227-32001-01",
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003018-xbridge-beh-c8-column-130a-5--m-46-mm-x-250-mm-1-pk.html",
+      "part_number": "186003018",
+      "slug": "186003018",
       "values": {
-        "carbon_load": "7%",
-        "manufacturer_part_number": "227-32001-01",
-        "ph_range": "1-8",
-        "pore_size": "90nm",
+        "manufacturer_part_number": "186003018",
+        "pore_size": "130 Å",
+        "carbon_load": "13 %",
+        "ph_range": "1-12",
+        "usp_code": "L7"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003021-xbridge-beh-c18-column-130a-35--m-21-mm-x-50-mm-1-pk.html",
+      "part_number": "186003021",
+      "slug": "186003021",
+      "values": {
+        "manufacturer_part_number": "186003021",
+        "pore_size": "130 Å",
+        "carbon_load": "18 %",
+        "ph_range": "1-12",
         "usp_code": "L1"
       }
     },
     {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-32001-02",
-      "part_number": "227-32001-02",
-      "slug": "227-32001-02",
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003116-xbridge-beh-c18-column-130a-5--m-46-mm-x-150-mm-1-pk.html",
+      "part_number": "186003116",
+      "slug": "186003116",
       "values": {
-        "carbon_load": "7%",
-        "manufacturer_part_number": "227-32001-02",
-        "ph_range": "1 - 8",
-        "pore_size": "90 nm",
+        "manufacturer_part_number": "186003116",
+        "pore_size": "130 Å",
+        "carbon_load": "18 %",
+        "ph_range": "1-12",
         "usp_code": "L1"
       }
     },
     {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-32001-03",
-      "part_number": "227-32001-03",
-      "slug": "227-32001-03",
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003117-xbridge-beh-c18-column-130a-5--m-46-mm-x-250-mm-1-pk.html",
+      "part_number": "186003117",
+      "slug": "186003117",
       "values": {
+        "manufacturer_part_number": "186003117",
+        "pore_size": "130 Å",
+        "carbon_load": "18 %",
+        "ph_range": "1-12",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003352-xbridge-beh-phenyl-column-130a-5--m-46-mm-x-150-mm-1-pk.html",
+      "part_number": "186003352",
+      "slug": "186003352",
+      "values": {
+        "manufacturer_part_number": "186003352",
+        "pore_size": "130 Å",
+        "carbon_load": "15 %",
+        "ph_range": "1–12",
+        "usp_code": "L11"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003461-acquity-uplc-beh-hilic-column-130a-17--m-21-mm-x-100-mm-1-pk.html",
+      "part_number": "186003461",
+      "slug": "186003461",
+      "values": {
+        "manufacturer_part_number": "186003461",
+        "pore_size": "130 Å",
         "carbon_load": null,
-        "manufacturer_part_number": "227-32001-03",
-        "ph_range": "1-8",
-        "pore_size": "90 nm",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Shimadzu",
-      "evidence_url": "https://www.shopshimadzu.com/product/s227-32010-01",
-      "part_number": "227-32010-01",
-      "slug": "227-32010-01",
-      "values": {
-        "carbon_load": "7%",
-        "manufacturer_part_number": "227-32010-01",
-        "ph_range": "2 - 8",
-        "pore_size": "90 nm",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186001291-atlantis-dc18-column-100a-3--m-21-mm-x-50-mm-1-pk.html",
-      "part_number": "186001291",
-      "slug": "186001291",
-      "values": {
-        "carbon_load": "12 %",
-        "manufacturer_part_number": "186001291",
-        "ph_range": "pH 3–7",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186001342-atlantis-dc18-column-100a-3--m-46-mm-x-150-mm-1-pk.html",
-      "part_number": "186001342",
-      "slug": "186001342",
-      "values": {
-        "carbon_load": "12 %",
-        "manufacturer_part_number": "186001342",
-        "ph_range": "3–7",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186001344-atlantis-dc18-column-100a-5--m-46-mm-x-150-mm-1-pk.html",
-      "part_number": "186001344",
-      "slug": "186001344",
-      "values": {
-        "carbon_load": "12 %",
-        "manufacturer_part_number": "186001344",
-        "ph_range": "3–7 pH",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186001346-atlantis-dc18-column-100a-5--m-46-mm-x-250-mm-1-pk.html",
-      "part_number": "186001346",
-      "slug": "186001346",
-      "values": {
-        "carbon_load": "12 %",
-        "manufacturer_part_number": "186001346",
-        "ph_range": "pH 3–7",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002011-atlantis-hilic-column-100a-3--m-21-mm-x-50-mm-1-pk.html",
-      "part_number": "186002011",
-      "slug": "186002011",
-      "values": {
-        "carbon_load": null,
-        "manufacturer_part_number": "186002011",
-        "ph_range": "pH 1–5",
-        "pore_size": "100 Å",
+        "ph_range": "1–9",
         "usp_code": "L3"
       }
     },
     {
       "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002350-acquity-uplc-beh-c18-column-130a-17--m-21-mm-x-50-mm-1-pk.html",
-      "part_number": "186002350",
-      "slug": "186002350",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003539-acquity-uplc-hss-t3-column-100a-18--m-21-mm-x-100-mm-1-pk.html",
+      "part_number": "186003539",
+      "slug": "186003539",
       "values": {
+        "manufacturer_part_number": "186003539",
+        "pore_size": "100 Å",
+        "carbon_load": "11 %",
+        "ph_range": "pH 2–8",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003540-acquity-uplc-hss-t3-column-100a-18--m-21-mm-x-150-mm-1-pk.html",
+      "part_number": "186003540",
+      "slug": "186003540",
+      "values": {
+        "manufacturer_part_number": "186003540",
+        "pore_size": "100 Å",
+        "carbon_load": "11 %",
+        "ph_range": "2–8",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003722-atlantis-t3-column-100a-3--m-3-mm-x-100-mm-1-pk.html",
+      "part_number": "186003722",
+      "slug": "186003722",
+      "values": {
+        "manufacturer_part_number": "186003722",
+        "pore_size": "100 Å",
+        "carbon_load": "14 %",
+        "ph_range": "2–8",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003728-atlantis-t3-column-100a-3--m-46-mm-x-100-mm-1-pk.html",
+      "part_number": "186003728",
+      "slug": "186003728",
+      "values": {
+        "manufacturer_part_number": "186003728",
+        "pore_size": "100 Å",
+        "carbon_load": "14 %",
+        "ph_range": "2–8",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003747-atlantis-t3-column-100a-5--m-46-mm-x-150-mm-1-pk.html",
+      "part_number": "186003747",
+      "slug": "186003747",
+      "values": {
+        "manufacturer_part_number": "186003747",
+        "pore_size": "100 Å",
+        "carbon_load": "14 %",
+        "ph_range": "pH 2–8",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186003768-xbridge-beh-c18-method-validation-kit-130a-35--m-3-mm-x-150-mm-3.html",
+      "part_number": "186003768",
+      "slug": "186003768",
+      "values": {
+        "manufacturer_part_number": "186003768",
+        "pore_size": "130 Å",
         "carbon_load": "18 %",
-        "manufacturer_part_number": "186002350",
         "ph_range": "1-12",
+        "usp_code": "L1"
+      }
+    },
+    {
+      "brand": "Waters",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186004454-xbridge-beh-hilic-column-130a-5--m-46-mm-x-250-mm-1-pk.html",
+      "part_number": "186004454",
+      "slug": "186004454",
+      "values": {
+        "manufacturer_part_number": "186004454",
         "pore_size": "130 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002353-acquity-uplc-beh-c18-column-130a-17--m-21-mm-x-150-mm-1-pk.html",
-      "part_number": "186002353",
-      "slug": "186002353",
-      "values": {
-        "carbon_load": "18 %",
-        "manufacturer_part_number": "186002353",
-        "ph_range": "pH 1–12",
-        "pore_size": "130 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002534-sunfire-c18-column-100a-35--m-21-mm-x-100-mm-1-pk.html",
-      "part_number": "186002534",
-      "slug": "186002534",
-      "values": {
-        "carbon_load": "16 %",
-        "manufacturer_part_number": "186002534",
-        "ph_range": "2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002535-sunfire-c18-column-100a-35--m-21-mm-x-150-mm-1-pk.html",
-      "part_number": "186002535",
-      "slug": "186002535",
-      "values": {
-        "carbon_load": "16 %",
-        "manufacturer_part_number": "186002535",
-        "ph_range": "pH 2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/br/pt/shop/columns/186002544-sunfire-c18-column-100a-35--m-3-mm-x-150-mm-1-pk.html",
-      "part_number": "186002544",
-      "slug": "186002544",
-      "values": {
         "carbon_load": null,
-        "manufacturer_part_number": "186002544",
-        "ph_range": "pH 2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
+        "ph_range": "1–9",
+        "usp_code": "L3"
       }
     },
     {
       "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002551-sunfire-c18-column-100a-35--m-46-mm-x-50-mm-1-pk.html",
-      "part_number": "186002551",
-      "slug": "186002551",
+      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186004861-xbridge-beh-amide-column-130a-35--m-21-mm-x-150-mm-1-pk.html",
+      "part_number": "186004861",
+      "slug": "186004861",
       "values": {
-        "carbon_load": "16 %",
-        "manufacturer_part_number": "186002551",
-        "ph_range": "2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002559-sunfire-c18-column-100a-5--m-46-mm-x-150-mm-1-pk.html",
-      "part_number": "186002559",
-      "slug": "186002559",
-      "values": {
-        "carbon_load": "16 %",
-        "manufacturer_part_number": "186002559",
-        "ph_range": "2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002560-sunfire-c18-column-100a-5--m-46-mm-x-250-mm-1-pk.html",
-      "part_number": "186002560",
-      "slug": "186002560",
-      "values": {
-        "carbon_load": "16 %",
-        "manufacturer_part_number": "186002560",
-        "ph_range": "2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L1"
-      }
-    },
-    {
-      "brand": "Waters",
-      "evidence_url": "https://www.waters.com/nextgen/us/en/shop/columns/186002715-sunfire-c8-column-100a-5--m-21-mm-x-50-mm-1-pk.html",
-      "part_number": "186002715",
-      "slug": "186002715",
-      "values": {
+        "manufacturer_part_number": "186004861",
+        "pore_size": "130 Å",
         "carbon_load": "12 %",
-        "manufacturer_part_number": "186002715",
-        "ph_range": "2–8",
-        "pore_size": "100 Å",
-        "usp_code": "L7"
+        "ph_range": "2–11",
+        "usp_code": "L68"
       }
     }
-  ],
-  "source_dryrun": "rowell-batch-80-dry-run-diff.csv"
+  ]
 }
