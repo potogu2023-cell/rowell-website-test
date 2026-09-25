@@ -479,8 +479,10 @@ export const appRouter = router({
         const { resources } = await import('../drizzle/schema');
         const { eq, like, and, desc } = await import('drizzle-orm');
 
-        // Build where conditions
-        const conditions: any[] = [];
+        // The public Resource Center must expose only pages that the SSR layer
+        // is willing to serve as indexable content. This prevents clients from
+        // linking to inactive records that correctly return an HTTP 404.
+        const conditions: any[] = [eq(resources.status, "published")];
         if (input?.search) {
           conditions.push(
             like(resources.title, `%${input.search}%`)
@@ -527,12 +529,12 @@ export const appRouter = router({
         }
 
         const { resources } = await import('../drizzle/schema');
-        const { eq } = await import('drizzle-orm');
+        const { and, eq } = await import('drizzle-orm');
 
         const results = await db
           .select()
           .from(resources)
-          .where(eq(resources.slug, input.slug))
+          .where(and(eq(resources.slug, input.slug), eq(resources.status, "published")))
           .limit(1);
 
         return results.length > 0 ? results[0] : null;

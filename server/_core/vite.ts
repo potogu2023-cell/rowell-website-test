@@ -16,6 +16,18 @@ import { canonicalUrlForPath, normalizeCanonicalPath, ROWELL_CANONICAL_ORIGIN } 
 const SITE_URL = ROWELL_CANONICAL_ORIGIN;
 
 /**
+ * A dynamic route cannot safely be classified as active, missing, or gone
+ * when its source database is unavailable. Returning a 503 is safer than
+ * emitting a 200 SPA shell that search engines can classify as a soft 404.
+ */
+class SsrDependencyUnavailableError extends Error {
+  constructor() {
+    super("SSR data dependency unavailable");
+    this.name = "SsrDependencyUnavailableError";
+  }
+}
+
+/**
  * Extract slug from resource URL
  */
 function extractSlugFromPath(urlPath: string): string | null {
@@ -372,7 +384,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
   try {
     const db = await getDb();
     if (!db) {
-      return template;
+      throw new SsrDependencyUnavailableError();
     }
 
     // Primary query: by slug field
@@ -397,7 +409,10 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     }
 
     if (result.length === 0) {
-      return template;
+      // The route-status query should already have returned a 404/410 before
+      // this renderer. A disagreement here is a transient data failure, never
+      // a reason to send a 200 shell with no product content.
+      throw new SsrDependencyUnavailableError();
     }
 
     const product = result[0];
@@ -424,10 +439,12 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       `/product-images/${brandFolder}/${product.partNumber}.jpg`;
     const imageUrl = toAbsoluteUrl(rawImageUrl);
 
-    // ── P0 FIX: Inject visible content skeleton into <body> to prevent Soft 404 ──
-    // Google's soft 404 detection requires actual visible text content in the page body,
-    // not just meta tags in <head>. Without this, Google sees an empty <div id="root"> and
-    // classifies the page as soft 404, refusing to index it.
+    // ── Visible SSR product fallback ──
+    // A 1px clipped block is not meaningful server-rendered page content.
+    // Render a concise, factual product summary that stays visible until the
+    // hydrated React detail page removes it after its own active-product query
+    // succeeds. This protects crawlers and no-JS clients from empty SPA shells
+    // without creating duplicate content for normal interactive visitors.
     const hasCatalogValue = (value: unknown): value is string => {
       if (typeof value !== 'string') return false;
       const normalized = value.trim();
@@ -452,16 +469,19 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     ].filter(Boolean).join('');
 
     const contentSkeleton = `
-    <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap">
+    <main id="seo-product-fallback" aria-label="Product summary" style="max-width:72rem;margin:2rem auto;padding:0 1rem;font-family:Arial,sans-serif;color:#0f172a">
+      <nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/products">Products</a> / ${escapeHtml(product.partNumber || product.name || "Product")}</nav>
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(description)}</p>
-      ${product.brand ? `<p>Brand: ${escapeHtml(product.brand)}</p>` : ''}
-      <p>Part Number: ${escapeHtml(product.partNumber || '')}</p>
-      ${product.name ? `<p>Product Name: ${escapeHtml(product.name)}</p>` : ''}
-      ${product.description ? `<p>${escapeHtml((product.description || '').substring(0, 500))}</p>` : ''}
-      ${specsRows ? `<table><tbody>${specsRows}</tbody></table>` : ''}
-      <p>Use the inquiry form to confirm current product details and suitability for your application.</p>
-    </div>`;
+      <dl>
+        ${product.brand ? `<dt>Brand</dt><dd>${escapeHtml(product.brand)}</dd>` : ''}
+        <dt>Part Number</dt><dd>${escapeHtml(product.partNumber || '')}</dd>
+        ${product.name ? `<dt>Product Name</dt><dd>${escapeHtml(product.name)}</dd>` : ''}
+      </dl>
+      ${product.description ? `<section><h2>Product Details</h2><p>${escapeHtml((product.description || '').substring(0, 800))}</p></section>` : ''}
+      ${specsRows ? `<section><h2>Recorded Specifications</h2><table><tbody>${specsRows}</tbody></table></section>` : ''}
+      <p><a href="#product-message-form">Submit a product inquiry</a> to discuss your application requirements.</p>
+    </main>`;
 
     // JSON-LD structured data for Google Merchant Listings
     const structuredData = {
@@ -529,7 +549,8 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
       `$1${metaTags}`
     );
 
-    // Inject visible content skeleton into <body> for Soft 404 prevention
+    // Insert the fallback beside the React root. ProductDetail removes it only
+    // after the active product query has rendered the interactive page.
     template = template.replace(
       /<div id="root"><\/div>/,
       `<div id="root"></div>${contentSkeleton}`
@@ -538,6 +559,7 @@ async function injectProductSeoMetaTags(template: string, req: any, overridePath
     console.log(`[SEO] Injected product meta tags + content skeleton for: ${product.partNumber}`);
     return template;
   } catch (error) {
+    if (error instanceof SsrDependencyUnavailableError) throw error;
     console.error("[SEO] Error injecting product meta tags:", error);
     return template;
   }
@@ -855,7 +877,10 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
           .limit(1);
       }
       if (records.length === 0) return "missing";
-      return records[0].status === "active" ? "active" : "gone";
+      // Product detail URLs are only public for active catalog records. Treat
+      // paused or removed records as not found rather than returning a 200 SPA
+      // shell or a crawlable soft-404 substitute.
+      return records[0].status === "active" ? "active" : "missing";
     }
 
     if (standardsProductSlug) {
@@ -916,24 +941,32 @@ function redirectNonCanonicalPublicPath(req: any, res: any, next: () => void): v
   return next();
 }
 
-async function redirectLegacyLearningArticle(req: any, res: any, next: () => void): Promise<void> {
-  if (req.method !== "GET") return next();
-  const match = req.originalUrl.match(/^\/learning\/([^/?]+)(?:\?[^]*)?$/);
+async function redirectMigratedResourceArticle(req: any, res: any, next: () => void): Promise<void> {
+  if (req.method !== "GET" && req.method !== "HEAD") return next();
+  const match = req.originalUrl.match(/^\/resources\/([^/?]+)(\?[^]*)?$/);
   if (!match) return next();
-  // The legacy `/learning/:slug` namespace also contains an independent article
-  // collection. Redirect only when the same slug exists in the resources table;
-  // otherwise leave the learning-center article route intact.
+
+  // A current published resource remains on its established public route. Only
+  // a missing or unpublished legacy resource may move to Learning Center, and
+  // only when an article with the same exact slug is present there.
   try {
     const db = await getDb();
     if (!db) return next();
-    const resourceRecord = await db.select({ id: resources.id })
+    const requestedSlug = decodePathSegment(match[1]);
+    const resourceRecord = await db.select({ id: resources.id, status: resources.status })
       .from(resources)
-      .where(eq(resources.slug, match[1]))
+      .where(eq(resources.slug, requestedSlug))
       .limit(1);
-    if (resourceRecord.length === 0) return next();
-    return res.redirect(301, `/resources/${match[1]}`);
+    if (resourceRecord[0]?.status === "published") return next();
+
+    const articleRecord = await db.select({ slug: articles.slug })
+      .from(articles)
+      .where(eq(articles.slug, requestedSlug))
+      .limit(1);
+    if (articleRecord.length === 0) return next();
+    return res.redirect(301, `/learning/${encodeURIComponent(articleRecord[0].slug)}${match[2] || ""}`);
   } catch (error) {
-    console.error("[SEO] Legacy learning URL check failed:", error);
+    console.error("[SEO] Legacy resource URL migration check failed:", error);
     return next();
   }
 }
@@ -992,6 +1025,18 @@ function renderNotFoundTemplate(template: string, requestPath: string, statusCod
   return template.replace(
     /<div id="root"><\/div>/,
     `<div id="root"><main><h1>${heading}</h1><p>${description}</p><p><a href="/products">Browse products</a> or <a href="/resources">explore technical resources</a>.</p></main></div>`
+  );
+}
+
+function renderSsrUnavailableTemplate(template: string): string {
+  const title = "Temporarily Unavailable | ROWELL";
+  const description = "This catalog page is temporarily unavailable while its source data is being checked. Please try again later or browse the current catalog.";
+  const metaTags = `<title>${title}</title><meta name="description" content="${description}" /><meta name="robots" content="noindex, nofollow" />`;
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  return template.replace(
+    /<div id="root"><\/div>/,
+    `<div id="root"><main><h1>Temporarily unavailable</h1><p>${description}</p><p><a href="/products">Browse products</a> or <a href="/resources">explore technical resources</a>.</p></main></div>`
   );
 }
 
@@ -1179,7 +1224,7 @@ export async function setupVite(app: Express, server: Server) {
   // Canonicalize malformed and legacy URLs before Vite serves the application shell.
   app.use(redirectNonCanonicalPublicPath);
   app.use(redirectLegacyUspIndex);
-  app.use(redirectLegacyLearningArticle);
+  app.use(redirectMigratedResourceArticle);
   app.use(redirectLegacyProductUrl);
   app.use(redirectLegacyStandardsProductUrl);
 
@@ -1222,6 +1267,11 @@ export async function setupVite(app: Express, server: Server) {
         const page = await vite.transformIndexHtml(url, template);
         return res.status(statusCode).set({ "Content-Type": "text/html" }).end(page);
       }
+      if (dynamicRouteStatus === "unavailable") {
+        template = renderSsrUnavailableTemplate(template);
+        const page = await vite.transformIndexHtml(url, template);
+        return res.status(503).set({ "Content-Type": "text/html", "Retry-After": "300" }).end(page);
+      }
 
       // Inject SEO metadata and visible server-side content for every known public route.
       template = await injectSeoMetaTags(template, req, requestPath);
@@ -1249,7 +1299,7 @@ export function serveStatic(app: Express) {
   // Canonicalize malformed and legacy URLs before static serving or SEO injection.
   app.use(redirectNonCanonicalPublicPath);
   app.use(redirectLegacyUspIndex);
-  app.use(redirectLegacyLearningArticle);
+  app.use(redirectMigratedResourceArticle);
   app.use(redirectLegacyProductUrl);
   app.use(redirectLegacyStandardsProductUrl);
 
@@ -1312,6 +1362,11 @@ export function serveStatic(app: Express) {
         template = renderNotFoundTemplate(template, requestPath, statusCode);
         return res.status(statusCode).set({ "Content-Type": "text/html" }).send(template);
       }
+      if (dynamicRouteStatus === "unavailable") {
+        let template = await fs.promises.readFile(indexPath, "utf-8");
+        template = renderSsrUnavailableTemplate(template);
+        return res.status(503).set({ "Content-Type": "text/html", "Retry-After": "300" }).send(template);
+      }
 
       if (!isKnownPublicSpaRoute(requestPath)) {
         let template = await fs.promises.readFile(indexPath, "utf-8");
@@ -1338,8 +1393,17 @@ export function serveStatic(app: Express) {
       }
     } catch (error) {
       console.error("[SSR] Error serving index.html:", error);
-      // Fallback to sendFile on error
-      res.sendFile(path.resolve(distPath, "index.html"));
+      // Never convert an SSR dependency/rendering error into a 200 empty SPA
+      // shell. It creates an ambiguous response that search engines label as a
+      // soft 404 and gives visitors no reliable state.
+      try {
+        const fallbackTemplate = await fs.promises.readFile(path.resolve(distPath, "index.html"), "utf-8");
+        return res.status(error instanceof SsrDependencyUnavailableError ? 503 : 500)
+          .set({ "Content-Type": "text/html", "Retry-After": "300" })
+          .send(renderSsrUnavailableTemplate(fallbackTemplate));
+      } catch {
+        return res.status(500).set({ "Content-Type": "text/plain" }).send("Temporarily unavailable");
+      }
     }
   });
 }

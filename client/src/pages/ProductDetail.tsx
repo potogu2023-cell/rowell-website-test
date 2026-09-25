@@ -53,6 +53,15 @@ export default function ProductDetail() {
     setFailedImageUrl(null);
   }, [product?.imageUrl]);
 
+  // The server emits a factual, visible summary before JavaScript loads so
+  // crawlers and no-JS clients do not receive an empty product shell. Remove
+  // that sibling fallback only after the active React detail page has data.
+  useEffect(() => {
+    if (product?.status === "active") {
+      document.getElementById("seo-product-fallback")?.remove();
+    }
+  }, [product?.id, product?.status]);
+
   // NOTE: Product Schema (JSON-LD) is injected server-side via seo-meta-injection.ts
   // and vite.ts for SSR/pre-rendering. Client-side injection was removed to prevent
   // duplicate structured data (which caused 3x Product schemas on the same page).
@@ -374,4 +383,3 @@ export default function ProductDetail() {
     </div>
   );
 }
-
