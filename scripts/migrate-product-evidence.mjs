@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import mysql from "mysql2/promise";
 
-const batchPath = new URL("./product-evidence-batch-2026-09-25.json", import.meta.url);
+const batchPath = new URL("./product-evidence-batch-2026-09-26-wave4.json", import.meta.url);
 const batch = JSON.parse(await fs.readFile(batchPath, "utf8"));
 const records = batch.records;
 
@@ -12,7 +12,7 @@ if (
 ) {
   throw new Error("batch_scope_invalid");
 }
-if (records.length !== 49 || batch.approved_record_count !== 49) {
+if (records.length !== 53 || batch.approved_record_count !== 53) {
   throw new Error(`batch_record_count_invalid:${records.length}`);
 }
 if (new Set(records.map((record) => record.slug)).size !== records.length) {
@@ -95,7 +95,7 @@ try {
     }
     locked.push({ record, row: rows[0] });
   }
-  if (locked.length !== 49) throw new Error(`locked_record_count_invalid:${locked.length}`);
+  if (locked.length !== 53) throw new Error(`locked_record_count_invalid:${locked.length}`);
 
   for (const { record, row } of locked) {
     const value = record.values;
