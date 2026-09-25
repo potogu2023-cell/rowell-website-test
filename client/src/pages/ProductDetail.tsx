@@ -130,6 +130,9 @@ export default function ProductDetail() {
   const publishedUspCodes = hasCatalogValue(product.usp)
     ? product.usp.split(',').map((code) => code.trim().toLowerCase()).filter((code) => Boolean(USP_LANDING_PROFILES[code]))
     : [];
+  const displayPoreSize = product.poreSize;
+  const displayPhRange = product.phRange;
+  const displayUspCode = hasCatalogValue(product.uspCode) ? product.uspCode : product.usp;
   const productContext = `${product.name || ''} ${product.phaseType || ''} ${product.productType || ''}`;
   const catalogContextLinks: Array<{ href: string; label: string; description: string }> = [];
   if (product.productType === 'HPLC Column' && /\bc18\b/i.test(productContext)) {
@@ -216,16 +219,28 @@ export default function ProductDetail() {
                 <div>
                   <h3 className="text-lg font-semibold mb-4">{t('productDetail.technical_specs')}</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {hasCatalogValue(product.manufacturerPartNumber) && (
+                      <div className="flex justify-between gap-4 p-3 bg-gray-50 rounded">
+                        <span className="text-muted-foreground">Manufacturer Part Number:</span>
+                        <span className="text-right font-medium">{product.manufacturerPartNumber}</span>
+                      </div>
+                    )}
                     {hasCatalogValue(product.particleSize) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.particle_size')}:</span>
                         <span className="font-medium">{withParticleUnit(product.particleSize)}</span>
                       </div>
                     )}
-                    {hasCatalogValue(product.poreSize) && (
+                    {hasCatalogValue(displayPoreSize) && (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.pore_size')}:</span>
-                        <span className="font-medium">{withPoreUnit(product.poreSize)}</span>
+                        <span className="font-medium">{withPoreUnit(displayPoreSize)}</span>
+                      </div>
+                    )}
+                    {hasCatalogValue(product.carbonLoad) && (
+                      <div className="flex justify-between p-3 bg-gray-50 rounded">
+                        <span className="text-muted-foreground">Carbon Load:</span>
+                        <span className="font-medium">{product.carbonLoad}</span>
                       </div>
                     )}
                     {hasCatalogValue(product.columnLength) && (
@@ -246,11 +261,11 @@ export default function ProductDetail() {
                         <span className="font-medium">{product.phaseType}</span>
                       </div>
                     )}
-                    {((product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined) || hasCatalogValue(product.phRange)) ? (
+                    {((product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined) || hasCatalogValue(displayPhRange)) ? (
                       <div className="flex justify-between p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.ph_range')}:</span>
                         <span className="font-medium">
-                          {product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined ? `${product.phMin} - ${product.phMax}` : product.phRange}
+                          {product.phMin !== null && product.phMin !== undefined && product.phMax !== null && product.phMax !== undefined ? `${product.phMin} - ${product.phMax}` : displayPhRange}
                         </span>
                       </div>
                     ) : null}
@@ -266,7 +281,7 @@ export default function ProductDetail() {
                         <span className="font-medium">{product.maxTemperature}</span>
                       </div>
                     )}
-                    {hasCatalogValue(product.usp) && (
+                    {hasCatalogValue(displayUspCode) && (
                       <div className="flex justify-between gap-4 p-3 bg-gray-50 rounded">
                         <span className="text-muted-foreground">{t('productDetail.usp_classification')}:</span>
                         <span className="text-right font-medium">
@@ -275,7 +290,7 @@ export default function ProductDetail() {
                               {index > 0 && ', '}
                               <Link href={`/usp/${code}`} className="text-primary hover:underline">{USP_LANDING_PROFILES[code].code}</Link>
                             </span>
-                          )) : product.usp}
+                          )) : displayUspCode}
                         </span>
                       </div>
                     )}
