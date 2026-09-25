@@ -9,7 +9,7 @@
     "build:server": "pnpm exec esbuild server/_core/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "build:seo-draft": "pnpm exec esbuild server/seo-draft-pipeline/run.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/seo-draft-pipeline",
     "build:seo-draft-probe": "pnpm exec esbuild server/seo-draft-pipeline/probe-run.ts --platform=node --packages=external --bundle --format=esm --outdir=dist/seo-draft-pipeline",
-    "start": "node scripts/migrate-product-evidence.mjs && NODE_ENV=production node dist/index.js",
+    "start": "NODE_ENV=production node dist/index.js",
     "start:seo-draft": "NODE_ENV=production node dist/seo-draft-pipeline/run.js",
     "start:seo-draft-probe": "NODE_ENV=production node dist/seo-draft-pipeline/probe-run.js",
     "check": "tsc --noEmit",

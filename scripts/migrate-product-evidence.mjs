@@ -13,7 +13,21 @@ const target = {
   },
 };
 
-const connection = await mysql.createConnection(process.env.DATABASE_URL);
+const dbUrl = new URL(process.env.DATABASE_URL);
+const sslParam = dbUrl.searchParams.get("ssl");
+dbUrl.searchParams.delete("ssl");
+const connectionConfig = {
+  host: dbUrl.hostname,
+  port: dbUrl.port ? Number(dbUrl.port) : 3306,
+  user: decodeURIComponent(dbUrl.username),
+  password: decodeURIComponent(dbUrl.password),
+  database: decodeURIComponent(dbUrl.pathname.slice(1)),
+};
+if (sslParam) {
+  connectionConfig.ssl =
+    sslParam === "true" ? { rejectUnauthorized: true } : JSON.parse(sslParam);
+}
+const connection = await mysql.createConnection(connectionConfig);
 
 try {
   const [databaseRows] = await connection.query("SELECT DATABASE() AS name");
