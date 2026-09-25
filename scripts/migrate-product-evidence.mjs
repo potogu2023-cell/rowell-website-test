@@ -70,9 +70,9 @@ try {
   await connection.query(
     `UPDATE products
         SET manufacturer_part_number = ?,
-            pore_size = ?,
+            poreSize = ?,
             carbon_load = ?,
-            ph_range = ?,
+            phRange = ?,
             usp_code = ?
       WHERE id = ?`,
     [
