@@ -11,8 +11,9 @@ import { and, desc, eq, or } from "drizzle-orm";
 import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
 import { USP_LANDING_PROFILES, USP_LANDING_CODES } from "../../shared/uspLandingContent";
+import { canonicalUrlForPath, normalizeCanonicalPath, ROWELL_CANONICAL_ORIGIN } from "../../shared/canonical";
 
-const SITE_URL = "https://www.rowellhplc.com";
+const SITE_URL = ROWELL_CANONICAL_ORIGIN;
 
 /**
  * Extract slug from resource URL
@@ -25,6 +26,12 @@ function extractSlugFromPath(urlPath: string): string | null {
 function extractLiteratureSlugFromPath(urlPath: string): string | null {
   const match = urlPath.match(/^\/learning\/literature\/([^\/\?]+)/);
   return match ? match[1] : null;
+}
+
+function extractLearningArticleSlug(urlPath: string): string | null {
+  const match = urlPath.match(/^\/learning\/([^\/\?]+)/);
+  if (!match || match[1] === "literature" || match[1] === "authors") return null;
+  return match[1];
 }
 
 function decodePathSegment(value: string): string {
@@ -81,6 +88,23 @@ function serializeJsonLd(data: unknown): string {
 function toAbsoluteUrl(value: string): string {
   if (/^https?:\/\//i.test(value)) return value;
   return `${SITE_URL}${value.startsWith("/") ? "" : "/"}${value}`;
+}
+
+/**
+ * Keeps exactly one absolute, query-free canonical tag in every indexable SSR
+ * response. Individual page renderers can still provide their database-backed
+ * canonical target (for example a normalized product slug); otherwise the
+ * request path is used after the shared path normalizer removes duplicate
+ * slashes, a trailing slash, query parameters, and fragments.
+ */
+function enforceSingleCanonical(template: string, fallbackPath: string): string {
+  const canonicalMatch = /<link\b(?=[^>]*\brel\s*=\s*["']canonical["'])[^>]*\bhref\s*=\s*["']([^"']+)["'][^>]*>/i.exec(template);
+  const selectedCanonical = canonicalMatch?.[1]
+    ? canonicalUrlForPath(canonicalMatch[1])
+    : canonicalUrlForPath(fallbackPath);
+
+  const withoutCanonical = template.replace(/\s*<link\b(?=[^>]*\brel\s*=\s*["']canonical["'])[^>]*>\s*/gi, "\n");
+  return withoutCanonical.replace(/(<head[^>]*>)/i, `$1\n<link rel="canonical" href="${selectedCanonical}" />`);
 }
 
 /**
@@ -235,6 +259,100 @@ async function injectArticleSeoMetaTags(template: string, req: any, overridePath
     return template;
   } catch (error) {
     console.error("[SEO] Error injecting article meta tags:", error);
+    return template;
+  }
+}
+
+/**
+ * Renders the distinct Learning Center article namespace server-side. These
+ * pages are stored in `articles`, not `resources`, so they must not fall back
+ * to the generic SPA shell that previously had no canonical signal.
+ */
+async function injectLearningArticleSeoMetaTags(template: string, requestPath: string): Promise<string> {
+  const requestedSlug = extractLearningArticleSlug(requestPath);
+  if (!requestedSlug) return template;
+
+  try {
+    const db = await getDb();
+    if (!db) return template;
+    const records = await db
+      .select()
+      .from(articles)
+      .where(eq(articles.slug, decodePathSegment(requestedSlug)))
+      .limit(1);
+    if (records.length === 0) return template;
+
+    const article = records[0];
+    const fullUrl = canonicalUrlForPath(`/learning/${encodeURIComponent(article.slug)}`);
+    const title = article.title || "Chromatography Learning Article";
+    const description = article.metaDescription || article.content
+      .replace(/<[^>]*>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 255);
+    const articleText = article.content
+      .replace(/```[\s\S]*?```/g, " ")
+      .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+      .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+      .replace(/<[^>]*>/g, " ")
+      .replace(/[#>*_`]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 1800);
+    const publishedAt = article.publishedDate
+      ? new Date(article.publishedDate).toISOString()
+      : new Date().toISOString();
+    const modifiedAt = article.updatedAt
+      ? new Date(article.updatedAt).toISOString()
+      : publishedAt;
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": fullUrl },
+          headline: title,
+          description,
+          datePublished: publishedAt,
+          dateModified: modifiedAt,
+          publisher: {
+            "@type": "Organization",
+            name: "ROWELL",
+            url: SITE_URL,
+          },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+            { "@type": "ListItem", position: 2, name: "Learning Center", item: `${SITE_URL}/learning` },
+            { "@type": "ListItem", position: 3, name: title, item: fullUrl },
+          ],
+        },
+      ],
+    };
+    const metaTags = `
+      <title>${escapeHtml(title)} | ROWELL</title>
+      <meta name="description" content="${escapeHtml(description)}" />
+      <link rel="canonical" href="${fullUrl}" />
+      <meta property="og:type" content="article" />
+      <meta property="og:url" content="${fullUrl}" />
+      <meta property="og:title" content="${escapeHtml(title)} | ROWELL" />
+      <meta property="og:description" content="${escapeHtml(description)}" />
+      <meta property="og:site_name" content="ROWELL" />
+      <meta property="article:published_time" content="${publishedAt}" />
+      <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+
+    template = template.replace(/<title>.*?<\/title>/i, "");
+    template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+    template = template.replace(
+      /<div id="root"><\/div>/,
+      `<div id="root"><article><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/learning">Learning Center</a> / ${escapeHtml(title)}</nav><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p>${articleText ? `<p>${escapeHtml(articleText)}</p>` : ""}</article></div>`
+    );
+    console.log(`[SEO] Injected Learning Center article SSR metadata for: ${article.slug}`);
+    return template;
+  } catch (error) {
+    console.error("[SEO] Error injecting Learning Center article metadata:", error);
     return template;
   }
 }
@@ -704,13 +822,21 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
   ].some((pattern) => pattern.test(requestPath));
 }
 
+function isIndexablePublicSpaRoute(requestPath: string): boolean {
+  if (requestPath === "/404" || requestPath === "/test-filters" || requestPath.startsWith("/admin/")) {
+    return false;
+  }
+  return isKnownPublicSpaRoute(requestPath);
+}
+
 async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteStatus> {
   const productSlug = extractProductSlugFromPath(requestPath);
   const standardsProductSlug = extractStandardsProductSlug(requestPath);
   const resourceSlug = extractSlugFromPath(requestPath);
   const literatureSlug = extractLiteratureSlugFromPath(requestPath);
+  const learningArticleSlug = extractLearningArticleSlug(requestPath);
 
-  if (!productSlug && !standardsProductSlug && !resourceSlug && !literatureSlug) return "active";
+  if (!productSlug && !standardsProductSlug && !resourceSlug && !literatureSlug && !learningArticleSlug) return "active";
 
   try {
     const db = await getDb();
@@ -747,6 +873,14 @@ async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteS
       return records.length === 0 ? "missing" : "active";
     }
 
+    if (learningArticleSlug) {
+      const records = await db.select({ id: articles.id })
+        .from(articles)
+        .where(eq(articles.slug, decodePathSegment(learningArticleSlug)))
+        .limit(1);
+      return records.length === 0 ? "missing" : "active";
+    }
+
     const records = await db.select({ id: resources.id, status: resources.status })
       .from(resources)
       .where(eq(resources.slug, resourceSlug!))
@@ -764,6 +898,22 @@ function redirectLegacyUspIndex(req: any, res: any, next: () => void): void {
   const requestPath = req.originalUrl.split("?")[0].replace(/\/+$/, "") || "/";
   if (requestPath !== "/usp") return next();
   res.redirect(301, "/usp-standards");
+}
+
+/**
+ * Redirect only malformed path variants of known public pages. Query strings
+ * remain available for navigation and analytics; canonical HTML omits them for
+ * indexing. This consolidates trailing/repeated-slash variants without
+ * redirecting every campaign URL.
+ */
+function redirectNonCanonicalPublicPath(req: any, res: any, next: () => void): void {
+  if (req.method !== "GET" && req.method !== "HEAD") return next();
+  const [rawPath, rawQuery = ""] = req.originalUrl.split("?", 2);
+  const canonicalPath = normalizeCanonicalPath(rawPath);
+  if (rawPath !== canonicalPath && isKnownPublicSpaRoute(canonicalPath)) {
+    return res.redirect(301, `${canonicalPath}${rawQuery ? `?${rawQuery}` : ""}`);
+  }
+  return next();
 }
 
 async function redirectLegacyLearningArticle(req: any, res: any, next: () => void): Promise<void> {
@@ -808,6 +958,24 @@ async function redirectLegacyProductUrl(req: any, res: any, next: () => void): P
     return res.redirect(301, `/products/${encodeURIComponent(product.slug)}`);
   } catch (error) {
     console.error("[SEO] Legacy product URL check failed:", error);
+    return next();
+  }
+}
+
+async function redirectLegacyStandardsProductUrl(req: any, res: any, next: () => void): Promise<void> {
+  if (req.method !== "GET" && req.method !== "HEAD") return next();
+  const match = req.originalUrl.match(/^\/standards\/product\/([^/?]+)(\?[^]*)?$/);
+  if (!match) return next();
+
+  try {
+    const { getStandardsProductBySlug } = await import("../db-standards");
+    const requestedKey = decodePathSegment(match[1]);
+    const standard = await getStandardsProductBySlug(requestedKey);
+    const canonicalKey = standard?.slug || standard?.part_number;
+    if (!standard || !canonicalKey || canonicalKey === requestedKey) return next();
+    return res.redirect(301, `/standards/product/${encodeURIComponent(canonicalKey)}${match[2] || ""}`);
+  } catch (error) {
+    console.error("[SEO] Legacy standards product URL check failed:", error);
     return next();
   }
 }
@@ -963,34 +1131,35 @@ function injectStaticPageSeoMetaTags(template: string, requestPath: string): str
  */
 async function injectSeoMetaTags(template: string, req: any, overridePath?: string): Promise<string> {
   // Use overridePath if provided (needed in app.use('*') where req.path is always '/')
-  const effectivePath = overridePath || req.path;
+  const effectivePath = normalizeCanonicalPath(overridePath || req.path);
+  let rendered = template;
   const uspCode = extractUSPLandingCode(effectivePath);
   if (uspCode && USP_LANDING_CODES.includes(uspCode)) {
-    return injectUSPLandingSeoMetaTags(template, effectivePath);
+    rendered = injectUSPLandingSeoMetaTags(template, effectivePath);
+  } else {
+    const categorySlug = extractCategoryLandingSlug(effectivePath);
+    if (categorySlug && CATEGORY_LANDING_SLUGS.includes(categorySlug)) {
+      rendered = injectCategoryLandingSeoMetaTags(template, effectivePath);
+    } else if (effectivePath === "/resources") {
+      rendered = await injectResourcesIndexSeoMetaTags(template);
+    // Try standard and catalog product pages before generic article/static routes.
+    } else if (effectivePath.startsWith('/standards/product/')) {
+      rendered = await injectStandardsProductSeoMetaTags(template, req, effectivePath);
+    } else if (effectivePath.startsWith('/products/')) {
+      rendered = await injectProductSeoMetaTags(template, req, effectivePath);
+    // Then try article pages (/resources/, /learning/, and /learning/literature/).
+    } else if (effectivePath.startsWith('/resources/')) {
+      rendered = await injectArticleSeoMetaTags(template, req, effectivePath);
+    } else if (effectivePath.startsWith('/learning/literature/')) {
+      rendered = await injectArticleSeoMetaTags(template, req, effectivePath);
+    } else if (effectivePath.startsWith('/learning/')) {
+      rendered = await injectLearningArticleSeoMetaTags(template, effectivePath);
+    } else {
+      rendered = injectStaticPageSeoMetaTags(template, effectivePath);
+    }
   }
-  const categorySlug = extractCategoryLandingSlug(effectivePath);
-  if (categorySlug && CATEGORY_LANDING_SLUGS.includes(categorySlug)) {
-    return injectCategoryLandingSeoMetaTags(template, effectivePath);
-  }
-  if (effectivePath === "/resources") {
-    return injectResourcesIndexSeoMetaTags(template);
-  }
-  // Try standard and catalog product pages before generic article/static routes.
-  if (effectivePath.startsWith('/standards/product/')) {
-    return injectStandardsProductSeoMetaTags(template, req, effectivePath);
-  }
-  if (effectivePath.startsWith('/products/')) {
-    return injectProductSeoMetaTags(template, req, effectivePath);
-  }
-  // Then try article pages (/resources/ and /learning/literature/)
-  if (effectivePath.startsWith('/resources/')) {
-    return injectArticleSeoMetaTags(template, req, effectivePath);
-  }
-  // Literature pages use the dedicated literature table.
-  if (effectivePath.startsWith('/learning/literature/')) {
-    return injectArticleSeoMetaTags(template, req, effectivePath);
-  }
-  return injectStaticPageSeoMetaTags(template, effectivePath);
+
+  return enforceSingleCanonical(rendered, effectivePath);
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -1007,10 +1176,12 @@ export async function setupVite(app: Express, server: Server) {
     appType: "custom",
   });
 
-  // Canonicalize legacy article and product URLs before Vite serves the application shell.
+  // Canonicalize malformed and legacy URLs before Vite serves the application shell.
+  app.use(redirectNonCanonicalPublicPath);
   app.use(redirectLegacyUspIndex);
   app.use(redirectLegacyLearningArticle);
   app.use(redirectLegacyProductUrl);
+  app.use(redirectLegacyStandardsProductUrl);
 
   // Use Vite middleware but exclude sitemap.xml and robots.txt
   app.use((req, res, next) => {
@@ -1075,10 +1246,12 @@ export function serveStatic(app: Express) {
     );
   }
 
-  // Canonicalize legacy article and product URLs before static serving or SEO injection.
+  // Canonicalize malformed and legacy URLs before static serving or SEO injection.
+  app.use(redirectNonCanonicalPublicPath);
   app.use(redirectLegacyUspIndex);
   app.use(redirectLegacyLearningArticle);
   app.use(redirectLegacyProductUrl);
+  app.use(redirectLegacyStandardsProductUrl);
 
   // Administrative interfaces are functional application routes, not public search landing pages.
   // Prevent indexing and avoid reusing a stale administrative shell in shared caches.
@@ -1146,14 +1319,10 @@ export function serveStatic(app: Express) {
         return res.status(404).set({ "Content-Type": "text/html" }).send(template);
       }
 
-      const needsMetaInjection =
-        requestPath.startsWith('/standards/product/') ||
-        requestPath.startsWith('/products/') ||
-        requestPath.startsWith('/resources/') ||
-        requestPath.startsWith('/learning/literature/') ||
-        requestPath.startsWith('/categories/') ||
-        requestPath.startsWith('/usp/') ||
-        Object.prototype.hasOwnProperty.call(STATIC_PAGE_SEO, requestPath);
+      // Every indexable public SPA route receives one normalized canonical tag,
+      // including standards categories/search, Learning Center articles and
+      // author routes that previously fell through to a generic static shell.
+      const needsMetaInjection = isIndexablePublicSpaRoute(requestPath);
       
       if (needsMetaInjection) {
         // Read the file, inject meta tags, send as string

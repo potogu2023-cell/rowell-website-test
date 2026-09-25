@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { canonicalUrlForPath } from "@shared/canonical";
 
 interface SEOHeadProps {
   title?: string;
@@ -21,9 +22,9 @@ export function SEOHead({
   publishedTime,
   author = "Rowell HPLC"
 }: SEOHeadProps) {
-  // Always use HTTPS canonical URL to ensure consistent indexing
-  const siteUrl = "https://www.rowellhplc.com";
-  const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
+  // Canonicals must always use one HTTPS host and never inherit a query string,
+  // fragment, repeated slash, or trailing-slash duplicate from the browser URL.
+  const fullUrl = canonicalUrlForPath(url);
   const fullTitle = (title.includes("Rowell HPLC") || title.includes("ROWELL") || title.includes("ROWELL")) ? title : `${title} | ROWELL`;
 
   return (
