@@ -1,0 +1,651 @@
+{
+  "batch_id": "rowell-products-evidence-2026-09-26-wave4-production-53",
+  "namespace": "products",
+  "excluded_namespaces": [
+    "standards_products"
+  ],
+  "approved_record_count": 53,
+  "source_evidence_payload": "/home/ubuntu/rowell-wave4-integrated-evidence-2026-09-26/integrated-55-evidence-payload.json",
+  "excluded_records_due_to_production_404": [
+    "693775-902T",
+    "693775-905T"
+  ],
+  "records": [
+    {
+      "slug": "restek-9160572",
+      "brand": "Restek",
+      "part_number": "9160572",
+      "values": {
+        "manufacturer_part_number": "9160572",
+        "pore_size": "60 Å",
+        "carbon_load": null,
+        "ph_range": null,
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-916556et",
+      "brand": "Restek",
+      "part_number": "916556E-T",
+      "values": {
+        "manufacturer_part_number": "916556E-T",
+        "pore_size": "60 Å",
+        "carbon_load": null,
+        "ph_range": null,
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9175312t",
+      "brand": "Restek",
+      "part_number": "9175312-T",
+      "values": {
+        "manufacturer_part_number": "9175312-T",
+        "pore_size": "100 Å",
+        "carbon_load": "12%",
+        "ph_range": null,
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9175332t",
+      "brand": "Restek",
+      "part_number": "9175332-T",
+      "values": {
+        "manufacturer_part_number": "9175332-T",
+        "pore_size": "100 Å",
+        "carbon_load": "12%",
+        "ph_range": null,
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9175565t",
+      "brand": "Restek",
+      "part_number": "9175565-T",
+      "values": {
+        "manufacturer_part_number": "9175565-T",
+        "pore_size": "100 Å",
+        "carbon_load": "12%",
+        "ph_range": null,
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9310a12t",
+      "brand": "Restek",
+      "part_number": "9310A12-T",
+      "values": {
+        "manufacturer_part_number": "9310A12-T",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9310a52t",
+      "brand": "Restek",
+      "part_number": "9310A52-T",
+      "values": {
+        "manufacturer_part_number": "9310A52-T",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9311a12t",
+      "brand": "Restek",
+      "part_number": "9311A12-T",
+      "values": {
+        "manufacturer_part_number": "9311A12-T",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9311a32",
+      "brand": "Restek",
+      "part_number": "9311A32",
+      "values": {
+        "manufacturer_part_number": "9311A32",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9311a32t",
+      "brand": "Restek",
+      "part_number": "9311A32-T",
+      "values": {
+        "manufacturer_part_number": "9311A32-T",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9311a52t",
+      "brand": "Restek",
+      "part_number": "9311A52-T",
+      "values": {
+        "manufacturer_part_number": "9311A52-T",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9314262",
+      "brand": "Restek",
+      "part_number": "9314262",
+      "values": {
+        "manufacturer_part_number": "9314262",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (1.8 µm), 7% (2.7 μm), 5% (5 μm)",
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9314262t",
+      "brand": "Restek",
+      "part_number": "9314262-T",
+      "values": {
+        "manufacturer_part_number": "9314262-T",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (1.8 µm), 7% (2.7 μm)",
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9314a12t",
+      "brand": "Restek",
+      "part_number": "9314A12-T",
+      "values": {
+        "manufacturer_part_number": "9314A12-T",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (1.8 µm), 7% (2.7 μm)",
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9314a62t",
+      "brand": "Restek",
+      "part_number": "9314A62-T",
+      "values": {
+        "manufacturer_part_number": "9314A62-T",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (1.8 µm), 7% (2.7 μm)",
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9314a65",
+      "brand": "Restek",
+      "part_number": "9314A65",
+      "values": {
+        "manufacturer_part_number": "9314A65",
+        "pore_size": "90 Å",
+        "carbon_load": "7% (1.8 µm), 7% (2.7 μm), 5% (5 μm)",
+        "ph_range": "1.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9319a12",
+      "brand": "Restek",
+      "part_number": "9319A12",
+      "values": {
+        "manufacturer_part_number": "9319A12",
+        "pore_size": "90 Å",
+        "carbon_load": "4% (1.8 µm), 4% (2.7 µm), 3% (5 µm)",
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9319a1e",
+      "brand": "Restek",
+      "part_number": "9319A1E",
+      "values": {
+        "manufacturer_part_number": "9319A1E",
+        "pore_size": "90 Å",
+        "carbon_load": "4% (1.8 µm), 4% (2.7 µm), 3% (5 µm)",
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-9325a12",
+      "brand": "Restek",
+      "part_number": "9325A12",
+      "values": {
+        "manufacturer_part_number": "9325A12",
+        "pore_size": "90 Å",
+        "carbon_load": null,
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "186005407",
+      "brand": "Waters",
+      "part_number": "186005407",
+      "values": {
+        "manufacturer_part_number": "186005407",
+        "pore_size": "130 Å",
+        "carbon_load": "14%",
+        "ph_range": null,
+        "usp_code": "USP L11"
+      }
+    },
+    {
+      "slug": "waters-186003975",
+      "brand": "Waters",
+      "part_number": "186003975",
+      "values": {
+        "manufacturer_part_number": "186003975",
+        "pore_size": "130 Å",
+        "carbon_load": "18%",
+        "ph_range": null,
+        "usp_code": "USP L1"
+      }
+    },
+    {
+      "slug": "waters-186003976",
+      "brand": "Waters",
+      "part_number": "186003976",
+      "values": {
+        "manufacturer_part_number": "186003976",
+        "pore_size": "100 Å",
+        "carbon_load": "11%",
+        "ph_range": null,
+        "usp_code": "USP L1"
+      }
+    },
+    {
+      "slug": "waters-186003977",
+      "brand": "Waters",
+      "part_number": "186003977",
+      "values": {
+        "manufacturer_part_number": "186003977",
+        "pore_size": "130 Å",
+        "carbon_load": "17%",
+        "ph_range": null,
+        "usp_code": "USP L1"
+      }
+    },
+    {
+      "slug": "waters-186005302",
+      "brand": "Waters",
+      "part_number": "186005302",
+      "values": {
+        "manufacturer_part_number": "186005302",
+        "pore_size": "130 Å",
+        "carbon_load": "15%",
+        "ph_range": null,
+        "usp_code": "USP L1"
+      }
+    },
+    {
+      "slug": "waters-186005303",
+      "brand": "Waters",
+      "part_number": "186005303",
+      "values": {
+        "manufacturer_part_number": "186005303",
+        "pore_size": "130 Å",
+        "carbon_load": "15%",
+        "ph_range": null,
+        "usp_code": "USP L1"
+      }
+    },
+    {
+      "slug": "agilent-693768901",
+      "brand": "Agilent",
+      "part_number": "693768-901",
+      "values": {
+        "manufacturer_part_number": "693768-901",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693775-902",
+      "brand": "Agilent",
+      "part_number": "693775-902",
+      "values": {
+        "manufacturer_part_number": "693775-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-693968301",
+      "brand": "Agilent",
+      "part_number": "693968-301",
+      "values": {
+        "manufacturer_part_number": "693968-301",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-693968901",
+      "brand": "Agilent",
+      "part_number": "693968-901",
+      "values": {
+        "manufacturer_part_number": "693968-901",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693970-902",
+      "brand": "Agilent",
+      "part_number": "693970-902",
+      "values": {
+        "manufacturer_part_number": "693970-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693975-702",
+      "brand": "Agilent",
+      "part_number": "693975-702",
+      "values": {
+        "manufacturer_part_number": "693975-702",
+        "pore_size": "100 Å",
+        "carbon_load": "Proprietary",
+        "ph_range": "2.0–11.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693975-901",
+      "brand": "Agilent",
+      "part_number": "693975-901",
+      "values": {
+        "manufacturer_part_number": "693975-901",
+        "pore_size": "120 Å",
+        "carbon_load": null,
+        "ph_range": "0.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693975-902",
+      "brand": "Agilent",
+      "part_number": "693975-902",
+      "values": {
+        "manufacturer_part_number": "693975-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693975-906",
+      "brand": "Agilent",
+      "part_number": "693975-906",
+      "values": {
+        "manufacturer_part_number": "693975-906",
+        "pore_size": "120 Å",
+        "carbon_load": "5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "693975-912",
+      "brand": "Agilent",
+      "part_number": "693975-912",
+      "values": {
+        "manufacturer_part_number": "693975-912",
+        "pore_size": "120 Å",
+        "carbon_load": "9%",
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695675-902",
+      "brand": "Agilent",
+      "part_number": "695675-902",
+      "values": {
+        "manufacturer_part_number": "695675-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-695768901",
+      "brand": "Agilent",
+      "part_number": "695768-901",
+      "values": {
+        "manufacturer_part_number": "695768-901",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695775-902",
+      "brand": "Agilent",
+      "part_number": "695775-902",
+      "values": {
+        "manufacturer_part_number": "695775-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695775-906",
+      "brand": "Agilent",
+      "part_number": "695775-906",
+      "values": {
+        "manufacturer_part_number": "695775-906",
+        "pore_size": "120 Å",
+        "carbon_load": "5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-695968301",
+      "brand": "Agilent",
+      "part_number": "695968-301",
+      "values": {
+        "manufacturer_part_number": "695968-301",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-695968901",
+      "brand": "Agilent",
+      "part_number": "695968-901",
+      "values": {
+        "manufacturer_part_number": "695968-901",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695970-902",
+      "brand": "Agilent",
+      "part_number": "695970-902",
+      "values": {
+        "manufacturer_part_number": "695970-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695975-702",
+      "brand": "Agilent",
+      "part_number": "695975-702",
+      "values": {
+        "manufacturer_part_number": "695975-702",
+        "pore_size": "100 Å",
+        "carbon_load": "Proprietary",
+        "ph_range": "2.0–11.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695975-901",
+      "brand": "Agilent",
+      "part_number": "695975-901",
+      "values": {
+        "manufacturer_part_number": "695975-901",
+        "pore_size": "120 Å",
+        "carbon_load": null,
+        "ph_range": "0.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695975-902",
+      "brand": "Agilent",
+      "part_number": "695975-902",
+      "values": {
+        "manufacturer_part_number": "695975-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "695975-912",
+      "brand": "Agilent",
+      "part_number": "695975-912",
+      "values": {
+        "manufacturer_part_number": "695975-912",
+        "pore_size": "120 Å",
+        "carbon_load": "9%",
+        "ph_range": "2.0–8.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "699675-902",
+      "brand": "Agilent",
+      "part_number": "699675-902",
+      "values": {
+        "manufacturer_part_number": "699675-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-699768901",
+      "brand": "Agilent",
+      "part_number": "699768-901",
+      "values": {
+        "manufacturer_part_number": "699768-901",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "699775-902",
+      "brand": "Agilent",
+      "part_number": "699775-902",
+      "values": {
+        "manufacturer_part_number": "699775-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-699968301",
+      "brand": "Agilent",
+      "part_number": "699968-301",
+      "values": {
+        "manufacturer_part_number": "699968-301",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "agilent-699968901",
+      "brand": "Agilent",
+      "part_number": "699968-901",
+      "values": {
+        "manufacturer_part_number": "699968-901",
+        "pore_size": "120 Å",
+        "carbon_load": "9.5%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "699975-902",
+      "brand": "Agilent",
+      "part_number": "699975-902",
+      "values": {
+        "manufacturer_part_number": "699975-902",
+        "pore_size": "120 Å",
+        "carbon_load": "10%",
+        "ph_range": "2.0–9.0",
+        "usp_code": null
+      }
+    },
+    {
+      "slug": "restek-27854",
+      "brand": "Restek",
+      "part_number": "27854",
+      "values": {
+        "manufacturer_part_number": "27854",
+        "pore_size": null,
+        "carbon_load": null,
+        "ph_range": "2.5 to 8",
+        "usp_code": null
+      }
+    }
+  ]
+}
