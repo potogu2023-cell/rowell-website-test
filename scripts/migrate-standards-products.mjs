@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import mysql from "mysql2/promise";
 
 export async function runStandardsProductsMigration() {
-  const batch = JSON.parse(await fs.readFile(new URL("./standards-products-batch-2026-09-26-wave6.json", import.meta.url), "utf8"));
+  const batch = JSON.parse(await fs.readFile(new URL("./standards-products-batch-2026-09-26-wave7.json", import.meta.url), "utf8"));
   const records = batch.records;
   if (batch.namespace !== "standards_products" || !batch.excluded_namespaces?.includes("products")) throw new Error("standards_batch_scope_invalid");
   if (records.length !== 500 || batch.approved_record_count !== 500) throw new Error(`standards_batch_record_count_invalid:${records.length}`);
