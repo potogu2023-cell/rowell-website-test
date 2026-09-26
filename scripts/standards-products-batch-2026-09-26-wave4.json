@@ -1,0 +1,5011 @@
+{
+  "batch_id": "anpel-standards-wave4-500-2026-09-26",
+  "source": "ANPEL_Standards_Normalized.csv records 1601-2100",
+  "namespace": "standards_products",
+  "excluded_namespaces": [
+    "products"
+  ],
+  "approved_record_count": 500,
+  "records": [
+    {
+      "part_number": "CDAA-270095-100mg",
+      "name_en": "N-Acetyl-L-methionine",
+      "name_cn": "N-乙酰-L-蛋氨酸",
+      "cas_number": "65-82-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270095-100mg"
+    },
+    {
+      "part_number": "CDAA-270095-10mg",
+      "name_en": "N-Acetyl-L-methionine",
+      "name_cn": "N-乙酰-L-蛋氨酸",
+      "cas_number": "65-82-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270095-10mg"
+    },
+    {
+      "part_number": "CDAA-270096-100mg",
+      "name_en": "N-Acetyl-L-Aspartic Acid",
+      "name_cn": "N-乙酰-L-天冬氨酸",
+      "cas_number": "997-55-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270096-100mg"
+    },
+    {
+      "part_number": "CDAA-270096-10mg",
+      "name_en": "N-Acetyl-L-aspartic acid",
+      "name_cn": "N-乙酰-L-天门冬氨酸",
+      "cas_number": "997-55-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270096-10mg"
+    },
+    {
+      "part_number": "CDAA-270097-1mg",
+      "name_en": "DL-Hydroxykynurenine",
+      "name_cn": "DL-羟基犬尿素",
+      "cas_number": "484-78-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270097-1mg"
+    },
+    {
+      "part_number": "CDAA-270098-10mg",
+      "name_en": "Adenosine 5'-diphosphate",
+      "name_cn": "腺苷-5'-二磷酸",
+      "cas_number": "58-64-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270098-10mg"
+    },
+    {
+      "part_number": "CDAA-270099-1mg",
+      "name_en": "Nicotinamide adenine dinucleotide phosphate",
+      "name_cn": "烟酰胺腺嘌呤二核苷酸磷酸",
+      "cas_number": "53-59-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-270099-1mg"
+    },
+    {
+      "part_number": "CDAA-27010013CD4-1mg",
+      "name_en": "L-Arginine-13C,d4 Dihydrochloride",
+      "name_cn": "L-精氨酸-13C，d4 二盐酸盐",
+      "cas_number": "1119-34-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-27010013CD4-1mg"
+    },
+    {
+      "part_number": "CDAA-271000-1mg",
+      "name_en": "Pyrraline",
+      "name_cn": "Ε-吡咯赖氨酸",
+      "cas_number": "74509-14-1",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271000-1mg"
+    },
+    {
+      "part_number": "CDAA-271001-100mg",
+      "name_en": "cis-4-Hydroxy-L-proline",
+      "name_cn": "顺式-L-羟脯氨酸",
+      "cas_number": "618-27-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271001-100mg"
+    },
+    {
+      "part_number": "CDAA-271002-1mg",
+      "name_en": "Seleno-D，L-ethionine",
+      "name_cn": "硒-D，L-乙硫氨酸",
+      "cas_number": "2578-27-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271002-1mg"
+    },
+    {
+      "part_number": "CDAA-271003-100mg",
+      "name_en": "L-Methionine sulfone",
+      "name_cn": "L-蛋氨酸砜",
+      "cas_number": "7314-32-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271003-100mg"
+    },
+    {
+      "part_number": "CDAA-271004-100mg",
+      "name_en": "DL-Cystenine",
+      "name_cn": "DL-半胱氨酸",
+      "cas_number": "3374-22-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271004-100mg"
+    },
+    {
+      "part_number": "CDAA-271005-100mg",
+      "name_en": "DL-Threonine",
+      "name_cn": "DL-苏氨酸",
+      "cas_number": "80-68-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271005-100mg"
+    },
+    {
+      "part_number": "CDAA-271006-100mg",
+      "name_en": "DL-Methionine?sulfone",
+      "name_cn": "DL-蛋氨酸砜",
+      "cas_number": "820-10-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271006-100mg"
+    },
+    {
+      "part_number": "CDAA-271007-500mg",
+      "name_en": "D-(+)-Threonine",
+      "name_cn": "高瓜氨酸",
+      "cas_number": "1190-49-4",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271007-500mg"
+    },
+    {
+      "part_number": "CDAA-271008-100mg",
+      "name_en": "DL-leucine",
+      "name_cn": "DL-亮氨酸",
+      "cas_number": "328-39-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271008-100mg"
+    },
+    {
+      "part_number": "CDAA-271008-250mg",
+      "name_en": "D-Aspartic Acid",
+      "name_cn": "DL-亮氨酸",
+      "cas_number": "328-39-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271008-250mg"
+    },
+    {
+      "part_number": "CDAA-271009-500mg",
+      "name_en": "D-Cysteine",
+      "name_cn": "D-(+)-苏氨酸",
+      "cas_number": "632-20-2",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271009-500mg"
+    },
+    {
+      "part_number": "CDAA-271010-500mg",
+      "name_en": "DL-Arginine",
+      "name_cn": "D-天冬氨酸",
+      "cas_number": "1783-96-6",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271010-500mg"
+    },
+    {
+      "part_number": "CDAA-271011-250mg",
+      "name_en": "Dl-Asparagine Hydrate",
+      "name_cn": "D-半胱氨酸",
+      "cas_number": "921-01-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271011-250mg"
+    },
+    {
+      "part_number": "CDAA-271012-250mg",
+      "name_en": "Dl-Isoleucine",
+      "name_cn": "DL-精氨酸",
+      "cas_number": "7200-25-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271012-250mg"
+    },
+    {
+      "part_number": "CDAA-271013-250mg",
+      "name_en": "D-2-Amino-4-Methylpentanoic Acid",
+      "name_cn": "DL-天冬素",
+      "cas_number": "3130-87-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271013-250mg"
+    },
+    {
+      "part_number": "CDAA-271014-250mg",
+      "name_en": "L-Pipecolic Acid",
+      "name_cn": "DL-异亮氨酸",
+      "cas_number": "443-79-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271014-250mg"
+    },
+    {
+      "part_number": "CDAA-271015-1g",
+      "name_en": "D-Pipecolic Acid",
+      "name_cn": "D型亮氨酸",
+      "cas_number": "328-38-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271015-1g"
+    },
+    {
+      "part_number": "CDAA-271016-100mg",
+      "name_en": "D-Norvaline",
+      "name_cn": "L-哌啶酸",
+      "cas_number": "3105-95-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271016-100mg"
+    },
+    {
+      "part_number": "CDAA-271017-100mg",
+      "name_en": "N-(tert-Butoxycarbonyl)-D-tyrosine",
+      "name_cn": "D-哌可啉酸",
+      "cas_number": "1723-00-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271017-100mg"
+    },
+    {
+      "part_number": "CDAA-271018-100mg",
+      "name_en": "D-Cycloserine",
+      "name_cn": "D-正缬氨酸",
+      "cas_number": "2013-12-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271018-100mg"
+    },
+    {
+      "part_number": "CDAA-271019-100mg",
+      "name_en": "Glycyl-L-Glutamine",
+      "name_cn": "N-(叔丁氧羰基)-D-酪氨酸",
+      "cas_number": "70642-86-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271019-100mg"
+    },
+    {
+      "part_number": "CDAA-271020-100mg",
+      "name_en": "N-[(9H-Fluoren-9-ylmethoxy)carbonyl]-L-isoleucine",
+      "name_cn": "D-环丝氨酸",
+      "cas_number": "68-41-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271020-100mg"
+    },
+    {
+      "part_number": "CDAA-271021-100mg",
+      "name_en": "Sodium 2-((hydroxymethyl)amino)acetate",
+      "name_cn": "甘氨酰-L-谷氨酰胺",
+      "cas_number": "13115-71-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271021-100mg"
+    },
+    {
+      "part_number": "CDAA-271022-100mg",
+      "name_en": "L-Lysine Acetate",
+      "name_cn": "Fmoc-L-异亮氨酸",
+      "cas_number": "71989-23-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271022-100mg"
+    },
+    {
+      "part_number": "CDAA-271023-50mg",
+      "name_en": "D-Histidine",
+      "name_cn": "N-羟甲基甘氨酸钠",
+      "cas_number": "70161-44-3",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271023-50mg"
+    },
+    {
+      "part_number": "CDAA-271024-500mg",
+      "name_en": "4-Methoxy-L-Phenylalanine",
+      "name_cn": "L-醋酸赖氨酸",
+      "cas_number": "57282-49-2",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271024-500mg"
+    },
+    {
+      "part_number": "CDAA-271025-500mg",
+      "name_en": "Sodium L-Glutamate Monohydrate",
+      "name_cn": "D-组氨酸",
+      "cas_number": "351-50-8",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271025-500mg"
+    },
+    {
+      "part_number": "CDAA-271026-500mg",
+      "name_en": "Glycylglycylglycine",
+      "name_cn": "O-甲基-L-酪氨酸",
+      "cas_number": "6230-11-1",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271026-500mg"
+    },
+    {
+      "part_number": "CDAA-271027-500mg",
+      "name_en": "2,3-Dihydroxybenzoic Acid",
+      "name_cn": "L-谷氨酸钠 一水合物",
+      "cas_number": "6106-04-3",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271027-500mg"
+    },
+    {
+      "part_number": "CDAA-271028-250mg",
+      "name_en": "L-Lysine L-Malate",
+      "name_cn": "甘氨酰甘氨酰甘氨酸",
+      "cas_number": "556-33-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271028-250mg"
+    },
+    {
+      "part_number": "CDAA-271029-250mg",
+      "name_en": "D-p-Methyl Sulfone Phenyl Ethyl Serinate",
+      "name_cn": "2,3-二羟基苯甲酸",
+      "cas_number": "303-38-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271029-250mg"
+    },
+    {
+      "part_number": "CDAA-271030-1g",
+      "name_en": "L-2-Aminoadipic Acid",
+      "name_cn": "L-赖氨酸 (2S)-2-羟基丁二酸盐",
+      "cas_number": "71555-10-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271030-1g"
+    },
+    {
+      "part_number": "CDAA-271031-1g",
+      "name_en": "D-Isoleucine",
+      "name_cn": "D-苏式-Beta-对甲砜基苯基丝氨酸乙酯",
+      "cas_number": "36983-12-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271031-1g"
+    },
+    {
+      "part_number": "CDAA-271032-100mg",
+      "name_en": "D-Citrulline",
+      "name_cn": "L-2-氨基己二酸",
+      "cas_number": "1118-90-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271032-100mg"
+    },
+    {
+      "part_number": "CDAA-271033-100mg",
+      "name_en": "Ademethionine 1，4-Butanedisulfonate",
+      "name_cn": "D型异亮氨酸",
+      "cas_number": "319-78-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271033-100mg"
+    },
+    {
+      "part_number": "CDAA-271034-100mg",
+      "name_en": "D-Phenylalanine",
+      "name_cn": "D-瓜氨酸",
+      "cas_number": "13594-51-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271034-100mg"
+    },
+    {
+      "part_number": "CDAA-271035-100mg",
+      "name_en": "Nepsilon-Acetyl-L-lysine",
+      "name_cn": "S-腺苷蛋氨酸1,4-丁二磺酸盐",
+      "cas_number": "101020-79-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271035-100mg"
+    },
+    {
+      "part_number": "CDAA-271036-100mg",
+      "name_en": "Polydatin",
+      "name_cn": "D型苯并氨酸",
+      "cas_number": "673-06-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271036-100mg"
+    },
+    {
+      "part_number": "CDAA-271037-100mg",
+      "name_en": "10-Hydroxydecanoic Acid",
+      "name_cn": "Nε-乙酰基-L-赖氨酸",
+      "cas_number": "692-04-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271037-100mg"
+    },
+    {
+      "part_number": "CDAA-271038-10mg",
+      "name_en": "Ac-Lys (Ac)-Oh",
+      "name_cn": "(S)-2，6-二乙酰氨基己酸",
+      "cas_number": "499-86-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271038-10mg"
+    },
+    {
+      "part_number": "CDAA-271039-5mg",
+      "name_en": "Folitixorin(Mixture of Diastereomers)",
+      "name_cn": "5，10-亚甲基四氢叶酸(非对映体的混合物)",
+      "cas_number": "3432-99-3",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271039-5mg"
+    },
+    {
+      "part_number": "CDAA-271040-5mg",
+      "name_en": "R，S-(5’-Adenosyl)-L-Methionine P-Toluenesulfonate Salt",
+      "name_cn": "R，S-(5’-腺苷)-L-蛋氨酸对甲苯磺酸盐",
+      "cas_number": "52248-03-0",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271040-5mg"
+    },
+    {
+      "part_number": "CDAA-271041-10mg",
+      "name_en": "Phosphatidylserine",
+      "name_cn": "磷脂酰丝氨酸",
+      "cas_number": "51446-62-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271041-10mg"
+    },
+    {
+      "part_number": "CDAA-271041-1mg",
+      "name_en": "Phosphatidylserine",
+      "name_cn": "磷脂酰丝氨酸",
+      "cas_number": "51446-62-9",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271041-1mg"
+    },
+    {
+      "part_number": "CDAA-271042-10mg",
+      "name_en": "Nε-(1-Carboxymethyl)-L-lysine",
+      "name_cn": "Nε-(1-羧甲基)-L-赖氨酸",
+      "cas_number": "5746-04-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271042-10mg"
+    },
+    {
+      "part_number": "CDAA-271042-1mg",
+      "name_en": "Nε-(1-Carboxymethyl)-L-lysine",
+      "name_cn": "Nε-(1-羧甲基)-L-赖氨酸",
+      "cas_number": "5746-04-3",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-271042-1mg"
+    },
+    {
+      "part_number": "CDAA-280001-20mg",
+      "name_en": "Quercetin",
+      "name_cn": "槲皮素",
+      "cas_number": "117-39-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280001-20mg"
+    },
+    {
+      "part_number": "CDAA-280002-250mg",
+      "name_en": "Myo-inositol",
+      "name_cn": "肌醇",
+      "cas_number": "87-89-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280002-250mg"
+    },
+    {
+      "part_number": "CDAA-280003-20mg",
+      "name_en": "Ursolic acid",
+      "name_cn": "熊果酸",
+      "cas_number": "77-52-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280003-20mg"
+    },
+    {
+      "part_number": "CDAA-280004-20mg",
+      "name_en": "Genistein",
+      "name_cn": "染料木素",
+      "cas_number": "446-72-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280004-20mg"
+    },
+    {
+      "part_number": "CDAA-280005-1g",
+      "name_en": "β-Sitosterol",
+      "name_cn": "β-谷甾醇",
+      "cas_number": "83-46-5",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280005-1g"
+    },
+    {
+      "part_number": "CDAA-280005-20mg",
+      "name_en": "β-Sitosterol",
+      "name_cn": "β-谷甾醇",
+      "cas_number": "83-46-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280005-20mg"
+    },
+    {
+      "part_number": "CDAA-280006-100mg",
+      "name_en": "L-Epicatechin",
+      "name_cn": "表儿茶素",
+      "cas_number": "490-46-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280006-100mg"
+    },
+    {
+      "part_number": "CDAA-280006-20mg",
+      "name_en": "L-Epicatechin",
+      "name_cn": "表儿茶素",
+      "cas_number": "490-46-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280006-20mg"
+    },
+    {
+      "part_number": "CDAA-280006-250mg",
+      "name_en": "L-Epicatechin",
+      "name_cn": "表儿茶素",
+      "cas_number": "490-46-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280006-250mg"
+    },
+    {
+      "part_number": "CDAA-280007-20mg",
+      "name_en": "Cordycepin",
+      "name_cn": "虫草素",
+      "cas_number": "73-03-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280007-20mg"
+    },
+    {
+      "part_number": "CDAA-280008-20mg",
+      "name_en": "Daidzin",
+      "name_cn": "大豆苷",
+      "cas_number": "552-66-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280008-20mg"
+    },
+    {
+      "part_number": "CDAA-280009-20mg",
+      "name_en": "Daidzein",
+      "name_cn": "大豆苷元",
+      "cas_number": "486-66-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280009-20mg"
+    },
+    {
+      "part_number": "CDAA-280010-20mg",
+      "name_en": "Salidroside",
+      "name_cn": "红景天苷",
+      "cas_number": "10338-51-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280010-20mg"
+    },
+    {
+      "part_number": "CDAA-280011-20mg",
+      "name_en": "Glycitin",
+      "name_cn": "黄豆黄苷",
+      "cas_number": "40246-10-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280011-20mg"
+    },
+    {
+      "part_number": "CDAA-280012-20mg",
+      "name_en": "Genistin",
+      "name_cn": "染料木苷",
+      "cas_number": "529-59-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280012-20mg"
+    },
+    {
+      "part_number": "CDAA-280013-20mg",
+      "name_en": "Ginsenoside Rb1",
+      "name_cn": "人参皂苷Rb1",
+      "cas_number": "41753-43-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280013-20mg"
+    },
+    {
+      "part_number": "CDAA-280014-20mg",
+      "name_en": "Ginsenoside Re",
+      "name_cn": "人参皂苷Re",
+      "cas_number": "52286-59-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280014-20mg"
+    },
+    {
+      "part_number": "CDAA-280015-20mg",
+      "name_en": "Ginsenoside Rg1",
+      "name_cn": "人参皂苷Rg1",
+      "cas_number": "22427-39-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280015-20mg"
+    },
+    {
+      "part_number": "CDAA-280016-20mg",
+      "name_en": "Isorhamnetin",
+      "name_cn": "异鼠李素",
+      "cas_number": "480-19-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280016-20mg"
+    },
+    {
+      "part_number": "CDAA-280017-20mg",
+      "name_en": "Geniposide",
+      "name_cn": "栀子苷",
+      "cas_number": "24512-63-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280017-20mg"
+    },
+    {
+      "part_number": "CDAA-280018-100mg",
+      "name_en": "Rutin",
+      "name_cn": "芦丁",
+      "cas_number": "153-18-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280018-100mg"
+    },
+    {
+      "part_number": "CDAA-280018-20mg",
+      "name_en": "Rutin",
+      "name_cn": "芦丁",
+      "cas_number": "153-18-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280018-20mg"
+    },
+    {
+      "part_number": "CDAA-280019-25mg",
+      "name_en": "Atropine sulfate",
+      "name_cn": "硫酸阿托品",
+      "cas_number": "55-48-1",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280019-25mg"
+    },
+    {
+      "part_number": "CDAA-280020-20mg",
+      "name_en": "Ginsenoside Rc",
+      "name_cn": "人参皂苷RC",
+      "cas_number": "11021-14-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280020-20mg"
+    },
+    {
+      "part_number": "CDAA-280021-20mg",
+      "name_en": "Adenosine",
+      "name_cn": "腺苷",
+      "cas_number": "58-61-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280021-20mg"
+    },
+    {
+      "part_number": "CDAA-280022-10mg",
+      "name_en": "L-Stepholidine",
+      "name_cn": "左旋千金藤啶碱",
+      "cas_number": "16562-13-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280022-10mg"
+    },
+    {
+      "part_number": "CDAA-280023-10mg",
+      "name_en": "(-)-Curine",
+      "name_cn": "左旋箭毒碱",
+      "cas_number": "436-05-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280023-10mg"
+    },
+    {
+      "part_number": "CDAA-280024-20mg",
+      "name_en": "Levodopa",
+      "name_cn": "左旋多巴",
+      "cas_number": "59-92-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280024-20mg"
+    },
+    {
+      "part_number": "CDAA-280025-20mg",
+      "name_en": "Kavain",
+      "name_cn": "醉椒素",
+      "cas_number": "3155-48-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280025-20mg"
+    },
+    {
+      "part_number": "CDAA-280027-20mg",
+      "name_en": "Jaceosidin",
+      "name_cn": "棕矢车菊素",
+      "cas_number": "18085-97-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280027-20mg"
+    },
+    {
+      "part_number": "CDAA-280028-10mg",
+      "name_en": "Campesterol",
+      "name_cn": "菜油甾醇",
+      "cas_number": "474-62-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280028-10mg"
+    },
+    {
+      "part_number": "CDAA-280029-10mg",
+      "name_en": "(-)-Catechin gallate",
+      "name_cn": "(-)-儿茶素没食子酸酯",
+      "cas_number": "130405-40-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280029-10mg"
+    },
+    {
+      "part_number": "CDAA-280031-20mg",
+      "name_en": "Astragalin",
+      "name_cn": "紫云英苷",
+      "cas_number": "480-10-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280031-20mg"
+    },
+    {
+      "part_number": "CDAA-280032-20mg",
+      "name_en": "shionone",
+      "name_cn": "紫菀酮",
+      "cas_number": "10376-48-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280032-20mg"
+    },
+    {
+      "part_number": "CDAA-280033-10mg",
+      "name_en": "Perillen",
+      "name_cn": "紫苏烯",
+      "cas_number": "539-52-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280033-10mg"
+    },
+    {
+      "part_number": "CDAA-280034-100mg",
+      "name_en": "Perillartine",
+      "name_cn": "紫苏葶",
+      "cas_number": "30950-27-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280034-100mg"
+    },
+    {
+      "part_number": "CDAA-280034-20mg",
+      "name_en": "Perillartine",
+      "name_cn": "紫苏葶",
+      "cas_number": "30950-27-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280034-20mg"
+    },
+    {
+      "part_number": "CDAA-280035-20mg",
+      "name_en": "L-Perillaldehyde",
+      "name_cn": "紫苏醛",
+      "cas_number": "18031-40-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280035-20mg"
+    },
+    {
+      "part_number": "CDAA-280036-20mg",
+      "name_en": "Perillyl Alcohol",
+      "name_cn": "紫苏醇",
+      "cas_number": "536-59-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280036-20mg"
+    },
+    {
+      "part_number": "CDAA-280038-20mg",
+      "name_en": "Paclitaxel",
+      "name_cn": "紫杉醇",
+      "cas_number": "33069-62-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280038-20mg"
+    },
+    {
+      "part_number": "CDAA-280040-20mg",
+      "name_en": "Ionone",
+      "name_cn": "紫罗兰酮（异构体混合物）",
+      "cas_number": "8013-90-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280040-20mg"
+    },
+    {
+      "part_number": "CDAA-280041-10mg",
+      "name_en": "Ligupurpuroside D",
+      "name_cn": "紫茎女贞苷D",
+      "cas_number": "1194056-35-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280041-10mg"
+    },
+    {
+      "part_number": "CDAA-280042-10mg",
+      "name_en": "Ligupurpuroside C",
+      "name_cn": "紫茎女贞苷C",
+      "cas_number": "1194056-33-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280042-10mg"
+    },
+    {
+      "part_number": "CDAA-280043-10mg",
+      "name_en": "Ligupurpuroside B",
+      "name_cn": "紫茎女贞苷B",
+      "cas_number": "147396-02-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280043-10mg"
+    },
+    {
+      "part_number": "CDAA-280044-10mg",
+      "name_en": "Ligupurpuroside A",
+      "name_cn": "紫茎女贞苷A",
+      "cas_number": "147396-01-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280044-10mg"
+    },
+    {
+      "part_number": "CDAA-280045-10mg",
+      "name_en": "Corydine",
+      "name_cn": "紫菫定酚",
+      "cas_number": "476-69-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280045-10mg"
+    },
+    {
+      "part_number": "CDAA-280046-20mg",
+      "name_en": "(+)-corynoline",
+      "name_cn": "紫堇灵",
+      "cas_number": "18797-79-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280046-20mg"
+    },
+    {
+      "part_number": "CDAA-280047-5mg",
+      "name_en": "Corytuberine",
+      "name_cn": "紫堇块茎碱",
+      "cas_number": "517-56-6",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280047-5mg"
+    },
+    {
+      "part_number": "CDAA-280048-20mg",
+      "name_en": "nodakenin",
+      "name_cn": "紫花前胡苷",
+      "cas_number": "495-31-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280048-20mg"
+    },
+    {
+      "part_number": "CDAA-280049-20mg",
+      "name_en": "lithospermic acid",
+      "name_cn": "紫草酸",
+      "cas_number": "28831-65-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280049-20mg"
+    },
+    {
+      "part_number": "CDAA-280050-20mg",
+      "name_en": "Shikonin",
+      "name_cn": "紫草素",
+      "cas_number": "517-89-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280050-20mg"
+    },
+    {
+      "part_number": "CDAA-280051-20mg",
+      "name_en": "Lithosprmoside",
+      "name_cn": "紫草氰苷",
+      "cas_number": "63492-69-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280051-20mg"
+    },
+    {
+      "part_number": "CDAA-280052-5mg",
+      "name_en": "Catalponol",
+      "name_cn": "梓酚",
+      "cas_number": "34168-56-4",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280052-5mg"
+    },
+    {
+      "part_number": "CDAA-280053-20mg",
+      "name_en": "Catalpol",
+      "name_cn": "梓醇",
+      "cas_number": "2415-24-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280053-20mg"
+    },
+    {
+      "part_number": "CDAA-280054-20mg",
+      "name_en": "Raddeanin(Anemodeanin) A",
+      "name_cn": "竹节香附素A",
+      "cas_number": "89412-79-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280054-20mg"
+    },
+    {
+      "part_number": "CDAA-280055-20mg",
+      "name_en": "Chikusetsu saponin Ⅳa",
+      "name_cn": "竹节参皂苷IVa",
+      "cas_number": "51415-02-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280055-20mg"
+    },
+    {
+      "part_number": "CDAA-280057-20mg",
+      "name_en": "Hypocrellin B",
+      "name_cn": "竹红菌乙素",
+      "cas_number": "123940-54-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280057-20mg"
+    },
+    {
+      "part_number": "CDAA-280058-20mg",
+      "name_en": "Hypocrellin A",
+      "name_cn": "竹红菌甲素",
+      "cas_number": "77029-83-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280058-20mg"
+    },
+    {
+      "part_number": "CDAA-280060-20mg",
+      "name_en": "Chonglou Saponin II",
+      "name_cn": "重楼皂苷II",
+      "cas_number": "76296-72-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280060-20mg"
+    },
+    {
+      "part_number": "CDAA-280061-20mg",
+      "name_en": "Polyphyllin I",
+      "name_cn": "重楼皂苷I",
+      "cas_number": "50773-41-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280061-20mg"
+    },
+    {
+      "part_number": "CDAA-280062-20mg",
+      "name_en": "Progenin III",
+      "name_cn": "重楼皂苷E",
+      "cas_number": "19057-67-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280062-20mg"
+    },
+    {
+      "part_number": "CDAA-280063-20mg",
+      "name_en": "Polyphyllin II",
+      "name_cn": "重楼皂苷B(重楼皂苷 II)",
+      "cas_number": "50773-42-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280063-20mg"
+    },
+    {
+      "part_number": "CDAA-280065-20mg",
+      "name_en": "Polyphyllin VI",
+      "name_cn": "重楼皂苷Ⅵ",
+      "cas_number": "55916-51-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280065-20mg"
+    },
+    {
+      "part_number": "CDAA-280066-20mg",
+      "name_en": "Resibufogenin",
+      "name_cn": "酯蟾毒配基",
+      "cas_number": "465-39-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280066-20mg"
+    },
+    {
+      "part_number": "CDAA-280067-20mg",
+      "name_en": "Zinc Phytate",
+      "name_cn": "植酸锌",
+      "cas_number": "63903-51-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280067-20mg"
+    },
+    {
+      "part_number": "CDAA-280069-20mg",
+      "name_en": "Calcium phytate",
+      "name_cn": "植酸钙",
+      "cas_number": "3615-82-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280069-20mg"
+    },
+    {
+      "part_number": "CDAA-280070-20mg",
+      "name_en": "Phytic acid",
+      "name_cn": "植酸",
+      "cas_number": "83-86-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280070-20mg"
+    },
+    {
+      "part_number": "CDAA-280071-10mg",
+      "name_en": "Sarsasapogenin",
+      "name_cn": "知母皂苷元",
+      "cas_number": "82597-74-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280071-10mg"
+    },
+    {
+      "part_number": "CDAA-280072-20mg",
+      "name_en": "Anemarsaponin E",
+      "name_cn": "知母皂苷E",
+      "cas_number": "136565-73-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280072-20mg"
+    },
+    {
+      "part_number": "CDAA-280073-5mg",
+      "name_en": "Anemarsaponin B",
+      "name_cn": "知母皂苷B",
+      "cas_number": "139051-27-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280073-5mg"
+    },
+    {
+      "part_number": "CDAA-280074-20mg",
+      "name_en": "Timosaponin A-III",
+      "name_cn": "知母皂苷A-Ⅲ",
+      "cas_number": "41059-79-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280074-20mg"
+    },
+    {
+      "part_number": "CDAA-280075-20mg",
+      "name_en": "Timosaponin B II",
+      "name_cn": "知母皂苷BⅡ",
+      "cas_number": "136656-07-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280075-20mg"
+    },
+    {
+      "part_number": "CDAA-280076-20mg",
+      "name_en": "Sesamin",
+      "name_cn": "芝麻素",
+      "cas_number": "607-80-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280076-20mg"
+    },
+    {
+      "part_number": "CDAA-280077-20mg",
+      "name_en": "Sesamolin",
+      "name_cn": "芝麻林素",
+      "cas_number": "526-07-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280077-20mg"
+    },
+    {
+      "part_number": "CDAA-280078-20mg",
+      "name_en": "Sesamol",
+      "name_cn": "芝麻酚",
+      "cas_number": "533-31-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280078-20mg"
+    },
+    {
+      "part_number": "CDAA-280079-20mg",
+      "name_en": "Gitogenin",
+      "name_cn": "支脱皂苷元",
+      "cas_number": "511-96-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280079-20mg"
+    },
+    {
+      "part_number": "CDAA-280080-20mg",
+      "name_en": "Dodecanoic acid ingenol ester",
+      "name_cn": "正十二烷酸巨大戟酯",
+      "cas_number": "54706-70-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280080-20mg"
+    },
+    {
+      "part_number": "CDAA-280081-25mg",
+      "name_en": "3-n-Butylphathlide",
+      "name_cn": "正丁基苯酞",
+      "cas_number": "6066-49-5",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280081-25mg"
+    },
+    {
+      "part_number": "CDAA-280084-20mg",
+      "name_en": "Catharanthine",
+      "name_cn": "长春质碱",
+      "cas_number": "2468-21-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280084-20mg"
+    },
+    {
+      "part_number": "CDAA-280085-20mg",
+      "name_en": "Vincristine",
+      "name_cn": "长春新碱",
+      "cas_number": "57-22-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280085-20mg"
+    },
+    {
+      "part_number": "CDAA-280086-20mg",
+      "name_en": "Vinpocetine",
+      "name_cn": "长春西汀",
+      "cas_number": "42971-09-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280086-20mg"
+    },
+    {
+      "part_number": "CDAA-280087-20mg",
+      "name_en": "Vinorelbine",
+      "name_cn": "长春瑞滨",
+      "cas_number": "71486-22-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280087-20mg"
+    },
+    {
+      "part_number": "CDAA-280088-20mg",
+      "name_en": "Vinblastine",
+      "name_cn": "长春花碱",
+      "cas_number": "865-21-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280088-20mg"
+    },
+    {
+      "part_number": "CDAA-280089-20mg",
+      "name_en": "Camphor",
+      "name_cn": "樟脑",
+      "cas_number": "76-22-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280089-20mg"
+    },
+    {
+      "part_number": "CDAA-280090-20mg",
+      "name_en": "Swertiamarine",
+      "name_cn": "獐牙菜苦苷",
+      "cas_number": "17388-39-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280090-20mg"
+    },
+    {
+      "part_number": "CDAA-280091-20mg",
+      "name_en": "Sweroside",
+      "name_cn": "獐牙菜苷",
+      "cas_number": "14215-86-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280091-20mg"
+    },
+    {
+      "part_number": "CDAA-280092-10mg",
+      "name_en": "Alisol C monoacetate",
+      "name_cn": "泽泻醇C-23-醋酸酯",
+      "cas_number": "26575-93-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280092-10mg"
+    },
+    {
+      "part_number": "CDAA-280093-20mg",
+      "name_en": "Alisol A 24-acetate",
+      "name_cn": "泽泻醇A-24-醋酸酯",
+      "cas_number": "18674-16-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280093-20mg"
+    },
+    {
+      "part_number": "CDAA-280094-10mg",
+      "name_en": "Alisol B",
+      "name_cn": "泽泻醇B",
+      "cas_number": "18649-93-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280094-10mg"
+    },
+    {
+      "part_number": "CDAA-280095-20mg",
+      "name_en": "Alisol A",
+      "name_cn": "泽泻醇A",
+      "cas_number": "19885-10-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280095-20mg"
+    },
+    {
+      "part_number": "CDAA-280096-20mg",
+      "name_en": "6-Methoxyluteolin",
+      "name_cn": "泽兰黄酮",
+      "cas_number": "520-11-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280096-20mg"
+    },
+    {
+      "part_number": "CDAA-280097-20mg",
+      "name_en": "Quillaic acid",
+      "name_cn": "皂皮酸",
+      "cas_number": "631-01-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280097-20mg"
+    },
+    {
+      "part_number": "CDAA-280098-100mg",
+      "name_en": "pregnenolone",
+      "name_cn": "孕烯醇酮",
+      "cas_number": "145-13-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280098-100mg"
+    },
+    {
+      "part_number": "CDAA-280098D4-1mg",
+      "name_en": "Pregnenolone-17Alpha，21，21，21-[D4]",
+      "name_cn": "孕烯醇酮-[D4]",
+      "cas_number": "61574-54-7",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280098D4-1mg"
+    },
+    {
+      "part_number": "CDAA-280099-20mg",
+      "name_en": "Narirutin",
+      "name_cn": "芸香柚皮苷",
+      "cas_number": "14259-46-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280099-20mg"
+    },
+    {
+      "part_number": "CDAA-280100-20mg",
+      "name_en": "Brassinolide",
+      "name_cn": "芸苔素内酯",
+      "cas_number": "72962-43-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280100-20mg"
+    },
+    {
+      "part_number": "CDAA-280101-100mg",
+      "name_en": "Laurocapram",
+      "name_cn": "月桂氮卓酮",
+      "cas_number": "59227-89-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280101-100mg"
+    },
+    {
+      "part_number": "CDAA-280102-20mg",
+      "name_en": "Tenuigenin",
+      "name_cn": "远志皂苷元",
+      "cas_number": "2469-34-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280102-20mg"
+    },
+    {
+      "part_number": "CDAA-280103-20mg",
+      "name_en": "Polygalacic acid",
+      "name_cn": "远志酸",
+      "cas_number": "1260-04-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280103-20mg"
+    },
+    {
+      "part_number": "CDAA-280104-20mg",
+      "name_en": "Polygalaxanthone Ⅲ",
+      "name_cn": "远志山酮Ⅲ",
+      "cas_number": "162857-78-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280104-20mg"
+    },
+    {
+      "part_number": "CDAA-280105-20mg",
+      "name_en": "Telocinobufagin",
+      "name_cn": "远华蟾蜍精",
+      "cas_number": "472-26-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280105-20mg"
+    },
+    {
+      "part_number": "CDAA-280106-20mg",
+      "name_en": "Protogracillin",
+      "name_cn": "原纤细薯蓣皂苷",
+      "cas_number": "54848-30-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280106-20mg"
+    },
+    {
+      "part_number": "CDAA-280107-20mg",
+      "name_en": "Protosappanin B",
+      "name_cn": "原苏木素B",
+      "cas_number": "102036-29-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280107-20mg"
+    },
+    {
+      "part_number": "CDAA-280108-20mg",
+      "name_en": "Protodioscin",
+      "name_cn": "原薯蓣皂苷",
+      "cas_number": "55056-80-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280108-20mg"
+    },
+    {
+      "part_number": "CDAA-280109-20mg",
+      "name_en": "20(S)-protopanaxatriol",
+      "name_cn": "20-(S)-原人参三醇",
+      "cas_number": "179799-20-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280109-20mg"
+    },
+    {
+      "part_number": "CDAA-280110-20mg",
+      "name_en": "20(S)-Protopanaxadiol",
+      "name_cn": "20-(S)-原人参二醇",
+      "cas_number": "30636-90-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280110-20mg"
+    },
+    {
+      "part_number": "CDAA-280111-10mg",
+      "name_en": "Protoaescigenin",
+      "name_cn": "原七叶皂苷元",
+      "cas_number": "20853-07-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280111-10mg"
+    },
+    {
+      "part_number": "CDAA-280112-20mg",
+      "name_en": "Procyanidin B2",
+      "name_cn": "原花青素B2",
+      "cas_number": "29106-49-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280112-20mg"
+    },
+    {
+      "part_number": "CDAA-280113-10mg",
+      "name_en": "Procyanidin B1",
+      "name_cn": "原花青素B1",
+      "cas_number": "20315-25-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280113-10mg"
+    },
+    {
+      "part_number": "CDAA-280114-20mg",
+      "name_en": "Procyanidin",
+      "name_cn": "原花青素",
+      "cas_number": "4852-22-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280114-20mg"
+    },
+    {
+      "part_number": "CDAA-280115-20mg",
+      "name_en": "3,4-Dihydroxybenzoic acid",
+      "name_cn": "原儿茶酸",
+      "cas_number": "99-50-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280115-20mg"
+    },
+    {
+      "part_number": "CDAA-280116-20mg",
+      "name_en": "Protocatechualdehyde",
+      "name_cn": "原儿茶醛",
+      "cas_number": "139-85-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280116-20mg"
+    },
+    {
+      "part_number": "CDAA-280118-10mg",
+      "name_en": "Protostemotinine",
+      "name_cn": "原百部次碱",
+      "cas_number": "169534-85-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280118-10mg"
+    },
+    {
+      "part_number": "CDAA-280119-20mg",
+      "name_en": "Protopine",
+      "name_cn": "原阿片碱",
+      "cas_number": "130-86-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280119-20mg"
+    },
+    {
+      "part_number": "CDAA-280120-20mg",
+      "name_en": "Genkwanin",
+      "name_cn": "芫花素",
+      "cas_number": "437-64-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280120-20mg"
+    },
+    {
+      "part_number": "CDAA-280121-20mg",
+      "name_en": "Guaiacol",
+      "name_cn": "愈创木酚",
+      "cas_number": "90-05-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280121-20mg"
+    },
+    {
+      "part_number": "CDAA-280122-20mg",
+      "name_en": "Lupenone",
+      "name_cn": "羽扇烯酮",
+      "cas_number": "1617-70-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280122-20mg"
+    },
+    {
+      "part_number": "CDAA-280123-20mg",
+      "name_en": "Lupeol",
+      "name_cn": "羽扇豆醇",
+      "cas_number": "545-47-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280123-20mg"
+    },
+    {
+      "part_number": "CDAA-280124-250mg",
+      "name_en": "Rotenone",
+      "name_cn": "鱼藤酮",
+      "cas_number": "83-79-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280124-250mg"
+    },
+    {
+      "part_number": "CDAA-280124-25mg",
+      "name_en": "Rotenone",
+      "name_cn": "鱼藤酮",
+      "cas_number": "83-79-4",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280124-25mg"
+    },
+    {
+      "part_number": "CDAA-280125-20mg",
+      "name_en": "deguelin",
+      "name_cn": "鱼藤素",
+      "cas_number": "522-17-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280125-20mg"
+    },
+    {
+      "part_number": "CDAA-280125-5mg",
+      "name_en": "deguelin",
+      "name_cn": "鱼藤素",
+      "cas_number": "522-17-8",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280125-5mg"
+    },
+    {
+      "part_number": "CDAA-280126-10mg",
+      "name_en": "Naringenin-7-O-glucuronide",
+      "name_cn": "柚皮素-7-O-葡萄糖醛酸苷",
+      "cas_number": "158196-34-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280126-10mg"
+    },
+    {
+      "part_number": "CDAA-280127-20mg",
+      "name_en": "Naringenin",
+      "name_cn": "柚皮素",
+      "cas_number": "480-41-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280127-20mg"
+    },
+    {
+      "part_number": "CDAA-280128-20mg",
+      "name_en": "Naringin",
+      "name_cn": "柚皮苷",
+      "cas_number": "10236-47-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280128-20mg"
+    },
+    {
+      "part_number": "CDAA-280129-20mg",
+      "name_en": "Naringin dihydrochalcone",
+      "name_cn": "柚皮甙二氢查尔酮",
+      "cas_number": "18916-17-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280129-20mg"
+    },
+    {
+      "part_number": "CDAA-280130-20mg",
+      "name_en": "D-Tetrahydropalmatine",
+      "name_cn": "右旋四氢巴马汀",
+      "cas_number": "3520-14-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280130-20mg"
+    },
+    {
+      "part_number": "CDAA-280134-20mg",
+      "name_en": "delsoline",
+      "name_cn": "硬飞燕草碱",
+      "cas_number": "509-18-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280134-20mg"
+    },
+    {
+      "part_number": "CDAA-280136-20mg",
+      "name_en": "Cryptochlorogenic acid",
+      "name_cn": "隐绿原酸",
+      "cas_number": "905-99-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280136-20mg"
+    },
+    {
+      "part_number": "CDAA-280137-20mg",
+      "name_en": "Cryptotanshinone",
+      "name_cn": "隐丹参酮",
+      "cas_number": "35825-57-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280137-20mg"
+    },
+    {
+      "part_number": "CDAA-280138-1g",
+      "name_en": "6-Hydroxyindole",
+      "name_cn": "吲哚醇",
+      "cas_number": "2380-86-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280138-1g"
+    },
+    {
+      "part_number": "CDAA-280138-20mg",
+      "name_en": "6-Hydroxyindole",
+      "name_cn": "吲哚醇",
+      "cas_number": "2380-86-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280138-20mg"
+    },
+    {
+      "part_number": "CDAA-280139-20mg",
+      "name_en": "Icaritin",
+      "name_cn": "淫羊藿素",
+      "cas_number": "118525-40-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280139-20mg"
+    },
+    {
+      "part_number": "CDAA-280140-1g",
+      "name_en": "Icariin",
+      "name_cn": "淫羊藿苷",
+      "cas_number": "489-32-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280140-1g"
+    },
+    {
+      "part_number": "CDAA-280140-20mg",
+      "name_en": "Icariin",
+      "name_cn": "淫羊藿苷",
+      "cas_number": "489-32-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280140-20mg"
+    },
+    {
+      "part_number": "CDAA-280140-25mg",
+      "name_en": "Icariin",
+      "name_cn": "淫羊藿苷",
+      "cas_number": "489-32-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280140-25mg"
+    },
+    {
+      "part_number": "CDAA-280141-20mg",
+      "name_en": "Icarisid I",
+      "name_cn": "淫羊藿次苷I",
+      "cas_number": "56725-99-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280141-20mg"
+    },
+    {
+      "part_number": "CDAA-280143-20mg",
+      "name_en": "Ginkgolic acid 17:1",
+      "name_cn": "银杏酸(GA17:1)",
+      "cas_number": "111047-30-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280143-20mg"
+    },
+    {
+      "part_number": "CDAA-280144-20mg",
+      "name_en": "Ginkgolic Acid C15:1",
+      "name_cn": "银杏酸GA15：1",
+      "cas_number": "22910-60-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280144-20mg"
+    },
+    {
+      "part_number": "CDAA-280145-20mg",
+      "name_en": "Ginkgolic Acid C15:0",
+      "name_cn": "银杏酸GA15：0",
+      "cas_number": null,
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280145-20mg"
+    },
+    {
+      "part_number": "CDAA-280146-10mg",
+      "name_en": "Ginkgetin",
+      "name_cn": "银杏双黄酮",
+      "cas_number": "481-46-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280146-10mg"
+    },
+    {
+      "part_number": "CDAA-280147-20mg",
+      "name_en": "Ginkgolide J",
+      "name_cn": "银杏内酯J",
+      "cas_number": "107438-79-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280147-20mg"
+    },
+    {
+      "part_number": "CDAA-280148-20mg",
+      "name_en": "Ginkgolide C",
+      "name_cn": "银杏内酯C",
+      "cas_number": "15291-76-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280148-20mg"
+    },
+    {
+      "part_number": "CDAA-280149-20mg",
+      "name_en": "Ginkgolide B",
+      "name_cn": "银杏内酯B",
+      "cas_number": "15291-77-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280149-20mg"
+    },
+    {
+      "part_number": "CDAA-280150-20mg",
+      "name_en": "Ginkgolide A",
+      "name_cn": "银杏内酯A",
+      "cas_number": "15291-75-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280150-20mg"
+    },
+    {
+      "part_number": "CDAA-280151-20mg",
+      "name_en": "Isoquercitrin",
+      "name_cn": "异槲皮素",
+      "cas_number": "482-35-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280151-20mg"
+    },
+    {
+      "part_number": "CDAA-280152-20mg",
+      "name_en": "Tiliroside",
+      "name_cn": "银锻苷",
+      "cas_number": "20316-62-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280152-20mg"
+    },
+    {
+      "part_number": "CDAA-280153-20mg",
+      "name_en": "Skimmianine",
+      "name_cn": "茵芋碱",
+      "cas_number": "83-95-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280153-20mg"
+    },
+    {
+      "part_number": "CDAA-280154-20mg",
+      "name_en": "Skimmin",
+      "name_cn": "茵芋苷",
+      "cas_number": "93-39-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280154-20mg"
+    },
+    {
+      "part_number": "CDAA-280155-20mg",
+      "name_en": "Coixol",
+      "name_cn": "薏苡素",
+      "cas_number": "532-91-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280155-20mg"
+    },
+    {
+      "part_number": "CDAA-280156-20mg",
+      "name_en": "(+)-Isocorynoline",
+      "name_cn": "异紫堇定碱",
+      "cas_number": "475-67-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280156-20mg"
+    },
+    {
+      "part_number": "CDAA-280157-20mg",
+      "name_en": "Eupatilin",
+      "name_cn": "异泽兰黄素",
+      "cas_number": "22368-21-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280157-20mg"
+    },
+    {
+      "part_number": "CDAA-280158-20mg",
+      "name_en": "Isoginkgetin",
+      "name_cn": "异银杏双黄酮",
+      "cas_number": "548-19-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280158-20mg"
+    },
+    {
+      "part_number": "CDAA-280159-20mg",
+      "name_en": "Heteroclitin D",
+      "name_cn": "异型南五味子丁素",
+      "cas_number": "140369-76-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280159-20mg"
+    },
+    {
+      "part_number": "CDAA-280159-5mg",
+      "name_en": "Heteroclitin D",
+      "name_cn": "异型南五味子丁素",
+      "cas_number": "140369-76-2",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280159-5mg"
+    },
+    {
+      "part_number": "CDAA-280160-20mg",
+      "name_en": "Isovanillin",
+      "name_cn": "异香兰素",
+      "cas_number": "621-59-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280160-20mg"
+    },
+    {
+      "part_number": "CDAA-280161-20mg",
+      "name_en": "Isovanillic Acid",
+      "name_cn": "异香草酸",
+      "cas_number": "645-08-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280161-20mg"
+    },
+    {
+      "part_number": "CDAA-280162-20mg",
+      "name_en": "Isoschaftoside",
+      "name_cn": "异夏佛塔苷",
+      "cas_number": "52012-29-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280162-20mg"
+    },
+    {
+      "part_number": "CDAA-280163-20mg",
+      "name_en": "Linderalactone",
+      "name_cn": "乌药内酯",
+      "cas_number": "728-61-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280163-20mg"
+    },
+    {
+      "part_number": "CDAA-280164-20mg",
+      "name_en": "Isoalantolactone",
+      "name_cn": "异土木香内酯",
+      "cas_number": "470-17-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280164-20mg"
+    },
+    {
+      "part_number": "CDAA-280165-20mg",
+      "name_en": "isosteviol",
+      "name_cn": "异甜菊醇",
+      "cas_number": "27975-19-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280165-20mg"
+    },
+    {
+      "part_number": "CDAA-280166-10mg",
+      "name_en": "Isosilybin",
+      "name_cn": "异水飞蓟宾",
+      "cas_number": "72581-71-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280166-10mg"
+    },
+    {
+      "part_number": "CDAA-280167-25mg",
+      "name_en": "Isorhamnetin-3-O-nehesperidine",
+      "name_cn": "异鼠李素-3-O-新橙皮苷",
+      "cas_number": "55033-90-4",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280167-25mg"
+    },
+    {
+      "part_number": "CDAA-280169-10mg",
+      "name_en": "Isorhamnetin-3-O-galactoside",
+      "name_cn": "异鼠李素-3-O-半乳糖苷",
+      "cas_number": "6743-92-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280169-10mg"
+    },
+    {
+      "part_number": "CDAA-280170-20mg",
+      "name_en": "Isocorynoxeine",
+      "name_cn": "异去氢钩藤碱",
+      "cas_number": "51014-29-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280170-20mg"
+    },
+    {
+      "part_number": "CDAA-280171-5mg",
+      "name_en": "Demethylwedelolactone",
+      "name_cn": "异去甲蟛蜞菊内酯（1,3,8,9-四羟基）",
+      "cas_number": "6468-55-9",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280171-5mg"
+    },
+    {
+      "part_number": "CDAA-280172-20mg",
+      "name_en": "Isofraxidin",
+      "name_cn": "异嗪皮啶",
+      "cas_number": "486-21-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280172-20mg"
+    },
+    {
+      "part_number": "CDAA-280173-10mg",
+      "name_en": "Isoescin Ib",
+      "name_cn": "异七叶皂苷Ib",
+      "cas_number": "219944-46-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280173-10mg"
+    },
+    {
+      "part_number": "CDAA-280174-10mg",
+      "name_en": "Isoescin Ia",
+      "name_cn": "异七叶皂苷Ia",
+      "cas_number": "219944-39-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280174-10mg"
+    },
+    {
+      "part_number": "CDAA-280175-20mg",
+      "name_en": "Isoimperatorin",
+      "name_cn": "异欧前胡素",
+      "cas_number": "482-45-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280175-20mg"
+    },
+    {
+      "part_number": "CDAA-280176-20mg",
+      "name_en": "Isovitexin",
+      "name_cn": "异牡荆苷",
+      "cas_number": "38953-85-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280176-20mg"
+    },
+    {
+      "part_number": "CDAA-280177-20mg",
+      "name_en": "Isoacteoside",
+      "name_cn": "异麦角甾苷",
+      "cas_number": "61303-13-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280177-20mg"
+    },
+    {
+      "part_number": "CDAA-280178-20mg",
+      "name_en": "Isochlorogenic acid C",
+      "name_cn": "异绿原酸C",
+      "cas_number": "57378-72-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280178-20mg"
+    },
+    {
+      "part_number": "CDAA-280180-20mg",
+      "name_en": "Isochlorogenic acid B",
+      "name_cn": "异绿原酸B",
+      "cas_number": "14534-61-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280180-20mg"
+    },
+    {
+      "part_number": "CDAA-280181-100mg",
+      "name_en": "DL-Isoborneol",
+      "name_cn": "异龙脑",
+      "cas_number": "124-76-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280181-100mg"
+    },
+    {
+      "part_number": "CDAA-280182-20mg",
+      "name_en": "Isoscopoletin",
+      "name_cn": "异莨菪亭",
+      "cas_number": "776-86-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280182-20mg"
+    },
+    {
+      "part_number": "CDAA-280183-20mg",
+      "name_en": "Isoliensinine",
+      "name_cn": "异莲心碱",
+      "cas_number": "6817-41-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280183-20mg"
+    },
+    {
+      "part_number": "CDAA-280184-20mg",
+      "name_en": "Isoforsythiaside",
+      "name_cn": "异连翘酯苷A",
+      "cas_number": "1357910-26-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280184-20mg"
+    },
+    {
+      "part_number": "CDAA-280185-20mg",
+      "name_en": "Isopimpinellin",
+      "name_cn": "异茴芹素(异茴芹香豆素,异虎耳草素)",
+      "cas_number": "482-27-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280185-20mg"
+    },
+    {
+      "part_number": "CDAA-280187-20mg",
+      "name_en": "Homoorientin",
+      "name_cn": "异荭草素",
+      "cas_number": "4261-42-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280187-20mg"
+    },
+    {
+      "part_number": "CDAA-280188-20mg",
+      "name_en": "IsocoluMbin",
+      "name_cn": "异古伦宾",
+      "cas_number": "471-54-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280188-20mg"
+    },
+    {
+      "part_number": "CDAA-280189-20mg",
+      "name_en": "Isorhychophylline",
+      "name_cn": "异钩藤碱",
+      "cas_number": "6859-01-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280189-20mg"
+    },
+    {
+      "part_number": "CDAA-280190-20mg",
+      "name_en": "Isoliquiritigenin",
+      "name_cn": "异甘草素",
+      "cas_number": "961-29-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280190-20mg"
+    },
+    {
+      "part_number": "CDAA-280191-20mg",
+      "name_en": "Isobergapten",
+      "name_cn": "异佛手柑内酯",
+      "cas_number": "482-48-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280191-20mg"
+    },
+    {
+      "part_number": "CDAA-280192-10mg",
+      "name_en": "Isosaponarin",
+      "name_cn": "异肥皂草苷",
+      "cas_number": "19416-87-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280192-10mg"
+    },
+    {
+      "part_number": "CDAA-280193-250mg",
+      "name_en": "Isoeugenol",
+      "name_cn": "异丁香酚（异构体混合物）",
+      "cas_number": "97-54-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280193-250mg"
+    },
+    {
+      "part_number": "CDAA-280193-25mg",
+      "name_en": "Isoeugenol",
+      "name_cn": "异丁香酚 (顺反混合物)",
+      "cas_number": "97-54-1",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280193-25mg"
+    },
+    {
+      "part_number": "CDAA-280194-5mg",
+      "name_en": "Isobutyrylshikonin",
+      "name_cn": "异丁酰紫草素",
+      "cas_number": "52438-12-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280194-5mg"
+    },
+    {
+      "part_number": "CDAA-280195-20mg",
+      "name_en": "Isorhapontigenin",
+      "name_cn": "异丹叶大黄素",
+      "cas_number": "32507-66-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280195-20mg"
+    },
+    {
+      "part_number": "CDAA-280196-20mg",
+      "name_en": "Isosinensetin",
+      "name_cn": "异橙黄酮",
+      "cas_number": "17290-70-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280196-20mg"
+    },
+    {
+      "part_number": "CDAA-280197-20mg",
+      "name_en": "Isopsoralen",
+      "name_cn": "异补骨脂素",
+      "cas_number": "523-50-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280197-20mg"
+    },
+    {
+      "part_number": "CDAA-280198-20mg",
+      "name_en": "Isobavachin",
+      "name_cn": "异补骨脂二氢黄酮",
+      "cas_number": "31524-62-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280198-20mg"
+    },
+    {
+      "part_number": "CDAA-280199-20mg",
+      "name_en": "3-Hydroxy-4-methoxycinnamic acid",
+      "name_cn": "异阿魏酸",
+      "cas_number": "537-73-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280199-20mg"
+    },
+    {
+      "part_number": "CDAA-280200-20mg",
+      "name_en": "Ethoxysanguinarine",
+      "name_cn": "乙氧基血根碱",
+      "cas_number": "28342-31-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280200-20mg"
+    },
+    {
+      "part_number": "CDAA-280201-5mg",
+      "name_en": "5-Ethoxychelerthrine",
+      "name_cn": "乙氧基白屈菜红碱",
+      "cas_number": "79559-55-0",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280201-5mg"
+    },
+    {
+      "part_number": "CDAA-280202-20mg",
+      "name_en": "Acetylcorynoline",
+      "name_cn": "乙酰紫堇灵",
+      "cas_number": "18797-80-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280202-20mg"
+    },
+    {
+      "part_number": "CDAA-280203-20mg",
+      "name_en": "Acetylshikonin",
+      "name_cn": "乙酰紫草素",
+      "cas_number": "24502-78-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280203-20mg"
+    },
+    {
+      "part_number": "CDAA-280204-1mg",
+      "name_en": "Delphinidin chloride",
+      "name_cn": "氯化飞燕草素",
+      "cas_number": "528-53-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280204-1mg"
+    },
+    {
+      "part_number": "CDAA-280207-20mg",
+      "name_en": "Taraxeryl acetate",
+      "name_cn": "乙酰蒲公英萜醇",
+      "cas_number": "2189-80-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280207-20mg"
+    },
+    {
+      "part_number": "CDAA-280208-10mg",
+      "name_en": "Acetyldihydromicromelin A",
+      "name_cn": "乙酰基二氢美味草素A",
+      "cas_number": "94285-22-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280208-10mg"
+    },
+    {
+      "part_number": "CDAA-280209-1mg",
+      "name_en": "Acetytastragaloside",
+      "name_cn": "乙酰黄芪皂苷I",
+      "cas_number": "84687-47-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280209-1mg"
+    },
+    {
+      "part_number": "CDAA-280210-20mg",
+      "name_en": "8-O-Acetylharpagide",
+      "name_cn": "乙酰哈巴苷",
+      "cas_number": "6926-14-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280210-20mg"
+    },
+    {
+      "part_number": "CDAA-280211-10mg",
+      "name_en": "O-diacetyldaurisoline",
+      "name_cn": "乙酰蝙蝠葛苏林碱",
+      "cas_number": "132139-17-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280211-10mg"
+    },
+    {
+      "part_number": "CDAA-280212-1g",
+      "name_en": "Acetophenone",
+      "name_cn": "苯乙酮",
+      "cas_number": "98-86-2",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280212-1g"
+    },
+    {
+      "part_number": "CDAA-280212D8-1g",
+      "name_en": "Acetophenone-[D8]",
+      "name_cn": "苯乙酮-[D8]",
+      "cas_number": "19547-00-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280212D8-1g"
+    },
+    {
+      "part_number": "CDAA-280213-20mg",
+      "name_en": "AcetylResveratrol",
+      "name_cn": "乙酰白藜芦醇",
+      "cas_number": "42206-94-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280213-20mg"
+    },
+    {
+      "part_number": "CDAA-280213-50mg",
+      "name_en": "AcetylResveratrol",
+      "name_cn": "乙酰白藜芦醇",
+      "cas_number": "42206-94-0",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280213-50mg"
+    },
+    {
+      "part_number": "CDAA-280214-250mg",
+      "name_en": "Isobornyl acetate",
+      "name_cn": "乙酸异龙脑酯",
+      "cas_number": "125-12-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280214-250mg"
+    },
+    {
+      "part_number": "CDAA-280215-20mg",
+      "name_en": "Acetic acid octyl ester",
+      "name_cn": "乙酸辛酯",
+      "cas_number": "112-14-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280215-20mg"
+    },
+    {
+      "part_number": "CDAA-280215-500mg",
+      "name_en": "Acetic acid octyl ester",
+      "name_cn": "乙酸辛酯",
+      "cas_number": "112-14-1",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280215-500mg"
+    },
+    {
+      "part_number": "CDAA-280216-0.1ml",
+      "name_en": "(+)-Bornyl acetate",
+      "name_cn": "(+)-乙酸冰片酯",
+      "cas_number": "20347-65-3",
+      "specification": "0.1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280216-0.1ml"
+    },
+    {
+      "part_number": "CDAA-280217-0.1ml",
+      "name_en": "(-)-Bornyl acetate",
+      "name_cn": "(-)-乙酸冰片酯",
+      "cas_number": "5655-61-8",
+      "specification": "0.1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280217-0.1ml"
+    },
+    {
+      "part_number": "CDAA-280218-20mg",
+      "name_en": "Everolimus",
+      "name_cn": "依维莫司",
+      "cas_number": "159351-69-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280218-20mg"
+    },
+    {
+      "part_number": "CDAA-280219-20mg",
+      "name_en": "Etoposide",
+      "name_cn": "依托泊苷",
+      "cas_number": "33419-42-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280219-20mg"
+    },
+    {
+      "part_number": "CDAA-280220-20mg",
+      "name_en": "Bullatine A",
+      "name_cn": "一枝蒿甲素",
+      "cas_number": "1354-84-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280220-20mg"
+    },
+    {
+      "part_number": "CDAA-280221-20mg",
+      "name_en": "Bullatine G；songorine",
+      "name_cn": "一枝蒿庚素",
+      "cas_number": "509-24-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280221-20mg"
+    },
+    {
+      "part_number": "CDAA-280222-20mg",
+      "name_en": "Securinine",
+      "name_cn": "一叶萩碱",
+      "cas_number": "5610-40-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280222-20mg"
+    },
+    {
+      "part_number": "CDAA-280225-20mg",
+      "name_en": "Xanthatin",
+      "name_cn": "叶黄制菌素",
+      "cas_number": "26791-73-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280225-20mg"
+    },
+    {
+      "part_number": "CDAA-280226-10mg",
+      "name_en": "Xanthophy ll",
+      "name_cn": "叶黄素",
+      "cas_number": "127-40-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280226-10mg"
+    },
+    {
+      "part_number": "CDAA-280226-1mg",
+      "name_en": "Xanthophy ll",
+      "name_cn": "叶黄素",
+      "cas_number": "127-40-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280226-1mg"
+    },
+    {
+      "part_number": "CDAA-280227-20mg",
+      "name_en": "Irigenin",
+      "name_cn": "野鸢尾黄素",
+      "cas_number": "548-76-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280227-20mg"
+    },
+    {
+      "part_number": "CDAA-280228-20mg",
+      "name_en": "Rhoifolin",
+      "name_cn": "野漆树苷",
+      "cas_number": "17306-46-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280228-20mg"
+    },
+    {
+      "part_number": "CDAA-280229-20mg",
+      "name_en": "Eupalinolide A",
+      "name_cn": "野马追内酯A",
+      "cas_number": "877822-40-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280229-20mg"
+    },
+    {
+      "part_number": "CDAA-280230-20mg",
+      "name_en": "Eupalinolide B",
+      "name_cn": "野马追内酯B",
+      "cas_number": "877822-41-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280230-20mg"
+    },
+    {
+      "part_number": "CDAA-280231-10mg",
+      "name_en": "Yejunualactone",
+      "name_cn": "野菊花内酯",
+      "cas_number": "62687-22-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280231-10mg"
+    },
+    {
+      "part_number": "CDAA-280232-20mg",
+      "name_en": "Lridin",
+      "name_cn": "野鹫尾苷",
+      "cas_number": "491-74-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280232-20mg"
+    },
+    {
+      "part_number": "CDAA-280233-20mg",
+      "name_en": "Scutellarin",
+      "name_cn": "野黄芩苷",
+      "cas_number": "27740-01-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280233-20mg"
+    },
+    {
+      "part_number": "CDAA-280234-20mg",
+      "name_en": "Monocrotaline",
+      "name_cn": "野百合碱",
+      "cas_number": "315-22-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280234-20mg"
+    },
+    {
+      "part_number": "CDAA-280235-20mg",
+      "name_en": "Jatrorrhizine",
+      "name_cn": "药根碱",
+      "cas_number": "3621-38-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280235-20mg"
+    },
+    {
+      "part_number": "CDAA-280236-20mg",
+      "name_en": "Lycobetaine",
+      "name_cn": "氧化石蒜碱",
+      "cas_number": "72510-04-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280236-20mg"
+    },
+    {
+      "part_number": "CDAA-280238-20mg",
+      "name_en": "Ammothamnine",
+      "name_cn": "氧化苦参碱",
+      "cas_number": "16837-52-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280238-20mg"
+    },
+    {
+      "part_number": "CDAA-280239-20mg",
+      "name_en": "Oxysophocarpine",
+      "name_cn": "氧化槐果碱",
+      "cas_number": "26904-64-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280239-20mg"
+    },
+    {
+      "part_number": "CDAA-280240-20mg",
+      "name_en": "Oxysophoridine",
+      "name_cn": "氧化槐定碱",
+      "cas_number": "54809-74-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280240-20mg"
+    },
+    {
+      "part_number": "CDAA-280241-20mg",
+      "name_en": "Oxyresveratrol",
+      "name_cn": "氧化白藜芦醇",
+      "cas_number": "29700-22-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280241-20mg"
+    },
+    {
+      "part_number": "CDAA-280243-20mg",
+      "name_en": "Senkyunolide I",
+      "name_cn": "洋川芎内酯I",
+      "cas_number": "94596-28-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280243-20mg"
+    },
+    {
+      "part_number": "CDAA-280244-20mg",
+      "name_en": "Senkyunolide H",
+      "name_cn": "洋川芎内酯H",
+      "cas_number": "94596-27-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280244-20mg"
+    },
+    {
+      "part_number": "CDAA-280245-20mg",
+      "name_en": "Senkyunolide A",
+      "name_cn": "洋川芎内酯A",
+      "cas_number": "63038-10-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280245-20mg"
+    },
+    {
+      "part_number": "CDAA-280246-20mg",
+      "name_en": "Absinthin",
+      "name_cn": "洋艾素",
+      "cas_number": "1362-42-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280246-20mg"
+    },
+    {
+      "part_number": "CDAA-280247-20mg",
+      "name_en": "Tectochrysin",
+      "name_cn": "杨芽黄素",
+      "cas_number": "520-28-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280247-20mg"
+    },
+    {
+      "part_number": "CDAA-280248-20mg",
+      "name_en": "Myricetin",
+      "name_cn": "杨梅素",
+      "cas_number": "529-44-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280248-20mg"
+    },
+    {
+      "part_number": "CDAA-280249-20mg",
+      "name_en": "Myricitrin",
+      "name_cn": "杨梅苷",
+      "cas_number": "17912-87-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280249-20mg"
+    },
+    {
+      "part_number": "CDAA-280250-10mg",
+      "name_en": "Nepodin",
+      "name_cn": "羊蹄素",
+      "cas_number": "3785-24-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280250-10mg"
+    },
+    {
+      "part_number": "CDAA-280251-50mg",
+      "name_en": "Yohimbine hydrochloride",
+      "name_cn": "盐酸育亨宾",
+      "cas_number": "65-19-0",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280251-50mg"
+    },
+    {
+      "part_number": "CDAA-280252-20mg",
+      "name_en": "Leonurine",
+      "name_cn": "益母草碱",
+      "cas_number": "24697-74-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280252-20mg"
+    },
+    {
+      "part_number": "CDAA-280253-25mg",
+      "name_en": "Irinotecan hydrochloride trihydrate",
+      "name_cn": "盐酸伊立替康三水合物",
+      "cas_number": "136572-09-3",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280253-25mg"
+    },
+    {
+      "part_number": "CDAA-280255-20mg",
+      "name_en": "Berberine hydrochloride",
+      "name_cn": "盐酸小檗碱",
+      "cas_number": "633-65-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280255-20mg"
+    },
+    {
+      "part_number": "CDAA-280256-20mg",
+      "name_en": "BerbaMine dihydrochloride",
+      "name_cn": "盐酸小檗胺",
+      "cas_number": "6078-17-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280256-20mg"
+    },
+    {
+      "part_number": "CDAA-280257-20mg",
+      "name_en": "Topotecan hydrochloride",
+      "name_cn": "盐酸拓扑替康",
+      "cas_number": "119413-54-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280257-20mg"
+    },
+    {
+      "part_number": "CDAA-280259-20mg",
+      "name_en": "(-)-Cephaeline dihydrochloride",
+      "name_cn": "盐酸吐根酚碱",
+      "cas_number": "5853-29-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280259-20mg"
+    },
+    {
+      "part_number": "CDAA-280260-250mg",
+      "name_en": "Betaine hydrochloride",
+      "name_cn": "盐酸甜菜碱",
+      "cas_number": "590-46-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280260-250mg"
+    },
+    {
+      "part_number": "CDAA-280261-20mg",
+      "name_en": "Stachydrine hydrochloride",
+      "name_cn": "盐酸水苏碱",
+      "cas_number": "4136-37-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280261-20mg"
+    },
+    {
+      "part_number": "CDAA-280262-20mg",
+      "name_en": "Harmine Hydrochloride",
+      "name_cn": "盐酸去氢骆驼蓬碱",
+      "cas_number": "343-27-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280262-20mg"
+    },
+    {
+      "part_number": "CDAA-280262-50mg",
+      "name_en": "Harmine Hydrochloride",
+      "name_cn": "盐酸去氢骆驼蓬碱",
+      "cas_number": "343-27-1",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280262-50mg"
+    },
+    {
+      "part_number": "CDAA-280264-20mg",
+      "name_en": "Rosiglitazone hydrochloride",
+      "name_cn": "盐酸罗格列酮",
+      "cas_number": "302543-62-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280264-20mg"
+    },
+    {
+      "part_number": "CDAA-280265-20mg",
+      "name_en": "Coptisine chloride",
+      "name_cn": "盐酸黄连碱",
+      "cas_number": "6020-18-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280265-20mg"
+    },
+    {
+      "part_number": "CDAA-280266-20mg",
+      "name_en": "Phellodendrine chloride",
+      "name_cn": "盐酸黄柏碱",
+      "cas_number": "104112-82-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280266-20mg"
+    },
+    {
+      "part_number": "CDAA-280267-20mg",
+      "name_en": "Trigonelline Hydrochloride",
+      "name_cn": "盐酸葫芦巴碱",
+      "cas_number": "6138-41-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280267-20mg"
+    },
+    {
+      "part_number": "CDAA-280268-20mg",
+      "name_en": "Ligustrazine Hydrochloride",
+      "name_cn": "盐酸川芎嗪",
+      "cas_number": "76494-51-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280268-20mg"
+    },
+    {
+      "part_number": "CDAA-280269-20mg",
+      "name_en": "Pioglitazone Hydrochloride",
+      "name_cn": "盐酸吡格列酮",
+      "cas_number": "112529-15-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280269-20mg"
+    },
+    {
+      "part_number": "CDAA-280270-20mg",
+      "name_en": "Chelerythrine chloride",
+      "name_cn": "盐酸白屈菜红碱",
+      "cas_number": "3895-92-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280270-20mg"
+    },
+    {
+      "part_number": "CDAA-280271-20mg",
+      "name_en": "Palmatine chloride",
+      "name_cn": "盐酸巴马汀",
+      "cas_number": "10605-02-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280271-20mg"
+    },
+    {
+      "part_number": "CDAA-280272-20mg",
+      "name_en": "Bengenin",
+      "name_cn": "岩白菜素",
+      "cas_number": "477-90-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280272-20mg"
+    },
+    {
+      "part_number": "CDAA-280273-20mg",
+      "name_en": "Diosgenin glucoside",
+      "name_cn": "延龄草苷",
+      "cas_number": "14144-06-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280273-20mg"
+    },
+    {
+      "part_number": "CDAA-280274-20mg",
+      "name_en": "Tetrahydropalmatine hydrochloride",
+      "name_cn": "延胡索乙素-盐酸盐",
+      "cas_number": "6024-85-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280274-20mg"
+    },
+    {
+      "part_number": "CDAA-280275-20mg",
+      "name_en": "Tetrahydropalmatine",
+      "name_cn": "延胡索乙素",
+      "cas_number": "2934-97-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280275-20mg"
+    },
+    {
+      "part_number": "CDAA-280276-20mg",
+      "name_en": "Corydaline",
+      "name_cn": "延胡索甲素",
+      "cas_number": "518-69-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280276-20mg"
+    },
+    {
+      "part_number": "CDAA-280284-10mg",
+      "name_en": "yamogenin",
+      "name_cn": "雅姆皂苷元",
+      "cas_number": "512-06-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280284-10mg"
+    },
+    {
+      "part_number": "CDAA-280286-20mg",
+      "name_en": "Bruceine D",
+      "name_cn": "鸦胆子素D",
+      "cas_number": "21499-66-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280286-20mg"
+    },
+    {
+      "part_number": "CDAA-280287-1mg",
+      "name_en": "Bruceantin",
+      "name_cn": "鸦胆亭",
+      "cas_number": "41451-75-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280287-1mg"
+    },
+    {
+      "part_number": "CDAA-280287-20mg",
+      "name_en": "Bruceantin",
+      "name_cn": "鸦胆亭",
+      "cas_number": "41451-75-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280287-20mg"
+    },
+    {
+      "part_number": "CDAA-280288-25mg",
+      "name_en": "Dracohodin perochlorate",
+      "name_cn": "血竭素高氯酸盐",
+      "cas_number": "125536-25-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280288-25mg"
+    },
+    {
+      "part_number": "CDAA-280289-20mg",
+      "name_en": "Cochinchinenin",
+      "name_cn": "血竭素",
+      "cas_number": "400603-95-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280289-20mg"
+    },
+    {
+      "part_number": "CDAA-280290-20mg",
+      "name_en": "Sanguinarine",
+      "name_cn": "血根碱",
+      "cas_number": "2447-54-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280290-20mg"
+    },
+    {
+      "part_number": "CDAA-280291-20mg",
+      "name_en": "sanguinarine chloride",
+      "name_cn": "氯化血根碱",
+      "cas_number": "5578-73-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280291-20mg"
+    },
+    {
+      "part_number": "CDAA-280292-20mg",
+      "name_en": "Cedrol",
+      "name_cn": "雪松醇",
+      "cas_number": "77-53-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280292-20mg"
+    },
+    {
+      "part_number": "CDAA-280293-20mg",
+      "name_en": "Dihydrocucurbitacin F",
+      "name_cn": "雪胆乙素",
+      "cas_number": "50298-90-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280293-20mg"
+    },
+    {
+      "part_number": "CDAA-280294-10mg",
+      "name_en": "Britannilactone",
+      "name_cn": "旋复花内酯（4-乙酰氧基）",
+      "cas_number": "33627-41-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280294-10mg"
+    },
+    {
+      "part_number": "CDAA-280295-20mg",
+      "name_en": "Hydrangenol",
+      "name_cn": "绣球酚",
+      "cas_number": "480-47-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280295-20mg"
+    },
+    {
+      "part_number": "CDAA-280295-5mg",
+      "name_en": "Hydrangenol",
+      "name_cn": "绣球酚",
+      "cas_number": "480-47-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280295-5mg"
+    },
+    {
+      "part_number": "CDAA-280296-20mg",
+      "name_en": "Ursodeoxycholic acid",
+      "name_cn": "熊去氧胆酸",
+      "cas_number": "128-13-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280296-20mg"
+    },
+    {
+      "part_number": "CDAA-280296D4-10mg",
+      "name_en": "Ursodeoxycholic acid-[D4]",
+      "name_cn": "熊去氧胆酸-[D4]",
+      "cas_number": "347841-46-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280296D4-10mg"
+    },
+    {
+      "part_number": "CDAA-280297-5mg",
+      "name_en": "Acetylursolic acid",
+      "name_cn": "熊果酸乙酸酯",
+      "cas_number": "7372-30-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280297-5mg"
+    },
+    {
+      "part_number": "CDAA-280298-20mg",
+      "name_en": "Arbutin",
+      "name_cn": "β-熊果苷",
+      "cas_number": "497-76-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280298-20mg"
+    },
+    {
+      "part_number": "CDAA-280299C3-1mg",
+      "name_en": "Androstenedione-[13C3]",
+      "name_cn": "雄烯二酮-[13C3]",
+      "cas_number": "327048-86-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280299C3-1mg"
+    },
+    {
+      "part_number": "CDAA-280300-20mg",
+      "name_en": "Thymopentin",
+      "name_cn": "胸腺五肽",
+      "cas_number": "69558-55-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280300-20mg"
+    },
+    {
+      "part_number": "CDAA-280301-20mg",
+      "name_en": "Thymidine",
+      "name_cn": "胸苷",
+      "cas_number": "50-89-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280301-20mg"
+    },
+    {
+      "part_number": "CDAA-280302-10mg",
+      "name_en": "Neoisoliquiritin",
+      "name_cn": "新异甘草苷",
+      "cas_number": "7014-39-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280302-10mg"
+    },
+    {
+      "part_number": "CDAA-280303-10mg",
+      "name_en": "Vicenin-2",
+      "name_cn": "新西兰牡荆苷",
+      "cas_number": "23666-13-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280303-10mg"
+    },
+    {
+      "part_number": "CDAA-280304-10mg",
+      "name_en": "Mesaconitine",
+      "name_cn": "新乌头碱",
+      "cas_number": "2752-64-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280304-10mg"
+    },
+    {
+      "part_number": "CDAA-280305-20mg",
+      "name_en": "neogambogic acid",
+      "name_cn": "新藤黄酸",
+      "cas_number": "93772-31-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280305-20mg"
+    },
+    {
+      "part_number": "CDAA-280306-20mg",
+      "name_en": "neomangiferin",
+      "name_cn": "新芒果苷",
+      "cas_number": "64809-67-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280306-20mg"
+    },
+    {
+      "part_number": "CDAA-280307-20mg",
+      "name_en": "Neochlorogenic acid",
+      "name_cn": "新绿原酸",
+      "cas_number": "906-33-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280307-20mg"
+    },
+    {
+      "part_number": "CDAA-280308-20mg",
+      "name_en": "Neoruscogenin",
+      "name_cn": "新鲁斯可皂苷元",
+      "cas_number": "17676-33-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280308-20mg"
+    },
+    {
+      "part_number": "CDAA-280309-10mg",
+      "name_en": "Neoliquiritin",
+      "name_cn": "新甘草苷",
+      "cas_number": "5088-75-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280309-10mg"
+    },
+    {
+      "part_number": "CDAA-280310-20mg",
+      "name_en": "Neocurdione",
+      "name_cn": "新莪术二酮",
+      "cas_number": "108944-67-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280310-20mg"
+    },
+    {
+      "part_number": "CDAA-280311-5mg",
+      "name_en": "Neotuberostemonine",
+      "name_cn": "新对叶百部碱",
+      "cas_number": "143120-46-1",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280311-5mg"
+    },
+    {
+      "part_number": "CDAA-280312-20mg",
+      "name_en": "Neosperidin dihydrochalcone",
+      "name_cn": "新橙皮苷二氢查尔酮",
+      "cas_number": "20702-77-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280312-20mg"
+    },
+    {
+      "part_number": "CDAA-280313-20mg",
+      "name_en": "Neohesperidin",
+      "name_cn": "新橙皮苷",
+      "cas_number": "13241-33-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280313-20mg"
+    },
+    {
+      "part_number": "CDAA-280314-20mg",
+      "name_en": "Neobavaisoflavone",
+      "name_cn": "新补骨脂异黄酮",
+      "cas_number": "41060-15-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280314-20mg"
+    },
+    {
+      "part_number": "CDAA-280315-20mg",
+      "name_en": "Fargesin",
+      "name_cn": "辛夷脂素",
+      "cas_number": "31008-19-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280315-20mg"
+    },
+    {
+      "part_number": "CDAA-280317-25mg",
+      "name_en": "rac-Synephrine",
+      "name_cn": "脱氧肾上腺素",
+      "cas_number": "94-07-5",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280317-25mg"
+    },
+    {
+      "part_number": "CDAA-280318-20mg",
+      "name_en": "Valtrate",
+      "name_cn": "缬草三酯",
+      "cas_number": "18296-44-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280318-20mg"
+    },
+    {
+      "part_number": "CDAA-280319-1mg",
+      "name_en": "Homobaldrinal",
+      "name_cn": "缬草醚醛",
+      "cas_number": "67910-07-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280319-1mg"
+    },
+    {
+      "part_number": "CDAA-280320-10mg",
+      "name_en": "Micromelin",
+      "name_cn": "小芸木素",
+      "cas_number": "15085-71-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280320-10mg"
+    },
+    {
+      "part_number": "CDAA-280320-5mg",
+      "name_en": "Micromelin",
+      "name_cn": "小芸木素",
+      "cas_number": "15085-71-9",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280320-5mg"
+    },
+    {
+      "part_number": "CDAA-280321-20mg",
+      "name_en": "Cardamonin",
+      "name_cn": "小豆蔻明",
+      "cas_number": "19309-14-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280321-20mg"
+    },
+    {
+      "part_number": "CDAA-280323-20mg",
+      "name_en": "Berberrubine",
+      "name_cn": "小檗红碱",
+      "cas_number": "15401-69-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280323-20mg"
+    },
+    {
+      "part_number": "CDAA-280324-20mg",
+      "name_en": "Parthenolide",
+      "name_cn": "小白菊内酯",
+      "cas_number": "20554-84-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280324-20mg"
+    },
+    {
+      "part_number": "CDAA-280326-20mg",
+      "name_en": "Racanisodamine",
+      "name_cn": "消旋山莨菪碱",
+      "cas_number": "17659-49-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280326-20mg"
+    },
+    {
+      "part_number": "CDAA-280327-50mg",
+      "name_en": "clareolide",
+      "name_cn": "香紫苏内酯",
+      "cas_number": "564-20-5",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280327-50mg"
+    },
+    {
+      "part_number": "CDAA-280329-20mg",
+      "name_en": "Sclareol Glycol",
+      "name_cn": "香紫苏二醇",
+      "cas_number": "55881-96-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280329-20mg"
+    },
+    {
+      "part_number": "CDAA-280330-20mg",
+      "name_en": "Sclareol",
+      "name_cn": "香紫苏醇",
+      "cas_number": "515-03-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280330-20mg"
+    },
+    {
+      "part_number": "CDAA-280331-20mg",
+      "name_en": "Diosmetin-7-O-β-D-glucopyranoside",
+      "name_cn": "香叶木素-7-O-葡萄糖苷",
+      "cas_number": "20126-59-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280331-20mg"
+    },
+    {
+      "part_number": "CDAA-280332-20mg",
+      "name_en": "Diosmetin",
+      "name_cn": "香叶木素",
+      "cas_number": "520-34-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280332-20mg"
+    },
+    {
+      "part_number": "CDAA-280333-1g",
+      "name_en": "Geraniol",
+      "name_cn": "香叶醇",
+      "cas_number": "106-24-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280333-1g"
+    },
+    {
+      "part_number": "CDAA-280333-20mg",
+      "name_en": "Geraniol",
+      "name_cn": "香叶醇",
+      "cas_number": "106-24-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280333-20mg"
+    },
+    {
+      "part_number": "CDAA-280333-250mg",
+      "name_en": "Geraniol",
+      "name_cn": "香叶醇",
+      "cas_number": "106-24-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280333-250mg"
+    },
+    {
+      "part_number": "CDAA-280334-25mg",
+      "name_en": "typhaneoside",
+      "name_cn": "香蒲新苷",
+      "cas_number": "104472-68-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280334-25mg"
+    },
+    {
+      "part_number": "CDAA-280335-20mg",
+      "name_en": "Vanillin",
+      "name_cn": "香兰素",
+      "cas_number": "121-33-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280335-20mg"
+    },
+    {
+      "part_number": "CDAA-280335-250mg",
+      "name_en": "Vanillin",
+      "name_cn": "香兰素",
+      "cas_number": "121-33-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280335-250mg"
+    },
+    {
+      "part_number": "CDAA-280335D3-100mg",
+      "name_en": "Vanillin-[D3]",
+      "name_cn": "香兰素-[D3]",
+      "cas_number": "74495-74-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280335D3-100mg"
+    },
+    {
+      "part_number": "CDAA-280335D3-25mg",
+      "name_en": "Vanillin-[D3]",
+      "name_cn": "香兰素-[D3]",
+      "cas_number": "74495-74-2",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280335D3-25mg"
+    },
+    {
+      "part_number": "CDAA-280336-20mg",
+      "name_en": "5-Isopropyl-2-methylphenol",
+      "name_cn": "香荆芥酚",
+      "cas_number": "499-75-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280336-20mg"
+    },
+    {
+      "part_number": "CDAA-280337-20mg",
+      "name_en": "Didymin",
+      "name_cn": "香蜂草苷",
+      "cas_number": "14259-47-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280337-20mg"
+    },
+    {
+      "part_number": "CDAA-280338-100mg",
+      "name_en": "Coumarin",
+      "name_cn": "香豆素",
+      "cas_number": "91-64-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280338-100mg"
+    },
+    {
+      "part_number": "CDAA-280338-20mg",
+      "name_en": "Coumarin",
+      "name_cn": "香豆素",
+      "cas_number": "91-64-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280338-20mg"
+    },
+    {
+      "part_number": "CDAA-280338-250mg",
+      "name_en": "Coumarin",
+      "name_cn": "香豆素",
+      "cas_number": "91-64-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280338-250mg"
+    },
+    {
+      "part_number": "CDAA-280338D4-10mg",
+      "name_en": "Coumarin-[D4]",
+      "name_cn": "香豆素-[D4]",
+      "cas_number": "185056-83-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280338D4-10mg"
+    },
+    {
+      "part_number": "CDAA-280338D4-5mg",
+      "name_en": "Coumarin-[D4]",
+      "name_cn": "香豆素-[D4]",
+      "cas_number": "185056-83-1",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280338D4-5mg"
+    },
+    {
+      "part_number": "CDAA-280339-20mg",
+      "name_en": "Vanillic acid",
+      "name_cn": "香草酸",
+      "cas_number": "121-34-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280339-20mg"
+    },
+    {
+      "part_number": "CDAA-280340-20mg",
+      "name_en": "4-Hydroxy-3-methoxybenzylalcohol(vanillicalcohol)",
+      "name_cn": "香草醇",
+      "cas_number": "498-00-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280340-20mg"
+    },
+    {
+      "part_number": "CDAA-280341-20mg",
+      "name_en": "L-Abrine",
+      "name_cn": "相思子碱",
+      "cas_number": "21339-55-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280341-20mg"
+    },
+    {
+      "part_number": "CDAA-280342-20mg",
+      "name_en": "L-Abrine",
+      "name_cn": "相思豆毒素",
+      "cas_number": "526-31-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280342-20mg"
+    },
+    {
+      "part_number": "CDAA-280343-20mg",
+      "name_en": "Adenine",
+      "name_cn": "腺嘌呤",
+      "cas_number": "73-24-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280343-20mg"
+    },
+    {
+      "part_number": "CDAA-280344-5mg",
+      "name_en": "Darutigenol",
+      "name_cn": "莶精醇",
+      "cas_number": "5940-00-1",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280344-5mg"
+    },
+    {
+      "part_number": "CDAA-280345-20mg",
+      "name_en": "Gracillin",
+      "name_cn": "纤细薯蓣皂苷",
+      "cas_number": "19083-00-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280345-20mg"
+    },
+    {
+      "part_number": "CDAA-280346-20mg",
+      "name_en": "Curculigoside",
+      "name_cn": "仙茅苷",
+      "cas_number": "85643-19-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280346-20mg"
+    },
+    {
+      "part_number": "CDAA-280348-20mg",
+      "name_en": "Schaftoside",
+      "name_cn": "夏佛塔苷",
+      "cas_number": "51938-32-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280348-20mg"
+    },
+    {
+      "part_number": "CDAA-280349-20mg",
+      "name_en": "Tenuifolin",
+      "name_cn": "细叶远志皂苷",
+      "cas_number": "20183-47-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280349-20mg"
+    },
+    {
+      "part_number": "CDAA-280350-20mg",
+      "name_en": "(-)-Asarinin",
+      "name_cn": "(-)-细辛脂素",
+      "cas_number": "133-04-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280350-20mg"
+    },
+    {
+      "part_number": "CDAA-280352-20mg",
+      "name_en": "2,4,5-Trimethoxybenzaldehyde",
+      "name_cn": "细辛醛",
+      "cas_number": "4460-86-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280352-20mg"
+    },
+    {
+      "part_number": "CDAA-280354-20mg",
+      "name_en": "Camptothecin",
+      "name_cn": "喜树碱",
+      "cas_number": "7689-03-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280354-20mg"
+    },
+    {
+      "part_number": "CDAA-280355-20mg",
+      "name_en": "Daphnoretin",
+      "name_cn": "西瑞香素",
+      "cas_number": "2034-69-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280355-20mg"
+    },
+    {
+      "part_number": "CDAA-280356-10mg",
+      "name_en": "Tomatine",
+      "name_cn": "西红柿碱",
+      "cas_number": "17406-45-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280356-10mg"
+    },
+    {
+      "part_number": "CDAA-280357-20mg",
+      "name_en": "Crocin II",
+      "name_cn": "西红花苷II",
+      "cas_number": "55750-84-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280357-20mg"
+    },
+    {
+      "part_number": "CDAA-280358-20mg",
+      "name_en": "CrocinⅠ",
+      "name_cn": "西红花苷I(藏花素)",
+      "cas_number": "42553-65-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280358-20mg"
+    },
+    {
+      "part_number": "CDAA-280358-250mg",
+      "name_en": "CrocinⅠ",
+      "name_cn": "西红花苷I(藏花素)",
+      "cas_number": "42553-65-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280358-250mg"
+    },
+    {
+      "part_number": "CDAA-280359-10mg",
+      "name_en": "Crocetin",
+      "name_cn": "藏花酸",
+      "cas_number": "27876-94-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280359-10mg"
+    },
+    {
+      "part_number": "CDAA-280360-10mg",
+      "name_en": "Sipeimine-3β-D-glucoside",
+      "name_cn": "西贝母碱苷",
+      "cas_number": "32685-93-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280360-10mg"
+    },
+    {
+      "part_number": "CDAA-280361-20mg",
+      "name_en": "Imperialine",
+      "name_cn": "西贝母碱",
+      "cas_number": "61825-98-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280361-20mg"
+    },
+    {
+      "part_number": "CDAA-280362-20mg",
+      "name_en": "Schizandrol B",
+      "name_cn": "五味子酯乙",
+      "cas_number": "58546-55-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280362-20mg"
+    },
+    {
+      "part_number": "CDAA-280363-20mg",
+      "name_en": "Schisantherin A",
+      "name_cn": "五味子酯甲",
+      "cas_number": "58546-56-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280363-20mg"
+    },
+    {
+      "part_number": "CDAA-280364-20mg",
+      "name_en": "Schisandrin B",
+      "name_cn": "五味子乙素",
+      "cas_number": "61281-37-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280364-20mg"
+    },
+    {
+      "part_number": "CDAA-280365-20mg",
+      "name_en": "Schisandrin A",
+      "name_cn": "五味子甲素",
+      "cas_number": "61281-38-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280365-20mg"
+    },
+    {
+      "part_number": "CDAA-280366-20mg",
+      "name_en": "Schisanhenol",
+      "name_cn": "五味子酚",
+      "cas_number": "69363-14-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280366-20mg"
+    },
+    {
+      "part_number": "CDAA-280367-20mg",
+      "name_en": "schisandrol B",
+      "name_cn": "五味子醇乙",
+      "cas_number": "58546-54-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280367-20mg"
+    },
+    {
+      "part_number": "CDAA-280368-20mg",
+      "name_en": "Schisandrin",
+      "name_cn": "五味子醇甲",
+      "cas_number": "7432-28-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280368-20mg"
+    },
+    {
+      "part_number": "CDAA-280368-250mg",
+      "name_en": "Schisandrin",
+      "name_cn": "五味子醇甲",
+      "cas_number": "7432-28-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280368-250mg"
+    },
+    {
+      "part_number": "CDAA-280370-20mg",
+      "name_en": "schisandrin C",
+      "name_cn": "五味子丙素",
+      "cas_number": "61301-33-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280370-20mg"
+    },
+    {
+      "part_number": "CDAA-280371-250mg",
+      "name_en": "Quintozine",
+      "name_cn": "五氯硝基苯",
+      "cas_number": "82-68-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280371-250mg"
+    },
+    {
+      "part_number": "CDAA-280372-10mg",
+      "name_en": "Evocarpine",
+      "name_cn": "吴茱萸新碱",
+      "cas_number": "15266-38-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280372-10mg"
+    },
+    {
+      "part_number": "CDAA-280373-20mg",
+      "name_en": "Evodine",
+      "name_cn": "吴茱萸内酯",
+      "cas_number": "6989-38-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280373-20mg"
+    },
+    {
+      "part_number": "CDAA-280374-20mg",
+      "name_en": "Evodiamine",
+      "name_cn": "吴茱萸碱",
+      "cas_number": "518-17-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280374-20mg"
+    },
+    {
+      "part_number": "CDAA-280375-20mg",
+      "name_en": "Rutaecarpine",
+      "name_cn": "吴茱萸次碱",
+      "cas_number": "84-26-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280375-20mg"
+    },
+    {
+      "part_number": "CDAA-280376-20mg",
+      "name_en": "Eleutheroside E1",
+      "name_cn": "无梗五加苷B",
+      "cas_number": "7374-79-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280376-20mg"
+    },
+    {
+      "part_number": "CDAA-280377-20mg",
+      "name_en": "Linderane",
+      "name_cn": "乌药醚内酯",
+      "cas_number": "13476-25-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280377-20mg"
+    },
+    {
+      "part_number": "CDAA-280378-20mg",
+      "name_en": "Methyllinderone",
+      "name_cn": "乌药环戊烯二酮甲醚",
+      "cas_number": "3984-73-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280378-20mg"
+    },
+    {
+      "part_number": "CDAA-280378-5mg",
+      "name_en": "Methyllinderone",
+      "name_cn": "乌药环戊烯二酮甲醚",
+      "cas_number": "3984-73-4",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280378-5mg"
+    },
+    {
+      "part_number": "CDAA-280379-1mg",
+      "name_en": "Linderone",
+      "name_cn": "乌药环戊烯二酮",
+      "cas_number": "1782-79-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280379-1mg"
+    },
+    {
+      "part_number": "CDAA-280379-5mg",
+      "name_en": "Linderone",
+      "name_cn": "乌药环戊烯二酮",
+      "cas_number": "1782-79-2",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280379-5mg"
+    },
+    {
+      "part_number": "CDAA-280380-10mg",
+      "name_en": "lindenenol",
+      "name_cn": "乌药醇",
+      "cas_number": "26146-27-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280380-10mg"
+    },
+    {
+      "part_number": "CDAA-280381-20mg",
+      "name_en": "Aconine",
+      "name_cn": "乌头原碱",
+      "cas_number": "509-20-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280381-20mg"
+    },
+    {
+      "part_number": "CDAA-280384-25mg",
+      "name_en": "Ubenimex",
+      "name_cn": "乌苯美司",
+      "cas_number": "58970-76-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280384-25mg"
+    },
+    {
+      "part_number": "CDAA-280385-20mg",
+      "name_en": "Vindoline",
+      "name_cn": "文多灵",
+      "cas_number": "2182-14-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280385-20mg"
+    },
+    {
+      "part_number": "CDAA-280386-20mg",
+      "name_en": "Dulcitol",
+      "name_cn": "半乳糖醇",
+      "cas_number": "608-66-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280386-20mg"
+    },
+    {
+      "part_number": "CDAA-280387-20mg",
+      "name_en": "Pseudoprotodioscin",
+      "name_cn": "伪原薯蓣皂苷",
+      "cas_number": "102115-79-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280387-20mg"
+    },
+    {
+      "part_number": "CDAA-280388-10mg",
+      "name_en": "Pseudohypericin",
+      "name_cn": "伪金丝桃素",
+      "cas_number": "55954-61-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280388-10mg"
+    },
+    {
+      "part_number": "CDAA-280388-5mg",
+      "name_en": "Pseudohypericin",
+      "name_cn": "伪金丝桃素",
+      "cas_number": "55954-61-5",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280388-5mg"
+    },
+    {
+      "part_number": "CDAA-280397-20mg",
+      "name_en": "Osthenol",
+      "name_cn": "王草酚",
+      "cas_number": "484-14-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280397-20mg"
+    },
+    {
+      "part_number": "CDAA-280398-20mg",
+      "name_en": "Vaccarin",
+      "name_cn": "王不留行黄酮苷",
+      "cas_number": "53452-16-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280398-20mg"
+    },
+    {
+      "part_number": "CDAA-280399-5mg",
+      "name_en": "Topotecan",
+      "name_cn": "拓扑替康",
+      "cas_number": "123948-87-8",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280399-5mg"
+    },
+    {
+      "part_number": "CDAA-280400-25mg",
+      "name_en": "Deoxyarbutin",
+      "name_cn": "脱氧熊果苷",
+      "cas_number": "53936-56-4",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280400-25mg"
+    },
+    {
+      "part_number": "CDAA-280401-10mg",
+      "name_en": "Deoxyaconitine",
+      "name_cn": "脱氧乌头碱",
+      "cas_number": "3175-95-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280401-10mg"
+    },
+    {
+      "part_number": "CDAA-280402-20mg",
+      "name_en": "Anhydroicaritin",
+      "name_cn": "脱水淫羊藿素",
+      "cas_number": "38226-86-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280402-20mg"
+    },
+    {
+      "part_number": "CDAA-280403-20mg",
+      "name_en": "Dehydroandrographolidesuccinate",
+      "name_cn": "脱水穿心莲内酯琥珀酸半酯",
+      "cas_number": "786593-06-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280403-20mg"
+    },
+    {
+      "part_number": "CDAA-280404-20mg",
+      "name_en": "Dehydroandrographolide",
+      "name_cn": "脱水穿心莲内酯",
+      "cas_number": "134418-28-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280404-20mg"
+    },
+    {
+      "part_number": "CDAA-280405-20mg",
+      "name_en": "Dehydrocorydaline",
+      "name_cn": "脱氢紫堇碱",
+      "cas_number": "30045-16-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280405-20mg"
+    },
+    {
+      "part_number": "CDAA-280407-10mg",
+      "name_en": "Abscisic acid",
+      "name_cn": "脱落酸",
+      "cas_number": "14375-45-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280407-10mg"
+    },
+    {
+      "part_number": "CDAA-280408-20mg",
+      "name_en": "Melatonine",
+      "name_cn": "褪黑素",
+      "cas_number": "73-31-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280408-20mg"
+    },
+    {
+      "part_number": "CDAA-280409-20mg",
+      "name_en": "Alantolactone",
+      "name_cn": "土木香内酯",
+      "cas_number": "546-43-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280409-20mg"
+    },
+    {
+      "part_number": "CDAA-280410-5mg",
+      "name_en": "Turkesterone",
+      "name_cn": "土克甾酮",
+      "cas_number": "41451-87-0",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280410-5mg"
+    },
+    {
+      "part_number": "CDAA-280411-20mg",
+      "name_en": "Pseudolaric Acid B",
+      "name_cn": "土荆皮乙酸",
+      "cas_number": "82508-31-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280411-20mg"
+    },
+    {
+      "part_number": "CDAA-280412-20mg",
+      "name_en": "pseudolaric acid A",
+      "name_cn": "土荆皮甲酸",
+      "cas_number": "82508-32-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280412-20mg"
+    },
+    {
+      "part_number": "CDAA-280413-10mg",
+      "name_en": "TubeiMoside II",
+      "name_cn": "土贝母苷乙",
+      "cas_number": "115810-12-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280413-10mg"
+    },
+    {
+      "part_number": "CDAA-280415-20mg",
+      "name_en": "Tubeimoside I",
+      "name_cn": "土贝母苷甲",
+      "cas_number": "102040-03-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280415-20mg"
+    },
+    {
+      "part_number": "CDAA-280416-10mg",
+      "name_en": "TubeiMosideIII",
+      "name_cn": "土贝母苷丙",
+      "cas_number": "115810-13-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280416-10mg"
+    },
+    {
+      "part_number": "CDAA-280417-1g",
+      "name_en": "Damascenone",
+      "name_cn": "突厥烯酮",
+      "cas_number": "23696-85-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280417-1g"
+    },
+    {
+      "part_number": "CDAA-280417-20mg",
+      "name_en": "Damascenone",
+      "name_cn": "突厥烯酮",
+      "cas_number": "23696-85-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280417-20mg"
+    },
+    {
+      "part_number": "CDAA-280418-100mg",
+      "name_en": "Musk ketone",
+      "name_cn": "酮麝香",
+      "cas_number": "81-14-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280418-100mg"
+    },
+    {
+      "part_number": "CDAA-280418-20mg",
+      "name_en": "Musk ketone",
+      "name_cn": "酮麝香",
+      "cas_number": "81-14-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280418-20mg"
+    },
+    {
+      "part_number": "CDAA-280419-20mg",
+      "name_en": "Tenacissoside H",
+      "name_cn": "通关藤苷H",
+      "cas_number": "191729-45-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280419-20mg"
+    },
+    {
+      "part_number": "CDAA-280420-20mg",
+      "name_en": "Rubusoside",
+      "name_cn": "甜茶苷",
+      "cas_number": "64849-39-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280420-20mg"
+    },
+    {
+      "part_number": "CDAA-280422-100mg",
+      "name_en": "Steviolbioside",
+      "name_cn": "甜菊双糖苷",
+      "cas_number": "41093-60-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280422-100mg"
+    },
+    {
+      "part_number": "CDAA-280422-20mg",
+      "name_en": "Steviolbioside",
+      "name_cn": "甜菊双糖苷",
+      "cas_number": "41093-60-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280422-20mg"
+    },
+    {
+      "part_number": "CDAA-280423-20mg",
+      "name_en": "Steviol",
+      "name_cn": "甜菊醇",
+      "cas_number": "471-80-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280423-20mg"
+    },
+    {
+      "part_number": "CDAA-280424-20mg",
+      "name_en": "Betaine",
+      "name_cn": "甜菜碱",
+      "cas_number": "107-43-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280424-20mg"
+    },
+    {
+      "part_number": "CDAA-280425-20mg",
+      "name_en": "L-Borneol",
+      "name_cn": "左旋龙脑",
+      "cas_number": "464-45-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280425-20mg"
+    },
+    {
+      "part_number": "CDAA-280426-25mg",
+      "name_en": "Borneol",
+      "name_cn": "龙脑",
+      "cas_number": "507-70-0",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280426-25mg"
+    },
+    {
+      "part_number": "CDAA-280427-20mg",
+      "name_en": "Gastrodin",
+      "name_cn": "天麻素",
+      "cas_number": "62499-27-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280427-20mg"
+    },
+    {
+      "part_number": "CDAA-280428-100mg",
+      "name_en": "L-Asparagine",
+      "name_cn": "L-天冬酰胺",
+      "cas_number": "70-47-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280428-100mg"
+    },
+    {
+      "part_number": "CDAA-280428-1g",
+      "name_en": "L-Asparagine",
+      "name_cn": "L-天冬酰胺",
+      "cas_number": "70-47-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280428-1g"
+    },
+    {
+      "part_number": "CDAA-280429-20mg",
+      "name_en": "Gambogic acid",
+      "name_cn": "藤黄酸",
+      "cas_number": "2752-65-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280429-20mg"
+    },
+    {
+      "part_number": "CDAA-280430-20mg",
+      "name_en": "Specnuezhenide",
+      "name_cn": "特女贞苷",
+      "cas_number": "39011-92-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280430-20mg"
+    },
+    {
+      "part_number": "CDAA-280431-20mg",
+      "name_en": "Aucubin",
+      "name_cn": "桃叶珊瑚苷",
+      "cas_number": "479-98-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280431-20mg"
+    },
+    {
+      "part_number": "CDAA-280432H-500mg",
+      "name_en": "Saccharin Sodium Salt Hydrate",
+      "name_cn": "糖精钠水合物",
+      "cas_number": "82385-42-0",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280432H-500mg"
+    },
+    {
+      "part_number": "CDAA-280433-100mg",
+      "name_en": "Santalol",
+      "name_cn": "檀香醇",
+      "cas_number": "11031-45-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280433-100mg"
+    },
+    {
+      "part_number": "CDAA-280434-10mg",
+      "name_en": "Heterophyllin B",
+      "name_cn": "太子参环肽B",
+      "cas_number": "145459-19-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280434-10mg"
+    },
+    {
+      "part_number": "CDAA-280435-20mg",
+      "name_en": "Orcinolglucoside",
+      "name_cn": "苔黑酚葡萄糖苷",
+      "cas_number": "21082-33-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280435-20mg"
+    },
+    {
+      "part_number": "CDAA-280437-20mg",
+      "name_en": "talatisamine",
+      "name_cn": "塔拉萨敏",
+      "cas_number": "20501-56-8",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280437-20mg"
+    },
+    {
+      "part_number": "CDAA-280438-20mg",
+      "name_en": "Tacrolimus",
+      "name_cn": "他克莫司",
+      "cas_number": "104987-11-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280438-20mg"
+    },
+    {
+      "part_number": "CDAA-280439-20mg",
+      "name_en": "Amentoflavone",
+      "name_cn": "穗花杉双黄酮",
+      "cas_number": "1617-53-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280439-20mg"
+    },
+    {
+      "part_number": "CDAA-280440-20mg",
+      "name_en": "Jervine",
+      "name_cn": "蒜藜芦碱",
+      "cas_number": "469-59-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280440-20mg"
+    },
+    {
+      "part_number": "CDAA-280442-5mg",
+      "name_en": "Jujuboside D；Jujuboside A1",
+      "name_cn": "酸枣仁皂苷D",
+      "cas_number": "194851-84-8",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280442-5mg"
+    },
+    {
+      "part_number": "CDAA-280443-1mg",
+      "name_en": "Jujuboside B1",
+      "name_cn": "酸枣仁皂苷B1",
+      "cas_number": "68144-21-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280443-1mg"
+    },
+    {
+      "part_number": "CDAA-280444-20mg",
+      "name_en": "Jujuboside B",
+      "name_cn": "酸枣仁皂苷B",
+      "cas_number": "55466-05-2",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280444-20mg"
+    },
+    {
+      "part_number": "CDAA-280445-20mg",
+      "name_en": "Jujuboside A",
+      "name_cn": "酸枣仁皂苷A",
+      "cas_number": "55466-04-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280445-20mg"
+    },
+    {
+      "part_number": "CDAA-280446-20mg",
+      "name_en": "Embelin",
+      "name_cn": "酸藤子酚",
+      "cas_number": "550-24-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280446-20mg"
+    },
+    {
+      "part_number": "CDAA-280447-1mg",
+      "name_en": "Physalin L",
+      "name_cn": "酸浆苦味素L",
+      "cas_number": "113146-74-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280447-1mg"
+    },
+    {
+      "part_number": "CDAA-280447-20mg",
+      "name_en": "Physalin L",
+      "name_cn": "酸浆苦味素L",
+      "cas_number": "113146-74-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280447-20mg"
+    },
+    {
+      "part_number": "CDAA-280448-100mg",
+      "name_en": "Hematoxylin",
+      "name_cn": "苏木素",
+      "cas_number": "517-28-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280448-100mg"
+    },
+    {
+      "part_number": "CDAA-280452-100mg",
+      "name_en": "Sudan I",
+      "name_cn": "苏丹红Ⅰ",
+      "cas_number": "842-07-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280452-100mg"
+    },
+    {
+      "part_number": "CDAA-280452-10mg",
+      "name_en": "Sudan I",
+      "name_cn": "苏丹红Ⅰ",
+      "cas_number": "842-07-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280452-10mg"
+    },
+    {
+      "part_number": "CDAA-280452-20mg",
+      "name_en": "Sudan I",
+      "name_cn": "苏丹红Ⅰ",
+      "cas_number": "842-07-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280452-20mg"
+    },
+    {
+      "part_number": "CDAA-280452-250mg",
+      "name_en": "Sudan I",
+      "name_cn": "苏丹红Ⅰ",
+      "cas_number": "842-07-9",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280452-250mg"
+    },
+    {
+      "part_number": "CDAA-280452D5-10mg",
+      "name_en": "Sudan I-[D5]",
+      "name_cn": "苏丹红I-[D5]",
+      "cas_number": "752211-63-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280452D5-10mg"
+    },
+    {
+      "part_number": "CDAA-280453-20mg",
+      "name_en": "Pinoresinol diglucoside",
+      "name_cn": "松脂醇二葡萄糖苷",
+      "cas_number": "63902-38-5",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280453-20mg"
+    },
+    {
+      "part_number": "CDAA-280454-250mg",
+      "name_en": "Abietic Acid",
+      "name_cn": "松香酸",
+      "cas_number": "514-10-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280454-250mg"
+    },
+    {
+      "part_number": "CDAA-280455-20mg",
+      "name_en": "Pinocembrin",
+      "name_cn": "松属素",
+      "cas_number": "68745-38-0",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280455-20mg"
+    },
+    {
+      "part_number": "CDAA-280456-100mg",
+      "name_en": "(+)-Usniacin",
+      "name_cn": "（+）-松萝酸",
+      "cas_number": "7562-61-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280456-100mg"
+    },
+    {
+      "part_number": "CDAA-280457-20mg",
+      "name_en": "Echinacoside",
+      "name_cn": "松果菊苷",
+      "cas_number": "82854-37-3",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280457-20mg"
+    },
+    {
+      "part_number": "CDAA-280458-20mg",
+      "name_en": "4-Hydroxy-3-methoxycinnamaldehyde",
+      "name_cn": "松柏醛",
+      "cas_number": "458-36-6",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280458-20mg"
+    },
+    {
+      "part_number": "CDAA-280459-20mg",
+      "name_en": "Tetrahydroberberine",
+      "name_cn": "四氢小檗碱",
+      "cas_number": "522-97-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280459-20mg"
+    },
+    {
+      "part_number": "CDAA-280461-20mg",
+      "name_en": "Tetrahydrocucumin",
+      "name_cn": "四氢姜黄素",
+      "cas_number": "36062-04-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280461-20mg"
+    },
+    {
+      "part_number": "CDAA-280462-20mg",
+      "name_en": "Tetrahydrocoptisine",
+      "name_cn": "四氢黄连碱",
+      "cas_number": "4312-32-7",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280462-20mg"
+    },
+    {
+      "part_number": "CDAA-280463-20mg",
+      "name_en": "Tetrahydrocolumbamine",
+      "name_cn": "四氢非洲防己碱",
+      "cas_number": "483-34-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280463-20mg"
+    },
+    {
+      "part_number": "CDAA-280464-20mg",
+      "name_en": "Spinosin",
+      "name_cn": "斯皮诺素",
+      "cas_number": "72063-39-9",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-280464-20mg"
+    }
+  ]
+}

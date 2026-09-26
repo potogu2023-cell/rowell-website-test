@@ -2,10 +2,10 @@ import fs from "node:fs/promises";
 import mysql from "mysql2/promise";
 
 export async function runStandardsProductsMigration() {
-  const batch = JSON.parse(await fs.readFile(new URL("./standards-products-batch-2026-09-26-wave3.json", import.meta.url), "utf8"));
+  const batch = JSON.parse(await fs.readFile(new URL("./standards-products-batch-2026-09-26-wave4.json", import.meta.url), "utf8"));
   const records = batch.records;
   if (batch.namespace !== "standards_products" || !batch.excluded_namespaces?.includes("products")) throw new Error("standards_batch_scope_invalid");
-  if (records.length !== 1000 || batch.approved_record_count !== 1000) throw new Error(`standards_batch_record_count_invalid:${records.length}`);
+  if (records.length !== 500 || batch.approved_record_count !== 500) throw new Error(`standards_batch_record_count_invalid:${records.length}`);
   if (new Set(records.map((r) => r.part_number)).size !== records.length) throw new Error("standards_batch_duplicate_part_number");
   for (const r of records) {
     if (!r.part_number || !r.name_en || !r.specification) throw new Error(`standards_identity_incomplete:${r.part_number ?? "unknown"}`);
