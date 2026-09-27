@@ -83,12 +83,22 @@ export async function runStandardsProductsMigration() {
     );
     if (tables.length !== 1) throw new Error("standards_products_table_missing");
 
-    // Derive the temporary-table column types from the real table. It is connection-local
-    // and is dropped automatically when the Pre-Deploy connection closes.
-    await connection.query(
-      `CREATE TEMPORARY TABLE ${TEMP_TABLE} AS SELECT ${COLUMNS.join(",")} FROM standards_products WHERE 1 = 0`,
-    );
-    await connection.query(`ALTER TABLE ${TEMP_TABLE} ADD INDEX idx_part_number (part_number)`);
+    // TiDB does not implement CREATE TEMPORARY TABLE ... AS SELECT. Use explicit,
+    // sufficiently wide staging types; the table is connection-local and is dropped
+    // automatically when the Pre-Deploy connection closes.
+    await connection.query(`
+      CREATE TEMPORARY TABLE ${TEMP_TABLE} (
+        part_number VARCHAR(255) NOT NULL,
+        name_en TEXT NOT NULL,
+        name_cn TEXT NULL,
+        cas_number VARCHAR(64) NULL,
+        specification TEXT NOT NULL,
+        brand VARCHAR(64) NOT NULL,
+        status VARCHAR(32) NOT NULL,
+        slug VARCHAR(255) NOT NULL,
+        INDEX idx_part_number (part_number)
+      )
+    `);
     const [duplicateRows] = await connection.query(
       "SELECT part_number FROM standards_products GROUP BY part_number HAVING COUNT(*) > 1 LIMIT 1",
     );
