@@ -4,6 +4,8 @@ import mysql from "mysql2/promise";
 const BATCH_DIR = new URL("../generated/standards-products-remaining-2026-09-26/", import.meta.url);
 const BATCH_NAME = /^standards-products-batch-2026-09-26-remaining-(\d+)-(\d+)\.json$/;
 const CAS_RE = /^\d{2,7}-\d{2}-\d$/;
+const TOTAL_APPROVED = 16703;
+const TEMP_TABLE = "tmp_anpel_standards_products";
 
 function validateBatch(batch, filename) {
   if (batch.namespace !== "standards_products" || !batch.excluded_namespaces?.includes("products")) {
@@ -53,6 +55,18 @@ function dbConfig() {
   return config;
 }
 
+const COLUMNS = ["part_number", "name_en", "name_cn", "cas_number", "specification", "brand", "status", "slug"];
+const PLACEHOLDER_ROW = `(${COLUMNS.map(() => "?").join(",")})`;
+
+async function bulkLoadTemp(connection, records) {
+  const values = [];
+  for (const r of records) {
+    values.push(r.part_number, r.name_en, r.name_cn ?? null, r.cas_number ?? null, r.specification, r.brand, r.status, r.slug);
+  }
+  const placeholders = records.map(() => PLACEHOLDER_ROW).join(",");
+  await connection.query(`INSERT INTO ${TEMP_TABLE} (${COLUMNS.join(",")}) VALUES ${placeholders}`, values);
+}
+
 export async function runStandardsProductsMigration() {
   const files = await getBatchFiles();
   if (files.length !== 34) throw new Error(`standards_batch_file_count_invalid:${files.length}`);
@@ -69,6 +83,17 @@ export async function runStandardsProductsMigration() {
     );
     if (tables.length !== 1) throw new Error("standards_products_table_missing");
 
+    // Derive the temporary-table column types from the real table. It is connection-local
+    // and is dropped automatically when the Pre-Deploy connection closes.
+    await connection.query(
+      `CREATE TEMPORARY TABLE ${TEMP_TABLE} AS SELECT ${COLUMNS.join(",")} FROM standards_products WHERE 1 = 0`,
+    );
+    await connection.query(`ALTER TABLE ${TEMP_TABLE} ADD INDEX idx_part_number (part_number)`);
+    const [duplicateRows] = await connection.query(
+      "SELECT part_number FROM standards_products GROUP BY part_number HAVING COUNT(*) > 1 LIMIT 1",
+    );
+    if (duplicateRows.length > 0) throw new Error(`standards_identity_duplicate:${duplicateRows[0].part_number}`);
+
     for (const filename of files) {
       const match = filename.match(BATCH_NAME);
       const batch = JSON.parse(await fs.readFile(new URL(filename, BATCH_DIR), "utf8"));
@@ -77,24 +102,34 @@ export async function runStandardsProductsMigration() {
       try {
         await connection.beginTransaction();
         tx = true;
-        for (const r of batch.records) {
-          const [rows] = await connection.query(
-            "SELECT id FROM standards_products WHERE part_number = ? LIMIT 2 FOR UPDATE",
-            [r.part_number],
-          );
-          if (rows.length > 1) throw new Error(`standards_identity_duplicate:${r.part_number}`);
-          if (rows.length === 1) {
-            await connection.query(
-              "UPDATE standards_products SET name_en = ?, name_cn = ?, cas_number = ?, specification = ?, brand = ?, status = ?, slug = ? WHERE id = ?",
-              [r.name_en, r.name_cn, r.cas_number, r.specification, r.brand, r.status, r.slug, rows[0].id],
-            );
-          } else {
-            await connection.query(
-              "INSERT INTO standards_products (part_number, name_en, name_cn, cas_number, specification, brand, status, slug) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-              [r.part_number, r.name_en, r.name_cn, r.cas_number, r.specification, r.brand, r.status, r.slug],
-            );
-          }
-        }
+        await connection.query(`DELETE FROM ${TEMP_TABLE}`);
+        await bulkLoadTemp(connection, batch.records);
+
+        // Update existing identities in one join. This is safe even if the pre-existing
+        // table lacks a unique index and makes reruns idempotent after a timeout.
+        await connection.query(
+          `UPDATE standards_products target
+           INNER JOIN ${TEMP_TABLE} incoming ON incoming.part_number = target.part_number
+           SET target.name_en = incoming.name_en,
+               target.name_cn = incoming.name_cn,
+               target.cas_number = incoming.cas_number,
+               target.specification = incoming.specification,
+               target.brand = incoming.brand,
+               target.status = incoming.status,
+               target.slug = incoming.slug`,
+        );
+
+        // Insert only identities not already present. This avoids requiring a unique
+        // constraint and never touches the products table.
+        await connection.query(
+          `INSERT INTO standards_products (${COLUMNS.join(",")})
+           SELECT incoming.${COLUMNS.join(", incoming.")}
+           FROM ${TEMP_TABLE} incoming
+           WHERE NOT EXISTS (
+             SELECT 1 FROM standards_products existing
+             WHERE existing.part_number = incoming.part_number
+           )`,
+        );
         await connection.commit();
         tx = false;
       } catch (error) {
@@ -104,11 +139,10 @@ export async function runStandardsProductsMigration() {
         throw new Error(`standards_batch_failed:${filename}:${error.message}`);
       }
       total += batch.records.length;
-      console.log(`standards_products_batch=committed range=${match[1]}-${match[2]} records=${batch.records.length} namespace=standards_products products_updates=0`);
-      // batch is scoped to this loop iteration and becomes collectible before the next file.
+      console.log(`standards_products_batch=committed range=${match[1]}-${match[2]} records=${batch.records.length} namespace=standards_products products_updates=0 mode=bulk-resume-safe`);
     }
-    if (total !== 16703) throw new Error(`standards_total_invalid:${total}`);
-    console.log(`standards_products_migration=completed batches=${files.length} records=${total} namespace=standards_products products_updates=0`);
+    if (total !== TOTAL_APPROVED) throw new Error(`standards_total_invalid:${total}`);
+    console.log(`standards_products_migration=completed batches=${files.length} records=${total} namespace=standards_products products_updates=0 mode=bulk-resume-safe`);
   } finally {
     await connection.end();
   }
