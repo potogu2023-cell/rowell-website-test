@@ -9,7 +9,12 @@ import { registerImageSyncRoutes } from "./imageSync";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
-import { generateSitemap } from "../sitemap";
+import {
+  generateSitemap,
+  generateColumnsSitemap,
+  generateStandardsSitemap,
+  generateSitemapIndex,
+} from "../sitemap";
 import { learningCenterRouter as learningCenterRestRouter } from "../learning-center-rest-api";
 import { testLiteratureRouter } from "../test-literature-api";
 import { importArticles } from "../article-importer";
@@ -77,14 +82,18 @@ async function startServer() {
 app.use("/api/learning-center", learningCenterRestRouter);
   // Test API for debugging
   app.use("/api", testLiteratureRouter);
-  // Sitemap.xml for SEO
+  // Dynamic Sitemap Index and database-backed volumes for SEO.
+  // Keep /sitemap.xml as a backwards-compatible alias for the index.
+  app.get("/sitemap_index.xml", generateSitemapIndex);
   app.get("/sitemap.xml", generateSitemap);
+  app.get("/sitemaps/columns.xml", generateColumnsSitemap);
+  app.get("/sitemaps/standards-:volume.xml", generateStandardsSitemap);
   // robots.txt for search engines
   app.get("/robots.txt", (req, res) => {
     res.setHeader("Content-Type", "text/plain");
     // Always advertise the canonical host, even if an alias domain is crawled.
     // Keep operational routes out of search crawl paths.
-    res.send("User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /test-filters\nSitemap: https://www.rowellhplc.com/sitemap.xml");
+    res.send("User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\nDisallow: /test-filters\nSitemap: https://www.rowellhplc.com/sitemap_index.xml");
   });
   // Debug endpoint to test article meta injection directly
   app.get("/api/debug/article-meta", async (req, res) => {
