@@ -1,0 +1,5008 @@
+{
+  "batch_id": "anpel-standards-remaining-17101-17600-2026-09-26",
+  "source": "ANPEL_Standards_Normalized.csv records 17101-17600",
+  "source_record_start": 17101,
+  "source_record_end": 17600,
+  "source_record_count": 500,
+  "namespace": "standards_products",
+  "excluded_namespaces": [
+    "products"
+  ],
+  "approved_record_count": 499,
+  "hold_record_count": 1,
+  "hold_reasons_summary": {
+    "normalized_manual_review": 1
+  },
+  "records": [
+    {
+      "part_number": "CDAA-S-411091-AD-1.2ml",
+      "name_en": "Mexacarbate",
+      "name_cn": "自克威",
+      "cas_number": "315-18-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411091-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411092-AD-1ml",
+      "name_en": "cis-Nonachlor",
+      "name_cn": "顺式-九氯",
+      "cas_number": "5103-73-1",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411092-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411093-AA-1.2ml",
+      "name_en": "Pentachlorobenzene in methanol",
+      "name_cn": "甲醇中五氯苯标准溶液",
+      "cas_number": "608-93-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411093-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411093-AD-1.2ml",
+      "name_en": "Pentachlorobenzene",
+      "name_cn": "五氯苯",
+      "cas_number": "608-93-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411093-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411095-HA-1.2ml",
+      "name_en": "Thionazin in n-Hexane",
+      "name_cn": "正己烷中虫线磷标准溶液",
+      "cas_number": "297-97-2",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411095-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411095-TD-1.2ml",
+      "name_en": "Thionazin",
+      "name_cn": "虫线磷",
+      "cas_number": "297-97-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411095-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411096C10-XH-1.2ml",
+      "name_en": "Toxaphene parlar-NO 26-[13C10] in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 26-[13C10]标准溶液",
+      "cas_number": "142534-71-2",
+      "specification": "1 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411096C10-XH-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411096C10-XL-1.2ml",
+      "name_en": "Toxaphene parlar-NO 26-[13C10] in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 26-[13C10]标准溶液",
+      "cas_number": "142534-71-2",
+      "specification": "10 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411096C10-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411096-XL-1.2ml",
+      "name_en": "Toxaphene parlar-NO 26 in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 26标准溶液",
+      "cas_number": "142534-71-2",
+      "specification": "10 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411096-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411097C10-XH-1.2ml",
+      "name_en": "Toxaphene Parlar-NO 50-[13C10] in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 50-[13C10]标准溶液",
+      "cas_number": "66860-80-8",
+      "specification": "1 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411097C10-XH-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411097C10-XL-1.2ml",
+      "name_en": "Toxaphene Parlar-NO 50-[13C10] in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 50-[13C10]标准溶液",
+      "cas_number": "66860-80-8",
+      "specification": "10 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411097C10-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411097-XL-1.2ml",
+      "name_en": "Toxaphene parlar-NO 50 in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 50标准溶液",
+      "cas_number": "66860-80-8",
+      "specification": "10 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411097-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411098C10-XH-1.2ml",
+      "name_en": "Toxaphene parlar-NO 62-[13C10] in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 62-[13C10]标准溶液",
+      "cas_number": "154159-06-5",
+      "specification": "1 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411098C10-XH-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411098C10-XL-1.2ml",
+      "name_en": "Toxaphene parlar-NO 62-[13C10] in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 62-[13C10]标准溶液",
+      "cas_number": "154159-06-5",
+      "specification": "10 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411098C10-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411098-XL-1.2ml",
+      "name_en": "Toxaphene parlar-NO 62 in n-nonane",
+      "name_cn": "壬烷中毒杀芬Parlar-NO 62标准溶液",
+      "cas_number": "154159-06-5",
+      "specification": "10 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411098-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411099-HA-1.2ml",
+      "name_en": "Dioxathion",
+      "name_cn": "敌噁磷",
+      "cas_number": "78-34-2",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411099-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411099-TA-1.2ml",
+      "name_en": "Dioxathion in acetone",
+      "name_cn": "丙酮中敌恶磷标准溶液",
+      "cas_number": "78-34-2",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411099-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411099-TD-1.2ml",
+      "name_en": "Dioxathion",
+      "name_cn": "敌噁磷",
+      "cas_number": "78-34-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411099-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411101D4-TA-1.2ml",
+      "name_en": "α-Endosulfan-[D4]",
+      "name_cn": "α-硫丹-[D4]",
+      "cas_number": "203645-57-2",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411101D4-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411102-AA-1ml",
+      "name_en": "Phosfolan in Methanol",
+      "name_cn": "甲醇中硫环磷标准溶液",
+      "cas_number": "947-02-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411102-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411102D6-JA-1.2ml",
+      "name_en": "Dichlorvos-[D6] in acetone in acetonitrile",
+      "name_cn": "乙腈中敌敌畏-D6同位素标准溶液",
+      "cas_number": "203645-53-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411102D6-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411102D6-TA-1.2ml",
+      "name_en": "Dichlorvos-[D6] in acetone",
+      "name_cn": "丙酮中敌敌畏-[D6]标准溶液",
+      "cas_number": "203645-53-8",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411102D6-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411102-TD-1ml",
+      "name_en": "phosfolan",
+      "name_cn": "硫环磷",
+      "cas_number": "947-02-4",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411102-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411103-AA-1ml",
+      "name_en": "2-Chlorophenol",
+      "name_cn": "2-氯苯酚",
+      "cas_number": "95-57-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411103-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411103-AC-1.2ml",
+      "name_en": "2-Chlorophenol",
+      "name_cn": "2-氯苯酚",
+      "cas_number": "95-57-8",
+      "specification": "500 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411103-AC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411103-AD-1ml",
+      "name_en": "2-Chlorophenol",
+      "name_cn": "2-氯苯酚",
+      "cas_number": "95-57-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411103-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411103-GA-1ml",
+      "name_en": "2-Chlorophenol in Isopropanol",
+      "name_cn": "异丙醇中2-氯苯酚标准溶液",
+      "cas_number": "95-57-8",
+      "specification": "100 mg/L in Isopropanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411103-GA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411104-AD-1.2ml",
+      "name_en": "2,3,5-Trimethacarb",
+      "name_cn": "混杀威",
+      "cas_number": "2655-15-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411104-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411106-BD-1.2ml",
+      "name_en": "Octachlorostyrene in toluene",
+      "name_cn": "甲苯中八氯苯乙烯标准溶液",
+      "cas_number": "29082-74-4",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411106-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411107-JA-1.2ml",
+      "name_en": "Thiofanox-sulfone in acetonitrile",
+      "name_cn": "乙腈中久效威砜标准溶液",
+      "cas_number": "39184-59-3",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411107-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411108-AD-1.2ml",
+      "name_en": "Nuarimol",
+      "name_cn": "氟苯嘧啶醇(噻菌醇)",
+      "cas_number": "63284-71-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411108-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411108-XA-1.2ml",
+      "name_en": "Nuarimol",
+      "name_cn": "氟苯嘧啶醇",
+      "cas_number": "63284-71-9",
+      "specification": "100 mg/L in Toluene:Acetone(9:1), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411108-XA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411111-JA-1.2ml",
+      "name_en": "Dicyclanil",
+      "name_cn": "地昔尼尔",
+      "cas_number": "112636-83-6",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411111-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411116-HA-1.2ml",
+      "name_en": "Chlordecone in n-Hexane",
+      "name_cn": "己烷中十氯酮标准溶液",
+      "cas_number": "143-50-0",
+      "specification": "100 mg/L in Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411116-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411202-AA-1.2ml",
+      "name_en": "4-Chlorophenol in methanol",
+      "name_cn": "甲醇中4-氯苯酚标准溶液",
+      "cas_number": "106-48-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411202-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411202-AD-1.2ml",
+      "name_en": "4-Chlorophenol",
+      "name_cn": "4-氯苯酚",
+      "cas_number": "106-48-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411202-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411202-GA-1ml",
+      "name_en": "4-Chlorophenol in Isopropanol",
+      "name_cn": "异丙醇中4-氯苯酚标准溶液",
+      "cas_number": "106-48-9",
+      "specification": "100 mg/L in Isopropanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411202-GA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-411203-AA-1.2ml",
+      "name_en": "2，4，5-Trichlorophenol",
+      "name_cn": "2，4，5-三氯苯酚",
+      "cas_number": "95-95-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411203-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411203-AD-2ml",
+      "name_en": "2，4，5-Trichlorophenol",
+      "name_cn": "2，4，5-三氯苯酚",
+      "cas_number": "95-95-4",
+      "specification": "1000 mg/L in Methanol, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411203-AD-2ml"
+    },
+    {
+      "part_number": "CDAA-S-411204-HL-1.2ml",
+      "name_en": "Epsilon-HCH in cyclohexane",
+      "name_cn": "环己烷中ε-六六六标准溶液",
+      "cas_number": "6108-10-7",
+      "specification": "10 mg/L in Cyclohexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411204-HL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411205-JA-1.2ml",
+      "name_en": "Tetrachlorantraniliprole",
+      "name_cn": "四氯虫酰胺",
+      "cas_number": "1104384-14-6",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411205-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411206-TD-1.2ml",
+      "name_en": "Chlordane",
+      "name_cn": "氯丹",
+      "cas_number": "57-74-9",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411206-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411207-JA-1.2ml",
+      "name_en": "Clethodim-sulfoxide",
+      "name_cn": "烯草酮亚砜",
+      "cas_number": "111031-14-2",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411207-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411210-TA-1.2ml",
+      "name_en": "Z-Chlorfenvinphos",
+      "name_cn": "Z-毒虫畏",
+      "cas_number": "18708-87-7",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411210-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411210-TD-1.2ml",
+      "name_en": "Z-Chlorfenvinphos in acetone",
+      "name_cn": "丙酮中Z-毒虫畏标准溶液",
+      "cas_number": "18708-87-7",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411210-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-411211-TA-1.2ml",
+      "name_en": "E-Dimethylvinphos in acetone",
+      "name_cn": "丙酮中E-甲基毒虫畏标准溶液",
+      "cas_number": "71363-52-5",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-411211-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412001-TA-1ml",
+      "name_en": "Phosfolan-methyl",
+      "name_cn": "甲基硫环磷",
+      "cas_number": "5120-23-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412001-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412001-TD-1ml",
+      "name_en": "Phosphfolan-methyl",
+      "name_cn": "甲基硫环磷",
+      "cas_number": "5120-23-0",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412001-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412002CN-SA-1ml",
+      "name_en": "Glyphosate-13C2，15N",
+      "name_cn": "草甘膦-13C2，15N",
+      "cas_number": "1185107-63-4",
+      "specification": "100 mg/L in Water, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412002CN-SA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412002-SA-1ml",
+      "name_en": "Glyphosate",
+      "name_cn": "草甘磷（草甘膦）",
+      "cas_number": "1071-83-6",
+      "specification": "100 mg/L in Water, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412002-SA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412002-SD-1ml",
+      "name_en": "Glyphosate",
+      "name_cn": "草甘磷（草甘膦）",
+      "cas_number": "1071-83-6",
+      "specification": "1000 mg/L in Water, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412002-SD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412003-AA-1ml",
+      "name_en": "Dichlorvos",
+      "name_cn": "敌敌畏",
+      "cas_number": "62-73-7",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412003-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412003-AD-1.2ml",
+      "name_en": "Dichlorvos in methanol",
+      "name_cn": "甲醇中敌敌畏标准溶液",
+      "cas_number": "62-73-7",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412003-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412003-HD-1.2ml",
+      "name_en": "Dichlorvos",
+      "name_cn": "敌敌畏",
+      "cas_number": "62-73-7",
+      "specification": "1000 mg/L in Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412003-HD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412003-TD-1ml",
+      "name_en": "Dichlorvos",
+      "name_cn": "敌敌畏",
+      "cas_number": "62-73-7",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412003-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412003-ZA-1ml",
+      "name_en": "Dichlorvos",
+      "name_cn": "敌敌畏",
+      "cas_number": "62-73-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412003-ZA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412004-AA-1.2ml",
+      "name_en": "Dimethoate in methanol",
+      "name_cn": "甲醇中乐果标准溶液",
+      "cas_number": "60-51-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412004-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412004-TA-1ml",
+      "name_en": "Dimethoate",
+      "name_cn": "乐果",
+      "cas_number": "60-51-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412004-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412004-TD-1ml",
+      "name_en": "Dimethoate",
+      "name_cn": "乐果",
+      "cas_number": "60-51-5",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412004-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412005-BD-1ml",
+      "name_en": "Diazinon",
+      "name_cn": "二嗪磷",
+      "cas_number": "333-41-5",
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412005-BD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412005-HA-1.2ml",
+      "name_en": "Diazinon",
+      "name_cn": "二嗪磷",
+      "cas_number": "333-41-5",
+      "specification": "100 mg/L in Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412005-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412005-TA-1ml",
+      "name_en": "Diazinon",
+      "name_cn": "二嗪磷",
+      "cas_number": "333-41-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412005-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412005-TD-1.2ml",
+      "name_en": "Diazinon",
+      "name_cn": "二嗪磷",
+      "cas_number": "333-41-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412005-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412006-AA-1.2ml",
+      "name_en": "Acephate in methanol",
+      "name_cn": "甲醇中乙酰甲胺磷标准溶液",
+      "cas_number": "30560-19-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412006-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412006-TA-1ml",
+      "name_en": "Acephate",
+      "name_cn": "乙酰甲胺磷（高灭磷）",
+      "cas_number": "30560-19-1",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412006-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412006-TD-1.2ml",
+      "name_en": "Acephate",
+      "name_cn": "乙酰甲胺磷",
+      "cas_number": "30560-19-1",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412006-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412007-AA-1ml",
+      "name_en": "Isocarbophos",
+      "name_cn": "水胺硫磷",
+      "cas_number": "24353-61-5",
+      "specification": "100 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412007-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412007-TA-1ml",
+      "name_en": "Isocarbophos",
+      "name_cn": "水胺硫磷",
+      "cas_number": "24353-61-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412007-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412007-TD-1ml",
+      "name_en": "Isocarbophos",
+      "name_cn": "水胺硫磷",
+      "cas_number": "24353-61-5",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412007-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412008-AD-1.2ml",
+      "name_en": "Parathion-methyl in methanol",
+      "name_cn": "甲醇中甲基对硫磷标准溶液",
+      "cas_number": "298-00-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412008-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412008-CD-1.2ml",
+      "name_en": "Parathion-methyl",
+      "name_cn": "甲基对硫磷",
+      "cas_number": "298-00-0",
+      "specification": "1000 mg/L in Ethanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412008-CD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412008-DH-1.2ml",
+      "name_en": "Parathion-methyl",
+      "name_cn": "异辛烷中甲基对硫磷标准溶液",
+      "cas_number": "298-00-0",
+      "specification": "2.5 mg/L in Isooctane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412008-DH-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412008-HA-1.2ml",
+      "name_en": "Parathion-methyl in n-Hexane",
+      "name_cn": "正己烷中甲基对硫磷标准溶液",
+      "cas_number": "298-00-0",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412008-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412008-TA-1ml",
+      "name_en": "Parathion-methyl",
+      "name_cn": "甲基对硫磷",
+      "cas_number": "298-00-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412008-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412008-TD-1.2ml",
+      "name_en": "Parathion-methyl",
+      "name_cn": "甲基对硫磷",
+      "cas_number": "298-00-0",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412008-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412009-AA-1ml",
+      "name_en": "Profenofos",
+      "name_cn": "丙溴磷（布飞松）",
+      "cas_number": "41198-08-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412009-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412009-TA-1.2ml",
+      "name_en": "Profenofos in acetone",
+      "name_cn": "丙酮中丙溴磷标准溶液",
+      "cas_number": "41198-08-7",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412009-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412009-TD-1ml",
+      "name_en": "Profenofos",
+      "name_cn": "丙溴磷（布飞松）",
+      "cas_number": "41198-08-7",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412009-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412010-AA-1.2ml",
+      "name_en": "Chlorpyrifos",
+      "name_cn": "毒死蜱",
+      "cas_number": "2921-88-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412010-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412010-AD-1.2ml",
+      "name_en": "Chlorpyrifos",
+      "name_cn": "毒死蜱",
+      "cas_number": "2921-88-2",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412010-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412010-BD-1ml",
+      "name_en": "Chlorpyrifos in toluene",
+      "name_cn": "甲苯中毒死蜱标准溶液",
+      "cas_number": "2921-88-2",
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412010-BD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412010D10-TA-1ml",
+      "name_en": "Chlorpyrifos D10",
+      "name_cn": "毒死蜱-D10",
+      "cas_number": "285138-81-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412010D10-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412010-TA-1ml",
+      "name_en": "Chlorpyrifos",
+      "name_cn": "毒死蜱",
+      "cas_number": "2921-88-2",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412010-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412010-TD-1ml",
+      "name_en": "Chlorpyrifos",
+      "name_cn": "毒死蜱",
+      "cas_number": "2921-88-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412010-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412011D10-TA-1.2ml",
+      "name_en": "Malathion-[D10] in acetone",
+      "name_cn": "丙酮中马拉硫磷-[D10]标准溶液",
+      "cas_number": "347841-48-9",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412011D10-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412011-HA-1.2ml",
+      "name_en": "Malathion in n-Hexane",
+      "name_cn": "正己烷中马拉硫磷标准溶液",
+      "cas_number": "121-75-5",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412011-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412011-HD-1ml",
+      "name_en": "Malathion",
+      "name_cn": "马拉硫磷",
+      "cas_number": "121-75-5",
+      "specification": "1000 mg/L in Cyclohexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412011-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412011-TA-1ml",
+      "name_en": "Malathion",
+      "name_cn": "马拉硫磷",
+      "cas_number": "121-75-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412011-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412011-TD-1.2ml",
+      "name_en": "Malathion",
+      "name_cn": "马拉硫磷",
+      "cas_number": "121-75-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412011-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412012-BD-1ml",
+      "name_en": "Methidathion",
+      "name_cn": "杀扑磷",
+      "cas_number": "950-37-8",
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412012-BD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412012-TA-1ml",
+      "name_en": "Methidathion",
+      "name_cn": "杀扑磷",
+      "cas_number": "950-37-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412012-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412012-TD-1.2ml",
+      "name_en": "Methidathion",
+      "name_cn": "杀扑磷",
+      "cas_number": "950-37-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412012-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412013-AA-1.2ml",
+      "name_en": "Triazophos in methanol",
+      "name_cn": "甲醇中三唑磷标准溶液",
+      "cas_number": "24017-47-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412013-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412013-HA-1.2ml",
+      "name_en": "Triazophos",
+      "name_cn": "三唑磷",
+      "cas_number": "24017-47-8",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412013-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412013-TA-1ml",
+      "name_en": "Triazophos",
+      "name_cn": "三唑磷",
+      "cas_number": "24017-47-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412013-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412013-TD-1.2ml",
+      "name_en": "Triazophos",
+      "name_cn": "三唑磷",
+      "cas_number": "24017-47-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412013-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412014-AA-1ml",
+      "name_en": "Phoxim",
+      "name_cn": "辛硫磷",
+      "cas_number": "14816-18-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412014-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412014D5-JA-1.2ml",
+      "name_en": "Phoxim-[D5]",
+      "name_cn": "辛硫磷-[D5]",
+      "cas_number": "14816-18-3",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412014D5-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412014-MA-1ml",
+      "name_en": "Phoxim",
+      "name_cn": "辛硫磷",
+      "cas_number": "14816-18-3",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412014-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412014-TD-1ml",
+      "name_en": "Phoxim",
+      "name_cn": "辛硫磷",
+      "cas_number": "14816-18-3",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412014-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412015-AA-1.2ml",
+      "name_en": "Fenitrothion in methanol",
+      "name_cn": "甲醇中杀螟松标准溶液",
+      "cas_number": "122-14-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412015-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412015-BD-1ml",
+      "name_en": "Fenitrothion",
+      "name_cn": "杀螟松（杀螟硫磷）",
+      "cas_number": "122-14-5",
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412015-BD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412015-HA-1.2ml",
+      "name_en": "Fenitrothion",
+      "name_cn": "杀螟松",
+      "cas_number": "122-14-5",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412015-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412015-TA-1ml",
+      "name_en": "Fenitrothion",
+      "name_cn": "杀螟松（杀螟硫磷）",
+      "cas_number": "122-14-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412015-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412015-TD-1.2ml",
+      "name_en": "Fenitrothion",
+      "name_cn": "杀螟松（杀螟硫磷）",
+      "cas_number": "122-14-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412015-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412018-TA-1ml",
+      "name_en": "Malaoxon",
+      "name_cn": "马拉氧磷",
+      "cas_number": "1634-78-2",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412018-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412020-TA-1ml",
+      "name_en": "Iodofenphos in acetone",
+      "name_cn": "丙酮中碘硫磷标准溶液",
+      "cas_number": "18181-70-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412020-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412022-AA-1.2ml",
+      "name_en": "Bromophos-methyl in methanol",
+      "name_cn": "甲醇中溴硫磷标准溶液",
+      "cas_number": "2104-96-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412022-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412022-TA-1ml",
+      "name_en": "Bromophos-methyl",
+      "name_cn": "溴磷松（溴硫磷）",
+      "cas_number": "2104-96-3",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412022-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412022-TD-1ml",
+      "name_en": "Bromophos-methyl",
+      "name_cn": "溴磷松",
+      "cas_number": "2104-96-3",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412022-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412024-AA-1ml",
+      "name_en": "Vamidothion",
+      "name_cn": "蚜灭磷",
+      "cas_number": "2275-23-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412024-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412024-TA-1ml",
+      "name_en": "Vamidothion",
+      "name_cn": "蚜灭磷（蚜灭多，完灭硫磷）",
+      "cas_number": "2275-23-2",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412024-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412024-TD-1.2ml",
+      "name_en": "Vamidothion",
+      "name_cn": "蚜灭磷",
+      "cas_number": "2275-23-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412024-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412025-AA-1.2ml",
+      "name_en": "Phosalone in methanol",
+      "name_cn": "甲醇中伏杀硫磷标准溶液",
+      "cas_number": "2310-17-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412025-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412025-TA-1ml",
+      "name_en": "Phosalone",
+      "name_cn": "伏杀磷（伏杀硫磷）",
+      "cas_number": "2310-17-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412025-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412025-TD-1ml",
+      "name_en": "Phosalone",
+      "name_cn": "伏杀磷（伏杀硫磷）",
+      "cas_number": "2310-17-0",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412025-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412026-TA-1ml",
+      "name_en": "Pirimiphos-ethyl",
+      "name_cn": "乙基嘧啶磷",
+      "cas_number": "23505-41-1",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412026-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412027-AA-1.2ml",
+      "name_en": "Heptenophos in methanol",
+      "name_cn": "甲醇中庚烯磷标准溶液",
+      "cas_number": "23560-59-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412027-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412027-HA-1ml",
+      "name_en": "Heptenophos",
+      "name_cn": "庚烯磷（二环庚磷）",
+      "cas_number": "23560-59-0",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412027-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412029-TD-1.2ml",
+      "name_en": "Disulfoton-sulfone",
+      "name_cn": "乙拌磷砜",
+      "cas_number": "2497-06-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412029-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412030-AD-1.2ml",
+      "name_en": "Disulfoton-sulfoxide",
+      "name_cn": "乙拌磷亚砜",
+      "cas_number": "2497-07-6",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412030-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412030-HA-1.2ml",
+      "name_en": "Disulfoton-sulfoxide",
+      "name_cn": "乙拌磷亚砜",
+      "cas_number": "2497-07-6",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412030-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412033-AA-1ml",
+      "name_en": "Formothion",
+      "name_cn": "安果磷（安果）",
+      "cas_number": "2540-82-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412033-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412033-JA-1.2ml",
+      "name_en": "Formothion in acetonitrile",
+      "name_cn": "乙腈中安硫磷标准溶液",
+      "cas_number": "2540-82-1",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412033-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412033-TD-1.2ml",
+      "name_en": "Formothion in acetone",
+      "name_cn": "丙酮中安硫磷标准溶液",
+      "cas_number": "2540-82-1",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412033-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412034-HA-1ml",
+      "name_en": "Phorate-sulfone",
+      "name_cn": "甲拌磷砜",
+      "cas_number": "2588-04-7",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412034-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412034-TA-1ml",
+      "name_en": "Phorate-sulfone",
+      "name_cn": "甲拌磷砜",
+      "cas_number": "2588-04-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412034-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412034-TD-1ml",
+      "name_en": "Phorate-sulfone",
+      "name_cn": "甲拌磷砜",
+      "cas_number": "2588-04-7",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412034-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412035-AA-1.2ml",
+      "name_en": "Phenthoate in methanol",
+      "name_cn": "甲醇中稻丰散标准溶液",
+      "cas_number": "2597-03-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412035-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412035-TA-1ml",
+      "name_en": "Phenthoate",
+      "name_cn": "稻丰散",
+      "cas_number": "2597-03-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412035-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412035-TD-1ml",
+      "name_en": "Phenthoate",
+      "name_cn": "稻丰散",
+      "cas_number": "2597-03-7",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412035-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412036-AA-1ml",
+      "name_en": "Cyanophos",
+      "name_cn": "杀螟腈",
+      "cas_number": "2636-26-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412036-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412037-JA-1.2ml",
+      "name_en": "Chlorethoxyfos",
+      "name_cn": "氯氧磷",
+      "cas_number": "54593-83-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412037-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412037-JD-1.2ml",
+      "name_en": "Chlorethoxyfos in acetonitrile",
+      "name_cn": "乙腈中氯氧磷标准溶液",
+      "cas_number": "54593-83-8",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412037-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412038-AA-1.2ml",
+      "name_en": "Pirimiphos-methyl in n-Hexane in methanol",
+      "name_cn": "甲醇中甲基嘧啶磷标准溶液",
+      "cas_number": "29232-93-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412038-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412038-HA-1ml",
+      "name_en": "Pirimiphos-methyl in n-Hexane",
+      "name_cn": "正己烷中甲基嘧啶磷标准溶液",
+      "cas_number": "29232-93-7",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412038-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412038-TA-1ml",
+      "name_en": "Pirimiphos-methyl",
+      "name_cn": "甲基嘧啶磷",
+      "cas_number": "29232-93-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412038-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412038-TD-1ml",
+      "name_en": "Pirimiphos-methyl",
+      "name_cn": "甲基嘧啶磷",
+      "cas_number": "29232-93-7",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412038-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412041-TA-1ml",
+      "name_en": "Fenchlorphos",
+      "name_cn": "皮蝇硫磷（皮蝇磷）",
+      "cas_number": "299-84-3",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412041-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412041-TD-1ml",
+      "name_en": "Fenchlorphos",
+      "name_cn": "皮蝇硫磷（皮蝇磷）",
+      "cas_number": "299-84-3",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412041-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412042-BD-1.2ml",
+      "name_en": "Crufomate",
+      "name_cn": "育畜磷",
+      "cas_number": "299-86-5",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412042-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412043-MA-1ml",
+      "name_en": "Naled",
+      "name_cn": "二溴磷",
+      "cas_number": "300-76-5",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412043-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412043-TD-1ml",
+      "name_en": "Naled",
+      "name_cn": "二溴磷",
+      "cas_number": "300-76-5",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412043-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412045-AA-1.2ml",
+      "name_en": "Propetamphos in methanol",
+      "name_cn": "甲醇中胺丙畏标准溶液",
+      "cas_number": "31218-83-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412045-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412045-TA-1ml",
+      "name_en": "Propetamphos",
+      "name_cn": "胺丙畏（烯虫磷）",
+      "cas_number": "31218-83-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412045-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412045-TD-1.2ml",
+      "name_en": "Propetamphos",
+      "name_cn": "胺丙畏",
+      "cas_number": "31218-83-4",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412045-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412046-AD-1.2ml",
+      "name_en": "Fenamiphos-sulfoxide in methanol",
+      "name_cn": "甲醇中苯线磷亚砜标准溶液",
+      "cas_number": "31972-43-7",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412046-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412046-TA-1ml",
+      "name_en": "Fenamiphos-sulfoxide",
+      "name_cn": "苯线磷亚砜（克线磷亚砜）",
+      "cas_number": "31972-43-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412046-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412046-TD-1.2ml",
+      "name_en": "Fenamiphos-sulfoxide",
+      "name_cn": "苯线磷亚砜（克线磷亚砜）",
+      "cas_number": "31972-43-7",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412046-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412047-AD-1.2ml",
+      "name_en": "Fenamiphos-sulfone in methanol",
+      "name_cn": "甲醇中苯线磷砜标准溶液",
+      "cas_number": "31972-44-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412047-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412047-TA-1ml",
+      "name_en": "Fenamiphos-sulfone",
+      "name_cn": "苯线磷砜（克线磷砜）",
+      "cas_number": "31972-44-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412047-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412047-TD-1.2ml",
+      "name_en": "Fenamiphos-sulfone",
+      "name_cn": "苯线磷砜（克线磷砜）",
+      "cas_number": "31972-44-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412047-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412051-TA-1ml",
+      "name_en": "Aspon in acetone",
+      "name_cn": "丙酮中丙硫特普标准溶液",
+      "cas_number": "3244-90-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412051-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412051-TD-1.2ml",
+      "name_en": "Aspon in acetone",
+      "name_cn": "丙酮中丙硫特普标准溶液",
+      "cas_number": "3244-90-4",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412051-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412052-TD-1.2ml",
+      "name_en": "Bromfenvinfos",
+      "name_cn": "溴苯烯磷",
+      "cas_number": "33399-00-7",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412052-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412055-TD-1.2ml",
+      "name_en": "Prothiophos",
+      "name_cn": "丙硫磷",
+      "cas_number": "34643-46-4",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412055-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412057-AA-1.2ml",
+      "name_en": "Sulprofos in methanol",
+      "name_cn": "甲醇中硫丙磷标准溶液",
+      "cas_number": "35400-43-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412057-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412057-GA-1ml",
+      "name_en": "Sulprofos",
+      "name_cn": "硫丙磷",
+      "cas_number": "35400-43-2",
+      "specification": "100 mg/L in Isopropanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412057-GA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412057-GD-1ml",
+      "name_en": "Sulprofos",
+      "name_cn": "硫丙磷",
+      "cas_number": "35400-43-2",
+      "specification": "1000 mg/L in Isopropanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412057-GD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412058D6-JA-1.2ml",
+      "name_en": "Azamethiphos-[D6] in acetonitrile",
+      "name_cn": "乙腈中甲基吡啶磷-[D6]标准溶液",
+      "cas_number": "1189894-02-7",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412058D6-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412058-TD-1ml",
+      "name_en": "Azamethiphos",
+      "name_cn": "甲基吡啶磷",
+      "cas_number": "35575-96-3",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412058-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412060-TA-1ml",
+      "name_en": "Fenthion-sulfoxide",
+      "name_cn": "倍硫磷亚砜",
+      "cas_number": "3761-41-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412060-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412060-TD-1.2ml",
+      "name_en": "Fenthion-sulfoxide",
+      "name_cn": "倍硫磷亚砜",
+      "cas_number": "3761-41-9",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412060-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412061-JD-1.2ml",
+      "name_en": "Fenthion-sulfone in acetonitrile",
+      "name_cn": "乙腈中倍硫磷砜标准溶液",
+      "cas_number": "3761-42-0",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412061-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412061-TA-1ml",
+      "name_en": "Fenthion-sulfone",
+      "name_cn": "倍硫磷砜（砜化倍硫磷）",
+      "cas_number": "3761-42-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412061-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412061-TD-1.2ml",
+      "name_en": "Fenthion-sulfone",
+      "name_cn": "倍硫磷砜",
+      "cas_number": "3761-42-0",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412061-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412063-HA-1.2ml",
+      "name_en": "Dioxabenzofos (Salithion)",
+      "name_cn": "蔬果磷",
+      "cas_number": "3811-49-2",
+      "specification": "100 mg/L in Cyclohexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412063-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412063-JA-1.2ml",
+      "name_en": "Dioxabenzofos (Salithion) in acetonitrile",
+      "name_cn": "乙腈中蔬果磷标准溶液",
+      "cas_number": "3811-49-2",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412063-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412064-FA-1.2ml",
+      "name_en": "Etrimfos",
+      "name_cn": "乙嘧硫磷",
+      "cas_number": "38260-54-7",
+      "specification": "100 mg/L in Ethyl acetate, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412064-FA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412064-TA-1ml",
+      "name_en": "Etrimfos",
+      "name_cn": "乙嘧硫磷",
+      "cas_number": "38260-54-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412064-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412066-AA-1ml",
+      "name_en": "Isazofos",
+      "name_cn": "氯唑磷",
+      "cas_number": "42509-80-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412066-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412066-TD-1ml",
+      "name_en": "Isazofos",
+      "name_cn": "氯唑磷",
+      "cas_number": "42509-80-8",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412066-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412067-AA-1ml",
+      "name_en": "Bromophos-ethyl",
+      "name_cn": "乙基溴硫磷",
+      "cas_number": "4824-78-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412067-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412067-TD-1ml",
+      "name_en": "Bromophos-ethyl",
+      "name_cn": "乙基溴硫磷",
+      "cas_number": "4824-78-6",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412067-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412069-AA-1.2ml",
+      "name_en": "Trichlorfon in methanol",
+      "name_cn": "甲醇中敌百虫标准溶液",
+      "cas_number": "52-68-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412069-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412069-AD-1.2ml",
+      "name_en": "Trichlorfon in methanol",
+      "name_cn": "甲醇中敌百虫",
+      "cas_number": "52-68-6",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412069-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412069-TA-1ml",
+      "name_en": "Trichlorfon",
+      "name_cn": "敌百虫（三氯松）",
+      "cas_number": "52-68-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412069-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412069-TD-1.2ml",
+      "name_en": "Trichlorfon",
+      "name_cn": "敌百虫（三氯松）",
+      "cas_number": "52-68-6",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412069-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412069-TE-1.2ml",
+      "name_en": "Trichlorfon",
+      "name_cn": "敌百虫（三氯松）",
+      "cas_number": "52-68-6",
+      "specification": "2000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412069-TE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412070-TA-1ml",
+      "name_en": "Famphur",
+      "name_cn": "伐灭磷",
+      "cas_number": "52-85-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412070-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412072D6-AA-1.2ml",
+      "name_en": "Fenthion-D6 in acetone in methanol",
+      "name_cn": "甲醇中倍硫磷-D6同位素标准溶液",
+      "cas_number": "1189662-83-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412072D6-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412072D6-TA-1.2ml",
+      "name_en": "Fenthion-D6 in acetone",
+      "name_cn": "丙酮中倍硫磷-[D6]标准溶液",
+      "cas_number": "1189662-83-6",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412072D6-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412072-HA-1ml",
+      "name_en": "Fenthion",
+      "name_cn": "倍硫磷",
+      "cas_number": "55-38-9",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412072-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412072-TA-1ml",
+      "name_en": "Fenthion",
+      "name_cn": "倍硫磷",
+      "cas_number": "55-38-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412072-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412072-TD-1ml",
+      "name_en": "Fenthion",
+      "name_cn": "倍硫磷",
+      "cas_number": "55-38-9",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412072-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412073-TA-1ml",
+      "name_en": "Chlorpyrifos-methyl",
+      "name_cn": "甲基毒死蜱",
+      "cas_number": "5598-13-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412073-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412073-TD-1ml",
+      "name_en": "Chlorpyrifos-methyl",
+      "name_cn": "甲基毒死蜱",
+      "cas_number": "5598-13-0",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412073-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412078-TA-1ml",
+      "name_en": "Terbufos-sulfone",
+      "name_cn": "特丁硫磷砜",
+      "cas_number": "56070-16-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412078-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412078-TD-1.2ml",
+      "name_en": "Terbufos-sulfone",
+      "name_cn": "特丁硫磷砜",
+      "cas_number": "56070-16-7",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412078-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412081-TA-1ml",
+      "name_en": "Chlorthiophos（mixture of isomers）",
+      "name_cn": "氯甲硫磷（虫螨磷）（异构体混合物）",
+      "cas_number": "60238-56-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412081-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412081-TD-1.2ml",
+      "name_en": "Chlorthiophos(mixture of isomers)",
+      "name_cn": "氯甲硫磷(异构体混合物)",
+      "cas_number": "60238-56-4",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412081-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412082-AD-1.2ml",
+      "name_en": "Methacrifos",
+      "name_cn": "虫螨畏",
+      "cas_number": "62610-77-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412082-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412082-HA-1ml",
+      "name_en": "Methacrifos",
+      "name_cn": "虫螨畏",
+      "cas_number": "62610-77-9",
+      "specification": "100 mg/L in Cyclohexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412082-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412088-TA-1ml",
+      "name_en": "Phosmet",
+      "name_cn": "亚胺硫磷",
+      "cas_number": "732-11-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412088-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412088-TD-1ml",
+      "name_en": "Phosmet",
+      "name_cn": "亚胺硫磷",
+      "cas_number": "732-11-6",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412088-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412089-AA-1ml",
+      "name_en": "Crotoxyphos",
+      "name_cn": "巴毒磷",
+      "cas_number": "7700-17-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412089-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412089-XB-1.2ml",
+      "name_en": "Crotoxyphos",
+      "name_cn": "巴毒磷",
+      "cas_number": "7700-17-6",
+      "specification": "200 mg/L in Toluene:Hexane(1:1), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412089-XB-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412090-JD-1ml",
+      "name_en": "pyraclofos",
+      "name_cn": "吡唑硫磷",
+      "cas_number": "89784-60-1",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412090-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412093-TA-1ml",
+      "name_en": "Demeton-S-methyl",
+      "name_cn": "甲基内吸磷",
+      "cas_number": "919-86-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412093-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412093-TD-1.2ml",
+      "name_en": "Demeton-S-methyl",
+      "name_cn": "甲基内吸磷",
+      "cas_number": "919-86-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412093-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412094-AD-1.2ml",
+      "name_en": "Cadusafos in methanol",
+      "name_cn": "甲醇中硫线磷标准溶液",
+      "cas_number": "95465-99-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412094-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412094-TA-1ml",
+      "name_en": "Cadusafos",
+      "name_cn": "克线丹（硫线磷）",
+      "cas_number": "95465-99-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412094-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412094-TD-1ml",
+      "name_en": "Cadusafos",
+      "name_cn": "克线丹（硫线磷）",
+      "cas_number": "95465-99-9",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412094-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412096-AA-1ml",
+      "name_en": "Dichlofenthion",
+      "name_cn": "除线磷",
+      "cas_number": "97-17-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412096-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412096-TA-1ml",
+      "name_en": "Dichlofenthion in acetone",
+      "name_cn": "丙酮中除线磷标准溶液",
+      "cas_number": "97-17-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412096-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412096-TD-1.2ml",
+      "name_en": "Dichlofenthion",
+      "name_cn": "除线磷",
+      "cas_number": "97-17-6",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412096-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412097-AA-1ml",
+      "name_en": "Fosthiazate",
+      "name_cn": "噻唑磷（噻唑硫磷）",
+      "cas_number": "98886-44-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412097-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412097-JA-1ml",
+      "name_en": "Fosthiazate",
+      "name_cn": "噻唑磷",
+      "cas_number": "98886-44-3",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412097-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412097-TD-1.2ml",
+      "name_en": "Fosthiazate",
+      "name_cn": "噻唑磷",
+      "cas_number": "98886-44-3",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412097-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412099D6-JA-1.2ml",
+      "name_en": "Omethoate-[D6]",
+      "name_cn": "氧化乐果-[D6]",
+      "cas_number": "1219804-92-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412099D6-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412099-FA-1ml",
+      "name_en": "Omethoate",
+      "name_cn": "氧化乐果",
+      "cas_number": "1113-02-6",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412099-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412099-FD-1ml",
+      "name_en": "Omethoate",
+      "name_cn": "氧化乐果",
+      "cas_number": "1113-02-6",
+      "specification": "1000 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412099-FD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412099-HA-1.2ml",
+      "name_en": "Omethoate in n-Hexane",
+      "name_cn": "正己烷中氧化乐果标准溶液",
+      "cas_number": "1113-02-6",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412099-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412099-TA-1ml",
+      "name_en": "Omethoate",
+      "name_cn": "氧化乐果",
+      "cas_number": "1113-02-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412099-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412099-TD-1.2ml",
+      "name_en": "Omethoate",
+      "name_cn": "氧化乐果",
+      "cas_number": "1113-02-6",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412099-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412100-FA-1ml",
+      "name_en": "Fenamiphos",
+      "name_cn": "苯线磷（克线磷）",
+      "cas_number": "22224-92-6",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412100-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412100-TA-1ml",
+      "name_en": "Fenamiphos",
+      "name_cn": "苯线磷（克线磷）",
+      "cas_number": "22224-92-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412100-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412100-TD-1.2ml",
+      "name_en": "Fenamiphos",
+      "name_cn": "苯线磷",
+      "cas_number": "22224-92-6",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412100-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412101-AA-1ml",
+      "name_en": "Phosphamidon",
+      "name_cn": "磷胺",
+      "cas_number": "13171-21-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412101-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412101-TD-1ml",
+      "name_en": "Phosphamidon",
+      "name_cn": "磷胺",
+      "cas_number": "13171-21-6",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412101-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412103-AA-1ml",
+      "name_en": "Azinphos-methyl",
+      "name_cn": "谷硫磷（保棉磷）",
+      "cas_number": "86-50-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412103-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412103-TA-1ml",
+      "name_en": "Azinphos-methyl",
+      "name_cn": "谷硫磷（保棉磷）",
+      "cas_number": "86-50-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412103-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412104-AD-1.2ml",
+      "name_en": "Isofenphos",
+      "name_cn": "异柳磷",
+      "cas_number": "25311-71-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412104-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412104-TA-1ml",
+      "name_en": "Isofenphos",
+      "name_cn": "异柳磷",
+      "cas_number": "25311-71-1",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412104-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412105-TA-1ml",
+      "name_en": "Carbophenothion",
+      "name_cn": "三硫磷",
+      "cas_number": "786-19-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412105-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412105-TD-1.2ml",
+      "name_en": "Carbophenothion in acetone",
+      "name_cn": "丙酮中三硫磷标准溶液",
+      "cas_number": "786-19-6",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412105-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412107-AA-1.2ml",
+      "name_en": "Monocrotophos in methanol",
+      "name_cn": "甲醇中久效磷标准溶液",
+      "cas_number": "6923-22-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412107-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412107-TD-1ml",
+      "name_en": "Monocrotophos",
+      "name_cn": "久效磷",
+      "cas_number": "6923-22-4",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412107-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412108-AA-1.2ml",
+      "name_en": "Methamidophos",
+      "name_cn": "甲胺磷",
+      "cas_number": "10265-92-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412108-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412108D6-AA-1.2ml",
+      "name_en": "Methamidophos-[D6] in methanol",
+      "name_cn": "甲醇中甲胺磷-D6同位素标准溶液",
+      "cas_number": "1219799-41-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412108D6-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412108D6-JA-1.2ml",
+      "name_en": "Methamidophos-[D6]",
+      "name_cn": "甲胺磷-[D6]",
+      "cas_number": "1219799-41-3",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412108D6-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412108-TA-1.2ml",
+      "name_en": "Methamidophos in acetone",
+      "name_cn": "丙酮中甲胺磷标准溶液",
+      "cas_number": "10265-92-6",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412108-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412108-TD-1ml",
+      "name_en": "Methamidophos",
+      "name_cn": "甲胺磷",
+      "cas_number": "10265-92-6",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412108-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412108-XA-1.2ml",
+      "name_en": "Methamidophos in Toluene: n-Hexane",
+      "name_cn": "甲苯/正己烷中甲胺磷标准溶液",
+      "cas_number": "10265-92-6",
+      "specification": "100 mg/L in Toluene:n-Hexane(1:1), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412108-XA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412109-TA-1ml",
+      "name_en": "Parathion in acetone",
+      "name_cn": "丙酮中对硫磷溶液标准物质",
+      "cas_number": "56-38-2",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412109-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412109-TD-1ml",
+      "name_en": "Parathion",
+      "name_cn": "对硫磷",
+      "cas_number": "56-38-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412109-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412110D10-JA-1.2ml",
+      "name_en": "Coumaphos-D10",
+      "name_cn": "蝇毒磷-D10",
+      "cas_number": "287397-86-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412110D10-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412110-TA-1ml",
+      "name_en": "Coumaphos",
+      "name_cn": "蝇毒磷",
+      "cas_number": "56-72-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412110-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412110-TD-1ml",
+      "name_en": "Coumaphos",
+      "name_cn": "蝇毒磷",
+      "cas_number": "56-72-4",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412110-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412111-HA-1ml",
+      "name_en": "Ethion",
+      "name_cn": "乙硫磷",
+      "cas_number": "563-12-2",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412111-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412111-TA-1ml",
+      "name_en": "Ethion",
+      "name_cn": "乙硫磷",
+      "cas_number": "563-12-2",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412111-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412111-TD-1ml",
+      "name_en": "Ethion",
+      "name_cn": "乙硫磷",
+      "cas_number": "563-12-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412111-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412112-AA-1ml",
+      "name_en": "Isofenphos-methyl",
+      "name_cn": "甲基异柳磷",
+      "cas_number": "99675-03-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412112-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412112-MA-1ml",
+      "name_en": "Isofenphos-methyl",
+      "name_cn": "甲基异柳磷",
+      "cas_number": "99675-03-3",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412112-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412112-TA-1ml",
+      "name_en": "Isofenphos-methyl",
+      "name_cn": "甲基异柳磷",
+      "cas_number": "99675-03-3",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412112-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412112-TD-1.2ml",
+      "name_en": "Isofenphos-methyl",
+      "name_cn": "甲基异柳磷",
+      "cas_number": "99675-03-3",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412112-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412113-JD-1.2ml",
+      "name_en": "Phosmet-oxon",
+      "name_cn": "氧亚胺硫磷",
+      "cas_number": "3735-33-9",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412113-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412114-DA-1ml",
+      "name_en": "Azinphos-ethyl",
+      "name_cn": "益棉磷(乙基谷硫磷、乙基保棉磷)",
+      "cas_number": "2642-71-9",
+      "specification": "100 mg/L in Isooctane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412114-DA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412114-TA-1ml",
+      "name_en": "Azinphos-ethyl",
+      "name_cn": "益棉磷(乙基谷硫磷、乙基保棉磷)",
+      "cas_number": "2642-71-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412114-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412114-TD-1.2ml",
+      "name_en": "Azinphos-ethyl",
+      "name_cn": "益棉磷(乙基谷硫磷、乙基保棉磷)",
+      "cas_number": "2642-71-9",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412114-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412115-HA-1.2ml",
+      "name_en": "Disulfoton",
+      "name_cn": "乙拌磷",
+      "cas_number": "298-04-4",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412115-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412115-TA-1ml",
+      "name_en": "Disulfoton",
+      "name_cn": "乙拌磷",
+      "cas_number": "298-04-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412115-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412115-TD-1.2ml",
+      "name_en": "Disulfoton",
+      "name_cn": "乙拌磷",
+      "cas_number": "298-04-4",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412115-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412116-HA-1ml",
+      "name_en": "Terbufos in n-Hexane",
+      "name_cn": "正己烷中特丁磷标准溶液",
+      "cas_number": "13071-79-9",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412116-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412116-TD-1ml",
+      "name_en": "Terbufos",
+      "name_cn": "特丁硫磷",
+      "cas_number": "13071-79-9",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412116-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412117-HA-1ml",
+      "name_en": "Mevinphos in n-Hexane",
+      "name_cn": "正己烷中速灭磷标准溶液",
+      "cas_number": "7786-34-7",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412117-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412117-TD-1ml",
+      "name_en": "Mevinphos",
+      "name_cn": "速灭磷",
+      "cas_number": "7786-34-7",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412117-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412118-HA-1ml",
+      "name_en": "Demeton(OS) in n-Hexane",
+      "name_cn": "正己烷中内吸磷 （OS） 标准溶液",
+      "cas_number": "8065-48-3",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412118-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412118-TD-1.2ml",
+      "name_en": "Demeton（O+S）",
+      "name_cn": "内吸磷（OS）",
+      "cas_number": "8065-48-3",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412118-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412119-AA-1.2ml",
+      "name_en": "Carbophenothion-methyl",
+      "name_cn": "甲基三硫磷",
+      "cas_number": "953-17-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412119-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412120-AC-1ml",
+      "name_en": "Thiometon in methanol",
+      "name_cn": "甲醇中甲基乙拌磷标准溶液",
+      "cas_number": "640-15-3",
+      "specification": "500 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412120-AC-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412120-TA-1ml",
+      "name_en": "Thiometon",
+      "name_cn": "甲基乙拌磷",
+      "cas_number": "640-15-3",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412120-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412120-TD-1.2ml",
+      "name_en": "Thiometon",
+      "name_cn": "甲基乙拌磷",
+      "cas_number": "640-15-3",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412120-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412121-TA-1ml",
+      "name_en": "Paraoxon-Methyl",
+      "name_cn": "甲基对氧磷",
+      "cas_number": "950-35-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412121-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412122-HA-1ml",
+      "name_en": "Phorate",
+      "name_cn": "正己烷中甲拌磷标准溶液",
+      "cas_number": "298-02-2",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412122-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412122-JA-1.2ml",
+      "name_en": "Phorate in acetonitrile",
+      "name_cn": "乙腈中甲拌磷标准溶液",
+      "cas_number": "298-02-2",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412122-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412122-TA-1.2ml",
+      "name_en": "Phorate",
+      "name_cn": "丙酮中甲拌磷标准溶液",
+      "cas_number": "298-02-2",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412122-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412122-TD-1ml",
+      "name_en": "Phorate",
+      "name_cn": "甲拌磷",
+      "cas_number": "298-02-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412122-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412123-AA-1ml",
+      "name_en": "Fensulfothion",
+      "name_cn": "丰索磷",
+      "cas_number": "115-90-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412123-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412123-AD-1.2ml",
+      "name_en": "Fensulfothion",
+      "name_cn": "丰索磷",
+      "cas_number": "115-90-2",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412123-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412124-TD-1ml",
+      "name_en": "Paraoxon-ethyl",
+      "name_cn": "对氧磷",
+      "cas_number": "311-45-5",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412124-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412126-HA-1.2ml",
+      "name_en": "Fonofos",
+      "name_cn": "地虫硫磷",
+      "cas_number": "944-22-9",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412126-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412126-HD-1.2ml",
+      "name_en": "Fonofos",
+      "name_cn": "地虫硫磷",
+      "cas_number": "944-22-9",
+      "specification": "1000 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412126-HD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412126-TD-1ml",
+      "name_en": "Fonofos",
+      "name_cn": "地虫硫磷",
+      "cas_number": "944-22-9",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412126-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412127-HA-1.2ml",
+      "name_en": "Dicrotophos in n-Hexane",
+      "name_cn": "己烷中百治磷标准溶液",
+      "cas_number": "141-66-2",
+      "specification": "100 mg/L in Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412127-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412127-TD-1ml",
+      "name_en": "dicrotophos",
+      "name_cn": "百治磷",
+      "cas_number": "141-66-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412127-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412128-AA-1.2ml",
+      "name_en": "Phorate-sulfoxide",
+      "name_cn": "甲拌磷亚砜",
+      "cas_number": "2588-03-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412128-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412128-TA-1ml",
+      "name_en": "Phorate-sulfoxide",
+      "name_cn": "甲拌磷亚砜",
+      "cas_number": "2588-03-6",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412128-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412128-TD-1ml",
+      "name_en": "Phorate-sulfoxide",
+      "name_cn": "甲拌磷亚砜",
+      "cas_number": "2588-03-6",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412128-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412129-HA-1.2ml",
+      "name_en": "Epn",
+      "name_cn": "苯硫膦",
+      "cas_number": "2104-64-5",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412129-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412129-TD-1ml",
+      "name_en": "Epn",
+      "name_cn": "苯硫膦",
+      "cas_number": "2104-64-5",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412129-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412130-BD-1.2ml",
+      "name_en": "Chlorfenvinphos",
+      "name_cn": "毒虫畏",
+      "cas_number": "470-90-6",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412130-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412130-HA-1.2ml",
+      "name_en": "Chlorfenvinphos in n-Hexane",
+      "name_cn": "正己烷中毒虫畏标准溶液",
+      "cas_number": "470-90-6",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412130-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412130-JD-1.2ml",
+      "name_en": "Chlorfenvinphos in acetonitrile",
+      "name_cn": "乙腈中毒虫畏标准溶液",
+      "cas_number": "470-90-6",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412130-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412130-TA-1.2ml",
+      "name_en": "Chlorfenvinphos in acetone",
+      "name_cn": "丙酮中毒虫畏标准溶液",
+      "cas_number": "470-90-6",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412130-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412131-AA-1.2ml",
+      "name_en": "Tetrachlorvinphos in methanol",
+      "name_cn": "甲醇中Z-杀虫畏标准溶液",
+      "cas_number": "22248-79-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412131-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412131-FA-1ml",
+      "name_en": "Tetrachlorvinphos",
+      "name_cn": "杀虫畏",
+      "cas_number": "22248-79-9",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412131-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412131-TA-1ml",
+      "name_en": "Tetrachlorvinphos",
+      "name_cn": "杀虫畏",
+      "cas_number": "22248-79-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412131-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412131-TD-1ml",
+      "name_en": "Tetrachlorvinphos",
+      "name_cn": "杀虫畏",
+      "cas_number": "22248-79-9",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412131-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412132-TA-1ml",
+      "name_en": "Pyridaphenthion",
+      "name_cn": "哒嗪硫磷",
+      "cas_number": "119-12-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412132-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412132-TD-1.2ml",
+      "name_en": "Pyridaphenthion",
+      "name_cn": "哒嗪硫磷",
+      "cas_number": "119-12-0",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412132-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412133-TA-1ml",
+      "name_en": "Terbufos-sulfoxide",
+      "name_cn": "特丁磷亚砜",
+      "cas_number": "10548-10-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412133-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412133-TD-1.2ml",
+      "name_en": "Terbufos-sulfoxide",
+      "name_cn": "特丁磷亚砜",
+      "cas_number": "10548-10-4",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412133-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412134-BD-1.2ml",
+      "name_en": "Triphenylphosphate in toluene",
+      "name_cn": "甲苯中磷酸三苯酯标准溶液",
+      "cas_number": "115-86-6",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412134-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412134-JD-1ml",
+      "name_en": "Triphenylphosphate",
+      "name_cn": "三苯基磷酸酯（药典2341通则内标)",
+      "cas_number": "115-86-6",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412134-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412137-AA-1.2ml",
+      "name_en": "Demeton-S",
+      "name_cn": "内吸磷-S",
+      "cas_number": "126-75-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412137-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412137-TA-1ml",
+      "name_en": "Demeton-S",
+      "name_cn": "内吸磷-S",
+      "cas_number": "126-75-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412137-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412137-TD-1ml",
+      "name_en": "Demeton-S",
+      "name_cn": "内吸磷-S",
+      "cas_number": "126-75-0",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412137-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412139-HA-1.2ml",
+      "name_en": "Ethoprophos in n-Hexane",
+      "name_cn": "正己烷中灭线磷标准溶液",
+      "cas_number": "13194-48-4",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412139-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412139-TA-1ml",
+      "name_en": "Ethoprophos",
+      "name_cn": "灭线磷",
+      "cas_number": "13194-48-4",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412139-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412139-TD-1ml",
+      "name_en": "Ethoprophos",
+      "name_cn": "灭线磷",
+      "cas_number": "13194-48-4",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412139-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412140-TA-1ml",
+      "name_en": "Quinalphos",
+      "name_cn": "喹硫磷",
+      "cas_number": "13593-03-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412140-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412140-TD-1ml",
+      "name_en": "Quinalphos",
+      "name_cn": "喹硫磷",
+      "cas_number": "13593-03-8",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412140-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412141-BD-1ml",
+      "name_en": "Ethanethiol",
+      "name_cn": "乙硫醇",
+      "cas_number": "75-08-1",
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412141-BD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412142-AD-1.2ml",
+      "name_en": "Sulfotep in acetonitrile",
+      "name_cn": "乙腈中治螟磷标准溶液",
+      "cas_number": "3689-24-5",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412142-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412142-TA-1ml",
+      "name_en": "Sulfotep",
+      "name_cn": "治螟磷",
+      "cas_number": "3689-24-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412142-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-412142-TD-1.2ml",
+      "name_en": "Sulfotep",
+      "name_cn": "治螟磷",
+      "cas_number": "3689-24-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412142-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412144-JD-1.2ml",
+      "name_en": "Demeton-S-methyl-sulfone in acetonitrile",
+      "name_cn": "乙腈中砜吸磷标准溶液",
+      "cas_number": "17040-19-6",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412144-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412145-AA-1.2ml",
+      "name_en": "Cyanofenphos in methanol",
+      "name_cn": "甲醇中苯腈磷标准溶液",
+      "cas_number": "13067-93-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412145-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412145-AD-1.2ml",
+      "name_en": "Cyanofenphos",
+      "name_cn": "苯腈膦",
+      "cas_number": "13067-93-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412145-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412146-JA-1.2ml",
+      "name_en": "Vamidothion-sulfon in acetonitrile",
+      "name_cn": "乙腈中蚜灭多砜标准溶液",
+      "cas_number": "70898-34-9",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412146-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412147-AA-1.2ml",
+      "name_en": "Fenthion-oxon",
+      "name_cn": "氧倍硫磷",
+      "cas_number": "6552-12-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412147-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412147-JD-1.2ml",
+      "name_en": "Fensulfothion-sulfone",
+      "name_cn": "丰索磷砜",
+      "cas_number": "14255-72-2",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412147-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412148-JD-1.2ml",
+      "name_en": "Fensulfothion-oxon-sulfone in acetonitrile",
+      "name_cn": "乙腈中氧代丰索磷砜标准溶液",
+      "cas_number": "6132-17-8",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412148-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412151-JD-1.2ml",
+      "name_en": "Disulfoton-oxon-sulfon",
+      "name_cn": "内吸磷-S-砜",
+      "cas_number": "2496-91-5",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412151-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412152-AD-1.2ml",
+      "name_en": "O，O，O-Triethylphosphorothioate",
+      "name_cn": "O，O，O-三乙基硫代磷酸酯",
+      "cas_number": "126-68-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412152-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412155-JA-1.2ml",
+      "name_en": "Vamidothion sulfoxide in acetonitrile",
+      "name_cn": "乙腈中蚜灭多亚砜标准溶液",
+      "cas_number": "20300-00-9",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412155-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412158D10-JA-1.2ml",
+      "name_en": "Diazinon-D10",
+      "name_cn": "二嗪磷-D10",
+      "cas_number": "100155-47-3",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412158D10-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412159-AD-1.2ml",
+      "name_en": "Dicapthon",
+      "name_cn": "异氯磷",
+      "cas_number": "2463-84-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412159-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412160-AD-1.2ml",
+      "name_en": "Temephos",
+      "name_cn": "双硫磷",
+      "cas_number": "3383-96-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412160-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412161-BA-1.2ml",
+      "name_en": "Dialifos in toluene",
+      "name_cn": "甲苯中氯亚胺硫磷标准溶液",
+      "cas_number": "10311-84-9",
+      "specification": "100 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412161-BA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412163-TD-1.2ml",
+      "name_en": "Isoxathion",
+      "name_cn": "恶唑磷",
+      "cas_number": "18854-01-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412163-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412166-TD-1.2ml",
+      "name_en": "Propaphos",
+      "name_cn": "丙虫磷",
+      "cas_number": "7292-16-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412166-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412168-JA-1.2ml",
+      "name_en": "Fenthion-oxon-sulfoxide",
+      "name_cn": "倍硫磷氧亚砜",
+      "cas_number": "6552-13-2",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412168-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412168-JD-1.2ml",
+      "name_en": "Fenthion-oxon-sulfoxide in acetonitrile",
+      "name_cn": "乙腈中倍硫磷氧亚砜标准溶液",
+      "cas_number": "6552-13-2",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412168-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412172-AA-1.2ml",
+      "name_en": "Demeton-S-methyl-sulfoxide",
+      "name_cn": "亚砜磷",
+      "cas_number": "301-12-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412172-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412173-JA-1.2ml",
+      "name_en": "Demeton-S-sulfoxide",
+      "name_cn": "砜吸磷-S-亚砜",
+      "cas_number": "2496-92-6",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412173-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412174-BA-1.2ml",
+      "name_en": "Triamiphos in acetone",
+      "name_cn": "丙酮中威菌磷标准溶液",
+      "cas_number": "1031-47-6",
+      "specification": "100 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412174-BA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412181-JA-1.2ml",
+      "name_en": "Fenthion-oxon-sulfone in acetonitrile",
+      "name_cn": "乙腈中倍硫磷氧砜标准溶液",
+      "cas_number": "14086-35-2",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412181-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-412182-JA-1.2ml",
+      "name_en": "Phorate-oxon-sulfone in acetonitrile",
+      "name_cn": "乙腈中氧甲拌磷砜标准溶液",
+      "cas_number": "2588-06-9",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-412182-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413002-AD-1.2ml",
+      "name_en": "Cypermethrin (mixture of isomers)",
+      "name_cn": "氯氰菊酯（灭百可）（异构体混合物）",
+      "cas_number": "52315-07-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413002-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413002-HD-1ml",
+      "name_en": "Cypermethrin (mixture of isomers)",
+      "name_cn": "氯氰菊酯（灭百可）（异构体混合物）",
+      "cas_number": "52315-07-8",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413002-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413002-JA-1.2ml",
+      "name_en": "Cypermethrin (mixture of isomers) in acetonitrile",
+      "name_cn": "乙腈中氯氰菊酯标准溶液",
+      "cas_number": "52315-07-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413002-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413002-MA-1ml",
+      "name_en": "Cypermethrin(mixture of isomers)",
+      "name_cn": "氯氰菊酯（灭百可）（异构体混合物）",
+      "cas_number": "52315-07-8",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413002-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413002-TA-1ml",
+      "name_en": "Cypermethrin(mixture of isomers)",
+      "name_cn": "氯氰菊酯（灭百可）（异构体混合物）",
+      "cas_number": "52315-07-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413002-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413002-TD-1.2ml",
+      "name_en": "Cypermethrin (mixture of isomers) in acetone",
+      "name_cn": "丙酮中氯氰菊酯标准溶液",
+      "cas_number": "52315-07-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413002-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413003-AD-1.2ml",
+      "name_en": "Fenvalerate(mixture of isomers)",
+      "name_cn": "氰戊菊酯(异构体混合物)",
+      "cas_number": "51630-58-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413003-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413003-FA-1ml",
+      "name_en": "Fenvalerate（mixture of isomers）",
+      "name_cn": "氰戊菊酯（异构体混合物）",
+      "cas_number": "51630-58-1",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413003-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413003-HD-1ml",
+      "name_en": "Fenvalerate(mixture of isomers)",
+      "name_cn": "氰戊菊酯(异构体混合物)",
+      "cas_number": "51630-58-1",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413003-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413003-MA-1ml",
+      "name_en": "Fenvalerate（mixture of isomers）",
+      "name_cn": "氰戊菊酯（异构体混合物）",
+      "cas_number": "51630-58-1",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413003-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413003-TA-1ml",
+      "name_en": "Fenvalerate（mixture of isomers）",
+      "name_cn": "氰戊菊酯（异构体混合物）",
+      "cas_number": "51630-58-1",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413003-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413003-TD-1.2ml",
+      "name_en": "Fenvalerate(mixture of isomers) in acetone",
+      "name_cn": "丙酮中氰戊菊酯标准溶液",
+      "cas_number": "51630-58-1",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413003-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413004-AA-1ml",
+      "name_en": "Fenpropathrin",
+      "name_cn": "甲氰菊酯",
+      "cas_number": "39515-41-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413004-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413004-FA-1ml",
+      "name_en": "Fenpropathrin",
+      "name_cn": "甲氰菊酯",
+      "cas_number": "39515-41-8",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413004-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413004-HD-1ml",
+      "name_en": "Fenpropathrin",
+      "name_cn": "甲氰菊酯",
+      "cas_number": "39515-41-8",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413004-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413004-MA-1ml",
+      "name_en": "Fenpropathrin",
+      "name_cn": "甲氰菊酯",
+      "cas_number": "39515-41-8",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413004-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413004-TA-1ml",
+      "name_en": "Fenpropathrin",
+      "name_cn": "甲氰菊酯",
+      "cas_number": "39515-41-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413004-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413004-TD-1.2ml",
+      "name_en": "Fenpropathrin in acetone",
+      "name_cn": "丙酮中甲氰菊酯标准溶液",
+      "cas_number": "39515-41-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413004-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413005-HD-1ml",
+      "name_en": "λ-Cyhalothrin",
+      "name_cn": "高效氯氟氰菊酯",
+      "cas_number": "91465-08-6",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413005-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413005-MA-1ml",
+      "name_en": "λ-Cyhalothrin",
+      "name_cn": "高效氯氟氰菊酯",
+      "cas_number": "91465-08-6",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413005-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413006-HD-1ml",
+      "name_en": "Cyfluthrin",
+      "name_cn": "氟氯氰菊酯",
+      "cas_number": "68359-37-5",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413006-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413006-MA-1ml",
+      "name_en": "Cyfluthrin（mixture of isomers）",
+      "name_cn": "氟氯氰菊酯（异构体混合物）",
+      "cas_number": "68359-37-5",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413006-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413006-TA-1ml",
+      "name_en": "Cyfluthrin（mixture of isomers）",
+      "name_cn": "氟氯氰菊酯（异构体混合物）",
+      "cas_number": "68359-37-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413006-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413006-TD-1.2ml",
+      "name_en": "Cyfluthrin in acetone",
+      "name_cn": "丙酮中氟氯氰菊酯标准溶液",
+      "cas_number": "68359-37-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413006-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413007-AA-1.2ml",
+      "name_en": "Bifenthrin",
+      "name_cn": "联苯菊酯",
+      "cas_number": "82657-04-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413007-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413007-HD-1ml",
+      "name_en": "Bifenthrin",
+      "name_cn": "联苯菊酯（氟氯菊酯）",
+      "cas_number": "82657-04-3",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413007-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413007-MA-1ml",
+      "name_en": "Bifenthrin",
+      "name_cn": "联苯菊酯（氟氯菊酯）",
+      "cas_number": "82657-04-3",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413007-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413007-TA-1ml",
+      "name_en": "Bifenthrin",
+      "name_cn": "联苯菊酯（氟氯菊酯）",
+      "cas_number": "82657-04-3",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413007-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413008-AA-1.2ml",
+      "name_en": "Dicofol",
+      "name_cn": "三氯杀螨醇",
+      "cas_number": "115-32-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413008-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413008-HD-1.2ml",
+      "name_en": "Dicofol",
+      "name_cn": "三氯杀螨醇",
+      "cas_number": "115-32-2",
+      "specification": "1000 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413008-HD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413008-MA-1ml",
+      "name_en": "Dicofol",
+      "name_cn": "三氯杀螨醇",
+      "cas_number": "115-32-2",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413008-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413008-TA-1ml",
+      "name_en": "Dicofol",
+      "name_cn": "三氯杀螨醇",
+      "cas_number": "115-32-2",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413008-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413009-AA-1.2ml",
+      "name_en": "Etofenprox in methanol",
+      "name_cn": "甲醇中醚菊酯标准溶液",
+      "cas_number": "80844-07-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413009-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413009-FA-1ml",
+      "name_en": "Etofenprox",
+      "name_cn": "醚菊酯",
+      "cas_number": "80844-07-1",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413009-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413009-HD-1ml",
+      "name_en": "Etofenprox",
+      "name_cn": "醚菊酯",
+      "cas_number": "80844-07-1",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413009-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413010-AA-1ml",
+      "name_en": "Cyhalothrin",
+      "name_cn": "氯氟氰菊酯",
+      "cas_number": "68085-85-8",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413010-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413010-MA-1.2ml",
+      "name_en": "CYHALOTHRIN in n-Hexane",
+      "name_cn": "正己烷中氯氟氰菊酯标准溶液",
+      "cas_number": "68085-85-8",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413010-MA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413010-TA-1ml",
+      "name_en": "Cyhalothrin",
+      "name_cn": "氯氟氰菊酯",
+      "cas_number": "68085-85-8",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413010-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413010-TD-1.2ml",
+      "name_en": "CYHALOTHRIN in acetone",
+      "name_cn": "丙酮中氯氟氰菊酯标准溶液",
+      "cas_number": "68085-85-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413010-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413011-TD-1.2ml",
+      "name_en": "Resmethrin",
+      "name_cn": "苄呋菊酯",
+      "cas_number": "10453-86-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413011-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413012-HA-1.2ml",
+      "name_en": "beta-Cypermetrin",
+      "name_cn": "高效氯氰菊酯",
+      "cas_number": "65731-84-2",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413012-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413013-HA-1.2ml",
+      "name_en": "Halfenprox",
+      "name_cn": "苄螨醚",
+      "cas_number": "111872-58-3",
+      "specification": "100 mg/L in Cyclohexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413013-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413014-HD-1.2ml",
+      "name_en": "Pyrethrin 1",
+      "name_cn": "除虫菊素I",
+      "cas_number": "121-21-1",
+      "specification": "1000 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413014-HD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413014-JA-1.2ml",
+      "name_en": "Pyrethrin 1",
+      "name_cn": "除虫菊素I",
+      "cas_number": "121-21-1",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413014-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413015-TD-1.2ml",
+      "name_en": "Prallethrin(Mixture of diastereom)",
+      "name_cn": "炔丙菊酯（异构体混合物）",
+      "cas_number": "23031-36-9",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413015-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413016-TD-1.2ml",
+      "name_en": "Phenothrin",
+      "name_cn": "苯醚菊酯",
+      "cas_number": "26002-80-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413016-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413018-HD-1.2ml",
+      "name_en": "S-Bioallethrin",
+      "name_cn": "S-生物烯丙菊酯",
+      "cas_number": "28434-00-6",
+      "specification": "1000 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413018-HD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413018-MA-1ml",
+      "name_en": "S-Bioallethrin",
+      "name_cn": "S-生物烯丙菊酯",
+      "cas_number": "28434-00-6",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413018-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413020-AA-1ml",
+      "name_en": "Allethrin",
+      "name_cn": "丙烯菊酯",
+      "cas_number": "584-79-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413020-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413020-TD-1.2ml",
+      "name_en": "Allethrin",
+      "name_cn": "丙烯菊酯",
+      "cas_number": "584-79-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413020-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413022-HD-1ml",
+      "name_en": "Esfenvalerate",
+      "name_cn": "顺式氰戊菊酯（高效氰戊菊酯）",
+      "cas_number": "66230-04-4",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413022-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413022-MA-1ml",
+      "name_en": "Esfenvalerate",
+      "name_cn": "顺式氰戊菊酯（高效氰戊菊酯）",
+      "cas_number": "66230-04-4",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413022-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413026-HD-1ml",
+      "name_en": "Tetramethrin",
+      "name_cn": "胺菊酯",
+      "cas_number": "7696-12-0",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413026-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413026-MA-1ml",
+      "name_en": "Tetramethrin（mixture of isomers）",
+      "name_cn": "胺菊酯（异构体混合物）",
+      "cas_number": "7696-12-0",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413026-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413028-AA-1.2ml",
+      "name_en": "Pyrethrins in methanol",
+      "name_cn": "甲醇中除虫菊素标准溶液",
+      "cas_number": "8003-34-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413028-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413028-TD-1.2ml",
+      "name_en": "Pyrethrins",
+      "name_cn": "除虫菊酯",
+      "cas_number": "8003-34-7",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413028-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413029-TD-1.2ml",
+      "name_en": "Acrinathrin",
+      "name_cn": "氟丙菊酯",
+      "cas_number": "101007-06-1",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413029-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413030-HD-1ml",
+      "name_en": "tau-Fluvalinate",
+      "name_cn": "氟胺氰菊酯",
+      "cas_number": "102851-06-9",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413030-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413030-MA-1ml",
+      "name_en": "tau-Fluvalinate(mixture of isomers)",
+      "name_cn": "氟胺氰菊酯（异构体混合物）",
+      "cas_number": "102851-06-9",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413030-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413030-TD-1.2ml",
+      "name_en": "Tau-Fluvalinate in acetone",
+      "name_cn": "丙酮中氟胺氰菊酯标准溶液",
+      "cas_number": "102851-06-9",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413030-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413031-AA-1.2ml",
+      "name_en": "Kresoxim-methyl in methanol",
+      "name_cn": "甲醇中醚菌酯标准溶液",
+      "cas_number": "143390-89-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413031-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413031-HD-1ml",
+      "name_en": "Kresoxim-methyl",
+      "name_cn": "苯氧菊酯 （亚胺菌，醚菌酯）",
+      "cas_number": "143390-89-0",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413031-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413031-TA-1ml",
+      "name_en": "Kresoxim-methyl",
+      "name_cn": "苯氧菊酯 （亚胺菌，醚菌酯）",
+      "cas_number": "143390-89-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413031-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413033-MA-1ml",
+      "name_en": "Bioresmethrin",
+      "name_cn": "生物苄呋菊酯",
+      "cas_number": "28434-01-7",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413033-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413036-AA-1ml",
+      "name_en": "Permethrin",
+      "name_cn": "氯菊酯（顺反异构混合物）",
+      "cas_number": "52645-53-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413036-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413036-HD-1ml",
+      "name_en": "Permethrin (mixture of isomers)",
+      "name_cn": "氯菊酯 （顺反异构体）",
+      "cas_number": "52645-53-1",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413036-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413036-MA-1ml",
+      "name_en": "Permethrin",
+      "name_cn": "二氯苯醚菊酯（氯菊酯，苄氯菊酯）（顺反异构体混合物）",
+      "cas_number": "52645-53-1",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413036-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413036-TD-1.2ml",
+      "name_en": "Permethrin in acetone",
+      "name_cn": "丙酮中氯菊酯标准溶液",
+      "cas_number": "52645-53-1",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413036-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413037-HD-1ml",
+      "name_en": "cis-Permethrin",
+      "name_cn": "顺式-氯菊酯",
+      "cas_number": "61949-76-6",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413037-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413037-MA-1ml",
+      "name_en": "cis-Permethrin",
+      "name_cn": "顺式-氯菊酯",
+      "cas_number": "61949-76-6",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413037-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413038-MA-1ml",
+      "name_en": "trans-Permethrin",
+      "name_cn": "反式-氯菊酯",
+      "cas_number": "61949-77-7",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413038-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413040-BD-1.2ml",
+      "name_en": "α-Cypermethrin",
+      "name_cn": "α-氯氰菊酯",
+      "cas_number": "67375-30-8",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413040-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413040-MA-1ml",
+      "name_en": "alpha-Cypermethrin",
+      "name_cn": "α-氯氰菊酯/顺式氯氰菊酯",
+      "cas_number": "67375-30-8",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413040-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413042-DA-1ml",
+      "name_en": "Flucythrinate(mixture of isomers)",
+      "name_cn": "氟氰戊菊酯（氟氰菊酯）（异构体混合物）",
+      "cas_number": "70124-77-5",
+      "specification": "100 mg/L in Isooctane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413042-DA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413042-HD-1ml",
+      "name_en": "Flucythrinate",
+      "name_cn": "氟氰戊菊酯（氟氰菊酯）",
+      "cas_number": "70124-77-5",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413042-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413042-MA-1ml",
+      "name_en": "Flucythrinate(mixture of isomers)",
+      "name_cn": "氟氰戊菊酯（氟氰菊酯）（异构体混合物）",
+      "cas_number": "70124-77-5",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413042-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413042-TA-1ml",
+      "name_en": "Flucythrinate(mixture of isomers)",
+      "name_cn": "氟氰戊菊酯（氟氰菊酯）（异构体混合物）",
+      "cas_number": "70124-77-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413042-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413042-TD-1.2ml",
+      "name_en": "Flucythrinate(mixture of isomers) in acetone",
+      "name_cn": "丙酮中氟氰戊菊酯标准溶液",
+      "cas_number": "70124-77-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413042-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413045-HD-1ml",
+      "name_en": "Deltamethrin",
+      "name_cn": "溴氰菊酯",
+      "cas_number": "52918-63-5",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413045-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413045-JA-1.2ml",
+      "name_en": "Deltamethrin",
+      "name_cn": "溴氰菊酯",
+      "cas_number": "52918-63-5",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413045-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413045-MA-1ml",
+      "name_en": "Deltamethrin",
+      "name_cn": "溴氰菊酯",
+      "cas_number": "52918-63-5",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413045-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413045-TA-1.2ml",
+      "name_en": "Deltamethrin in acetone",
+      "name_cn": "丙酮中溴氰菊酯标准溶液",
+      "cas_number": "52918-63-5",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413045-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413045-TD-1.2ml",
+      "name_en": "Deltamethrin in acetone",
+      "name_cn": "丙酮中溴氰菊酯标准溶液",
+      "cas_number": "52918-63-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413045-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413046-HD-1ml",
+      "name_en": "beta-Cypermethrin（mixture of isomers）",
+      "name_cn": "β-氯氰菊酯/高效氯氰菊酯（异构体混合物）",
+      "cas_number": "1224510-29-5",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413046-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413046-MA-1ml",
+      "name_en": "beta-Cypermethrin（mixture of isomers）",
+      "name_cn": "β-氯氰菊酯/高效氯氰菊酯（异构体混合物）",
+      "cas_number": "1224510-29-5",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413046-MA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413047-HD-1ml",
+      "name_en": "β-Cyfluthrin",
+      "name_cn": "β-氟氯氰菊酯",
+      "cas_number": "1820573-27-0",
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413047-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413048-JA-1ml",
+      "name_en": "2,4′-Dicofol",
+      "name_cn": "2,4-三氯杀螨醇",
+      "cas_number": "10606-46-9",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413048-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413048-TA-1ml",
+      "name_en": "2，4′-Dicofol",
+      "name_cn": "2，4-三氯杀螨醇",
+      "cas_number": "10606-46-9",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413048-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413049-HA-1ml",
+      "name_en": "Cypermethrin",
+      "name_cn": "氯氰菊酯（S，S，S构型）",
+      "cas_number": "72204-43-4",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413049-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-413050-HA-1.2ml",
+      "name_en": "Flumethrin",
+      "name_cn": "氟氯苯氰菊酯",
+      "cas_number": "69770-45-2",
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413050-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413051-TA-1.2ml",
+      "name_en": "Cyphenothrin in acetone",
+      "name_cn": "丙酮中苯醚氰菊酯标准溶液",
+      "cas_number": "39515-40-7",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413051-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413055-AA-1.2ml",
+      "name_en": "Silafluofen in methanol",
+      "name_cn": "甲醇中氟硅菊酯标准溶液",
+      "cas_number": "105024-66-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413055-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413055-BA-1.2ml",
+      "name_en": "Silafluofen",
+      "name_cn": "氟硅菊酯",
+      "cas_number": "105024-66-6",
+      "specification": "100 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413055-BA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413057-AA-1.2ml",
+      "name_en": "Transfluthrin in methanol",
+      "name_cn": "甲醇中四氟苯菊酯标准溶液",
+      "cas_number": "118712-89-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413057-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413057-TD-1.2ml",
+      "name_en": "Transfluthrin",
+      "name_cn": "四氟苯菊酯",
+      "cas_number": "118712-89-3",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413057-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413058-JA-1.2ml",
+      "name_en": "Aminocarb in acetonitrile",
+      "name_cn": "乙腈中灭害威标准溶液",
+      "cas_number": "2032-59-9",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413058-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413060-AA-1.2ml",
+      "name_en": "Tefluthrin in methanol",
+      "name_cn": "甲醇中七氟菊酯标准溶液",
+      "cas_number": "79538-32-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413060-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413060-BA-1.2ml",
+      "name_en": "Tefluthrin",
+      "name_cn": "七氟菊酯",
+      "cas_number": "79538-32-2",
+      "specification": "100 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413060-BA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413063-TA-1.2ml",
+      "name_en": "Imiprothrin",
+      "name_cn": "炔咪菊酯",
+      "cas_number": "72963-72-5",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413063-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-413070-TA-1.2ml",
+      "name_en": "trans-Bifenthtin",
+      "name_cn": "反式联苯菊酯",
+      "cas_number": "83322-02-5",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-413070-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414001-CD-1.2ml",
+      "name_en": "Ethyl carbonate",
+      "name_cn": "氨基甲酸乙酯",
+      "cas_number": "51-79-6",
+      "specification": "1000 mg/L in Ethanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414001-CD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414002-AA-1ml",
+      "name_en": "Methomyl",
+      "name_cn": "灭多威",
+      "cas_number": "16752-77-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414002-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414002-AD-1ml",
+      "name_en": "Methomyl",
+      "name_cn": "灭多威",
+      "cas_number": "16752-77-5",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414002-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414002-TA-1.2ml",
+      "name_en": "Methomyl in acetone",
+      "name_cn": "丙酮中灭多威标准溶液",
+      "cas_number": "16752-77-5",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414002-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414003-AA-1ml",
+      "name_en": "Carbaryl",
+      "name_cn": "甲萘威",
+      "cas_number": "63-25-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414003-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414003-AD-1ml",
+      "name_en": "Carbaryl",
+      "name_cn": "甲萘威",
+      "cas_number": "63-25-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414003-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414003-TD-1ml",
+      "name_en": "Carbaryl",
+      "name_cn": "甲萘威",
+      "cas_number": "63-25-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414003-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414004-TA-1ml",
+      "name_en": "Thiodicarb",
+      "name_cn": "硫双威",
+      "cas_number": "59669-26-0",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414004-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414005-JD-1.2ml",
+      "name_en": "Pirimicarb-desmethyl-formamido",
+      "name_cn": "去甲基抗蚜威甲酰胺",
+      "cas_number": "27218-04-8",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414005-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414006-AA-1ml",
+      "name_en": "Indoxacarb",
+      "name_cn": "茚虫威（安打，恶二唑虫）（异构体混合物）",
+      "cas_number": "144171-61-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414006-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414006-AD-1ml",
+      "name_en": "Indoxacarb",
+      "name_cn": "茚虫威（安打，恶二唑虫）（异构体混合物）",
+      "cas_number": "144171-61-9",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414006-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414007-AA-1.2ml",
+      "name_en": "Methiocarb in methanol",
+      "name_cn": "甲醇中灭虫威标准溶液",
+      "cas_number": "2032-65-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414007-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414007-TA-1ml",
+      "name_en": "Methiocarb",
+      "name_cn": "灭梭威（灭虫威，甲硫威）",
+      "cas_number": "2032-65-7",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414007-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414007-TD-1.2ml",
+      "name_en": "Methiocarb",
+      "name_cn": "灭梭威",
+      "cas_number": "2032-65-7",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414007-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414008-AA-1ml",
+      "name_en": "Pirimicarb",
+      "name_cn": "抗蚜威",
+      "cas_number": "23103-98-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414008-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414008-AD-1ml",
+      "name_en": "Pirimicarb",
+      "name_cn": "抗蚜威",
+      "cas_number": "23103-98-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414008-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414008-TD-1.2ml",
+      "name_en": "Pirimicarb in acetone",
+      "name_cn": "丙酮中抗蚜威标准溶液",
+      "cas_number": "23103-98-2",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414008-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414009-AA-1ml",
+      "name_en": "Promecarb",
+      "name_cn": "猛杀威",
+      "cas_number": "2631-37-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414009-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414009-AD-1.2ml",
+      "name_en": "Promecarb",
+      "name_cn": "猛杀威",
+      "cas_number": "2631-37-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414009-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414010-AA-1ml",
+      "name_en": "Isoprocarb",
+      "name_cn": "异丙威",
+      "cas_number": "2631-40-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414010-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414010-AD-1ml",
+      "name_en": "Isoprocarb",
+      "name_cn": "异丙威",
+      "cas_number": "2631-40-5",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414010-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414010-TA-1.2ml",
+      "name_en": "Isoprocarb in acetone",
+      "name_cn": "丙酮中叶蝉散标准溶液",
+      "cas_number": "2631-40-5",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414010-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414010-TD-1.2ml",
+      "name_en": "Isoprocarb in acetone",
+      "name_cn": "丙酮中叶蝉散标准溶液",
+      "cas_number": "2631-40-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414010-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414011-AA-1.2ml",
+      "name_en": "Ethiofencarb",
+      "name_cn": "乙硫苯威",
+      "cas_number": "29973-13-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414011-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414011-AD-1.2ml",
+      "name_en": "Ethiofencarb",
+      "name_cn": "乙硫苯威",
+      "cas_number": "29973-13-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414011-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414013-AA-1ml",
+      "name_en": "Fenobucarb",
+      "name_cn": "仲丁威（丁苯威）",
+      "cas_number": "3766-81-2",
+      "specification": "100 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414013-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414013-AD-1ml",
+      "name_en": "Fenobucarb",
+      "name_cn": "仲丁威（丁苯威）",
+      "cas_number": "3766-81-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414013-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414014-AA-1ml",
+      "name_en": "Furathiocarb",
+      "name_cn": "呋线",
+      "cas_number": "65907-30-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414014-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414015-AA-1ml",
+      "name_en": "Dioxacarb",
+      "name_cn": "二氧威",
+      "cas_number": "6988-21-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414015-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414017-AA-1.2ml",
+      "name_en": "Propoxur in methanol",
+      "name_cn": "甲醇中残杀威标准溶液",
+      "cas_number": "114-26-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414017-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414017-HA-1ml",
+      "name_en": "Propoxur",
+      "name_cn": "残杀威",
+      "cas_number": "114-26-1",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414017-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414017-TA-1ml",
+      "name_en": "Propoxur",
+      "name_cn": "残杀威 （残杀畏，2-苯基氨基甲酸甲酯，安丹）",
+      "cas_number": "114-26-1",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414017-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414017-TD-1.2ml",
+      "name_en": "Propoxur",
+      "name_cn": "残杀威",
+      "cas_number": "114-26-1",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414017-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414018-TA-1ml",
+      "name_en": "Methomyl-oxime",
+      "name_cn": "灭多威肟",
+      "cas_number": "13749-94-5",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414018-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414018-TD-1.2ml",
+      "name_en": "Methomyl-oxime",
+      "name_cn": "灭多威肟",
+      "cas_number": "13749-94-5",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414018-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414019-AA-1ml",
+      "name_en": "Aldicarb-sulfoxide",
+      "name_cn": "得灭克亚碸（涕灭威亚砜）",
+      "cas_number": "1646-87-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414019-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414019-AD-1ml",
+      "name_en": "Aldicarb-sulfoxide",
+      "name_cn": "得灭克亚碸（涕灭威亚砜）",
+      "cas_number": "1646-87-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414019-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414020-AA-1ml",
+      "name_en": "Aldicarb-sulfone",
+      "name_cn": "涕灭威砜",
+      "cas_number": "1646-88-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414020-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414020-AD-1ml",
+      "name_en": "Aldicarb-sulfone",
+      "name_cn": "涕灭威砜",
+      "cas_number": "1646-88-4",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414020-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414021-AA-1ml",
+      "name_en": "Carbofuran-3-hydroxy",
+      "name_cn": "3-羟基克百威（3-羟基呋喃丹）",
+      "cas_number": "16655-82-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414021-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414021-AD-1ml",
+      "name_en": "Carbofuran-3-hydroxy",
+      "name_cn": "3-羟基克百威（3-羟基呋喃丹）",
+      "cas_number": "16655-82-6",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414021-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414030-AA-1ml",
+      "name_en": "Butocarboxim",
+      "name_cn": "丁酮威",
+      "cas_number": "34681-10-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414030-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414030-AD-1.2ml",
+      "name_en": "Butocarboxim",
+      "name_cn": "丁酮威",
+      "cas_number": "34681-10-2",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414030-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414035-TA-1.2ml",
+      "name_en": "Carbosulfan in acetone",
+      "name_cn": "丙酮中丁硫克百威标准溶液",
+      "cas_number": "55285-14-8",
+      "specification": "100 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414035-TA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414035-TD-1.2ml",
+      "name_en": "Carbosulfan",
+      "name_cn": "丁硫克百威",
+      "cas_number": "55285-14-8",
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414035-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414036-AA-1ml",
+      "name_en": "Fenoxycarb",
+      "name_cn": "苯醚威、苯氧威",
+      "cas_number": "72490-01-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414036-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414036-AD-1.2ml",
+      "name_en": "Fenoxycarb",
+      "name_cn": "苯醚威",
+      "cas_number": "72490-01-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414036-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414037-AD-1.2ml",
+      "name_en": "Benfuracarb",
+      "name_cn": "丙硫克百威",
+      "cas_number": "82560-54-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414037-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414039-AA-1ml",
+      "name_en": "Diethofencarb",
+      "name_cn": "乙霉威",
+      "cas_number": "87130-20-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414039-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414039-AD-1.2ml",
+      "name_en": "Diethofencarb in methanol",
+      "name_cn": "甲醇中乙霉威标准溶液",
+      "cas_number": "87130-20-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414039-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414040-AA-1.2ml",
+      "name_en": "Bendiocarb in methanol",
+      "name_cn": "甲醇中恶虫威标准溶液",
+      "cas_number": "22781-23-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414040-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414040-TA-1ml",
+      "name_en": "Bendiocarb",
+      "name_cn": "恶虫威",
+      "cas_number": "22781-23-3",
+      "specification": "100 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414040-TA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414041-AD-1ml",
+      "name_en": "Aldicarb in Methanol",
+      "name_cn": "甲醇中涕灭威标准溶液",
+      "cas_number": "116-06-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414041-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414041-HA-1ml",
+      "name_en": "Aldicarb in n-Hexane",
+      "name_cn": "正己烷中涕灭威标准溶液",
+      "cas_number": "116-06-3",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414041-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414042-AA-1.2ml",
+      "name_en": "Oxamyl",
+      "name_cn": "甲醇中杀线威",
+      "cas_number": "23135-22-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414042-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414042-AD-1.2ml",
+      "name_en": "Oxamyl",
+      "name_cn": "杀线威",
+      "cas_number": "23135-22-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414042-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414042-FA-1ml",
+      "name_en": "Oxamyl",
+      "name_cn": "杀线威",
+      "cas_number": "23135-22-0",
+      "specification": "100 mg/L in Ethyl acetate, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414042-FA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414043-AD-1ml",
+      "name_en": "Carbofuran",
+      "name_cn": "克百威（呋喃丹）",
+      "cas_number": "1563-66-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414043-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414043D3-AA-1.2ml",
+      "name_en": "Carbofuran-d3",
+      "name_cn": "克百威-D3",
+      "cas_number": "1007459-98-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414043D3-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414043-HA-1ml",
+      "name_en": "Carbofuran in n-Hexane",
+      "name_cn": "正己烷中克百威标准溶液",
+      "cas_number": "1563-66-2",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414043-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-414046D3-AA-1.2ml",
+      "name_en": "Methiocarb-[D3] in methanol",
+      "name_cn": "甲醇中灭虫威-[D3]标准溶液",
+      "cas_number": "1581694-94-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414046D3-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414047-JD-1.2ml",
+      "name_en": "Pirimicarb-desmethyl",
+      "name_cn": "脱甲基抗蚜威",
+      "cas_number": "30614-22-3",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414047-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414048D7-AA-1.2ml",
+      "name_en": "Carbaryl-[D7]",
+      "name_cn": "甲萘威-[D7]",
+      "cas_number": "362049-56-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414048D7-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414052-AA-1.2ml",
+      "name_en": "Methiocarb-sulfone",
+      "name_cn": "甲硫威砜",
+      "cas_number": "2179-25-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414052-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414053-JA-1.2ml",
+      "name_en": "Butocarboxim-sulfoxide in acetonitrile",
+      "name_cn": "乙腈中丁酮威亚砜标准溶液",
+      "cas_number": "34681-24-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414053-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414054-JD-1.2ml",
+      "name_en": "Methiocarb-sulfoxide",
+      "name_cn": "灭虫威亚砜(甲硫威亚砜，灭梭威亚砜)",
+      "cas_number": "2635-10-1",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414054-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-414056-AD-1.2ml",
+      "name_en": "XMC (3，5-xylyl methylcarbamate)",
+      "name_cn": "灭除威",
+      "cas_number": "2655-14-3",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-414056-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-415001-AA-1.2ml",
+      "name_en": "Dinotefuran in methanol",
+      "name_cn": "甲醇中呋虫胺标准溶液",
+      "cas_number": "165252-70-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-415001-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-415001-JA-1.2ml",
+      "name_en": "Dinotefuran",
+      "name_cn": "呋虫胺",
+      "cas_number": "165252-70-0",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-415001-JA-1.2ml"
+    }
+  ]
+}

@@ -1,0 +1,2437 @@
+{
+  "hold_id": "anpel-standards-remaining-hold-2026-09-26",
+  "source": "ANPEL_Standards_Normalized.csv records 3601-20505",
+  "source_sha256": "1cfe9b81fd567114b05643bbf5e735b6c8a35c9014368def2e9f40f52d89e953",
+  "namespace": "standards_products",
+  "records": [
+    {
+      "source_record": 5691,
+      "part_number": "CDAA-283545-100mg",
+      "name_en": null,
+      "name_cn": "金钗石斛总生物碱",
+      "cas_number": null,
+      "specification": "100 mg",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 13304,
+      "part_number": "CDAA-749300-10mg",
+      "name_en": null,
+      "name_cn": "双环丙酚丁",
+      "cas_number": null,
+      "specification": "10 mg",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 14430,
+      "part_number": "CDAA-M-359008-BH-1.2ml",
+      "name_en": "PBDE MIX 7 in toluene",
+      "name_cn": "甲苯中7种多溴联苯醚PBDE-13C12混标(HJ909)",
+      "cas_number": null,
+      "specification": "2 mg/l溶 in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 14634,
+      "part_number": "CDAA-M-490407-TX-1.2ml",
+      "name_en": "Pesticide Mix 55",
+      "name_cn": "55种禁用农药混合对照溶液v2(2020版中国药典2341第五法)",
+      "cas_number": null,
+      "specification": "2-20 mg/L in Acetone(杀虫脒100mg/L于Acetonitrile), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 14786,
+      "part_number": "CDAA-M-530268-XZ-SET",
+      "name_en": "Mix 77",
+      "name_cn": "68种抗生素及9种内标(新污染物PPCPs试行)",
+      "cas_number": null,
+      "specification": "1套",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 14883,
+      "part_number": "CDAA-M-620001-SETA-1ml",
+      "name_en": "set of benzene series MIX 8 in CS2",
+      "name_cn": "二硫化碳中的8种苯系物套装(HJ584-2010和GB/T 14677)",
+      "cas_number": null,
+      "specification": "Various concentrations in Carbon disulfide, 1 mL*7 vials(不同浓度各1 vials)",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 14939,
+      "part_number": "CDAA-M-629024-01-1ml",
+      "name_en": "VOC Mix 9",
+      "name_cn": "9种TVOCs混合标液系列（套装）(GB50325-2010)",
+      "cas_number": null,
+      "specification": "10-1000 mg/L in Methanol,3x1ml(10mg/L, 100 mg/L,1000mg/L各一 vials)",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 15131,
+      "part_number": "CDAA-M-690067-AB-1ml",
+      "name_en": "PCB Mix",
+      "name_cn": "PCB套装(HJ890-2017，HJ904-2017，GB/T5750.8附录B)",
+      "cas_number": null,
+      "specification": "200 mg/L in Methanol,7*, 1 mL(7种工业多氯联Benzene各1 vials)",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 15132,
+      "part_number": "CDAA-M-690067-DD-1ml",
+      "name_en": "PCB Mix",
+      "name_cn": "异辛烷中工业多氯联苯Aroclor套装(HJ890/HJ904)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Isooctane, 1 mL(7 vials一套)",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 15153,
+      "part_number": "CDAA-M-690087-AD-1ml",
+      "name_en": "Naphthol Mix 2",
+      "name_cn": "2种萘酚混标(HJ1073)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol(0.1%抗坏血酸), 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 15236,
+      "part_number": "CDAA-M-740038-AA-1.2ml",
+      "name_en": "Drugs MIX 20",
+      "name_cn": "20种抗球虫药物混标(SN/T3144-2011)",
+      "cas_number": null,
+      "specification": "1套",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 15268,
+      "part_number": "CDAA-QC-109229-A001A-50g",
+      "name_en": null,
+      "name_cn": "辣椒粉中黄曲霉毒素B族和G族分析质控样品",
+      "cas_number": null,
+      "specification": "50 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15285,
+      "part_number": "CDAA-QC-401141-A001A-20g",
+      "name_en": null,
+      "name_cn": "百合中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15286,
+      "part_number": "CDAA-QC-401141-A002A-20g",
+      "name_en": null,
+      "name_cn": "小青草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15287,
+      "part_number": "CDAA-QC-401141-A003A-20g",
+      "name_en": null,
+      "name_cn": "稻芽中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15288,
+      "part_number": "CDAA-QC-401141-A004A-20g",
+      "name_en": null,
+      "name_cn": "半边莲中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15289,
+      "part_number": "CDAA-QC-401141-A005A-20g",
+      "name_en": null,
+      "name_cn": "（制）半夏中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15290,
+      "part_number": "CDAA-QC-401141-A006A-20g",
+      "name_en": null,
+      "name_cn": "（炒）芥子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15291,
+      "part_number": "CDAA-QC-401141-A007A-20g",
+      "name_en": null,
+      "name_cn": "（醋）延胡索中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15292,
+      "part_number": "CDAA-QC-401141-A008A-20g",
+      "name_en": null,
+      "name_cn": "莲须中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15293,
+      "part_number": "CDAA-QC-401141-A009A-20g",
+      "name_en": null,
+      "name_cn": "升麻中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15294,
+      "part_number": "CDAA-QC-401141-A010A-20g",
+      "name_en": null,
+      "name_cn": "（炒）桑枝中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15295,
+      "part_number": "CDAA-QC-401141-A011A-20g",
+      "name_en": null,
+      "name_cn": "姜厚朴（煮）中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15296,
+      "part_number": "CDAA-QC-401141-A012A-20g",
+      "name_en": null,
+      "name_cn": "板蓝根中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15297,
+      "part_number": "CDAA-QC-401141-A013A-20g",
+      "name_en": null,
+      "name_cn": "党参中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15298,
+      "part_number": "CDAA-QC-401141-A014A-20g",
+      "name_en": null,
+      "name_cn": "生物碱中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15299,
+      "part_number": "CDAA-QC-401141-A015A-20g",
+      "name_en": null,
+      "name_cn": "槟榔中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15300,
+      "part_number": "CDAA-QC-401141-A016A-20g",
+      "name_en": null,
+      "name_cn": "天葵子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15301,
+      "part_number": "CDAA-QC-402141-A001A-20g",
+      "name_en": null,
+      "name_cn": "天花粉中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15302,
+      "part_number": "CDAA-QC-402141-A002A-20g",
+      "name_en": null,
+      "name_cn": "浮小麦中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15303,
+      "part_number": "CDAA-QC-402141-A003A-20g",
+      "name_en": null,
+      "name_cn": "太子参中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15304,
+      "part_number": "CDAA-QC-402141-A004A-20g",
+      "name_en": null,
+      "name_cn": "无花果中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15305,
+      "part_number": "CDAA-QC-402141-A005A-20g",
+      "name_en": null,
+      "name_cn": "虎杖中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15306,
+      "part_number": "CDAA-QC-402141-A006A-20g",
+      "name_en": null,
+      "name_cn": "巴戟天中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15307,
+      "part_number": "CDAA-QC-402141-A007A-20g",
+      "name_en": null,
+      "name_cn": "（燀）苦杏仁中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15308,
+      "part_number": "CDAA-QC-402141-A008A-20g",
+      "name_en": null,
+      "name_cn": "大黄中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15309,
+      "part_number": "CDAA-QC-402141-A009A-20g",
+      "name_en": null,
+      "name_cn": "茯苓皮中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15310,
+      "part_number": "CDAA-QC-402141-A010A-20g",
+      "name_en": null,
+      "name_cn": "淮小麦中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15311,
+      "part_number": "CDAA-QC-402141-A011A-20g",
+      "name_en": null,
+      "name_cn": "糯稻根中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15312,
+      "part_number": "CDAA-QC-402141-A012A-20g",
+      "name_en": null,
+      "name_cn": "茯神中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15313,
+      "part_number": "CDAA-QC-402141-A013A-20g",
+      "name_en": null,
+      "name_cn": "黄精中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15314,
+      "part_number": "CDAA-QC-402141-A014A-20g",
+      "name_en": null,
+      "name_cn": "山药中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15315,
+      "part_number": "CDAA-QC-402141-A015A-20g",
+      "name_en": null,
+      "name_cn": "灵芝中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15316,
+      "part_number": "CDAA-QC-406141-A001A-20g",
+      "name_en": null,
+      "name_cn": "莲子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15317,
+      "part_number": "CDAA-QC-406141-A002A-20g",
+      "name_en": null,
+      "name_cn": "枸橘梨中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15318,
+      "part_number": "CDAA-QC-406141-A003A-20g",
+      "name_en": null,
+      "name_cn": "莲子心中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15319,
+      "part_number": "CDAA-QC-406141-A004A-20g",
+      "name_en": null,
+      "name_cn": "黄芩中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15320,
+      "part_number": "CDAA-QC-406141-A005A-20g",
+      "name_en": null,
+      "name_cn": "枸骨叶中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15321,
+      "part_number": "CDAA-QC-406141-A006A-20g",
+      "name_en": null,
+      "name_cn": "净山楂中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15322,
+      "part_number": "CDAA-QC-406141-A007A-20g",
+      "name_en": null,
+      "name_cn": "麦冬中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15323,
+      "part_number": "CDAA-QC-406141-A008A-20g",
+      "name_en": null,
+      "name_cn": "鹅不食草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15324,
+      "part_number": "CDAA-QC-406141-A009A-20g",
+      "name_en": null,
+      "name_cn": "桑叶中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15325,
+      "part_number": "CDAA-QC-406141-A010A-20g",
+      "name_en": null,
+      "name_cn": "丁香中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15326,
+      "part_number": "CDAA-QC-406141-A011A-20g",
+      "name_en": null,
+      "name_cn": "胡颓子叶中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15327,
+      "part_number": "CDAA-QC-406141-A012A-20g",
+      "name_en": null,
+      "name_cn": "知母中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15328,
+      "part_number": "CDAA-QC-406141-A013A-20g",
+      "name_en": null,
+      "name_cn": "射干中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15329,
+      "part_number": "CDAA-QC-406141-A014A-20g",
+      "name_en": null,
+      "name_cn": "淫羊藿中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15330,
+      "part_number": "CDAA-QC-406141-A015A-20g",
+      "name_en": null,
+      "name_cn": "玉米须中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15331,
+      "part_number": "CDAA-QC-406141-A016A-20g",
+      "name_en": null,
+      "name_cn": "槲寄生中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15332,
+      "part_number": "CDAA-QC-406141-A017A-20g",
+      "name_en": null,
+      "name_cn": "老鹳草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15333,
+      "part_number": "CDAA-QC-406141-A018A-20g",
+      "name_en": null,
+      "name_cn": "骨碎补中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15334,
+      "part_number": "CDAA-QC-406141-A019A-20g",
+      "name_en": null,
+      "name_cn": "北沙参中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15335,
+      "part_number": "CDAA-QC-406141-A020A-20g",
+      "name_en": null,
+      "name_cn": "甘草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15336,
+      "part_number": "CDAA-QC-408141-A001A-20g",
+      "name_en": null,
+      "name_cn": "银柴胡中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15337,
+      "part_number": "CDAA-QC-408141-A002A-20g",
+      "name_en": null,
+      "name_cn": "白苏子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15338,
+      "part_number": "CDAA-QC-408141-A003A-20g",
+      "name_en": null,
+      "name_cn": "沉香中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15339,
+      "part_number": "CDAA-QC-408141-A004A-20g",
+      "name_en": null,
+      "name_cn": "五味子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15340,
+      "part_number": "CDAA-QC-408141-A005A-20g",
+      "name_en": null,
+      "name_cn": "地枯蒌中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15341,
+      "part_number": "CDAA-QC-408141-A006A-20g",
+      "name_en": null,
+      "name_cn": "薄荷中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15342,
+      "part_number": "CDAA-QC-408141-A007A-20g",
+      "name_en": null,
+      "name_cn": "莪术中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15343,
+      "part_number": "CDAA-QC-408141-A008A-20g",
+      "name_en": null,
+      "name_cn": "防风中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15344,
+      "part_number": "CDAA-QC-408141-A009A-20g",
+      "name_en": null,
+      "name_cn": "梅花中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15345,
+      "part_number": "CDAA-QC-408141-A010A-20g",
+      "name_en": null,
+      "name_cn": "佛手花中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15346,
+      "part_number": "CDAA-QC-408141-A011A-20g",
+      "name_en": null,
+      "name_cn": "西红花中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15347,
+      "part_number": "CDAA-QC-408141-A012A-20g",
+      "name_en": null,
+      "name_cn": "紫苏梗中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15348,
+      "part_number": "CDAA-QC-408141-A013A-20g",
+      "name_en": null,
+      "name_cn": "白术中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15349,
+      "part_number": "CDAA-QC-408141-A014A-20g",
+      "name_en": null,
+      "name_cn": "肉豆蔻中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15350,
+      "part_number": "CDAA-QC-408141-A015A-20g",
+      "name_en": null,
+      "name_cn": "山柰中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15351,
+      "part_number": "CDAA-QC-408141-A016A-20g",
+      "name_en": null,
+      "name_cn": "郁金中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15352,
+      "part_number": "CDAA-QC-408141-A017A-20g",
+      "name_en": null,
+      "name_cn": "木香中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15353,
+      "part_number": "CDAA-QC-408141-A018A-20g",
+      "name_en": null,
+      "name_cn": "小茴香中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15354,
+      "part_number": "CDAA-QC-408141-A019A-20g",
+      "name_en": null,
+      "name_cn": "高良姜中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15355,
+      "part_number": "CDAA-QC-408141-A020A-20g",
+      "name_en": null,
+      "name_cn": "马兰根中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15356,
+      "part_number": "CDAA-QC-408141-A021A-20g",
+      "name_en": null,
+      "name_cn": "蔓荆子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15357,
+      "part_number": "CDAA-QC-408141-A022A-20g",
+      "name_en": null,
+      "name_cn": "苘麻子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15358,
+      "part_number": "CDAA-QC-408141-A023A-20g",
+      "name_en": null,
+      "name_cn": "苍术中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15359,
+      "part_number": "CDAA-QC-408141-A024A-20g",
+      "name_en": null,
+      "name_cn": "细辛中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15360,
+      "part_number": "CDAA-QC-408141-A025A-20g",
+      "name_en": null,
+      "name_cn": "羌活中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15361,
+      "part_number": "CDAA-QC-408141-A026A-20g",
+      "name_en": null,
+      "name_cn": "景天三七中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15362,
+      "part_number": "CDAA-QC-408141-A027A-20g",
+      "name_en": null,
+      "name_cn": "藿香中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15363,
+      "part_number": "CDAA-QC-408141-A028A-20g",
+      "name_en": null,
+      "name_cn": "藁本中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15364,
+      "part_number": "CDAA-QC-408141-A029A-20g",
+      "name_en": null,
+      "name_cn": "制五味子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15365,
+      "part_number": "CDAA-QC-409141-A001A-20g",
+      "name_en": null,
+      "name_cn": "土茯苓中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15366,
+      "part_number": "CDAA-QC-409141-A002A-20g",
+      "name_en": null,
+      "name_cn": "白芍中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15367,
+      "part_number": "CDAA-QC-409141-A003A-20g",
+      "name_en": null,
+      "name_cn": "大狼把草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15368,
+      "part_number": "CDAA-QC-409141-A004A-20g",
+      "name_en": null,
+      "name_cn": "鬼箭羽中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15369,
+      "part_number": "CDAA-QC-409141-A005A-20g",
+      "name_en": null,
+      "name_cn": "金荞麦中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15370,
+      "part_number": "CDAA-QC-409141-A006A-20g",
+      "name_en": null,
+      "name_cn": "天麻中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15371,
+      "part_number": "CDAA-QC-409141-A007A-20g",
+      "name_en": null,
+      "name_cn": "川木通中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15372,
+      "part_number": "CDAA-QC-409141-A008A-20g",
+      "name_en": null,
+      "name_cn": "赤小豆中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15373,
+      "part_number": "CDAA-QC-409141-A010A-20g",
+      "name_en": null,
+      "name_cn": "黄芪中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15374,
+      "part_number": "CDAA-QC-409141-A011A-20g",
+      "name_en": null,
+      "name_cn": "栀子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15375,
+      "part_number": "CDAA-QC-409141-A012A-20g",
+      "name_en": null,
+      "name_cn": "冬凌草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15376,
+      "part_number": "CDAA-QC-409141-A013A-20g",
+      "name_en": null,
+      "name_cn": "山慈菇中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15377,
+      "part_number": "CDAA-QC-409141-A014A-20g",
+      "name_en": null,
+      "name_cn": "玄参中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15378,
+      "part_number": "CDAA-QC-409141-A015A-20g",
+      "name_en": null,
+      "name_cn": "柴胡中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15379,
+      "part_number": "CDAA-QC-409141-A016A-20g",
+      "name_en": null,
+      "name_cn": "牛膝中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15380,
+      "part_number": "CDAA-QC-409141-A017A-20g",
+      "name_en": null,
+      "name_cn": "蜜炙枇杷叶中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15381,
+      "part_number": "CDAA-QC-409141-A018A-20g",
+      "name_en": null,
+      "name_cn": "夏枯草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15382,
+      "part_number": "CDAA-QC-409141-A019A-20g",
+      "name_en": null,
+      "name_cn": "生地黄中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15383,
+      "part_number": "CDAA-QC-409141-A020A-20g",
+      "name_en": null,
+      "name_cn": "大青叶中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15384,
+      "part_number": "CDAA-QC-409141-A021A-20g",
+      "name_en": null,
+      "name_cn": "何首乌中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15385,
+      "part_number": "CDAA-QC-409141-A022A-20g",
+      "name_en": null,
+      "name_cn": "鸡血藤中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15386,
+      "part_number": "CDAA-QC-409141-A023A-20g",
+      "name_en": null,
+      "name_cn": "猪牙皂中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15387,
+      "part_number": "CDAA-QC-409141-A024A-20g",
+      "name_en": null,
+      "name_cn": "牵牛子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15388,
+      "part_number": "CDAA-QC-409141-A025A-20g",
+      "name_en": null,
+      "name_cn": "合欢皮中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15389,
+      "part_number": "CDAA-QC-409141-A026A-20g",
+      "name_en": null,
+      "name_cn": "白头翁中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15390,
+      "part_number": "CDAA-QC-409141-A029A-20g",
+      "name_en": null,
+      "name_cn": "流苏石斛中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15391,
+      "part_number": "CDAA-QC-41001-001-10mL",
+      "name_en": null,
+      "name_cn": "血液质量控制试剂(法医毒物学基质标准物质(冷冻干燥法))",
+      "cas_number": null,
+      "specification": "lyophilized,10 mL",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15392,
+      "part_number": "CDAA-QC-414141-A001A-20g",
+      "name_en": null,
+      "name_cn": "白花蛇舌草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15393,
+      "part_number": "CDAA-QC-414141-A002A-20g",
+      "name_en": null,
+      "name_cn": "蔊菜中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15394,
+      "part_number": "CDAA-QC-414141-A003A-20g",
+      "name_en": null,
+      "name_cn": "蛇六谷中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15395,
+      "part_number": "CDAA-QC-414141-A004A-20g",
+      "name_en": null,
+      "name_cn": "地榆中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15396,
+      "part_number": "CDAA-QC-414141-A005A-20g",
+      "name_en": null,
+      "name_cn": "白茅根中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15397,
+      "part_number": "CDAA-QC-414141-A006A-20g",
+      "name_en": null,
+      "name_cn": "青葙子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15398,
+      "part_number": "CDAA-QC-414141-A007A-20g",
+      "name_en": null,
+      "name_cn": "苎麻根中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15399,
+      "part_number": "CDAA-QC-414141-A008A-20g",
+      "name_en": null,
+      "name_cn": "韭菜子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15400,
+      "part_number": "CDAA-QC-414141-A009A-20g",
+      "name_en": null,
+      "name_cn": "石韦中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15401,
+      "part_number": "CDAA-QC-414141-A010A-20g",
+      "name_en": null,
+      "name_cn": "（炒）牛蒡子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15402,
+      "part_number": "CDAA-QC-414141-A011A-20g",
+      "name_en": null,
+      "name_cn": "天冬中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15403,
+      "part_number": "CDAA-QC-414141-A012A-20g",
+      "name_en": null,
+      "name_cn": "决明子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15404,
+      "part_number": "CDAA-QC-414141-A013A-20g",
+      "name_en": null,
+      "name_cn": "（炒）瓜蒌皮中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15405,
+      "part_number": "CDAA-QC-414141-A014A-20g",
+      "name_en": null,
+      "name_cn": "蛇莓中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15406,
+      "part_number": "CDAA-QC-414141-A015A-20g",
+      "name_en": null,
+      "name_cn": "泽兰中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15407,
+      "part_number": "CDAA-QC-42001-001-10mL",
+      "name_en": null,
+      "name_cn": "尿液质量控制试剂(法医毒物学基质标准物质(冷冻干燥法))",
+      "cas_number": null,
+      "specification": "lyophilized,10 mL",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15408,
+      "part_number": "CDAA-QC-425141-A001A-20g",
+      "name_en": null,
+      "name_cn": "薏苡仁中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15409,
+      "part_number": "CDAA-QC-425141-A002A-20g",
+      "name_en": null,
+      "name_cn": "六月雪中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15410,
+      "part_number": "CDAA-QC-425141-A003A-20g",
+      "name_en": null,
+      "name_cn": "连翘中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15411,
+      "part_number": "CDAA-QC-425141-A004A-20g",
+      "name_en": null,
+      "name_cn": "厚朴花中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15412,
+      "part_number": "CDAA-QC-425141-A005A-20g",
+      "name_en": null,
+      "name_cn": "金沸草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15413,
+      "part_number": "CDAA-QC-425141-A006A-20g",
+      "name_en": null,
+      "name_cn": "白芷中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15414,
+      "part_number": "CDAA-QC-425141-A007A-20g",
+      "name_en": null,
+      "name_cn": "茜草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15415,
+      "part_number": "CDAA-QC-425141-A008A-20g",
+      "name_en": null,
+      "name_cn": "婆婆针中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15416,
+      "part_number": "CDAA-QC-425141-A009A-20g",
+      "name_en": null,
+      "name_cn": "墨旱莲中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15417,
+      "part_number": "CDAA-QC-425141-A010A-20g",
+      "name_en": null,
+      "name_cn": "仙鹤草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15418,
+      "part_number": "CDAA-QC-425141-A011A-20g",
+      "name_en": null,
+      "name_cn": "地黄炭中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15419,
+      "part_number": "CDAA-QC-425141-A012A-20g",
+      "name_en": null,
+      "name_cn": "朱砂拌灯心草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15420,
+      "part_number": "CDAA-QC-425141-A013A-20g",
+      "name_en": null,
+      "name_cn": "藤梨根中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15421,
+      "part_number": "CDAA-QC-425141-A014A-20g",
+      "name_en": null,
+      "name_cn": "鱼腥草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15422,
+      "part_number": "CDAA-QC-425141-A015A-20g",
+      "name_en": null,
+      "name_cn": "浙海风藤中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15423,
+      "part_number": "CDAA-QC-425141-A016A-20g",
+      "name_en": null,
+      "name_cn": "苦参中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15424,
+      "part_number": "CDAA-QC-425141-A017A-20g",
+      "name_en": null,
+      "name_cn": "续断片中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15425,
+      "part_number": "CDAA-QC-425141-A018A-20g",
+      "name_en": null,
+      "name_cn": "川牛膝中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15426,
+      "part_number": "CDAA-QC-425141-A019A-20g",
+      "name_en": null,
+      "name_cn": "菟丝子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15427,
+      "part_number": "CDAA-QC-425141-A020A-20g",
+      "name_en": null,
+      "name_cn": "女贞子中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15428,
+      "part_number": "CDAA-QC-425141-A021A-20g",
+      "name_en": null,
+      "name_cn": "连钱草中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15429,
+      "part_number": "CDAA-QC-425141-A022A-20g",
+      "name_en": null,
+      "name_cn": "泽泻中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15430,
+      "part_number": "CDAA-QC-425141-A023A-20g",
+      "name_en": null,
+      "name_cn": "杭菊中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15431,
+      "part_number": "CDAA-QC-425141-A024A-20g",
+      "name_en": null,
+      "name_cn": "山楂中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15432,
+      "part_number": "CDAA-QC-425141-A025A-20g",
+      "name_en": null,
+      "name_cn": "金银花中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15433,
+      "part_number": "CDAA-QC-425141-A026A-20g",
+      "name_en": null,
+      "name_cn": "蒲公英中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15434,
+      "part_number": "CDAA-QC-425141-A027A-20g",
+      "name_en": null,
+      "name_cn": "菊花中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15435,
+      "part_number": "CDAA-QC-425141-A028A-20g",
+      "name_en": null,
+      "name_cn": "茯苓中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15436,
+      "part_number": "CDAA-QC-425141-A029A-20g",
+      "name_en": null,
+      "name_cn": "人参中33种农残空白基质样品",
+      "cas_number": null,
+      "specification": "20 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15440,
+      "part_number": "CDAA-QC-DZ41001002-25g",
+      "name_en": null,
+      "name_cn": "凉味剂质控样品",
+      "cas_number": null,
+      "specification": "5 mg/g in Propylene glycol:Glycerol=1:1",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15441,
+      "part_number": "CDAA-QC-DZ41002002-25g",
+      "name_en": null,
+      "name_cn": "12种重金属质控样",
+      "cas_number": null,
+      "specification": "0.6-1 mg/kg in Propylene glycol:Glycerol=1:1, 25 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 15442,
+      "part_number": "CDAA-QC-QC-112242-A001A-5g",
+      "name_en": null,
+      "name_cn": "茶叶中C，N稳定同位素",
+      "cas_number": null,
+      "specification": "5 g",
+      "cleaning_status": "normalized",
+      "hold_reasons": [
+        "missing_reliable_english_name"
+      ]
+    },
+    {
+      "source_record": 16140,
+      "part_number": "CDAA-S-200074-SD-2ml",
+      "name_en": "Chlorate standard solution，ClO3-(NaClO3)",
+      "name_cn": "氯酸盐标液，ClO3-(NaClO3)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Water(以chlorate计), 2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16141,
+      "part_number": "CDAA-S-200075-SD-2ml",
+      "name_en": "Perchlorate standard solution，ClO4-(NaClO4)",
+      "name_cn": "高氯酸盐标液，ClO4-(NaClO4)",
+      "cas_number": "14797-73-0",
+      "specification": "1000 mg/L in Water(以perchlorate计), 2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16152,
+      "part_number": "CDAA-S-200264S-1.2ml",
+      "name_en": "Perchlorate-[18O4]",
+      "name_cn": "高氯酸盐同位素内标：高氯酸盐-[18O4]",
+      "cas_number": "871943-52-1",
+      "specification": "100 mg/L in Water(以perchlorate-[18O4]计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16153,
+      "part_number": "CDAA-S-200265S-1.2ml",
+      "name_en": "Chlorate-[18O3]",
+      "name_cn": "氯酸盐同位素内标：氯酸盐-[18O3]",
+      "cas_number": "14866-68-3",
+      "specification": "200 mg/L in Water(以chlorate-[18O3]计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16284,
+      "part_number": "CDAA-S-256348-BA-1.2ml",
+      "name_en": "rac-1，2-Bis-palmitoyl-3-chloropropanediol",
+      "name_cn": "顺式-3-氯-1，2-丙二醇棕榈酸二酯",
+      "cas_number": "51930-97-3",
+      "specification": "100 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16285,
+      "part_number": "CDAA-S-256348C3-BK-1.2ml",
+      "name_en": "rac-1，2-Bis-palmitoyl-3-chloropropanediol-[13C3]",
+      "name_cn": "rac 3-氯-1，2-丙二醇棕榈酸二酯-[13C3]",
+      "cas_number": "51930-97-3",
+      "specification": "50 mg/L in Toluene(以醇计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16286,
+      "part_number": "CDAA-S-256348C3-BL-1.2ml",
+      "name_en": "rac-1，2-Bis-palmitoyl-3-chloropropanediol-13C3",
+      "name_cn": "rac 3-氯-1，2-丙二醇棕榈酸二酯-13C3",
+      "cas_number": "51930-97-3",
+      "specification": "10 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16287,
+      "part_number": "CDAA-S-256348D5-BA-1.2ml",
+      "name_en": "rac-1，2-Bis-palmitoyl-3-chloropropanediol-[D5]",
+      "name_cn": "3-氯-1，2-丙二醇棕榈酸二酯-[D5]",
+      "cas_number": "1185057-55-9",
+      "specification": "100 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16288,
+      "part_number": "CDAA-S-256349-BA-1.2ml",
+      "name_en": "rac-1，3-Distearoyl-2-chloropropanediol",
+      "name_cn": "顺式-2-氯-1，3-丙二醇硬脂酸二酯",
+      "cas_number": "26787-56-4",
+      "specification": "100 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16289,
+      "part_number": "CDAA-S-256349D5-BA-1.2ml",
+      "name_en": "rac-1，3-Distearoyl-2-chloropropanediol-[D5]",
+      "name_cn": "顺式-2-氯-1，3-丙二醇硬脂酸二酯-[D5]",
+      "cas_number": "1329796-49-7",
+      "specification": "100 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16290,
+      "part_number": "CDAA-S-256349D5-XK-1ml",
+      "name_en": "rac-1，3-Distearoyl-2-chloropropanediol-d5",
+      "name_cn": "顺式-2-氯-1，3-丙二醇硬脂酸二酯-D5",
+      "cas_number": "1329796-49-7",
+      "specification": "50 mg/L(以醇计) in n-Hexane:Isooctane(1:1), 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16291,
+      "part_number": "CDAA-S-256350-BA-1.2ml",
+      "name_en": "Glycidyl Palmitate",
+      "name_cn": "棕榈酸缩水甘油酯",
+      "cas_number": "7501-44-2",
+      "specification": "100 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 16292,
+      "part_number": "CDAA-S-256350D5-BA-1.2ml",
+      "name_en": "Glycidyl Palmitate-[D5]",
+      "name_cn": "棕榈酸缩水甘油酯-[D5]",
+      "cas_number": "1794941-80-2",
+      "specification": "100 mg/L(以醇计) in Toluene, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 17280,
+      "part_number": "CDAA-S-412070-EA-1ml",
+      "name_en": "Famphur",
+      "name_cn": "伐灭磷",
+      "cas_number": "52-85-7",
+      "specification": "100 mg/L in 二Toluene, 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18250,
+      "part_number": "CDAA-S-440188-SG-1ml",
+      "name_en": "Paraquat  in water",
+      "name_cn": "水中百草枯标准溶液",
+      "cas_number": "1910-42-5",
+      "specification": "1000 mg/L in Water(以百草枯计), 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18624,
+      "part_number": "CDAA-S-510002S-AD-1.2ml",
+      "name_en": "Malachite green oxalate salt",
+      "name_cn": "孔雀石绿草酸盐",
+      "cas_number": "2437-29-8",
+      "specification": "1000 mg/L in Methanol(以孔雀石绿计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18625,
+      "part_number": "CDAA-S-510002SD5-JA-1.2ml",
+      "name_en": "MalachiteGreen-D5Picrate",
+      "name_cn": "孔雀石绿苦味酸盐-D5",
+      "cas_number": "1258668-21-1",
+      "specification": "100 mg/L in Acetonitrile(以孔雀石绿-D5计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18626,
+      "part_number": "CDAA-S-510002S-JA-1.2ml",
+      "name_en": "Malachite green oxalate salt",
+      "name_cn": "孔雀石绿草酸盐",
+      "cas_number": "2437-29-8",
+      "specification": "100 mg/L in Acetonitrile(以孔雀石绿计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18635,
+      "part_number": "CDAA-S-510007-JA-1.2ml",
+      "name_en": "Basic Violet 3 (C.I.42555)",
+      "name_cn": "结晶紫盐酸盐(碱性紫3，C.I.42555)",
+      "cas_number": "548-62-9",
+      "specification": "100 mg/L in Acetonitrile(以结晶紫计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18671,
+      "part_number": "CDAA-S-510221-JA-1.2ml",
+      "name_en": "Potassium clavulanate",
+      "name_cn": "克拉维酸钾盐",
+      "cas_number": "61177-45-5",
+      "specification": "100 mg/L in Acetonitrile(以克拉维酸计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18677,
+      "part_number": "CDAA-S-510236-AD-1.2ml",
+      "name_en": "Robenidine hydrochloride",
+      "name_cn": "氯苯胍盐酸盐",
+      "cas_number": "25875-50-7",
+      "specification": "1000 mg/L in Methanol(以氯Benzene胍计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18694,
+      "part_number": "CDAA-S-520003S-AA-1ml",
+      "name_en": "Semicarbazide hydrochloride",
+      "name_cn": "呋喃西林代谢物盐酸盐，SEM盐酸盐",
+      "cas_number": "563-41-7",
+      "specification": "100 mg/L in Methanol(非盐计), 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18695,
+      "part_number": "CDAA-S-520004-AA-1ml",
+      "name_en": "Ahd",
+      "name_cn": "呋喃妥因代谢物，AHD",
+      "cas_number": "2827-56-7",
+      "specification": "100 mg/L in Methanol(非盐计), 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18721,
+      "part_number": "CDAA-S-530007S-AD-1.2ml",
+      "name_en": "Oxytetracycline hydrochloride",
+      "name_cn": "盐酸土霉素",
+      "cas_number": "2058-46-0",
+      "specification": "1000 mg/L in Methanol(以土霉素计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18746,
+      "part_number": "CDAA-S-530072-SD-1.2ml",
+      "name_en": "Colistin sulfate",
+      "name_cn": "黏菌素",
+      "cas_number": "1264-72-8",
+      "specification": "1000 mg/L in Water(以黏菌素计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18751,
+      "part_number": "CDAA-S-530076-SD-1.2ml",
+      "name_en": "Vancomycin hydrochloride",
+      "name_cn": "万古霉素盐酸盐",
+      "cas_number": "1404-93-9",
+      "specification": "1000 mg/L in Water(以万古霉素计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18758,
+      "part_number": "CDAA-S-530093S-AA-1ml",
+      "name_en": "Oleandomycin phosphate",
+      "name_cn": "竹桃霉素磷酸盐",
+      "cas_number": "7060-74-4",
+      "specification": "100 mg/L in Methanol(以竹桃霉素计), 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18894,
+      "part_number": "CDAA-S-550010-AD-1.2ml",
+      "name_en": "Moxifloxacin hydrochloride",
+      "name_cn": "莫西沙星盐酸盐",
+      "cas_number": "186826-86-8",
+      "specification": "1000 mg/L in Methanol(以莫西沙星计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 18987,
+      "part_number": "CDAA-S-580069-XD-1.2ml",
+      "name_en": "Closantel",
+      "name_cn": "氯氰碘柳胺",
+      "cas_number": "57808-65-8",
+      "specification": "1000 mg/L in Acetonitrile:二甲亚砜(2:1), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 19075,
+      "part_number": "CDAA-S-610002-SD-1.2ml",
+      "name_en": "Chloralhydrate in water",
+      "name_cn": "水中三氯乙醛水合物标准溶液",
+      "cas_number": "302-17-0",
+      "specification": "1000 mg/L in Water(以三氯乙醛计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 19276,
+      "part_number": "CDAA-S-620096-JA-1.2ml",
+      "name_en": "Formaldehyde-DNPH",
+      "name_cn": "甲醛-2，4-DNPH",
+      "cas_number": "1081-15-8",
+      "specification": "100 mg/L(以甲醛计) in Acetonitrile, 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 19280,
+      "part_number": "CDAA-S-620097-JE-1.2ml",
+      "name_en": "Acetaldehyde-2，4-dinitrophenylhydrazone",
+      "name_cn": "乙腈中乙醛-2，4-DNPH",
+      "cas_number": "1019-57-4",
+      "specification": "1000 mg/L in Acetonitrile(以乙醛计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 19625,
+      "part_number": "CDAA-S-650032-XG-1ml",
+      "name_en": "Ethylene Oxide",
+      "name_cn": "环氧乙烷",
+      "cas_number": "75-21-8",
+      "specification": "10000 mg/L in 二甲亚砜, 1 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 19684,
+      "part_number": "CDAA-S-650079-SETA-1.2ml",
+      "name_en": "n-Tridecane",
+      "name_cn": "异辛烷中正十三烷梯度标准溶液",
+      "cas_number": "629-50-5",
+      "specification": "Various concentrations in Isooctane, 1.2 mL*8 vials(不同浓度各1 vials)",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    },
+    {
+      "source_record": 19796,
+      "part_number": "CDAA-S-760106D8-AD-1.2ml",
+      "name_en": "Robenidine-[D8] hydrochloride",
+      "name_cn": "盐酸氯苯胍-[D8]",
+      "cas_number": "1173097-77-2",
+      "specification": "1000 mg/L in Methanol(以氯Benzene胍-[D8]计), 1.2 mL",
+      "cleaning_status": "normalized_manual_review",
+      "hold_reasons": [
+        "normalized_manual_review"
+      ]
+    }
+  ],
+  "hold_record_count": 202,
+  "reason_summary": {
+    "missing_reliable_english_name": 158,
+    "normalized_manual_review": 44
+  }
+}

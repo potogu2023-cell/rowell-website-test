@@ -1,0 +1,3419 @@
+{
+  "batch_id": "anpel-standards-remaining-15101-15600-2026-09-26",
+  "source": "ANPEL_Standards_Normalized.csv records 15101-15600",
+  "source_record_start": 15101,
+  "source_record_end": 15600,
+  "source_record_count": 500,
+  "namespace": "standards_products",
+  "excluded_namespaces": [
+    "products"
+  ],
+  "approved_record_count": 340,
+  "hold_record_count": 160,
+  "hold_reasons_summary": {
+    "missing_reliable_english_name": 156,
+    "normalized_manual_review": 4
+  },
+  "records": [
+    {
+      "part_number": "CDAA-M-690040-AE-1ml",
+      "name_en": "Nitrobenzene Mix 9",
+      "name_cn": "9种硝基苯混标",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690040-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690042-AE-1ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种内标强化溶液(EPA 502/524/GB/T5750.8-2023 4.2/附录A)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690042-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690043-KF-1ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种替代物混标(EPA 8270)",
+      "cas_number": null,
+      "specification": "4000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690043-KF-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690043-KZ-1.2ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种替代物混标(EPA8270)",
+      "cas_number": null,
+      "specification": "Various concentrations in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690043-KZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690043-TD-1.2ml",
+      "name_en": "SVOC Mix 6",
+      "name_cn": "6种SVOC替代物混标（展览会用地土壤评价HJ350-2007）",
+      "cas_number": null,
+      "specification": "1000 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690043-TD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690044-HD-1ml",
+      "name_en": "Alkyl mercury Mix 2",
+      "name_cn": "2种烷基汞混标",
+      "cas_number": null,
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690044-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690045-AA-1ml",
+      "name_en": "Mix 2，Geosmin & 2-Methylisoborneol Solution",
+      "name_cn": "土臭素和2-甲基异冰片",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690045-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690046-ID-1ml",
+      "name_en": "MCA Mix 3",
+      "name_cn": "3种氯乙酸混标(GB5750.10)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methyl tert-butyl ether, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690046-ID-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690047-HA-1ml",
+      "name_en": "PCB Mix 18",
+      "name_cn": "18种多氯联苯PCB混标(HJ715/HJ743/HJ891/GB/T5750.8-2023 89.1)",
+      "cas_number": null,
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690047-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690048-HD-1ml",
+      "name_en": "Aniline Mix 19",
+      "name_cn": "19种苯胺混标(HJ822-2017)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690048-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690049-AD-1ml",
+      "name_en": "Phenolss Mix 21",
+      "name_cn": "21种酚类混标(HJ703/711-2014)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690049-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690050-DA-1ml",
+      "name_en": "PCB Mix 28",
+      "name_cn": "28种PCB混标(HJ902-2017，HJ903-2017)",
+      "cas_number": null,
+      "specification": "100 mg/L in Isooctane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690050-DA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690051-AZ-1ml",
+      "name_en": "Aniline Mix 2",
+      "name_cn": "2种苯胺内标混标(HJ822-2017)",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690051-AZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690051-KZ-1ml",
+      "name_en": "Aniline Mix 2",
+      "name_cn": "2种苯胺内标混标(HJ822-2017)",
+      "cas_number": null,
+      "specification": "Various concentrations in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690051-KZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690052-XD-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种内标物混标(HJ835-2017)",
+      "cas_number": null,
+      "specification": "1000 mg/L in n-Hexane:Acetone(1:1), 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690052-XD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690053-XD-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种替代物混标(HJ835-2017，HJ912-2017)",
+      "cas_number": null,
+      "specification": "1000 mg/L in n-Hexane:Acetone(1:1), 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690053-XD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690054-XE-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种替代物混标(HJ805-2016、HJ950-2018)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Acetone:Hexane(1:1), 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690054-XE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690055-AE-1ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种内标混标(EPA8260，HJ605，HJ642)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690055-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690056-HB-1ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种内标混标(HJ753-2015，HJ900-2017，HJ902-2017)",
+      "cas_number": null,
+      "specification": "200 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690056-HB-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690057-AE-1ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种替代物混标(8260B-M,HJ639,HJ605)(4-溴氟苯,甲苯-D8,二溴氟甲烷）",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690057-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690058-DC-1ml",
+      "name_en": "PCB Mix 7",
+      "name_cn": "7种多氯联苯PCB混标(HJ783/HJ890/GB5009.190/GB/T34270)",
+      "cas_number": null,
+      "specification": "100 mg/L in Isooctane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690058-DC-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690058-DI-1ml",
+      "name_en": "PCB Mix 7",
+      "name_cn": "7种多氯联苯PCB混标(HJ783/HJ890/GB5009.190/GB/T34270)",
+      "cas_number": null,
+      "specification": "10 mg/L in Isooctane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690058-DI-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690059-KF-1ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种替代物混标(HJ834-2017，EPA8270，HJ951-2018)",
+      "cas_number": null,
+      "specification": "4000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690059-KF-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690060-KD-1ml",
+      "name_en": "SVOC Mix 64",
+      "name_cn": "64种混标(HJ834-2017，HJ951-2018)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690060-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690061-AD-1ml",
+      "name_en": "Benzene series Mix 8",
+      "name_cn": "8种苯系物混标(HJ583-2010和GB/T 14677)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690061-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690062-IE-1ml",
+      "name_en": "HAAS  Mix 9",
+      "name_cn": "9种卤代乙酸混标 （EPA552/HJ 758-2015）",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methyl tert-butyl ether, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690062-IE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690063-AE-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种内标混标(EPA 524，HJ959)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690063-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690064-HD-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种内标物混标(HJ744-2015)",
+      "cas_number": null,
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690064-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690065-AE-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种替代物混标(ＨJ713，HJ714，HJ735，HJ736)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690065-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690066-TD-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种替代物混标(HJ744-2015)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690066-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690068-AE-1ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种内标物混标(HJ713，HJ714，HJ735，HJ736)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690068-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690069-XD-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种替代物混标(HJ699，HJ904，HJ901，HJ903，HJ743)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Toluene:n-Hexane(1:1), 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690069-XD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690070-KA-1ml",
+      "name_en": "Phenols Mix 19",
+      "name_cn": "19种含氯苯酚混标(ISO17070-2015/GB/T22808-2021)",
+      "cas_number": null,
+      "specification": "100 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690070-KA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690070-KD-1.2ml",
+      "name_en": "Phenols Mix 19",
+      "name_cn": "19种含氯苯酚混标(ISO17070-2015/GB/T22808-2021)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690070-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690071-KD-1ml",
+      "name_en": "Chlorobenzene Mix 22",
+      "name_cn": "22种氯化苯类混标(GB/T 20384-2006)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690071-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690072-HD-1ml",
+      "name_en": "Petroleum  hydrocarbons Mix 31（C10-C40）",
+      "name_cn": "31种石油烃类混标（C10-C40）(HJ1021-2019，HJ894-2017)",
+      "cas_number": null,
+      "specification": "1000 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690072-HD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690074-AD-1ml",
+      "name_en": "Halohydrocarbon Mix 7",
+      "name_cn": "7种卤代烃混标(GB18581-2009、HJ/T 201-2005)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690074-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690075-HL-1ml",
+      "name_en": "PCB Mix 7",
+      "name_cn": "7种PCB混标",
+      "cas_number": null,
+      "specification": "10 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690075-HL-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690076-KD-1ml",
+      "name_en": "Alkane Mix 28（C5-C32）",
+      "name_cn": "28种烷烃混标（C5-C32）(GMW-15634)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690076-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690077-BA-1ml",
+      "name_en": "Alkane Mix 17（C8-C40）",
+      "name_cn": "17种偶数碳正构烷烃混标（C8-C40）",
+      "cas_number": null,
+      "specification": "100 mg/L in Toluene, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690077-BA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690078-AC-1ml",
+      "name_en": "Mix 2",
+      "name_cn": "2种替代物混标",
+      "cas_number": null,
+      "specification": "250 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690078-AC-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690079-XC-1ml",
+      "name_en": "Alkane Mix 35",
+      "name_cn": "35种烷烃混标（C8-C40、姥鲛烷、植烷）",
+      "cas_number": null,
+      "specification": "500 mg/L in Chloroform, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690079-XC-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690080-HZ-1ml",
+      "name_en": "Petroleum hydrocarbons Mix 2（C10, C40）",
+      "name_cn": "正癸烷和正四十烷混标(HJ1021-2019)",
+      "cas_number": null,
+      "specification": "Various concentrations in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690080-HZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690081-AD-1ml",
+      "name_en": "Halohydrocarbon Mix 11",
+      "name_cn": "11种卤代烃混标(GB24409/GB18581-2020/GB18582/GB30981)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690081-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690081-AZ-1ml",
+      "name_en": "Halohydrocarbon Mix 11",
+      "name_cn": "11种卤代烃混标(GB24409/GB18581-2020/GB18582/GB30981)",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690081-AZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690082-AA-5pak",
+      "name_en": "Glycol ether and ether ester Mix 8",
+      "name_cn": "8种乙二醇醚及醚酯混标（GB 24409，GB 18581-2020）",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1 mL*5pak",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690082-AA-5pak"
+    },
+    {
+      "part_number": "CDAA-M-690082-AD-1ml",
+      "name_en": "Glycol ether and ether ester MIX 8",
+      "name_cn": "8种乙二醇醚及醚酯混标(GB24409/GB18581-2020/GB18582-2020/GB30981-2020)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690082-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690082-JE-1ml",
+      "name_en": "Glycol ether and ether ester MIX 8",
+      "name_cn": "8种乙二醇醚及醚酯混标(GB24409/GB18581-2020/GB18582-2020/GB30981-2020)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690082-JE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690083-LD-1ml",
+      "name_en": "Chlorobenzene Mix 10",
+      "name_cn": "10种氯苯混标(HJ1079)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Carbon disulfide, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690083-LD-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690086-TZ-1ml",
+      "name_en": "VOC Mix 10",
+      "name_cn": "10种有机物混标(GBZ/T 300工作场所空气有毒物质)",
+      "cas_number": null,
+      "specification": "Various concentrations in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690086-TZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690090-AE-1ml",
+      "name_en": "8260 Internal/Surrogate",
+      "name_cn": "8260 内标/替代物",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690090-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690104-KD-1.2ml",
+      "name_en": "SVOC Mix 21",
+      "name_cn": "21种SVOC混标(GB 36600)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690104-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690106-KG-1.2ml",
+      "name_en": "Mix 5",
+      "name_cn": "5种酸性替代物混标(水质半挥发性有机物征求意见稿)",
+      "cas_number": null,
+      "specification": "10000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690106-KG-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690107-KF-1.2ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种碱性替代物混标(水质半挥发性有机物征求意见稿)",
+      "cas_number": null,
+      "specification": "5000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690107-KF-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690108-KD-1.2ml",
+      "name_en": "Chlorobenzene Mix 24",
+      "name_cn": "24种氯化苯/氯化甲苯混标(GB/T20384，GB/T24164，GB/T24167)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690108-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690109-AD-1.2ml",
+      "name_en": "Halohydrocarbon Mix 24",
+      "name_cn": "24种挥发性卤代烃混标(DZ/T 0064.91-2021)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690109-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690111-AA-1.2ml",
+      "name_en": "Mix 12",
+      "name_cn": "12种卤代乙腈和卤代烃混标(EPA551)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol/Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690111-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690112-AZ-1ml",
+      "name_en": "Halohydrocarbon Mix 26",
+      "name_cn": "26种卤代烃混标(GB/T5750.8-2023 4.3）",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690112-AZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690115-KA-1.2ml",
+      "name_en": "Chlorinated Benzenes/Toluenes Mix 31",
+      "name_cn": "31种氯化苯/氯化甲苯混标(OEKO-TEX2020版)",
+      "cas_number": null,
+      "specification": "100 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690115-KA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690116-AE-1.2ml",
+      "name_en": "Chlorinated Phenols Mix 17",
+      "name_cn": "17种氯苯酚混标",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690116-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690117-AF-1.2ml",
+      "name_en": "CLP VOC Internal Standard Solution",
+      "name_cn": "CLPVOC内标（3组分）",
+      "cas_number": null,
+      "specification": "2500 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690117-AF-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690121-AL-10ml",
+      "name_en": "Mix 21",
+      "name_cn": "21种半挥发物质混标",
+      "cas_number": null,
+      "specification": "10 mg/L in Methanol,2x, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690121-AL-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690122-FD-1.2ml",
+      "name_en": "Halohydrocarbon Mix 4",
+      "name_cn": "4种卤代烃混标(GB18583-2008)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Ethyl acetate, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690122-FD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690123-AG-1.2ml",
+      "name_en": "VOC Mix 17",
+      "name_cn": "17种VOC混标(DB44/816-2010)",
+      "cas_number": null,
+      "specification": "10000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690123-AG-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690124-AB-1.2ml",
+      "name_en": "VOC Mix 18",
+      "name_cn": "甲醇中18种VOC混标(液质组)",
+      "cas_number": null,
+      "specification": "200 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690124-AB-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690126-KD-1.2ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种内标混标(HJ835-2017)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690126-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690127-AD-1.2ml",
+      "name_en": "VOC Mix 12",
+      "name_cn": "12种VOC混标（HJT400-2007车内挥发性有机物测定）",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690127-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690128-NA-1.2ml",
+      "name_en": "HAAS Mix 5",
+      "name_cn": "5种卤代乙酸混标（Method552）",
+      "cas_number": null,
+      "specification": "100 mg/L in Methyl tert-butyl ether, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690128-NA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690129-AD-1.2ml",
+      "name_en": "Alkane Mix 8",
+      "name_cn": "8种偶数正构烷烃混标（C6-C20）",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690129-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690137-CE-10ml",
+      "name_en": "Mix 8",
+      "name_cn": "8种杂环化合物混标(GB41700电子烟附录A/规程附录A)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Ethanol, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690137-CE-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690137-CE-20ml",
+      "name_en": "Mix 8",
+      "name_cn": "8种杂环化合物混标(GB41700电子烟附录A组1)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Ethanol, 20 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690137-CE-20ml"
+    },
+    {
+      "part_number": "CDAA-M-690137-CF-10ml",
+      "name_en": "Mix 8",
+      "name_cn": "8种杂环化合物混标(GB41700电子烟附录A/规程附录A)",
+      "cas_number": null,
+      "specification": "5000 mg/L in Ethanol, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690137-CF-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690139-NZ-1.2ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种挥发性羧酸混标(HJ1220-2021)",
+      "cas_number": null,
+      "specification": "Various concentrations in Methyl tert-butyl ether, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690139-NZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690143-AE-1.2ml",
+      "name_en": "Benzenes Mix 4",
+      "name_cn": "苯、甲苯、乙苯和二甲苯标准化合物",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690143-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690150-ND-10ml",
+      "name_en": "Aldehydes and Ketones Mix 13",
+      "name_cn": "13种醛酮化合物混标(GB41700电子烟附录A/规程附录C)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methyl tert-butyl ether, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690150-ND-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690159-AG-10ml",
+      "name_en": "Alcohols  Mix 9",
+      "name_cn": "9种醇类化合物混标(GB41700电子烟附录A/规程附录D)",
+      "cas_number": null,
+      "specification": "10000 mg/L in Methanol, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690159-AG-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690160-CD-10ml",
+      "name_en": "Mix 33",
+      "name_cn": "33种酯类和柠檬烯混标(GB41700电子烟附录A组/规程附录B)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Ethanol, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690160-CD-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690162-XF-2ml",
+      "name_en": "Mix 7",
+      "name_cn": "7种半挥发性物质",
+      "cas_number": null,
+      "specification": "2000 mg/kg in 1,2-Dichloroethane, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690162-XF-2ml"
+    },
+    {
+      "part_number": "CDAA-M-690164-AD-1.2ml",
+      "name_en": "Internal Standard Mix 2",
+      "name_cn": "2种内标混标(氟苯和4-溴氟苯)(GB/T5750.8-2023 4.2/附录A)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690164-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690167-TC-1.2ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种标记物混标(EPA525.2/GB/T5750.8-2023附录B)",
+      "cas_number": null,
+      "specification": "500 mg/L in Acetone, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690167-TC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690168-XZ-1ml",
+      "name_en": "TPH Mix 4",
+      "name_cn": "4种石油烃混标(EN 14039/ISO 16703)",
+      "cas_number": null,
+      "specification": "Various concentrations in Heptane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690168-XZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690169-XC-2ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种半挥发性物质",
+      "cas_number": null,
+      "specification": "500 mg/kg in 1,2-Dichloroethane, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690169-XC-2ml"
+    },
+    {
+      "part_number": "CDAA-M-690171-AA-1.2ml",
+      "name_en": "Mix 9",
+      "name_cn": "9种卤代苯甲醚和卤代苯酚混标(BJS202207)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690171-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690172-BZ-1.2ml",
+      "name_en": "Mix 9",
+      "name_cn": "9种MOAH/MOSH内标(DIN EN16695 2017-08)",
+      "cas_number": null,
+      "specification": "Various concentrations in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690172-BZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690179-JZ-10ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种醛酮-DNPH混标(甲醛/乙醛/丙烯醛)(GB41700电子烟附录F)",
+      "cas_number": null,
+      "specification": "1000-2000 mg/L in Acetonitrile(as aldehydes and ketones), 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690179-JZ-10ml"
+    },
+    {
+      "part_number": "CDAA-M-690180-JZ-1.2ml",
+      "name_en": "Mix 21 in acetonitrile",
+      "name_cn": "乙腈中15种酮类和6种醚类混标(HJ 1289-2023)",
+      "cas_number": null,
+      "specification": "1000-10000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690180-JZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690185-AE-1ml",
+      "name_en": "8260 Additional Compounds",
+      "name_cn": "甲醇中8种8260附加有机化合物",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690185-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690186-AE-1ml",
+      "name_en": "Mix 9",
+      "name_cn": "9种烷烃混标（C4-C12）",
+      "cas_number": null,
+      "specification": "2000 mg/L in P/T Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690186-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690187-AE-1ml",
+      "name_en": "Mix 3",
+      "name_cn": "3种联苯胺类化合物混标（8270）",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690187-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-M-690196-AD-1.2ml",
+      "name_en": "Mix 28",
+      "name_cn": "28种苯系类化合物混标(GB/T39934-2021附录A.1)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690196-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690199-AE-1.2ml",
+      "name_en": "Mix 12",
+      "name_cn": "12种醇类化合物混标(GB/T39934-2021附录A.2)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690199-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690200-AE-1.2ml",
+      "name_en": "Mix 13",
+      "name_cn": "13种酯类化合物混标(GB/T39934-2021附录A.7)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690200-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690201-AE-1.2ml",
+      "name_en": "Mix 11",
+      "name_cn": "11种烷烃类化合物混标(GB/T39934-2021附录A.5)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690201-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690202-AE-1.2ml",
+      "name_en": "Mix 15",
+      "name_cn": "15种卤代烃类化合物混标(GB/T39934-2021附录A.3)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690202-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690203-AD-1.2ml",
+      "name_en": "Mix 11",
+      "name_cn": "11种萜烯类化合物混标(GB/T39934-2021附录A.4)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690203-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690204-XZ-20ml",
+      "name_en": "Set of odor series in paraffin liquid",
+      "name_cn": "液体石蜡中标准臭使用液套标（HJ 1262-2022）",
+      "cas_number": null,
+      "specification": "Various concentrations in Liquid paraffin, 20 mL*8",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690204-XZ-20ml"
+    },
+    {
+      "part_number": "CDAA-M-690205-FZ-1.2ml",
+      "name_en": "Mix 19",
+      "name_cn": "19种丙烯酸酯和甲基丙烯酸酯混标（食品接触材料征求意见稿）",
+      "cas_number": null,
+      "specification": "1000 mg/L in Ethyl acetate, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690205-FZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690206-LE-1.2ml",
+      "name_en": "Mix 8",
+      "name_cn": "8种丙烯酸酯混标( GBZ /T300.127-2017)",
+      "cas_number": null,
+      "specification": "2000 mg/L in Carbon disulfide, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690206-LE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690206-LN-1.2ml",
+      "name_en": "Mix 8",
+      "name_cn": "8种丙烯酸酯混标( GBZ /T300.127-2017)",
+      "cas_number": null,
+      "specification": "20000 mg/L in Carbon disulfide, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690206-LN-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690207-LD-1.2ml",
+      "name_en": "Mix 11",
+      "name_cn": "11种苯系物混标(兼容HJ584，DB11/ 1227-2015)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Carbon disulfide, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690207-LD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690211-XZ-5ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种白酒成分混标(GB/T10345-2022)",
+      "cas_number": null,
+      "specification": "Various concentrations in 50%(v/v)Ethanol, 5 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690211-XZ-5ml"
+    },
+    {
+      "part_number": "CDAA-M-690212-SETA-1.2ml",
+      "name_en": "Mix 8",
+      "name_cn": "乙醇中6种白酒成分及2种内标梯度混标(GB/T10345-2022)",
+      "cas_number": null,
+      "specification": "Various concentrations in 50%vEthanol, 1.2 mL*5pak",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690212-SETA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690213-KC-1.2ml",
+      "name_en": "Mix 16",
+      "name_cn": "二氯甲烷中16种有机化合物混标",
+      "cas_number": null,
+      "specification": "500 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690213-KC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690214-AC-1.2ml",
+      "name_en": "Mix 11",
+      "name_cn": "甲醇中11种有机化合物混标",
+      "cas_number": null,
+      "specification": "500 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690214-AC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690215-KC-1.2ml",
+      "name_en": "Mix 11",
+      "name_cn": "二氯甲烷中11种有机化合物混标",
+      "cas_number": null,
+      "specification": "500 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690215-KC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690216-AZ-5ml",
+      "name_en": "Mix 4",
+      "name_cn": "甲醇中4种有机化合物混标",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 5 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690216-AZ-5ml"
+    },
+    {
+      "part_number": "CDAA-M-690217-SETA-1.2ml",
+      "name_en": "Mix 4",
+      "name_cn": "乙醇中3种二元酸二乙酯及内标十四醇梯度混标(GB/T10345-2022)",
+      "cas_number": null,
+      "specification": "Various concentrations in 30%(v)Ethanol, 1.2 mL*5pak",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690217-SETA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690218-AA-1.2ml",
+      "name_en": "Mix 6",
+      "name_cn": "甲醇中6种致嗅物质(水体中硫醚类和土霉类)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690218-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690219-XA-1.2ml",
+      "name_en": "Mix 12",
+      "name_cn": "12种有机化合物混标",
+      "cas_number": null,
+      "specification": "100 mg/L in Dichloromethane:Methanol=95:5, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690219-XA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690220-JZ-1.2ml",
+      "name_en": "Mix 9",
+      "name_cn": "乙腈中9种有机化合物混标",
+      "cas_number": null,
+      "specification": "Various concentrations in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690220-JZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690227-KD-1.2ml",
+      "name_en": "MIX 9 in dichloromethane",
+      "name_cn": "二氯甲烷中9种多环芳烃混标(GB/T 29670-2013)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690227-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690230-XM-1.2ml",
+      "name_en": "Mix 15 in nonane",
+      "name_cn": "15种二噁英提取内标混标(HJ 77.1/77.2/77.3/77.4/HJ650表2)",
+      "cas_number": null,
+      "specification": "Various concentrations in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690230-XM-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690231-XZ-1.2ml",
+      "name_en": "Mix 17 in nonane",
+      "name_cn": "17种二噁英和二苯并呋喃混标(HJ 77.1/77.2/77.3/77.4表1)",
+      "cas_number": null,
+      "specification": "Various concentrations in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690231-XZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690232-XM-1.2ml",
+      "name_en": "Mix 2 in nonane",
+      "name_cn": "2种二噁英类内标(HJ 77.1/77.2/77.3/77.4附录C/HJ650附录B)",
+      "cas_number": null,
+      "specification": "200ng/mL in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690232-XM-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690234-KZ-1.2ml",
+      "name_en": "Mix 5 in dichloromethane",
+      "name_cn": "二氯甲烷中凝胶渗透色谱校准溶液(HJ835)",
+      "cas_number": null,
+      "specification": "Various concentrations in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690234-KZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-690235-SETA-1.2ml",
+      "name_en": "Mix 35 in dichloromethane",
+      "name_cn": "二噁英17种外标和18种内标混标",
+      "cas_number": null,
+      "specification": "Various concentrations in Nonane/Toluene,5*, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-690235-SETA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740017-AA-1ml",
+      "name_en": "Sildenafil Drugs MIX 11",
+      "name_cn": "11种西地那非类药物混标(BJS201601/2009030/BJS201710部分)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740017-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-740018-JZ-1.2ml",
+      "name_en": "Formic acid and other 5 kinds of components",
+      "name_cn": "甲酸等6种组分混标(2021修订化妆品安全技术规范4.7)",
+      "cas_number": null,
+      "specification": "Various concentrations in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740018-JZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740019-AZ-1.2ml",
+      "name_en": "Tretinoin and other 7 kinds of components",
+      "name_cn": "维甲酸等8种组分混标(2021修订化妆品安全技术规范2.28)",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740019-AZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740020-CA-1.2ml",
+      "name_en": "Drugs MIX 8",
+      "name_cn": "6种镇定剂及其代谢物和β-阻断剂混标(GB/T20763-2006)",
+      "cas_number": null,
+      "specification": "100 mg/L in Ethanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740020-CA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740025-XL-1.2ml",
+      "name_en": "Sildenafil Drugs MIX 90",
+      "name_cn": "90种那非类物质混标(BJS201805)",
+      "cas_number": null,
+      "specification": "set",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740025-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740026-JZ-1.2ml",
+      "name_en": "Drugs MIX 5",
+      "name_cn": "莫匹罗星等5种药品混标(BJH202201)",
+      "cas_number": null,
+      "specification": "40-800 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740026-JZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740027-AC-1.2ml",
+      "name_en": "Drugs MIX 19",
+      "name_cn": "19种减肥降脂类化合物混标(BJS201701组A部分)",
+      "cas_number": null,
+      "specification": "500 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740027-AC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740029-AA-1.2ml",
+      "name_en": "Drugs MIX 5",
+      "name_cn": "阿托品等5种药品混标(GB 31658.19-2022)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740029-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740030-AZ-1.2ml",
+      "name_en": "Drugs MIX 10",
+      "name_cn": "10种利尿药混标(GB31658.25-2022/SN/T5167-2019)",
+      "cas_number": null,
+      "specification": "10-25 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740030-AZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740031-AL-1.2ml",
+      "name_en": "Drugs MIX 9",
+      "name_cn": "9种利尿药内标混标(GB31658.25-2022/SN/T5167-2019)",
+      "cas_number": null,
+      "specification": "10 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740031-AL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740032-AA-1.2ml",
+      "name_en": "Mix 10",
+      "name_cn": "10种其他化合物混标(农业部公告第197号-9-2019I组)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740032-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740033-AA-1.2ml",
+      "name_en": "Drugs MIX 5",
+      "name_cn": "5种精神类药物混标(农业部公告第197号-9-2019J组)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740033-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740034-AA-1.2ml",
+      "name_en": "Drugs MIX 6",
+      "name_cn": "6种中枢神经类药物混标(农业部公告第197号-9-2019L组)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740034-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740035-AA-1.2ml",
+      "name_en": "Drugs MIX 7",
+      "name_cn": "7种抗组胺和镇定剂类药物混标(农业部公告第197号-9-2019M组)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740035-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740036-JA-1.2ml",
+      "name_en": "Drugs MIX 5",
+      "name_cn": "5种抗真菌类药物混标(农业部公告第197号-9-2019N组)",
+      "cas_number": null,
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740036-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740037-XZ-1.2ml",
+      "name_en": "Drugs MIX 14",
+      "name_cn": "14种抗球虫药物混标(SN/T3144部分)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol(containing DMF), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740037-XZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740209-XA-1.2ml",
+      "name_en": "Mix 3",
+      "name_cn": "番泻苷a、番泻苷B和大黄素甲醚混标(BJS201917)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol:Ammonium formate(9:1), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740209-XA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740290-XZ-1ml",
+      "name_en": "Drugs MIX 49",
+      "name_cn": "49种药物套装(GB/T5750.8-2023 90.1PPCPs)",
+      "cas_number": null,
+      "specification": "Various concentrations in Mixed solvents, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740290-XZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-740500-JA-1.2ml",
+      "name_en": "Drugs MIX 4 in acetonitrile",
+      "name_cn": "乙腈中4种药物混标(BJS201701组A部分组分)",
+      "cas_number": null,
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740500-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-740699-AA-1.2ml",
+      "name_en": "Drug MIX 5 in methanol",
+      "name_cn": "甲醇中四氢咪唑啉等5种组分混标(BJH202204)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-740699-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741181-XC-1.2ml",
+      "name_en": "Drugs MIX 6 in Dimethyl sulfoxide",
+      "name_cn": "二甲亚砜中6种大豆异黄酮混标(GB/T23788-2009)",
+      "cas_number": null,
+      "specification": "400 mg/L in Dimethyl sulfoxide, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741181-XC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741182-XL-1.2ml",
+      "name_en": "Sildenafil Drugs MIX 27 in methanol",
+      "name_cn": "甲醇中27种那非类物质混标(BJS201805组A)",
+      "cas_number": null,
+      "specification": "10 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741182-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741183-XL-1.2ml",
+      "name_en": "Sildenafil Drugs MIX 28 in methanol",
+      "name_cn": "甲醇中28种那非类物质混标(BJS201805组B)",
+      "cas_number": null,
+      "specification": "10 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741183-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741184-XL-1.2ml",
+      "name_en": "Sildenafil Drugs MIX 27 in methanol",
+      "name_cn": "甲醇中27种那非类物质混标(BJS201805组C)",
+      "cas_number": null,
+      "specification": "10 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741184-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741185-XL-1.2ml",
+      "name_en": "Sildenafil Drugs MIX 5 in Dimethyl sulfoxide",
+      "name_cn": "二甲基亚砜中5种那非类物质混标(BJS201805组D)",
+      "cas_number": null,
+      "specification": "10 mg/L in Dimethyl sulfoxide, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741185-XL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741187-SC-1.2ml",
+      "name_en": "Whitening and freckle-removing components MIX 10 in water",
+      "name_cn": "水中10种美白祛斑剂混标（GB/T 35954-2018）",
+      "cas_number": null,
+      "specification": "500 mg/L in Water, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741187-SC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741188-AL-1.2ml",
+      "name_en": "Drugs MIX 8 in methanol",
+      "name_cn": "甲醇中8种药物内标混标(GB/T5750.8-2023 90.1PPCPs)",
+      "cas_number": null,
+      "specification": "10 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741188-AL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741189-AA-1.2ml",
+      "name_en": "Drugs MIX 21",
+      "name_cn": "甲醇中21种药物混标(BJS201713-A)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741189-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741190-AA-1.2ml",
+      "name_en": "Drugs MIX 15",
+      "name_cn": "甲醇中15种药物混标(BJS201713-B)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741190-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741191-AA-1.2ml",
+      "name_en": "Drugs MIX 14",
+      "name_cn": "甲醇中14种药物混标(BJS201713-C)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741191-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-741192-AA-1.2ml",
+      "name_en": "Drugs MIX 7",
+      "name_cn": "甲醇中7种药物混标(BJS201713-D)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-741192-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-749004-AA-1ml",
+      "name_en": "Mix 4",
+      "name_cn": "4种减肥药物混标(2012005/BJS201710部分)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749004-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749006-AC-1ml",
+      "name_en": "Mix 9",
+      "name_cn": "9种药物混标",
+      "cas_number": null,
+      "specification": "400 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749006-AC-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749011-AC-1ml",
+      "name_en": "Mix 7",
+      "name_cn": "7种降压药物混标（保健品中非法添加剂）",
+      "cas_number": null,
+      "specification": "300 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749011-AC-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749012-AB-1ml",
+      "name_en": "Mix 6",
+      "name_cn": "6种降压药物混标(保健品中非法添加剂)",
+      "cas_number": null,
+      "specification": "200 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749012-AB-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749017-AC-1ml",
+      "name_en": "Mix 4",
+      "name_cn": "4种药物混标(BJS201701组B)",
+      "cas_number": null,
+      "specification": "500 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749017-AC-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749018-AZ-1ml",
+      "name_en": "Mix 5",
+      "name_cn": "5种药物混标（BJS 201808）",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749018-AZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749019-AZ-1ml",
+      "name_en": "Mix 5",
+      "name_cn": "5种药物混标（BJS 201901）",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749019-AZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749020-AZ-1ml",
+      "name_en": "Mix 22",
+      "name_cn": "22种药物混标（BJS 201901）",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749020-AZ-1ml"
+    },
+    {
+      "part_number": "CDAA-M-749038-AA-1.2ml",
+      "name_en": "Mix 5",
+      "name_cn": "5种精神类药物混标(农业农村部公告第197号-9-2019J组)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-749038-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-760069-AZ-1.2ml",
+      "name_en": "Bimatoprost and other 4 kinds of components",
+      "name_cn": "比马前列素等5种组分混标(BJH202102化妆品)",
+      "cas_number": null,
+      "specification": "Various concentrations in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-760069-AZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-949003-AB-1.2ml",
+      "name_en": "Allergenous disperse dyestuffs MIX 5 in methanol",
+      "name_cn": "甲醇中5种致敏性分散染料混标(GB/T20383-2006B组)",
+      "cas_number": null,
+      "specification": "200 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-949003-AB-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-951010-HA-1.2ml",
+      "name_en": "Sudan MIX 4",
+      "name_cn": "4种苏丹红混标(GB/T19681)",
+      "cas_number": null,
+      "specification": "100 mg/L in n-Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-951010-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-959001-SD-1.2ml",
+      "name_en": "Synthetic colour MIX 8",
+      "name_cn": "8种食用合成着色剂(食用色素)混标(GB/T21916，GB5009.35)",
+      "cas_number": null,
+      "specification": "1000 mg/L in Water, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-959001-SD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-959002-SC-1.2ml",
+      "name_en": "Synthetic colour MIX 7",
+      "name_cn": "7种合成着色剂混标(GB/T21916)",
+      "cas_number": null,
+      "specification": "500 mg/L in Water, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-959002-SC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-M-999085-AA-1.2ml",
+      "name_en": "Dye Solution Mix 11",
+      "name_cn": "碱性嫩黄等11种工业染料混标(BJS202204)",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-M-999085-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-QC-105163-QC001",
+      "name_en": "Benzo(a)pyrene",
+      "name_cn": "大豆油中苯并(a)芘质控样",
+      "cas_number": "50-32-8",
+      "specification": "20 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-105163-QC001"
+    },
+    {
+      "part_number": "CDAA-QC-112128-A001A-35g",
+      "name_en": "Quality Control Sample",
+      "name_cn": "茶叶中咖啡碱质控样（杭州茶叶研究所提供）",
+      "cas_number": null,
+      "specification": "35 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-112128-A001A-35g"
+    },
+    {
+      "part_number": "CDAA-QC-112141-A001A-35g",
+      "name_en": "Quality Control Sample",
+      "name_cn": "茶叶中噻嗪酮质控样（杭州茶叶研究所提供）",
+      "cas_number": null,
+      "specification": "35 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-112141-A001A-35g"
+    },
+    {
+      "part_number": "CDAA-QC-200079-XM-25g",
+      "name_en": "Tea polyphenol MIX 5",
+      "name_cn": "5种儿茶素类质控样品",
+      "cas_number": null,
+      "specification": "0.1-0.15 mg/L in Propylene glycol:Glycerol=",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-200079-XM-25g"
+    },
+    {
+      "part_number": "CDAA-QC-21001-001-500g",
+      "name_en": "Blank pork sample",
+      "name_cn": "模拟土壤样品",
+      "cas_number": null,
+      "specification": "500 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-21001-001-500g"
+    },
+    {
+      "part_number": "CDAA-QC-220241-A002A-30g",
+      "name_en": "Quality Control Sample",
+      "name_cn": "土壤中23种有机氯农药质控样（HJ 835-2017）",
+      "cas_number": null,
+      "specification": "30 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-220241-A002A-30g"
+    },
+    {
+      "part_number": "CDAA-QC-220241-A003A-30g",
+      "name_en": "Soil Quality Control Sample",
+      "name_cn": "土壤中8种有机氯质控样",
+      "cas_number": null,
+      "specification": "0.2-0.3 mg/kg, 30 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-220241-A003A-30g"
+    },
+    {
+      "part_number": "CDAA-QC-220241-A003C-30g",
+      "name_en": "Soil Quality Control Sample",
+      "name_cn": "土壤中8种有机氯质控样",
+      "cas_number": null,
+      "specification": "1-1.2 mg/kg,30 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-220241-A003C-30g"
+    },
+    {
+      "part_number": "CDAA-QC-220241-A005A-20g",
+      "name_en": "Soil Quality Control Sample",
+      "name_cn": "土壤中8种有机氯质控样",
+      "cas_number": null,
+      "specification": "250μg/kg,20 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-220241-A005A-20g"
+    },
+    {
+      "part_number": "CDAA-QC-220262-A001A-10g",
+      "name_en": "Quality Control Sample",
+      "name_cn": "土壤中28种VOC质控样（GB 36600－2018基本项目）",
+      "cas_number": null,
+      "specification": "1.5 mL+10 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-220262-A001A-10g"
+    },
+    {
+      "part_number": "CDAA-QC-220262-A002A-30g",
+      "name_en": "Quality Control Sample",
+      "name_cn": "土壤中64种半挥发性有机物质控样（HJ 834-2017）",
+      "cas_number": null,
+      "specification": "30 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-220262-A002A-30g"
+    },
+    {
+      "part_number": "CDAA-QC-240016-XL-25g",
+      "name_en": "2，3-Butanedione QC sample",
+      "name_cn": "2，3-丁二酮质控样品",
+      "cas_number": "431-03-8",
+      "specification": "10 mg/kg in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-240016-XL-25g"
+    },
+    {
+      "part_number": "CDAA-QC-240077-XL-25g",
+      "name_en": "METHYLCYCLOPENTENOLONE QC sample",
+      "name_cn": "醛酮类化合物质控样品",
+      "cas_number": "765-70-8",
+      "specification": "10 mg/g in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-240077-XL-25g"
+    },
+    {
+      "part_number": "CDAA-QC-240095-XF-25g",
+      "name_en": "Alcohols  Mix 5",
+      "name_cn": "5种酚类化合物 质控样品",
+      "cas_number": null,
+      "specification": "4 mg/g in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-240095-XF-25g"
+    },
+    {
+      "part_number": "CDAA-QC-252605-XF-25g",
+      "name_en": "Alcohols  Mix 4",
+      "name_cn": "4种挥发性酸类化合物 质控样品",
+      "cas_number": null,
+      "specification": "2-2.5 mg/g in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-252605-XF-25g"
+    },
+    {
+      "part_number": "CDAA-QC-260005-XZ-25g",
+      "name_en": "Alcohols  Mix 6",
+      "name_cn": "6种非挥发性有机酸类 质控样品",
+      "cas_number": null,
+      "specification": "2-18 mg/g in Propylene glycol:Glycerol=1:1",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-260005-XZ-25g"
+    },
+    {
+      "part_number": "CDAA-QC-280763-XM-25g",
+      "name_en": "Gallic acid QC sample",
+      "name_cn": "茶多酚质控样品",
+      "cas_number": "149-91-7",
+      "specification": "0.5 mg/g in Propylene glycol:Glycerol=1:1",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-280763-XM-25g"
+    },
+    {
+      "part_number": "CDAA-QC-690137-XD-25g",
+      "name_en": "Alcohols  Mix 8",
+      "name_cn": "8种杂环化合物 质控样品",
+      "cas_number": null,
+      "specification": "1 mg/g in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-690137-XD-25g"
+    },
+    {
+      "part_number": "CDAA-QC-690159-XZ-25g",
+      "name_en": "Alcohols  Mix 9",
+      "name_cn": "9种醇类化合物质控样品",
+      "cas_number": null,
+      "specification": "1-10 mg/g in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-690159-XZ-25g"
+    },
+    {
+      "part_number": "CDAA-QC-690160-XC-25g",
+      "name_en": "Mix 35",
+      "name_cn": "33种酯类及柠檬烯化合物 质控样品",
+      "cas_number": null,
+      "specification": "0.2-0.5 mg/g in Propylene glycol:Glycerol=1:1, 25 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-QC-690160-XC-25g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000018-100mg",
+      "name_en": "1，1，3，3-Tetraethoxypropane",
+      "name_cn": "1，1，3，3-四乙氧基丙烷",
+      "cas_number": "122-31-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000018-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000019",
+      "name_en": "1，3，5-Trichlorobenzene",
+      "name_cn": "1，3，5-三氯苯",
+      "cas_number": "108-70-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000019"
+    },
+    {
+      "part_number": "CDAA-RM-D0000026-250mg",
+      "name_en": "1-Adamantanamine",
+      "name_cn": "1-金刚烷胺",
+      "cas_number": "768-94-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000026-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000030",
+      "name_en": "2，6-Di-tert-butyl-p-cresol(BHT)",
+      "name_cn": "2，6-二叔丁基对甲酚(BHT)",
+      "cas_number": "128-37-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000030"
+    },
+    {
+      "part_number": "CDAA-RM-D0000031",
+      "name_en": "Methyl 2-Benzoylbenzoate",
+      "name_cn": "2-苯甲酰苯甲酸甲酯",
+      "cas_number": "606-28-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000031"
+    },
+    {
+      "part_number": "CDAA-RM-D0000045",
+      "name_en": "3-Methylbenzophenone",
+      "name_cn": "3-甲基二苯甲酮",
+      "cas_number": "643-65-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000045"
+    },
+    {
+      "part_number": "CDAA-RM-D0000049",
+      "name_en": "4，4‘-Bis(diethylamino)benzophenone",
+      "name_cn": "4，4‘-双(二乙氨基)二苯酮",
+      "cas_number": "90-93-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000049"
+    },
+    {
+      "part_number": "CDAA-RM-D0000051",
+      "name_en": "4-Methylbenzophenone",
+      "name_cn": "4-甲基二苯甲酮",
+      "cas_number": "134-84-9",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000051"
+    },
+    {
+      "part_number": "CDAA-RM-D0000060-100mg",
+      "name_en": "5-Hydroxymethylfurfural",
+      "name_cn": "5-羟甲基糠醛",
+      "cas_number": "67-47-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000060-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000060-10mg",
+      "name_en": "5-Hydroxymethylfurfural",
+      "name_cn": "5-羟甲基糠醛",
+      "cas_number": "67-47-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000060-10mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000073-1g",
+      "name_en": "D(-)-Fructose",
+      "name_cn": "D-(-)-果糖",
+      "cas_number": "57-48-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000073-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000073-250mg",
+      "name_en": "D(-)-Fructose",
+      "name_cn": "D-(-)-果糖",
+      "cas_number": "57-48-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000073-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000073-5g",
+      "name_en": "D(-)-Fructose",
+      "name_cn": "D-(-)-果糖",
+      "cas_number": "57-48-7",
+      "specification": "5 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000073-5g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000081-1g",
+      "name_en": "Sucrose",
+      "name_cn": "蔗糖",
+      "cas_number": "57-50-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000081-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000081-250mg",
+      "name_en": "Sucrose",
+      "name_cn": "蔗糖",
+      "cas_number": "57-50-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000081-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000097",
+      "name_en": "L-Phenylalanine",
+      "name_cn": "L-苯丙氨酸",
+      "cas_number": "63-91-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000097"
+    },
+    {
+      "part_number": "CDAA-RM-D0000097-1g",
+      "name_en": "L-Phenylalanine",
+      "name_cn": "L-苯丙氨酸",
+      "cas_number": "63-91-2",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000097-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000109-100mg",
+      "name_en": "L(-)-Carnitine",
+      "name_cn": "L-肉碱(左旋肉碱)",
+      "cas_number": "541-15-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000109-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000109-1g",
+      "name_en": "L(-)-Carnitine",
+      "name_cn": "L-肉碱(左旋肉碱)",
+      "cas_number": "541-15-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000109-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000109-20mg",
+      "name_en": "L(-)-Carnitine",
+      "name_cn": "L-肉碱(左旋肉碱)",
+      "cas_number": "541-15-1",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000109-20mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000117",
+      "name_en": "Methyl linoleate(C18:2)",
+      "name_cn": "十八碳二烯酸甲酯(顺-9，12)(C18:2)",
+      "cas_number": "112-63-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000117"
+    },
+    {
+      "part_number": "CDAA-RM-D0000117-1g",
+      "name_en": "Methyl linoleate(C18:2)",
+      "name_cn": "十八碳二烯酸甲酯(顺-9，12)(C18:2)",
+      "cas_number": "112-63-0",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000117-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000117-250mg",
+      "name_en": "Methyl linoleate(C18:2)",
+      "name_cn": "十八碳二烯酸甲酯(顺-9，12)(C18:2)",
+      "cas_number": "112-63-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000117-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000158-100mg",
+      "name_en": "Cytidine 5′-monophosphate",
+      "name_cn": "胞嘧啶核苷酸",
+      "cas_number": "63-37-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000158-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000158-1g",
+      "name_en": "Cytidine 5′-monophosphate",
+      "name_cn": "胞嘧啶核苷酸",
+      "cas_number": "63-37-6",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000158-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000162",
+      "name_en": "Benzylalcohol",
+      "name_cn": "苯甲醇",
+      "cas_number": "100-51-6",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000162"
+    },
+    {
+      "part_number": "CDAA-RM-D0000164",
+      "name_en": "Benzoic acid",
+      "name_cn": "苯甲酸",
+      "cas_number": "65-85-0",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000164"
+    },
+    {
+      "part_number": "CDAA-RM-D0000164-1g",
+      "name_en": "Benzoic acid",
+      "name_cn": "苯甲酸",
+      "cas_number": "65-85-0",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000164-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000164-250mg",
+      "name_en": "Benzoic acid",
+      "name_cn": "苯甲酸",
+      "cas_number": "65-85-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000164-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000181-1g",
+      "name_en": "Acrylic Acid (stabilized with MEHQ)",
+      "name_cn": "丙烯酸(含稳定剂MEHQ)",
+      "cas_number": "79-10-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000181-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000204",
+      "name_en": "Estrone",
+      "name_cn": "雌酚酮",
+      "cas_number": "53-16-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000204"
+    },
+    {
+      "part_number": "CDAA-RM-D0000231",
+      "name_en": "Dexamethasone",
+      "name_cn": "地塞米松",
+      "cas_number": "50-02-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000231"
+    },
+    {
+      "part_number": "CDAA-RM-D0000234-1g",
+      "name_en": "Methyl butyrate(C4:0)",
+      "name_cn": "丁酸甲酯(C4:0)",
+      "cas_number": "623-42-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000234-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000242",
+      "name_en": "2-Ethylhexyl 4-methoxycinnamate",
+      "name_cn": "对甲氧基肉桂酸辛酯",
+      "cas_number": "5466-77-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000242"
+    },
+    {
+      "part_number": "CDAA-RM-D0000295",
+      "name_en": "Calcium D-pantothenate",
+      "name_cn": "维生素B5钙盐",
+      "cas_number": "137-08-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000295"
+    },
+    {
+      "part_number": "CDAA-RM-D0000295-1g",
+      "name_en": "Calcium D-pantothenate",
+      "name_cn": "维生素B5钙盐",
+      "cas_number": "137-08-6",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000295-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000298",
+      "name_en": "Dinotefuran",
+      "name_cn": "呋虫胺",
+      "cas_number": "165252-70-0",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000298"
+    },
+    {
+      "part_number": "CDAA-RM-D0000321",
+      "name_en": "Testosterone",
+      "name_cn": "睾酮",
+      "cas_number": "58-22-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000321"
+    },
+    {
+      "part_number": "CDAA-RM-D0000323",
+      "name_en": "Gliquidone",
+      "name_cn": "格列喹酮",
+      "cas_number": "33342-05-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000323"
+    },
+    {
+      "part_number": "CDAA-RM-D0000323-10mg",
+      "name_en": "Gliquidone",
+      "name_cn": "格列喹酮",
+      "cas_number": "33342-05-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000323-10mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000332-1g",
+      "name_en": "Methyl decanoate(C10:0)",
+      "name_cn": "癸酸甲酯(C10:0)",
+      "cas_number": "110-42-9",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000332-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000356-10mg",
+      "name_en": "Sulfamonomethoxine",
+      "name_cn": "磺胺间甲氧嘧啶",
+      "cas_number": "1220-83-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000356-10mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000361-100mg",
+      "name_en": "Caprolactam",
+      "name_cn": "己内酰胺",
+      "cas_number": "105-60-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000361-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000401",
+      "name_en": "o-Phenylenediamine",
+      "name_cn": "邻苯二胺",
+      "cas_number": "95-54-5",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000401"
+    },
+    {
+      "part_number": "CDAA-RM-D0000401-100mg",
+      "name_en": "o-Phenylenediamine",
+      "name_cn": "邻苯二胺",
+      "cas_number": "95-54-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000401-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000401-1g",
+      "name_en": "o-Phenylenediamine",
+      "name_cn": "邻苯二胺",
+      "cas_number": "95-54-5",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000401-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000415-100mg",
+      "name_en": "Roxithromycin",
+      "name_cn": "罗红霉素",
+      "cas_number": "80214-83-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000415-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000415-250mg",
+      "name_en": "Roxithromycin",
+      "name_cn": "罗红霉素",
+      "cas_number": "80214-83-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000415-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000415-25mg",
+      "name_en": "Roxithromycin",
+      "name_cn": "罗红霉素",
+      "cas_number": "80214-83-1",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000415-25mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000417-25mg",
+      "name_en": "Lovastatin",
+      "name_cn": "洛伐他汀",
+      "cas_number": "75330-75-5",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000417-25mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000439-500mg",
+      "name_en": "Maltitol",
+      "name_cn": "麦芽糖醇",
+      "cas_number": "585-88-6",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000439-500mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000478",
+      "name_en": "Norfloxacin",
+      "name_cn": "诺氟沙星",
+      "cas_number": "70458-96-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000478"
+    },
+    {
+      "part_number": "CDAA-RM-D0000486",
+      "name_en": "Prednisolone",
+      "name_cn": "泼尼松龙",
+      "cas_number": "50-24-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000486"
+    },
+    {
+      "part_number": "CDAA-RM-D0000532",
+      "name_en": "Thifluzamide",
+      "name_cn": "噻呋酰胺",
+      "cas_number": "130000-40-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000532"
+    },
+    {
+      "part_number": "CDAA-RM-D0000532-100mg",
+      "name_en": "Thifluzamide",
+      "name_cn": "噻呋酰胺",
+      "cas_number": "130000-40-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000532-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000533-100mg",
+      "name_en": "Sucralose",
+      "name_cn": "三氯蔗糖",
+      "cas_number": "56038-13-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000533-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000548",
+      "name_en": "Methyl linoelaidate(C18:2TT)",
+      "name_cn": "十八碳二烯酸甲酯(反-9，12)(C18:2TT)",
+      "cas_number": "2566-97-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000548"
+    },
+    {
+      "part_number": "CDAA-RM-D0000548-1g",
+      "name_en": "Methyl linoelaidate(C18:2TT)",
+      "name_cn": "十八碳二烯酸甲酯(反-9，12)(C18:2TT)",
+      "cas_number": "2566-97-4",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000548-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000548-500mg",
+      "name_en": "Methyl linoelaidate(C18:2TT)",
+      "name_cn": "十八碳二烯酸甲酯(反-9，12)(C18:2TT)",
+      "cas_number": "2566-97-4",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000548-500mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000562",
+      "name_en": "Methyl oleate(C18:1)",
+      "name_cn": "十八碳烯酸甲酯(顺-9)(C18:1)",
+      "cas_number": "112-62-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000562"
+    },
+    {
+      "part_number": "CDAA-RM-D0000562-1g",
+      "name_en": "Methyl oleate(C18:1)",
+      "name_cn": "十八碳烯酸甲酯(顺-9)(C18:1)",
+      "cas_number": "112-62-9",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000562-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000572-1g",
+      "name_en": "Palmitic acid(C16:0)",
+      "name_cn": "十六烷酸(棕榈酸)(C16:0)",
+      "cas_number": "57-10-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000572-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000575-100mg",
+      "name_en": "Methyl palmitate(C16:0)",
+      "name_cn": "十六烷酸甲酯(棕榈酸甲酯)(C16:0)",
+      "cas_number": "112-39-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000575-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000575-1g",
+      "name_en": "Methyl palmitate(C16:0)",
+      "name_cn": "十六烷酸甲酯(棕榈酸甲酯)(C16:0)",
+      "cas_number": "112-39-0",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000575-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000585",
+      "name_en": "Tritetradecanoin(C14:0)",
+      "name_cn": "十四烷酸甘油三酯(肉豆蔻酸甘油三酯)(C14:0)",
+      "cas_number": "555-45-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000585"
+    },
+    {
+      "part_number": "CDAA-RM-D0000585-1g",
+      "name_en": "Tritetradecanoin(C14:0)",
+      "name_cn": "十四烷酸甘油三酯(肉豆蔻酸甘油三酯)(C14:0)",
+      "cas_number": "555-45-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000585-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000588-100mg",
+      "name_en": "Methyl pentadecanoate(C15:0)",
+      "name_cn": "十五烷酸甲酯(C15:0)",
+      "cas_number": "7132-64-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000588-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000588-1g",
+      "name_en": "Methyl pentadecanoate(C15:0)",
+      "name_cn": "十五烷酸甲酯(C15:0)",
+      "cas_number": "7132-64-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000588-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000591",
+      "name_en": "Methyl hendecanoate(C11:0)",
+      "name_cn": "十一烷酸甲酯(C11:0)",
+      "cas_number": "1731-86-8",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000591"
+    },
+    {
+      "part_number": "CDAA-RM-D0000591-100mg",
+      "name_en": "Methyl hendecanoate(C11:0)",
+      "name_cn": "十一烷酸甲酯(C11:0)",
+      "cas_number": "1731-86-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000591-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000597",
+      "name_en": "Tartrazine",
+      "name_cn": "食品黄4(C.I.19140)",
+      "cas_number": "1934-21-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000597"
+    },
+    {
+      "part_number": "CDAA-RM-D0000639-20mg",
+      "name_en": "Melatonine",
+      "name_cn": "褪黑素",
+      "cas_number": "73-31-4",
+      "specification": "20 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000639-20mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000639-250mg",
+      "name_en": "Melatonine",
+      "name_cn": "褪黑素",
+      "cas_number": "73-31-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000639-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000641",
+      "name_en": "Dehydroacetic acid",
+      "name_cn": "脱氢乙酸",
+      "cas_number": "520-45-6",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000641"
+    },
+    {
+      "part_number": "CDAA-RM-D0000667-100mg",
+      "name_en": "Methyl caprylate(C8:0)",
+      "name_cn": "辛酸甲酯(C8:0)",
+      "cas_number": "111-11-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000667-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000667-1g",
+      "name_en": "Methyl caprylate(C8:0)",
+      "name_cn": "辛酸甲酯(C8:0)",
+      "cas_number": "111-11-5",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000667-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000672",
+      "name_en": "Bromobuterol",
+      "name_cn": "溴布特罗",
+      "cas_number": "41937-02-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000672"
+    },
+    {
+      "part_number": "CDAA-RM-D0000741",
+      "name_en": "3，3，5-Trimethylcyclohexyl salicylate",
+      "name_cn": "原膜散酯",
+      "cas_number": "118-56-9",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000741"
+    },
+    {
+      "part_number": "CDAA-RM-D0000762",
+      "name_en": "4-Chloronitrobenzene",
+      "name_cn": "对硝基氯苯",
+      "cas_number": "100-00-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000762"
+    },
+    {
+      "part_number": "CDAA-RM-D0000764",
+      "name_en": "Hymexazol",
+      "name_cn": "恶霉灵",
+      "cas_number": "10004-44-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000764"
+    },
+    {
+      "part_number": "CDAA-RM-D0000776",
+      "name_en": "Ethylbenzene",
+      "name_cn": "乙苯",
+      "cas_number": "100-41-4",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000776"
+    },
+    {
+      "part_number": "CDAA-RM-D0000777",
+      "name_en": "Styrene",
+      "name_cn": "苯乙烯",
+      "cas_number": "100-42-5",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000777"
+    },
+    {
+      "part_number": "CDAA-RM-D0000778",
+      "name_en": "alpha-Chlorotoluene",
+      "name_cn": "苄基氯",
+      "cas_number": "100-44-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000778"
+    },
+    {
+      "part_number": "CDAA-RM-D0000778-1g",
+      "name_en": "alpha-Chlorotoluene",
+      "name_cn": "苄基氯",
+      "cas_number": "100-44-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000778-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000783",
+      "name_en": "cis-1，3-Dichloropropene",
+      "name_cn": "顺式-1，3-二氯丙烯",
+      "cas_number": "10061-01-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000783"
+    },
+    {
+      "part_number": "CDAA-RM-D0000784",
+      "name_en": "trans-1，3-Dichloropropene",
+      "name_cn": "反式-1，3-二氯丙烯",
+      "cas_number": "10061-02-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000784"
+    },
+    {
+      "part_number": "CDAA-RM-D0000805",
+      "name_en": "Simetryn",
+      "name_cn": "西草净",
+      "cas_number": "1014-70-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000805"
+    },
+    {
+      "part_number": "CDAA-RM-D0000806",
+      "name_en": "PBDE No. 3",
+      "name_cn": "PBDE 3(4-溴联苯醚)",
+      "cas_number": "101-55-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000806"
+    },
+    {
+      "part_number": "CDAA-RM-D0000811-250mg",
+      "name_en": "Diphenylmethan-4，4‘-diisocyanate",
+      "name_cn": "4，4‘-二苯基甲烷二异氰酸酯",
+      "cas_number": "101-68-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000811-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000813",
+      "name_en": "Bis-(4-aminophenyl)methane",
+      "name_cn": "4,4'-二氨基二苯基甲烷",
+      "cas_number": "101-77-9",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000813"
+    },
+    {
+      "part_number": "CDAA-RM-D0000820-500mg",
+      "name_en": "DL-α-Tocopherol",
+      "name_cn": "DL-α-生育酚",
+      "cas_number": "10191-41-0",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000820-500mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000820-5g",
+      "name_en": "DL-α-Tocopherol",
+      "name_cn": "DL-α-生育酚",
+      "cas_number": "10191-41-0",
+      "specification": "5 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000820-5g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000822-100mg",
+      "name_en": "Acetaldehyde-2，4-DNPH",
+      "name_cn": "乙醛-2，4-DNPH",
+      "cas_number": "1019-57-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000822-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000830",
+      "name_en": "Glibenclamide",
+      "name_cn": "格列苯脲",
+      "cas_number": "10238-21-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000830"
+    },
+    {
+      "part_number": "CDAA-RM-D0000837",
+      "name_en": "Lufenuron",
+      "name_cn": "虱螨脲",
+      "cas_number": "103055-07-8",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000837"
+    },
+    {
+      "part_number": "CDAA-RM-D0000841-1g",
+      "name_en": "2-Ethylhexyl acrylate",
+      "name_cn": "丙烯酸-2-乙基己酯",
+      "cas_number": "103-11-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000841-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000844-250mg",
+      "name_en": "Adipic acid-bis-2-ethylhexylester",
+      "name_cn": "己二酸二(2-乙基己)酯",
+      "cas_number": "103-23-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000844-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000845",
+      "name_en": "Azobenzene",
+      "name_cn": "偶氮苯",
+      "cas_number": "103-33-3",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000845"
+    },
+    {
+      "part_number": "CDAA-RM-D0000845-250mg",
+      "name_en": "Azobenzene",
+      "name_cn": "偶氮苯",
+      "cas_number": "103-33-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000845-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000846",
+      "name_en": "Flumioxazin",
+      "name_cn": "丙炔氟草胺",
+      "cas_number": "103361-09-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000846"
+    },
+    {
+      "part_number": "CDAA-RM-D0000850",
+      "name_en": "n-Propylbenzene",
+      "name_cn": "正丙基苯",
+      "cas_number": "103-65-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000850"
+    },
+    {
+      "part_number": "CDAA-RM-D0000854",
+      "name_en": "4，4'-Dibromooctafluorobiphenyl",
+      "name_cn": "4，4'-二溴八氟联苯",
+      "cas_number": "10386-84-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000854"
+    },
+    {
+      "part_number": "CDAA-RM-D0000861",
+      "name_en": "Mesotrione",
+      "name_cn": "甲基磺草酮",
+      "cas_number": "104206-82-8",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000861"
+    },
+    {
+      "part_number": "CDAA-RM-D0000863",
+      "name_en": "Chlorphenesin",
+      "name_cn": "氯苯甘醚",
+      "cas_number": "104-29-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000863"
+    },
+    {
+      "part_number": "CDAA-RM-D0000868",
+      "name_en": "n-Butylbenzene",
+      "name_cn": "正丁基苯",
+      "cas_number": "104-51-8",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000868"
+    },
+    {
+      "part_number": "CDAA-RM-D0000875",
+      "name_en": "2-Ethyl-1-hexanol",
+      "name_cn": "2-乙基-1-己醇",
+      "cas_number": "104-76-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000875"
+    },
+    {
+      "part_number": "CDAA-RM-D0000875-250mg",
+      "name_en": "2-Ethyl-1-hexanol",
+      "name_cn": "2-乙基-1-己醇",
+      "cas_number": "104-76-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000875-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000892",
+      "name_en": "2，4-Dimethylphenol",
+      "name_cn": "2，4-二甲基苯酚",
+      "cas_number": "105-67-9",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000892"
+    },
+    {
+      "part_number": "CDAA-RM-D0000901-250mg",
+      "name_en": "Carbendazim",
+      "name_cn": "多菌灵",
+      "cas_number": "10605-21-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000901-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000914",
+      "name_en": "p-Xylene",
+      "name_cn": "对二甲苯",
+      "cas_number": "106-42-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000914"
+    },
+    {
+      "part_number": "CDAA-RM-D0000915",
+      "name_en": "4-Chlorotoluene",
+      "name_cn": "4-氯甲苯",
+      "cas_number": "106-43-4",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000915"
+    },
+    {
+      "part_number": "CDAA-RM-D0000916",
+      "name_en": "p-Cresol",
+      "name_cn": "4-甲基苯酚",
+      "cas_number": "106-44-5",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000916"
+    },
+    {
+      "part_number": "CDAA-RM-D0000917",
+      "name_en": "1,4-Dichlorobenzene",
+      "name_cn": "1,4-二氯苯",
+      "cas_number": "106-46-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000917"
+    },
+    {
+      "part_number": "CDAA-RM-D0000918",
+      "name_en": "4-Chloroaniline",
+      "name_cn": "对氯苯胺",
+      "cas_number": "106-47-8",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000918"
+    },
+    {
+      "part_number": "CDAA-RM-D0000919",
+      "name_en": "4-Chlorophenol",
+      "name_cn": "4-氯苯酚",
+      "cas_number": "106-48-9",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000919"
+    },
+    {
+      "part_number": "CDAA-RM-D0000920",
+      "name_en": "p-Toluidine",
+      "name_cn": "对甲苯胺",
+      "cas_number": "106-49-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000920"
+    },
+    {
+      "part_number": "CDAA-RM-D0000922",
+      "name_en": "1,4-Benzochinone",
+      "name_cn": "1,4-苯醌",
+      "cas_number": "106-51-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000922"
+    },
+    {
+      "part_number": "CDAA-RM-D0000923",
+      "name_en": "Trimethyltin chloride",
+      "name_cn": "三甲基氯化锡",
+      "cas_number": "1066-45-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000923"
+    },
+    {
+      "part_number": "CDAA-RM-D0000924",
+      "name_en": "Succinic acid-dimethyl ester",
+      "name_cn": "丁二酸二甲酯",
+      "cas_number": "106-65-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000924"
+    },
+    {
+      "part_number": "CDAA-RM-D0000933",
+      "name_en": "Epichlorohydrin",
+      "name_cn": "环氧氯丙烷",
+      "cas_number": "106-89-8",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000933"
+    },
+    {
+      "part_number": "CDAA-RM-D0000935",
+      "name_en": "1，2-Dibromoethane",
+      "name_cn": "1，2-二溴乙烷",
+      "cas_number": "106-93-4",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000935"
+    },
+    {
+      "part_number": "CDAA-RM-D0000941",
+      "name_en": "Allyl Chloride",
+      "name_cn": "3-氯-1-丙烯",
+      "cas_number": "107-05-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000941"
+    },
+    {
+      "part_number": "CDAA-RM-D0000942",
+      "name_en": "1,2-Dichloroethane",
+      "name_cn": "1,2-二氯乙烷",
+      "cas_number": "107-06-2",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000942"
+    },
+    {
+      "part_number": "CDAA-RM-D0000944",
+      "name_en": "Acrylonitrile",
+      "name_cn": "丙烯腈",
+      "cas_number": "107-13-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000944"
+    },
+    {
+      "part_number": "CDAA-RM-D0000953",
+      "name_en": "Tebuconazole",
+      "name_cn": "戊唑醇",
+      "cas_number": "107534-96-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000953"
+    },
+    {
+      "part_number": "CDAA-RM-D0000964",
+      "name_en": "1-Methoxy-2-propanol",
+      "name_cn": "1-甲氧基-2-丙醇",
+      "cas_number": "107-98-2",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000964"
+    },
+    {
+      "part_number": "CDAA-RM-D0000964-500mg",
+      "name_en": "1-Methoxy-2-propanol",
+      "name_cn": "1-甲氧基-2-丙醇",
+      "cas_number": "107-98-2",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000964-500mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000967-50mg",
+      "name_en": "Tilmicosin",
+      "name_cn": "替米考星",
+      "cas_number": "108050-54-0",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000967-50mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000968",
+      "name_en": "Vinyl acetate",
+      "name_cn": "乙酸乙烯酯",
+      "cas_number": "108-05-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000968"
+    },
+    {
+      "part_number": "CDAA-RM-D0000968-1g",
+      "name_en": "Vinyl acetate",
+      "name_cn": "乙酸乙烯酯",
+      "cas_number": "108-05-4",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000968-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000969",
+      "name_en": "4-Methyl-2-pentanone",
+      "name_cn": "4-甲基-2-戊酮（MIBK）",
+      "cas_number": "108-10-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000969"
+    },
+    {
+      "part_number": "CDAA-RM-D0000970",
+      "name_en": "2-Methyl-4-pentanol",
+      "name_cn": "4-甲基-2-戊醇",
+      "cas_number": "108-11-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000970"
+    },
+    {
+      "part_number": "CDAA-RM-D0000970-1g",
+      "name_en": "2-Methyl-4-pentanol",
+      "name_cn": "4-甲基-2-戊醇",
+      "cas_number": "108-11-2",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000970-1g"
+    },
+    {
+      "part_number": "CDAA-RM-D0000971-100mg",
+      "name_en": "Formaldehyde-2，4-DNPH",
+      "name_cn": "甲醛-2，4-DNPH",
+      "cas_number": "1081-15-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000971-100mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0000977",
+      "name_en": "m-Xylene",
+      "name_cn": "间二甲苯",
+      "cas_number": "108-38-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000977"
+    },
+    {
+      "part_number": "CDAA-RM-D0000978",
+      "name_en": "3-Methylphenol",
+      "name_cn": "3-甲基苯酚",
+      "cas_number": "108-39-4",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000978"
+    },
+    {
+      "part_number": "CDAA-RM-D0000979",
+      "name_en": "3-Chlorotoluene",
+      "name_cn": "3-氯甲苯",
+      "cas_number": "108-41-8",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000979"
+    },
+    {
+      "part_number": "CDAA-RM-D0000990",
+      "name_en": "Metaldehyde",
+      "name_cn": "四聚乙醛",
+      "cas_number": "108-62-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000990"
+    },
+    {
+      "part_number": "CDAA-RM-D0000991",
+      "name_en": "Propylene glycol 1-methyl ether 2-acetate",
+      "name_cn": "丙二醇甲醚醋酸酯",
+      "cas_number": "108-65-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000991"
+    },
+    {
+      "part_number": "CDAA-RM-D0000992",
+      "name_en": "1,3,5-Trimethylbenzene",
+      "name_cn": "均三甲苯",
+      "cas_number": "108-67-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000992"
+    },
+    {
+      "part_number": "CDAA-RM-D0000997",
+      "name_en": "Bromobenzene",
+      "name_cn": "溴苯",
+      "cas_number": "108-86-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0000997"
+    },
+    {
+      "part_number": "CDAA-RM-D0001000",
+      "name_en": "Chlorobenzene",
+      "name_cn": "氯苯",
+      "cas_number": "108-90-7",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001000"
+    },
+    {
+      "part_number": "CDAA-RM-D0001002",
+      "name_en": "Cyclohexanone",
+      "name_cn": "环己酮",
+      "cas_number": "108-94-1",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001002"
+    },
+    {
+      "part_number": "CDAA-RM-D0001003",
+      "name_en": "Phenol",
+      "name_cn": "苯酚",
+      "cas_number": "108-95-2",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001003"
+    },
+    {
+      "part_number": "CDAA-RM-D0001006-250mg",
+      "name_en": "Butyric acid-butyl ester",
+      "name_cn": "丁酸丁酯",
+      "cas_number": "109-21-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001006-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0001011",
+      "name_en": "Acetic acid-n-propyl ester",
+      "name_cn": "乙酸正丙酯",
+      "cas_number": "109-60-4",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001011"
+    },
+    {
+      "part_number": "CDAA-RM-D0001013",
+      "name_en": "n-Pentane",
+      "name_cn": "正戊烷",
+      "cas_number": "109-66-0",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001013"
+    },
+    {
+      "part_number": "CDAA-RM-D0001020-250mg",
+      "name_en": "2-Methoxyethanol(stabilized with BHT)",
+      "name_cn": "乙二醇甲醚（含稳定剂BHT）",
+      "cas_number": "109-86-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001020-250mg"
+    },
+    {
+      "part_number": "CDAA-RM-D0001028",
+      "name_en": "Maleic acid",
+      "name_cn": "马来酸",
+      "cas_number": "110-16-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001028"
+    },
+    {
+      "part_number": "CDAA-RM-D0001035",
+      "name_en": "2-Heptanone",
+      "name_cn": "2-庚酮",
+      "cas_number": "110-43-0",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001035"
+    },
+    {
+      "part_number": "CDAA-RM-D0001036",
+      "name_en": "Sorbic Acid",
+      "name_cn": "山梨酸",
+      "cas_number": "110-44-1",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001036"
+    },
+    {
+      "part_number": "CDAA-RM-D0001037",
+      "name_en": "Dimethomorph",
+      "name_cn": "烯酰吗啉",
+      "cas_number": "110488-70-5",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001037"
+    },
+    {
+      "part_number": "CDAA-RM-D0001039",
+      "name_en": "n-Hexane",
+      "name_cn": "正己烷",
+      "cas_number": "110-54-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001039"
+    },
+    {
+      "part_number": "CDAA-RM-D0001044",
+      "name_en": "Ethylene glycol-monoethyl ether",
+      "name_cn": "乙二醇单乙醚",
+      "cas_number": "110-80-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001044"
+    },
+    {
+      "part_number": "CDAA-RM-D0001046",
+      "name_en": "Pyridine",
+      "name_cn": "吡啶",
+      "cas_number": "110-86-1",
+      "specification": "5 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001046"
+    },
+    {
+      "part_number": "CDAA-RM-D0001056",
+      "name_en": "Squalane",
+      "name_cn": "角鲨烷",
+      "cas_number": "111-01-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001056"
+    },
+    {
+      "part_number": "CDAA-RM-D0001057",
+      "name_en": "Squalene",
+      "name_cn": "角鲨烯",
+      "cas_number": "111-02-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001057"
+    },
+    {
+      "part_number": "CDAA-RM-D0001063",
+      "name_en": "Acetic acid-2-ethoxyethyl ester",
+      "name_cn": "乙二醇乙醚醋酸酯",
+      "cas_number": "111-15-9",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-RM-D0001063"
+    }
+  ]
+}

@@ -1,0 +1,4988 @@
+{
+  "batch_id": "anpel-standards-remaining-19601-20100-2026-09-26",
+  "source": "ANPEL_Standards_Normalized.csv records 19601-20100",
+  "source_record_start": 19601,
+  "source_record_end": 20100,
+  "source_record_count": 500,
+  "namespace": "standards_products",
+  "excluded_namespaces": [
+    "products"
+  ],
+  "approved_record_count": 497,
+  "hold_record_count": 3,
+  "hold_reasons_summary": {
+    "normalized_manual_review": 3
+  },
+  "records": [
+    {
+      "part_number": "CDAA-S-650024-AA-1.2ml",
+      "name_en": "Phenol",
+      "name_cn": "苯酚",
+      "cas_number": "108-95-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650024-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650024-AD-1ml",
+      "name_en": "Phenol",
+      "name_cn": "苯酚",
+      "cas_number": "108-95-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650024-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650024-KE-1.2ml",
+      "name_en": "Phenol in dichloromethane",
+      "name_cn": "二氯甲烷中苯酚标准溶液",
+      "cas_number": "108-95-2",
+      "specification": "2000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650024-KE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650025-AD-1ml",
+      "name_en": "Pyridine",
+      "name_cn": "吡啶",
+      "cas_number": "110-86-1",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650025-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650025-KD-1ml",
+      "name_en": "Pyridine",
+      "name_cn": "吡啶",
+      "cas_number": "110-86-1",
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650025-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650025-SF-2ml",
+      "name_en": "Pyridine in water",
+      "name_cn": "水中吡啶标准溶液",
+      "cas_number": "110-86-1",
+      "specification": "5000 mg/L in Water, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650025-SF-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650026-AD-1ml",
+      "name_en": "Acrylonitrile",
+      "name_cn": "丙烯腈",
+      "cas_number": "107-13-1",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650026-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650026-AE-1.2ml",
+      "name_en": "Acrylonitrile in methanol",
+      "name_cn": "甲醇中丙烯腈标准溶液",
+      "cas_number": "107-13-1",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650026-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650026-LD-1ml",
+      "name_en": "Acrylonitrile",
+      "name_cn": "丙烯腈",
+      "cas_number": "107-13-1",
+      "specification": "1000 mg/L in Carbon disulfide, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650026-LD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650026-SD-1ml",
+      "name_en": "Acrylonitrile",
+      "name_cn": "丙烯腈",
+      "cas_number": "107-13-1",
+      "specification": "1000 mg/L in Water, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650026-SD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650027-JD-1ml",
+      "name_en": "Acrolein (2-Propenal)",
+      "name_cn": "丙烯醛（2-丙烯醛）",
+      "cas_number": "107-02-8",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650027-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650028-KD-1.2ml",
+      "name_en": "p-Terphenyl-[D14]",
+      "name_cn": "对三联苯-[D14]",
+      "cas_number": "1718-51-0",
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650028-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650028-KE-1ml",
+      "name_en": "p-Terphenyl D14",
+      "name_cn": "对三联苯 D14",
+      "cas_number": "1718-51-0",
+      "specification": "2000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650028-KE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650028-KF-1.2ml",
+      "name_en": "p-Terphenyl-[D14]",
+      "name_cn": "对三联苯-[D14]",
+      "cas_number": "1718-51-0",
+      "specification": "5000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650028-KF-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650029-AD-1.2ml",
+      "name_en": "Dimethyl disulfide",
+      "name_cn": "二甲基二硫",
+      "cas_number": "624-92-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650029-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650030-JA-1ml",
+      "name_en": "Phenanthrene-d10",
+      "name_cn": "菲-D10",
+      "cas_number": "1517-22-2",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650030-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650030-KA-1.2ml",
+      "name_en": "Phenanthrene-[D10] in dichloromethane",
+      "name_cn": "二氯甲烷中菲-[D10]标准溶液",
+      "cas_number": "1517-22-2",
+      "specification": "100 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650030-KA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650030-KD-1ml",
+      "name_en": "Phenanthrene D10",
+      "name_cn": "菲 D10",
+      "cas_number": "1517-22-2",
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650030-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650030-KF-2ml",
+      "name_en": "Phenanthrene-[D10]",
+      "name_cn": "菲-[D10]",
+      "cas_number": "1517-22-2",
+      "specification": "5000 mg/L in Dichloromethane, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650030-KF-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650031-AD-1ml",
+      "name_en": "Epichlorhydrin",
+      "name_cn": "环氧氯丙烷（表氯醇）",
+      "cas_number": "106-89-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650031-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650031-AE-1ml",
+      "name_en": "Epichlorhydrin",
+      "name_cn": "环氧氯丙烷（表氯醇）",
+      "cas_number": "106-89-8",
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650031-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650032-AN-1ml",
+      "name_en": "Ethylene Oxide",
+      "name_cn": "环氧乙烷",
+      "cas_number": "75-21-8",
+      "specification": "50000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650032-AN-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650032-KN-1ml",
+      "name_en": "Ethylene Oxide",
+      "name_cn": "环氧乙烷",
+      "cas_number": "75-21-8",
+      "specification": "50000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650032-KN-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650032-XD-1.2ml",
+      "name_en": "Ethylene Oxide",
+      "name_cn": "环氧乙烷",
+      "cas_number": "75-21-8",
+      "specification": "1000 mg/L in N,N-Dimethylacetamide, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650032-XD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650033-AD-1ml",
+      "name_en": "Methyl Mercaptan",
+      "name_cn": "甲硫醇",
+      "cas_number": "74-93-1",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650033-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650034-AD-1ml",
+      "name_en": "Hexachloroethane",
+      "name_cn": "六氯乙烷",
+      "cas_number": "67-72-1",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650034-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650035-AA-1.2ml",
+      "name_en": "Chloroprene in methanol",
+      "name_cn": "甲醇中氯丁二烯标准溶液",
+      "cas_number": "126-99-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650035-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650035-AD-1ml",
+      "name_en": "Chloroprene",
+      "name_cn": "氯丁二烯",
+      "cas_number": "126-99-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650035-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650035-AE-1.2ml",
+      "name_en": "Chloroprene in methanol",
+      "name_cn": "甲醇中氯丁二烯标准溶液",
+      "cas_number": "126-99-8",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650035-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650036-AA-1ml",
+      "name_en": "Trimethylamine",
+      "name_cn": "三甲胺",
+      "cas_number": "75-50-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650036-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650036-AE-1ml",
+      "name_en": "Trimethylamine in methanol",
+      "name_cn": "甲醇中三甲胺标准溶液",
+      "cas_number": "75-50-3",
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650036-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-AA-1ml",
+      "name_en": "Decafluorobiphenyl",
+      "name_cn": "十氟联苯",
+      "cas_number": "434-90-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-AG-1.2ml",
+      "name_en": "Decafluorobiphenyl",
+      "name_cn": "十氟联苯",
+      "cas_number": "434-90-2",
+      "specification": "10000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-AG-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-JD-1.2ml",
+      "name_en": "Decafluorobiphenyl in acetonitrile",
+      "name_cn": "乙腈中十氟联苯标准溶液",
+      "cas_number": "434-90-2",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-JE-5ml",
+      "name_en": "Decafluorobiphenyl",
+      "name_cn": "十氟联苯",
+      "cas_number": "434-90-2",
+      "specification": "2000 mg/L in Acetonitrile, 5 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-JE-5ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-JF-1ml",
+      "name_en": "Decafluorobiphenyl",
+      "name_cn": "十氟联苯",
+      "cas_number": "434-90-2",
+      "specification": "5000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-JF-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-KE-1.2ml",
+      "name_en": "Decafluorobiphenyl",
+      "name_cn": "十氟联苯",
+      "cas_number": "434-90-2",
+      "specification": "2000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-KE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650037-TD-1ml",
+      "name_en": "Decafluorobiphenyl",
+      "name_cn": "十氟联苯",
+      "cas_number": "434-90-2",
+      "specification": "1000 mg/L in Acetone, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650037-TD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650038-KD-1ml",
+      "name_en": "Decafluorotriphenylphosphine",
+      "name_cn": "十氟三苯基磷",
+      "cas_number": "5074-71-5",
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650038-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650038-KF-1ml",
+      "name_en": "Decafluorotriphenylphosphine",
+      "name_cn": "十氟三苯基磷",
+      "cas_number": "5074-71-5",
+      "specification": "2500 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650038-KF-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650039-AB-1ml",
+      "name_en": "2-Methyl-2-butanol",
+      "name_cn": "叔戊醇",
+      "cas_number": "75-85-4",
+      "specification": "200 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650039-AB-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650039-AD-1.2ml",
+      "name_en": "2-Methyl-2-butanol",
+      "name_cn": "叔戊醇",
+      "cas_number": "75-85-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650039-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650039-AE-1.2ml",
+      "name_en": "2-Methyl-2-butanol",
+      "name_cn": "叔戊醇",
+      "cas_number": "75-85-4",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650039-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650040-AE-1ml",
+      "name_en": "Turpentine",
+      "name_cn": "松节油",
+      "cas_number": "8006-64-2",
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650040-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650040-LD-2ml",
+      "name_en": "Turpentine",
+      "name_cn": "松节油",
+      "cas_number": "8006-64-2",
+      "specification": "1000 mg/L in Carbon disulfide, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650040-LD-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650041-AA-1ml",
+      "name_en": "(±)-Geosmin",
+      "name_cn": "土臭素",
+      "cas_number": "16423-19-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650041-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650041-AH-1ml",
+      "name_en": "(±)-Geosmin",
+      "name_cn": "土臭素",
+      "cas_number": "16423-19-1",
+      "specification": "2 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650041-AH-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650042-AA-1ml",
+      "name_en": "Acetaldehyde",
+      "name_cn": "乙醛",
+      "cas_number": "75-07-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650042-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650042-AD-1ml",
+      "name_en": "Acetaldehyde",
+      "name_cn": "乙醛",
+      "cas_number": "75-07-0",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650042-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650042-AE-1.2ml",
+      "name_en": "Acetaldehyde",
+      "name_cn": "乙醛",
+      "cas_number": "75-07-0",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650042-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650042-SD-1ml",
+      "name_en": "Acetaldehyde",
+      "name_cn": "乙醛",
+      "cas_number": "75-07-0",
+      "specification": "1000 mg/L in Water, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650042-SD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650042-XE-1.2ml",
+      "name_en": "Acetaldehyde in 40% ethanol",
+      "name_cn": "40%乙醇中乙醛标准溶液",
+      "cas_number": "75-07-0",
+      "specification": "2000 mg/L in 40%Ethanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650042-XE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650043-DB-1ml",
+      "name_en": "Fluoranthene d10",
+      "name_cn": "荧蒽-D10",
+      "cas_number": "93951-69-0",
+      "specification": "200 mg/L in Isooctane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650043-DB-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650044-AD-1ml",
+      "name_en": "n-Decane",
+      "name_cn": "正癸烷（C10）",
+      "cas_number": "124-18-5",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650044-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650044-HA-1.2ml",
+      "name_en": "n-Decane in n-hexane",
+      "name_cn": "正己烷中正癸烷(C10)标准溶液",
+      "cas_number": "124-18-5",
+      "specification": "100 mg/L in Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650044-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650045-AF-1ml",
+      "name_en": "Gasoline (Unleaded)",
+      "name_cn": "常规无铅汽油标准（C6-C9）(HJ893-2017，HJ1020-2019)",
+      "cas_number": "8006-61-9",
+      "specification": "5000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650045-AF-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650046-AA-1ml",
+      "name_en": "Ethylenediamine",
+      "name_cn": "乙二胺",
+      "cas_number": "107-15-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650046-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650046-SE-2ml",
+      "name_en": "Ethylenediamine",
+      "name_cn": "乙二胺",
+      "cas_number": "107-15-3",
+      "specification": "2000 mg/L in Water, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650046-SE-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650047-AE-1.2ml",
+      "name_en": "2-Fluorobiphenyl",
+      "name_cn": "2-氟联苯",
+      "cas_number": "321-60-8",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650047-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650047-KE-1ml",
+      "name_en": "2-Fluorobiphenyl",
+      "name_cn": "2-氟联苯",
+      "cas_number": "321-60-8",
+      "specification": "2000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650047-KE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650047-KF-1.2ml",
+      "name_en": "2-Fluorobiphenyl",
+      "name_cn": "2-氟联苯",
+      "cas_number": "321-60-8",
+      "specification": "5000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650047-KF-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650048-AA-1.2ml",
+      "name_en": "2,4,6-Tribromophenol",
+      "name_cn": "2,4,6-三溴苯酚",
+      "cas_number": "118-79-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650048-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650048-AE-1ml",
+      "name_en": "2,4,6-Tribromophenol",
+      "name_cn": "2,4,6-三溴苯酚",
+      "cas_number": "118-79-6",
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650048-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650048-HA-1ml",
+      "name_en": "2,4,6-Tribromophenol",
+      "name_cn": "2，4，6-三溴苯酚",
+      "cas_number": "118-79-6",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650048-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650048-KG-1.2ml",
+      "name_en": "2，4，6-Tribromophenol",
+      "name_cn": "2，4，6-三溴苯酚",
+      "cas_number": "118-79-6",
+      "specification": "7500 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650048-KG-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650051-AD-1.2ml",
+      "name_en": "Butyraldehyde",
+      "name_cn": "丁醛",
+      "cas_number": "123-72-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650051-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650052-HA-1ml",
+      "name_en": "1-Octene",
+      "name_cn": "1-辛烯",
+      "cas_number": "111-66-0",
+      "specification": "100 mg/L in n-Hexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650052-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650056-AD-2ml",
+      "name_en": "2-Naphthol",
+      "name_cn": "2-萘酚(β-萘酚)",
+      "cas_number": "135-19-3",
+      "specification": "1000 mg/L in Methanol, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650056-AD-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650058-AD-1.2ml",
+      "name_en": "2，3，4，5-Tetrachlorophenol",
+      "name_cn": "2，3，4，5-四氯苯酚",
+      "cas_number": "4901-51-3",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650058-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650059-AE-1.2ml",
+      "name_en": "Dimethylamine in methanol",
+      "name_cn": "甲醇中二甲胺标准溶液",
+      "cas_number": "124-40-3",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650059-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650059-SD-2ml",
+      "name_en": "Dimethylamine in water",
+      "name_cn": "水中二甲胺标准溶液",
+      "cas_number": "124-40-3",
+      "specification": "1000 mg/L in Water, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650059-SD-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650069-AA-1ml",
+      "name_en": "2，3，5，6-Tetrachlorophenol",
+      "name_cn": "2，3，5，6-四氯苯酚",
+      "cas_number": "935-95-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650069-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650069-KD-1.2ml",
+      "name_en": "2，3，5，6-Tetrachlorophenol",
+      "name_cn": "2，3，5，6-四氯苯酚",
+      "cas_number": "935-95-5",
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650069-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650070-KD-1ml",
+      "name_en": "2,3,5-Trichlorotoluene",
+      "name_cn": "2,3,5-三氯甲苯",
+      "cas_number": "56961-86-5",
+      "specification": "1000 mg/L in Dichloromethane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650070-KD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650071-AD-1.2ml",
+      "name_en": "Methyl Acrylonitrile",
+      "name_cn": "甲醇中甲基丙烯腈标准溶液",
+      "cas_number": "126-98-7",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650071-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650072-GA-1ml",
+      "name_en": "2，4-Dibromophenol",
+      "name_cn": "2，4-二溴苯酚",
+      "cas_number": "615-58-7",
+      "specification": "100 mg/L in Isopropanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650072-GA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650072-GD-1.2ml",
+      "name_en": "2，4-Dibromophenol",
+      "name_cn": "2，4-二溴苯酚",
+      "cas_number": "615-58-7",
+      "specification": "1000 mg/L in Isopropanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650072-GD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650074-AA-1ml",
+      "name_en": "Isoamyl Alcohol",
+      "name_cn": "异戊醇（3-甲基-1-丁醇）",
+      "cas_number": "123-51-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650074-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650074-LG-2ml",
+      "name_en": "Isoamyl Alcohol",
+      "name_cn": "异戊醇",
+      "cas_number": "123-51-3",
+      "specification": "6000 mg/L in Carbon disulfide, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650074-LG-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650075-AD-1.2ml",
+      "name_en": "2，3，4，6-Tetrachlorophenol",
+      "name_cn": "2，3，4，6-四氯苯酚",
+      "cas_number": "58-90-2",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650075-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650075-GA-1ml",
+      "name_en": "2,3,4,6-Tetrachlorophenol in Isopropanol",
+      "name_cn": "异丙醇中2,3,4,6-四氯苯酚标准溶液",
+      "cas_number": "58-90-2",
+      "specification": "100 mg/L in Isopropanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650075-GA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650078-JD-1ml",
+      "name_en": "Crotonaldehyde",
+      "name_cn": "丁烯醛(巴豆醛)",
+      "cas_number": "123-73-9",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650078-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650093-AD-1.2ml",
+      "name_en": "Perfluorotributylamine",
+      "name_cn": "全氟三丁胺",
+      "cas_number": "311-89-7",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650093-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650100-BA-1.2ml",
+      "name_en": "Ugilec 141",
+      "name_cn": "单甲基四氯二苯基甲烷(Ugilec141)",
+      "cas_number": "111483-93-3",
+      "specification": "100 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650100-BA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650101-AF-1.2ml",
+      "name_en": "Regular Diesel Fuel",
+      "name_cn": "普通柴油",
+      "cas_number": "68334-30-5",
+      "specification": "2500 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650101-AF-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650102-AB-1.2ml",
+      "name_en": "2H，2H，3H，3H-Perfluoroundecanoic acid",
+      "name_cn": "2H，2H，3H，3H-十七氟十一酸",
+      "cas_number": "34598-33-9",
+      "specification": "200 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650102-AB-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650102-XE-1ml",
+      "name_en": "Petroleum Ether in Glycerol triacetate",
+      "name_cn": "三乙酸甘油酯中无铅未风化汽油标准溶液",
+      "cas_number": "8032-32-4",
+      "specification": "2000 mg/L in Triacetin, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650102-XE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650103-AA-1.2ml",
+      "name_en": "Perfluorohexadecanoic acid in methanol",
+      "name_cn": "甲醇中全氟十六酸标准溶液",
+      "cas_number": "67905-19-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650103-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650106-AA-1.2ml",
+      "name_en": "N-Methylperfluorooctanesulfonamide in methanol",
+      "name_cn": "甲醇中N-甲基-全氟辛烷-1-磺酰胺标准溶液",
+      "cas_number": "31506-32-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650106-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650107-AA-1.2ml",
+      "name_en": "N-(2-Hydroxyethyl)-N-methylperfluorooctanesulfonamide in methanol",
+      "name_cn": "甲醇中N-(2-羟乙基)-N-甲基全氟辛基磺酰胺标准溶液",
+      "cas_number": "24448-09-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650107-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650108-AD-1.2ml",
+      "name_en": "3-Chlorophenol in methanol",
+      "name_cn": "甲醇中3-氯苯酚标准溶液",
+      "cas_number": "108-43-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650108-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650112-KD-1.2ml",
+      "name_en": "2,3-Dichlorophenol in dichloromethane",
+      "name_cn": "二氯甲烷中2,3-二氯苯酚标准溶液",
+      "cas_number": "576-24-9",
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650112-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650117-AD-1.2ml",
+      "name_en": "4-n-Octylphenol",
+      "name_cn": "4-正辛基苯酚",
+      "cas_number": "1806-26-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650117-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650118-SF-1.2ml",
+      "name_en": "Dormamide in water",
+      "name_cn": "水中甲酰胺标准溶液",
+      "cas_number": "75-12-7",
+      "specification": "5000 mg/L in Water, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650118-SF-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650125-AD-1.2ml",
+      "name_en": "2-Cyclohexyl-4,6-dinitrophenol in methanol",
+      "name_cn": "甲醇中消螨酚标准溶液",
+      "cas_number": "131-89-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650125-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650125-JD-1.2ml",
+      "name_en": "2-Cyclohexyl-4，6-dinitrophenol",
+      "name_cn": "消螨酚",
+      "cas_number": "131-89-5",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650125-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650129-AD-1.2ml",
+      "name_en": "1，4-Dioxane",
+      "name_cn": "1，4-二恶烷",
+      "cas_number": "123-91-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650129-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650133-JE-1.2ml",
+      "name_en": "Furfural",
+      "name_cn": "糠醛",
+      "cas_number": "98-01-1",
+      "specification": "2000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650133-JE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650161-AA-1.2ml",
+      "name_en": "2-Ethylphenol",
+      "name_cn": "2-乙基苯酚",
+      "cas_number": "90-00-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650161-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650169-KD-1.2ml",
+      "name_en": "2，6-Dimethylphenol",
+      "name_cn": "2，6-二甲基苯酚",
+      "cas_number": "576-26-1",
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650169-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650191-AE-1.2ml",
+      "name_en": "Bromoethane",
+      "name_cn": "一溴乙烷",
+      "cas_number": "74-96-4",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650191-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650196-AN-1.2ml",
+      "name_en": "Cyclohexanol",
+      "name_cn": "环己醇",
+      "cas_number": "108-93-0",
+      "specification": "25000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650196-AN-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650201-AD-1.2ml",
+      "name_en": "4-Dodecylphenol, mixture of isomers",
+      "name_cn": "4-十二烷基酚(异构体混合物)",
+      "cas_number": "27193-86-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650201-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650210-AA-1.2ml",
+      "name_en": "Propionaldehyde",
+      "name_cn": "丙醛",
+      "cas_number": "123-38-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650210-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650213-AD-1.2ml",
+      "name_en": "α，α-Dichlorotoluene in methanol",
+      "name_cn": "甲醇中二氯化苄标准溶液",
+      "cas_number": "98-87-3",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650213-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650213-HA-1.2ml",
+      "name_en": "α，α-Dichlorotoluene",
+      "name_cn": "二氯化苄",
+      "cas_number": "98-87-3",
+      "specification": "100 mg/L in Hexane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650213-HA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650224-AN-10ml",
+      "name_en": "1，3-Butanediol",
+      "name_cn": "1，3-丁二醇（GB 41700-2022电子烟检测技术规程附录D内标）",
+      "cas_number": "107-88-0",
+      "specification": "40000 mg/L in Methanol, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650224-AN-10ml"
+    },
+    {
+      "part_number": "CDAA-S-650256-AD-2ml",
+      "name_en": "2，6-Dimethyl-4-heptanone",
+      "name_cn": "二异丁基甲酮",
+      "cas_number": "108-83-8",
+      "specification": "1000 mg/L in Methanol, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650256-AD-2ml"
+    },
+    {
+      "part_number": "CDAA-S-650271D5-AA-1.2ml",
+      "name_en": "2，4，6-Trichloroanisole-[D5]",
+      "name_cn": "2，4，6-三氯苯甲醚-[D5]",
+      "cas_number": "352439-08-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650271D5-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650276-AA-1.2ml",
+      "name_en": "1H,1H,2H,2H-Perfluorooctane sulfonic acid",
+      "name_cn": "全氟己基乙基磺酸",
+      "cas_number": "27619-97-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650276-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650322-KE-1.2ml",
+      "name_en": "Phenol-[D6]",
+      "name_cn": "苯酚-[D6]",
+      "cas_number": "13127-88-3",
+      "specification": "2000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650322-KE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650323-SA-1.2ml",
+      "name_en": "Trimethylamine hydrochloride in water",
+      "name_cn": "水中三甲胺盐酸盐标准溶液",
+      "cas_number": "593-81-7",
+      "specification": "100 mg/L in Water(as trimethylamine), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650323-SA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650323-SD-1.2ml",
+      "name_en": "Trimethylamine hydrochloride",
+      "name_cn": "三甲胺盐酸盐",
+      "cas_number": "593-81-7",
+      "specification": "1000 mg/L in Water(as non-salt), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650323-SD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650324-ND-1.2ml",
+      "name_en": "Methyl 2-Bromobutyrate",
+      "name_cn": "2-溴丁酸甲酯",
+      "cas_number": "3196-15-4",
+      "specification": "1000 mg/L in Methyl tert-butyl ether, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650324-ND-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650325-AD-1.2ml",
+      "name_en": "Isobutane in methanol",
+      "name_cn": "甲醇中异丁烷标准溶液",
+      "cas_number": "75-28-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650325-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650325-AE-1.2ml",
+      "name_en": "Isobutane",
+      "name_cn": "异丁烷",
+      "cas_number": "75-28-5",
+      "specification": "2000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650325-AE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650330-BD-1.2ml",
+      "name_en": "n-Butyl Mercaptan in toluene",
+      "name_cn": "甲苯中正丁硫醇标准溶液",
+      "cas_number": "109-79-5",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650330-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650331-AE-1ml",
+      "name_en": "Dimethyl Ether",
+      "name_cn": "二甲醚",
+      "cas_number": "115-10-6",
+      "specification": "2000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650331-AE-1ml"
+    },
+    {
+      "part_number": "CDAA-S-650332-AD-1.2ml",
+      "name_en": "1，4-Dioxane[D8]",
+      "name_cn": "1，4-二恶烷[D8]",
+      "cas_number": "17647-74-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650332-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650333-BD-1.2ml",
+      "name_en": "Diethyl sulfide",
+      "name_cn": "乙硫醚",
+      "cas_number": "352-93-2",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650333-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650334-SB-10ml",
+      "name_en": "Crotonaldehyde in water",
+      "name_cn": "水中巴豆醛标准溶液",
+      "cas_number": "123-73-9",
+      "specification": "200 mg/L in Water, 10 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650334-SB-10ml"
+    },
+    {
+      "part_number": "CDAA-S-650335-AA-1.2ml",
+      "name_en": "β-Cyclocitral",
+      "name_cn": "β-环柠檬醛",
+      "cas_number": "432-25-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650335-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650336-AA-1.2ml",
+      "name_en": "2，3，6-Trichloroanisole",
+      "name_cn": "2，3，6-三氯苯甲醚",
+      "cas_number": "50375-10-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650336-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650337-SD-1.2ml",
+      "name_en": "Hydrazine dihydrochloride",
+      "name_cn": "二盐酸肼",
+      "cas_number": "5341-61-7",
+      "specification": "1000 mg/L in Water, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650337-SD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650338-AA-1.2ml",
+      "name_en": "2，3，4-Trichloroanisole",
+      "name_cn": "2，3，4-三氯苯甲醚",
+      "cas_number": "54135-80-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650338-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650339-BD-1.2ml",
+      "name_en": "Methylthioethane",
+      "name_cn": "甲基乙基硫醚",
+      "cas_number": "624-89-5",
+      "specification": "1000 mg/L in Toluene, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650339-BD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650340-DE-1.2ml",
+      "name_en": "Dibenzothiophene as Sulfur",
+      "name_cn": "二苯并噻吩(以硫计)",
+      "cas_number": "132-65-0",
+      "specification": "2000 mg/L in Isooctane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650340-DE-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650340-DM-5ml",
+      "name_en": "Dibenzothiophene",
+      "name_cn": "二苯并噻吩",
+      "cas_number": "132-65-0",
+      "specification": "0.1 mg/L in Isooctane, 5 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650340-DM-5ml"
+    },
+    {
+      "part_number": "CDAA-S-650375C4-AK-1.2ml",
+      "name_en": "Sodium perfluoro-1-[1，2，3，4-13C4]octanesulfonate in methanol",
+      "name_cn": "甲醇中全氟辛烷磺酸钠-13C4(PFOS-13C4)",
+      "cas_number": "960315-53-1",
+      "specification": "50 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650375C4-AK-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650401Cl4-XM-1.2ml",
+      "name_en": "2，3，7，8-Tetrachlorodibenzo-p-dioxin-[37Cl4] in nonane",
+      "name_cn": "壬烷中 2，3，7，8-四氯二苯并对二噁英-[37Cl4]标准溶液",
+      "cas_number": "1746-01-6",
+      "specification": "40ng/mL in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650401Cl4-XM-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650401-XK-1.2ml",
+      "name_en": "2，3，7，8-Tetrachlorodibenzo-p-dioxin in nonane",
+      "name_cn": "壬烷中2，3，7，8-四氯二苯并对二噁英",
+      "cas_number": "1746-01-6",
+      "specification": "50 mg/L in Nonane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650401-XK-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-650552-DA-1.2ml",
+      "name_en": "1，1，1，3，11，13，13，13-Octachlorotridecane in isooctane",
+      "name_cn": "异辛烷中1，1，1，3，11，13，13，13-八氯十三烷标准溶液",
+      "cas_number": "865306-24-7",
+      "specification": "100 mg/L in Isooctane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-650552-DA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740003-XZ-1.2ml",
+      "name_en": "Clazuril",
+      "name_cn": "克拉珠利",
+      "cas_number": "101831-36-1",
+      "specification": "100 mg/L in Methanol(containing DMF), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740003-XZ-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740011-AA-1.2ml",
+      "name_en": "Isoxsuprine hydrochloride",
+      "name_cn": "盐酸苯氧丙酚胺",
+      "cas_number": "579-56-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740011-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740012-AD-1.2ml",
+      "name_en": "Rosiglitazone maleate",
+      "name_cn": "马来酸罗格列酮",
+      "cas_number": "155141-29-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740012-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740021-AA-1.2ml",
+      "name_en": "Acepromazine",
+      "name_cn": "乙酰丙嗪",
+      "cas_number": "61-00-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740021-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740023-AA-1.2ml",
+      "name_en": "Desmethyl carbodenafil in methanol",
+      "name_cn": "甲醇中去甲基卡巴地那非标准溶液",
+      "cas_number": "147676-79-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740023-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740024-AA-1.2ml",
+      "name_en": "N-Acetyl dapsone",
+      "name_cn": "N-乙酰氨苯砜",
+      "cas_number": "565-20-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740024-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740028-JA-1.2ml",
+      "name_en": "Cloprostenol",
+      "name_cn": "氯前列醇",
+      "cas_number": "40665-92-7",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740028-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740047-AD-1ml",
+      "name_en": "Phenolphthalein",
+      "name_cn": "酚酞（SN/T 3866-2014）",
+      "cas_number": "77-09-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740047-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740062-AA-1ml",
+      "name_en": "Atenolol",
+      "name_cn": "阿替洛尔",
+      "cas_number": "29122-68-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740062-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740062-AD-1.2ml",
+      "name_en": "Atenolol",
+      "name_cn": "阿替洛尔",
+      "cas_number": "29122-68-7",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740062-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740078-SD-1ml",
+      "name_en": "水中乌洛托品标准溶液，Hexamethylenetetramine in Water",
+      "name_cn": "分析标准溶液",
+      "cas_number": "100-97-0",
+      "specification": "1000 mg/L in Water, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740078-SD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740081-AA-1ml",
+      "name_en": "Ribavirin",
+      "name_cn": "利巴韦林",
+      "cas_number": "36791-04-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740081-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740081C5-AA-1ml",
+      "name_en": "Ribavirin-13C5",
+      "name_cn": "利巴韦林-13C5",
+      "cas_number": "1646818-35-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740081C5-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740084-AA-1ml",
+      "name_en": "Chlorpheniramine maleate",
+      "name_cn": "马来酸氯苯那敏",
+      "cas_number": "113-92-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740084-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740092-JA-1ml",
+      "name_en": "Aminophenazone",
+      "name_cn": "氨基比林",
+      "cas_number": "58-15-1",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740092-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-740132-JA-1.2ml",
+      "name_en": "Rdx",
+      "name_cn": "黑索今(环三亚甲基三硝胺)",
+      "cas_number": "121-82-4",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740132-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740177D4-XD-1.2ml",
+      "name_en": "Choline-[D4] Chloride",
+      "name_cn": "氯化胆碱-1，1，2，2-[D4]",
+      "cas_number": "285979-70-6",
+      "specification": "1000 mg/L in Acetonitrile:Water(2:8)(as choline-D4), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740177D4-XD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740190-AD-1.2ml",
+      "name_en": "Clozapine",
+      "name_cn": "氯氮平",
+      "cas_number": "5786-21-0",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740190-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740199D4-AA-1.2ml",
+      "name_en": "Baclofen-[D4]",
+      "name_cn": "巴氯芬-[D4]",
+      "cas_number": "1189938-30-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740199D4-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740208-AA-1.2ml",
+      "name_en": "Promethazine in methanol",
+      "name_cn": "甲醇中异丙嗪标准溶液",
+      "cas_number": "60-87-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740208-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740462-XD-1.2ml",
+      "name_en": "γ-Aminobutyric acid",
+      "name_cn": "γ-氨酪酸(γ-氨基丁酸)",
+      "cas_number": "56-12-2",
+      "specification": "1000 mg/L in Methanol:Water(1:1), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740462-XD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740602-AA-1.2ml",
+      "name_en": "Labetalol",
+      "name_cn": "拉贝洛尔",
+      "cas_number": "36894-69-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740602-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740677-AD-1.2ml",
+      "name_en": "Sibutramine hydrochloride",
+      "name_cn": "西布曲明盐酸盐一水合物",
+      "cas_number": "125494-59-9",
+      "specification": "1000 mg/L in Methanol(as sibutramine), 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740677-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740765-AA-1.2ml",
+      "name_en": "Propoxyphenyl descarbondesmethyl carbodenafil",
+      "name_cn": "甲醇中丙氧基去碳卡巴地那非标准溶液",
+      "cas_number": "2711006-62-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740765-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740913-AD-1.2ml",
+      "name_en": "N，N-Didesmethylsibutramine hydrochloride",
+      "name_cn": "盐酸N，N-双去甲基西布曲明",
+      "cas_number": "84484-78-6",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740913-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740915-JA-1.2ml",
+      "name_en": "Orlistat",
+      "name_cn": "奥利司他",
+      "cas_number": "96829-58-2",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740915-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740942-AA-1.2ml",
+      "name_en": "Fluoxetine",
+      "name_cn": "氟西汀",
+      "cas_number": "54910-89-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740942-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740951-JD-1.2ml",
+      "name_en": "Repaglinide",
+      "name_cn": "瑞格列奈",
+      "cas_number": "135062-02-1",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740951-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740952-AD-1.2ml",
+      "name_en": "Glipizide",
+      "name_cn": "格列吡嗪",
+      "cas_number": "29094-61-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740952-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740953-AA-1.2ml",
+      "name_en": "Lovastatin sodium",
+      "name_cn": "洛伐他汀钠",
+      "cas_number": "75225-50-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740953-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740954-AD-1.2ml",
+      "name_en": "Nimodipine",
+      "name_cn": "尼莫地平",
+      "cas_number": "66085-59-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740954-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740968-AD-1.2ml",
+      "name_en": "Nifedipine",
+      "name_cn": "硝苯地平",
+      "cas_number": "21829-25-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740968-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740969-AD-1.2ml",
+      "name_en": "Chlormezanone in methanol",
+      "name_cn": "甲醇中氯镁扎酮标准溶液",
+      "cas_number": "80-77-3",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740969-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740971-AD-1.2ml",
+      "name_en": "Captopril",
+      "name_cn": "卡托普利",
+      "cas_number": "62571-86-2",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740971-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740978D3-AA-1.2ml",
+      "name_en": "4-Hydroxy-3-methoxymandelic acid-[D3]",
+      "name_cn": "4-羟基-3-甲氧基扁桃酸-[D3]",
+      "cas_number": "74495-70-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740978D3-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-740999-AA-1.2ml",
+      "name_en": "Tacalcitol",
+      "name_cn": "塔骨化醇",
+      "cas_number": "57333-96-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-740999-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741041D3-CA-1.2ml",
+      "name_en": "25-Hydroxyvitamin D2 (6，19，19-d3)",
+      "name_cn": "25-羟基维生素D2-[D3]",
+      "cas_number": "1217467-39-4",
+      "specification": "100 mg/L in Ethanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741041D3-CA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741042D3-CA-1.2ml",
+      "name_en": "25-Hydroxyvitamin D3-[6，19，19-D3]",
+      "name_cn": "25-羟基维生素D3-[6，19，19-D3]",
+      "cas_number": "140710-94-7",
+      "specification": "100 mg/L in Ethanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741042D3-CA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741063-AD-1.2ml",
+      "name_en": "Metformin hydrochloride",
+      "name_cn": "二甲双胍盐酸盐",
+      "cas_number": "1115-70-4",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741063-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741075-KD-1.2ml",
+      "name_en": "Trans-2-Hexenal diethyl acetal in Dichloromethane",
+      "name_cn": "二氯甲烷中的反式-2-己烯醛二乙缩醛标准溶液",
+      "cas_number": "67746-30-9",
+      "specification": "1000 mg/L in Dichloromethane, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741075-KD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741083-AA-1.2ml",
+      "name_en": "Ranitidine",
+      "name_cn": "雷尼替丁",
+      "cas_number": "66357-35-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741083-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741095-AA-1.2ml",
+      "name_en": "N-Desmethyl tadalafil in methanol",
+      "name_cn": "甲醇中去甲基他达拉非标准溶液",
+      "cas_number": "171596-36-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741095-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741101-AD-1.2ml",
+      "name_en": "Prazosin",
+      "name_cn": "哌唑嗪",
+      "cas_number": "19216-56-9",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741101-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741112-AA-1.2ml",
+      "name_en": "N-Nitroso-N-methyl-4-aminobutyric acid",
+      "name_cn": "N-亚硝基-N-甲基-4-氨基丁酸",
+      "cas_number": "61445-55-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741112-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741114-AD-1.2ml",
+      "name_en": "Mequindox",
+      "name_cn": "乙酰甲喹",
+      "cas_number": "13297-17-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741114-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741146D6-AA-1.2ml",
+      "name_en": "Z,Z-Dienestrol-[D6]",
+      "name_cn": "Z，Z-己二烯雌酚-[D6]",
+      "cas_number": "91297-99-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741146D6-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741149-AA-1.2ml",
+      "name_en": "3-Methoxytyramine",
+      "name_cn": "3-甲氧基酪胺",
+      "cas_number": "554-52-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741149-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741160-AA-1.2ml",
+      "name_en": "Diphenhydramine",
+      "name_cn": "苯海拉明",
+      "cas_number": "58-73-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741160-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-741173D4-AA-1.2ml",
+      "name_en": "Higenamine-[D4] in methanol",
+      "name_cn": "甲醇中去甲乌药碱-[D4]标准溶液",
+      "cas_number": "2249814-83-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-741173D4-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-749033D9-JL-2ml",
+      "name_en": "Nirmatrelvir-[D9]",
+      "name_cn": "奈玛特韦-[D9]",
+      "cas_number": "2628280-40-8",
+      "specification": "10 mg/L in Acetonitrile, 2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-749033D9-JL-2ml"
+    },
+    {
+      "part_number": "CDAA-S-750212-AA-1.2ml",
+      "name_en": "4-Acetylaminophenazone",
+      "name_cn": "4-乙酰氨基安替比林",
+      "cas_number": "83-15-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-750212-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-750275-AA-1.2ml",
+      "name_en": "Acetil acid",
+      "name_cn": "那非乙酰酸",
+      "cas_number": "147676-78-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-750275-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-750285-JA-1.2ml",
+      "name_en": "1-(2,4-Dichlorophenyl)-2-(1-imidazolyl)ethanol",
+      "name_cn": "1-(2,4-二氯苯基)-2-(1-咪唑基)乙醇",
+      "cas_number": "24155-42-8",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-750285-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760004-AA-1ml",
+      "name_en": "4-Methylimidazol",
+      "name_cn": "4-甲基咪唑",
+      "cas_number": "822-36-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760004-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-760005-HA-1ml",
+      "name_en": "α-2,6-Trichloro-toluene",
+      "name_cn": "α-2,6-三氯甲苯（2,6-二氯氯苄）",
+      "cas_number": "2014-83-7",
+      "specification": "100 mg/L in Cyclohexane, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760005-HA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-760008-AA-1.2ml",
+      "name_en": "4-Methylaminoantipyrine",
+      "name_cn": "4-甲基氨基安替比林",
+      "cas_number": "519-98-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760008-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760038-AA-1.2ml",
+      "name_en": "Diphenylpyraline hydrochloride",
+      "name_cn": "二苯拉林盐酸盐",
+      "cas_number": "132-18-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760038-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760058-AD-1.2ml",
+      "name_en": "Hydrochlorothiazide",
+      "name_cn": "氢氯噻嗪",
+      "cas_number": "58-93-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760058-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760087-AA-1.2ml",
+      "name_en": "Loteprednol etabonate",
+      "name_cn": "氯替泼诺",
+      "cas_number": "82034-46-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760087-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760105-AA-1.2ml",
+      "name_en": "Terazosin",
+      "name_cn": "特拉唑嗪",
+      "cas_number": "63590-64-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760105-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760106-AD-1.2ml",
+      "name_en": "4-Chlorobenzenesulfonic acid",
+      "name_cn": "4-氯苯磺酸",
+      "cas_number": "98-66-8",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760106-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760147-JA-1.2ml",
+      "name_en": "5-Amino-1，3，4-thiadiazole-2-thiol 5-Amino-1，3，4-thiadiazole-2-thiol",
+      "name_cn": "2-氨基-5-巯基-1，3，4-噻二唑",
+      "cas_number": "2349-67-9",
+      "specification": "100 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760147-JA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-760152-XK-20ml",
+      "name_en": "γ-Undecalactone in paraffin liquid",
+      "name_cn": "液体石蜡中γ-十一烷酸内酯（HJ 1262-2022）",
+      "cas_number": "104-67-6",
+      "specification": "10^-4.5(w/w) in Liquid paraffin, 20 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-760152-XK-20ml"
+    },
+    {
+      "part_number": "CDAA-S-770001-AD-1ml",
+      "name_en": "Amphetamine in methanol",
+      "name_cn": "甲醇中外消旋苯丙胺标准溶液",
+      "cas_number": "300-62-9",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770001-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770002-AD-1ml",
+      "name_en": "Methamphetamine",
+      "name_cn": "外消旋甲基苯丙胺",
+      "cas_number": "7632-10-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770002-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770003-AD-1ml",
+      "name_en": "Mda",
+      "name_cn": "3，4-亚甲基双氧苯丙胺(MDA)",
+      "cas_number": "4764-17-4",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770003-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770004-AD-1ml",
+      "name_en": "Mdma",
+      "name_cn": "3，4-亚甲基双氧甲基苯丙胺(MDMA)",
+      "cas_number": "42542-10-9",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770004-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770005-AD-1ml",
+      "name_en": "Ketamine",
+      "name_cn": "氯胺酮盐酸盐",
+      "cas_number": "1867-66-9",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770005-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770006-AD-1ml",
+      "name_en": "Norketamine",
+      "name_cn": "外消旋去甲基氯胺酮",
+      "cas_number": "35211-10-0",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770006-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770007-AD-1ml",
+      "name_en": "Morphine",
+      "name_cn": "吗啡",
+      "cas_number": "57-27-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770007-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770008-AD-1ml",
+      "name_en": "6-Acetylmorphine in methanol",
+      "name_cn": "甲醇中6-乙酰吗啡标准溶液",
+      "cas_number": "2784-73-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770008-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770008-JD-1ml",
+      "name_en": "6-Acetylmorphine",
+      "name_cn": "6-乙酰吗啡",
+      "cas_number": "2784-73-8",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770008-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770009-AD-1ml",
+      "name_en": "Cocaine",
+      "name_cn": "可卡因（碱）",
+      "cas_number": "50-36-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770009-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770009-JD-1ml",
+      "name_en": "Cocaine",
+      "name_cn": "可卡因",
+      "cas_number": "50-36-2",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770009-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770011-AD-1ml",
+      "name_en": "Codeine in methanol",
+      "name_cn": "甲醇中可待因标准溶液",
+      "cas_number": "76-57-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770011-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770011D3-AA-1.2ml",
+      "name_en": "Codeine-D3",
+      "name_cn": "可待因-D3",
+      "cas_number": "70420-71-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770011D3-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770012-AA-1ml",
+      "name_en": "Amphetamine-D5",
+      "name_cn": "苯丙胺-D5",
+      "cas_number": "65538-33-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770012-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770013-AA-1ml",
+      "name_en": "Methamphetamine-D5",
+      "name_cn": "甲基苯丙胺-D5",
+      "cas_number": "60124-88-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770013-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770014-AA-1.2ml",
+      "name_en": "Mda-D5",
+      "name_cn": "(±)-MDA-D5((±)-替苯丙胺-D5)",
+      "cas_number": "136765-42-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770014-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770015-AA-1.2ml",
+      "name_en": "Mdma-D5",
+      "name_cn": "(±)-MDMA-D5",
+      "cas_number": "136765-43-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770015-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770016-AA-1ml",
+      "name_en": "Ketamine-D4",
+      "name_cn": "氯胺酮-D4（游离碱）",
+      "cas_number": "1246911-76-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770016-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770017-AA-1ml",
+      "name_en": "Norketamine-D4",
+      "name_cn": "(-)-去甲基氯胺酮-D4",
+      "cas_number": "1286586-83-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770017-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770018-AA-1ml",
+      "name_en": "Morphine-D3",
+      "name_cn": "吗啡-d3",
+      "cas_number": "67293-88-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770018-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770019-JA-1ml",
+      "name_en": "O6-Acetylmorphine-D6",
+      "name_cn": "O6-单乙酰吗啡-D6",
+      "cas_number": "152477-90-2",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770019-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770020-AA-1ml",
+      "name_en": "Cocaine-D3",
+      "name_cn": "可卡因-D3",
+      "cas_number": "138704-14-0",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770020-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770021-AA-1.2ml",
+      "name_en": "Benzoylecgonine-D8",
+      "name_cn": "苯甲酰爱康宁-D8",
+      "cas_number": "205446-21-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770021-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770022-AD-1ml",
+      "name_en": "Methcathinone",
+      "name_cn": "外消旋甲卡西酮",
+      "cas_number": "5650-44-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770022-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770025-AD-1ml",
+      "name_en": "Cathinone",
+      "name_cn": "卡西酮",
+      "cas_number": "5265-18-9",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770025-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770026-AD-1ml",
+      "name_en": "11-Nor-9-carboxy-delta-9-tetrahydrocannabinol",
+      "name_cn": "(±)-11-去甲-9-羧基-Δ9-四氢大麻酚(外消旋混合物)（△9-四氢大麻酸）",
+      "cas_number": "104874-50-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770026-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770027-AA-1ml",
+      "name_en": "11-Nor-9-carboxy-delta-9-tetrahydrocannabinol-D3",
+      "name_cn": "(±)-11-去甲-9-羧基-Δ9-四氢大麻酚-D3（△9-四氢大麻酸-D3）",
+      "cas_number": "136844-96-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770027-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770028-AD-1ml",
+      "name_en": "(±)-Δ9-Thc",
+      "name_cn": "(-)-Δ9-四氢大麻酚",
+      "cas_number": "1972-08-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770028-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770030-AD-1ml",
+      "name_en": "Gamma-hydroxybutyric acid  sodium salt",
+      "name_cn": "4-羟基丁酸钠",
+      "cas_number": "502-85-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770030-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770031-JA-1ml",
+      "name_en": "6-Acetylmorphine-D3 in acetonitrile",
+      "name_cn": "乙腈中6-乙酰吗啡-[D3]标准溶液",
+      "cas_number": "136765-25-8",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770031-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770035-AD-1ml",
+      "name_en": "Chlordiazepoxide in methanol",
+      "name_cn": "甲醇中氯氮卓标准溶液",
+      "cas_number": "58-25-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770035-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770036-AD-1ml",
+      "name_en": "Midazolam in methanol",
+      "name_cn": "甲醇中咪达唑仑标准溶液",
+      "cas_number": "59467-70-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770036-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770037-AD-1ml",
+      "name_en": "Flurazepam in methanol",
+      "name_cn": "甲醇中氟西泮标准溶液",
+      "cas_number": "17617-23-1",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770037-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770038-JD-1ml",
+      "name_en": "Nitrazepam in acetonitrile",
+      "name_cn": "乙腈中硝西泮标准溶液",
+      "cas_number": "146-22-5",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770038-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770039-AD-1.2ml",
+      "name_en": "oxazepam",
+      "name_cn": "奥沙西泮",
+      "cas_number": "604-75-1",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770039-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770040-AD-1ml",
+      "name_en": "Estazolam in methanol",
+      "name_cn": "甲醇中艾司唑仑标准溶液",
+      "cas_number": "29975-16-4",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770040-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770041-JD-1ml",
+      "name_en": "Lorazepam in acetonitrile",
+      "name_cn": "乙腈中劳拉西泮标准溶液",
+      "cas_number": "846-49-1",
+      "specification": "1000 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770041-JD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770042-AD-1ml",
+      "name_en": "Clonazepam in methanol",
+      "name_cn": "甲醇中氯硝西泮标准溶液",
+      "cas_number": "1622-61-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770042-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770043-AD-1ml",
+      "name_en": "Alprazolam in methanol",
+      "name_cn": "甲醇中阿普唑仑标准溶液",
+      "cas_number": "28981-97-7",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770043-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770044-AD-1ml",
+      "name_en": "Triaolam in methanol",
+      "name_cn": "甲醇中三唑仑标准溶液",
+      "cas_number": "28911-01-5",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770044-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770045-AD-1ml",
+      "name_en": "Nordiazepm in methanol",
+      "name_cn": "甲醇中去甲西泮标准溶液",
+      "cas_number": "1088-11-5",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770045-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770046-AD-1ml",
+      "name_en": "Flunitrazepam in methanol",
+      "name_cn": "甲醇中氟硝西泮标准溶液",
+      "cas_number": "1622-62-4",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770046-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770047-AD-1ml",
+      "name_en": "Temazepam",
+      "name_cn": "替马西泮",
+      "cas_number": "846-50-4",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770047-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770048-AD-1ml",
+      "name_en": "Clobazam in methanol",
+      "name_cn": "甲醇中氯巴占标准溶液",
+      "cas_number": "22316-47-8",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770048-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770049-AD-1ml",
+      "name_en": "lormetazepam",
+      "name_cn": "氯甲西泮",
+      "cas_number": "848-75-9",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770049-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770050-AD-1.2ml",
+      "name_en": "diazepam",
+      "name_cn": "地西泮",
+      "cas_number": "439-14-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770050-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770051-AD-1ml",
+      "name_en": "Diazepam in methanol",
+      "name_cn": "甲醇中普拉西泮标准溶液",
+      "cas_number": "2955-38-6",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770051-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770052-AA-1ml",
+      "name_en": "[D5]-alprazolam in methanol",
+      "name_cn": "甲醇中阿普唑仑-[D5]标准溶液",
+      "cas_number": "125229-61-0",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770052-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770053-AA-1.2ml",
+      "name_en": "D5-oxazepam",
+      "name_cn": "奥沙西泮-D5",
+      "cas_number": "65854-78-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770053-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770054-AA-1.2ml",
+      "name_en": "D5-diazepam",
+      "name_cn": "地西泮-D5",
+      "cas_number": "65854-76-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770054-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770055-AD-1ml",
+      "name_en": "Methadone in methanol",
+      "name_cn": "甲醇中美沙酮标准溶液",
+      "cas_number": "76-99-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770055-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770056-AD-1ml",
+      "name_en": "Methaqualone",
+      "name_cn": "甲喹酮(安眠酮)",
+      "cas_number": "72-44-6",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770056-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770057-AA-1.2ml",
+      "name_en": "Barbital",
+      "name_cn": "巴比妥",
+      "cas_number": "57-44-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770057-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770059-JD-1.2ml",
+      "name_en": "Zopiclone in acetonitrile",
+      "name_cn": "乙腈中佐匹克隆标准溶液",
+      "cas_number": "43200-80-2",
+      "specification": "1000 mg/L in Acetonitrile, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770059-JD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770060-AD-1ml",
+      "name_en": "Zaleplon in methanol",
+      "name_cn": "甲醇中扎来普隆标准溶液",
+      "cas_number": "151319-34-5",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770060-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770061-AD-1ml",
+      "name_en": "Phenobarbital in methanol",
+      "name_cn": "甲醇中苯巴比妥标准溶液",
+      "cas_number": "50-06-6",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770061-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770062-AD-1ml",
+      "name_en": "Amobarbital in methanol",
+      "name_cn": "甲醇中异戊巴比妥标准溶液",
+      "cas_number": "57-43-2",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770062-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770063-AD-1ml",
+      "name_en": "Secobarbital in methanol",
+      "name_cn": "甲醇中司可巴比妥标准溶液",
+      "cas_number": "76-73-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770063-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770064-AA-1.2ml",
+      "name_en": "Phentermine in methanol",
+      "name_cn": "甲醇中芬特明标准溶液",
+      "cas_number": "122-09-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770064-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770064-AC-1.2ml",
+      "name_en": "Phentermine in methanol",
+      "name_cn": "甲醇中芬特明标准溶液",
+      "cas_number": "122-09-8",
+      "specification": "500 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770064-AC-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770073-AD-1ml",
+      "name_en": "Fentanyl in methanol",
+      "name_cn": "甲醇中芬太尼标准溶液",
+      "cas_number": "437-38-7",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770073-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770075-AA-1.2ml",
+      "name_en": "Alfentanil in methanol",
+      "name_cn": "甲醇中阿芬太尼盐酸盐标准溶液",
+      "cas_number": "69049-06-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770075-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770075-AD-1.2ml",
+      "name_en": "Alfentanil in methanol",
+      "name_cn": "甲醇中阿芬太尼盐酸盐标准溶液",
+      "cas_number": "69049-06-5",
+      "specification": "1000 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770075-AD-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770076-AK-1ml",
+      "name_en": "Acetyl fentanyl in methanol",
+      "name_cn": "甲醇中乙酰芬太尼标准溶液",
+      "cas_number": "3258-84-2",
+      "specification": "50 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770076-AK-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770077-AD-1ml",
+      "name_en": "Acetyl norfentanyl in methanol",
+      "name_cn": "甲醇中乙酰去甲芬太尼草酸盐标准溶液",
+      "cas_number": "2320863-97-4",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770077-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770079-AA-1ml",
+      "name_en": "Acryl fentanyl in methanol",
+      "name_cn": "甲醇中丙烯酰芬太尼标准溶液",
+      "cas_number": "82003-75-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770079-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770080-AA-1ml",
+      "name_en": "Butyryl fentanyl in methanol",
+      "name_cn": "甲醇中丁酰芬太尼标准溶液",
+      "cas_number": "1169-70-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770080-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770081-AA-1ml",
+      "name_en": "Isobutyryl fentanyl in methanol",
+      "name_cn": "甲醇中异丁酰芬太尼标准溶液",
+      "cas_number": "119618-70-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770081-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770082-AA-1.2ml",
+      "name_en": "Para-flurorbutyryl fentanyl，PFBF in methanol",
+      "name_cn": "甲醇中4-氟丁酰芬太尼标准溶液",
+      "cas_number": "244195-31-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770082-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770083-AA-1.2ml",
+      "name_en": "4-Fluoro-isobutyryl fentanyl in methanol",
+      "name_cn": "甲醇中4-氟异丁酰芬太尼标准溶液",
+      "cas_number": "244195-32-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770083-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770084-AA-1.2ml",
+      "name_en": "Para fluorofentanyl in methanol",
+      "name_cn": "甲醇中对氟芬太尼盐酸盐标准溶液",
+      "cas_number": "117332-92-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770084-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770085-AA-1ml",
+      "name_en": "Ortho-fluorofentanyl in methanol",
+      "name_cn": "甲醇中邻-氟芬太尼标准溶液",
+      "cas_number": "910616-29-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770085-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770086-AA-1.2ml",
+      "name_en": "α-Methylthiofentanyl hydrochloride in methanol",
+      "name_cn": "甲醇中阿法甲基硫代芬太尼盐酸盐标准溶液",
+      "cas_number": "117332-94-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL;",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770086-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770087-AA-1.2ml",
+      "name_en": "Cis-3-methylfentanyl in methanol",
+      "name_cn": "甲醇中顺-3-甲基芬太尼盐酸盐标准溶液",
+      "cas_number": "78995-18-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770087-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770088-AA-1ml",
+      "name_en": "Furanyl fentanyl in methanol",
+      "name_cn": "甲醇中呋喃芬太尼标准溶液",
+      "cas_number": "101345-66-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770088-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770089-AA-1ml",
+      "name_en": "Ocfentanil in methanol",
+      "name_cn": "甲醇中奥芬太尼标准溶液",
+      "cas_number": "101343-69-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770089-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770090-AA-1.2ml",
+      "name_en": "Sufentanil in methanol",
+      "name_cn": "甲醇中舒芬太尼标准溶液",
+      "cas_number": "56030-54-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770090-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770091-AA-1.2ml",
+      "name_en": "Remifentanil in methanol",
+      "name_cn": "甲醇中瑞芬太尼盐酸盐标准溶液",
+      "cas_number": "132539-07-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770091-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770093-AA-1.2ml",
+      "name_en": "Carfentanil in methanol",
+      "name_cn": "甲醇中卡芬太尼标准溶液",
+      "cas_number": "59708-52-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770093-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770094-AA-1ml",
+      "name_en": "Norcarfentanil in methanol",
+      "name_cn": "甲醇中去甲基卡芬太尼标准溶液",
+      "cas_number": "72996-78-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770094-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770095-AA-1ml",
+      "name_en": "Valeryl fentanyl in methanol",
+      "name_cn": "甲醇中戊酰芬太尼标准溶液",
+      "cas_number": "122882-90-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770095-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770096-AA-1ml",
+      "name_en": "Methyoxyacetyl fentanyl in methanol",
+      "name_cn": "甲醇中甲氧乙酰芬太尼标准溶液",
+      "cas_number": "101345-67-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770096-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770097-AA-1ml",
+      "name_en": "Cyclopropyl fentanyl in methanol",
+      "name_cn": "甲醇中环丙酰芬太尼标准溶液",
+      "cas_number": "2088918-01-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770097-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770098-AA-1.2ml",
+      "name_en": "β -hydroxy-3-methylfentanyl in methanol",
+      "name_cn": "甲醇中倍他羟基-3-甲基芬太尼标准溶液",
+      "cas_number": "78995-14-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770098-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770099-AA-1.2ml",
+      "name_en": "β -hydroxyfentanyl in methanol",
+      "name_cn": "甲醇中倍他羟基芬太尼盐酸盐标准溶液",
+      "cas_number": "1473-95-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770099-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770101-AA-1.2ml",
+      "name_en": "α -methylfentanyl in methanol",
+      "name_cn": "甲醇中阿法甲基芬太尼盐酸盐标准溶液",
+      "cas_number": "1443-44-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770101-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770102-AA-1.2ml",
+      "name_en": "3-methylthiofentanyl in methanol",
+      "name_cn": "甲醇中3-甲基硫代芬太尼盐酸盐标准溶液",
+      "cas_number": "131690-45-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770102-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770103-AA-1.2ml",
+      "name_en": "Thiofentanyl in methanol",
+      "name_cn": "甲醇中硫代芬太尼盐酸盐标准溶液",
+      "cas_number": "79278-88-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770103-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770104-AA-1.2ml",
+      "name_en": "N-Phenyl-N-(1-phenethylpiperidin-4-yl)tetrahydrofuran-2-carboxamide in methanol",
+      "name_cn": "甲醇中四氢呋喃芬太尼盐酸盐半水合物标准溶液",
+      "cas_number": "2142571-01-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770104-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770105-AA-1ml",
+      "name_en": "Fentanyl-[D5] in methanol",
+      "name_cn": "甲醇中芬太尼-[D5]标准溶液",
+      "cas_number": "118357-29-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770105-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770108-AD-1ml",
+      "name_en": "Heroin in methanol",
+      "name_cn": "甲醇中海洛因标准溶液",
+      "cas_number": "561-27-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770108-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770109-AA-1.2ml",
+      "name_en": "2-(2-Fluorophenyl)-2-(methylamino)-cyclohexanone hydrochloride in methanol",
+      "name_cn": "甲醇中氟胺酮盐酸盐标准溶液",
+      "cas_number": "111982-49-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770109-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770110-AD-1ml",
+      "name_en": "JWH-018 5-pentanoic acid metabolite in methanol",
+      "name_cn": "甲醇中JWH-018(合成大麻素)标准溶液",
+      "cas_number": "209414-07-3",
+      "specification": "1000 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770110-AD-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770111-AA-1.2ml",
+      "name_en": "Jwh 073",
+      "name_cn": "1-丁基-3-(1-萘甲酰基)吲哚(JWH-073)",
+      "cas_number": "208987-48-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770111-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770112-AA-1ml",
+      "name_en": "(1-(5-Fluoropentyl)-3-(2-iodobenzoyl) indole) in methanol",
+      "name_cn": "甲醇中[1-(5-氟戊基)-1H-吲哚-3-基](2-碘苯基)甲酮标准溶液",
+      "cas_number": "335161-03-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770112-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770113-AA-1ml",
+      "name_en": "N-(1-Amino-3-methyl-1-oxobutan-2-yl)-1-(5-fluoropentyl)-1H-indole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2-甲基丙基)-1-(5-氟戊基)吲哚-3-甲酰胺",
+      "cas_number": "1801338-26-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770113-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770114-AA-1ml",
+      "name_en": "N-(1-Amino-3-methyl-1-oxobutan-2-yl)-1-(5-fluoropentyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2-甲基丙基)-1-(5-氟戊基)吲唑-3-甲酰胺",
+      "cas_number": "1800101-60-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770114-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770115-AA-1ml",
+      "name_en": "N-(1-Amino-3，3-dimethyl-1-oxobutan-2-yl)-1-(5-fluoropentyl)-1H-indole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2，2-二甲基丙基)-1-(5-氟戊基)吲哚-3-甲酰胺",
+      "cas_number": "1801338-27-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770115-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770116-AA-1ml",
+      "name_en": "1-Methoxy-3-methyl-1-oxobutan-2-yl-1-(5-fluoropentyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-甲氧基羰基-2-甲基丙基)-1-(5-氟戊基)吲唑-3-甲酰胺",
+      "cas_number": "1715016-74-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770116-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770117-AA-1ml",
+      "name_en": "N-(1-Adamantyl)-1-(5-fluoropentyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-金刚烷基)-1-(5-氟戊基)吲唑-3-甲酰胺",
+      "cas_number": "1400742-13-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770117-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770118-AA-1ml",
+      "name_en": "Quinolin-8-yl 1-(5-fluoropentyl)-1H-indole-3-carboxylate",
+      "name_cn": "1-(5-氟戊基)吲哚-3-甲酸-8-喹啉酯",
+      "cas_number": "1400742-41-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770118-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770119-AA-1ml",
+      "name_en": "(1-(5-Fluoropentyl)-1H-indol-3-yl)(2，2，3，3-tetramethylcyclopropyl)methanone",
+      "name_cn": "1-(5-氟戊基)-3-(2，2，3，3-四甲基环丙甲酰基)吲哚",
+      "cas_number": "1364933-54-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770119-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770120-AA-1ml",
+      "name_en": "N-(1-Amino-3-methyl-1-oxobutan-2-yl)-1-(cyclohexylmethyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2-甲基丙基)-1-(环己基甲基)吲唑-3-甲酰胺",
+      "cas_number": "1185887-21-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770120-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770121-AA-1ml",
+      "name_en": "N-(1-Amino-3-methyl-1-oxobutan-2-yl)-1-(4-fluorobenzyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2-甲基丙基)-1-(4-氟苄基)吲唑-3-甲酰胺",
+      "cas_number": "1629062-56-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770121-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770122-AA-1ml",
+      "name_en": "N-(1-Amino-3-methyl-1-oxobutan-2-yl)-1-pe-ntyl-1H-indazole-3-carboxamideN-(1-Amino-3-methyl-1-oxobutan-2-yl)-1-pe-ntyl-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2-甲基丙基)-1-戊基吲唑-3-甲酰胺",
+      "cas_number": "1445583-20-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770122-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770123-AA-1ml",
+      "name_en": "N-(1-Amino-3，3-dimethyl-1-oxobutan-2-yl)-1-pentyl-1H-indole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2，2-二甲基丙基)-1-戊基吲哚-3-甲酰胺",
+      "cas_number": "1445583-48-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770123-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770124-AA-1ml",
+      "name_en": "(1-((1-Methylpiperidin-2-yl)methyl)-1H-indol-3-yl)(naphthalen-1-yl)methanone",
+      "name_cn": "1-[(N-甲基-2-哌啶基)甲基]-3-(1-萘甲酰基)吲哚",
+      "cas_number": "137642-54-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770124-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770125-AA-1ml",
+      "name_en": "(1-((1-Methylpiperidin-2-yl)methyl)-1H-indol-3-yl)(adamantan-1-yl)methanone in methanol",
+      "name_cn": "甲醇中1-[(N-甲基-2-哌啶基)甲基]-3-(1-金刚烷基甲酰基)吲哚标准溶液",
+      "cas_number": "335160-66-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770125-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770126-AA-1ml",
+      "name_en": "N-(1-Adamantyl)-1-pentyl-1H-indole-3-carboxamide",
+      "name_cn": "N-(1-金刚烷基)-1-戊基吲哚-3-甲酰胺",
+      "cas_number": "1345973-50-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770126-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770127-AA-1ml",
+      "name_en": "N-(1-Adamantyl)-1-pentyl-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-金刚烷基)-1-戊基吲唑-3-甲酰胺",
+      "cas_number": "1345973-53-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770127-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770128-AA-1ml",
+      "name_en": "(4-Pentyloxynaphthalen-1-yl)(naphthalen-1-yl)methanone in methanol",
+      "name_cn": "甲醇中1-(1-萘甲酰基)-4-戊氧基萘标准溶液",
+      "cas_number": "432047-72-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770128-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770129-AA-1ml",
+      "name_en": "N-(2-Phenylpropan-2-yl)-1-(tetrahydropyran-4-ylmethyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-甲基-1-苯基乙基)-1-(4-四氢吡喃基甲基)吲唑-3-甲酰胺",
+      "cas_number": "1400742-50-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770129-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770130-AA-1.2ml",
+      "name_en": "(1-(5-Fluoropentyl)-1H-indol-3-yl)(4-ethylnaphthalen-1-yl)methanone",
+      "name_cn": "1-(5-氟戊基)-3-(4-乙基-1-萘甲酰基)吲哚",
+      "cas_number": "1364933-60-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770130-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770131-JA-1ml",
+      "name_en": "(1-(4-Fluorobenzyl)-1H-indol-3-yl)(naphthalen-1-yl)methanone in acetonitrile",
+      "name_cn": "乙腈中1-(4-氟苄基)-3-(1-萘甲酰基)吲哚标准溶液",
+      "cas_number": "2365471-45-8",
+      "specification": "100 mg/L in Acetonitrile, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770131-JA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770132-AA-1ml",
+      "name_en": "Quinolin-8-yl 1-(4-fluorobenzyl)-1H-indole-3-carboxylate",
+      "name_cn": "1-(4-氟苄基)吲哚-3-甲酸-8-喹啉酯",
+      "cas_number": "1800098-36-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770132-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770133-AA-1.2ml",
+      "name_en": "(2-Methyl-1-pentyl-1H-indol-3-yl)(naphthalen-1-yl)methanone in methanol",
+      "name_cn": "甲醇中2-甲基-1-戊基-3-(1-萘甲酰基)吲哚标准溶液",
+      "cas_number": "155471-10-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770133-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770134-AA-1ml",
+      "name_en": "(2-Methyl-1-propyl-1H-indol-3-yl)(naphthalen-1-yl)methanone",
+      "name_cn": "2-甲基-1-丙基-3-(1-萘甲酰基)吲哚",
+      "cas_number": "155471-08-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770134-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770135-AA-1ml",
+      "name_en": "(1-Hexyl-1H-indol-3-yl)(naphthalen-1-yl)methanone",
+      "name_cn": "1-己基-3-(1-萘甲酰基)吲哚",
+      "cas_number": "209414-08-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770135-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770136-AA-1ml",
+      "name_en": "(1-Pentyl-1H-indol-3-yl)(4-methoxynaphthalen-1-yl)methanone",
+      "name_cn": "1-戊基-3-(4-甲氧基-1-萘甲酰基)吲哚",
+      "cas_number": "210179-46-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770136-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770137-AA-1.2ml",
+      "name_en": "(1-Pentyl-1H-indol-3-yl)(4-methylnaphthalen-1-yl)methanone",
+      "name_cn": "1-戊基-3-(4-甲基-1-萘甲酰基)吲哚",
+      "cas_number": "619294-47-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770137-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770138-AA-1.2ml",
+      "name_en": "(5-(2-Methylphenyl)-1-pentyl-1H-pyrrol-3-yl)(naphthalen-1-yl)methanone in methanol",
+      "name_cn": "甲醇中1-戊基-2-(2-甲基苯基)-4-(1-萘甲酰基)吡咯标准溶液",
+      "cas_number": "914458-22-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770138-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770139-AA-1ml",
+      "name_en": "(1-(5-Fluoropentyl)-1H-indol-3-yl)(4-methylnaphthalen-1-yl)methanone",
+      "name_cn": "1-(5-氟戊基)-3-(4-甲基-1-萘甲酰基)吲哚",
+      "cas_number": "1354631-24-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770139-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770140-AA-1ml",
+      "name_en": "N-(1-Methoxy-3，3-dimethyl-1-oxobutan-2-yl)-1- (cyclohexylmethyl)-1H -indole-3-carboxamide",
+      "name_cn": "N-(1-甲氧基羰基-2，2-二甲基丙基)-1-(环己基甲基)吲哚-3-甲酰胺",
+      "cas_number": "1971007-95-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770140-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770141-AA-1ml",
+      "name_en": "N-(1-Methoxy-3，3-dimethyl-1-oxobutan-2-yl)-1-(4-fluorobenzyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-甲氧基羰基-2，2-二甲基丙基)-1-(4-氟苄基)吲唑-3-甲酰胺",
+      "cas_number": "1715016-77-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770141-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770142-AA-1ml",
+      "name_en": "Quinolin-8-yl 1-pentyl-1H-indole-3-carboxylate",
+      "name_cn": "1-戊基吲哚-3-甲酸-8-喹啉酯",
+      "cas_number": "1400742-17-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770142-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770143-AA-1ml",
+      "name_en": "N-(1-Amino-1-oxo-3-phenylpropan-2-yl)-1-(5-fluoropentyl)-1H-indazole-3-carboxamide",
+      "name_cn": "N-(1-氨甲酰基-2-苯基乙基)-1-(5-氟戊基)吲唑-3-甲酰胺",
+      "cas_number": "2205029-76-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770143-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770144-AA-1ml",
+      "name_en": "(1-Pentyl-1H-indol-3-yl)(4-methoxyphenyl)methanone",
+      "name_cn": "1-戊基-3-(4-甲氧基苯甲酰基)吲哚",
+      "cas_number": "1345966-78-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770144-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770145-AA-1ml",
+      "name_en": "N-(1-Adamantyl)-1-(5-fluoropentyl)-1H-indole-3-carboxamide",
+      "name_cn": "N-(1-金刚烷基)-1-(5-氟戊基)吲哚-3-甲酰胺",
+      "cas_number": "1354631-26-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770145-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770146-AA-1ml",
+      "name_en": "(1-Pentyl-1H-indol-3-yl)(2，2，3，3-tetramethylcyclopropyl)methanone",
+      "name_cn": "1-戊基-3-(2，2，3，3-四甲基环丙甲酰基)吲哚",
+      "cas_number": "1199943-44-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770146-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770147-AA-1.2ml",
+      "name_en": "3，4-Dichloro-N-((1-(dimethylamino)cyclohexyl)methyl)benzamide",
+      "name_cn": "3，4-二氯-N-[(1-二甲氨基环己基)甲基]苯甲酰胺",
+      "cas_number": "55154-30-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770147-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770148-AA-1ml",
+      "name_en": "N-(1-Adamantyl)-1-(4-fluorobenzyl)-1H-indazole-3-carboxamide in methanol",
+      "name_cn": "甲醇中1-(4-氟苄基)-N-(1-金刚烷基)吲唑-3-甲酰胺标准溶液",
+      "cas_number": "2180933-90-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770148-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770149-AA-1ml",
+      "name_en": "N-(1-Amino-3，3-dimethyl-1-oxobutan-2-yl)-1-(cyclohexylmethyl)-1H-indazole-3-carboxamide in methanol",
+      "name_cn": "甲醇中N-(1-氨甲酰基-2，2-二甲基丙基)-1-(环己基甲基)吲唑-3-甲酰胺标准溶液",
+      "cas_number": "1863065-92-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770149-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770150-AA-1ml",
+      "name_en": "N-(1-Amino-3，3-dimethyl-1-oxobutan-2-yl)-1-(4-fluorobenzyl)-1H-indazole-3-carboxamide in methanol",
+      "name_cn": "甲醇中N-(1-氨甲酰基-2，2-二甲基丙基)-1-(4-氟苄基)吲唑-3-甲酰胺标准溶液",
+      "cas_number": "1445583-51-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770150-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770151-AA-1.2ml",
+      "name_en": "N-(1-Methoxy-3，3-dimethyl-1-oxobutan-2-yl)-1-(5-fluoropentyl)-1H-indazole-3-carboxamide",
+      "name_cn": "3，3-二甲基-2-[1-(5-氟戊基)吲唑-3-甲酰氨基]丁酸甲酯(5F-ADB)",
+      "cas_number": "1715016-75-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770151-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770152-AA-1.2ml",
+      "name_en": "(1-(5-Fluoropentyl)-1H-benzimidazol-2-yl)(naphthalen-1-yl)methanone in methanol",
+      "name_cn": "甲醇中1-(5-氟戊基)-2-(1-萘甲酰基)苯并咪唑标准溶液",
+      "cas_number": "1984789-90-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770152-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770153-AA-1.2ml",
+      "name_en": "Naphthalen-1-yl 1-(5-fluoropentyl)-1H-indole-3-carboxylate in methanol",
+      "name_cn": "甲醇中1-(5-氟戊基)吲哚-3-甲酸-1-萘酯标准溶液",
+      "cas_number": "2042201-16-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770153-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770155-AA-1mL",
+      "name_en": "Acetyl-alpha-methylfentanyl hydrochloride in methanol",
+      "name_cn": "甲醇中乙酰阿法甲基芬太尼盐酸盐标准溶液",
+      "cas_number": "101860-00-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770155-AA-1mL"
+    },
+    {
+      "part_number": "CDAA-S-770156-AA-1.2ml",
+      "name_en": "Benzylmorphine in methanol",
+      "name_cn": "甲醇中苄吗啡标准溶液",
+      "cas_number": "36418-34-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770156-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770157-AA-1.2ml",
+      "name_en": "Fenethylline in methanol",
+      "name_cn": "甲醇中芬乃他林标准溶液",
+      "cas_number": "3736-08-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770157-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770159-AA-1.2ml",
+      "name_en": "Clonitazene hydrochloride",
+      "name_cn": "氯尼他秦盐酸盐",
+      "cas_number": "2053-24-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770159-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770161-AA-1.2ml",
+      "name_en": "Papaverine",
+      "name_cn": "罂粟碱",
+      "cas_number": "58-74-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770161-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770162-AA-1.2ml",
+      "name_en": "Dihydromorphine hydrate in methanol",
+      "name_cn": "甲醇中双氢吗啡一水合物标准溶液",
+      "cas_number": "65943-40-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770162-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770163-AA-1.2ml",
+      "name_en": "Dimethylthiambutene hydrochloride",
+      "name_cn": "二甲噻丁盐酸盐",
+      "cas_number": "5786-77-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770163-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770165-AA-1.2ml",
+      "name_en": "Diphenoxylate hydrochloride",
+      "name_cn": "地芬诺酯盐酸盐",
+      "cas_number": "3810-80-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770165-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770166-AA-1.2ml",
+      "name_en": "Fentanyl citrate in methanol",
+      "name_cn": "甲醇中芬太尼枸橼酸盐标准溶液",
+      "cas_number": "990-73-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770166-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770169-AA-1.2ml",
+      "name_en": "Hydroxypethidine hydrochloride",
+      "name_cn": "羟哌替啶盐酸盐",
+      "cas_number": "5928-59-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770169-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770170-AA-1.2ml",
+      "name_en": "Levomethorphan",
+      "name_cn": "左美沙芬",
+      "cas_number": "125-70-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770170-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770172-AA-1.2ml",
+      "name_en": "Trans-3-Methylfentanyl hydrochloride in methanol",
+      "name_cn": "甲醇中反-3-甲基芬太尼盐酸盐标准溶液",
+      "cas_number": "78995-09-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770172-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770172-AL-1.2ml",
+      "name_en": "Trans-3-Methylfentanyl hydrochloride",
+      "name_cn": "反-3-甲基芬太尼盐酸盐",
+      "cas_number": "78995-09-2",
+      "specification": "10 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770172-AL-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770173-AA-1.2ml",
+      "name_en": "1-Methyl-4-phenyl-4-piperidinol propionate (ester) hydrochloride",
+      "name_cn": "1-甲基-4-苯基-4-哌啶丙酸酯盐酸盐",
+      "cas_number": "4968-48-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770173-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770175-AA-1.2ml",
+      "name_en": "Pethidine hydrochloride in methanol",
+      "name_cn": "甲醇中哌替啶盐酸盐标准溶液",
+      "cas_number": "50-13-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770175-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770176-AA-1.2ml",
+      "name_en": "Pethidine intermediate A hydrochloride in methanol",
+      "name_cn": "甲醇中哌替啶中间体A盐酸盐标准溶液",
+      "cas_number": "10469-25-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770176-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770178-AA-1.2ml",
+      "name_en": "Pethidine intermediate B hydrochloride in methanol",
+      "name_cn": "甲醇中哌替啶中间体B盐酸盐标准溶液",
+      "cas_number": "24465-45-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770178-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770179-AA-1.2ml",
+      "name_en": "1-Phenethyl-4-phenyl-4-piperidinol acetate (ester) hydrochloride",
+      "name_cn": "1-苯乙基-4-苯基-4-哌啶乙酸酯盐酸盐",
+      "cas_number": "64-52-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770179-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770180-AA-1.2ml",
+      "name_en": "Thebaine",
+      "name_cn": "蒂巴因",
+      "cas_number": "115-37-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770180-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770183-AA-1.2ml",
+      "name_en": "Dihydrocodeine",
+      "name_cn": "双氢可待因",
+      "cas_number": "125-28-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770183-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770184-AA-1.2ml",
+      "name_en": "Ethylmorphine in methanol",
+      "name_cn": "甲醇中乙基吗啡标准溶液",
+      "cas_number": "76-58-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770184-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770185-AA-1.2ml",
+      "name_en": "Nicocodine in methanol",
+      "name_cn": "甲醇中尼可待因标准溶液",
+      "cas_number": "3688-66-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770185-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770186-AA-1.2ml",
+      "name_en": "Norcodeine hydrochloride",
+      "name_cn": "去甲可待因盐酸盐",
+      "cas_number": "14648-14-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770186-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770188-AA-1.2ml",
+      "name_en": "Brolamfetamin hydrochloridee",
+      "name_cn": "布苯丙胺盐酸盐",
+      "cas_number": "29705-96-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770188-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770189-AA-1.2ml",
+      "name_en": "(-)-(S)-Cathinone hydrochloride",
+      "name_cn": "(S)-卡西酮盐酸盐",
+      "cas_number": "72739-14-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770189-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770191-AA-1.2ml",
+      "name_en": "3-[2-(Diethylamino)ethyl]indole",
+      "name_cn": "二乙基色胺",
+      "cas_number": "61-51-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770191-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770192-AA-1.2ml",
+      "name_en": "(±)-2,5-Dimethoxy-alpha -methylphenethylamine hydrochloride",
+      "name_cn": "二甲氧基安非他明盐酸盐",
+      "cas_number": "24973-25-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770192-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770193-AA-1.2ml",
+      "name_en": "3-[2-(Dimethylamino)ethyl]indole hydrochloride",
+      "name_cn": "二甲基色胺盐酸盐",
+      "cas_number": "2826-93-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770193-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770195-AA-1ml",
+      "name_en": "(±)-N-ethyl-alpha-methyl-3，4-(methylenedioxy) phenethylamine hydrochloride",
+      "name_cn": "乙芬胺盐酸盐",
+      "cas_number": "74341-78-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770195-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770196-AA-1.2ml",
+      "name_en": "(±)-N,alpha-dimethyl-3,4-(methylene- dioxy)phenethylamine hydrochloride in methanol",
+      "name_cn": "甲醇中二亚甲基双氧安非他明盐酸盐标准溶液",
+      "cas_number": "64057-70-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770196-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770197-AA-1.2ml",
+      "name_en": "Mescaline hydrochloride",
+      "name_cn": "麦司卡林盐酸盐",
+      "cas_number": "832-92-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770197-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770198-AA-1.2ml",
+      "name_en": "1-(7-Methoxybenzo[d][1,3]dioxol-5-yl)propan-2- amine hydrochloride in methanol",
+      "name_cn": "甲醇中甲羟芬胺盐酸盐标准溶液",
+      "cas_number": "60676-84-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770198-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770199-AA-1.2ml",
+      "name_en": "4-Methylthioamfetamine hydrochloride",
+      "name_cn": "4-甲基硫基安非他明盐酸盐",
+      "cas_number": "94784-92-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770199-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770200-AA-1.2ml",
+      "name_en": "P-methoxy-alpha-methylphenethylamine hydrochloride",
+      "name_cn": "副甲氧基安非他明盐酸盐",
+      "cas_number": "52740-56-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770200-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770201-AA-1.2ml",
+      "name_en": "Psilocine",
+      "name_cn": "赛洛新",
+      "cas_number": "520-53-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770201-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770202-AA-1.2ml",
+      "name_en": "Psilocybine in methanol",
+      "name_cn": "甲醇中赛洛西宾标准溶液",
+      "cas_number": "520-52-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770202-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770203-AA-1.2ml",
+      "name_en": "Rolicyclidine hydrochloride",
+      "name_cn": "咯环利定盐酸盐",
+      "cas_number": "1934-48-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770203-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770205-AA-1.2ml",
+      "name_en": "(±)-3，4，5-Trimethoxy-alpha-methylphenethylamine hydrochloride",
+      "name_cn": "三甲氧基安非他明盐酸盐",
+      "cas_number": "5688-80-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770205-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770207-AA-1.2ml",
+      "name_en": "Dexamfetamine-[D3] hydrochloride in methanol",
+      "name_cn": "甲醇中右苯丙胺盐酸盐-[D3]标准溶液",
+      "cas_number": "1246819-55-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770207-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770208-AA-1.2ml",
+      "name_en": "Mecloqualone",
+      "name_cn": "甲氯喹酮",
+      "cas_number": "340-57-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770208-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770209-AA-1ml",
+      "name_en": "Metamfetamine Racemate hydrochloride in methanol",
+      "name_cn": "甲醇中去氧麻黄碱外消旋体盐酸盐标准溶液",
+      "cas_number": "300-42-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770209-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770210-AA-1.2ml",
+      "name_en": "Phencyclidine hydrochloride in methanol",
+      "name_cn": "甲醇中PCP盐酸盐标准溶液",
+      "cas_number": "956-90-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770210-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770211-AA-1.2ml",
+      "name_en": "Amfepramone hydrochloride in methanol",
+      "name_cn": "甲醇中安非拉酮盐酸盐标准溶液",
+      "cas_number": "134-80-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770211-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770212-AA-1.2ml",
+      "name_en": "Benzylpiperazine dihydrochloride",
+      "name_cn": "苄基哌嗪二盐酸盐",
+      "cas_number": "5321-63-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770212-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770213-AA-1.2ml",
+      "name_en": "2,5-Dimethoxy-4-iodophenethylamine hydrochloride",
+      "name_cn": "2,5-二甲氧基-4-碘苯乙胺盐酸盐",
+      "cas_number": "64584-32-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770213-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770214-AA-1.2ml",
+      "name_en": "Dimethylamfetamine hydrochloride",
+      "name_cn": "二甲基安非他明盐酸盐",
+      "cas_number": "33286-27-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770214-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770215-AA-1.2ml",
+      "name_en": "Etaqualone in methanol",
+      "name_cn": "甲醇中依他喹酮标准溶液",
+      "cas_number": "7432-25-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770215-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770216-AA-1.2ml",
+      "name_en": "1-(5-Fluoropentyl)-3-(1-naphthoyl)indole",
+      "name_cn": "1-(5-氟戊基)-3-(1-萘甲酰基)-1H-吲哚",
+      "cas_number": "335161-24-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770216-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770218-AA-1.2ml",
+      "name_en": "Mazindol in methanol",
+      "name_cn": "甲醇中马吲哚标准溶液",
+      "cas_number": "22232-71-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770218-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770219-AA-1.2ml",
+      "name_en": "2-(2-Methoxyphenyl) -1-(1-pentyl-1H -indol-3- yl)ethanone in methanol",
+      "name_cn": "甲醇中2-(2-甲氧基苯基)-1-(1-戊基-1H-吲哚-3-基)乙酮标准溶液",
+      "cas_number": "864445-43-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770219-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770220-AA-1.2ml",
+      "name_en": "Methylenedioxypyrovalerone hydrochloride",
+      "name_cn": "亚甲基二氧吡咯戊酮盐酸盐",
+      "cas_number": "24622-62-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770220-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770221-AA-1.2ml",
+      "name_en": "4-Methylethcathinone hydrochloride",
+      "name_cn": "4-甲基乙卡西酮盐酸盐",
+      "cas_number": "1266688-86-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770221-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770222-AA-1ml",
+      "name_en": "4-Methylmethcathinone hydrochloride",
+      "name_cn": "4-甲基甲卡西酮盐酸盐",
+      "cas_number": "1189726-22-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770222-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770223-AA-1.2ml",
+      "name_en": "3，4-Methylenedioxy-N-methylcathinone hydrochloride",
+      "name_cn": "3，4-亚甲二氧基甲卡西酮盐酸盐",
+      "cas_number": "186028-80-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770223-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770224-AA-1.2ml",
+      "name_en": "Modafinil in methanol",
+      "name_cn": "甲醇中莫达非尼标准溶液",
+      "cas_number": "68693-11-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770224-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770225-AA-1.2ml",
+      "name_en": "Butalbital in methanol",
+      "name_cn": "甲醇中布他比妥标准溶液",
+      "cas_number": "77-26-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770225-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770227-AA-1.2ml",
+      "name_en": "Pentobarbital in methanol",
+      "name_cn": "甲醇中戊巴比妥标准溶液",
+      "cas_number": "76-74-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770227-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770229-AA-1.2ml",
+      "name_en": "Bromazepam in methanol",
+      "name_cn": "甲醇中溴西泮标准溶液",
+      "cas_number": "1812-30-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770229-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770230-AA-1.2ml",
+      "name_en": "Brotizolam in methanol",
+      "name_cn": "甲醇中溴替唑仑标准溶液",
+      "cas_number": "57801-81-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770230-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770231-AA-1.2ml",
+      "name_en": "Butobarbital in methanol",
+      "name_cn": "甲醇中丁巴比妥标准溶液",
+      "cas_number": "77-28-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770231-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770232-AA-1.2ml",
+      "name_en": "Camazepam",
+      "name_cn": "卡马西泮",
+      "cas_number": "36104-80-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770232-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770233-AA-1.2ml",
+      "name_en": "Cloxazolam",
+      "name_cn": "氯噁唑仑",
+      "cas_number": "24166-13-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770233-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770234-AA-1.2ml",
+      "name_en": "Delorazepam in methanol",
+      "name_cn": "甲醇中地洛西泮标准溶液",
+      "cas_number": "2894-67-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770234-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770235-AA-1.2ml",
+      "name_en": "Ethyl loflazepate in methanol",
+      "name_cn": "甲醇中氯氟卓乙酯标准溶液",
+      "cas_number": "29177-84-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770235-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770236-AA-1.2ml",
+      "name_en": "Fludiazepam hydrochloride in methanol",
+      "name_cn": "甲醇中氟地西泮盐酸盐标准溶液",
+      "cas_number": "3900-31-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770236-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770237-AA-1.2ml",
+      "name_en": "Haloxazolam",
+      "name_cn": "卤沙唑仑",
+      "cas_number": "59128-97-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770237-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770238-AA-1.2ml",
+      "name_en": "Methyl phenobarbital in methanol",
+      "name_cn": "甲醇中甲苯巴比妥标准溶液",
+      "cas_number": "115-38-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770238-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770239-AA-1.2ml",
+      "name_en": "Nimetazepam in methanol",
+      "name_cn": "甲醇中尼美西泮标准溶液",
+      "cas_number": "2011-67-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770239-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770240-AA-1ml",
+      "name_en": "Nordazepam-[D5] in methanol",
+      "name_cn": "甲醇中去甲西泮-[D5]标准溶液",
+      "cas_number": "65891-80-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770240-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770241-AA-1.2ml",
+      "name_en": "Pemoline",
+      "name_cn": "匹莫林",
+      "cas_number": "2152-34-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770241-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770242-AA-1.2ml",
+      "name_en": "Pinazepam",
+      "name_cn": "匹那西泮",
+      "cas_number": "52463-83-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770242-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770243-AA-1.2ml",
+      "name_en": "Pyrovalerone hydrochloride",
+      "name_cn": "吡咯戊酮盐酸盐",
+      "cas_number": "1147-62-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770243-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770245-AA-1ml",
+      "name_en": "Temazepam-[D5] in methanol",
+      "name_cn": "甲醇中替马西泮-[D5]标准溶液",
+      "cas_number": "136765-51-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770245-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770247-AA-1.2ml",
+      "name_en": "Zolpidem in methanol",
+      "name_cn": "甲醇中唑吡坦标准溶液",
+      "cas_number": "82626-48-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770247-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770248-AA-1.2ml",
+      "name_en": "Allobarbital in methanol",
+      "name_cn": "甲醇中阿洛巴比妥标准溶液",
+      "cas_number": "52-43-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770248-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770249-AA-1.2ml",
+      "name_en": "Caffeine-[D3] in methanol",
+      "name_cn": "甲醇中咖啡因-[D3]标准溶液",
+      "cas_number": "26351-04-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770249-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770249C3-AA-1.2ml",
+      "name_en": "Caffeine-[13C3] in methanol",
+      "name_cn": "甲醇中咖啡因-[13C3]标准溶液",
+      "cas_number": "78072-66-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770249C3-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770250-AA-1.2ml",
+      "name_en": "Nalbuphine hydrochloride hydrate in methanol",
+      "name_cn": "甲醇中纳布啡一水合物盐酸盐标准溶液",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770250-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770251-AA-1.2ml",
+      "name_en": "2-(4-Bromo-2,5-dimethoxyphenyl)-N-(2- methoxybenzyl)ethanamine hydrochloride in methanol",
+      "name_cn": "甲醇中N-(2-甲氧基苄基)-2-(2,5-二甲氧基-4-溴苯基)乙胺盐酸盐标准溶液",
+      "cas_number": "1539266-15-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770251-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770252-AA-1.2ml",
+      "name_en": "4-Chloro-2,5-dimethoxyphenethylamine hydrochloride",
+      "name_cn": "2,5-二甲氧基-4-氯苯乙胺盐酸盐",
+      "cas_number": "88441-15-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770252-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770253-AA-1.2ml",
+      "name_en": "2-(4-Chloro-2,5-dimethoxyphenyl)-N-(2- methoxybenzyl)ethanamine hydrochloride",
+      "name_cn": "N-(2-甲氧基苄基)-2-(2,5-二甲氧基-4-氯苯基)乙胺盐酸盐",
+      "cas_number": "1539266-19-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770253-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770254-AA-1.2ml",
+      "name_en": "4-Methyl-2,5-dimethoxyphenethylamine hydrochloride",
+      "name_cn": "2,5-二甲氧基-4-甲基苯乙胺盐酸盐",
+      "cas_number": "24333-19-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770254-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770255-AA-1.2ml",
+      "name_en": "2-(4-Methyl-2,5-dimethoxyphenyl)-N-(2- methoxybenzyl)ethanamine hydrochloride",
+      "name_cn": "N-(2-甲氧基苄基)-2-(2,5-二甲氧基-4-甲基苯基)乙胺盐酸盐",
+      "cas_number": "1354632-02-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770255-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770256-AA-1.2ml",
+      "name_en": "4-Ethyl-2,5-dimethoxyphenethylamine hydrochloride",
+      "name_cn": "2,5-二甲氧基-4-乙基苯乙胺盐酸盐",
+      "cas_number": "923013-67-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770256-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770257-AA-1.2ml",
+      "name_en": "2-(4-Iodo-2，5-dimethoxyphenyl)-N-(2- methoxybenzyl)ethanamine hydrochloride",
+      "name_cn": "N-(2-甲氧基苄基)-2-(2，5-二甲氧基-4-碘苯基)乙胺盐酸盐",
+      "cas_number": "1043868-97-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770257-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770258-AA-1.2ml",
+      "name_en": "4-Propyl-2,5-dimethoxyphenethylamine hydrochloride",
+      "name_cn": "2,5-二甲氧基-4-丙基苯乙胺盐酸盐",
+      "cas_number": "1359704-27-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770258-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770259-AA-1.2ml",
+      "name_en": "4-Ethylthio-2,5-dimethoxyphenethylamine hydrochloride in methanol",
+      "name_cn": "甲醇中2,5-二甲氧基-4-乙硫基苯乙胺盐酸盐标准溶液",
+      "cas_number": "681160-71-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770259-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770260-AA-1.2ml",
+      "name_en": "4-Propylthio-2,5-dimethox-phenethylamine hydrochloride in methanol",
+      "name_cn": "甲醇中2,5-二甲氧基-4-丙硫基苯乙胺盐酸盐标准溶液",
+      "cas_number": "850140-15-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770260-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770261-AA-1ml",
+      "name_en": "2-FA",
+      "name_cn": "2-氟苯丙胺",
+      "cas_number": "1716-60-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770261-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770262-AA-1.2ml",
+      "name_en": "N-Methyl-1-(2-fluorophenyl) propan-2-amine hydrochloride in methanol",
+      "name_cn": "甲醇中2-氟甲基苯丙胺盐酸盐标准溶液",
+      "cas_number": "1780004-19-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770262-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770263-AA-1.2ml",
+      "name_en": "N-methyl-1-(benzofuran-2-yl)propan-2-amine hydrochloride",
+      "name_cn": "1-(2-苯并呋喃基)-N-甲基-2-丙胺盐酸盐",
+      "cas_number": "100389-74-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770263-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770264-AA-1.2ml",
+      "name_en": "1-(3-Fluorophenyl)propan-2-amine hydrochloride",
+      "name_cn": "3-氟苯丙胺盐酸盐",
+      "cas_number": "1716-59-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770264-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770265-AA-1.2ml",
+      "name_en": "N-Methyl-1-(3-fluorophenyl)propan-2-amine hydrochloride",
+      "name_cn": "3-氟甲基苯丙胺盐酸盐",
+      "cas_number": "1324717-74-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770265-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770266-AA-1ml",
+      "name_en": "4-CA",
+      "name_cn": "4-氯苯丙胺",
+      "cas_number": "64-12-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770266-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770267-AA-1ml",
+      "name_en": "4-FA",
+      "name_cn": "4-氟苯丙胺",
+      "cas_number": "459-02-9",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770267-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770268-AA-1.2ml",
+      "name_en": "N-Methyl-1-(4-fluorophenyl)propan-2-amine hydrochloride",
+      "name_cn": "4-氟甲基苯丙胺盐酸盐",
+      "cas_number": "52063-62-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770268-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770269-AA-1.2ml",
+      "name_en": "1-(2,3-Dihydro-1-benzofuran-5-yl) propan-2-amine hydrochloride",
+      "name_cn": "1-[5-(2,3-二氢苯并呋喃基)]-2-丙胺盐酸盐",
+      "cas_number": "152623-94-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770269-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770270-AA-1.2ml",
+      "name_en": "N-methyl-1-(benzofuran-5-yl)propan-2-amine hydrochloride",
+      "name_cn": "1-(5-苯并呋喃基)-N-甲基-2-丙胺盐酸盐",
+      "cas_number": "1823925-53-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770270-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770271-AA-1.2ml",
+      "name_en": "N-methyl-(6-bromo-3,4- methylenedioxyphenyl)propan-2-amine hydrochloride",
+      "name_cn": "6-溴-3,4-亚甲二氧基甲基苯丙胺盐酸盐",
+      "cas_number": "2170110-34-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770271-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770272-AA-1ml",
+      "name_en": "A-796,260 in methanol",
+      "name_cn": "甲醇中1-[2-(N-吗啉基)乙基]-3-(2,2,3,3-四甲基环丙甲酰基)吲哚标准溶液",
+      "cas_number": "895155-26-7",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770272-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770273-AA-1ml",
+      "name_en": "A-834，735",
+      "name_cn": "1-(4-四氢吡喃基甲基)-3-(2，2，3，3-四甲基环丙甲酰基)吲哚",
+      "cas_number": "895155-57-4",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770273-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770274-AA-1ml",
+      "name_en": "Adb-Pinaca",
+      "name_cn": "N-(1-氨甲酰基-2，2-二甲基丙基)-1-戊基吲唑-3-甲酰胺",
+      "cas_number": "1633766-73-0",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770274-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770275-AA-1ml",
+      "name_en": "AM-2233 in methanol",
+      "name_cn": "甲醇中1-[(N-甲基-2-哌啶基)甲基]-3-(2-碘苯甲酰基)吲哚标准溶液",
+      "cas_number": "444912-75-8",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770275-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770276-AA-1ml",
+      "name_en": "JWH-203 in methanol",
+      "name_cn": "甲醇中1-戊基-3-(2-氯苯乙酰基)吲哚标准溶液",
+      "cas_number": "864445-54-5",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770276-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770277-AA-1ml",
+      "name_en": "Jwh-210",
+      "name_cn": "1-戊基-3-(4-乙基-1-萘甲酰基)吲哚",
+      "cas_number": "824959-81-1",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770277-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770278-AA-1.2ml",
+      "name_en": "N-(1-methoxy-3,3-dimethyl-1-oxobutan-2-yl)-1- (cyclohexymethyl)-1H -indazole-3-carboxamide in methanol",
+      "name_cn": "甲醇中N-(1-甲氧基羰基-2,2-二甲基丙基)-1-(环己基甲基)吲唑-3-甲酰胺标准溶液",
+      "cas_number": "1715016-78-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770278-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770279-AA-1.2ml",
+      "name_en": "1-(2-Fluorophenyl)-2-methylaminopropan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中2-氟甲卡西酮盐酸盐标准溶液",
+      "cas_number": "1346599-37-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770279-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770280-AA-1.2ml",
+      "name_en": "1-(2-Methylphenyl)-2-methylaminopropan-1-one hydrochloride",
+      "name_cn": "2-甲基甲卡西酮盐酸盐",
+      "cas_number": "1246815-51-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770280-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770281-AA-1.2ml",
+      "name_en": "1-(3,4-Dimethylphenyl)-2-methylaminopropan-1- one hydrochloride",
+      "name_cn": "3,4-二甲基甲卡西酮盐酸盐",
+      "cas_number": "1081772-06-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770281-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770282-AA-1.2ml",
+      "name_en": "1-(3-Chlorophenyl)-2-methylaminopropan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中3-氯甲卡西酮盐酸盐标准溶液",
+      "cas_number": "1607439-32-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770282-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770283-AA-1.2ml",
+      "name_en": "1-(3-Methoxyphenyl)-2-methylaminopropan-1-one hydrochloride",
+      "name_cn": "3-甲氧基甲卡西酮盐酸盐",
+      "cas_number": "1435933-70-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770283-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770284-AA-1.2ml",
+      "name_en": "1-(3-Methylphenyl)-2-methylaminopropan-1-one hydrochloride",
+      "name_cn": "3-甲基甲卡西酮盐酸盐",
+      "cas_number": "1246816-62-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770284-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770285-AA-1.2ml",
+      "name_en": "1-(4-Bromophenyl)-2-methylaminopropan-1-one hydrochloride",
+      "name_cn": "4-溴甲卡西酮盐酸盐",
+      "cas_number": "135333-27-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770285-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770286-AA-1.2ml",
+      "name_en": "1-(4-Chlorophenyl)-2-methylaminopropan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中4-氯甲卡西酮盐酸盐标准溶液",
+      "cas_number": "1225843-86-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770286-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770287-AA-1.2ml",
+      "name_en": "1-(4-Fluorophenyl)-2-methylaminopropan-1-one hydrochloride",
+      "name_cn": "4-氟甲卡西酮盐酸盐",
+      "cas_number": "7589-35-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770287-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770288-AA-1.2ml",
+      "name_en": "1-(4-Fluorophenyl)-2-(1-pyrrolidinyl)pentan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-氟苯基)-2-(N-吡咯烷基)-1-酮盐酸盐标准溶液",
+      "cas_number": "850352-31-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770288-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770289-AA-1.2ml",
+      "name_en": "1-(4-Methylphenyl)-2-methylaminobutan-1-one hydrochloride",
+      "name_cn": "1-(4-甲基苯基)-2-甲氨基-1-丁酮盐酸盐",
+      "cas_number": "1336911-98-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770289-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770290-AA-1.2ml",
+      "name_en": "1-(4-Methoxyphenyl)-2-(1-pyrrolidinyl)pentan-1- one hydrochloride",
+      "name_cn": "1-(4-甲氧基苯基)-2-(N-吡咯烷基)-1-戊酮盐酸盐",
+      "cas_number": "5537-19-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770290-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770291-AA-1.2ml",
+      "name_en": "1-Phenyl-2-methylaminobutan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-甲氨基-1-丁酮盐酸盐",
+      "cas_number": "166593-10-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770291-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770292-AA-1.2ml",
+      "name_en": "1-(3，4-Methylenedioxyphenyl)-2- methylaminobutan-1-one hydrochloride",
+      "name_cn": "2-甲氨基-1-[3，4-(亚甲二氧基)苯基]-1-丁酮盐酸盐",
+      "cas_number": "17762-90-2",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770292-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770293-AA-1.2ml",
+      "name_en": "1-(3,4-Methylenedioxyphenyl)-2- dimethylaminopropan-1-one hydrochloride",
+      "name_cn": "2-二甲氨基-1-[3,4-(亚甲二氧基)苯基]-1-丙酮盐酸盐",
+      "cas_number": "109367-07-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770293-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770294-AA-1.2ml",
+      "name_en": "1-Phenyl-2-ethylaminopropan-1-one hydrochloride",
+      "name_cn": "乙卡西酮盐酸盐",
+      "cas_number": "51553-17-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770294-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770295-AA-1.2ml",
+      "name_en": "1-(3,4-Methylenedioxyphenyl)-2- ethylaminopropan-1-one hydrochloride",
+      "name_cn": "3,4-亚甲二氧基乙卡西酮盐酸盐",
+      "cas_number": "1454266-19-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770295-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770296-AA-1.2ml",
+      "name_en": "1-(3,4-Methylenedioxyphenyl)-2-(1- pyrrolidinyl)butan-1-one hydrochloride",
+      "name_cn": "1-[3,4-(亚甲二氧基)苯基]-2-(N-吡咯烷基)-1-丁酮盐酸盐",
+      "cas_number": "24622-60-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770296-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770297-AA-1.2ml",
+      "name_en": "1-(3,4-Methylenedioxyphenyl)-2-(1- pyrrolidinyl)propan-1-one hydrochloride",
+      "name_cn": "1-[3,4-(亚甲二氧基)苯基]-2-(N-吡咯烷基)-1-丙酮盐酸盐",
+      "cas_number": "24698-57-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770297-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770298-AA-1.2ml",
+      "name_en": "1-(4-Methoxyphenyl)-2-methylaminopropan-1-one hydrochloride",
+      "name_cn": "4-甲氧基甲卡西酮盐酸盐",
+      "cas_number": "879665-92-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770298-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770299-AA-1.2ml",
+      "name_en": "1-Phenyl-2-ethylaminobutan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-乙氨基-1-丁酮盐酸盐",
+      "cas_number": "1354631-28-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770299-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770300-AA-1.2ml",
+      "name_en": "1-Phenyl-2-methylaminopentan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-甲氨基-1-戊酮盐酸盐",
+      "cas_number": "879669-95-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770300-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770301-AA-1.2ml",
+      "name_en": "1-Phenyl-2-(1-pyrrolidinyl)butan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-(N-吡咯烷基)-1-丁酮盐酸盐",
+      "cas_number": "13415-54-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770301-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770302-AA-1.2ml",
+      "name_en": "1-Phenyl-2-(1-pyrrolidinyl)hexan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-苯基-2-(N-吡咯烷基)-1-己酮盐酸盐标准溶液",
+      "cas_number": "13415-59-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770302-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770303-AA-1.2ml",
+      "name_en": "1-Phenyl-2-(1-pyrrolidinyl)heptan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-(N-吡咯烷基)-1-庚酮盐酸盐",
+      "cas_number": "13415-55-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770303-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770304-AA-1.2ml",
+      "name_en": "1-Phenyl-2-(1-pyrrolidinyl)pentan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-(N-吡咯烷基)-1-戊酮盐酸盐",
+      "cas_number": "5485-65-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770304-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770305-AA-1.2ml",
+      "name_en": "1-(Thiophen-2-yl)-2-(1-pyrrolidinyl)pentan-1-one hydrochloride",
+      "name_cn": "1-(2-噻吩基)-2-(N-吡咯烷基)-1-戊酮盐酸盐",
+      "cas_number": "1400742-66-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770305-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770306-AA-1.2ml",
+      "name_en": "2-(3-Methoxyphenyl)-2-(ethylamino) cyclohexanone hydrochloride",
+      "name_cn": "2-(3-甲氧基苯基)-2-乙氨基环己酮盐酸盐",
+      "cas_number": "1239908-48-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770306-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770307-AA-1.2ml",
+      "name_en": "Methoxetamine-D3 hydrochloride in methanol",
+      "name_cn": "甲醇中2-(3-甲氧基苯基)-2-(乙基氨基)环己酮盐酸盐-[D3]标准溶液",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770307-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770308-AA-1.2ml",
+      "name_en": "2-(2-Chlorophenyl)-2-(ethylamino) cyclohexanone hydrochloride",
+      "name_cn": "乙基去甲氯胺酮盐酸盐",
+      "cas_number": "1354634-10-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770308-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770309-AA-1.2ml",
+      "name_en": "5-Methoxy-N,N-diallyltryptamine",
+      "name_cn": "N,N-二烯丙基-5-甲氧基色胺",
+      "cas_number": "928822-98-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770309-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770310-AA-1ml",
+      "name_en": "5-Methoxy-N,N-diisopropyltryptamine hydrochloride in methanol",
+      "name_cn": "甲醇中N,N-二异丙基-5-甲氧基色胺盐酸标准溶液",
+      "cas_number": "2426-63-3",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770310-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770311-AA-1.2ml",
+      "name_en": "5-Methoxy-N,N-dimethyltryptamine",
+      "name_cn": "N,N-二甲基-5-甲氧基色胺",
+      "cas_number": "1019-45-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770311-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770312-AA-1.2ml",
+      "name_en": "5-Methoxy-N-isopropyl-N-methyltryptamine in methanol",
+      "name_cn": "甲醇中N-甲基-N-异丙基-5-甲氧基色胺标准溶液",
+      "cas_number": "96096-55-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770312-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770313-AA-1.2ml",
+      "name_en": "alpha-Methyltryptamine hydrochloride",
+      "name_cn": "α-甲基色胺盐酸盐",
+      "cas_number": "879-36-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770313-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770314-AA-1.2ml",
+      "name_en": "1,4-Dibenzylpiperazine",
+      "name_cn": "1,4-二苄基哌嗪",
+      "cas_number": "1034-11-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770314-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770315-AA-1.2ml",
+      "name_en": "1-(3-Chlorophenyl)piperazine hydrochloride in methanol",
+      "name_cn": "甲醇中1-(3-氯苯基)哌嗪盐酸盐标准溶液",
+      "cas_number": "13078-15-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770315-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770316-AA-1.2ml",
+      "name_en": "1-(3-Trifluoromethylphenyl)piperazine dihydrochloride",
+      "name_cn": "1-(3-三氟甲基苯基)哌嗪二盐酸盐",
+      "cas_number": "76835-14-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770316-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770317-AA-1.2ml",
+      "name_en": "2-Aminoindane hydrochloride",
+      "name_cn": "2-氨基茚满盐酸盐",
+      "cas_number": "2338-18-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770317-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770318-AA-1.2ml",
+      "name_en": "5,6-Methylenedioxy-2-aminoindane hydrochloride",
+      "name_cn": "5,6-亚甲二氧基-2-氨基茚满盐酸盐",
+      "cas_number": "124399-89-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770318-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770319-AA-1ml",
+      "name_en": "Phenazepam",
+      "name_cn": "芬纳西泮",
+      "cas_number": "51753-57-2",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770319-AA-1ml"
+    },
+    {
+      "part_number": "CDAA-S-770320-AA-1mL",
+      "name_en": "N-(1-(2-hydroxy-2-(thiophen-2-yl)ethyl)piperidin- 4-yl)-N-phenylpropanamide hydrochloride in methanol",
+      "name_cn": "甲醇中β-羟基硫代芬太尼盐酸盐标准溶液",
+      "cas_number": "1474-34-6",
+      "specification": "100 mg/L in Methanol, 1 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770320-AA-1mL"
+    },
+    {
+      "part_number": "CDAA-S-770331-AA-1.2ml",
+      "name_en": "1-(4-Chlorophenyl)-2-(ethylamino)propan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中4-氯乙卡西酮盐酸盐标准溶液",
+      "cas_number": "22198-75-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770331-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770332-AA-1.2ml",
+      "name_en": "1-(4-Chlorophenyl)-2-(1-pyrrolidinyl)pentan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-氯苯基)-2-(N-吡咯烷基)-1-戊酮盐酸盐标准溶液",
+      "cas_number": "5537-17-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770332-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770333-AA-1.2ml",
+      "name_en": "1-(3,4-Methylenedioxyphenyl)-2- (dimethylamino)butan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-[3,4-(亚甲二氧基)苯基]-2-二甲氨基-1-丁酮盐酸盐标准溶液",
+      "cas_number": "17763-12-1",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770333-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770334-AA-1.2ml",
+      "name_en": "1-(3，4-Methylenedioxyphenyl)-2- (methylamino)pentan-1-one hydrochloride",
+      "name_cn": "1-[3，4-(亚甲二氧基)苯基]-2-甲氨基-1-戊酮盐酸盐",
+      "cas_number": "17763-01-8",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770334-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770335-AA-1.2ml",
+      "name_en": "2-(Ethylamino)-1-phenylhexan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-苯基-2-乙氨基-1-己酮盐酸盐标准溶液",
+      "cas_number": "18410-62-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770335-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770336-AA-1.2ml",
+      "name_en": "1-(4-Methylphenyl)-2-(1-pyrrolidinyl)hexan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-甲基苯基)-2-(N-吡咯烷基)-1-己酮盐酸盐标准溶液",
+      "cas_number": "1391052-36-0",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770336-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770337-AA-1.2ml",
+      "name_en": "l-(4-Chloropheny1)-2-(1-pyrrolidinyl)propan-l-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-氯苯基)-2-(N-吡咯烷基)-1-丙酮盐酸盐标准溶液",
+      "cas_number": "93307-24-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770337-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770338-AA-1.2ml",
+      "name_en": "1-(5,6,7,8-Tetrahydronaphthalen-2-yl)-2-(1- pyrrolidinyl)pentan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-[2-(5,6,7,8-四氢萘基)]-2-(N-吡咯烷基)-1-戊酮盐酸盐标准溶液",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770338-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770339-AA-1.2ml",
+      "name_en": "1-(4-Fluorophenyl)-2-(1-pyrrolidinyl)hexan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-氟苯基)-2-(N-吡咯烷基)-1-己酮盐酸盐标准溶液",
+      "cas_number": "2230706-09-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770339-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770340-AA-1.2ml",
+      "name_en": "l-(4-Ethylphenyl)-2-(methylamino)propan-1-one hydrochloride",
+      "name_cn": "4-乙基甲卡西酮盐酸盐",
+      "cas_number": "1391053-87-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770340-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770341-AA-1.2ml",
+      "name_en": "1-(4-Methylphenyl)-2-(ethylamino)pentan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-甲基苯基)-2-乙氨基-1-戊酮盐酸盐标准溶液",
+      "cas_number": "18297-05-7",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770341-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770342-AA-1.2ml",
+      "name_en": "1-(3,4-Methylenedioxyphenyl)-2-(1- pyrrolidinyl)hexan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-[3,4-(亚甲二氧基)苯基]-2-(N-吡咯烷基)-1-己酮盐酸盐标准溶液",
+      "cas_number": "24622-61-5",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770342-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770343-AA-1.2ml",
+      "name_en": "1-(4-Methylphenyl)-2- (methylamino)pentan-l-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-甲基苯基)-2-甲氨基-1-戊酮盐酸盐标准溶液",
+      "cas_number": "1373918-61-6",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770343-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770344-AA-1.2ml",
+      "name_en": "l-(4-Methylphenyl)-2- (dimethylamino)propan-l- one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-甲基苯基)-2-二甲氨基-1-丙酮盐酸盐标准溶液",
+      "cas_number": "1448845-14-4",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770344-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770345-AA-1.2ml",
+      "name_en": "1-(3,4-methylenedioxyphenyl)-2- (propylamino)propan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中3,4-亚甲二氧基丙卡西酮盐酸盐标准溶液",
+      "cas_number": "201474-93-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770345-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770346-AA-1.2ml",
+      "name_en": "l-(4-Chlorophenyl)-2-(ethylamino)pentan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-氯苯基)-2-乙氨基-1-戊酮盐酸盐标准溶液",
+      "cas_number": null,
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770346-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770347-AA-1.2ml",
+      "name_en": "1-Phenyl-2-(1-pyrrolidinyl)propan-1-one hydrochloride",
+      "name_cn": "1-苯基-2-(N-吡咯烷基)-1-丙酮盐酸盐",
+      "cas_number": "92040-10-3",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770347-AA-1.2ml"
+    },
+    {
+      "part_number": "CDAA-S-770348-AA-1.2ml",
+      "name_en": "1-(4-Chlorophenyl)-2-(methylamino)pentan-1-one hydrochloride in methanol",
+      "name_cn": "甲醇中1-(4-氯苯基)-2-甲氨基-1-戊酮盐酸盐标准溶液",
+      "cas_number": "2167949-43-9",
+      "specification": "100 mg/L in Methanol, 1.2 mL",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-S-770348-AA-1.2ml"
+    }
+  ]
+}

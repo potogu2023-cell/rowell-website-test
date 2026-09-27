@@ -1,0 +1,5016 @@
+{
+  "batch_id": "anpel-standards-remaining-9101-9600-2026-09-26",
+  "source": "ANPEL_Standards_Normalized.csv records 9101-9600",
+  "source_record_start": 9101,
+  "source_record_end": 9600,
+  "source_record_count": 500,
+  "namespace": "standards_products",
+  "excluded_namespaces": [
+    "products"
+  ],
+  "approved_record_count": 500,
+  "hold_record_count": 0,
+  "hold_reasons_summary": {},
+  "records": [
+    {
+      "part_number": "CDAA-411109-10mg",
+      "name_en": "Isouron",
+      "name_cn": "异恶隆",
+      "cas_number": "55861-78-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411109-10mg"
+    },
+    {
+      "part_number": "CDAA-411110-10mg",
+      "name_en": "Pentachlorophenol acetate",
+      "name_cn": "五氯苯酚醋酸酯",
+      "cas_number": "1441-02-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411110-10mg"
+    },
+    {
+      "part_number": "CDAA-411111-100mg",
+      "name_en": "Dicyclanil",
+      "name_cn": "地昔尼尔",
+      "cas_number": "112636-83-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411111-100mg"
+    },
+    {
+      "part_number": "CDAA-411112-100mg",
+      "name_en": "Thiofanox-sulfoxide",
+      "name_cn": "久效威亚砜",
+      "cas_number": "39184-27-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411112-100mg"
+    },
+    {
+      "part_number": "CDAA-411113-10mg",
+      "name_en": "Endosulfan-lacton",
+      "name_cn": "硫丹内酯",
+      "cas_number": "3868-61-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411113-10mg"
+    },
+    {
+      "part_number": "CDAA-411114-10mg",
+      "name_en": "Endosulfan-alcohol",
+      "name_cn": "硫丹醇",
+      "cas_number": "2157-19-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411114-10mg"
+    },
+    {
+      "part_number": "CDAA-411115-10mg",
+      "name_en": "Endosulfan-ether",
+      "name_cn": "硫丹醚",
+      "cas_number": "3369-52-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411115-10mg"
+    },
+    {
+      "part_number": "CDAA-411116-100mg",
+      "name_en": "Chlordecone",
+      "name_cn": "开蓬",
+      "cas_number": "143-50-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411116-100mg"
+    },
+    {
+      "part_number": "CDAA-411116-10mg",
+      "name_en": "Chlordecone",
+      "name_cn": "开蓬（十氯酮水合物）",
+      "cas_number": "143-50-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411116-10mg"
+    },
+    {
+      "part_number": "CDAA-411117-100mg",
+      "name_en": "Perthane",
+      "name_cn": "乙滴涕",
+      "cas_number": "72-56-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411117-100mg"
+    },
+    {
+      "part_number": "CDAA-411118-10mg",
+      "name_en": "Bromocyclen",
+      "name_cn": "溴烯杀",
+      "cas_number": "1715-40-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411118-10mg"
+    },
+    {
+      "part_number": "CDAA-411119-100mg",
+      "name_en": "Kelevan",
+      "name_cn": "克来范",
+      "cas_number": "4234-79-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411119-100mg"
+    },
+    {
+      "part_number": "CDAA-411119-10mg",
+      "name_en": "Kelevan",
+      "name_cn": "克来范",
+      "cas_number": "4234-79-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411119-10mg"
+    },
+    {
+      "part_number": "CDAA-411120D4-1mg",
+      "name_en": "β-Endosulfan-[D4]",
+      "name_cn": "β-硫丹-[D4]",
+      "cas_number": "203716-99-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411120D4-1mg"
+    },
+    {
+      "part_number": "CDAA-411121-10mg",
+      "name_en": "Thiacloprid-amide",
+      "name_cn": "酰胺噻虫啉",
+      "cas_number": "676228-91-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411121-10mg"
+    },
+    {
+      "part_number": "CDAA-411205-100mg",
+      "name_en": "Tetrachlorantraniliprole",
+      "name_cn": "四氯虫酰胺",
+      "cas_number": "1104384-14-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411205-100mg"
+    },
+    {
+      "part_number": "CDAA-411206-100mg",
+      "name_en": "Chlordane (Mix of Isomers)",
+      "name_cn": "氯丹（异构体混合物）",
+      "cas_number": "57-74-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411206-100mg"
+    },
+    {
+      "part_number": "CDAA-411207-1mg",
+      "name_en": "Clethodim-sulfoxide",
+      "name_cn": "烯草酮亚砜",
+      "cas_number": "111031-14-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411207-1mg"
+    },
+    {
+      "part_number": "CDAA-411207-5mg",
+      "name_en": "Clethodim-sulfoxide",
+      "name_cn": "烯草酮亚砜",
+      "cas_number": "111031-14-2",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411207-5mg"
+    },
+    {
+      "part_number": "CDAA-411208-10mg",
+      "name_en": "Clethodim Sulfone",
+      "name_cn": "烯草酮砜",
+      "cas_number": "111031-17-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411208-10mg"
+    },
+    {
+      "part_number": "CDAA-411209-5mg",
+      "name_en": "2，4，5-Trichlorophenoxyacetic Acid-d4",
+      "name_cn": "2，4，5-三氯苯氧基乙酸-d4",
+      "cas_number": "358731-37-0",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411209-5mg"
+    },
+    {
+      "part_number": "CDAA-411210-100Mg",
+      "name_en": "(Z)-Chlorfenvinphos",
+      "name_cn": "Z-毒虫畏",
+      "cas_number": "18708-87-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411210-100Mg"
+    },
+    {
+      "part_number": "CDAA-411210-10mg",
+      "name_en": "2,4-D isooctyl ester",
+      "name_cn": "2,4-D-异辛酯",
+      "cas_number": "25168-26-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411210-10mg"
+    },
+    {
+      "part_number": "CDAA-411211-10mg",
+      "name_en": "MCPA-isooctyl",
+      "name_cn": "2甲4氯异辛酯",
+      "cas_number": "26544-20-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411211-10mg"
+    },
+    {
+      "part_number": "CDAA-411211-250mg",
+      "name_en": "5-(2-Chloro-4-(trifluoro-methyl)phenoxy)-2-nitro-benzoic acid sodium salt",
+      "name_cn": "三氟羧草醚钠盐",
+      "cas_number": "62476-59-9",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411211-250mg"
+    },
+    {
+      "part_number": "CDAA-411212-10mg",
+      "name_en": "Spinetoram-J",
+      "name_cn": "乙基多杀菌素",
+      "cas_number": "187166-40-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411212-10mg"
+    },
+    {
+      "part_number": "CDAA-411213-100mg",
+      "name_en": "Phenothiol [MCPA-thioethyl]",
+      "name_cn": "酚硫杀",
+      "cas_number": "25319-90-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-411213-100mg"
+    },
+    {
+      "part_number": "CDAA-412001-10mg",
+      "name_en": "Phosphfolan-methyl",
+      "name_cn": "甲基硫环磷",
+      "cas_number": "5120-23-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412001-10mg"
+    },
+    {
+      "part_number": "CDAA-412002-250mg",
+      "name_en": "Glyphosate",
+      "name_cn": "草甘膦",
+      "cas_number": "1071-83-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412002-250mg"
+    },
+    {
+      "part_number": "CDAA-412002CN-1mg",
+      "name_en": "Glyphosate-[13C2,15N]",
+      "name_cn": "草甘膦-[13C2,15N]",
+      "cas_number": "1185107-63-4",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412002CN-1mg"
+    },
+    {
+      "part_number": "CDAA-412003-250mg",
+      "name_en": "Dichlorvos",
+      "name_cn": "敌敌畏",
+      "cas_number": "62-73-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412003-250mg"
+    },
+    {
+      "part_number": "CDAA-412003-25mg",
+      "name_en": "Dichlorvos",
+      "name_cn": "敌敌畏",
+      "cas_number": "62-73-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412003-25mg"
+    },
+    {
+      "part_number": "CDAA-412004-100mg",
+      "name_en": "Dimethoate",
+      "name_cn": "乐果",
+      "cas_number": "60-51-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412004-100mg"
+    },
+    {
+      "part_number": "CDAA-412006-250mg",
+      "name_en": "Acephate",
+      "name_cn": "乙酰甲胺磷",
+      "cas_number": "30560-19-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412006-250mg"
+    },
+    {
+      "part_number": "CDAA-412008-100mg",
+      "name_en": "Parathion-methyl",
+      "name_cn": "甲基对硫磷",
+      "cas_number": "298-00-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412008-100mg"
+    },
+    {
+      "part_number": "CDAA-412008D6-1mg",
+      "name_en": "Parathion-methyl-D6",
+      "name_cn": "甲基对硫磷-D6",
+      "cas_number": "96740-32-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412008D6-1mg"
+    },
+    {
+      "part_number": "CDAA-412010D10-10mg",
+      "name_en": "Chlorpyrifos -[D10]",
+      "name_cn": "毒死蜱-[D10]",
+      "cas_number": "285138-81-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412010D10-10mg"
+    },
+    {
+      "part_number": "CDAA-412011-100mg",
+      "name_en": "Malathion",
+      "name_cn": "马拉硫磷",
+      "cas_number": "121-75-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412011-100mg"
+    },
+    {
+      "part_number": "CDAA-412011-1g",
+      "name_en": "Malathion",
+      "name_cn": "马拉硫磷",
+      "cas_number": "121-75-5",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412011-1g"
+    },
+    {
+      "part_number": "CDAA-412011D10-25mg",
+      "name_en": "Malathion-[D10]",
+      "name_cn": "马拉硫磷-[D10]",
+      "cas_number": "347841-48-9",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412011D10-25mg"
+    },
+    {
+      "part_number": "CDAA-412013-100mg",
+      "name_en": "Triazophos",
+      "name_cn": "三唑磷",
+      "cas_number": "24017-47-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412013-100mg"
+    },
+    {
+      "part_number": "CDAA-412014-100mg",
+      "name_en": "Phoxim",
+      "name_cn": "辛硫磷",
+      "cas_number": "14816-18-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412014-100mg"
+    },
+    {
+      "part_number": "CDAA-412014D5-10mg",
+      "name_en": "Phoxim-[D5]",
+      "name_cn": "辛硫磷-D5",
+      "cas_number": "14816-18-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412014D5-10mg"
+    },
+    {
+      "part_number": "CDAA-412015-250mg",
+      "name_en": "Fenitrothion",
+      "name_cn": "杀螟松（杀螟硫磷)",
+      "cas_number": "122-14-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412015-250mg"
+    },
+    {
+      "part_number": "CDAA-412015D6-1mg",
+      "name_en": "Fenitrothion-[D6]",
+      "name_cn": "杀螟硫磷-[D6]",
+      "cas_number": "203645-59-4",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412015D6-1mg"
+    },
+    {
+      "part_number": "CDAA-412018-100mg",
+      "name_en": "Malaoxon",
+      "name_cn": "马拉氧磷",
+      "cas_number": "1634-78-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412018-100mg"
+    },
+    {
+      "part_number": "CDAA-412018-10mg",
+      "name_en": "Malaoxon",
+      "name_cn": "马拉氧磷",
+      "cas_number": "1634-78-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412018-10mg"
+    },
+    {
+      "part_number": "CDAA-412020-100mg",
+      "name_en": "Iodofenphos",
+      "name_cn": "碘硫磷",
+      "cas_number": "18181-70-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412020-100mg"
+    },
+    {
+      "part_number": "CDAA-412020-10mg",
+      "name_en": "Iodofenphos",
+      "name_cn": "碘硫磷",
+      "cas_number": "18181-70-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412020-10mg"
+    },
+    {
+      "part_number": "CDAA-412022-10mg",
+      "name_en": "Bromophos-methyl",
+      "name_cn": "溴硫磷",
+      "cas_number": "2104-96-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412022-10mg"
+    },
+    {
+      "part_number": "CDAA-412024-10mg",
+      "name_en": "Vamidothion",
+      "name_cn": "蚜灭磷(蚜灭多，完灭硫磷)",
+      "cas_number": "2275-23-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412024-10mg"
+    },
+    {
+      "part_number": "CDAA-412024-50mg",
+      "name_en": "Vamidothion",
+      "name_cn": "蚜灭磷",
+      "cas_number": "2275-23-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412024-50mg"
+    },
+    {
+      "part_number": "CDAA-412025-100mg",
+      "name_en": "Phosalone",
+      "name_cn": "伏杀硫磷",
+      "cas_number": "2310-17-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412025-100mg"
+    },
+    {
+      "part_number": "CDAA-412026-100mg",
+      "name_en": "Pirimiphos-ethyl",
+      "name_cn": "乙基嘧啶磷",
+      "cas_number": "23505-41-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412026-100mg"
+    },
+    {
+      "part_number": "CDAA-412026-10mg",
+      "name_en": "Pirimiphos-ethyl",
+      "name_cn": "乙基嘧啶磷",
+      "cas_number": "23505-41-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412026-10mg"
+    },
+    {
+      "part_number": "CDAA-412027-100mg",
+      "name_en": "Heptenophos",
+      "name_cn": "庚烯磷",
+      "cas_number": "23560-59-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412027-100mg"
+    },
+    {
+      "part_number": "CDAA-412029-50mg",
+      "name_en": "Disulfoton-sulfone",
+      "name_cn": "乙拌磷砜",
+      "cas_number": "2497-06-5",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412029-50mg"
+    },
+    {
+      "part_number": "CDAA-412030-50mg",
+      "name_en": "Disulfoton-sulfoxide",
+      "name_cn": "乙拌磷亚砜",
+      "cas_number": "2497-07-6",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412030-50mg"
+    },
+    {
+      "part_number": "CDAA-412033-100mg",
+      "name_en": "Formothion",
+      "name_cn": "安果",
+      "cas_number": "2540-82-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412033-100mg"
+    },
+    {
+      "part_number": "CDAA-412033-10mg",
+      "name_en": "Formothion",
+      "name_cn": "安果磷(安果)",
+      "cas_number": "2540-82-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412033-10mg"
+    },
+    {
+      "part_number": "CDAA-412034-10mg",
+      "name_en": "Phorat-Sulfone",
+      "name_cn": "甲拌磷砜",
+      "cas_number": "2588-04-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412034-10mg"
+    },
+    {
+      "part_number": "CDAA-412034-50mg",
+      "name_en": "Phorat-Sulfone",
+      "name_cn": "甲拌磷砜",
+      "cas_number": "2588-04-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412034-50mg"
+    },
+    {
+      "part_number": "CDAA-412035-100mg",
+      "name_en": "Phenthoate",
+      "name_cn": "稻丰散",
+      "cas_number": "2597-03-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412035-100mg"
+    },
+    {
+      "part_number": "CDAA-412036-25mg",
+      "name_en": "Cyanophos",
+      "name_cn": "杀螟腈",
+      "cas_number": "2636-26-2",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412036-25mg"
+    },
+    {
+      "part_number": "CDAA-412038-250mg",
+      "name_en": "Pirimiphos-methyl",
+      "name_cn": "甲基嘧啶磷",
+      "cas_number": "29232-93-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412038-250mg"
+    },
+    {
+      "part_number": "CDAA-412040-10mg",
+      "name_en": "Demeton-O",
+      "name_cn": "内吸磷-O",
+      "cas_number": "298-03-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412040-10mg"
+    },
+    {
+      "part_number": "CDAA-412041-100mg",
+      "name_en": "Fenchlorphos",
+      "name_cn": "皮蝇磷",
+      "cas_number": "299-84-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412041-100mg"
+    },
+    {
+      "part_number": "CDAA-412041-10mg",
+      "name_en": "Fenchlorphos",
+      "name_cn": "皮蝇硫磷(皮蝇磷)",
+      "cas_number": "299-84-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412041-10mg"
+    },
+    {
+      "part_number": "CDAA-412042-10mg",
+      "name_en": "Crufomate",
+      "name_cn": "育畜磷",
+      "cas_number": "299-86-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412042-10mg"
+    },
+    {
+      "part_number": "CDAA-412043-250mg",
+      "name_en": "Naled",
+      "name_cn": "二溴磷",
+      "cas_number": "300-76-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412043-250mg"
+    },
+    {
+      "part_number": "CDAA-412045-100mg",
+      "name_en": "Propetamphos",
+      "name_cn": "胺丙畏(烯虫磷)",
+      "cas_number": "31218-83-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412045-100mg"
+    },
+    {
+      "part_number": "CDAA-412045-50mg",
+      "name_en": "Propetamphos",
+      "name_cn": "胺丙畏",
+      "cas_number": "31218-83-4",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412045-50mg"
+    },
+    {
+      "part_number": "CDAA-412046-100mg",
+      "name_en": "Fenamiphos-sulfoxide",
+      "name_cn": "苯线磷亚砜",
+      "cas_number": "31972-43-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412046-100mg"
+    },
+    {
+      "part_number": "CDAA-412046-10mg",
+      "name_en": "Fenamiphos-sulfoxide",
+      "name_cn": "苯线磷亚砜（克线磷亚砜）",
+      "cas_number": "31972-43-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412046-10mg"
+    },
+    {
+      "part_number": "CDAA-412047-100mg",
+      "name_en": "Fenamiphos Sulfone",
+      "name_cn": "苯胺磷砜",
+      "cas_number": "31972-44-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412047-100mg"
+    },
+    {
+      "part_number": "CDAA-412047-10mg",
+      "name_en": "Fenamiphos Sulfone",
+      "name_cn": "苯胺磷砜（克线磷砜）",
+      "cas_number": "31972-44-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412047-10mg"
+    },
+    {
+      "part_number": "CDAA-412051-10mg",
+      "name_en": "Aspon",
+      "name_cn": "丙硫特普",
+      "cas_number": "3244-90-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412051-10mg"
+    },
+    {
+      "part_number": "CDAA-412051-1mg",
+      "name_en": "Aspon",
+      "name_cn": "丙硫特普",
+      "cas_number": "3244-90-4",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412051-1mg"
+    },
+    {
+      "part_number": "CDAA-412052-10mg",
+      "name_en": "Bromfenvinfos",
+      "name_cn": "溴苯烯磷",
+      "cas_number": "33399-00-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412052-10mg"
+    },
+    {
+      "part_number": "CDAA-412052-50mg",
+      "name_en": "Bromfenvinfos",
+      "name_cn": "溴苯烯磷",
+      "cas_number": "33399-00-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412052-50mg"
+    },
+    {
+      "part_number": "CDAA-412055-50mg",
+      "name_en": "Prothiophos",
+      "name_cn": "丙硫磷",
+      "cas_number": "34643-46-4",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412055-50mg"
+    },
+    {
+      "part_number": "CDAA-412057-100mg",
+      "name_en": "Sulprofos",
+      "name_cn": "硫丙磷",
+      "cas_number": "35400-43-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412057-100mg"
+    },
+    {
+      "part_number": "CDAA-412057-10mg",
+      "name_en": "Sulprofos",
+      "name_cn": "硫丙磷",
+      "cas_number": "35400-43-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412057-10mg"
+    },
+    {
+      "part_number": "CDAA-412058-250mg",
+      "name_en": "Azamethiphos",
+      "name_cn": "甲基吡啶磷",
+      "cas_number": "35575-96-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412058-250mg"
+    },
+    {
+      "part_number": "CDAA-412058D6-1mg",
+      "name_en": "Azamethiphos-[D6]",
+      "name_cn": "甲基吡啶磷-[D6]",
+      "cas_number": "1189894-02-7",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412058D6-1mg"
+    },
+    {
+      "part_number": "CDAA-412060-10mg",
+      "name_en": "Fenthion-sulfoxide",
+      "name_cn": "倍硫磷亚砜",
+      "cas_number": "3761-41-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412060-10mg"
+    },
+    {
+      "part_number": "CDAA-412060-50mg",
+      "name_en": "Fenthion-sulfoxide",
+      "name_cn": "倍硫磷亚砜",
+      "cas_number": "3761-41-9",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412060-50mg"
+    },
+    {
+      "part_number": "CDAA-412061-10mg",
+      "name_en": "Fenthion-sulfone",
+      "name_cn": "倍硫磷砜",
+      "cas_number": "3761-42-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412061-10mg"
+    },
+    {
+      "part_number": "CDAA-412063-10mg",
+      "name_en": "Dioxabenzofos",
+      "name_cn": "蔬果磷",
+      "cas_number": "3811-49-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412063-10mg"
+    },
+    {
+      "part_number": "CDAA-412064-100mg",
+      "name_en": "Etrimfos",
+      "name_cn": "乙嘧硫磷",
+      "cas_number": "38260-54-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412064-100mg"
+    },
+    {
+      "part_number": "CDAA-412064-25mg",
+      "name_en": "Etrimfos",
+      "name_cn": "乙嘧硫磷(工业级混合物)",
+      "cas_number": "38260-54-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412064-25mg"
+    },
+    {
+      "part_number": "CDAA-412064-50mg",
+      "name_en": "Etrimfos",
+      "name_cn": "乙嘧硫磷",
+      "cas_number": "38260-54-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412064-50mg"
+    },
+    {
+      "part_number": "CDAA-412066-100mg",
+      "name_en": "Isazophos",
+      "name_cn": "氯唑磷",
+      "cas_number": "42509-80-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412066-100mg"
+    },
+    {
+      "part_number": "CDAA-412067-100mg",
+      "name_en": "Bromophos-ethyl",
+      "name_cn": "乙基溴硫磷",
+      "cas_number": "4824-78-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412067-100mg"
+    },
+    {
+      "part_number": "CDAA-412067-10mg",
+      "name_en": "Bromophos-ethyl",
+      "name_cn": "乙基溴硫磷",
+      "cas_number": "4824-78-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412067-10mg"
+    },
+    {
+      "part_number": "CDAA-412070-100mg",
+      "name_en": "Famphur",
+      "name_cn": "伐灭磷",
+      "cas_number": "52-85-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412070-100mg"
+    },
+    {
+      "part_number": "CDAA-412070-10mg",
+      "name_en": "Famphur",
+      "name_cn": "伐灭磷",
+      "cas_number": "52-85-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412070-10mg"
+    },
+    {
+      "part_number": "CDAA-412072D6-10mg",
+      "name_en": "Fenthion-[D6]",
+      "name_cn": "倍硫磷-[D6]",
+      "cas_number": "1189662-83-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412072D6-10mg"
+    },
+    {
+      "part_number": "CDAA-412073-250mg",
+      "name_en": "Chlorpyrifos-methyl",
+      "name_cn": "甲基毒死蜱",
+      "cas_number": "5598-13-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412073-250mg"
+    },
+    {
+      "part_number": "CDAA-412078-50mg",
+      "name_en": "Terbufos-sulfone",
+      "name_cn": "特丁硫磷砜",
+      "cas_number": "56070-16-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412078-50mg"
+    },
+    {
+      "part_number": "CDAA-412078-5mg",
+      "name_en": "Terbufos-sulfone",
+      "name_cn": "特丁硫磷砜",
+      "cas_number": "56070-16-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412078-5mg"
+    },
+    {
+      "part_number": "CDAA-412081-100mg",
+      "name_en": "Chlorthiophos",
+      "name_cn": "虫螨磷",
+      "cas_number": "60238-56-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412081-100mg"
+    },
+    {
+      "part_number": "CDAA-412081-10mg",
+      "name_en": "Chlorthiophos",
+      "name_cn": "虫螨磷（虫螨磷）",
+      "cas_number": "60238-56-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412081-10mg"
+    },
+    {
+      "part_number": "CDAA-412082-100mg",
+      "name_en": "Methacrifos",
+      "name_cn": "虫螨畏",
+      "cas_number": "62610-77-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412082-100mg"
+    },
+    {
+      "part_number": "CDAA-412082-10mg",
+      "name_en": "Methacrifos",
+      "name_cn": "虫螨畏",
+      "cas_number": "62610-77-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412082-10mg"
+    },
+    {
+      "part_number": "CDAA-412088-100mg",
+      "name_en": "Phosmet",
+      "name_cn": "亚胺硫磷",
+      "cas_number": "732-11-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412088-100mg"
+    },
+    {
+      "part_number": "CDAA-412089-10mg",
+      "name_en": "Crotoxyphos",
+      "name_cn": "巴毒磷",
+      "cas_number": "7700-17-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412089-10mg"
+    },
+    {
+      "part_number": "CDAA-412090-10mg",
+      "name_en": "Pyraclofos",
+      "name_cn": "吡唑硫磷",
+      "cas_number": "89784-60-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412090-10mg"
+    },
+    {
+      "part_number": "CDAA-412093-10mg",
+      "name_en": "Demeton-S-methyl",
+      "name_cn": "甲基内吸磷",
+      "cas_number": "919-86-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412093-10mg"
+    },
+    {
+      "part_number": "CDAA-412093-1mg",
+      "name_en": "Demeton-S-methyl",
+      "name_cn": "甲基内吸磷",
+      "cas_number": "919-86-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412093-1mg"
+    },
+    {
+      "part_number": "CDAA-412094-50mg",
+      "name_en": "Cadusafos",
+      "name_cn": "硫线磷",
+      "cas_number": "95465-99-9",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412094-50mg"
+    },
+    {
+      "part_number": "CDAA-412096-100mg",
+      "name_en": "Dichlofenthion",
+      "name_cn": "除线磷",
+      "cas_number": "97-17-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412096-100mg"
+    },
+    {
+      "part_number": "CDAA-412097-25mg",
+      "name_en": "Fosthiazate",
+      "name_cn": "噻唑磷",
+      "cas_number": "98886-44-3",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412097-25mg"
+    },
+    {
+      "part_number": "CDAA-412099-100mg",
+      "name_en": "Omethoate",
+      "name_cn": "氧化乐果",
+      "cas_number": "1113-02-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412099-100mg"
+    },
+    {
+      "part_number": "CDAA-412099-10mg",
+      "name_en": "Omethoate-d6 (O,O-dimethyl-d6)",
+      "name_cn": "氧化乐果-d6",
+      "cas_number": "1219804-92-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412099-10mg"
+    },
+    {
+      "part_number": "CDAA-412099-1mg",
+      "name_en": "Omethoate D6 (O-dimethyl D6)",
+      "name_cn": "氧化乐果-d6",
+      "cas_number": "1219804-92-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412099-1mg"
+    },
+    {
+      "part_number": "CDAA-412100-250mg",
+      "name_en": "Fenamiphos",
+      "name_cn": "苯线磷",
+      "cas_number": "22224-92-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412100-250mg"
+    },
+    {
+      "part_number": "CDAA-412101-100mg",
+      "name_en": "Phosphamidon",
+      "name_cn": "磷胺",
+      "cas_number": "13171-21-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412101-100mg"
+    },
+    {
+      "part_number": "CDAA-412101-10mg",
+      "name_en": "Phosphamidon",
+      "name_cn": "磷胺",
+      "cas_number": "13171-21-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412101-10mg"
+    },
+    {
+      "part_number": "CDAA-412103-250mg",
+      "name_en": "Azinphos-methyl",
+      "name_cn": "谷硫磷",
+      "cas_number": "86-50-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412103-250mg"
+    },
+    {
+      "part_number": "CDAA-412103-25mg",
+      "name_en": "Azinphos-methyl",
+      "name_cn": "谷硫磷",
+      "cas_number": "86-50-0",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412103-25mg"
+    },
+    {
+      "part_number": "CDAA-412104-100mg",
+      "name_en": "Isofenphos",
+      "name_cn": "异柳磷",
+      "cas_number": "25311-71-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412104-100mg"
+    },
+    {
+      "part_number": "CDAA-412104-10mg",
+      "name_en": "Isofenphos",
+      "name_cn": "异柳磷",
+      "cas_number": "25311-71-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412104-10mg"
+    },
+    {
+      "part_number": "CDAA-412105-250mg",
+      "name_en": "Carbophenothion",
+      "name_cn": "三硫磷",
+      "cas_number": "786-19-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412105-250mg"
+    },
+    {
+      "part_number": "CDAA-412105-25mg",
+      "name_en": "Carbophenothion",
+      "name_cn": "三硫磷",
+      "cas_number": "786-19-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412105-25mg"
+    },
+    {
+      "part_number": "CDAA-412108-10mg",
+      "name_en": "Metamidophos-d6",
+      "name_cn": "甲胺磷-d6",
+      "cas_number": "1219799-41-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412108-10mg"
+    },
+    {
+      "part_number": "CDAA-412108-1mg",
+      "name_en": "Metamidophos-d6",
+      "name_cn": "甲胺磷-d6",
+      "cas_number": "1219799-41-3",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412108-1mg"
+    },
+    {
+      "part_number": "CDAA-412109D1010mg",
+      "name_en": "Parathion-ethyl D10",
+      "name_cn": "对硫磷-D10",
+      "cas_number": "350820-04-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412109D1010mg"
+    },
+    {
+      "part_number": "CDAA-412110D10-1mg",
+      "name_en": "Coumaphos-[D10]",
+      "name_cn": "蝇毒磷-[D10]",
+      "cas_number": "287397-86-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412110D10-1mg"
+    },
+    {
+      "part_number": "CDAA-412111-250mg",
+      "name_en": "Ethion",
+      "name_cn": "乙硫磷",
+      "cas_number": "563-12-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412111-250mg"
+    },
+    {
+      "part_number": "CDAA-412112-50mg",
+      "name_en": "Isofenphos-methyl",
+      "name_cn": "甲基异柳磷",
+      "cas_number": "99675-03-3",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412112-50mg"
+    },
+    {
+      "part_number": "CDAA-412113-10mg",
+      "name_en": "Phosmet-oxon",
+      "name_cn": "氧亚胺硫磷",
+      "cas_number": "3735-33-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412113-10mg"
+    },
+    {
+      "part_number": "CDAA-412113-50mg",
+      "name_en": "Phosmet-oxon",
+      "name_cn": "氧亚胺硫磷",
+      "cas_number": "3735-33-9",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412113-50mg"
+    },
+    {
+      "part_number": "CDAA-412114-250mg",
+      "name_en": "Azinphos-ethyl",
+      "name_cn": "益棉磷",
+      "cas_number": "2642-71-9",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412114-250mg"
+    },
+    {
+      "part_number": "CDAA-412114-25mg",
+      "name_en": "Azinphos-ethyl",
+      "name_cn": "益棉磷",
+      "cas_number": "2642-71-9",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412114-25mg"
+    },
+    {
+      "part_number": "CDAA-412119-10mg",
+      "name_en": "Carbophenothion-methyl",
+      "name_cn": "甲基三硫磷",
+      "cas_number": "953-17-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412119-10mg"
+    },
+    {
+      "part_number": "CDAA-412120-100mg",
+      "name_en": "Thiometon",
+      "name_cn": "甲基乙拌磷",
+      "cas_number": "640-15-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412120-100mg"
+    },
+    {
+      "part_number": "CDAA-412120-10mg",
+      "name_en": "Thiometon",
+      "name_cn": "甲基乙拌磷",
+      "cas_number": "640-15-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412120-10mg"
+    },
+    {
+      "part_number": "CDAA-412128-100mg",
+      "name_en": "Phorate-sulfoxide",
+      "name_cn": "甲拌磷亚砜",
+      "cas_number": "2588-03-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412128-100mg"
+    },
+    {
+      "part_number": "CDAA-412128-10mg",
+      "name_en": "Phorate-sulfoxide",
+      "name_cn": "甲拌磷亚砜",
+      "cas_number": "2588-03-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412128-10mg"
+    },
+    {
+      "part_number": "CDAA-412131-50mg",
+      "name_en": "Tetrachlorvinphos",
+      "name_cn": "杀虫畏",
+      "cas_number": "22248-79-9",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412131-50mg"
+    },
+    {
+      "part_number": "CDAA-412132-100mg",
+      "name_en": "Pyridaphenthion",
+      "name_cn": "哒嗪硫磷",
+      "cas_number": "119-12-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412132-100mg"
+    },
+    {
+      "part_number": "CDAA-412133-5mg",
+      "name_en": "Terbufos-sulfoxide",
+      "name_cn": "特丁磷亚砜",
+      "cas_number": "10548-10-4",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412133-5mg"
+    },
+    {
+      "part_number": "CDAA-412134-250mg",
+      "name_en": "Triphenyl phosphate",
+      "name_cn": "磷酸三苯酯",
+      "cas_number": "115-86-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412134-250mg"
+    },
+    {
+      "part_number": "CDAA-412134D15-5mg",
+      "name_en": "Triphenyl  phosphate-[D15]",
+      "name_cn": "磷酸三苯酯-[D15]",
+      "cas_number": "1173020-30-8",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412134D15-5mg"
+    },
+    {
+      "part_number": "CDAA-412137-50mg",
+      "name_en": "Demeton-S",
+      "name_cn": "内吸磷-S",
+      "cas_number": "126-75-0",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412137-50mg"
+    },
+    {
+      "part_number": "CDAA-412139-100mg",
+      "name_en": "Ethoprophos",
+      "name_cn": "灭线磷",
+      "cas_number": "13194-48-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412139-100mg"
+    },
+    {
+      "part_number": "CDAA-412140-250mg",
+      "name_en": "Quinalphos",
+      "name_cn": "喹硫磷",
+      "cas_number": "13593-03-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412140-250mg"
+    },
+    {
+      "part_number": "CDAA-412140-25mg",
+      "name_en": "Quinalphos",
+      "name_cn": "喹硫磷",
+      "cas_number": "13593-03-8",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412140-25mg"
+    },
+    {
+      "part_number": "CDAA-412141-500mg",
+      "name_en": "Ethanethiol",
+      "name_cn": "乙硫醇",
+      "cas_number": "75-08-1",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412141-500mg"
+    },
+    {
+      "part_number": "CDAA-412144-10mg",
+      "name_en": "Demeton-S-methyl-sulfone",
+      "name_cn": "砜吸磷",
+      "cas_number": "17040-19-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412144-10mg"
+    },
+    {
+      "part_number": "CDAA-412146-10mg",
+      "name_en": "Vamidothion-sulfon",
+      "name_cn": "蚜灭多砜",
+      "cas_number": "70898-34-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412146-10mg"
+    },
+    {
+      "part_number": "CDAA-412146-1mg",
+      "name_en": "Vamidothion-sulfon",
+      "name_cn": "蚜灭多砜",
+      "cas_number": "70898-34-9",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412146-1mg"
+    },
+    {
+      "part_number": "CDAA-412147-10mg",
+      "name_en": "Fenthion-oxon",
+      "name_cn": "倍硫磷氧化物",
+      "cas_number": "6552-12-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412147-10mg"
+    },
+    {
+      "part_number": "CDAA-412148-1mg",
+      "name_en": "Terbufos-oxon-sulfoxide",
+      "name_cn": "氧特丁硫磷亚砜",
+      "cas_number": "56165-57-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412148-1mg"
+    },
+    {
+      "part_number": "CDAA-412149-1mg",
+      "name_en": "Terbufos-oxon-sulfone",
+      "name_cn": "氧特丁磷砜",
+      "cas_number": "56070-15-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412149-1mg"
+    },
+    {
+      "part_number": "CDAA-412150-1mg",
+      "name_en": "Terbufos-oxon",
+      "name_cn": "氧特丁磷",
+      "cas_number": "56070-14-5",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412150-1mg"
+    },
+    {
+      "part_number": "CDAA-412151-1mg",
+      "name_en": "Disulfoton-oxon-sulfon",
+      "name_cn": "氧乙拌磷砜",
+      "cas_number": "2496-91-5",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412151-1mg"
+    },
+    {
+      "part_number": "CDAA-412152-10mg",
+      "name_en": "O，O，O-Triethylphosphorothioate",
+      "name_cn": "O，O，O-三乙基硫代磷酸酯",
+      "cas_number": "126-68-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412152-10mg"
+    },
+    {
+      "part_number": "CDAA-412153-25mg",
+      "name_en": "Fensulfothion-oxon",
+      "name_cn": "氧丰索磷",
+      "cas_number": "6552-21-2",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412153-25mg"
+    },
+    {
+      "part_number": "CDAA-412154-1mg",
+      "name_en": "Methamidophos-N-methyl",
+      "name_cn": "N-甲基甲胺磷",
+      "cas_number": "28167-49-9",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412154-1mg"
+    },
+    {
+      "part_number": "CDAA-412155-5mg",
+      "name_en": "Vamidothion-sulfoxide",
+      "name_cn": "蚜灭磷亚砜",
+      "cas_number": "20300-00-9",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412155-5mg"
+    },
+    {
+      "part_number": "CDAA-412156-5mg",
+      "name_en": "Phorate-oxon",
+      "name_cn": "氧甲拌磷",
+      "cas_number": "2600-69-3",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412156-5mg"
+    },
+    {
+      "part_number": "CDAA-412157-25mg",
+      "name_en": "Fensulfothion-oxon-sulfone",
+      "name_cn": "氧丰索磷砜",
+      "cas_number": "6132-17-8",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412157-25mg"
+    },
+    {
+      "part_number": "CDAA-412158D10-1mg",
+      "name_en": "Diazinon-[D10]",
+      "name_cn": "二嗪农-[D10]",
+      "cas_number": "100155-47-3",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412158D10-1mg"
+    },
+    {
+      "part_number": "CDAA-412159-10mg",
+      "name_en": "Dicapthon",
+      "name_cn": "异氯磷",
+      "cas_number": "2463-84-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412159-10mg"
+    },
+    {
+      "part_number": "CDAA-412160-100mg",
+      "name_en": "Temephos",
+      "name_cn": "双硫磷",
+      "cas_number": "3383-96-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412160-100mg"
+    },
+    {
+      "part_number": "CDAA-412161-100mg",
+      "name_en": "Dialifos",
+      "name_cn": "氯亚胺硫磷",
+      "cas_number": "10311-84-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412161-100mg"
+    },
+    {
+      "part_number": "CDAA-412162-100mg",
+      "name_en": "Pirimiphos-methyl-N-desethyl",
+      "name_cn": "N-去乙基-甲基嘧啶磷",
+      "cas_number": "67018-59-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412162-100mg"
+    },
+    {
+      "part_number": "CDAA-412163-10mg",
+      "name_en": "Isoxathion",
+      "name_cn": "恶唑磷",
+      "cas_number": "18854-01-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412163-10mg"
+    },
+    {
+      "part_number": "CDAA-412164-10mg",
+      "name_en": "Chlorphoxim",
+      "name_cn": "氯辛硫磷",
+      "cas_number": "14816-20-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412164-10mg"
+    },
+    {
+      "part_number": "CDAA-412165-10mg",
+      "name_en": "Chlorpyrifos-oxon",
+      "name_cn": "毒死碑代谢物",
+      "cas_number": "5598-15-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412165-10mg"
+    },
+    {
+      "part_number": "CDAA-412166-10mg",
+      "name_en": "Propaphos",
+      "name_cn": "丙虫磷",
+      "cas_number": "7292-16-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412166-10mg"
+    },
+    {
+      "part_number": "CDAA-412167-10mg",
+      "name_en": "Naftalofos",
+      "name_cn": "萘肽磷",
+      "cas_number": "1491-41-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412167-10mg"
+    },
+    {
+      "part_number": "CDAA-412168-50mg",
+      "name_en": "Fenthion-oxon-sulfoxide",
+      "name_cn": "倍硫磷氧化亚砜",
+      "cas_number": "6552-13-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412168-50mg"
+    },
+    {
+      "part_number": "CDAA-412168-5mg",
+      "name_en": "Fenthion-oxon-sulfoxide",
+      "name_cn": "倍硫磷氧化亚砜",
+      "cas_number": "6552-13-2",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412168-5mg"
+    },
+    {
+      "part_number": "CDAA-412169-10mg",
+      "name_en": "iso-Malathion",
+      "name_cn": "异马拉硫磷",
+      "cas_number": "3344-12-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412169-10mg"
+    },
+    {
+      "part_number": "CDAA-412170-10mg",
+      "name_en": "3,5,6-Trichloro-2-pyridinol",
+      "name_cn": "3,5,6-三氯吡啶-2-醇",
+      "cas_number": "6515-38-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412170-10mg"
+    },
+    {
+      "part_number": "CDAA-412171-25mg",
+      "name_en": "Chlorthion",
+      "name_cn": "氯硫磷",
+      "cas_number": "500-28-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412171-25mg"
+    },
+    {
+      "part_number": "CDAA-412172-25mg",
+      "name_en": "Demeton-S-methyl-sulfoxide",
+      "name_cn": "亚砜磷",
+      "cas_number": "301-12-2",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412172-25mg"
+    },
+    {
+      "part_number": "CDAA-412172-5mg",
+      "name_en": "Demeton-S-methyl-sulfoxide",
+      "name_cn": "亚砜磷",
+      "cas_number": "301-12-2",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412172-5mg"
+    },
+    {
+      "part_number": "CDAA-412174-10mg",
+      "name_en": "Disulfoton-oxon-sulfoxide",
+      "name_cn": "砜吸磷-S-亚砜",
+      "cas_number": "2496-92-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412174-10mg"
+    },
+    {
+      "part_number": "CDAA-412175-10mg",
+      "name_en": "Methyl Parathion-D6",
+      "name_cn": "甲基对硫磷-D6",
+      "cas_number": "96740-32-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412175-10mg"
+    },
+    {
+      "part_number": "CDAA-412176-10mg",
+      "name_en": "cis-Mevinphos",
+      "name_cn": "速灭磷(反式)",
+      "cas_number": "298-01-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412176-10mg"
+    },
+    {
+      "part_number": "CDAA-412177-10mg",
+      "name_en": "Phosphorothioic acid， O-(2，4-dichloro-6-nitrophenyl) O，O-diethyl ester",
+      "name_cn": "硝虫硫磷",
+      "cas_number": "171605-91-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412177-10mg"
+    },
+    {
+      "part_number": "CDAA-412178-10mg",
+      "name_en": "Pyrimitate",
+      "name_cn": "嘧啶磷",
+      "cas_number": "5221-49-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412178-10mg"
+    },
+    {
+      "part_number": "CDAA-412179-500mg",
+      "name_en": "thio-TEPA",
+      "name_cn": "塞替派",
+      "cas_number": "52-24-4",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412179-500mg"
+    },
+    {
+      "part_number": "CDAA-412180-1g",
+      "name_en": "Triphenylphosphine oxide",
+      "name_cn": "三苯基氧膦",
+      "cas_number": "791-28-6",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412180-1g"
+    },
+    {
+      "part_number": "CDAA-412181-50mg",
+      "name_en": "Paraoxon-Methyl",
+      "name_cn": "倍硫磷氧砜",
+      "cas_number": "14086-35-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412181-50mg"
+    },
+    {
+      "part_number": "CDAA-412186-500mg",
+      "name_en": "D-Trans-Phenothrin",
+      "name_cn": "3,5,6-三氯吡啶-2-醇钠盐",
+      "cas_number": "37439-34-2",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-412186-500mg"
+    },
+    {
+      "part_number": "CDAA-413001-100mg",
+      "name_en": "D-trans propargyl chloride pyrethroid",
+      "name_cn": "右旋反式氯丙炔菊酯",
+      "cas_number": "250346-55-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413001-100mg"
+    },
+    {
+      "part_number": "CDAA-413002-100mg",
+      "name_en": "Cypermethrin",
+      "name_cn": "氯氰菊酯（灭百可）（异构体混合物）",
+      "cas_number": "52315-07-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413002-100mg"
+    },
+    {
+      "part_number": "CDAA-413004-250mg",
+      "name_en": "Fenpropathrin",
+      "name_cn": "甲氰菊酯",
+      "cas_number": "39515-41-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413004-250mg"
+    },
+    {
+      "part_number": "CDAA-413005-50mg",
+      "name_en": "λ-Cyhalothrin",
+      "name_cn": "高效氯氟氰菊酯",
+      "cas_number": "91465-08-6",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413005-50mg"
+    },
+    {
+      "part_number": "CDAA-413006-250mg",
+      "name_en": "Cyfluthrin",
+      "name_cn": "氟氯氰菊酯",
+      "cas_number": "68359-37-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413006-250mg"
+    },
+    {
+      "part_number": "CDAA-413008-100mg",
+      "name_en": "Dicofol",
+      "name_cn": "三氯杀螨醇",
+      "cas_number": "115-32-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413008-100mg"
+    },
+    {
+      "part_number": "CDAA-413011-100mg",
+      "name_en": "Resmethrin",
+      "name_cn": "苄呋菊酯",
+      "cas_number": "10453-86-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413011-100mg"
+    },
+    {
+      "part_number": "CDAA-413012-25Mg",
+      "name_en": "(1R,2R,1'S)-Cypermethrin",
+      "name_cn": "beta-氯氰菊酯",
+      "cas_number": "65731-84-2",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413012-25Mg"
+    },
+    {
+      "part_number": "CDAA-413013-10mg",
+      "name_en": "Halfenprox",
+      "name_cn": "苄螨醚",
+      "cas_number": "111872-58-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413013-10mg"
+    },
+    {
+      "part_number": "CDAA-413014-1mg",
+      "name_en": "Pyrethrin 1",
+      "name_cn": "除虫菊酯 I",
+      "cas_number": "121-21-1",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413014-1mg"
+    },
+    {
+      "part_number": "CDAA-413015-50mg",
+      "name_en": "Prallethrin",
+      "name_cn": "炔丙菊酯",
+      "cas_number": "23031-36-9",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413015-50mg"
+    },
+    {
+      "part_number": "CDAA-413016-100mg",
+      "name_en": "Phenothrin",
+      "name_cn": "苯醚菊酯",
+      "cas_number": "26002-80-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413016-100mg"
+    },
+    {
+      "part_number": "CDAA-413018-100mg",
+      "name_en": "S-Bioallethrin",
+      "name_cn": "S-生物烯丙菊酯",
+      "cas_number": "28434-00-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413018-100mg"
+    },
+    {
+      "part_number": "CDAA-413020-100mg",
+      "name_en": "Allethrin",
+      "name_cn": "烯丙菊酯",
+      "cas_number": "584-79-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413020-100mg"
+    },
+    {
+      "part_number": "CDAA-413022-100mg",
+      "name_en": "Esfenvalerate",
+      "name_cn": "顺式氰戊菊酯",
+      "cas_number": "66230-04-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413022-100mg"
+    },
+    {
+      "part_number": "CDAA-413028-100mg",
+      "name_en": "Pyrethrins",
+      "name_cn": "除虫菊酯",
+      "cas_number": "8003-34-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413028-100mg"
+    },
+    {
+      "part_number": "CDAA-413029-50mg",
+      "name_en": "Acrinathrin",
+      "name_cn": "氟丙菊酯",
+      "cas_number": "101007-06-1",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413029-50mg"
+    },
+    {
+      "part_number": "CDAA-413030-100mg",
+      "name_en": "tau-Fluvalinate（mixture of isomers）",
+      "name_cn": "氟胺氰菊酯（异构体混合物）",
+      "cas_number": "102851-06-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413030-100mg"
+    },
+    {
+      "part_number": "CDAA-413033-250mg",
+      "name_en": "Bioresmethrin",
+      "name_cn": "生物苄呋菊酯",
+      "cas_number": "28434-01-7",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413033-250mg"
+    },
+    {
+      "part_number": "CDAA-413036D6-1mg",
+      "name_en": "trans-Permethrin-[D6]",
+      "name_cn": "反式除虫菊脂-[D6]",
+      "cas_number": "82523-59-9",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413036D6-1mg"
+    },
+    {
+      "part_number": "CDAA-413037-10mg",
+      "name_en": "cis-Permethrin",
+      "name_cn": "顺式-氯菊酯",
+      "cas_number": "61949-76-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413037-10mg"
+    },
+    {
+      "part_number": "CDAA-413038-10mg",
+      "name_en": "trans-Permethrin",
+      "name_cn": "生物氯菊酯",
+      "cas_number": "61949-77-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413038-10mg"
+    },
+    {
+      "part_number": "CDAA-413038-5mg",
+      "name_en": "trans-Permethrin",
+      "name_cn": "反式生物氯菊酯",
+      "cas_number": "61949-77-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413038-5mg"
+    },
+    {
+      "part_number": "CDAA-413040-100mg",
+      "name_en": "α-Cypermethrin",
+      "name_cn": "顺式氯氰菊酯",
+      "cas_number": "67375-30-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413040-100mg"
+    },
+    {
+      "part_number": "CDAA-413042-10mg",
+      "name_en": "Flucythrinate",
+      "name_cn": "氟氰戊菊酯(氟氰菊酯)",
+      "cas_number": "70124-77-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413042-10mg"
+    },
+    {
+      "part_number": "CDAA-413046-100mg",
+      "name_en": "β-Cypermethrin",
+      "name_cn": "β-氯氰菊酯(异构体混合物)",
+      "cas_number": "1224510-29-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413046-100mg"
+    },
+    {
+      "part_number": "CDAA-413046-10mg",
+      "name_en": "β-Cypermethrin",
+      "name_cn": "β-氯氰菊酯/高效氯氰菊酯(异构体混合物)",
+      "cas_number": "1224510-29-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413046-10mg"
+    },
+    {
+      "part_number": "CDAA-413047-250mg",
+      "name_en": "β-Cyfluthrin",
+      "name_cn": "高效氟氯氰菊酯",
+      "cas_number": "1820573-27-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413047-250mg"
+    },
+    {
+      "part_number": "CDAA-413048-10mg",
+      "name_en": "2，4‘-Dicofol",
+      "name_cn": "2，4’-三氯杀螨醇",
+      "cas_number": "10606-46-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413048-10mg"
+    },
+    {
+      "part_number": "CDAA-413049-100Mg",
+      "name_en": "(1S,2S,1'S)-Cypermethrin",
+      "name_cn": "beta-氯氰菊酯/高效氯氰菊酯",
+      "cas_number": "72204-43-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413049-100Mg"
+    },
+    {
+      "part_number": "CDAA-413050-100mg",
+      "name_en": "Flumethrin",
+      "name_cn": "氟氯苯菊酯",
+      "cas_number": "69770-45-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413050-100mg"
+    },
+    {
+      "part_number": "CDAA-413051-100mg",
+      "name_en": "Cyphenothrin",
+      "name_cn": "苯氰菊酯",
+      "cas_number": "39515-40-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413051-100mg"
+    },
+    {
+      "part_number": "CDAA-413052-100mg",
+      "name_en": "Dimefluthrin",
+      "name_cn": "四氟甲醚菊酯",
+      "cas_number": "271241-14-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413052-100mg"
+    },
+    {
+      "part_number": "CDAA-413053-100mg",
+      "name_en": "zeta-Cypermethrin",
+      "name_cn": "ζ-氯氰菊酯",
+      "cas_number": "1315501-18-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413053-100mg"
+    },
+    {
+      "part_number": "CDAA-413053-10mg",
+      "name_en": "zeta-Cypermethrin",
+      "name_cn": "ζ-氯氰菊酯",
+      "cas_number": "1315501-18-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413053-10mg"
+    },
+    {
+      "part_number": "CDAA-413054-100mg",
+      "name_en": "Empenthrin",
+      "name_cn": "炔戊菊酯",
+      "cas_number": "54406-48-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413054-100mg"
+    },
+    {
+      "part_number": "CDAA-413055-100mg",
+      "name_en": "Silafluofen",
+      "name_cn": "氟硅菊酯",
+      "cas_number": "105024-66-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413055-100mg"
+    },
+    {
+      "part_number": "CDAA-413055-25mg",
+      "name_en": "Silafluofen",
+      "name_cn": "氟硅菊酯",
+      "cas_number": "105024-66-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413055-25mg"
+    },
+    {
+      "part_number": "CDAA-413056-10mg",
+      "name_en": "Kadethrin",
+      "name_cn": "噻嗯菊酯",
+      "cas_number": "58769-20-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413056-10mg"
+    },
+    {
+      "part_number": "CDAA-413057-250mg",
+      "name_en": "Transfluthrin",
+      "name_cn": "四氟菊酯",
+      "cas_number": "118712-89-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413057-250mg"
+    },
+    {
+      "part_number": "CDAA-413058-25Mg",
+      "name_en": "Aminocarb",
+      "name_cn": "灭害威",
+      "cas_number": "2032-59-9",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413058-25Mg"
+    },
+    {
+      "part_number": "CDAA-413059-10mg",
+      "name_en": "Tralomethrin",
+      "name_cn": "四溴菊酯",
+      "cas_number": "66841-25-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413059-10mg"
+    },
+    {
+      "part_number": "CDAA-413060-50mg",
+      "name_en": "Tefluthrin",
+      "name_cn": "七氟菊酯",
+      "cas_number": "79538-32-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413060-50mg"
+    },
+    {
+      "part_number": "CDAA-413061-10mg",
+      "name_en": "γ-Cyhalothrin",
+      "name_cn": "γ-三氟氯氰菊酯",
+      "cas_number": "76703-62-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413061-10mg"
+    },
+    {
+      "part_number": "CDAA-413062-10mg",
+      "name_en": "Methothrin",
+      "name_cn": "甲醚菊酯",
+      "cas_number": "34388-29-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413062-10mg"
+    },
+    {
+      "part_number": "CDAA-413063-25mg",
+      "name_en": "Imiprothrin",
+      "name_cn": "炔咪菊酯",
+      "cas_number": "72963-72-5",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413063-25mg"
+    },
+    {
+      "part_number": "CDAA-413063-5mg",
+      "name_en": "Imiprothrin",
+      "name_cn": "炔咪菊酯",
+      "cas_number": "72963-72-5",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413063-5mg"
+    },
+    {
+      "part_number": "CDAA-413064-1mg",
+      "name_en": "Cycloprothrin",
+      "name_cn": "乙氰菊酯",
+      "cas_number": "63935-38-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413064-1mg"
+    },
+    {
+      "part_number": "CDAA-413065-10mg",
+      "name_en": "theta-Cypermethrin",
+      "name_cn": "高效反式氯氰菊酯",
+      "cas_number": "71697-59-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413065-10mg"
+    },
+    {
+      "part_number": "CDAA-413066-100mg",
+      "name_en": "Cyhalothrin",
+      "name_cn": "氯氟氰菊酯",
+      "cas_number": "68085-85-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413066-100mg"
+    },
+    {
+      "part_number": "CDAA-413068-1mg",
+      "name_en": "Methomyl-[D3]",
+      "name_cn": "灭多威-[D3]",
+      "cas_number": "1398109-07-3",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413068-1mg"
+    },
+    {
+      "part_number": "CDAA-413069-10mg",
+      "name_en": "2-Chloro-4,5-dimethylphenyl methylcarbamate",
+      "name_cn": "氯灭杀威",
+      "cas_number": "671-04-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413069-10mg"
+    },
+    {
+      "part_number": "CDAA-413070-10mg",
+      "name_en": "Bifenthrin",
+      "name_cn": "联苯菊酯(氟氯菊酯)",
+      "cas_number": "99267-18-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413070-10mg"
+    },
+    {
+      "part_number": "CDAA-413071-10mg",
+      "name_en": "Trans-Bifenthrin",
+      "name_cn": "反式联苯菊酯",
+      "cas_number": "83322-02-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413071-10mg"
+    },
+    {
+      "part_number": "CDAA-413071-1mg",
+      "name_en": "trans-Bifenthrin",
+      "name_cn": "反式联苯菊酯",
+      "cas_number": "83322-02-5",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413071-1mg"
+    },
+    {
+      "part_number": "CDAA-413072-250mg",
+      "name_en": "1R-trans-Permethrinic Acid",
+      "name_cn": "1,1,1-三氯三氟乙烷",
+      "cas_number": "354-58-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413072-250mg"
+    },
+    {
+      "part_number": "CDAA-413073-100mg",
+      "name_en": "Sodium Abietate",
+      "name_cn": "右旋反式苯醚菊酯",
+      "cas_number": "26046-85-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413073-100mg"
+    },
+    {
+      "part_number": "CDAA-413074-100mg",
+      "name_en": "Dichlone",
+      "name_cn": "反式右旋菊酸",
+      "cas_number": "55701-03-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-413074-100mg"
+    },
+    {
+      "part_number": "CDAA-414001-250mg",
+      "name_en": "Ethyl carbonate",
+      "name_cn": "氨基甲酸乙酯",
+      "cas_number": "51-79-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414001-250mg"
+    },
+    {
+      "part_number": "CDAA-414003-250mg",
+      "name_en": "Carbaryl",
+      "name_cn": "甲萘威",
+      "cas_number": "63-25-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414003-250mg"
+    },
+    {
+      "part_number": "CDAA-414004-100mg",
+      "name_en": "Thiodicarb",
+      "name_cn": "硫双威",
+      "cas_number": "59669-26-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414004-100mg"
+    },
+    {
+      "part_number": "CDAA-414005-10mg",
+      "name_en": "Pirimicarb-desmethyl-formamido",
+      "name_cn": "去甲基抗蚜威甲酰胺",
+      "cas_number": "27218-04-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414005-10mg"
+    },
+    {
+      "part_number": "CDAA-414007-100mg",
+      "name_en": "Methiocarb",
+      "name_cn": "甲硫威",
+      "cas_number": "2032-65-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414007-100mg"
+    },
+    {
+      "part_number": "CDAA-414008-250mg",
+      "name_en": "Pirimicarb",
+      "name_cn": "抗蚜威",
+      "cas_number": "23103-98-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414008-250mg"
+    },
+    {
+      "part_number": "CDAA-414009-100mg",
+      "name_en": "Promecarb",
+      "name_cn": "猛杀威",
+      "cas_number": "2631-37-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414009-100mg"
+    },
+    {
+      "part_number": "CDAA-414009-10mg",
+      "name_en": "Promecarb",
+      "name_cn": "猛杀威",
+      "cas_number": "2631-37-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414009-10mg"
+    },
+    {
+      "part_number": "CDAA-414010-100mg",
+      "name_en": "Isoprocarb",
+      "name_cn": "异丙威",
+      "cas_number": "2631-40-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414010-100mg"
+    },
+    {
+      "part_number": "CDAA-414011-100mg",
+      "name_en": "Ethiofencarb",
+      "name_cn": "乙硫苯威",
+      "cas_number": "29973-13-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414011-100mg"
+    },
+    {
+      "part_number": "CDAA-414013-250mg",
+      "name_en": "Fenobucarb",
+      "name_cn": "仲丁威",
+      "cas_number": "3766-81-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414013-250mg"
+    },
+    {
+      "part_number": "CDAA-414014-10mg",
+      "name_en": "Furathiocarb",
+      "name_cn": "呋线威",
+      "cas_number": "65907-30-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414014-10mg"
+    },
+    {
+      "part_number": "CDAA-414015-10mg",
+      "name_en": "Dioxacarb",
+      "name_cn": "二氧威",
+      "cas_number": "6988-21-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414015-10mg"
+    },
+    {
+      "part_number": "CDAA-414018-100mg",
+      "name_en": "Methomyl-oxime",
+      "name_cn": "灭多威肟",
+      "cas_number": "13749-94-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414018-100mg"
+    },
+    {
+      "part_number": "CDAA-414019-100mg",
+      "name_en": "Aldicarb-sulfoxide",
+      "name_cn": "涕灭威亚砜",
+      "cas_number": "1646-87-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414019-100mg"
+    },
+    {
+      "part_number": "CDAA-414019-10mg",
+      "name_en": "Aldicarb-sulfoxide",
+      "name_cn": "涕灭威亚砜",
+      "cas_number": "1646-87-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414019-10mg"
+    },
+    {
+      "part_number": "CDAA-414019C2D3-1mg",
+      "name_en": "13C2，d3] Aldicarb?sulfoxide-[13C2，d3]",
+      "name_cn": "涕灭威亚砜-[13C2，d3]",
+      "cas_number": "1261170-77-7",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414019C2D3-1mg"
+    },
+    {
+      "part_number": "CDAA-414020-10mg",
+      "name_en": "Aldicarb-sulfone",
+      "name_cn": "涕灭威砜",
+      "cas_number": "1646-88-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414020-10mg"
+    },
+    {
+      "part_number": "CDAA-414020-50mg",
+      "name_en": "Aldicarb-sulfone",
+      "name_cn": "涕灭威砜",
+      "cas_number": "1646-88-4",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414020-50mg"
+    },
+    {
+      "part_number": "CDAA-414021-10mg",
+      "name_en": "Carbofuran-3-hydroxy",
+      "name_cn": "3-羟基呋喃丹",
+      "cas_number": "16655-82-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414021-10mg"
+    },
+    {
+      "part_number": "CDAA-414030-100mg",
+      "name_en": "Butocarboxim",
+      "name_cn": "丁酮威",
+      "cas_number": "34681-10-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414030-100mg"
+    },
+    {
+      "part_number": "CDAA-414030-25mg",
+      "name_en": "Butocarboxim",
+      "name_cn": "丁酮威",
+      "cas_number": "34681-10-2",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414030-25mg"
+    },
+    {
+      "part_number": "CDAA-414035-250mg",
+      "name_en": "Carbosulfan",
+      "name_cn": "丁硫克百威",
+      "cas_number": "55285-14-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414035-250mg"
+    },
+    {
+      "part_number": "CDAA-414036-250mg",
+      "name_en": "Fenoxycarb",
+      "name_cn": "苯氧威",
+      "cas_number": "72490-01-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414036-250mg"
+    },
+    {
+      "part_number": "CDAA-414037-100mg",
+      "name_en": "Benfuracarb",
+      "name_cn": "丙硫克百威",
+      "cas_number": "82560-54-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414037-100mg"
+    },
+    {
+      "part_number": "CDAA-414039-50mg",
+      "name_en": "Diethofencarb",
+      "name_cn": "乙霉威",
+      "cas_number": "87130-20-9",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414039-50mg"
+    },
+    {
+      "part_number": "CDAA-414040-250mg",
+      "name_en": "Bendiocarb",
+      "name_cn": "恶虫威",
+      "cas_number": "22781-23-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414040-250mg"
+    },
+    {
+      "part_number": "CDAA-414042-100mg",
+      "name_en": "Oxamyl",
+      "name_cn": "杀线威",
+      "cas_number": "23135-22-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414042-100mg"
+    },
+    {
+      "part_number": "CDAA-414043D3-10mg",
+      "name_en": "1007459-98-4 Carbofuran-[D3]",
+      "name_cn": "克百威-[D3]",
+      "cas_number": "1007459-98-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414043D3-10mg"
+    },
+    {
+      "part_number": "CDAA-414043D3-5mg",
+      "name_en": "Carbofuran-d3",
+      "name_cn": "克百威-D3",
+      "cas_number": "1007459-98-4",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414043D3-5mg"
+    },
+    {
+      "part_number": "CDAA-414045D6-1mg",
+      "name_en": "Pirimicarb-[D6]",
+      "name_cn": "抗蚜威-[D6]",
+      "cas_number": "1015854-66-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414045D6-1mg"
+    },
+    {
+      "part_number": "CDAA-414046D3-1mg",
+      "name_en": "Methiocarb-[D3]",
+      "name_cn": "甲硫威-[D3]",
+      "cas_number": "1581694-94-1",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414046D3-1mg"
+    },
+    {
+      "part_number": "CDAA-414047-10mg",
+      "name_en": "Pirimicarb-desmethyl",
+      "name_cn": "抗蚜威-脱甲基",
+      "cas_number": "30614-22-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414047-10mg"
+    },
+    {
+      "part_number": "CDAA-414048D7-5mg",
+      "name_en": "Carbaryl-[D7]",
+      "name_cn": "甲萘威-[D7]",
+      "cas_number": "362049-56-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414048D7-5mg"
+    },
+    {
+      "part_number": "CDAA-414049-1mg",
+      "name_en": "Ethiofencarb-sulfone",
+      "name_cn": "乙硫苯威砜",
+      "cas_number": "53380-23-7",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414049-1mg"
+    },
+    {
+      "part_number": "CDAA-414050-1mg",
+      "name_en": "Ethiofencarb-sulfoxide",
+      "name_cn": "乙硫苯威亚砜",
+      "cas_number": "53380-22-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414050-1mg"
+    },
+    {
+      "part_number": "CDAA-414051-50mg",
+      "name_en": "Alanycarb",
+      "name_cn": "棉铃威",
+      "cas_number": "83130-01-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414051-50mg"
+    },
+    {
+      "part_number": "CDAA-414052-10mg",
+      "name_en": "Methiocarb Sulfone",
+      "name_cn": "甲硫威砜",
+      "cas_number": "2179-25-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414052-10mg"
+    },
+    {
+      "part_number": "CDAA-414053-10mg",
+      "name_en": "Butocarboxim-sulfoxide",
+      "name_cn": "丁酮威亚砜",
+      "cas_number": "34681-24-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414053-10mg"
+    },
+    {
+      "part_number": "CDAA-414054-10mg",
+      "name_en": "Methiocarb-sulfoxide",
+      "name_cn": "灭虫威亚砜",
+      "cas_number": "2635-10-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414054-10mg"
+    },
+    {
+      "part_number": "CDAA-414055-100mg",
+      "name_en": "Butoxycarboxim",
+      "name_cn": "丁酮砜威",
+      "cas_number": "34681-23-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414055-100mg"
+    },
+    {
+      "part_number": "CDAA-414056-100mg",
+      "name_en": "Xmc",
+      "name_cn": "灭除威",
+      "cas_number": "2655-14-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414056-100mg"
+    },
+    {
+      "part_number": "CDAA-414056-10mg",
+      "name_en": "Xmc",
+      "name_cn": "灭除威",
+      "cas_number": "2655-14-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414056-10mg"
+    },
+    {
+      "part_number": "CDAA-414057-500mg",
+      "name_en": "3,?5-?Dimethylphenol",
+      "name_cn": "3,5-二甲苯酚",
+      "cas_number": "108-68-9",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414057-500mg"
+    },
+    {
+      "part_number": "CDAA-414058-10mg",
+      "name_en": "Oxamyl-oxime",
+      "name_cn": "杀线威肟",
+      "cas_number": "30558-43-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414058-10mg"
+    },
+    {
+      "part_number": "CDAA-414059-25mg",
+      "name_en": "Flupyrimin",
+      "name_cn": "N-[(E)-1-(6-氯-3-吡啶甲基)吡啶-2(1H)-亚基]",
+      "cas_number": "1689566-03-7",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414059-25mg"
+    },
+    {
+      "part_number": "CDAA-414060-1g",
+      "name_en": "Ethanolamine",
+      "name_cn": "乙醇胺",
+      "cas_number": "141-43-5",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414060-1g"
+    },
+    {
+      "part_number": "CDAA-414061-500mg",
+      "name_en": "2-Isopropylphenol",
+      "name_cn": "2-异丙基苯酚",
+      "cas_number": "88-69-7",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414061-500mg"
+    },
+    {
+      "part_number": "CDAA-414062-10mg",
+      "name_en": "Xylylcarb",
+      "name_cn": "灭杀威",
+      "cas_number": "2425-10-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414062-10mg"
+    },
+    {
+      "part_number": "CDAA-414062-1mg",
+      "name_en": "Xylylcarb",
+      "name_cn": "灭杀威",
+      "cas_number": "2425-10-7",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414062-1mg"
+    },
+    {
+      "part_number": "CDAA-414063-100mg",
+      "name_en": "Thiosemicarbazide",
+      "name_cn": "氨基硫脲",
+      "cas_number": "79-19-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414063-100mg"
+    },
+    {
+      "part_number": "CDAA-414064-250mg",
+      "name_en": "Diphenyl carbonate",
+      "name_cn": "碳酸二苯酯",
+      "cas_number": "102-09-0",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414064-250mg"
+    },
+    {
+      "part_number": "CDAA-414065-10mg",
+      "name_en": "Cpmc",
+      "name_cn": "害扑威",
+      "cas_number": "3942-54-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-414065-10mg"
+    },
+    {
+      "part_number": "CDAA-415002-10mg",
+      "name_en": "1-Methyl-3-(tetrahydro-3-furylmethyl) urea (UF)",
+      "name_cn": "呋虫胺代谢物UF",
+      "cas_number": "457614-34-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415002-10mg"
+    },
+    {
+      "part_number": "CDAA-415002-50mg",
+      "name_en": "1-Methyl-3-(tetrahydro-3-furylmethyl) urea (UF)",
+      "name_cn": "呋虫胺代谢物UF",
+      "cas_number": "457614-34-5",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415002-50mg"
+    },
+    {
+      "part_number": "CDAA-415003-10mg",
+      "name_en": "1-Methyl-3-(tetrahydro-3-furylmethyl)guanidium dihydrogen (DN) hydrochloride",
+      "name_cn": "呋虫胺代谢物DN盐酸盐",
+      "cas_number": "939773-22-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415003-10mg"
+    },
+    {
+      "part_number": "CDAA-415003-50mg",
+      "name_en": "1-Methyl-3-(tetrahydro-3-furylmethyl)guanidium dihydrogen (DN)  hydrochloride",
+      "name_cn": "呋虫胺代谢物DN盐酸盐",
+      "cas_number": "939773-22-5",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415003-50mg"
+    },
+    {
+      "part_number": "CDAA-415004-10mg",
+      "name_en": "Sulfoxaflor",
+      "name_cn": "氟啶虫胺腈",
+      "cas_number": "946578-00-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415004-10mg"
+    },
+    {
+      "part_number": "CDAA-415005-100mg",
+      "name_en": "Fenazaquin",
+      "name_cn": "喹螨醚",
+      "cas_number": "120928-09-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415005-100mg"
+    },
+    {
+      "part_number": "CDAA-415008C6-1mg",
+      "name_en": "Fipronil-[13C6]",
+      "name_cn": "氟虫腈-[13C6]",
+      "cas_number": "120068-37-3",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415008C6-1mg"
+    },
+    {
+      "part_number": "CDAA-415008C6-5mg",
+      "name_en": "fipronil-[13C6]",
+      "name_cn": "氟虫腈-[13C6]",
+      "cas_number": "120068-37-3",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415008C6-5mg"
+    },
+    {
+      "part_number": "CDAA-415013-100mg",
+      "name_en": "Hexaflumuron",
+      "name_cn": "氟铃脲",
+      "cas_number": "86479-06-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415013-100mg"
+    },
+    {
+      "part_number": "CDAA-415019-250mg",
+      "name_en": "Ethyl formate",
+      "name_cn": "甲酸乙酯",
+      "cas_number": "109-94-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415019-250mg"
+    },
+    {
+      "part_number": "CDAA-415026-100mg",
+      "name_en": "Doramectin",
+      "name_cn": "多拉菌素",
+      "cas_number": "117704-25-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415026-100mg"
+    },
+    {
+      "part_number": "CDAA-415027-100mg",
+      "name_en": "Tebufenpyrad",
+      "name_cn": "吡螨胺",
+      "cas_number": "119168-77-3",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415027-100mg"
+    },
+    {
+      "part_number": "CDAA-415028-25mg",
+      "name_en": "Fipronil-sulfide",
+      "name_cn": "氟虫腈硫化物",
+      "cas_number": "120067-83-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415028-25mg"
+    },
+    {
+      "part_number": "CDAA-415036-10mg",
+      "name_en": "Spinosyn D",
+      "name_cn": "多杀菌素D",
+      "cas_number": "131929-63-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415036-10mg"
+    },
+    {
+      "part_number": "CDAA-415038-250mg",
+      "name_en": "Deet",
+      "name_cn": "避蚊胺",
+      "cas_number": "134-62-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415038-250mg"
+    },
+    {
+      "part_number": "CDAA-415044-100mg",
+      "name_en": "Spirodiclofen",
+      "name_cn": "螺螨酯",
+      "cas_number": "148477-71-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415044-100mg"
+    },
+    {
+      "part_number": "CDAA-415045-50mg",
+      "name_en": "Nitenpyram",
+      "name_cn": "烯啶虫胺",
+      "cas_number": "150824-47-8",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415045-50mg"
+    },
+    {
+      "part_number": "CDAA-415051-50mg",
+      "name_en": "Spinosads",
+      "name_cn": "多杀菌素A和D混合物",
+      "cas_number": "168316-95-8",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415051-50mg"
+    },
+    {
+      "part_number": "CDAA-415052-5mg",
+      "name_en": "Aldimorph",
+      "name_cn": "4-十二烷基-2,6-二甲基吗啉(C8-C16混合物)",
+      "cas_number": "91315-15-0",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415052-5mg"
+    },
+    {
+      "part_number": "CDAA-415070-50mg",
+      "name_en": "Flubendiamide",
+      "name_cn": "氟虫双酰胺",
+      "cas_number": "272451-65-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415070-50mg"
+    },
+    {
+      "part_number": "CDAA-415073-50mg",
+      "name_en": "Monosultap",
+      "name_cn": "杀虫单",
+      "cas_number": "29547-00-0",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415073-50mg"
+    },
+    {
+      "part_number": "CDAA-415076-100mg",
+      "name_en": "Thiocyclam hydrogenoxalate",
+      "name_cn": "杀虫环草酸盐",
+      "cas_number": "31895-22-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415076-100mg"
+    },
+    {
+      "part_number": "CDAA-415076-10mg",
+      "name_en": "Thiocyclam hydrogenoxalate",
+      "name_cn": "易卫杀草酸盐（杀虫环草酸盐）",
+      "cas_number": "31895-22-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415076-10mg"
+    },
+    {
+      "part_number": "CDAA-415083-50mg",
+      "name_en": "Methoprene",
+      "name_cn": "烯虫酯",
+      "cas_number": "40596-69-8",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415083-50mg"
+    },
+    {
+      "part_number": "CDAA-415084-100mg",
+      "name_en": "Sulfluramid",
+      "name_cn": "氟虫胺",
+      "cas_number": "4151-50-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415084-100mg"
+    },
+    {
+      "part_number": "CDAA-415086-50mg",
+      "name_en": "Chlorantraniliprole",
+      "name_cn": "氯虫苯甲酰胺",
+      "cas_number": "500008-45-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415086-50mg"
+    },
+    {
+      "part_number": "CDAA-415088-50mg",
+      "name_en": "Thiosultap-sodium",
+      "name_cn": "杀虫双",
+      "cas_number": "52207-48-4",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415088-50mg"
+    },
+    {
+      "part_number": "CDAA-415097C3-10mg",
+      "name_en": "Cyromazine-[13C3]",
+      "name_cn": "灭蝇胺-[13C3]",
+      "cas_number": "1808990-94-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415097C3-10mg"
+    },
+    {
+      "part_number": "CDAA-415097C3-1mg",
+      "name_en": "Cyromazine-[13C3]",
+      "name_cn": "灭蝇胺-[13C3]",
+      "cas_number": "1808990-94-4",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415097C3-1mg"
+    },
+    {
+      "part_number": "CDAA-415100-100mg",
+      "name_en": "ivermectin",
+      "name_cn": "伊维菌素",
+      "cas_number": "70288-86-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415100-100mg"
+    },
+    {
+      "part_number": "CDAA-415106-100mg",
+      "name_en": "Pyriproxyfen",
+      "name_cn": "吡丙醚",
+      "cas_number": "95737-68-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415106-100mg"
+    },
+    {
+      "part_number": "CDAA-415107-10mg",
+      "name_en": "Tebupirimfos",
+      "name_cn": "丁基嘧啶磷",
+      "cas_number": "96182-53-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415107-10mg"
+    },
+    {
+      "part_number": "CDAA-415109-25mg",
+      "name_en": "cyantraniliprole",
+      "name_cn": "溴氰虫酰胺",
+      "cas_number": "736994-63-1",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415109-25mg"
+    },
+    {
+      "part_number": "CDAA-415111-10mg",
+      "name_en": "Spirotetramat-enol",
+      "name_cn": "螺虫乙酯-烯醇",
+      "cas_number": "203312-38-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415111-10mg"
+    },
+    {
+      "part_number": "CDAA-415112-10mg",
+      "name_en": "Spirotetramat-mono-hydroxy",
+      "name_cn": "螺虫乙酯-单-羟基",
+      "cas_number": "1172134-12-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415112-10mg"
+    },
+    {
+      "part_number": "CDAA-415112-1mg",
+      "name_en": "Spirotetramat-mono-hydroxy",
+      "name_cn": "螺虫乙酯-单-羟基",
+      "cas_number": "1172134-12-1",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415112-1mg"
+    },
+    {
+      "part_number": "CDAA-415113-10mg",
+      "name_en": "Spirotetramat-keto-hydroxy",
+      "name_cn": "螺虫乙酯-酮基-羟基",
+      "cas_number": "1172134-11-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415113-10mg"
+    },
+    {
+      "part_number": "CDAA-415114-10mg",
+      "name_en": "Spirotetramat-enol-glucoside",
+      "name_cn": "螺虫乙酯-烯醇-葡萄糖苷",
+      "cas_number": "1172614-86-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415114-10mg"
+    },
+    {
+      "part_number": "CDAA-415114-1mg",
+      "name_en": "Spirotetramat-enol-glucoside",
+      "name_cn": "螺虫乙酯-烯醇-葡萄糖苷",
+      "cas_number": "1172614-86-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415114-1mg"
+    },
+    {
+      "part_number": "CDAA-415115D4-1mg",
+      "name_en": "Imidacloprid-[D4]",
+      "name_cn": "吡虫啉-[D4]",
+      "cas_number": "1015855-75-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415115D4-1mg"
+    },
+    {
+      "part_number": "CDAA-415116-10mg",
+      "name_en": "N-2，4-Dimethylphenyl-N-methylformamidine",
+      "name_cn": "单甲脒",
+      "cas_number": "33089-74-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415116-10mg"
+    },
+    {
+      "part_number": "CDAA-415116-5mg",
+      "name_en": "N-2，4-Dimethylphenyl-N’-methylformamidine",
+      "name_cn": "单甲脒",
+      "cas_number": "33089-74-6",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415116-5mg"
+    },
+    {
+      "part_number": "CDAA-415117-10mg",
+      "name_en": "Imibenconazole-desbenzyl-oxon",
+      "name_cn": "脱苯甲基亚酰胺",
+      "cas_number": "154221-27-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415117-10mg"
+    },
+    {
+      "part_number": "CDAA-415118-10mg",
+      "name_en": "Acetamiprid-N-desmethyl",
+      "name_cn": "N-去甲基啶虫脒",
+      "cas_number": "190604-92-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415118-10mg"
+    },
+    {
+      "part_number": "CDAA-415118-1mg",
+      "name_en": "Acetamiprid-N-desmethyl",
+      "name_cn": "N-去甲基啶虫脒",
+      "cas_number": "190604-92-3",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415118-1mg"
+    },
+    {
+      "part_number": "CDAA-415119-1mg",
+      "name_en": "Pyrifluquinazon",
+      "name_cn": "氟虫吡喹",
+      "cas_number": "337458-27-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415119-1mg"
+    },
+    {
+      "part_number": "CDAA-415120-10mg",
+      "name_en": "Tcmtb",
+      "name_cn": "苯噻氰",
+      "cas_number": "21564-17-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415120-10mg"
+    },
+    {
+      "part_number": "CDAA-415121-25mg",
+      "name_en": "Flonicamid",
+      "name_cn": "氟啶虫酰胺",
+      "cas_number": "158062-67-0",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415121-25mg"
+    },
+    {
+      "part_number": "CDAA-415122-10mg",
+      "name_en": "Cycloxaprid",
+      "name_cn": "环氧虫啶",
+      "cas_number": "1203791-41-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415122-10mg"
+    },
+    {
+      "part_number": "CDAA-415123-10mg",
+      "name_en": "Cyclaniliprole",
+      "name_cn": "环苯胺",
+      "cas_number": "1031756-98-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415123-10mg"
+    },
+    {
+      "part_number": "CDAA-415123-5mg",
+      "name_en": "Cyclaniliprole",
+      "name_cn": "环溴虫酰胺",
+      "cas_number": "1031756-98-5",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415123-5mg"
+    },
+    {
+      "part_number": "CDAA-415124-25mg",
+      "name_en": "Imidacloprid-urea",
+      "name_cn": "吡虫啉尿素",
+      "cas_number": "120868-66-8",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415124-25mg"
+    },
+    {
+      "part_number": "CDAA-415125-25mg",
+      "name_en": "Fluensulfone",
+      "name_cn": "联氟砜",
+      "cas_number": "318290-98-1",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415125-25mg"
+    },
+    {
+      "part_number": "CDAA-415126-10mg",
+      "name_en": "Pyridalyl",
+      "name_cn": "啶虫丙醚",
+      "cas_number": "179101-81-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415126-10mg"
+    },
+    {
+      "part_number": "CDAA-415127-100mg",
+      "name_en": "Flupyradifurone",
+      "name_cn": "氟吡呋喃酮",
+      "cas_number": "951659-40-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415127-100mg"
+    },
+    {
+      "part_number": "CDAA-415127-10mg",
+      "name_en": "Flupyradifurone",
+      "name_cn": "氟吡呋喃酮",
+      "cas_number": "951659-40-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415127-10mg"
+    },
+    {
+      "part_number": "CDAA-415128-10mg",
+      "name_en": "Chromafenozide",
+      "name_cn": "环虫酰肼",
+      "cas_number": "143807-66-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415128-10mg"
+    },
+    {
+      "part_number": "CDAA-415131-10mg",
+      "name_en": "RH 5849",
+      "name_cn": "抑食肼",
+      "cas_number": "112225-87-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415131-10mg"
+    },
+    {
+      "part_number": "CDAA-415132-10mg",
+      "name_en": "Penfluron",
+      "name_cn": "氟幼脲",
+      "cas_number": "35367-31-8",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415132-10mg"
+    },
+    {
+      "part_number": "CDAA-415133-100mg",
+      "name_en": "Spirotetramat",
+      "name_cn": "螺虫乙酯",
+      "cas_number": "203313-25-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415133-100mg"
+    },
+    {
+      "part_number": "CDAA-415134-100mg",
+      "name_en": "Fenchlorphos-oxon",
+      "name_cn": "氧皮蝇磷",
+      "cas_number": "3983-45-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415134-100mg"
+    },
+    {
+      "part_number": "CDAA-415134-10mg",
+      "name_en": "Fenchlorphos-oxon",
+      "name_cn": "氧皮蝇磷",
+      "cas_number": "3983-45-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415134-10mg"
+    },
+    {
+      "part_number": "CDAA-415135-100mg",
+      "name_en": "Succinic acid di-n-butyl ester",
+      "name_cn": "丁二酸二正丁酯",
+      "cas_number": "141-03-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415135-100mg"
+    },
+    {
+      "part_number": "CDAA-415136-10mg",
+      "name_en": "Diofenolan",
+      "name_cn": "苯虫醚",
+      "cas_number": "63837-33-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415136-10mg"
+    },
+    {
+      "part_number": "CDAA-415137-100mg",
+      "name_en": "Cyanofenphos",
+      "name_cn": "苯腈磷",
+      "cas_number": "13067-93-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415137-100mg"
+    },
+    {
+      "part_number": "CDAA-415137-10mg",
+      "name_en": "Cyanofenphos",
+      "name_cn": "苯腈磷",
+      "cas_number": "13067-93-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415137-10mg"
+    },
+    {
+      "part_number": "CDAA-415138-100mg",
+      "name_en": "Methyl-pentachlorophenylsulfide",
+      "name_cn": "甲基五氯硫基苯",
+      "cas_number": "1825-19-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415138-100mg"
+    },
+    {
+      "part_number": "CDAA-415140-100mg",
+      "name_en": "Flufiprole",
+      "name_cn": "丁虫腈",
+      "cas_number": "704886-18-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415140-100mg"
+    },
+    {
+      "part_number": "CDAA-415140-10mg",
+      "name_en": "Flufiprole",
+      "name_cn": "丁虫腈",
+      "cas_number": "704886-18-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415140-10mg"
+    },
+    {
+      "part_number": "CDAA-415141-100mg",
+      "name_en": "Ethiprole",
+      "name_cn": "乙虫清",
+      "cas_number": "181587-01-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415141-100mg"
+    },
+    {
+      "part_number": "CDAA-415142-10mg",
+      "name_en": "Kinoprene",
+      "name_cn": "烯虫炔酯",
+      "cas_number": "42588-37-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415142-10mg"
+    },
+    {
+      "part_number": "CDAA-415143-100mg",
+      "name_en": "Azaconazole",
+      "name_cn": "氧环唑",
+      "cas_number": "60207-31-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415143-100mg"
+    },
+    {
+      "part_number": "CDAA-415143-10mg",
+      "name_en": "Azaconazole",
+      "name_cn": "氧环唑",
+      "cas_number": "60207-31-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415143-10mg"
+    },
+    {
+      "part_number": "CDAA-415144-10mg",
+      "name_en": "Chlordimeform hydrochloride",
+      "name_cn": "杀虫脒盐酸盐",
+      "cas_number": "19750-95-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415144-10mg"
+    },
+    {
+      "part_number": "CDAA-415145-250mg",
+      "name_en": "4,4'-Dichlorobenzophenone",
+      "name_cn": "4,4'-二氯二苯甲酮",
+      "cas_number": "90-98-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415145-250mg"
+    },
+    {
+      "part_number": "CDAA-415146-250mg",
+      "name_en": "Prazinon",
+      "name_cn": "吡喹酮",
+      "cas_number": "55268-74-1",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415146-250mg"
+    },
+    {
+      "part_number": "CDAA-415147-250mg",
+      "name_en": "2-Ethyl-1,3-hexandiol",
+      "name_cn": "2-乙基-1,3-己二醇",
+      "cas_number": "94-96-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415147-250mg"
+    },
+    {
+      "part_number": "CDAA-415148-10mg",
+      "name_en": "Hydramethylnon",
+      "name_cn": "氟蚁腙",
+      "cas_number": "67485-29-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415148-10mg"
+    },
+    {
+      "part_number": "CDAA-415149-1mg",
+      "name_en": "Aldicarb-oxime",
+      "name_cn": "涕灭威肟",
+      "cas_number": "1646-75-9",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415149-1mg"
+    },
+    {
+      "part_number": "CDAA-415150-10mg",
+      "name_en": "Diafenthiuron-urea",
+      "name_cn": "丁醚脲-脲",
+      "cas_number": "136337-67-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415150-10mg"
+    },
+    {
+      "part_number": "CDAA-415151-10mg",
+      "name_en": "(S)-Indoxacarb",
+      "name_cn": "恶二唑虫",
+      "cas_number": "173584-44-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415151-10mg"
+    },
+    {
+      "part_number": "CDAA-415152-5mg",
+      "name_en": "Afidopyropen",
+      "name_cn": "双丙环虫酯",
+      "cas_number": "915972-17-7",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415152-5mg"
+    },
+    {
+      "part_number": "CDAA-415153-25mg",
+      "name_en": "Meperfluthrin",
+      "name_cn": "氯氟醚菊酯",
+      "cas_number": "915288-13-0",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415153-25mg"
+    },
+    {
+      "part_number": "CDAA-415154-25mg",
+      "name_en": "Fluxametamide(mixture of isomers)",
+      "name_cn": "氟甲酰胺（异构体混合物）",
+      "cas_number": "928783-29-3",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415154-25mg"
+    },
+    {
+      "part_number": "CDAA-415155-5mg",
+      "name_en": "Clothianidin-urea",
+      "name_cn": "噻虫胺尿素",
+      "cas_number": "634192-72-6",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415155-5mg"
+    },
+    {
+      "part_number": "CDAA-415156-10mg",
+      "name_en": "O,O,S-Trimethylthiophosphate",
+      "name_cn": "O,O,S-三甲基硫代磷酸酯",
+      "cas_number": "152-20-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415156-10mg"
+    },
+    {
+      "part_number": "CDAA-415157-10mg",
+      "name_en": "(E)-Metaflumizone",
+      "name_cn": "(E)-氰氟虫腙",
+      "cas_number": "852403-68-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415157-10mg"
+    },
+    {
+      "part_number": "CDAA-415158-100mg",
+      "name_en": "4-Trifluoromethylnicotinamide",
+      "name_cn": "4-(三氟甲基)烟酰胺",
+      "cas_number": "158062-71-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415158-100mg"
+    },
+    {
+      "part_number": "CDAA-415159-100mg",
+      "name_en": "O,O,O-Trimethylthiophosphate",
+      "name_cn": "O,O,O-三甲基巯基磷酸酯",
+      "cas_number": "152-18-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415159-100mg"
+    },
+    {
+      "part_number": "CDAA-415160-100mg",
+      "name_en": "3-Phenoxybenzyl alcohol",
+      "name_cn": "3-苯氧基苄醇",
+      "cas_number": "13826-35-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415160-100mg"
+    },
+    {
+      "part_number": "CDAA-415161-250mg",
+      "name_en": "2-Chlorobenzoic acid",
+      "name_cn": "2-氯苯甲酸",
+      "cas_number": "118-91-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415161-250mg"
+    },
+    {
+      "part_number": "CDAA-415162D4-1mg",
+      "name_en": "Cyromazine-[D4]",
+      "name_cn": "灭蝇胺-[D4]",
+      "cas_number": "1219804-19-9",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415162D4-1mg"
+    },
+    {
+      "part_number": "CDAA-415163-1mg",
+      "name_en": "Thiamethoxam urea",
+      "name_cn": "噻虫嗪尿素",
+      "cas_number": "902493-06-5",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415163-1mg"
+    },
+    {
+      "part_number": "CDAA-415164-10mg",
+      "name_en": "Triflumezopyrim",
+      "name_cn": "三氟苯嘧啶",
+      "cas_number": "1263133-33-0",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415164-10mg"
+    },
+    {
+      "part_number": "CDAA-415164-1mg",
+      "name_en": "Triflumezopyrim",
+      "name_cn": "三氟苯嘧啶",
+      "cas_number": "1263133-33-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415164-1mg"
+    },
+    {
+      "part_number": "CDAA-415165-1mg",
+      "name_en": "Spirodiclofen-enol",
+      "name_cn": "螺螨酯烯醇",
+      "cas_number": "148476-22-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415165-1mg"
+    },
+    {
+      "part_number": "CDAA-415166-10mg",
+      "name_en": "Clothianidin-desmethyl",
+      "name_cn": "去甲基噻虫胺",
+      "cas_number": "135018-15-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415166-10mg"
+    },
+    {
+      "part_number": "CDAA-415167-10mg",
+      "name_en": "Afoxolaner",
+      "name_cn": "阿福拉纳",
+      "cas_number": "1093861-60-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415167-10mg"
+    },
+    {
+      "part_number": "CDAA-415169-5mg",
+      "name_en": "Fluralaner",
+      "name_cn": "氟雷拉纳",
+      "cas_number": "864731-61-3",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415169-5mg"
+    },
+    {
+      "part_number": "CDAA-415170-25mg",
+      "name_en": "Acetamiprid metabolite IM-1-4",
+      "name_cn": "乙酰丙胺嘧啶代谢物 IM-1-4",
+      "cas_number": "120739-62-0",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415170-25mg"
+    },
+    {
+      "part_number": "CDAA-415171-10mg",
+      "name_en": "Triazamate",
+      "name_cn": "唑蚜威",
+      "cas_number": "112143-82-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415171-10mg"
+    },
+    {
+      "part_number": "CDAA-415172-50mg",
+      "name_en": "Tefluthrin(free acid)",
+      "name_cn": "三氟氯菊酸",
+      "cas_number": "72748-35-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415172-50mg"
+    },
+    {
+      "part_number": "CDAA-415173-100mg",
+      "name_en": "1-Methyl-3-nitroguanidine",
+      "name_cn": "1-甲基-3-硝基胍",
+      "cas_number": "4245-76-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415173-100mg"
+    },
+    {
+      "part_number": "CDAA-415174-100mg",
+      "name_en": "3-Phenoxybenzoic acid",
+      "name_cn": "3-苯氧基苯甲酸",
+      "cas_number": "3739-38-6",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415174-100mg"
+    },
+    {
+      "part_number": "CDAA-415175-100mg",
+      "name_en": "2,6-Difluorobenzamide",
+      "name_cn": "2,6-二氟苯甲酰胺",
+      "cas_number": "18063-03-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415175-100mg"
+    },
+    {
+      "part_number": "CDAA-415177-10mg",
+      "name_en": "Fipronil desulfinyl",
+      "name_cn": "氟虫腈-脱亚硫酰基(氟甲腈)",
+      "cas_number": "205650-65-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415177-10mg"
+    },
+    {
+      "part_number": "CDAA-415178-10mg",
+      "name_en": "Zinc Phenolsulfonate",
+      "name_cn": "苯酚磺酸锌",
+      "cas_number": "127-82-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415178-10mg"
+    },
+    {
+      "part_number": "CDAA-415179-1mg",
+      "name_en": "（-）-Spinosyn A",
+      "name_cn": "（-）-多杀菌素A",
+      "cas_number": "131929-60-7",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415179-1mg"
+    },
+    {
+      "part_number": "CDAA-415180-10mg",
+      "name_en": "Paichongding",
+      "name_cn": "哌虫啶",
+      "cas_number": "948994-16-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415180-10mg"
+    },
+    {
+      "part_number": "CDAA-415182-25mg",
+      "name_en": "(E)-Chlorfenvinphos",
+      "name_cn": "E-毒虫畏",
+      "cas_number": "18708-86-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415182-25mg"
+    },
+    {
+      "part_number": "CDAA-415183-10mg",
+      "name_en": "(E)-Dimethylvinphos",
+      "name_cn": "E-甲基毒虫畏",
+      "cas_number": "71363-52-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415183-10mg"
+    },
+    {
+      "part_number": "CDAA-415184-1mg",
+      "name_en": "Acetamiprid D3",
+      "name_cn": "啶虫脒-D3",
+      "cas_number": "1353869-35-8",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415184-1mg"
+    },
+    {
+      "part_number": "CDAA-415185-5mg",
+      "name_en": "Derquantel",
+      "name_cn": "得曲恩特",
+      "cas_number": "187865-22-1",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415185-5mg"
+    },
+    {
+      "part_number": "CDAA-415186-10mg",
+      "name_en": "Ammonium O，O‘-dimethyldithiophosphate",
+      "name_cn": "O，O-二甲基二硫代磷酸铵",
+      "cas_number": "1066-97-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415186-10mg"
+    },
+    {
+      "part_number": "CDAA-415187-1mg",
+      "name_en": "(2E，4E)-2，4-Dodecadienal",
+      "name_cn": "(2E，4E)-烯虫乙酯",
+      "cas_number": "41096-46-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415187-1mg"
+    },
+    {
+      "part_number": "CDAA-415188-25MG",
+      "name_en": "3-(Hydroxymethylphosphinyl)propionic acid",
+      "name_cn": "3-(甲基磷酸亚基)丙酸",
+      "cas_number": "15090-23-0",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415188-25MG"
+    },
+    {
+      "part_number": "CDAA-415189-1mg",
+      "name_en": "3-Hydroxyimidacloprid",
+      "name_cn": "3-羟基吡虫啉",
+      "cas_number": "380912-09-4",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415189-1mg"
+    },
+    {
+      "part_number": "CDAA-415190-1mg",
+      "name_en": "5-Hydroxyimidacloprid",
+      "name_cn": "5-羟基吡虫啉",
+      "cas_number": "155802-61-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415190-1mg"
+    },
+    {
+      "part_number": "CDAA-415191-1mg",
+      "name_en": "Hydrazinecarboximidamide",
+      "name_cn": "戊吡虫胍",
+      "cas_number": "1376342-13-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415191-1mg"
+    },
+    {
+      "part_number": "CDAA-415191-5mg",
+      "name_en": "Hydrazinecarboximidamide",
+      "name_cn": "戊吡虫胍",
+      "cas_number": "1376342-13-0",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415191-5mg"
+    },
+    {
+      "part_number": "CDAA-415192-10mg",
+      "name_en": "Sulfoxaflor metabolite X11721061",
+      "name_cn": "氟啶虫胺腈代谢物X11721061",
+      "cas_number": "1228631-54-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415192-10mg"
+    },
+    {
+      "part_number": "CDAA-415193-1mg",
+      "name_en": "Lodenafil Carbonate",
+      "name_cn": "罗地那非碳酸酯",
+      "cas_number": "398507-55-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415193-1mg"
+    },
+    {
+      "part_number": "CDAA-415194-10mg",
+      "name_en": "Dinotefuran DN",
+      "name_cn": "呋虫胺代谢物DN",
+      "cas_number": "457614-32-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415194-10mg"
+    },
+    {
+      "part_number": "CDAA-415195-25mg",
+      "name_en": "Nitenpyram",
+      "name_cn": "烯啶虫胺",
+      "cas_number": "120738-89-8",
+      "specification": "25 Mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415195-25mg"
+    },
+    {
+      "part_number": "CDAA-415196-1mg",
+      "name_en": "Spinetoram L",
+      "name_cn": "乙基多杀菌素 L",
+      "cas_number": "187166-15-0",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415196-1mg"
+    },
+    {
+      "part_number": "CDAA-415197-10mg",
+      "name_en": "Demeton-O-methyl",
+      "name_cn": "甲基内吸磷",
+      "cas_number": "867-27-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415197-10mg"
+    },
+    {
+      "part_number": "CDAA-415198-10mg",
+      "name_en": "Fensulfothion-sulfone",
+      "name_cn": "丰索磷砜",
+      "cas_number": "14255-72-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415198-10mg"
+    },
+    {
+      "part_number": "CDAA-415198-50mg",
+      "name_en": "Fensulfothion-sulfone",
+      "name_cn": "丰索磷砜",
+      "cas_number": "14255-72-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415198-50mg"
+    },
+    {
+      "part_number": "CDAA-415199-10mg",
+      "name_en": "Clofencet",
+      "name_cn": "苯哒嗪",
+      "cas_number": "129025-54-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415199-10mg"
+    },
+    {
+      "part_number": "CDAA-415200-5mg",
+      "name_en": "Z-Mevinphos",
+      "name_cn": "顺式速灭磷",
+      "cas_number": "338-45-4",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415200-5mg"
+    },
+    {
+      "part_number": "CDAA-415201-10mg",
+      "name_en": "Fufenozide",
+      "name_cn": "呋喃虫酰肼",
+      "cas_number": "467427-80-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415201-10mg"
+    },
+    {
+      "part_number": "CDAA-415202-10mg",
+      "name_en": "3-Butene-1-sulfonic acid， 3，4，4-trifluoro-",
+      "name_cn": "3，4，4-三氟丁-3-烯-1-磺酸",
+      "cas_number": "851223-33-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415202-10mg"
+    },
+    {
+      "part_number": "CDAA-415203-100mg",
+      "name_en": "2，5-Hexanedione",
+      "name_cn": "2，5-己二酮",
+      "cas_number": "110-13-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415203-100mg"
+    },
+    {
+      "part_number": "CDAA-415204-500mg",
+      "name_en": "3-Methylpyridine",
+      "name_cn": "3-甲基吡啶",
+      "cas_number": "108-99-6",
+      "specification": "500 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415204-500mg"
+    },
+    {
+      "part_number": "CDAA-415205-1000mg",
+      "name_en": "Chloroacetonitrile",
+      "name_cn": "氯乙腈",
+      "cas_number": "107-14-2",
+      "specification": "1000 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415205-1000mg"
+    },
+    {
+      "part_number": "CDAA-415206-1g",
+      "name_en": "Benzyl Formate",
+      "name_cn": "甲酸苄酯",
+      "cas_number": "104-57-4",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415206-1g"
+    },
+    {
+      "part_number": "CDAA-415207-100mg",
+      "name_en": "Kasugamycin",
+      "name_cn": "松香酸钠",
+      "cas_number": "14351-66-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415207-100mg"
+    },
+    {
+      "part_number": "CDAA-415208-10mg",
+      "name_en": "N-Desmethylthiamethoxam",
+      "name_cn": "N-去甲基噻虫嗪",
+      "cas_number": "171103-04-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415208-10mg"
+    },
+    {
+      "part_number": "CDAA-415209-25mg",
+      "name_en": "Tetraniliprole",
+      "name_cn": "四唑虫酰胺",
+      "cas_number": "1229654-66-3",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-415209-25mg"
+    },
+    {
+      "part_number": "CDAA-420001-100mg",
+      "name_en": "amobam",
+      "name_cn": "代森铵",
+      "cas_number": "3566-10-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420001-100mg"
+    },
+    {
+      "part_number": "CDAA-420003D4-50mg",
+      "name_en": "Carbendazim-[D4]",
+      "name_cn": "多菌灵-[D4]",
+      "cas_number": "291765-95-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420003D4-50mg"
+    },
+    {
+      "part_number": "CDAA-420004-250mg",
+      "name_en": "Prochloraz",
+      "name_cn": "咪鲜胺",
+      "cas_number": "67747-09-5",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420004-250mg"
+    },
+    {
+      "part_number": "CDAA-420005-1g",
+      "name_en": "Difenoconazole(isomer mixture)",
+      "name_cn": "恶醚唑（异构体混合物）",
+      "cas_number": "119446-68-3",
+      "specification": "1 g",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420005-1g"
+    },
+    {
+      "part_number": "CDAA-420005-250mg",
+      "name_en": "Difenoconazole",
+      "name_cn": "恶醚唑",
+      "cas_number": "119446-68-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420005-250mg"
+    },
+    {
+      "part_number": "CDAA-420008-10mg",
+      "name_en": "Triclopyricarb",
+      "name_cn": "氯啶菌酯",
+      "cas_number": "902760-40-1",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420008-10mg"
+    },
+    {
+      "part_number": "CDAA-420009-250mg",
+      "name_en": "Chlorothalonil",
+      "name_cn": "百菌清",
+      "cas_number": "1897-45-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420009-250mg"
+    },
+    {
+      "part_number": "CDAA-420009C2-1mg",
+      "name_en": "Chlorothalonil-[13C2]",
+      "name_cn": "百菌清-[13C2]",
+      "cas_number": "1897-45-6",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420009C2-1mg"
+    },
+    {
+      "part_number": "CDAA-420010-100mg",
+      "name_en": "Prochloraz-Manganese Chloride Complex",
+      "name_cn": "咪鲜胺锰盐",
+      "cas_number": "75747-77-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420010-100mg"
+    },
+    {
+      "part_number": "CDAA-420010-10mg",
+      "name_en": "Prochloraz manganese",
+      "name_cn": "咪鲜胺锰盐",
+      "cas_number": "75747-77-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420010-10mg"
+    },
+    {
+      "part_number": "CDAA-420011-10mg",
+      "name_en": "Pyraoxystrobin",
+      "name_cn": "唑菌酯",
+      "cas_number": "862588-11-2",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420011-10mg"
+    },
+    {
+      "part_number": "CDAA-420012-10mg",
+      "name_en": "Ametoctradin",
+      "name_cn": "唑嘧菌胺",
+      "cas_number": "865318-97-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420012-10mg"
+    },
+    {
+      "part_number": "CDAA-420013-250mg",
+      "name_en": "Oxolinic acid",
+      "name_cn": "噁喹酸",
+      "cas_number": "14698-29-4",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420013-250mg"
+    },
+    {
+      "part_number": "CDAA-420013D5-10mg",
+      "name_en": "Oxolinic acid-[D5]",
+      "name_cn": "恶喹酸-[D5]",
+      "cas_number": "1189890-98-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420013D5-10mg"
+    },
+    {
+      "part_number": "CDAA-420013D5-5mg",
+      "name_en": "Oxolinic acid-[D5]",
+      "name_cn": "恶喹酸-[D5]",
+      "cas_number": "1189890-98-9",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420013D5-5mg"
+    },
+    {
+      "part_number": "CDAA-420016-250mg",
+      "name_en": "Anilazine",
+      "name_cn": "敌菌灵",
+      "cas_number": "101-05-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420016-250mg"
+    },
+    {
+      "part_number": "CDAA-420016-25mg",
+      "name_en": "Anilazine",
+      "name_cn": "敌菌灵",
+      "cas_number": "101-05-3",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420016-25mg"
+    },
+    {
+      "part_number": "CDAA-420017-250mg",
+      "name_en": "Triclocarban",
+      "name_cn": "三氯卡班",
+      "cas_number": "101-20-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420017-250mg"
+    },
+    {
+      "part_number": "CDAA-420027-50mg",
+      "name_en": "Mepanipyrim",
+      "name_cn": "嘧菌胺",
+      "cas_number": "110235-47-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420027-50mg"
+    },
+    {
+      "part_number": "CDAA-420029-50mg",
+      "name_en": "Tetraconazole",
+      "name_cn": "氟醚唑",
+      "cas_number": "112281-77-3",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420029-50mg"
+    },
+    {
+      "part_number": "CDAA-420031-10mg",
+      "name_en": "Fenbuconazole",
+      "name_cn": "腈苯唑 标准品",
+      "cas_number": "114369-43-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420031-10mg"
+    },
+    {
+      "part_number": "CDAA-420031-50mg",
+      "name_en": "Fenbuconazole",
+      "name_cn": "腈苯唑",
+      "cas_number": "114369-43-6",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420031-50mg"
+    },
+    {
+      "part_number": "CDAA-420036-50mg",
+      "name_en": "Novaluron",
+      "name_cn": "双苯氟脲",
+      "cas_number": "116714-46-6",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420036-50mg"
+    },
+    {
+      "part_number": "CDAA-420038-100mg",
+      "name_en": "Picoxystrobin",
+      "name_cn": "啶氧菌酯",
+      "cas_number": "117428-22-5",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420038-100mg"
+    },
+    {
+      "part_number": "CDAA-420040-100mg",
+      "name_en": "Spiroxamine",
+      "name_cn": "螺环菌胺",
+      "cas_number": "118134-30-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420040-100mg"
+    },
+    {
+      "part_number": "CDAA-420047-100mg",
+      "name_en": "Cyprodinil",
+      "name_cn": "嘧菌环胺",
+      "cas_number": "121552-61-2",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420047-100mg"
+    },
+    {
+      "part_number": "CDAA-420049-50mg",
+      "name_en": "Eprinomectin",
+      "name_cn": "乙酰氨基阿维菌素",
+      "cas_number": "123997-26-2",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420049-50mg"
+    },
+    {
+      "part_number": "CDAA-420051-50mg",
+      "name_en": "Quinoxyfen",
+      "name_cn": "喹氧灵",
+      "cas_number": "124495-18-7",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420051-50mg"
+    },
+    {
+      "part_number": "CDAA-420056-100mg",
+      "name_en": "Fenhexamid",
+      "name_cn": "环酰菌胺",
+      "cas_number": "126833-17-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420056-100mg"
+    },
+    {
+      "part_number": "CDAA-420057-100mg",
+      "name_en": "Fludioxonil",
+      "name_cn": "咯菌腈",
+      "cas_number": "131341-86-1",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420057-100mg"
+    },
+    {
+      "part_number": "CDAA-420059-100mg",
+      "name_en": "Azoxystrobin",
+      "name_cn": "嘧菌酯",
+      "cas_number": "131860-33-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420059-100mg"
+    },
+    {
+      "part_number": "CDAA-420059-50mg",
+      "name_en": "Azoxystrobin",
+      "name_cn": "嘧菌酯",
+      "cas_number": "131860-33-8",
+      "specification": "50 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420059-50mg"
+    },
+    {
+      "part_number": "CDAA-420061-10mg",
+      "name_en": "Sedaxane",
+      "name_cn": "氟唑环菌胺",
+      "cas_number": "874967-67-6",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420061-10mg"
+    },
+    {
+      "part_number": "CDAA-420061-5mg",
+      "name_en": "Sedaxane",
+      "name_cn": "氟唑环菌胺",
+      "cas_number": "874967-67-6",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420061-5mg"
+    },
+    {
+      "part_number": "CDAA-420062-5mg",
+      "name_en": "Isoprobenphos",
+      "name_cn": "稻瘟净",
+      "cas_number": "13286-32-3",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420062-5mg"
+    },
+    {
+      "part_number": "CDAA-420064-250mg",
+      "name_en": "Folpet",
+      "name_cn": "灭菌丹",
+      "cas_number": "133-07-3",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420064-250mg"
+    },
+    {
+      "part_number": "CDAA-420064D4-10mg",
+      "name_en": "D4 Folpet-D4",
+      "name_cn": "灭菌丹-D4",
+      "cas_number": "1327204-12-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420064D4-10mg"
+    },
+    {
+      "part_number": "CDAA-420065-1mg",
+      "name_en": "(E)-Metominostrobin",
+      "name_cn": "(E)-苯氧菌胺",
+      "cas_number": "133408-50-1",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420065-1mg"
+    },
+    {
+      "part_number": "CDAA-420066-1mg",
+      "name_en": "(Z)-Metominostrobin",
+      "name_cn": "(Z)-苯氧菌胺",
+      "cas_number": "133408-51-2",
+      "specification": "1 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420066-1mg"
+    },
+    {
+      "part_number": "CDAA-420068-250mg",
+      "name_en": "Pyrazophos",
+      "name_cn": "吡菌磷",
+      "cas_number": "13457-18-6",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420068-250mg"
+    },
+    {
+      "part_number": "CDAA-420068-25mg",
+      "name_en": "Pyrazophos",
+      "name_cn": "吡嘧磷（吡菌磷）",
+      "cas_number": "13457-18-6",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420068-25mg"
+    },
+    {
+      "part_number": "CDAA-420070-10mg",
+      "name_en": "Fluquinconazole",
+      "name_cn": "氟喹唑",
+      "cas_number": "136426-54-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420070-10mg"
+    },
+    {
+      "part_number": "CDAA-420075-100mg",
+      "name_en": "Iprovalicarb",
+      "name_cn": "缬霉威",
+      "cas_number": "140923-17-7",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420075-100mg"
+    },
+    {
+      "part_number": "CDAA-420075-10mg",
+      "name_en": "Iprovalicarb",
+      "name_cn": "缬霉威",
+      "cas_number": "140923-17-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420075-10mg"
+    },
+    {
+      "part_number": "CDAA-420081-100mg",
+      "name_en": "Dimoxystrobin",
+      "name_cn": "醚菌胺",
+      "cas_number": "149961-52-4",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420081-100mg"
+    },
+    {
+      "part_number": "CDAA-420081-10mg",
+      "name_en": "Dimoxystrobin",
+      "name_cn": "醚菌胺",
+      "cas_number": "149961-52-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420081-10mg"
+    },
+    {
+      "part_number": "CDAA-420084-100mg",
+      "name_en": "Emamectin benzoate",
+      "name_cn": "甲氨基阿维菌素苯甲酸盐",
+      "cas_number": "155569-91-8",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420084-100mg"
+    },
+    {
+      "part_number": "CDAA-420085-10mg",
+      "name_en": "Zoxamide",
+      "name_cn": "苯酰菌胺",
+      "cas_number": "156052-68-5",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420085-10mg"
+    },
+    {
+      "part_number": "CDAA-420090-10mg",
+      "name_en": "Fenamidone",
+      "name_cn": "咪唑菌酮",
+      "cas_number": "161326-34-7",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420090-10mg"
+    },
+    {
+      "part_number": "CDAA-420096-250mg",
+      "name_en": "Edifenphos",
+      "name_cn": "敌瘟磷",
+      "cas_number": "17109-49-8",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420096-250mg"
+    },
+    {
+      "part_number": "CDAA-420096-25mg",
+      "name_en": "Edifenphos",
+      "name_cn": "敌瘟磷(扩粒松)",
+      "cas_number": "17109-49-8",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420096-25mg"
+    },
+    {
+      "part_number": "CDAA-420101-250mg",
+      "name_en": "Benomyl",
+      "name_cn": "苯菌灵",
+      "cas_number": "17804-35-2",
+      "specification": "250 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420101-250mg"
+    },
+    {
+      "part_number": "CDAA-420102-10mg",
+      "name_en": "Phenamacril",
+      "name_cn": "氰烯菌酯",
+      "cas_number": "3336-69-4",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420102-10mg"
+    },
+    {
+      "part_number": "CDAA-420103-10mg",
+      "name_en": "Cyflufenamid",
+      "name_cn": "环氟菌胺",
+      "cas_number": "180409-60-3",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420103-10mg"
+    },
+    {
+      "part_number": "CDAA-420103-5mg",
+      "name_en": "Cyflufenamid",
+      "name_cn": "环氟菌胺 标准品",
+      "cas_number": "180409-60-3",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420103-5mg"
+    },
+    {
+      "part_number": "CDAA-420104-100Mg",
+      "name_en": "Bismerthiazol",
+      "name_cn": "叶枯唑",
+      "cas_number": "79319-85-0",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420104-100Mg"
+    },
+    {
+      "part_number": "CDAA-420110-25mg",
+      "name_en": "Flumorph",
+      "name_cn": "氟吗啉",
+      "cas_number": "211867-47-9",
+      "specification": "25 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420110-25mg"
+    },
+    {
+      "part_number": "CDAA-420110-5mg",
+      "name_en": "Flumorph",
+      "name_cn": "氟吗啉",
+      "cas_number": "211867-47-9",
+      "specification": "5 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420110-5mg"
+    },
+    {
+      "part_number": "CDAA-420114-100mg",
+      "name_en": "Thiophanate-ethyl",
+      "name_cn": "硫菌灵",
+      "cas_number": "23564-06-9",
+      "specification": "100 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420114-100mg"
+    },
+    {
+      "part_number": "CDAA-420114-10mg",
+      "name_en": "Thiophanate-ethyl",
+      "name_cn": "硫菌灵（托布津）",
+      "cas_number": "23564-06-9",
+      "specification": "10 mg",
+      "brand": "ANPEL",
+      "status": "active",
+      "slug": "CDAA-420114-10mg"
+    }
+  ]
+}
