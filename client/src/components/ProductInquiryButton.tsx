@@ -8,17 +8,20 @@ import { DollarSign, Send } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { useTranslation } from 'react-i18next';
+import { buildInquiryContext } from "@shared/seoInquiry";
 
 interface ProductInquiryButtonProps {
   productId: string;
   productName: string;
   productPartNumber?: string;
+  specification?: string;
 }
 
 export default function ProductInquiryButton({ 
   productId, 
   productName,
-  productPartNumber 
+  productPartNumber,
+  specification,
 }: ProductInquiryButtonProps) {
   const { t } = useTranslation();
   const formId = useId();
@@ -29,7 +32,11 @@ export default function ProductInquiryButton({
     email: "",
     company: "",
     phone: "",
-    message: `I would like product information and a quotation for ${productPartNumber || productId}.\n\nQuantity:\nApplication (optional):`,
+    message: `I would like product information and a quotation.\n\n${buildInquiryContext({
+      partNumber: productPartNumber || productId,
+      name: productName,
+      specification,
+    })}`,
   });
   const [formData, setFormData] = useState(createInitialFormData);
 
@@ -96,6 +103,7 @@ export default function ProductInquiryButton({
             <div className="text-blue-700">
               {productPartNumber && <div className="font-mono">{productPartNumber}</div>}
               <div>{productName}</div>
+              {specification && <div className="mt-1">Specification: {specification}</div>}
             </div>
           </div>
 

@@ -12,6 +12,7 @@ import { ENV } from "./env";
 import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/categoryLandingContent";
 import { USP_LANDING_PROFILES, USP_LANDING_CODES } from "../../shared/uspLandingContent";
 import { canonicalUrlForPath, normalizeCanonicalPath, ROWELL_CANONICAL_ORIGIN } from "../../shared/canonical";
+import { buildStandardMeta } from "../../shared/seoInquiry";
 
 const SITE_URL = ROWELL_CANONICAL_ORIGIN;
 
@@ -588,12 +589,11 @@ async function injectStandardsProductSeoMetaTags(template: string, req: any, ove
 
     const canonicalKey = standard.slug || standard.part_number;
     const fullUrl = `${SITE_URL}/standards/product/${encodeURIComponent(canonicalKey)}`;
-    const title = `${standard.name_en} ${standard.part_number} Reference Standard | ROWELL`;
-    const detailParts = [
-      standard.specification ? `Specification: ${standard.specification}.` : "",
-      standard.cas_number ? `CAS: ${standard.cas_number}.` : "",
-    ].filter(Boolean).join(" ");
-    const description = `${standard.name_en} reference standard from ${standard.brand}. ${detailParts} Submit an inquiry to confirm current availability and suitability for your laboratory.`.replace(/\s+/g, " ").trim();
+    const { title, description } = buildStandardMeta({
+      name: standard.name_en,
+      casNumber: standard.cas_number,
+      specification: standard.specification,
+    });
     const categoryUrl = standard.category_slug ? `${SITE_URL}/standards/category/${encodeURIComponent(standard.category_slug)}` : `${SITE_URL}/standards`;
     const fallback = `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/standards">Reference Standards</a>${standard.category_slug ? ` / <a href="/standards/category/${encodeURIComponent(standard.category_slug)}">${escapeHtml(standard.category_slug)}</a>` : ""}</nav><h1>${escapeHtml(standard.name_en)}</h1><p>${escapeHtml(description)}</p><dl><dt>Catalog Number</dt><dd>${escapeHtml(standard.part_number)}</dd>${standard.cas_number ? `<dt>CAS Number</dt><dd>${escapeHtml(standard.cas_number)}</dd>` : ""}${standard.specification ? `<dt>Specification</dt><dd>${escapeHtml(standard.specification)}</dd>` : ""}<dt>Brand</dt><dd>${escapeHtml(standard.brand)}</dd></dl><p><a href="${categoryUrl}">Browse related reference standards</a></p><p>Reference-standard selection and use must follow the applicable analytical procedure and laboratory quality system.</p></div>`;
     const structuredData = {

@@ -1,4 +1,4 @@
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,10 +8,14 @@ import { MessageSquare, Send } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { useTranslation } from 'react-i18next';
+import { buildInquiryContext } from "@shared/seoInquiry";
 
 interface CustomerMessageFormProps {
   productId?: string;
   productName?: string;
+  productPartNumber?: string;
+  casNumber?: string;
+  specification?: string;
   title?: string;
   description?: string;
 }
@@ -19,19 +23,32 @@ interface CustomerMessageFormProps {
 export default function CustomerMessageForm({ 
   productId, 
   productName,
+  productPartNumber,
+  casNumber,
+  specification,
   title = "Leave a Message",
   description = "Use this form to send your product or technical inquiry."
 }: CustomerMessageFormProps) {
   const { t } = useTranslation();
   const formId = useId();
+  const inquiryContext = buildInquiryContext({
+    partNumber: productPartNumber || productId,
+    name: productName,
+    casNumber,
+    specification,
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     phone: "",
     destinationCountry: "",
-    message: "",
+    message: inquiryContext,
   });
+
+  useEffect(() => {
+    setFormData((current) => ({ ...current, message: inquiryContext }));
+  }, [inquiryContext]);
 
   const createMessageMutation = trpc.messages.create.useMutation({
     onSuccess: (data) => {
@@ -43,7 +60,7 @@ export default function CustomerMessageForm({
         company: "",
         phone: "",
         destinationCountry: "",
-        message: "",
+        message: inquiryContext,
       });
     },
     onError: (error) => {
@@ -93,11 +110,13 @@ export default function CustomerMessageForm({
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4" aria-busy={createMessageMutation.isPending}>
-          {productId && (
+          {(productId || productPartNumber || productName || casNumber || specification) && (
             <div className="p-3 bg-blue-50 rounded-md text-sm">
               <span className="font-medium">Product: </span>
               <span className="text-muted-foreground">
-                {productId}{productName && ` - ${productName}`}
+                {productPartNumber || productId}{productName && ` - ${productName}`}
+                {casNumber && <span className="block">CAS: {casNumber}</span>}
+                {specification && <span className="block">Specification: {specification}</span>}
               </span>
             </div>
           )}

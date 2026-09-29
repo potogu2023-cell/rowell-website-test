@@ -13,12 +13,14 @@ interface ProductMessageButtonProps {
   productId: string;
   productName: string;
   productPartNumber?: string;
+  specification?: string;
 }
 
 export default function ProductMessageButton({ 
   productId, 
   productName,
-  productPartNumber 
+  productPartNumber,
+  specification,
 }: ProductMessageButtonProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -92,6 +94,7 @@ export default function ProductMessageButton({
             <div className="text-purple-700">
               {productPartNumber && <div className="font-mono">{productPartNumber}</div>}
               <div>{productName}</div>
+              {specification && <div className="mt-1">Specification: {specification}</div>}
             </div>
           </div>
 

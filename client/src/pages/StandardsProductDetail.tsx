@@ -273,7 +273,10 @@ export default function StandardsProductDetail({ params }: StandardsProductDetai
         <div id="standards-inquiry-form" className="mt-12">
           <CustomerMessageForm
             productId={String(product.id)}
-            productName={`${product.part_number} - ${product.name_en}`}
+            productName={product.name_en}
+            productPartNumber={product.part_number}
+            casNumber={product.cas_number || undefined}
+            specification={product.specification || undefined}
             title={t("standards.request_quote")}
             description="Provide the information needed to review your reference-standard inquiry."
           />

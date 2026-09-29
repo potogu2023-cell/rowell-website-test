@@ -313,6 +313,7 @@ export default function ProductDetail() {
                   productId={product.productId}
                   productName={product.name || product.productId}
                   productPartNumber={product.partNumber}
+                  specification={[product.phaseType, product.particleSize, product.poreSize, product.columnLength, product.innerDiameter].filter(Boolean).join("; ") || undefined}
                 />
                 
                 {/* 留言按钮 */}
@@ -320,6 +321,7 @@ export default function ProductDetail() {
                   productId={product.productId}
                   productName={product.name || product.productId}
                   productPartNumber={product.partNumber}
+                  specification={[product.phaseType, product.particleSize, product.poreSize, product.columnLength, product.innerDiameter].filter(Boolean).join("; ") || undefined}
                 />
 
                 <div className="pt-4 border-t">
