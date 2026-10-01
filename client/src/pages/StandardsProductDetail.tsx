@@ -10,6 +10,7 @@ import {
   MessageCircle, Tag, Beaker, Hash
 } from "lucide-react";
 import CustomerMessageForm from "@/components/CustomerMessageForm";
+import RecommendedColumnsForStandard from "@/components/RecommendedColumnsForStandard";
 
 interface StandardsProductDetailProps {
   params: { slug: string };
@@ -268,6 +269,8 @@ export default function StandardsProductDetail({ params }: StandardsProductDetai
             </div>
           </div>
         )}
+
+        <RecommendedColumnsForStandard standardCategorySlug={product.category_slug} />
 
         {/* Inquiry Form */}
         <div id="standards-inquiry-form" className="mt-12">

@@ -370,6 +370,19 @@ export default function ProductDetail() {
                   </div>
                 )}
 
+                <div className="rounded-lg border border-emerald-100 bg-emerald-50 p-4 text-sm text-slate-700">
+                  <h4 className="font-semibold text-slate-900">Common Reference Standards</h4>
+                  <p className="mt-2 leading-6">
+                    Find reference standards commonly used with chromatography columns and filter the standards library by analyte, CAS number, or category.
+                  </p>
+                  <a
+                    href="/standards"
+                    className="mt-3 inline-flex items-center font-medium text-emerald-700 hover:underline"
+                  >
+                    Browse and filter reference standards
+                  </a>
+                </div>
+
                 <div className="pt-4 border-t">
                   <h4 className="font-semibold mb-2">{t('productDetail.need_help')}</h4>
                   <p className="text-sm text-muted-foreground mb-3">

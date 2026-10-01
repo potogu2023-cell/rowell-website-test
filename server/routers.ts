@@ -196,6 +196,89 @@ export const appRouter = router({
         
         return relatedProducts;
       }),
+
+    getRecommendedForStandard: publicProcedure
+      .input((raw: unknown) => z.object({
+        standardCategorySlug: z.string().optional(),
+        limit: z.number().int().min(3).max(4).optional().default(4),
+      }).parse(raw))
+      .query(async ({ input }) => {
+        const { getDb } = await import('./db');
+        const { products } = await import('../drizzle/schema');
+        const { and, eq, isNotNull, like, notInArray, or, sql } = await import('drizzle-orm');
+        const db = await getDb();
+        if (!db) return [];
+
+        const productType = input.standardCategorySlug?.toLowerCase().includes('gc')
+          ? 'GC Column'
+          : 'HPLC Column';
+        const semanticText = or(
+          like(products.name, '%C18%'),
+          like(products.name, '%c18%'),
+          like(products.name, '%Reverse Phase%'),
+          like(products.name, '%reverse phase%'),
+          like(products.name, '%Reverse-Phase%'),
+          like(products.name, '%reverse-phase%'),
+          like(products.phaseType, '%C18%'),
+          like(products.phaseType, '%c18%'),
+          like(products.phaseType, '%Reverse-Phase%'),
+          like(products.phaseType, '%reverse-phase%'),
+          like(products.phaseType, '%Octadecyl%'),
+          like(products.phaseType, '%octadecyl%'),
+        );
+        const baseConditions = and(
+          eq(products.status, 'active'),
+          eq(products.productType, productType),
+          isNotNull(products.slug),
+        );
+        const preferred = await db
+          .select({
+            id: products.id,
+            slug: products.slug,
+            productId: products.productId,
+            name: products.name,
+            brand: products.brand,
+            imageUrl: products.imageUrl,
+            productType: products.productType,
+            phaseType: products.phaseType,
+            particleSize: products.particleSize,
+            poreSize: products.poreSize,
+            columnLength: products.columnLength,
+            innerDiameter: products.innerDiameter,
+          })
+          .from(products)
+          .where(and(baseConditions, semanticText))
+          .orderBy(sql`CASE WHEN ${products.phaseType} LIKE '%C18%' OR ${products.phaseType} LIKE '%c18%' THEN 0 ELSE 1 END`, products.id)
+          .limit(input.limit);
+
+        if (preferred.length >= input.limit) return preferred;
+
+        const existingIds = preferred.map((product) => product.id);
+        const fallback = await db
+          .select({
+            id: products.id,
+            slug: products.slug,
+            productId: products.productId,
+            name: products.name,
+            brand: products.brand,
+            imageUrl: products.imageUrl,
+            productType: products.productType,
+            phaseType: products.phaseType,
+            particleSize: products.particleSize,
+            poreSize: products.poreSize,
+            columnLength: products.columnLength,
+            innerDiameter: products.innerDiameter,
+          })
+          .from(products)
+          .where(and(
+            baseConditions,
+            existingIds.length > 0 ? notInArray(products.id, existingIds) : undefined,
+          ))
+          .orderBy(products.id)
+          .limit(input.limit - preferred.length);
+
+        return [...preferred, ...fallback];
+      }),
   }),
 
   // Customer messages contain personal contact details and are restricted to authenticated administrators.
