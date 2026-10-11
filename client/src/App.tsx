@@ -14,6 +14,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 const NotFound = lazy(() => import("@/pages/NotFound"));
 const Home = lazy(() => import("./pages/Home"));
 const Products = lazy(() => import("./pages/Products"));
+const SpeMatrixSeries = lazy(() => import("./pages/SpeMatrixSeries"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const CategoryLanding = lazy(() => import("./pages/CategoryLanding"));
 const Resources = lazy(() => import("./pages/Resources"));
@@ -62,6 +63,7 @@ function Router() {
         <Switch>
           <Route path={"/"} component={Home} />
           <Route path={"/products"} component={Products} />
+          <Route path={"/products/matrix/:seriesSlug"} component={SpeMatrixSeries} />
           <Route path={"/products/:id"} component={ProductDetail} />
           <Route path={"/categories/:slug"} component={CategoryLanding} />
           
@@ -125,4 +127,3 @@ function App() {
 }
 
 export default App;
-
