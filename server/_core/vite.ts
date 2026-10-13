@@ -64,6 +64,11 @@ function extractProductSlugFromPath(urlPath: string): string | null {
   return match ? match[1] : null;
 }
 
+function extractMatrixSeriesSlug(urlPath: string): string | null {
+  const match = urlPath.match(/^\/products\/matrix\/([^\/\?]+)/);
+  return match ? decodePathSegment(match[1]) : null;
+}
+
 function extractStandardsProductSlug(urlPath: string): string | null {
   const match = urlPath.match(/^\/standards\/product\/([^\/\?]+)/);
   return match ? match[1] : null;
@@ -836,6 +841,7 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
     return !!slug && CATEGORY_LANDING_SLUGS.includes(slug);
   }
   return [
+    /^\/products\/matrix\/[^/]+$/,
     /^\/products\/[^/]+$/,
     /^\/resources\/[^/]+$/,
     /^\/learning(?:-center)?$/,
@@ -858,6 +864,7 @@ function isIndexablePublicSpaRoute(requestPath: string): boolean {
 }
 
 async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteStatus> {
+  if (extractMatrixSeriesSlug(requestPath)) return "active";
   const productSlug = extractProductSlugFromPath(requestPath);
   const standardsProductSlug = extractStandardsProductSlug(requestPath);
   const resourceSlug = extractSlugFromPath(requestPath);
@@ -1174,6 +1181,47 @@ function injectStaticPageSeoMetaTags(template: string, requestPath: string): str
   return template;
 }
 
+function injectMatrixSeriesSeoMetaTags(template: string, requestPath: string): string {
+  const seriesSlug = extractMatrixSeriesSlug(requestPath);
+  if (!seriesSlug) return template;
+
+  const seriesName = seriesSlug
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.toLowerCase() === "hypersep"
+      ? "HyperSep"
+      : part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+  const title = `${seriesName} SPE Cartridges | ROWELL`;
+  const description = `Compare ${seriesName} SPE cartridge variants by bed mass, volume, particle size, and part number. Request a quote from ROWELL.`;
+  const fullUrl = canonicalUrlForPath(requestPath);
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: title,
+    description,
+    url: fullUrl,
+    isPartOf: { "@type": "WebSite", name: "ROWELL", url: SITE_URL },
+  };
+  const metaTags = `
+    <title>${escapeHtml(title)}</title>
+    <meta name="description" content="${escapeHtml(description)}" />
+    <link rel="canonical" href="${fullUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:title" content="${escapeHtml(title)}" />
+    <meta property="og:description" content="${escapeHtml(description)}" />
+    <meta property="og:site_name" content="ROWELL" />
+    <script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  return template.replace(
+    /<div id="root"><\/div>/i,
+    `<div id="root"><main><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p>Review the available SPE cartridge variants and request a consolidated quote.</p></main></div>`
+  );
+}
+
 /**
  * Unified SEO meta tag injection - handles both articles and products
  * @param template - HTML template string
@@ -1194,6 +1242,8 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
     } else if (effectivePath === "/resources") {
       rendered = await injectResourcesIndexSeoMetaTags(template);
     // Try standard and catalog product pages before generic article/static routes.
+    } else if (effectivePath.startsWith('/products/matrix/')) {
+      rendered = injectMatrixSeriesSeoMetaTags(template, effectivePath);
     } else if (effectivePath.startsWith('/standards/product/')) {
       rendered = await injectStandardsProductSeoMetaTags(template, req, effectivePath);
     } else if (effectivePath.startsWith('/products/')) {
