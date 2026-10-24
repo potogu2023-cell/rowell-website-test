@@ -13,6 +13,7 @@ import ProductInquiryButton from "@/components/ProductInquiryButton";
 import ProductMessageButton from "@/components/ProductMessageButton";
 import { SEOHead } from "@/components/SEOHead";
 import { USP_LANDING_PROFILES } from "@shared/uspLandingContent";
+import { getMatrixSeriesForProduct, slugifyMatrixSeries } from "@shared/speMatrixData";
 
 function withParticleUnit(value: string) {
   const normalized = value.trim();
@@ -149,6 +150,11 @@ export default function ProductDetail() {
       description: 'Browse active GC column options and compare the listed phase and dimensional specifications.',
     });
   }
+  const matrixSeries = getMatrixSeriesForProduct({
+    slug: product.slug,
+    brand: product.brand,
+    partNumber: product.partNumber,
+  });
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -367,6 +373,20 @@ export default function ProductDetail() {
                         <p className="mt-1 leading-6">{link.description}</p>
                       </div>
                     ))}
+                  </div>
+                )}
+
+                {matrixSeries && (
+                  <div className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-slate-700" data-testid="matrix-context-link">
+                    <h4 className="font-semibold text-slate-900">Related recorded series</h4>
+                    <p className="mt-2 leading-6">
+                      <Link
+                        href={`/products/matrix/${slugifyMatrixSeries(matrixSeries.seriesName)}`}
+                        className="font-medium text-emerald-800 hover:underline"
+                      >
+                        Compare recorded variants in the {matrixSeries.seriesName} matrix →
+                      </Link>
+                    </p>
                   </div>
                 )}
 

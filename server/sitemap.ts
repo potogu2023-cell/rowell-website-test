@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getDb, getPool } from "./db";
 import { products } from "../drizzle/schema";
 import { and, eq, isNotNull } from "drizzle-orm";
+import { SPE_MATRIX_SERIES, slugifyMatrixSeries } from "../shared/speMatrixData";
 
 export const BASE_URL = "https://www.rowellhplc.com";
 export const STANDARD_VOLUME_SIZE = 5000;
@@ -35,6 +36,7 @@ export const STATIC_PAGES: SitemapPage[] = [
   { path: "/categories/hplc-fittings-tubing", priority: 0.8, changefreq: "weekly" },
   { path: "/about", priority: 0.8, changefreq: "weekly" },
   { path: "/resources", priority: 0.8, changefreq: "weekly" },
+  { path: "/guides/c18-spe-cartridge-selection", priority: 0.8, changefreq: "monthly" },
   { path: "/usp-standards", priority: 0.8, changefreq: "weekly" },
   { path: "/usp/l1", priority: 0.8, changefreq: "weekly" },
   { path: "/usp/l7", priority: 0.8, changefreq: "weekly" },
@@ -47,6 +49,7 @@ export const STATIC_PAGES: SitemapPage[] = [
 
 const VOLUMES = [
   { path: "/sitemaps/columns.xml", kind: "columns" as const },
+  { path: "/sitemaps/matrix.xml", kind: "matrix" as const },
   { path: "/sitemaps/standards-1.xml", kind: "standards" as const, volume: 1 },
   { path: "/sitemaps/standards-2.xml", kind: "standards" as const, volume: 2 },
   { path: "/sitemaps/standards-3.xml", kind: "standards" as const, volume: 3 },
@@ -152,6 +155,16 @@ export async function generateColumnsSitemap(_req: Request, res: Response): Prom
     console.error("[Sitemap] columns volume failed:", error);
     res.status(500).send("Error generating columns sitemap");
   }
+}
+
+export function generateMatrixSitemap(_req: Request, res: Response): void {
+  const generatedAt = new Date().toISOString();
+  const entries = SPE_MATRIX_SERIES.map((series) => urlEntry(
+    `${BASE_URL}/products/matrix/${encodeURIComponent(slugifyMatrixSeries(series.seriesName))}`,
+    generatedAt,
+  ));
+  sendXml(res, renderUrlset(entries));
+  console.log(`[Sitemap] matrix volume generated entries=${entries.length}`);
 }
 
 export async function generateStandardsSitemap(req: Request, res: Response): Promise<void> {

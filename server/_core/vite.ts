@@ -13,6 +13,7 @@ import { CATEGORY_LANDING_PROFILES, CATEGORY_LANDING_SLUGS } from "../../shared/
 import { USP_LANDING_PROFILES, USP_LANDING_CODES } from "../../shared/uspLandingContent";
 import { canonicalUrlForPath, normalizeCanonicalPath, ROWELL_CANONICAL_ORIGIN } from "../../shared/canonical";
 import { buildStandardMeta } from "../../shared/seoInquiry";
+import { getSpeMatrixSeries } from "../../shared/speMatrixData";
 
 const SITE_URL = ROWELL_CANONICAL_ORIGIN;
 
@@ -656,6 +657,12 @@ const STATIC_PAGE_SEO: Record<string, { title: string; description: string; head
     heading: "Chromatography Technical Resources",
     type: "WebPage",
   },
+  "/guides/c18-spe-cartridge-selection": {
+    title: "C18 SPE Selection: Bed Mass & Volume | ROWELL",
+    description: "A practical C18 SPE method-development guide covering bed mass, reservoir volume, loading, washing, elution, and verification boundaries.",
+    heading: "C18 SPE Cartridge Selection",
+    type: "WebPage",
+  },
   "/learning": {
     title: "Chromatography Learning Center | ROWELL",
     description: "Access practical chromatography learning resources, application notes, technical guides, and laboratory troubleshooting advice.",
@@ -687,6 +694,42 @@ const STATIC_PAGE_SEO: Record<string, { title: string; description: string; head
     type: "WebPage",
   },
 };
+
+function injectC18GuideSeoMetaTags(template: string): string {
+  const path = "/guides/c18-spe-cartridge-selection";
+  const fullUrl = `${SITE_URL}${path}`;
+  const title = "C18 SPE Cartridge Selection: Bed Mass & Volume | ROWELL";
+  const description = "A practical C18 SPE method-development guide covering bed mass, reservoir volume, loading, washing, elution, and verification boundaries.";
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": `${fullUrl}#article`,
+      headline: title,
+      description,
+      url: fullUrl,
+      inLanguage: "en",
+      author: { "@type": "Organization", name: "ROWELL Technical Editorial" },
+      publisher: { "@type": "Organization", name: "ROWELL", url: SITE_URL },
+      mainEntityOfPage: { "@type": "WebPage", "@id": fullUrl },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${fullUrl}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Technical Guides", item: `${SITE_URL}/guides/c18-spe-cartridge-selection` },
+        { "@type": "ListItem", position: 3, name: "C18 SPE Cartridge Selection", item: fullUrl },
+      ],
+    },
+  ];
+  const metaTags = `<title>${escapeHtml(title)}</title><meta name="description" content="${escapeHtml(description)}" /><link rel="canonical" href="${fullUrl}" /><meta property="og:type" content="article" /><meta property="og:url" content="${fullUrl}" /><meta property="og:title" content="${escapeHtml(title)}" /><meta property="og:description" content="${escapeHtml(description)}" /><meta property="og:site_name" content="ROWELL" /><script type="application/ld+json">${serializeJsonLd(structuredData)}</script>`;
+  const body = `<div id="root"><main><nav aria-label="Breadcrumb"><a href="/">Home</a> / <a href="/resources">Technical Resources</a> / C18 SPE Cartridge Selection</nav><article><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><h2>Start with the method question</h2><p>Define the analyte, sample matrix, loading objective, and required cleanup before selecting a cartridge configuration. A catalog dimension is a starting point for method development, not evidence of a guaranteed result.</p><h2>Bed mass and reservoir volume</h2><p>Bed mass is one of the variables to evaluate when a method may be limited by sorbent capacity or matrix loading. Reservoir volume affects handling and loading workflow, while the exact relationship between dimensions and method performance must be checked with the selected product and sample.</p><h2>Recorded series references</h2><ul><li><a href="/products/matrix/hypersep-c18">HyperSep C18 recorded matrix</a></li><li><a href="/products/matrix/bond-elut-c18">Bond Elut C18 recorded matrix</a></li><li><a href="/products/matrix/bakerbond-c18">BAKERBOND C18 recorded matrix</a></li></ul><h2>Verification checklist</h2><p>Confirm conditioning, loading, washing, elution, blank control, breakthrough, recovery, repeatability, and matrix effects with the exact part number and representative samples. This guide does not replace manufacturer documentation or laboratory validation.</p><p>For a technical product inquiry, provide the exact part number, sample matrix, analyte group, and intended workflow so the catalog record can be reviewed accurately.</p></article></main></div>`;
+  template = template.replace(/<title>.*?<\/title>/i, "");
+  template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
+  return template.replace(/<div id="root"><\/div>/i, body);
+}
 
 function injectCategoryLandingSeoMetaTags(template: string, requestPath: string): string {
   const slug = extractCategoryLandingSlug(requestPath);
@@ -864,7 +907,8 @@ function isIndexablePublicSpaRoute(requestPath: string): boolean {
 }
 
 async function getDynamicRouteStatus(requestPath: string): Promise<DynamicRouteStatus> {
-  if (extractMatrixSeriesSlug(requestPath)) return "active";
+  const matrixSeriesSlug = extractMatrixSeriesSlug(requestPath);
+  if (matrixSeriesSlug) return getSpeMatrixSeries(matrixSeriesSlug) ? "active" : "missing";
   const productSlug = extractProductSlugFromPath(requestPath);
   const standardsProductSlug = extractStandardsProductSlug(requestPath);
   const resourceSlug = extractSlugFromPath(requestPath);
@@ -1183,17 +1227,12 @@ function injectStaticPageSeoMetaTags(template: string, requestPath: string): str
 
 function injectMatrixSeriesSeoMetaTags(template: string, requestPath: string): string {
   const seriesSlug = extractMatrixSeriesSlug(requestPath);
-  if (!seriesSlug) return template;
+  const series = seriesSlug ? getSpeMatrixSeries(seriesSlug) : undefined;
+  if (!series) return template;
 
-  const seriesName = seriesSlug
-    .split(/[-_]+/)
-    .filter(Boolean)
-    .map((part) => part.toLowerCase() === "hypersep"
-      ? "HyperSep"
-      : part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
+  const seriesName = series.seriesName;
   const title = `${seriesName} SPE Cartridges | ROWELL`;
-  const description = `Compare ${seriesName} SPE cartridge variants by bed mass, volume, particle size, and part number. Request a quote from ROWELL.`;
+  const description = `Compare recorded ${seriesName} SPE cartridge variants by bed mass, volume, particle size, and part number.`;
   const fullUrl = canonicalUrlForPath(requestPath);
   const structuredData = {
     "@context": "https://schema.org",
@@ -1218,7 +1257,7 @@ function injectMatrixSeriesSeoMetaTags(template: string, requestPath: string): s
   template = template.replace(/(<head[^>]*>)/i, `$1${metaTags}`);
   return template.replace(
     /<div id="root"><\/div>/i,
-    `<div id="root"><main><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p>Review the available SPE cartridge variants and request a consolidated quote.</p></main></div>`
+    `<div id="root"><main><h1>${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p><p>Review recorded catalog variants and confirm the exact part number before method use.</p></main></div>`
   );
 }
 
@@ -1241,6 +1280,8 @@ async function injectSeoMetaTags(template: string, req: any, overridePath?: stri
       rendered = injectCategoryLandingSeoMetaTags(template, effectivePath);
     } else if (effectivePath === "/resources") {
       rendered = await injectResourcesIndexSeoMetaTags(template);
+    } else if (effectivePath === "/guides/c18-spe-cartridge-selection") {
+      rendered = injectC18GuideSeoMetaTags(template);
     // Try standard and catalog product pages before generic article/static routes.
     } else if (effectivePath.startsWith('/products/matrix/')) {
       rendered = injectMatrixSeriesSeoMetaTags(template, effectivePath);

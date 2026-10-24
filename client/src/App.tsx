@@ -19,6 +19,7 @@ const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 const CategoryLanding = lazy(() => import("./pages/CategoryLanding"));
 const Resources = lazy(() => import("./pages/Resources"));
 const ResourceDetail = lazy(() => import("./pages/ResourceDetail"));
+const C18SpeGuide = lazy(() => import("./pages/C18SpeGuide"));
 const About = lazy(() => import("./pages/About"));
 const USPStandards = lazy(() => import("./pages/USPStandards"));
 const USPClassificationDetail = lazy(() => import("./pages/USPClassificationDetail"));
@@ -77,6 +78,7 @@ function Router() {
           <Route path={"/applications/:industry"} component={IndustryApplication} />
           <Route path={"/resources/:slug"} component={ResourceDetail} />
           <Route path={"/resources"} component={Resources} />
+          <Route path={"/guides/c18-spe-cartridge-selection"} component={C18SpeGuide} />
           
           <Route path={"/about"} component={About} />
           <Route path={"/usp-standards"} component={USPStandards} />

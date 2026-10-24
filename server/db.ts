@@ -10,6 +10,19 @@ type Database = ReturnType<typeof createDatabase>;
 let _db: Database | null = null;
 let _pool: mysql.Pool | null = null;
 
+function safeDatabaseError(error: unknown): Record<string, string | number | undefined> {
+  if (!error || typeof error !== "object") return { message: "unknown database error" };
+  const candidate = error as { code?: string; errno?: number; sqlState?: string; message?: string };
+  return {
+    code: candidate.code,
+    errno: candidate.errno,
+    sqlState: candidate.sqlState,
+    message: candidate.message
+      ?.replace(/mysql:\/\/[^\s]+/gi, "mysql://[redacted]")
+      .replace(/password\s*[=:]\s*[^\s,;]+/gi, "password=[redacted]"),
+  };
+}
+
 function toMysqlTimestamp(date: Date): string {
   return date.toISOString().slice(0, 19).replace('T', ' ');
 }
@@ -70,15 +83,15 @@ export async function getDb() {
         const connection = await pool.getConnection();
         console.log('[Database] Connection test successful');
         connection.release();
-      } catch {
-        console.error('[Database] Connection test failed');
+      } catch (error) {
+        console.error('[Database] Connection test failed', safeDatabaseError(error));
         throw new Error('Database connection test failed');
       }
       
       _db = createDatabase(pool);
       console.log('[Database] Database access initialized');
-    } catch {
-      console.error("[Database] Failed to initialize");
+    } catch (error) {
+      console.error("[Database] Failed to initialize", safeDatabaseError(error));
       _db = null;
     }
   }

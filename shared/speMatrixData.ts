@@ -1686,3 +1686,26 @@ export function getSpeMatrixSeries(seriesSlug: string): SpeMatrixSeries | undefi
   const normalized = seriesSlug.toLowerCase();
   return SPE_MATRIX_SERIES.find((series) => slugifyMatrixSeries(series.seriesName) === normalized);
 }
+
+export type MatrixProductIdentity = {
+  slug: string | null | undefined;
+  brand: string | null | undefined;
+  partNumber: string | null | undefined;
+};
+
+/**
+ * Resolve a PDP to a matrix only when the catalog slug, brand, and part number
+ * all match one recorded static variant. This intentionally fails closed.
+ */
+export function getMatrixSeriesForProduct(product: MatrixProductIdentity): SpeMatrixSeries | undefined {
+  if (!product.slug || !product.brand || !product.partNumber) return undefined;
+  for (const series of SPE_MATRIX_SERIES) {
+    const match = series.variants.some((variant) => (
+      variant.slug === product.slug
+      && variant.brand === product.brand
+      && variant.partNumber === product.partNumber
+    ));
+    if (match) return series;
+  }
+  return undefined;
+}
