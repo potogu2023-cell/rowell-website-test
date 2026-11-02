@@ -31,6 +31,7 @@ import { checkGcSlugRouter } from "./check-gc-slug";
 import { updateYmcTosohRouter } from "./update-ymc-tosoh-router";
 import { updateDimensionsRouter } from "./update-dimensions-router";
 import { learningCenterRouter } from "./learning-center-api";
+import { blogPublishRouter } from "./blog-publish-router";
 import { seedArticlesRouter } from "./seed-articles-router";
 import { manualImportRouter } from "./manual-import-api";
 import { standardsRouter } from "./standards-api";
@@ -808,6 +809,9 @@ export const appRouter = router({
   
   // Learning Center routes
   learningCenter: learningCenterRouter,
+
+  // Reviewed editorial batch; requires the existing administrator session
+  blogPublish: blogPublishRouter,
   
   // Seed articles (one-time operation)
   seedArticles: seedArticlesRouter,
