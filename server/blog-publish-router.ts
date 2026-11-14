@@ -1,10 +1,12 @@
 import { z } from "zod";
-import { and, eq, inArray } from "drizzle-orm";
+import { inArray } from "drizzle-orm";
 import { adminProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
 import { resources } from "../drizzle/schema";
 
 const PUBLISH_CONFIRMATION = "PUBLISH_ROWELL_NOV_2026";
+const EDITORIAL_APPROVAL = "approved" as const;
+const SCHEDULE_APPROVAL = "scheduled" as const;
 
 const BLOGS = [
   {
@@ -168,6 +170,8 @@ For broader sample-preparation planning, see the [C18 SPE selection guide](/guid
 
 const publishInput = z.object({
   confirmation: z.literal(PUBLISH_CONFIRMATION),
+  editorialStatus: z.literal(EDITORIAL_APPROVAL),
+  scheduleStatus: z.literal(SCHEDULE_APPROVAL),
   slugs: z.array(z.string()).length(BLOGS.length),
 });
 
@@ -175,6 +179,9 @@ export const blogPublishRouter = router({
   publishNovemberBatch: adminProcedure
     .input((raw: unknown) => publishInput.parse(raw))
     .mutation(async ({ input }) => {
+      if (input.editorialStatus !== EDITORIAL_APPROVAL || input.scheduleStatus !== SCHEDULE_APPROVAL) {
+        throw new Error("The reviewed batch must be approved and scheduled before publication.");
+      }
       const expectedSlugs = BLOGS.map(article => article.slug);
       if (input.slugs.slice().sort().join("|") !== expectedSlugs.slice().sort().join("|")) {
         throw new Error("The requested batch does not match the reviewed three-article set.");
