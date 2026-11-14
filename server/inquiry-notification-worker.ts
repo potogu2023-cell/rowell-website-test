@@ -50,14 +50,20 @@ async function enqueueEvent(input: {
     return true;
   } catch (error) {
     // The table's unique dedupe key makes re-enqueue safe across restarts.
-    const code = typeof error === "object" && error && "code" in error
-      ? String((error as { code?: unknown }).code)
-      : "unknown";
-    if (code !== "ER_DUP_ENTRY") {
-      console.error(`[InquiryNotifications] Could not enqueue ${input.eventType} event (${code})`);
-      return false;
-    }
-    return true;
+    const details = error && typeof error === "object"
+      ? error as {
+          code?: unknown;
+          message?: unknown;
+          cause?: { code?: unknown; message?: unknown };
+        }
+      : {};
+    const code = String(details.code ?? details.cause?.code ?? "unknown");
+    const message = `${String(details.message ?? "")} ${String(details.cause?.message ?? "")}`;
+    const isDuplicate = code === "ER_DUP_ENTRY" || code === "1062" || /duplicate|unique constraint|unique key/i.test(message);
+    if (isDuplicate) return true;
+
+    console.error(`[InquiryNotifications] Could not enqueue ${input.eventType} event (${code})`);
+    return false;
   }
 }
 
