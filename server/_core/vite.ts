@@ -687,6 +687,12 @@ const STATIC_PAGE_SEO: Record<string, { title: string; description: string; head
     heading: "Contact ROWELL",
     type: "WebPage",
   },
+  "/inquiry": {
+    title: "Request a Quote from ROWELL | Chromatography Consumables",
+    description: "Submit a product or technical quotation request to ROWELL without creating an account.",
+    heading: "Request a Quote from ROWELL",
+    type: "WebPage",
+  },
   "/usp-standards": {
     title: "USP Column Classification (L-Codes) | ROWELL",
     description: "Browse chromatography catalog products by recorded USP stationary-phase classification (L-codes) and compare exact product specifications for method evaluation.",
@@ -893,6 +899,7 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
     /^\/learning\/[^/]+$/,
     /^\/applications\/[^/]+$/,
     /^\/standards(?:\/search|\/category\/[^/]+|\/product\/[^/]+)?$/,
+    /^\/inquiry$/,
     /^\/admin\/(?:login|messages|seed|blog-publish)$/,
     /^\/test-filters$/,
     /^\/404$/,
