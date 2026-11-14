@@ -1493,7 +1493,14 @@ export function serveStatic(app: Express) {
         res.status(200).set({ "Content-Type": "text/html" }).send(template);
       } else {
         // For routes without a defined SEO profile, use the fast static response.
-        res.sendFile(indexPath);
+        let template = await fs.promises.readFile(indexPath, "utf-8");
+        if (requestPath === "/inquiry") {
+          template = template.replace(
+            /(<head[^>]*>)/i,
+            '$1\n<meta name="robots" content="noindex, nofollow" />',
+          );
+        }
+        res.status(200).set({ "Content-Type": "text/html" }).send(template);
       }
     } catch (error) {
       console.error("[SSR] Error serving index.html:", error);
