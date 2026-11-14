@@ -1,29 +1,17 @@
-import nodemailer from "nodemailer";
+import nodemailer, { type SentMessageInfo, type Transporter } from "nodemailer";
 
-const port = parseInt(process.env.SMTP_PORT || "587", 10);
-const EMAIL_CONFIG = {
-  host: process.env.SMTP_HOST || "smtp.gmail.com",
-  port,
-  secure: port === 465,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-};
+interface AdminEmailConfig {
+  host: string;
+  port: number;
+  secure: boolean;
+  user: string;
+  pass: string;
+  from: string;
+}
 
-// Administrator access emails use a dedicated sender configuration so inquiry
-// notifications retain their existing delivery path and recipient controls.
-const adminPort = parseInt(process.env.ADMIN_SMTP_PORT || "587", 10);
-const ADMIN_EMAIL_CONFIG = {
-  host: process.env.ADMIN_SMTP_HOST || "smtp.gmail.com",
-  port: adminPort,
-  secure: adminPort === 465,
-  auth: {
-    user: process.env.ADMIN_SMTP_USER,
-    pass: process.env.ADMIN_SMTP_PASS,
-  },
-};
-
+// Administrator access emails and inquiry operations notifications use one
+// explicitly configured sender. Marketing email functionality is intentionally
+// not part of this service.
 const PRIMARY_INQUIRY_RECIPIENT =
   process.env.INQUIRY_NOTIFICATION_PRIMARY?.trim() || "oscar@rowellhplc.com";
 const BACKUP_INQUIRY_RECIPIENT =
@@ -38,30 +26,73 @@ function escapeHtml(value: string): string {
     .replace(/'/g, "&#039;");
 }
 
-function createTransporter() {
-  try {
-    return nodemailer.createTransport(EMAIL_CONFIG);
-  } catch {
-    console.error("[Email] Failed to create SMTP transporter");
+function getAdminEmailConfig(): AdminEmailConfig | null {
+  const host = process.env.ADMIN_SMTP_HOST?.trim();
+  const port = Number.parseInt(process.env.ADMIN_SMTP_PORT || "", 10);
+  const user = process.env.ADMIN_SMTP_USER?.trim();
+  const pass = process.env.ADMIN_SMTP_PASS;
+  const from = process.env.ADMIN_SMTP_FROM?.trim() || user;
+
+  if (!host || !Number.isInteger(port) || port < 1 || port > 65535 || !user || !pass || !from) {
+    console.error(
+      "[Email] Administrator SMTP is not configured; required keys are ADMIN_SMTP_HOST, ADMIN_SMTP_PORT, ADMIN_SMTP_USER, ADMIN_SMTP_PASS, and ADMIN_SMTP_FROM/ADMIN_SMTP_USER",
+    );
     return null;
   }
+
+  return {
+    host,
+    port,
+    secure: port === 465,
+    user,
+    pass,
+    from,
+  };
 }
 
-function createAdminTransporter() {
+function createAdminTransporter(): { transporter: Transporter; config: AdminEmailConfig } | null {
+  const config = getAdminEmailConfig();
+  if (!config) return null;
+
   try {
-    return nodemailer.createTransport(ADMIN_EMAIL_CONFIG);
+    const transporter = nodemailer.createTransport({
+      host: config.host,
+      port: config.port,
+      secure: config.secure,
+      auth: {
+        user: config.user,
+        pass: config.pass,
+      },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 20_000,
+      tls: { minVersion: "TLSv1.2" },
+    });
+    return { transporter, config };
   } catch {
     console.error("[Email] Failed to create administrator SMTP transporter");
     return null;
   }
 }
 
-function senderAddress(): string {
-  return `"ROWELL Website" <${EMAIL_CONFIG.auth.user}>`;
+function adminSenderAddress(config: AdminEmailConfig): string {
+  return `"ROWELL Website" <${config.from}>`;
 }
 
-function adminSenderAddress(): string {
-  return `"ROWELL Website" <${ADMIN_EMAIL_CONFIG.auth.user}>`;
+function expectedOperationsRecipients(): string[] {
+  return Array.from(
+    new Set([PRIMARY_INQUIRY_RECIPIENT, BACKUP_INQUIRY_RECIPIENT].filter(Boolean)),
+  );
+}
+
+function acceptedAllRecipients(
+  info: SentMessageInfo,
+  recipients: string[],
+): boolean {
+  const accepted = new Set(
+    (info.accepted || []).map((value: unknown) => String(value).toLowerCase()),
+  );
+  return recipients.every((recipient) => accepted.has(recipient.toLowerCase()));
 }
 
 /** Sends a short-lived administrator sign-in link only to a configured allowlisted address. */
@@ -69,15 +100,15 @@ export async function sendAdminAccessLink(data: {
   email: string;
   loginUrl: string;
 }): Promise<{ success: boolean; messageId?: string; error?: string }> {
-  const transporter = createAdminTransporter();
-  if (!transporter) {
+  const mailer = createAdminTransporter();
+  if (!mailer) {
     return { success: false, error: "Administrator email service is not configured" };
   }
 
   const safeUrl = escapeHtml(data.loginUrl);
   try {
-    const info = await transporter.sendMail({
-      from: adminSenderAddress(),
+    const info = await mailer.transporter.sendMail({
+      from: adminSenderAddress(mailer.config),
       to: data.email,
       subject: "ROWELL administrator sign-in link",
       text: `Use this one-time link to sign in to the ROWELL inquiry dashboard. It expires in 15 minutes: ${data.loginUrl}`,
@@ -107,10 +138,10 @@ export async function sendCustomerMessageNotification(data: {
   productName?: string;
   productPartNumber?: string;
 }) {
-  // Inquiry operations use the independently configured system sender rather
-  // than the legacy mail path, which keeps alert delivery isolated and auditable.
-  const transporter = createAdminTransporter();
-  if (!transporter) {
+  // Inquiry notifications are operational emails. They are independent from
+  // any outbound marketing system and are queued outside the customer request.
+  const mailer = createAdminTransporter();
+  if (!mailer) {
     console.error("[Email] Inquiry notification is not configured");
     return { success: false, error: "Email service is not configured" };
   }
@@ -131,26 +162,28 @@ export async function sendCustomerMessageNotification(data: {
   const safePartNumber = data.productPartNumber ? escapeHtml(data.productPartNumber) : "";
 
   const subject = `[ROWELL Website] New ${typeLabel} – ${data.name}`;
-  const productBlock = data.productId
+  const productBlock = data.productId || data.productName || data.productPartNumber
     ? `
       <div style="background:#eff6ff;padding:15px;border-radius:5px;margin:20px 0;border-left:4px solid #2563eb">
         <h3 style="margin-top:0;color:#1e40af">Product</h3>
-        <p><strong>ID:</strong> ${safeProductId}</p>
+        ${data.productId ? `<p><strong>ID:</strong> ${safeProductId}</p>` : ""}
         ${data.productPartNumber ? `<p><strong>Part number:</strong> ${safePartNumber}</p>` : ""}
         ${data.productName ? `<p><strong>Name:</strong> ${safeProductName}</p>` : ""}
       </div>`
     : "";
 
   try {
-    const info = await transporter.sendMail({
-      from: adminSenderAddress(),
+    const recipients = expectedOperationsRecipients();
+    const info = await mailer.transporter.sendMail({
+      from: adminSenderAddress(mailer.config),
       to: PRIMARY_INQUIRY_RECIPIENT,
       cc:
         BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
           ? BACKUP_INQUIRY_RECIPIENT
           : undefined,
+      replyTo: { name: data.name, address: data.email },
       subject,
-      text: `New ${typeLabel}\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || ""}\nPhone: ${data.phone || ""}\nMessage: ${data.message}`,
+      text: `New ${typeLabel}\nName: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || ""}\nPhone: ${data.phone || ""}\nProduct: ${data.productPartNumber || data.productName || data.productId || ""}\nMessage: ${data.message}`,
       html: `
         <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
           <h2 style="color:#2563eb">New ${typeLabel}</h2>
@@ -168,7 +201,13 @@ export async function sendCustomerMessageNotification(data: {
           <p style="color:#6b7280;font-size:12px">This notification is sent by the ROWELL website. Reply using the customer email address above.</p>
         </div>`,
     });
-    console.log("[Email] Inquiry notification accepted by SMTP");
+
+    if (!acceptedAllRecipients(info, recipients)) {
+      console.error("[Email] Inquiry notification was not accepted for every configured operations recipient");
+      return { success: false, error: "Email delivery was rejected for one or more operations recipients" };
+    }
+
+    console.log("[Email] Inquiry notification accepted by SMTP for all configured operations recipients");
     return { success: true, messageId: info.messageId };
   } catch {
     console.error("[Email] Failed to send inquiry notification");
@@ -182,8 +221,8 @@ export async function sendInquiryOperationsSummary(data: {
   newCount?: number;
   overdueCount?: number;
 }): Promise<{ success: boolean; error?: string }> {
-  const transporter = createAdminTransporter();
-  if (!transporter) {
+  const mailer = createAdminTransporter();
+  if (!mailer) {
     console.error("[Email] Inquiry operations notification is not configured");
     return { success: false, error: "Email service is not configured" };
   }
@@ -199,8 +238,9 @@ export async function sendInquiryOperationsSummary(data: {
     : `Open inquiries beyond the SLA threshold: ${data.overdueCount || 0}`;
 
   try {
-    await transporter.sendMail({
-      from: adminSenderAddress(),
+    const recipients = expectedOperationsRecipients();
+    const info = await mailer.transporter.sendMail({
+      from: adminSenderAddress(mailer.config),
       to: PRIMARY_INQUIRY_RECIPIENT,
       cc:
         BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
@@ -216,7 +256,13 @@ export async function sendInquiryOperationsSummary(data: {
           <p><a href="https://www.rowellhplc.com/admin/messages" style="display:inline-block;padding:10px 14px;background:#1d4ed8;color:#fff;text-decoration:none;border-radius:4px">Open protected dashboard</a></p>
         </div>`,
     });
-    console.log("[Email] Inquiry operations notification accepted by SMTP");
+
+    if (!acceptedAllRecipients(info, recipients)) {
+      console.error("[Email] Inquiry operations notification was not accepted for every configured operations recipient");
+      return { success: false, error: "Email delivery was rejected for one or more operations recipients" };
+    }
+
+    console.log("[Email] Inquiry operations notification accepted by SMTP for all configured operations recipients");
     return { success: true };
   } catch {
     console.error("[Email] Failed to send inquiry operations notification");
@@ -230,8 +276,8 @@ export async function sendSeoTechnicalHealthAlert(data: {
   targetCount: number;
   healthyCount: number;
 }): Promise<{ success: boolean; error?: string }> {
-  const transporter = createAdminTransporter();
-  if (!transporter) {
+  const mailer = createAdminTransporter();
+  if (!mailer) {
     console.error("[Email] SEO technical monitoring notification is not configured");
     return { success: false, error: "Email service is not configured" };
   }
@@ -239,8 +285,9 @@ export async function sendSeoTechnicalHealthAlert(data: {
   const safeCodes = data.failedTargetCodes.map(escapeHtml).join(", ");
   const subject = "[ROWELL Website] SEO technical health alert";
   try {
-    await transporter.sendMail({
-      from: adminSenderAddress(),
+    const recipients = expectedOperationsRecipients();
+    const info = await mailer.transporter.sendMail({
+      from: adminSenderAddress(mailer.config),
       to: PRIMARY_INQUIRY_RECIPIENT,
       cc:
         BACKUP_INQUIRY_RECIPIENT && BACKUP_INQUIRY_RECIPIENT !== PRIMARY_INQUIRY_RECIPIENT
@@ -257,7 +304,13 @@ export async function sendSeoTechnicalHealthAlert(data: {
           <p style="color:#6b7280;font-size:12px">This alert contains no customer data, credentials, page content, or search-performance metrics. Review the internal SEO monitoring report before making any change.</p>
         </div>`,
     });
-    console.log("[Email] SEO technical monitoring notification accepted by SMTP");
+
+    if (!acceptedAllRecipients(info, recipients)) {
+      console.error("[Email] SEO technical monitoring notification was not accepted for every configured operations recipient");
+      return { success: false, error: "Email delivery was rejected for one or more operations recipients" };
+    }
+
+    console.log("[Email] SEO technical monitoring notification accepted by SMTP for all configured operations recipients");
     return { success: true };
   } catch {
     console.error("[Email] Failed to send SEO technical monitoring notification");

@@ -67,6 +67,7 @@ export default function ProductMessageButton({
       phone: formData.phone,
       productId: productId,
       productName: productName,
+      productPartNumber,
       message: formData.message,
     });
   };

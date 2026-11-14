@@ -85,6 +85,7 @@ function Router() {
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/usp/:code"} component={USPClassificationDetail} />
           <Route path={"/contact"} component={Contact} />
+          <Route path={"/inquiry"} component={Contact} />
           <Route path={"/admin/login"} component={AdminLogin} />
           <Route path={"/admin/messages"} component={AdminMessages} />
           <Route path={"/admin/blog-publish"} component={AdminBlogPublish} />

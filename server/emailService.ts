@@ -38,15 +38,15 @@ interface SMTPConfig {
  * Get SMTP configuration from environment variables
  */
 function getSMTPConfig(): SMTPConfig | null {
-  const host = process.env.SMTP_HOST;
+  const host = process.env.SMTP_HOST?.trim();
   const port = process.env.SMTP_PORT;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const from = process.env.SMTP_FROM;
 
   // If SMTP is not configured, return null
-  if (!host || !port || !user || !pass || !from) {
-    console.warn('[Email Service] SMTP not configured. Email sending is disabled.');
+  if (!host || !port || !user || !pass || !from || !Number.isInteger(Number.parseInt(port, 10))) {
+    console.error('[Email Service] SMTP is not configured. Email sending is disabled.');
     console.warn('[Email Service] Required environment variables: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM');
     return null;
   }
@@ -226,14 +226,11 @@ export async function sendInquiryEmail(data: InquiryEmailData): Promise<boolean>
   try {
     const transporter = getTransporter();
     
-    // If SMTP is not configured, log the email content and return true
+    // Never treat a missing SMTP configuration as a successful delivery and
+    // never write customer inquiry contents to application logs.
     if (!transporter) {
-      console.log('[Email Service] SMTP not configured. Email content logged below:');
-      console.log('To:', data.userEmail);
-      console.log('Subject:', `您的询价已提交 - 询价单号: ${data.inquiryNumber}`);
-      console.log('Content (Text):', generateInquiryEmailText(data));
-      console.log('[Email Service] To enable real email sending, configure SMTP environment variables.');
-      return true;
+      console.error('[Email Service] SMTP not configured; inquiry confirmation was not sent.');
+      return false;
     }
 
     const config = getSMTPConfig();

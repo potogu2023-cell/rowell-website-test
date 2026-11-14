@@ -31,9 +31,12 @@ async function enqueueEvent(input: {
   eventType: "new_message" | "daily_summary" | "sla24" | "sla48";
   dedupeKey: string;
   messageId?: number;
-}): Promise<void> {
+}): Promise<boolean> {
   const db = await getDb();
-  if (!db) return;
+  if (!db) {
+    console.error("[InquiryNotifications] Database unavailable while enqueueing delivery event");
+    return false;
+  }
 
   try {
     await db.insert(inquiryNotificationEvents).values({
@@ -44,19 +47,29 @@ async function enqueueEvent(input: {
       attemptCount: 0,
       nextAttemptAt: toDbTimestamp(new Date()),
     });
-  } catch {
+    return true;
+  } catch (error) {
     // The table's unique dedupe key makes re-enqueue safe across restarts.
+    const code = typeof error === "object" && error && "code" in error
+      ? String((error as { code?: unknown }).code)
+      : "unknown";
+    if (code !== "ER_DUP_ENTRY") {
+      console.error(`[InquiryNotifications] Could not enqueue ${input.eventType} event (${code})`);
+      return false;
+    }
+    return true;
   }
 }
 
 /** Queue a newly stored inquiry without making customer submission depend on SMTP. */
-export async function enqueueInquiryNotification(messageId: number): Promise<void> {
-  await enqueueEvent({
+export async function enqueueInquiryNotification(messageId: number): Promise<boolean> {
+  const queued = await enqueueEvent({
     eventType: "new_message",
     messageId,
     dedupeKey: `new-message-${messageId}`,
   });
-  void processInquiryNotificationEvents();
+  if (queued) void processInquiryNotificationEvents();
+  return queued;
 }
 
 async function enqueueOperationalEvents(now: Date): Promise<void> {

@@ -425,6 +425,7 @@ export default function ProductDetail() {
           <CustomerMessageForm 
             productId={product.productId}
             productName={product.name || undefined}
+            productPartNumber={product.partNumber || undefined}
             title="Have Questions About This Product?"
             description="Send your product question and contact details for review."
           />

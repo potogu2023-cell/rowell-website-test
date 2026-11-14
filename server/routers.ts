@@ -3,6 +3,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, publicProcedure, router } from "./_core/trpc";
 import { getProductsByIds } from './db';
 import { z } from 'zod';
+import { TRPCError } from '@trpc/server';
 import { adminRouter } from './admin-api';
 import { listCategoriesRouter } from './list-categories-api';
 import { updateProductCategoryRouter } from './update-product-category';
@@ -36,6 +37,40 @@ import { seedArticlesRouter } from "./seed-articles-router";
 import { manualImportRouter } from "./manual-import-api";
 import { standardsRouter } from "./standards-api";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
+
+const PUBLIC_INQUIRY_WINDOW_MS = 10 * 60 * 1000;
+const PUBLIC_INQUIRY_MAX_SUBMISSIONS = 5;
+const publicInquirySubmissions = new Map<string, { startedAt: number; count: number }>();
+
+function clientAddress(req: { headers: Record<string, string | string[] | undefined> }): string {
+  const forwarded = req.headers['x-forwarded-for'];
+  const forwardedValue = Array.isArray(forwarded) ? forwarded[0] : forwarded;
+  return (
+    req.headers['cf-connecting-ip']?.toString().trim() ||
+    forwardedValue?.split(',')[0]?.trim() ||
+    req.headers['x-real-ip']?.toString().trim() ||
+    'anonymous'
+  );
+}
+
+function enforcePublicInquiryRateLimit(req: { headers: Record<string, string | string[] | undefined> }): void {
+  const now = Date.now();
+  const key = clientAddress(req);
+  const current = publicInquirySubmissions.get(key);
+  if (!current || now - current.startedAt >= PUBLIC_INQUIRY_WINDOW_MS) {
+    publicInquirySubmissions.set(key, { startedAt: now, count: 1 });
+    return;
+  }
+
+  if (current.count >= PUBLIC_INQUIRY_MAX_SUBMISSIONS) {
+    throw new TRPCError({
+      code: 'TOO_MANY_REQUESTS',
+      message: 'Too many inquiry submissions. Please try again later.',
+    });
+  }
+
+  current.count += 1;
+}
 
 
 export const appRouter = router({
@@ -450,10 +485,12 @@ export const appRouter = router({
           phone: z.string().optional(),
           productId: z.string().optional(),
           productName: z.string().optional(),
+          productPartNumber: z.string().max(100, '货号最多 100 个字符').optional(),
           message: z.string().min(10, '留言至少 10 个字符').max(1000, '留言最多 1000 个字符'),
         }).parse(raw);
       })
-      .mutation(async ({ input }) => {
+      .mutation(async ({ input, ctx }) => {
+        enforcePublicInquiryRateLimit(ctx.req);
         const { getDb } = await import('./db');
         const { customerMessages } = await import('../drizzle/schema');
         const db = await getDb();
@@ -468,6 +505,7 @@ export const appRouter = router({
           phone: input.phone,
           productId: input.productId,
           productName: input.productName,
+          productPartNumber: input.productPartNumber,
           message: input.message,
           status: 'new',
         });
@@ -475,9 +513,10 @@ export const appRouter = router({
         // Persist a delivery event after the customer record exists. The event worker
         // applies bounded retries, so SMTP errors never roll back a valid submission.
         const messageId = result[0].insertId;
+        let notificationQueued = false;
         try {
           const { enqueueInquiryNotification } = await import('./inquiry-notification-worker');
-          await enqueueInquiryNotification(messageId);
+          notificationQueued = await enqueueInquiryNotification(messageId);
         } catch {
           // The submission is intentionally successful even if queueing is temporarily unavailable.
           console.error('[InquiryNotifications] Could not enqueue delivery event');
@@ -486,6 +525,7 @@ export const appRouter = router({
         return {
           success: true,
           messageId,
+          notificationQueued,
         };
       }),
   }),

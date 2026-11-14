@@ -164,6 +164,7 @@ export default function SpeMatrixSeries() {
 
         <section id="matrix-inquiry-form" className="mx-auto mt-10 max-w-4xl scroll-mt-8" aria-labelledby="matrix-inquiry-title">
           <CustomerMessageForm
+            type="inquiry"
             productId={`matrix:${seriesSlug}`}
             productName={series.seriesName}
             productPartNumber={selectedVariants.map((variant) => variant.partNumber || variant.productId || "P/N pending").join(", ") || undefined}

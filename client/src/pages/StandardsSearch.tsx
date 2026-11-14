@@ -253,6 +253,7 @@ export default function StandardsSearch() {
         {/* Inquiry Form */}
         <div id="standards-inquiry-form" className="mt-12">
           <CustomerMessageForm
+            type="inquiry"
             productId={selectedProduct?.id}
             productName={selectedProduct ? `${selectedProduct.partNumber} - ${selectedProduct.name}` : undefined}
             title={t("standards.request_quote")}

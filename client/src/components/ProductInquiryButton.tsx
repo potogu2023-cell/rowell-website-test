@@ -76,6 +76,7 @@ export default function ProductInquiryButton({
       phone: formData.phone,
       productId: productId,
       productName: productName,
+      productPartNumber,
       message: `${formData.message}\n\nDestination country/region: ${destinationCountry.trim()}`,
     });
   };

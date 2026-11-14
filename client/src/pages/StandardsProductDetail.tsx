@@ -275,6 +275,7 @@ export default function StandardsProductDetail({ params }: StandardsProductDetai
         {/* Inquiry Form */}
         <div id="standards-inquiry-form" className="mt-12">
           <CustomerMessageForm
+            type="inquiry"
             productId={String(product.id)}
             productName={product.name_en}
             productPartNumber={product.part_number}

@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { buildInquiryContext } from "@shared/seoInquiry";
 
 interface CustomerMessageFormProps {
+  type?: 'inquiry' | 'message' | 'quote_request';
   productId?: string;
   productName?: string;
   productPartNumber?: string;
@@ -21,6 +22,7 @@ interface CustomerMessageFormProps {
 }
 
 export default function CustomerMessageForm({ 
+  type = 'message',
   productId, 
   productName,
   productPartNumber,
@@ -51,8 +53,8 @@ export default function CustomerMessageForm({
   }, [inquiryContext]);
 
   const createMessageMutation = trpc.messages.create.useMutation({
-    onSuccess: (data) => {
-      toast.success(t('contact.message_success'));
+    onSuccess: () => {
+      toast.success(t(type === 'message' ? 'contact.message_success' : 'contact.inquiry_success'));
       // Reset form
       setFormData({
         name: "",
@@ -64,7 +66,7 @@ export default function CustomerMessageForm({
       });
     },
     onError: (error) => {
-      toast.error(error.message || "Failed to send message");
+      toast.error(error.message || t(type === 'message' ? 'contact.message_error' : 'contact.inquiry_error'));
     },
   });
 
@@ -84,13 +86,14 @@ export default function CustomerMessageForm({
     }
 
     createMessageMutation.mutate({
-      type: 'message',
+      type,
       name: formData.name,
       email: formData.email,
       company: formData.company,
       phone: formData.phone,
       productId: productId,
       productName: productName,
+      productPartNumber,
       message: `${formData.message}\n\nDestination country/region: ${formData.destinationCountry.trim()}`,
     });
   };
