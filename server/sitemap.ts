@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getDb, getPool } from "./db";
-import { products } from "../drizzle/schema";
+import { products, resources } from "../drizzle/schema";
 import { and, eq, isNotNull } from "drizzle-orm";
 import { SPE_MATRIX_SERIES, slugifyMatrixSeries } from "../shared/speMatrixData";
 
@@ -50,6 +50,7 @@ export const STATIC_PAGES: SitemapPage[] = [
 const VOLUMES = [
   { path: "/sitemaps/columns.xml", kind: "columns" as const },
   { path: "/sitemaps/matrix.xml", kind: "matrix" as const },
+  { path: "/sitemaps/resources.xml", kind: "resources" as const },
   { path: "/sitemaps/standards-1.xml", kind: "standards" as const, volume: 1 },
   { path: "/sitemaps/standards-2.xml", kind: "standards" as const, volume: 2 },
   { path: "/sitemaps/standards-3.xml", kind: "standards" as const, volume: 3 },
@@ -154,6 +155,29 @@ export async function generateColumnsSitemap(_req: Request, res: Response): Prom
   } catch (error) {
     console.error("[Sitemap] columns volume failed:", error);
     res.status(500).send("Error generating columns sitemap");
+  }
+}
+
+export async function generateResourcesSitemap(_req: Request, res: Response): Promise<void> {
+  try {
+    const db = await getDb();
+    if (!db) return void res.status(500).send("Database not available");
+    const generatedAt = new Date();
+    const rows = await db
+      .select({ slug: resources.slug, publishedAt: resources.publishedAt, updatedAt: resources.updatedAt })
+      .from(resources)
+      .where(eq(resources.status, "published"));
+    const entries = rows
+      .filter((row) => !!row.slug)
+      .map((row) => urlEntry(
+        `${BASE_URL}/resources/${encodeURIComponent(row.slug)}`,
+        isoDate(row.updatedAt ?? row.publishedAt, generatedAt),
+      ));
+    sendXml(res, renderUrlset(entries));
+    console.log(`[Sitemap] resources volume generated entries=${entries.length}`);
+  } catch (error) {
+    console.error("[Sitemap] resources volume failed:", error);
+    res.status(500).send("Error generating resources sitemap");
   }
 }
 

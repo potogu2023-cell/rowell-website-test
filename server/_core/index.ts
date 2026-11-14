@@ -13,6 +13,7 @@ import {
   generateSitemap,
   generateColumnsSitemap,
   generateMatrixSitemap,
+  generateResourcesSitemap,
   generateStandardsSitemap,
   generateSitemapIndex,
 } from "../sitemap";
@@ -89,6 +90,7 @@ app.use("/api/learning-center", learningCenterRestRouter);
   app.get("/sitemap.xml", generateSitemap);
   app.get("/sitemaps/columns.xml", generateColumnsSitemap);
   app.get("/sitemaps/matrix.xml", generateMatrixSitemap);
+  app.get("/sitemaps/resources.xml", generateResourcesSitemap);
   app.get("/sitemaps/standards-:volume.xml", generateStandardsSitemap);
   // robots.txt for search engines
   app.get("/robots.txt", (req, res) => {
