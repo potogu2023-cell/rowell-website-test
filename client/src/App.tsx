@@ -24,6 +24,7 @@ const About = lazy(() => import("./pages/About"));
 const USPStandards = lazy(() => import("./pages/USPStandards"));
 const USPClassificationDetail = lazy(() => import("./pages/USPClassificationDetail"));
 const Contact = lazy(() => import("./pages/Contact"));
+const InquiryList = lazy(() => import("./pages/InquiryList"));
 const LearningCenter = lazy(() => import("./pages/LearningCenter"));
 const ArticleDetail = lazy(() => import("./pages/ArticleDetail"));
 const AuthorDetail = lazy(() => import("./pages/AuthorDetail"));
@@ -85,7 +86,7 @@ function Router() {
           <Route path={"/usp-standards"} component={USPStandards} />
           <Route path={"/usp/:code"} component={USPClassificationDetail} />
           <Route path={"/contact"} component={Contact} />
-          <Route path={"/inquiry"} component={Contact} />
+          <Route path={"/inquiry"} component={InquiryList} />
           <Route path={"/admin/login"} component={AdminLogin} />
           <Route path={"/admin/messages"} component={AdminMessages} />
           <Route path={"/admin/blog-publish"} component={AdminBlogPublish} />

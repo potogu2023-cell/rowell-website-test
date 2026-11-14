@@ -907,7 +907,7 @@ function isKnownPublicSpaRoute(requestPath: string): boolean {
 }
 
 function isIndexablePublicSpaRoute(requestPath: string): boolean {
-  if (requestPath === "/404" || requestPath === "/test-filters" || requestPath.startsWith("/admin/")) {
+  if (requestPath === "/404" || requestPath === "/test-filters" || requestPath === "/inquiry" || requestPath.startsWith("/admin/")) {
     return false;
   }
   return isKnownPublicSpaRoute(requestPath);

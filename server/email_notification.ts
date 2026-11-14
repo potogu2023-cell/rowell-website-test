@@ -13,7 +13,7 @@ interface AdminEmailConfig {
 // explicitly configured sender. Marketing email functionality is intentionally
 // not part of this service.
 const PRIMARY_INQUIRY_RECIPIENT =
-  process.env.INQUIRY_NOTIFICATION_PRIMARY?.trim() || "oscar@rowellhplc.com";
+  process.env.INQUIRY_NOTIFICATION_PRIMARY?.trim() || "oscarku@rowellhplc.com";
 const BACKUP_INQUIRY_RECIPIENT =
   process.env.INQUIRY_NOTIFICATION_BACKUP?.trim() || "sofia@rowellhplc.com";
 

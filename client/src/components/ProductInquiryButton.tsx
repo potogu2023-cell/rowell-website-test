@@ -4,11 +4,12 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { DollarSign, Send } from "lucide-react";
+import { DollarSign, Send, ShoppingBasket } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { useTranslation } from 'react-i18next';
 import { buildInquiryContext } from "@shared/seoInquiry";
+import { addToInquiryList } from "@/lib/inquiryList";
 
 interface ProductInquiryButtonProps {
   productId: string;
@@ -89,6 +90,23 @@ export default function ProductInquiryButton({
           {t('productInquiry.request_quote')}
         </Button>
       </DialogTrigger>
+      <div className="grid grid-cols-2 gap-2">
+        <Button
+          type="button"
+          variant="outline"
+          data-conversion-action="inquiry_list_add"
+          onClick={() => {
+            addToInquiryList({ productId, productName, productPartNumber, specification });
+            toast.success(t('products.product_added'));
+          }}
+        >
+          <ShoppingBasket className="w-4 h-4 mr-2" />
+          {t('productDetail.add_to_inquiry_cart')}
+        </Button>
+        <Button type="button" variant="ghost" asChild>
+          <a href="/inquiry">{t('inquiry.cart_title')}</a>
+        </Button>
+      </div>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
           <DialogTitle>{t('productInquiry.inquiry_title')}</DialogTitle>
