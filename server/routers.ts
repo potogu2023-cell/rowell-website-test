@@ -36,6 +36,7 @@ import { blogPublishRouter } from "./blog-publish-router";
 import { seedArticlesRouter } from "./seed-articles-router";
 import { manualImportRouter } from "./manual-import-api";
 import { standardsRouter } from "./standards-api";
+import { seoDraftPublishRouter } from "./seo-draft-publish-router";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
 
 const PUBLIC_INQUIRY_WINDOW_MS = 10 * 60 * 1000;
@@ -861,6 +862,8 @@ export const appRouter = router({
 
   // ANPEL Reference Standards
   standards: standardsRouter,
+  // Guarded SEO metadata draft registration and publication
+  seoDrafts: seoDraftPublishRouter,
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
