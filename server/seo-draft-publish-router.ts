@@ -101,7 +101,7 @@ export const seoDraftPublishRouter = router({
                current_meta_title, current_meta_description, draft_meta_title, draft_meta_description,
                evidence_json, qa_json, model_name)
              SELECT ?, id, 'pending_review', ?, slug, brand, partNumber, productType,
-                    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual-reviewed-gsc-draft'
+                    ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'manual-reviewed-gsc-draft'
              FROM products WHERE id = ?`,
             [runId, canonicalUrl, item.sourceQuery, item.clicks, item.impressions, item.ctr, item.position,
              item.currentMetaTitle, item.currentMetaDescription, item.draftMetaTitle, item.draftMetaDescription,
