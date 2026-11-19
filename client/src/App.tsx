@@ -33,6 +33,7 @@ const AdminSeed = lazy(() => import("./pages/AdminSeed"));
 const AdminMessages = lazy(() => import("./pages/AdminMessages"));
 const AdminBlogPublish = lazy(() => import("./pages/AdminBlogPublish"));
 const AdminSeoDrafts = lazy(() => import("./pages/AdminSeoDrafts"));
+const AdminProductLookup = lazy(() => import("./pages/AdminProductLookup"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const TestFilters = lazy(() => import("./pages/TestFilters"));
 const Standards = lazy(() => import("./pages/Standards"));
@@ -92,6 +93,7 @@ function Router() {
           <Route path={"/admin/messages"} component={AdminMessages} />
           <Route path={"/admin/blog-publish"} component={AdminBlogPublish} />
           <Route path={"/admin/seo-drafts"} component={AdminSeoDrafts} />
+          <Route path={"/admin/product-lookup"} component={AdminProductLookup} />
           <Route path={"/admin/seed"} component={AdminSeed} />
 
           {/* ANPEL Reference Standards routes */}

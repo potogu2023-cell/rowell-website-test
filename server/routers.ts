@@ -37,6 +37,7 @@ import { seedArticlesRouter } from "./seed-articles-router";
 import { manualImportRouter } from "./manual-import-api";
 import { standardsRouter } from "./standards-api";
 import { seoDraftPublishRouter } from "./seo-draft-publish-router";
+import { adminProductLookupRouter } from "./admin-product-lookup-router";
 // Removed unused imports: uploadProductImagesBatchRouter, fixCapsSeptaRouter
 
 const PUBLIC_INQUIRY_WINDOW_MS = 10 * 60 * 1000;
@@ -864,6 +865,8 @@ export const appRouter = router({
   standards: standardsRouter,
   // Guarded SEO metadata draft registration and publication
   seoDrafts: seoDraftPublishRouter,
+  // Read-only exact product identity lookup for the authenticated administrator
+  adminProductLookup: adminProductLookupRouter,
   // Removed unused routers: uploadProductImagesBatch, fixCapsSepta
 });
 
