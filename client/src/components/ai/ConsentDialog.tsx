@@ -107,8 +107,8 @@ export default function ConsentDialog({ onConsent, onSkip }: ConsentDialogProps)
               <div className="mt-3 pt-3 border-t">
                 <p className="text-xs text-gray-600">
                   <strong>Disclaimer:</strong> AI suggestions are for reference only. 
-                  For pricing, ordering, and commercial inquiries, please contact Oscar directly 
-                  at oscar@rowellhplc.com or WhatsApp +86 180 1705 0064.
+                  For pricing, ordering, and commercial inquiries, please contact Sofia directly
+                  at sofia@rowellhplc.com or WhatsApp +86 180 1705 0064.
                 </p>
               </div>
             </div>

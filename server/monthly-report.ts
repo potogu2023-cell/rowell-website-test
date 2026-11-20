@@ -198,7 +198,7 @@ export async function sendMonthlyReport(year: number, month: number): Promise<bo
     const sgMail = (await import('@sendgrid/mail')).default;
     const apiKey = process.env.SENDGRID_API_KEY;
     const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@rowellhplc.com';
-    const toEmail = 'info@rowellhplc.com';
+    const toEmail = process.env.MONTHLY_REPORT_RECIPIENT?.trim() || 'sofia@rowellhplc.com';
 
     if (!apiKey) {
       console.warn('[Email] SENDGRID_API_KEY not configured, skipping monthly report email');
@@ -282,4 +282,3 @@ export async function monthlyReportCronJob(): Promise<void> {
     console.error(`[Monthly Report] ❌ Failed to generate report:`, error);
   }
 }
-

@@ -36,14 +36,14 @@ LIMITATIONS:
 
 CONTACT INFORMATION:
 For pricing, ordering, shipping, and customs:
-Email: oscar@rowellhplc.com
+Email: sofia@rowellhplc.com
 WhatsApp/WeChat: +86 180 1705 0064
 
 IMPORTANT ROUTING RULES:
 When users ask about pricing, costs, quotes, ordering, shipping, delivery, customs, or payment:
 - Do NOT attempt to answer
 - Immediately provide contact information
-- Explain that Oscar will help with commercial inquiries
+- Explain that Sofia will help with commercial inquiries
 
 RESPONSE FORMAT:
 - Use clear paragraphs and bullet points
@@ -61,9 +61,9 @@ Examples:
 • "Recommend a column for pharmaceutical analysis"
 • "I'm seeing peak tailing, what should I do?"`;
 
-export const PRICING_INQUIRY_RESPONSE = `For pricing and bulk orders, please contact Oscar directly:
+export const PRICING_INQUIRY_RESPONSE = `For pricing and bulk orders, please contact Sofia directly:
 
-Email: oscar@rowellhplc.com
+Email: sofia@rowellhplc.com
 WhatsApp: +86 180 1705 0064
 WeChat: +86 180 1705 0064
 
@@ -71,14 +71,14 @@ Please include the product part number, quantity, destination, and any relevant 
 
 export const ERROR_MESSAGE = `I apologize, but I'm having trouble processing your request right now. This could be due to high traffic or a temporary service issue.
 
-Please try again in a moment, or contact Oscar directly for immediate assistance:
+Please try again in a moment, or contact Sofia directly for immediate assistance:
 
-Email: oscar@rowellhplc.com
+Email: sofia@rowellhplc.com
 WhatsApp/WeChat: +86 180 1705 0064`;
 
-export const TRANSFER_TO_HUMAN_MESSAGE = `For this specific inquiry, I recommend contacting Oscar directly for personalized assistance:
+export const TRANSFER_TO_HUMAN_MESSAGE = `For this specific inquiry, I recommend contacting Sofia directly for personalized assistance:
 
-Email: oscar@rowellhplc.com
+Email: sofia@rowellhplc.com
 WhatsApp: +86 180 1705 0064
 WeChat: +86 180 1705 0064
 

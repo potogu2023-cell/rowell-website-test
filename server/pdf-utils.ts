@@ -141,7 +141,7 @@ export async function generateInquiryPDF(data: InquiryWithDetails): Promise<Buff
       doc.moveDown(3);
       doc.fontSize(8).fillColor('#666');
       doc.text('ROWELL HPLC Solutions', 50, doc.y, { align: 'center' });
-      doc.text('Email: info@rowellhplc.com | WhatsApp: +86 189 3053 9593', 50, doc.y, {
+      doc.text('Email: sofia@rowellhplc.com | WhatsApp: +86 189 3053 9593', 50, doc.y, {
         align: 'center',
       });
       doc.text('Shanghai, China', 50, doc.y, { align: 'center' });
@@ -152,4 +152,3 @@ export async function generateInquiryPDF(data: InquiryWithDetails): Promise<Buff
     }
   });
 }
-
